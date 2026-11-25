@@ -8,6 +8,7 @@
 
 country = {
   tag                = UCH
+  flag_ext           = _AHC
   ai                 = "Minors/UCH_1914.ai"
   ai_settings        = { }
   capital            = 1247 # Beijing
