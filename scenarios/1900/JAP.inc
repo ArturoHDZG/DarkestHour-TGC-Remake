@@ -751,7 +751,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = april day = 19 }
   }
-  division = {
+  division_development = {
     id             = { type = 30111 id = 558 }
     name           = "Fuso"
     type           = battleship
@@ -759,7 +759,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = november day = 18 }
   }
-  division = {
+  division_development = {
     id             = { type = 30111 id = 559 }
     name           = "Yamashiro"
     type           = battleship

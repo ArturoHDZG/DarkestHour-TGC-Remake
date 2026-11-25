@@ -1307,7 +1307,7 @@ country = {
   }
 
       
-  division = {
+  division_development = {
     id             = { type = 10000 id = 590 }
     name           = "Paris"
     type           = battleship
@@ -1315,7 +1315,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = august day = 1 }
   }
-  division = {
+  division_development = {
     id             = { type = 10000 id = 591 }
     name           = "France"
     type           = battleship
@@ -1323,7 +1323,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = july day = 15 }
   }
-  division = {
+  division_development = {
     id             = { type = 10000 id = 592 }
     name           = "Bretagne"
     type           = battleship
@@ -1331,7 +1331,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = september day = 1 }
   }
-  division = {
+  division_development = {
     id             = { type = 10000 id = 593 }
     name           = "Provence"
     type           = battleship
@@ -1339,7 +1339,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = june day = 1 }
   }
-  division = {
+  division_development = {
     id             = { type = 10000 id = 594 }
     name           = "Lorraine"
     type           = battleship

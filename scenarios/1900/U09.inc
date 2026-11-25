@@ -975,7 +975,7 @@ country = {
   }
 
   
-  division = {
+  division_development = {
     id             = { type = 10100 id = 9139 }
     name           = "SMS Szent Istvan"
     type           = battleship
@@ -999,7 +999,7 @@ country = {
     cost           = 0.2
     date           = { year = 1914 month = august day = 29 }
   }
-  division = {
+  division_development = {
     id             = { type = 10100 id = 9094 }
     name           = "SMS Prinz Eugen"
     type           = battleship

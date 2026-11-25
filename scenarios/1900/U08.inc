@@ -1815,7 +1815,7 @@ country = {
   }
 
         
-  division = {
+  division_development = {
     id             = { type = 10100 id = 644 }
     name           = "SMS Großer Kurfürst"
     type           = battleship
@@ -1823,7 +1823,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = july day = 29 }
   }
-  division = {
+  division_development = {
     id             = { type = 10100 id = 645 }
     name           = "SMS König"
     type           = battleship
@@ -1831,7 +1831,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = august day = 10 }
   }
-  division = {
+  division_development = {
     id             = { type = 10100 id = 646 }
     name           = "SMS Markgraf"
     type           = battleship
@@ -1839,7 +1839,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = october day = 1 }
   }
-  division = {
+  division_development = {
     id             = { type = 10100 id = 647 }
     name           = "SMS Kronprinz"
     type           = battleship
@@ -1871,7 +1871,7 @@ country = {
     cost           = 0.4
     date           = { year = 1917 month = may day = 10 }
   }
-  division = {
+  division_development = {
     id             = { type = 10100 id = 6147 }
     name           = "SMS Bayern"
     type           = battleship
@@ -1879,7 +1879,7 @@ country = {
     cost           = 0.4
     date           = { year = 1916 month = july day = 15 }
   }
-  division = {
+  division_development = {
     id             = { type = 10100 id = 6148 }
     name           = "SMS Baden"
     type           = battleship
@@ -1887,7 +1887,7 @@ country = {
     cost           = 0.4
     date           = { year = 1917 month = march day = 14 }
   }
-  division = {
+  division_development = {
     id             = { type = 10100 id = 6149 }
     name           = "SMS Sachsen"
     type           = battleship

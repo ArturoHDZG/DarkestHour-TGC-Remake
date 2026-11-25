@@ -932,7 +932,7 @@ country = {
   }
 
   
-  division = {
+  division_development = {
     id             = { type = 23500 id = 580 }
     name           = "RN Conte di Cavour"
     type           = battleship
@@ -940,7 +940,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = april day = 6 }
   }
-  division = {
+  division_development = {
     id             = { type = 23500 id = 581 }
     name           = "RN Caio Duilio"
     type           = battleship
@@ -948,7 +948,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = may day = 10 }
   }
-  division = {
+  division_development = {
     id             = { type = 23500 id = 582 }
     name           = "RN Andrea Doria"
     type           = battleship

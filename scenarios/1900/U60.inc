@@ -61,16 +61,16 @@ country = {
     defense_lobby     = 2
     interventionism   = 6
   }
-  headofstate            = { type = 6121 id = 99101 }
-  headofgovernment       = { type = 6121 id = 99102 }
-  foreignminister        = { type = 6121 id = 99103 }
-  armamentminister       = { type = 6121 id = 99104 }
-  ministerofsecurity     = { type = 6121 id = 99105 }
-  ministerofintelligence = { type = 6121 id = 99106 }
-  chiefofstaff           = { type = 6121 id = 99107 }
-  chiefofarmy            = { type = 6121 id = 99108 }
-  chiefofnavy            = { type = 6121 id = 99109 }
-  chiefofair             = { type = 6121 id = 99110 }
+  headofstate            = { type = 6121 id = 1115001 }
+  headofgovernment       = { type = 6121 id = 1115002 }
+  foreignminister        = { type = 6121 id = 1115003 }
+  armamentminister       = { type = 6121 id = 1115004 }
+  ministerofsecurity     = { type = 6121 id = 1115005 }
+  ministerofintelligence = { type = 6121 id = 1115006 }
+  chiefofstaff           = { type = 6121 id = 1115007 }
+  chiefofarmy            = { type = 6121 id = 1115008 }
+  chiefofnavy            = { type = 6121 id = 1115009 }
+  chiefofair             = { type = 6121 id = 1115010 }
 
   navalunit = {
     id       = { type = 6121 id = 3 }

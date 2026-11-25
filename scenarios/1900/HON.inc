@@ -55,7 +55,7 @@ country = {
   headofgovernment       = { type = 9 id = 355087 } # Francisco Bertrand
   foreignminister        = { type = 9 id = 355093 } # Jesús Bendaña
   armamentminister       = { type = 9 id = 355094 } # Leopoldo Córdova
-  ministerofsecurity     = { type = 9 id = 310117 } # Francisco Aguilar Barquero
+  ministerofsecurity     = { type = 9 id = 355005 } # Carlos Alberto Ucles
   ministerofintelligence = { type = 9 id = 355099 } # Vicente Tosta Carrasco
   chiefofstaff           = { type = 9 id = 355095 } # Santiago Meza Calix
   chiefofarmy            = { type = 9 id = 355097 } # Vicente Tosta Carrasco
