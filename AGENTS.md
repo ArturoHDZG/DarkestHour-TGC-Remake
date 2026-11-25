@@ -65,9 +65,10 @@ Never reuse IDs already assigned. Always check before creating new events:
 ---
 
 ## 4. Mandatory Verification Commands (Run After Every Edit)
-Run both from the repository root (`TCG Remake/`):
+Run all three from the repository root (`TCG Remake/`):
 ```bash
+python tools/security_check.py
 python tools/master_mod_audit.py
 python tools/syntax_check.py
 ```
-Both scripts MUST report **100% PASSED / 0 defects** before committing or pushing.
+All scripts MUST report **100% PASSED / 0 defects** before committing or pushing.

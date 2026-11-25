@@ -1,36 +1,53 @@
-name: Mod Verification Audit
+name: Mod Verification & Security Audit
+
 on:
   push:
     branches: [ main, dev ]
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  audit:
+  security-and-mod-audit:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout repository (least privilege)
         uses: actions/checkout@v4
         with:
+          persist-credentials: false
           sparse-checkout: |
             ai
             config
             db
+            docs
             gfx
             map
             scenarios
             tools
             AGENTS.md
+            LICENSE
             README.md
             Readme.txt
+            SECURITY.md
+            HoI2Editor.exe
+            HoI2Editor.settings
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
+      - name: Run Strict Security & Anti-Injection Check
+        run: python tools/security_check.py
+
       - name: Run Master Mod Audit
         run: python tools/master_mod_audit.py
 
-      - name: Run Europa Engine Syntax & Localization Audit
+      - name: Run Europa Engine Syntax & Bilingual CSV Audit
         run: python tools/syntax_check.py

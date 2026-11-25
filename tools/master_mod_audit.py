@@ -19,7 +19,7 @@ def run_master_audit():
     junk = []
     zero_bytes = []
     for root, dirs, files in os.walk('.'):
-        dirs[:] = [d for d in dirs if not d.startswith('.') and d != '__pycache__']
+        dirs[:] = [d for d in dirs if not d.startswith('.') and d not in ('__pycache__', 'dist')]
         for f in files:
             p = os.path.join(root, f)
             if f in ['.DS_Store', 'Thumbs.db', 'desktop.ini'] or f.endswith('.bak') or f.endswith('.orig'):
