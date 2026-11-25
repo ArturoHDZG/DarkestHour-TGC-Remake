@@ -98,6 +98,37 @@ def check_csv_encoding():
             bad_enc.append((path, "UTF-8 multi-byte Latin-1 mojibake (0xC3 xx)"))
     return bad_enc
 
+def check_engine_rules():
+    """Rules learned from in-game savedebug.txt (Darkest Hour parser)."""
+    problems = []
+    for path in sorted(glob.glob("config/*.csv")):
+        if path.endswith("_ledger.csv"):
+            continue
+        with open(path, "r", encoding="latin-1") as f:
+            lines = f.read().split("\n")
+        body = lines[:-1] if lines and lines[-1] == "" else lines
+        for idx, l in enumerate(body, 1):
+            if not l.strip():
+                problems.append((path, idx, "blank line (the engine drops the next row)"))
+        eofs = [i for i, l in enumerate(body, 1) if l.startswith("#EOF;")]
+        if eofs and eofs != [len(body)]:
+            problems.append((path, eofs[0], "#EOF is not the last line"))
+    bad_cmd = re.compile(r"type = (metal|energy|oil|rare_materials) value|which = (political_right|closed_society|hawk_lobby|centralized|authoritarian|protectionism)|type = set_country_flag|type = domestic_slider|(?m:^[ \t]*tag[ \t]*=[ \t]*[A-Z0-9]{3}[ \t]*$)")
+    for path in glob.glob("db/events/**/*.txt", recursive=True):
+        with open(path, "r", encoding="latin-1") as f:
+            txt = f.read()
+        m = bad_cmd.search(txt)
+        if m:
+            problems.append((path, txt[:m.start()].count("\n") + 1, "invalid command/trigger: " + m.group(0).strip()))
+    for path in glob.glob("db/tech/teams/teams_*.csv"):
+        with open(path, "r", encoding="latin-1") as f:
+            for idx, l in enumerate(f, 1):
+                c = l.rstrip("\r\n").split(";")
+                if c[0].isdigit() and (c[-1] != "x" or len(c) != 39):
+                    problems.append((path, idx, "tech team row must end with x at column 39"))
+                    break
+    return problems
+
 def check_revolt():
     with open("db/revolt.txt", "r", encoding="latin-1") as f:
         lines = f.readlines()
@@ -137,6 +168,7 @@ if __name__ == "__main__":
     br, syn, d31 = check_events()
     miss_es, bad_c = check_localization()
     bad_enc = check_csv_encoding()
+    eng = check_engine_rules()
     rev_depth, rev_ov, rev_tok = check_revolt()
 
     print("=" * 72)
@@ -148,17 +180,18 @@ if __name__ == "__main__":
     print(f"  Shifted CSV rows      : {len(bad_c)}")
     print(f"  Rows missing Spanish  : {len(miss_es)}")
     print(f"  UTF-8/BOM CSV defects : {len(bad_enc)}")
+    print(f"  Engine-rule defects   : {len(eng)}")
     print(f"  revolt.txt brace depth: {rev_depth}")
     print(f"  revolt.txt overlaps   : {len(rev_ov)}")
     print(f"  revolt.txt bad tokens : {len(rev_tok)}")
 
-    ok = not (br or syn or d31 or bad_c or miss_es or bad_enc or rev_depth != 0 or rev_ov or rev_tok)
+    ok = not (br or syn or d31 or bad_c or miss_es or bad_enc or eng or rev_depth != 0 or rev_ov or rev_tok)
     print("  Status:", "PASSED [OK]" if ok else "ISSUES DETECTED [WARN]")
     print("=" * 72)
 
     for grp_name, grp in [
         ("Brace", br), ("Syntax", syn), ("Day31", d31), ("CSVCols", bad_c),
-        ("MissingES", miss_es), ("CSVEncoding", bad_enc),
+        ("MissingES", miss_es), ("CSVEncoding", bad_enc), ("Engine", eng),
         ("RevoltOverlap", rev_ov), ("RevoltToken", rev_tok)
     ]:
         for item in grp[:10]:
