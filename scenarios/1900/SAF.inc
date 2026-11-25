@@ -54,11 +54,11 @@ country = {
   chiefofstaff           = { type = 9 id = 425097 } # Christiaan Beyers
 
   landunit = {
-    id       = { type = 27111 id = 1 }
+    id       = { type = 27900 id = 1 }
     name     = "Z.A.R. Kommando"
     location = 873
     division = {
-      id             = { type = 27111 id = 2 }
+      id             = { type = 27900 id = 2 }
       name           = "Pretoria Kommando"
       type           = cavalry
       model          = 2
@@ -66,7 +66,7 @@ country = {
       experience     = 25
     }
     division = {
-      id             = { type = 27111 id = 3 }
+      id             = { type = 27900 id = 3 }
       name           = "Staatsartillerie"
       type           = infantry
       model          = 2
@@ -76,11 +76,11 @@ country = {
   }
 
   landunit = {
-    id       = { type = 27111 id = 4 }
+    id       = { type = 27900 id = 4 }
     name     = "Vrystaat Kommando"
     location = 875
     division = {
-      id             = { type = 27111 id = 5 }
+      id             = { type = 27900 id = 5 }
       name           = "Bloemfontein Kommando"
       type           = cavalry
       model          = 2
@@ -88,7 +88,7 @@ country = {
       experience     = 25
     }
     division = {
-      id             = { type = 27111 id = 6 }
+      id             = { type = 27900 id = 6 }
       name           = "Kroonstad Kommando"
       type           = infantry
       model          = 2
@@ -98,11 +98,11 @@ country = {
   }
 
   landunit = {
-    id       = { type = 27111 id = 7 }
+    id       = { type = 27900 id = 7 }
     name     = "Witwatersrand Kommando"
     location = 876
     division = {
-      id             = { type = 27111 id = 8 }
+      id             = { type = 27900 id = 8 }
       name           = "Johannesburg Kommando"
       type           = cavalry
       model          = 2
