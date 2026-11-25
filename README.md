@@ -18,8 +18,9 @@
 <p align="center">
   <a href="#-english--welcome-to-the-century">English</a> •
   <a href="#-español--un-siglo-para-reescribir-la-historia">Español</a> •
+  <a href="docs/PERFORMANCE.md">Windows 10/11 Performance Guide ⚡</a> •
   <a href="#-support-the-project--apoya-el-proyecto">Buy Me a Coffee ☕</a> •
-  <a href="docs/TECHNICAL.md">Technical Documentation</a>
+  <a href="docs/TECHNICAL.md">Technical Docs</a>
 </p>
 
 ---
@@ -104,7 +105,8 @@ Olvídate de campañas que se quedan sin contenido tras 1945 o países menores v
 
 ---
 
-## 🛠️ For Modders, Bug Reports & Documentation / Documentación Técnica
+## 🛠️ Performance, Bug Reports & Documentation / Rendimiento y Soporte
+* **Stuttering or low FPS on Windows 10/11?** Check our [**Windows 10/11 Performance Guide (cnc-ddraw, dgVoodoo2, settings.cfg)**](docs/PERFORMANCE.md).
 * **Want the technical specs, ID ranges, audit scripts, and mod architecture?** $\rightarrow$ Read [**docs/TECHNICAL.md**](docs/TECHNICAL.md) & [**docs/WALKTHROUGH.md**](docs/WALKTHROUGH.md).
 * **Found a bug during gameplay?** Enable `1 # Extra debug logs` in `settings.cfg` and open an Issue with your **`savedebug.txt`** using our [Bug Report template](.github/ISSUE_TEMPLATE/bug_report.md).
 * **Security & Safe Downloads**: Read [SECURITY.md](SECURITY.md) — every release ships with `SHA256SUMS.txt` and zero unauthorized executables.
