@@ -82,9 +82,45 @@ def check_localization():
                 missing_es.append((path, idx, cols[0]))
     return missing_es, bad_cols
 
+def check_revolt():
+    with open("db/revolt.txt", "r", encoding="latin-1") as f:
+        lines = f.readlines()
+
+    clean_lines = [l.split("#", 1)[0] for l in lines]
+    clean_txt = "\n".join(clean_lines)
+    depth = clean_txt.count("{") - clean_txt.count("}")
+
+    overlaps = []
+    bad_tokens = []
+    for m in re.finditer(r"(?m)^\s*([A-Z0-9]{3})\s*=\s*\{", clean_txt):
+        tag = m.group(1)
+        start = m.end()
+        d = 1
+        i = start
+        while i < len(clean_txt) and d > 0:
+            if clean_txt[i] == "{":
+                d += 1
+            elif clean_txt[i] == "}":
+                d -= 1
+            i += 1
+        body = clean_txt[start:i - 1]
+        for field in ("minimum", "extra", "claims"):
+            for fm in re.finditer(rf"{field}\s*=\s*\{{([^}}]*)\}}", body):
+                for tok in fm.group(1).split():
+                    if not tok.isdigit():
+                        bad_tokens.append((tag, field, tok))
+        min_ids = {int(x) for g in re.findall(r"minimum\s*=\s*\{([^}]*)\}", body) for x in g.split() if x.isdigit()}
+        ext_ids = {int(x) for g in re.findall(r"extra\s*=\s*\{([^}]*)\}", body) for x in g.split() if x.isdigit()}
+        ov = sorted(min_ids & ext_ids)
+        if ov:
+            overlaps.append((tag, ov))
+
+    return depth, overlaps, bad_tokens
+
 if __name__ == "__main__":
     br, syn, d31 = check_events()
     miss_es, bad_c = check_localization()
+    rev_depth, rev_ov, rev_tok = check_revolt()
 
     print("=" * 72)
     print("  TGC REMAKE - EUROPA ENGINE SYNTAX & BILINGUAL CSV VERIFICATION")
@@ -94,12 +130,18 @@ if __name__ == "__main__":
     print(f"  Block day=31 dates    : {len(d31)}")
     print(f"  Shifted CSV rows      : {len(bad_c)}")
     print(f"  Rows missing Spanish  : {len(miss_es)}")
+    print(f"  revolt.txt brace depth: {rev_depth}")
+    print(f"  revolt.txt overlaps   : {len(rev_ov)}")
+    print(f"  revolt.txt bad tokens : {len(rev_tok)}")
 
-    ok = not (br or syn or d31 or bad_c or miss_es)
+    ok = not (br or syn or d31 or bad_c or miss_es or rev_depth != 0 or rev_ov or rev_tok)
     print("  Status:", "PASSED [OK]" if ok else "ISSUES DETECTED [WARN]")
     print("=" * 72)
 
-    for grp_name, grp in [("Brace", br), ("Syntax", syn), ("Day31", d31), ("CSVCols", bad_c), ("MissingES", miss_es)]:
+    for grp_name, grp in [
+        ("Brace", br), ("Syntax", syn), ("Day31", d31), ("CSVCols", bad_c),
+        ("MissingES", miss_es), ("RevoltOverlap", rev_ov), ("RevoltToken", rev_tok)
+    ]:
         for item in grp[:10]:
             print(f"  [{grp_name}] {item}")
 

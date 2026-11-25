@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ArturoHDZG/DarkestHour-TGC-Remake/releases"><img src="https://img.shields.io/badge/Download-Pre--Release%20v3.0.0--alpha.1-d4a017?style=for-the-badge&logo=github" alt="Download Pre-Release"></a>
+  <a href="https://github.com/ArturoHDZG/DarkestHour-TGC-Remake/releases"><img src="https://img.shields.io/badge/Download-Pre--Release%20v3.0.0--alpha.2-d4a017?style=for-the-badge&logo=github" alt="Download Pre-Release"></a>
   <a href="https://github.com/ArturoHDZG/DarkestHour-TGC-Remake/actions/workflows/audit.yml"><img src="https://img.shields.io/github/actions/workflow/status/ArturoHDZG/DarkestHour-TGC-Remake/audit.yml?style=for-the-badge&label=Mod%20Audit" alt="Mod Audit Status"></a>
   <a href="docs/TECHNICAL.md"><img src="https://img.shields.io/badge/Docs-Technical%20%26%20Modding-2b3a4a?style=for-the-badge" alt="Technical Docs"></a>
 </p>
@@ -56,7 +56,7 @@ Forget abrupt endgame walls after 1945 or empty minor nations waiting on the sid
 * **🏙️ Modernized Urban Map**: **183 urban provinces** brought to life with city sprites, custom illustrations, and clean 1900 & 1914 campaign starts.
 
 ### 🚀 Quick Installation (3 Steps)
-1. Download the single complete package **`TCG_Remake_v3.0.0-alpha.1_Full.zip`** from [**Releases**](https://github.com/ArturoHDZG/DarkestHour-TGC-Remake/releases).
+1. Download the single complete package **`TCG_Remake_v3.0.0-alpha.2_Full.zip`** from [**Releases**](https://github.com/ArturoHDZG/DarkestHour-TGC-Remake/releases).
 2. Extract it into your Darkest Hour `Mods` folder so the game files sit at:
    ```text
    <Your Darkest Hour Folder>\Mods\TCG Remake\
@@ -91,7 +91,7 @@ Olvídate de campañas que se quedan sin contenido tras 1945 o países menores v
 * **🏙️ Mapa Urbano Renovado**: **183 provincias urbanas** con ilustraciones y sprites propios para jugar desde **1900** o **1914**.
 
 ### 🚀 Instalación Rápida en 3 Pasos
-1. Descarga el paquete único completo **`TCG_Remake_v3.0.0-alpha.1_Full.zip`** desde [**Releases**](https://github.com/ArturoHDZG/DarkestHour-TGC-Remake/releases).
+1. Descarga el paquete único completo **`TCG_Remake_v3.0.0-alpha.2_Full.zip`** desde [**Releases**](https://github.com/ArturoHDZG/DarkestHour-TGC-Remake/releases).
 2. Descomprímelo dentro de la carpeta `Mods` de tu Darkest Hour para que quede exactamente así:
    ```text
    <Carpeta de Darkest Hour>\Mods\TCG Remake\
