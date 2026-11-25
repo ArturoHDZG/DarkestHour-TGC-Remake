@@ -3,7 +3,7 @@
 Master Mod Verification Suite: The Grand Campaign (TGC Remake).
 Executes exhaustive checks across all 9 domains of the engine.
 """
-import glob, os, re, struct
+import glob, os, re, struct, sys
 
 def run_master_audit():
     print("=" * 80)
@@ -36,8 +36,8 @@ def run_master_audit():
     # ----------------------------------------------------
     # Domain 2: Event System
     # ----------------------------------------------------
-    print("\n[2/9] Checking Event System (db/events/ & db/tgc-events.txt)...")
-    with open('db/tgc-events.txt', 'r', encoding='latin-1') as f:
+    print("\n[2/9] Checking Event System (db/events/ & db/TGC-events.txt)...")
+    with open('db/TGC-events.txt', 'r', encoding='latin-1') as f:
         tgc_text = f.read()
     inc_files = [m.group(1).replace('\\', '/') for line in tgc_text.splitlines() if not line.strip().startswith('#') for m in [re.search(r'event\s*=\s*\"([^\"]+)\"', line.strip())] if m]
     missing_inc = [f for f in inc_files if not os.path.exists(f)]
@@ -398,4 +398,4 @@ def run_master_audit():
     return all_passed
 
 if __name__ == '__main__':
-    run_master_audit()
+    sys.exit(0 if run_master_audit() else 1)

@@ -51,7 +51,7 @@ Never reuse IDs already assigned. Always check before creating new events:
   - Watch non-ISO DH tags: Peru=`PRU`, Paraguay=`PAR`, Senegal=`U96`, Nigeria=`NIG`, Kenya=`U90`, Cambodia=`CMB` (`CAM` is Cameroon), Malaya=`MLY` (`MAL` is Mali), Bangladesh=`UIR`, El Salvador=`SAL`, Trieste=`U38`.
 - **Ministers**: Validate any `headofstate` / `headofgovernment` / etc. ID against `db/ministers/ministers_<tag>.csv`. Note: tags like `U38`, `U68`, `U69`, `UES`, `U54`, `U65`, `UIC`, `UPR`, `URO` have **no minister file**—never emit minister commands for them.
 - **Pictures**: Verify every `picture = "..."` resolves to an existing `.bmp` file inside `gfx/events_pics/`.
-- **Registration**: Every `.txt` file under `db/events/` MUST be registered once in `db/tgc-events.txt`.
+- **Registration**: Every `.txt` file under `db/events/` MUST be registered once in `db/TGC-events.txt`.
 
 ### B. Localization CSVs (`config/*.csv`) — CRITICAL RULES
 - **Encoding**: Strictly `Windows-1252` (`latin-1`), never BOM UTF-8.
