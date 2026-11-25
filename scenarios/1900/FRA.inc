@@ -67,7 +67,7 @@ country = {
     defense_lobby     = 7
     interventionism   = 8
   }
-  headofstate            = { type = 9 id = 5307 } # Raymond Poincaré
+  headofstate            = { type = 9 id = 5549 } # Émile Loubet
   headofgovernment       = { type = 9 id = 5292 } # René Viviani
   foreignminister        = { type = 9 id = 5271 } # René Viviani
   armamentminister       = { type = 9 id = 5322 } # Joseph Noullens

@@ -57,7 +57,7 @@ country = {
     defense_lobby     = 5
     interventionism   = 4
   }
-  headofstate            = { type = 9 id = 90213 } # Constantine I
+  headofstate            = { type = 9 id = 90344 } # George I
   headofgovernment       = { type = 9 id = 90195 } # Eleftherios Venizelos
   foreignminister        = { type = 9 id = 90187 } # Eleftherios Venizelos
   armamentminister       = { type = 9 id = 90214 } # Alexandros Diomidis

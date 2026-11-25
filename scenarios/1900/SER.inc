@@ -55,7 +55,7 @@ country = {
     defense_lobby     = 3
     interventionism   = 6
   }
-  headofstate            = { type = 9 id = 415093 } # Peter I
+  headofstate            = { type = 9 id = 415160 } # Alexander I Obrenovic
   headofgovernment       = { type = 9 id = 415080 } # Nikola Pasic
   foreignminister        = { type = 9 id = 415071 } # Nikola Pasic
   armamentminister       = { type = 9 id = 415103 } # Lazar Pacu

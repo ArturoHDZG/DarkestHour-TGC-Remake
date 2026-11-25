@@ -217,8 +217,6 @@ country = {
       name           = "15th Cavalry Division"
       type           = cavalry
       model          = 2
-      extra          = cavalry_brigade
-      brigade_model  = 2
       strength       = 100
       experience     = 15
     }

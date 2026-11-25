@@ -50,7 +50,7 @@ country = {
     defense_lobby     = 5
     interventionism   = 3
   }
-  headofstate            = { type = 9 id = 20105 } # Manuel d'Arriaga
+  headofstate            = { type = 9 id = 20216 } # Carlos I
   headofgovernment       = { type = 9 id = 20124 } # Bernadino Machado
   chiefofstaff           = { type = 9 id = 20077 } # João José Sinel de Cordes
   chiefofarmy            = { type = 9 id = 20069 } # João José Sinel de Cordes

@@ -127,8 +127,8 @@ country = {
     defense_lobby     = 3
     interventionism   = 5
   }
-  headofstate            = { type = 9 id = 10211 } # George V
-  headofgovernment       = { type = 9 id = 10213 } # Herbert Henry Asquith
+  headofstate            = { type = 9 id = 10430 } # Queen Victoria
+  headofgovernment       = { type = 9 id = 10431 } # Lord Salisbury
   foreignminister        = { type = 9 id = 10218 } # Edward Grey
   armamentminister       = { type = 9 id = 10224 } # David Lloyd George
   ministerofsecurity     = { type = 9 id = 10254 } # Reginald McKenna
@@ -2389,7 +2389,28 @@ country = {
     date           = { year = 1915 month = march day = 1 }
   }
 
-  naval{ dormant = yes id = { type = 27111 id = 497 } name = "HMS Agincourt" type = battleship model = 1 }
-  naval{ dormant = yes id = { type = 27111 id = 498 } name = "HMS Erin" type = battleship model = 1 }
-  naval{ dormant = yes id = { type = 27111 id = 499 } name = "HMS Canada" type = battleship model = 1 }
+  division_development = {
+    id = { type = 27111 id = 497 }
+    name = "HMS Agincourt"
+    type = battleship
+    model = 1
+    cost = 0.5
+    date = { year = 1915 month = january day = 1 }
+  }
+  division_development = {
+    id = { type = 27111 id = 498 }
+    name = "HMS Erin"
+    type = battleship
+    model = 1
+    cost = 0.5
+    date = { year = 1915 month = january day = 1 }
+  }
+  division_development = {
+    id = { type = 27111 id = 499 }
+    name = "HMS Canada"
+    type = battleship
+    model = 1
+    cost = 0.5
+    date = { year = 1915 month = january day = 1 }
+  }
 }
