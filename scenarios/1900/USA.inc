@@ -176,7 +176,7 @@ country = {
     defense_lobby     = 1
     interventionism   = 1
   }
-  headofstate            = { type = 9 id = 240325 } # Woodrow Wilson
+  headofstate            = { type = 9 id = 240307 } # William McKinley
   headofgovernment       = { type = 9 id = 240309 } # William Jennings Bryan
   foreignminister        = { type = 9 id = 240285 } # William Jennings Bryan
   armamentminister       = { type = 9 id = 240345 } # W.G. McAdoo

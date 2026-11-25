@@ -55,7 +55,7 @@ country = {
     defense_lobby     = 8
     interventionism   = 8
   }
-  headofstate            = { type = 9 id = 50286 } # Yoshihito
+  headofstate            = { type = 9 id = 50324 } # Meiji
   headofgovernment       = { type = 9 id = 50266 } # Okuma Shigenobu
   foreignminister        = { type = 9 id = 50251 } # Kato Takaaki
   armamentminister       = { type = 9 id = 50302 } # Wakatsuki Reijiro

@@ -64,7 +64,7 @@ country = {
     defense_lobby     = 6
     interventionism   = 3
   }
-  headofstate            = { type = 9 id = 720051 } # Mehmed V
+  headofstate            = { type = 9 id = 720001 } # Abdul Hamid II
   headofgovernment       = { type = 9 id = 720062 } # Said Halim
   foreignminister        = { type = 9 id = 720073 } # Said Halim
   armamentminister       = { type = 9 id = 720129 } # Mehmed Djavid
