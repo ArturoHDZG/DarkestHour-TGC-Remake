@@ -1,0 +1,1127 @@
+
+# 210001 - ITA: Mussolini and the Royal Obstacle (1942-1943)
+event = {
+    id = 210001
+    random = no
+    country = ITA
+    style = 2
+    picture = "ITA/mussolini_victory_speech"
+
+    trigger = {
+        year = 1941
+        exists = ITA
+        war = yes
+        NOT = { exists = RSI }
+        NOT = { has_country_flag = rsi_republican_break_opened }
+    }
+
+    date = { day = 15 month = may year = 1941 }
+    offset = 30
+    deathdate = { day = 30 month = december year = 1943 }
+
+    name = "EVT_210001_NAME"
+    desc = "EVT_210001_DESC"
+
+    action = {
+        name = "EVT_210001_A"
+        ai_chance = 80
+        command = { type = set_country_flag which = rsi_republican_break_opened }
+        command = { type = dissent value = 1 }
+        command = { type = domestic which = political_right value = 1 }
+        command = { type = trigger which = 210002 }
+    }
+    action = {
+        name = "EVT_210001_B"
+        ai_chance = 20
+        command = { type = set_country_flag which = rsi_republican_break_opened }
+        command = { type = dissent value = -1 }
+    }
+}
+
+# 210002 - ITA: The Clashing Decrees: Duce vs Crown
+event = {
+    id = 210002
+    random = no
+    country = ITA
+    style = 2
+    picture = "GLOBAL/mussolini"
+
+    is_triggered_only = yes
+
+    name = "EVT_210002_NAME"
+    desc = "EVT_210002_DESC"
+
+    action = {
+        name = "EVT_210002_A"
+        ai_chance = 85
+        command = { type = dissent value = 2 }
+        command = { type = trigger which = 210003 }
+    }
+    action = {
+        name = "EVT_210002_B"
+        ai_chance = 15
+        command = { type = dissent value = -1 }
+    }
+}
+
+# 210003 - ITA: The Grand Council Votes for the Republic
+event = {
+    id = 210003
+    random = no
+    country = ITA
+    style = 2
+    picture = "ITA/blackshirts"
+
+    is_triggered_only = yes
+
+    name = "EVT_210003_NAME"
+    desc = "EVT_210003_DESC"
+
+    action = {
+        name = "EVT_210003_A"
+        ai_chance = 90
+        command = { type = dissent value = 3 }
+        command = { type = trigger which = 210004 }
+    }
+    action = {
+        name = "EVT_210003_B"
+        ai_chance = 10
+        command = { type = dissent value = -2 }
+    }
+}
+
+# 210004 - ITA: The Eviction of the House of Savoy
+event = {
+    id = 210004
+    random = no
+    country = ITA
+    style = 2
+    picture = "ITA/blackshirts"
+
+    is_triggered_only = yes
+
+    name = "EVT_210004_NAME"
+    desc = "EVT_210004_DESC"
+
+    action = {
+        name = "EVT_210004_A"
+        ai_chance = 95
+        command = { type = dissent value = 2 }
+        command = { type = trigger which = 210005 }
+    }
+    action = {
+        name = "EVT_210004_B"
+        ai_chance = 5
+        command = { type = money value = 50 }
+        command = { type = trigger which = 210005 }
+    }
+}
+
+# 210005 - ITA: The Mutation: Proclamation of the Repubblica Sociale Italiana (RSI)
+event = {
+    id = 210005
+    random = no
+    country = ITA
+    style = 2
+    picture = "ITA/proclamation_of_the_empire_proclamazione_dell"
+
+    is_triggered_only = yes
+
+    name = "EVT_210005_NAME"
+    desc = "EVT_210005_DESC"
+
+    action = {
+        name = "EVT_210005_A"
+        ai_chance = 100
+        command = { type = country which = RSI } # THE GREAT MUTATION!
+        command = { type = capital which = 379 } # Milan / Salo as revolutionary seat
+        command = { type = dissent value = -4 }
+        command = { type = domestic which = democratic value = -3 }
+        command = { type = domestic which = political_right value = 3 }
+        command = { type = domestic which = defense_lobby value = 2 }
+        command = { type = trigger which = 210006 }
+    }
+}
+
+# 210006 - RSI: The Government of the Social Republic
+event = {
+    id = 210006
+    random = no
+    country = RSI
+    style = 2
+    picture = "GLOBAL/mussolini"
+
+    is_triggered_only = yes
+
+    name = "EVT_210006_NAME"
+    desc = "EVT_210006_DESC"
+
+    action = {
+        name = "EVT_210006_A"
+        ai_chance = 85
+        command = { type = dissent value = -2 }
+        command = { type = supplies value = 80 }
+        command = { type = trigger which = 210007 }
+    }
+    action = {
+        name = "EVT_210006_B"
+        ai_chance = 15
+        command = { type = money value = 40 }
+        command = { type = trigger which = 210007 }
+    }
+}
+
+# 210007 - RSI: The Congress of Verona
+event = {
+    id = 210007
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/blackshirts"
+
+    is_triggered_only = yes
+
+    name = "EVT_210007_NAME"
+    desc = "EVT_210007_DESC"
+
+    action = {
+        name = "EVT_210007_A"
+        ai_chance = 90
+        command = { type = dissent value = -3 }
+        command = { type = domestic which = political_left value = 1 } # Socialist fascism
+        command = { type = trigger which = 210008 }
+    }
+    action = {
+        name = "EVT_210007_B"
+        ai_chance = 10
+        command = { type = domestic which = political_right value = 1 }
+        command = { type = trigger which = 210008 }
+    }
+}
+
+# 210008 - RSI: Socializzazione dell'Economia
+event = {
+    id = 210008
+    random = no
+    country = RSI
+    style = 2
+    picture = "GLOBAL/strike"
+
+    is_triggered_only = yes
+
+    name = "EVT_210008_NAME"
+    desc = "EVT_210008_DESC"
+
+    action = {
+        name = "EVT_210008_A"
+        ai_chance = 80
+        command = { type = construct which = ic where = 370 value = 1 }
+        command = { type = construct which = ic where = 379 value = 1 }
+        command = { type = dissent value = -3 }
+        command = { type = trigger which = 210009 }
+    }
+    action = {
+        name = "EVT_210008_B"
+        ai_chance = 20
+        command = { type = money value = 50 }
+        command = { type = trigger which = 210009 }
+    }
+}
+
+# 210009 - RSI: Nationalization of Strategic Industry
+event = {
+    id = 210009
+    random = no
+    country = RSI
+    style = 2
+    picture = "Minors/baghdad_railway"
+
+    is_triggered_only = yes
+
+    name = "EVT_210009_NAME"
+    desc = "EVT_210009_DESC"
+
+    action = {
+        name = "EVT_210009_A"
+        ai_chance = 85
+        command = { type = money value = 80 }
+        command = { type = supplies value = 60 }
+        command = { type = trigger which = 210010 }
+    }
+    action = {
+        name = "EVT_210009_B"
+        ai_chance = 15
+        command = { type = dissent value = 2 }
+        command = { type = trigger which = 210010 }
+    }
+}
+
+# 210010 - RSI: Formation of the GNR
+event = {
+    id = 210010
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/blackshirts"
+
+    is_triggered_only = yes
+
+    name = "EVT_210010_NAME"
+    desc = "EVT_210010_DESC"
+
+    action = {
+        name = "EVT_210010_A"
+        ai_chance = 85
+        command = { type = manpowerpool value = 25 }
+        command = { type = domestic which = defense_lobby value = 1 }
+        command = { type = trigger which = 210011 }
+    }
+    action = {
+        name = "EVT_210010_B"
+        ai_chance = 15
+        command = { type = supplies value = 50 }
+        command = { type = trigger which = 210011 }
+    }
+}
+
+# 210011 - RSI: Alessandro Pavolini and the Brigate Nere
+event = {
+    id = 210011
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/blackshirts"
+
+    is_triggered_only = yes
+
+    name = "EVT_210011_NAME"
+    desc = "EVT_210011_DESC"
+
+    action = {
+        name = "EVT_210011_A"
+        ai_chance = 80
+        command = { type = supplies value = -40 }
+        command = { type = dissent value = -2 }
+        command = { type = trigger which = 210012 }
+    }
+    action = {
+        name = "EVT_210011_B"
+        ai_chance = 20
+        command = { type = money value = 30 }
+        command = { type = trigger which = 210012 }
+    }
+}
+
+# 210012 - RSI: The Decima MAS of Prince Borghese
+event = {
+    id = 210012
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/italian_naval_frogmen_and_assault_craft"
+
+    is_triggered_only = yes
+
+    name = "EVT_210012_NAME"
+    desc = "EVT_210012_DESC"
+
+    action = {
+        name = "EVT_210012_A"
+        ai_chance = 90
+        command = { type = add_division which = "Divisione Decima MAS" value = marine when = 4 }
+        command = { type = supplies value = -50 }
+        command = { type = trigger which = 210013 }
+    }
+    action = {
+        name = "EVT_210012_B"
+        ai_chance = 10
+        command = { type = transport_pool which = RSI value = 10 }
+        command = { type = trigger which = 210013 }
+    }
+}
+
+# 210013 - RSI: The Aeronautica Nazionale Repubblicana (ANR)
+event = {
+    id = 210013
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/semovente"
+
+    is_triggered_only = yes
+
+    name = "EVT_210013_NAME"
+    desc = "EVT_210013_DESC"
+
+    action = {
+        name = "EVT_210013_A"
+        ai_chance = 80
+        command = { type = construct which = ic where = 370 value = 1 }
+        command = { type = money value = -40 }
+        command = { type = trigger which = 210014 }
+    }
+    action = {
+        name = "EVT_210013_B"
+        ai_chance = 20
+        command = { type = supplies value = 60 }
+        command = { type = trigger which = 210014 }
+    }
+}
+
+# 210014 - RSI: Alliance with Greater Germany
+event = {
+    id = 210014
+    random = no
+    country = RSI
+    style = 2
+    picture = "GER/hitler_mussolini"
+
+    is_triggered_only = yes
+
+    name = "EVT_210014_NAME"
+    desc = "EVT_210014_DESC"
+
+    action = {
+        name = "EVT_210014_A"
+        ai_chance = 85
+        command = { type = relation which = GER value = 25 }
+        command = { type = supplies value = 100 }
+        command = { type = trigger which = 210015 }
+    }
+    action = {
+        name = "EVT_210014_B"
+        ai_chance = 15
+        command = { type = dissent value = 2 }
+        command = { type = trigger which = 210015 }
+    }
+}
+
+# 210015 - RSI: The Sovereignty of Alto Adige
+event = {
+    id = 210015
+    random = no
+    country = RSI
+    style = 2
+    picture = "GER/alpenkorps"
+
+    is_triggered_only = yes
+
+    name = "EVT_210015_NAME"
+    desc = "EVT_210015_DESC"
+
+    action = {
+        name = "EVT_210015_A"
+        ai_chance = 80
+        command = { type = dissent value = -3 }
+        command = { type = relation which = GER value = -10 }
+        command = { type = trigger which = 210016 }
+    }
+    action = {
+        name = "EVT_210015_B"
+        ai_chance = 20
+        command = { type = relation which = GER value = 15 }
+        command = { type = trigger which = 210016 }
+    }
+}
+
+# 210016 - RSI: Italian Administration in Trieste and Istria
+event = {
+    id = 210016
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/proclamation_of_the_empire_proclamazione_dell"
+
+    is_triggered_only = yes
+
+    name = "EVT_210016_NAME"
+    desc = "EVT_210016_DESC"
+
+    action = {
+        name = "EVT_210016_A"
+        ai_chance = 80
+        command = { type = dissent value = -2 }
+        command = { type = construct which = land_fort where = 394 value = 1 }
+        command = { type = trigger which = 210017 }
+    }
+    action = {
+        name = "EVT_210016_B"
+        ai_chance = 20
+        command = { type = supplies value = 40 }
+        command = { type = trigger which = 210017 }
+    }
+}
+
+# 210017 - RSI: The Republican Lira Currency
+event = {
+    id = 210017
+    random = no
+    country = RSI
+    style = 2
+    picture = "nwo/capital_city"
+
+    is_triggered_only = yes
+
+    name = "EVT_210017_NAME"
+    desc = "EVT_210017_DESC"
+
+    action = {
+        name = "EVT_210017_A"
+        ai_chance = 85
+        command = { type = money value = 50 }
+        command = { type = dissent value = -1 }
+        command = { type = trigger which = 210018 }
+    }
+    action = {
+        name = "EVT_210017_B"
+        ai_chance = 15
+        command = { type = supplies value = 30 }
+        command = { type = trigger which = 210018 }
+    }
+}
+
+# 210018 - RSI: Bombacci Rallies the Workers of Milan
+event = {
+    id = 210018
+    random = no
+    country = RSI
+    style = 2
+    picture = "GLOBAL/strike"
+
+    is_triggered_only = yes
+
+    name = "EVT_210018_NAME"
+    desc = "EVT_210018_DESC"
+
+    action = {
+        name = "EVT_210018_A"
+        ai_chance = 85
+        command = { type = dissent value = -3 }
+        command = { type = trigger which = 210019 }
+    }
+    action = {
+        name = "EVT_210018_B"
+        ai_chance = 15
+        command = { type = supplies value = 40 }
+        command = { type = trigger which = 210019 }
+    }
+}
+
+# 210019 - RSI: Return of the Four Frontline Divisions
+event = {
+    id = 210019
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/graziani"
+
+    is_triggered_only = yes
+
+    name = "EVT_210019_NAME"
+    desc = "EVT_210019_DESC"
+
+    action = {
+        name = "EVT_210019_A"
+        ai_chance = 85
+        command = { type = add_division which = "Divisione Alpina Monte Rosa" value = bergsjaeger when = 4 }
+        command = { type = add_division which = "Divisione Fanteria San Marco" value = infantry when = 4 }
+        command = { type = add_division which = "Divisione Fanteria Italia" value = infantry when = 4 }
+        command = { type = add_division which = "Divisione Corazzata Littorio" value = armor when = 4 }
+        command = { type = trigger which = 210020 }
+    }
+    action = {
+        name = "EVT_210019_B"
+        ai_chance = 15
+        command = { type = manpowerpool value = 35 }
+        command = { type = trigger which = 210020 }
+    }
+}
+
+# 210020 - RSI: Security in the Apennines
+event = {
+    id = 210020
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/blackshirts"
+
+    is_triggered_only = yes
+
+    name = "EVT_210020_NAME"
+    desc = "EVT_210020_DESC"
+
+    action = {
+        name = "EVT_210020_A"
+        ai_chance = 75
+        command = { type = dissent value = -2 }
+        command = { type = supplies value = -30 }
+        command = { type = trigger which = 210021 }
+    }
+    action = {
+        name = "EVT_210020_B"
+        ai_chance = 25
+        command = { type = domestic which = defense_lobby value = 1 }
+        command = { type = trigger which = 210021 }
+    }
+}
+
+# 210021 - RSI: Explosive Boats and Human Torpedoes
+event = {
+    id = 210021
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/italian_naval_frogmen_and_assault_craft"
+
+    is_triggered_only = yes
+
+    name = "EVT_210021_NAME"
+    desc = "EVT_210021_DESC"
+
+    action = {
+        name = "EVT_210021_A"
+        ai_chance = 85
+        command = { type = construct which = coastal_fort where = 370 value = 1 }
+        command = { type = supplies value = 40 }
+        command = { type = trigger which = 210022 }
+    }
+    action = {
+        name = "EVT_210021_B"
+        ai_chance = 15
+        command = { type = money value = 30 }
+        command = { type = trigger which = 210022 }
+    }
+}
+
+# 210022 - RSI: Beretta MAB 38 Submachine Gun Mass Output
+event = {
+    id = 210022
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/semovente"
+
+    is_triggered_only = yes
+
+    name = "EVT_210022_NAME"
+    desc = "EVT_210022_DESC"
+
+    action = {
+        name = "EVT_210022_A"
+        ai_chance = 85
+        command = { type = supplies value = 75 }
+        command = { type = construct which = ic where = 379 value = 1 }
+        command = { type = trigger which = 210023 }
+    }
+    action = {
+        name = "EVT_210022_B"
+        ai_chance = 15
+        command = { type = money value = 40 }
+        command = { type = trigger which = 210023 }
+    }
+}
+
+# 210023 - RSI: The Latin Axis with Spain
+event = {
+    id = 210023
+    random = no
+    country = RSI
+    style = 2
+    picture = "nwo/austrian_state_treaty"
+
+    is_triggered_only = yes
+
+    name = "EVT_210023_NAME"
+    desc = "EVT_210023_DESC"
+
+    action = {
+        name = "EVT_210023_A"
+        ai_chance = 80
+        command = { type = relation which = SPA value = 30 }
+        command = { type = trade which = SPA where = 10 }
+        command = { type = trigger which = 210024 }
+    }
+    action = {
+        name = "EVT_210023_B"
+        ai_chance = 20
+        command = { type = supplies value = 40 }
+        command = { type = trigger which = 210024 }
+    }
+}
+
+# 210024 - RSI: Agrarian Reform in the Po Valley
+event = {
+    id = 210024
+    random = no
+    country = RSI
+    style = 2
+    picture = "nwo/capital_city"
+
+    is_triggered_only = yes
+
+    name = "EVT_210024_NAME"
+    desc = "EVT_210024_DESC"
+
+    action = {
+        name = "EVT_210024_A"
+        ai_chance = 80
+        command = { type = supplies value = 60 }
+        command = { type = dissent value = -2 }
+        command = { type = trigger which = 210025 }
+    }
+    action = {
+        name = "EVT_210024_B"
+        ai_chance = 20
+        command = { type = money value = 35 }
+        command = { type = trigger which = 210025 }
+    }
+}
+
+# 210025 - RSI: The Magna Carta of the Social Republic
+event = {
+    id = 210025
+    random = no
+    country = RSI
+    style = 2
+    picture = "nwo/italian_constitutional_referendum"
+
+    is_triggered_only = yes
+
+    name = "EVT_210025_NAME"
+    desc = "EVT_210025_DESC"
+
+    action = {
+        name = "EVT_210025_A"
+        ai_chance = 85
+        command = { type = dissent value = -3 }
+        command = { type = trigger which = 210026 }
+    }
+    action = {
+        name = "EVT_210025_B"
+        ai_chance = 15
+        command = { type = money value = 40 }
+        command = { type = trigger which = 210026 }
+    }
+}
+
+# 210026 - RSI: Defense of the Gothic Line
+event = {
+    id = 210026
+    random = no
+    country = RSI
+    style = 2
+    picture = "archive/trench_warfare"
+
+    is_triggered_only = yes
+
+    name = "EVT_210026_NAME"
+    desc = "EVT_210026_DESC"
+
+    action = {
+        name = "EVT_210026_A"
+        ai_chance = 80
+        command = { type = construct which = land_fort where = 379 value = 1 }
+        command = { type = construct which = land_fort where = 370 value = 1 }
+        command = { type = trigger which = 210027 }
+    }
+    action = {
+        name = "EVT_210026_B"
+        ai_chance = 20
+        command = { type = supplies value = 60 }
+        command = { type = trigger which = 210027 }
+    }
+}
+
+# 210027 - RSI: Operation Sunrise: Secret Diplomacy
+event = {
+    id = 210027
+    random = no
+    country = RSI
+    style = 2
+    picture = "nwo/austrian_state_treaty"
+
+    is_triggered_only = yes
+
+    name = "EVT_210027_NAME"
+    desc = "EVT_210027_DESC"
+
+    action = {
+        name = "EVT_210027_A"
+        ai_chance = 75
+        command = { type = dissent value = -2 }
+        command = { type = trigger which = 210028 }
+    }
+    action = {
+        name = "EVT_210027_B"
+        ai_chance = 25
+        command = { type = relation which = GER value = 15 }
+        command = { type = trigger which = 210028 }
+    }
+}
+
+# 210028 - RSI: The Valtellina Alpine Redoubt
+event = {
+    id = 210028
+    random = no
+    country = RSI
+    style = 2
+    picture = "GER/alpenkorps"
+
+    is_triggered_only = yes
+
+    name = "EVT_210028_NAME"
+    desc = "EVT_210028_DESC"
+
+    action = {
+        name = "EVT_210028_A"
+        ai_chance = 80
+        command = { type = construct which = land_fort where = 370 value = 1 }
+        command = { type = supplies value = -40 }
+        command = { type = trigger which = 210029 }
+    }
+    action = {
+        name = "EVT_210028_B"
+        ai_chance = 20
+        command = { type = money value = 30 }
+        command = { type = trigger which = 210029 }
+    }
+}
+
+# 210029 - RSI: Triumph of the Social Republic
+event = {
+    id = 210029
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/proclamation_of_the_empire_proclamazione_dell"
+
+    is_triggered_only = yes
+
+    name = "EVT_210029_NAME"
+    desc = "EVT_210029_DESC"
+
+    action = {
+        name = "EVT_210029_A"
+        ai_chance = 90
+        command = { type = dissent value = -5 }
+        command = { type = money value = 100 }
+        command = { type = trigger which = 210030 }
+    }
+    action = {
+        name = "EVT_210029_B"
+        ai_chance = 10
+        command = { type = supplies value = 80 }
+        command = { type = trigger which = 210030 }
+    }
+}
+
+# 210030 - RSI: Irredentist Reintegration: Corsica, Nice, Savoy
+event = {
+    id = 210030
+    random = no
+    country = RSI
+    style = 2
+    picture = "nwo/austrian_state_treaty"
+
+    is_triggered_only = yes
+
+    name = "EVT_210030_NAME"
+    desc = "EVT_210030_DESC"
+
+    action = {
+        name = "EVT_210030_A"
+        ai_chance = 85
+        command = { type = addcore which = 368 } # Corsica
+        command = { type = addcore which = 364 } # Nice
+        command = { type = dissent value = -3 }
+        command = { type = trigger which = 210031 }
+    }
+    action = {
+        name = "EVT_210030_B"
+        ai_chance = 15
+        command = { type = money value = 40 }
+        command = { type = trigger which = 210031 }
+    }
+}
+
+# 210031 - RSI: The Reintegration of Malta
+event = {
+    id = 210031
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/italian_naval_frogmen_and_assault_craft"
+
+    is_triggered_only = yes
+
+    name = "EVT_210031_NAME"
+    desc = "EVT_210031_DESC"
+
+    action = {
+        name = "EVT_210031_A"
+        ai_chance = 85
+        command = { type = addcore which = 429 } # Malta
+        command = { type = dissent value = -2 }
+        command = { type = trigger which = 210032 }
+    }
+    action = {
+        name = "EVT_210031_B"
+        ai_chance = 15
+        command = { type = construct which = naval_base where = 429 value = 1 }
+        command = { type = trigger which = 210032 }
+    }
+}
+
+# 210032 - RSI: Post-War Industrial Conversion
+event = {
+    id = 210032
+    random = no
+    country = RSI
+    style = 2
+    picture = "Minors/baghdad_railway"
+
+    is_triggered_only = yes
+
+    name = "EVT_210032_NAME"
+    desc = "EVT_210032_DESC"
+
+    action = {
+        name = "EVT_210032_A"
+        ai_chance = 80
+        command = { type = construct which = ic where = 370 value = 1 }
+        command = { type = construct which = ic where = 379 value = 1 }
+        command = { type = money value = -50 }
+        command = { type = trigger which = 210033 }
+    }
+    action = {
+        name = "EVT_210032_B"
+        ai_chance = 20
+        command = { type = money value = 60 }
+        command = { type = trigger which = 210033 }
+    }
+}
+
+# 210033 - RSI: Autostrada Infrastructure Boom
+event = {
+    id = 210033
+    random = no
+    country = RSI
+    style = 2
+    picture = "Minors/baghdad_railway"
+
+    is_triggered_only = yes
+
+    name = "EVT_210033_NAME"
+    desc = "EVT_210033_DESC"
+
+    action = {
+        name = "EVT_210033_A"
+        ai_chance = 85
+        command = { type = construct which = infrastructure where = 379 value = 1 }
+        command = { type = construct which = infrastructure where = 401 value = 1 }
+        command = { type = money value = -40 }
+        command = { type = trigger which = 210034 }
+    }
+    action = {
+        name = "EVT_210033_B"
+        ai_chance = 15
+        command = { type = supplies value = 40 }
+        command = { type = trigger which = 210034 }
+    }
+}
+
+# 210034 - RSI: The Italian Nuclear Energy Program
+event = {
+    id = 210034
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/fermi"
+
+    is_triggered_only = yes
+
+    name = "EVT_210034_NAME"
+    desc = "EVT_210034_DESC"
+
+    action = {
+        name = "EVT_210034_A"
+        ai_chance = 80
+        command = { type = money value = -70 }
+        command = { type = construct which = ic where = 401 value = 1 }
+        command = { type = trigger which = 210035 }
+    }
+    action = {
+        name = "EVT_210034_B"
+        ai_chance = 20
+        command = { type = supplies value = 50 }
+        command = { type = trigger which = 210035 }
+    }
+}
+
+# 210035 - RSI: Mediterranean Sphere of Influence
+event = {
+    id = 210035
+    random = no
+    country = RSI
+    style = 2
+    picture = "nwo/austrian_state_treaty"
+
+    is_triggered_only = yes
+
+    name = "EVT_210035_NAME"
+    desc = "EVT_210035_DESC"
+
+    action = {
+        name = "EVT_210035_A"
+        ai_chance = 80
+        command = { type = relation which = GER value = -15 }
+        command = { type = dissent value = -2 }
+        command = { type = trigger which = 210036 }
+    }
+    action = {
+        name = "EVT_210035_B"
+        ai_chance = 20
+        command = { type = relation which = GER value = 15 }
+        command = { type = trigger which = 210036 }
+    }
+}
+
+# 210036 - RSI: Proclamation of the Latin Confederation
+event = {
+    id = 210036
+    random = no
+    country = RSI
+    style = 2
+    picture = "nwo/austrian_state_treaty"
+
+    is_triggered_only = yes
+
+    name = "EVT_210036_NAME"
+    desc = "EVT_210036_DESC"
+
+    action = {
+        name = "EVT_210036_A"
+        ai_chance = 85
+        command = { type = relation which = SPA value = 25 }
+        command = { type = relation which = POR value = 25 }
+        command = { type = dissent value = -3 }
+        command = { type = trigger which = 210037 }
+    }
+    action = {
+        name = "EVT_210036_B"
+        ai_chance = 15
+        command = { type = money value = 40 }
+        command = { type = trigger which = 210037 }
+    }
+}
+
+# 210037 - RSI: The National Housing and Family Institute
+event = {
+    id = 210037
+    random = no
+    country = RSI
+    style = 2
+    picture = "nwo/capital_city"
+
+    is_triggered_only = yes
+
+    name = "EVT_210037_NAME"
+    desc = "EVT_210037_DESC"
+
+    action = {
+        name = "EVT_210037_A"
+        ai_chance = 85
+        command = { type = dissent value = -3 }
+        command = { type = money value = -40 }
+        command = { type = trigger which = 210038 }
+    }
+    action = {
+        name = "EVT_210037_B"
+        ai_chance = 15
+        command = { type = supplies value = 30 }
+        command = { type = trigger which = 210038 }
+    }
+}
+
+# 210038 - RSI: Rebuilding the Merchant Fleet
+event = {
+    id = 210038
+    random = no
+    country = RSI
+    style = 2
+    picture = "Minors/baghdad_railway"
+
+    is_triggered_only = yes
+
+    name = "EVT_210038_NAME"
+    desc = "EVT_210038_DESC"
+
+    action = {
+        name = "EVT_210038_A"
+        ai_chance = 80
+        command = { type = transport_pool which = RSI value = 15 }
+        command = { type = money value = -35 }
+        command = { type = trigger which = 210039 }
+    }
+    action = {
+        name = "EVT_210038_B"
+        ai_chance = 20
+        command = { type = supplies value = 40 }
+        command = { type = trigger which = 210039 }
+    }
+}
+
+# 210039 - RSI: The Grand Congress of Rome (1950)
+event = {
+    id = 210039
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/mussolini_victory_speech"
+
+    is_triggered_only = yes
+
+    name = "EVT_210039_NAME"
+    desc = "EVT_210039_DESC"
+
+    action = {
+        name = "EVT_210039_A"
+        ai_chance = 90
+        command = { type = dissent value = -4 }
+        command = { type = money value = 60 }
+        command = { type = trigger which = 210040 }
+    }
+    action = {
+        name = "EVT_210039_B"
+        ai_chance = 10
+        command = { type = supplies value = 50 }
+        command = { type = trigger which = 210040 }
+    }
+}
+
+# 210040 - RSI: The Revolutionary Superpower Enters the Modern Era
+event = {
+    id = 210040
+    random = no
+    country = RSI
+    style = 2
+    picture = "ITA/proclamation_of_the_empire_proclamazione_dell"
+
+    is_triggered_only = yes
+
+    name = "EVT_210040_NAME"
+    desc = "EVT_210040_DESC"
+
+    action = {
+        name = "EVT_210040_A"
+        ai_chance = 90
+        command = { type = construct which = ic where = 401 value = 1 }
+        command = { type = dissent value = -3 }
+        command = { type = money value = 80 }
+    }
+    action = {
+        name = "EVT_210040_B"
+        ai_chance = 10
+        command = { type = supplies value = 60 }
+    }
+}

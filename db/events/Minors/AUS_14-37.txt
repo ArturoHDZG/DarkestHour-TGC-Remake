@@ -1,0 +1,1806 @@
+# ============================================================================
+# File: events/Minors/AUS_14-37.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [108054] AUS | 1914 | The Outcome of the Great War (historical) (El fin de la Gran Guerra)
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Triggered by event 244019 in events/Minors/U09.txt
+# Trigger event 108055 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108054
+	country = AUS
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		or = {
+			event = 147311
+			event = 243101
+			event = 243107
+			event = 243116
+		}
+		event = 244019
+		atwar = no
+	}
+	name = "EVT_AUS_108054_NAME"
+	Desc = "EVT_AUS_108054_DESC"
+	Picture = "surrender"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = local_setflag which = loser }
+		command = { type = dissent value = 10 }
+		command = { type = demobilize which = land when = 0 where = 0 value = 10 }
+		command = { type = local_setflag which = disarm_10 }
+		command = { type = local_clrflag which = disarm_25 }
+		command = { type = local_clrflag which = disarm_50 }
+		command = { type = local_clrflag which = disarm_75 }
+		command = { type = strength which = naval when = 0 where = 0 value = 0.0 }
+		command = { type = local_setflag which = disarm_naval_10 }
+		command = { type = local_clrflag which = disarm_naval_25 }
+		command = { type = local_clrflag which = disarm_naval_50 }
+		command = { type = local_clrflag which = disarm_naval_100 }
+		command = { type = local_clrflag which = disarm_naval_150 }
+		command = { type = local_clrflag which = disarm_naval_200 }
+		command = { type = strength which = air when = 0 where = 0 value = 0.0 }
+		command = { type = local_setflag which = disarm_air_0 }
+		command = { type = local_clrflag which = disarm_air_1 }
+		command = { type = local_clrflag which = disarm_air_3 }
+		command = { type = local_clrflag which = disarm_air_5 }
+		command = { type = secedearea which = ROM value = "Bessarabia" when = 1 }
+		command = { trigger = { exists = ROM } type = secedeprovince which = ROM value = 300 }
+		command = { trigger = { exists = ROM } type = secedeprovince which = ROM value = 301 }
+		command = { type = secedearea which = UKR value = "Odessa" when = 1 }
+		command = { type = secedeprovince which = UKR value = 618 when = 2 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { trigger = { not = { minister = 115130 } } type = wakeminister which = 115130 }
+		command = { trigger = { not = { minister = 115123 } } type = wakeminister which = 115123 }
+		command = { trigger = { not = { minister = 115114 } } type = wakeminister which = 115114 }
+		command = { trigger = { not = { minister = 115132 } } type = wakeminister which = 115132 }
+		command = { trigger = { not = { minister = 115144 } } type = wakeminister which = 115144 }
+		command = { type = headofstate which = 115130 }
+		command = { type = headofgovernment which = 115123 }
+		command = { type = foreignminister which = 115114 }
+		command = { type = armamentminister which = 115132 }
+		command = { type = ministerofsecurity which = 115144 }
+		command = { trigger = { not = { flag = lon } } type = setflag which = lon }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108055] AUS | 1914 | The Birth of German Austria (Nacimiento de Austria Alemana)
+# Triggered by event 108054 in events/Minors/AUS_14-37.txt
+# Trigger event 108081 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108055
+	country = AUS
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 5
+	trigger = {
+		event = 108054
+		exists = U08
+	}
+	name = "EVT_AUS_108055_NAME"
+	desc = "EVT_AUS_108055_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	action = {
+		name = "EVT_AUS_108055_A"
+		ai_chance = 100
+		command = { type = relation which = U08 value = 40 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = FRA value = -20 }
+		command = { type = relation which = ITA value = -20 }
+		command = { type = relation which = SER value = -20 }
+		command = { type = relation which = CZE value = -20 }
+		command = { type = relation which = ROM value = -20 }
+		command = { type = name where = AUS which = "AUS_EVT" }
+	}
+	action = {
+		name = "EVT_AUS_108055_B"
+		ai_chance = 0
+		command = { type = relation which = U08 value = -40 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = FRA value = 20 }
+		command = { type = relation which = ITA value = 20 }
+		command = { type = relation which = SER value = 20 }
+		command = { type = relation which = CZE value = 20 }
+		command = { type = relation which = ROM value = 20 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108057] AUS | 1914 | The Treaty of Brno (Tratado de Brno)
+# Triggered by event 136050 in events/Minors/CZE_14-53.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108057
+	country = AUS
+	name = "EVT_AUS_108057_NAME"
+	desc = "EVT_SHARED_01042_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	action = {
+		name = "ACTION_NAME_SIGN"
+		ai_chance = 100
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = "ACTION_NAME_DONT_SIGN"
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108072] AUS | 1914 | The collapse of the Creditanstalt (Crac del Creditanstalt)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108072
+	country = AUS
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 100
+	trigger = {
+		year = 1931
+		local_flag = depression
+	}
+	name = "EVT_AUS_108072_NAME"
+	desc = "EVT_AUS_108072_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "ACTION_NAME_HORRIBLE"
+		command = { type = dissent value = 10 }
+		command = { trigger = { money = 300 } type = money value = -280 }
+		command = { trigger = { money = 200 } type = money value = -180 }
+		command = { trigger = { money = 100 } type = money value = -80 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108077] AUS | 1914 | The Issue of the DNSAP and the Social Democrats (La cuestión del DNSAP y la izquierda)
+# Triggered by event 108076 in events/Minors/AUS_14-37.txt
+# Triggered by event 150530 in events/GER/GER_14-33.txt
+# Trigger event 108080 in events/Minors/AUS_14-37.txt
+# Trigger event 108079 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108077
+	country = AUS
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1938}
+	offset = 90
+	trigger = {
+		or = {
+			incabinet = 115150
+			and = {
+				not = { minister = 115150 }
+				dissent = 5
+			}
+		}
+		event = 108076
+		government = fascist
+		exists = GER
+		event = 150530
+	}
+	name = "EVT_AUS_108077_NAME"
+	desc = "EVT_AUS_108077_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "EVT_AUS_108077_A"
+		ai_chance = 100
+		command = { type = relation which = GER value = -50 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = dissent value = 2 }
+		command = { type = event which = 108080 when = 180 }
+		command = { type = event which = 108079 when = 90 }
+	}
+	action = {
+		name = "EVT_AUS_108077_B"
+		ai_chance = 0
+		command = { type = relation which = GER value = -50 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = dissent value = 5 }
+		command = { type = event which = 108079 when = 90 }
+	}
+	action = {
+		name = "EVT_AUS_108077_C"
+		ai_chance = 0
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = dissent value = 5 }
+		command = { type = event which = 108080 when = 30 }
+	}
+	action = {
+		name = "EVT_AUS_108077_D"
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108079] AUS | 1914 | Assassination attempt on Dollfuss (Intento de asesinato de Dollfuss)
+# Triggered by event 108077 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108079
+	country = AUS
+	name = "EVT_AUS_108079_NAME"
+	desc = "EVT_AUS_108079_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108080] AUS | 1914 | Austrian Civil War (Guerra civil austríaca)
+# Triggered by event 108077 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108080
+	country = AUS
+	name = "EVT_AUS_108080_NAME"
+	desc = "EVT_AUS_108080_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 15 }
+		command = { type = revolt which = 190 }
+		command = { type = revolt which = 195 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108081] AUS | 1914 | The Treaty of Saint-Germain-en-Laye (El Tratado de Saint-Germain-en-Laye)
+# Triggered by event 108055 in events/Minors/AUS_14-37.txt
+# Triggered by event 243086 in events/Minors/U08_14-14.txt
+# Triggered by event 243087 in events/Minors/U08_14-14.txt
+# Triggered by event 243088 in events/Minors/U08_14-14.txt
+# Triggered by event 324519 in events/GLOBAL/MULTI_14-32.txt
+# Triggered by event 244018 in events/Minors/U09.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Trigger event 136045 in events/Minors/CZE_14-53.txt
+# Trigger event 159093 in events/Minors/HUN_14-38.txt
+# Trigger event 166223 in events/ITA/ITA_14-20.txt
+# Trigger event 203065 in events/Minors/POL_Decisions.txt
+# Trigger event 217017 in events/Minors/SER.txt
+# Trigger event 324516 in events/GLOBAL/MULTI_00-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108081
+	country = AUS
+	trigger = {
+		event = 108055
+		or = {
+			event = 243086
+			event = 243087
+			event = 243088
+		}
+		OR= {
+			event = 324519
+			event = 244018
+		}
+		exists = CZE
+		exists = HUN
+		exists = ROM
+		exists = SER
+		random = 25
+	}
+	name = "EVT_AUS_108081_NAME"
+	desc = "EVT_AUS_108081_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+			command = { type = name where = AUS which = "" }
+		command = { trigger = { war = { country = AUS country = FRA } } type = peace which = FRA value = 1 }
+		command = { trigger = { war = { country = AUS country = RUS } } type = peace which = RUS value = 1 }
+		command = { trigger = { war = { country = AUS country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = AUS country = SER } } type = peace which = SER value = 1 }
+		command = { type = dissent value = 1 }
+		command = { type = access which = FRA }
+		command = { trigger = { alliance = { country = FRA country = ITA } } type = access which = ITA }
+		command = { trigger = { alliance = { country = FRA country = ENG } } type = access which = ENG }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 115130 }
+		command = { type = headofgovernment which = 115123 }
+		command = { type = foreignminister which = 115114 }
+		command = { type = armamentminister which = 115132 }
+		command = { type = ministerofsecurity which = 115144 }
+		command = { trigger = { exists = CZE } type = secederegion which = CZE value = "Czechoslovakia" }
+		command = { trigger = { exists = RUS } type = secederegion which = RUS value = "Poland" when = 1 }
+		command = { trigger = { exists = POL } type = secederegion which = POL value = "Poland" when = 1 }
+		command = { trigger = { exists = ITA } type = secederegion which = ITA value = "Italy" }
+		command = { trigger = { exists = SER } type = secedearea which = SER value = "East Serbia" }
+		command = { trigger = { exists = SER } type = secedearea which = SER value = "Central Serbia" }
+		command = { trigger = { exists = SER } type = secedearea which = SER value = "Croatia" }
+		command = { trigger = { exists = SER } type = secedearea which = SER value = "Bosnia" }
+		command = { trigger = { exists = ALB } type = secedearea which = ALB value = "Albania" }
+		command = { trigger = { exists = GRE } type = secedearea which = GRE value = "Thrace" }
+		command = { trigger = { exists = GRE } type = secedearea which = GRE value = "Attica" }
+		command = { trigger = { exists = GRE } type = secedearea which = GRE value = "Greek Island" }
+		command = { trigger = { exists = RUS } type = secedearea which = RUS value = "Odessa" when = 1 }
+		command = { trigger = { exists = RUS } type = secedeprovince which = RUS value = 618 when = 1 }
+		command = { trigger = {
+						NOT = { exists = RUS } exists = SOV
+						NOT = { event = 243101 event = 243107 event = 243116 }
+						owned = { province = 617 data = U08 }
+						control = { province = 617 data = U08 }
+					} type = secedearea which = U08 value = "Odessa" when = 1 }
+		command = { trigger = {
+						NOT = { exists = RUS } exists = SOV
+						NOT = { event = 243101 event = 243107 event = 243116 }
+						owned = { province = 617 data = U08 }
+						control = { province = 617 data = U08 }
+					} type = secedeprovince which = U08 value = 618 when = 1 }
+		command = { trigger = {
+						NOT = { exists = RUS } exists = SOV
+						OR = {
+							event = 243101 event = 243107 event = 243116
+							NOT = { control = { province = 617 data = U08 } }
+						}
+					} type = secedearea which = UKR value = "Odessa" when = 1 }
+		command = { trigger = { NOT = { exists = RUS } exists = SOV } type = secedeprovince which = UKR value = 618 when = 1 }
+		command = { type = strength which = naval when = 0 where = 0 org = 0 value = 0 }
+		command = { type = strength which = land when = 0 where = 0 org = 0 value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108082] AUS | 1914 | Proclamation of Czechoslovakia (Proclamación de Checoslovaquia)
+# Triggered by event 244019 in events/Minors/U09.txt
+# Trigger event 136060 in events/Minors/CZE_14-53.txt
+# Trigger event 136041 in events/Minors/CZE_14-53.txt
+# Trigger event 244023 in events/Minors/U09.txt
+# Trigger event 244024 in events/Minors/U09.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108082
+	country = AUS
+	trigger = {
+		event = 244019
+		random = 35
+	}
+	name = "EVT_AUS_108082_NAME"
+	desc = "EVT_AUS_108082_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 29 month = june year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = independence which = CZE value = 1 when = 1 }
+		command = { trigger = { exists = CZE } type = secederegion which = CZE value = "Czechoslovakia" }
+		command = { trigger = { exists = CZE } type = secedeprovince which = CZE value = 203 }
+		command = { trigger = { NOT = { ispuppet = CZE } } type = trigger which = 136060 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108083] AUS | 1914 | Secession of the South Slav Lands (Secesión de los territorios sudeslavos)
+# Triggered by event 244019 in events/Minors/U09.txt
+# Trigger event 217008 in events/Minors/SER.txt
+# Trigger event 244027 in events/Minors/U09.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108083
+	country = AUS
+	trigger = {
+		event = 244019
+		random = 35
+	}
+	name = "EVT_AUS_108083_NAME"
+	desc = "EVT_AUS_108083_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 29 month = june year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		command = { trigger = { NOT = { exists = SER } } type = independence which = SER value = 1 when = 0}
+		command = { type = secedearea which = SER value = "East Serbia" }
+		command = { type = secedearea which = SER value = "Central Serbia" }
+		command = { type = secedearea which = SER value = "Croatia" }
+		command = { type = secedearea which = SER value = "Bosnia" }
+		command = { trigger = { NOT = { exists = ALB } } type = independence which = ALB value = 1 when = 0}
+		command = { type = secedearea which = ALB value = "Albania" }
+		command = { trigger = { NOT = { exists = GRE } } type = independence which = GRE value = 1 when = 1 }
+		command = { type = secedearea which = GRE value = "Thrace" }
+		command = { type = secedearea which = GRE value = "Attica" }
+		command = { type = secedearea which = GRE value = "Greek Island" }
+		command = { type = trigger which = 217008 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108084] AUS | 1914 | Galicia-Lodomeria Declares Independence (Galitzia-Lodomeria declara su independencia)
+# Triggered by event 244019 in events/Minors/U09.txt
+# Triggered by event 108085 in events/Minors/AUS_14-37.txt
+# Triggered by event 203064 in events/Minors/POL_14-89.txt
+# Trigger event 203064 in events/Minors/POL_14-89.txt
+# Trigger event 108085 in events/Minors/AUS_14-37.txt
+# Trigger event 244022 in events/Minors/U09.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108084
+	country = AUS
+	trigger = {
+		event = 244019
+		random = 35
+		NOT = { exists = RUS }
+		NOT = { event = 108085 }
+	}
+	name = "EVT_AUS_108084_NAME"
+	desc = "EVT_AUS_108084_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 29 month = june year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		command = { trigger = { NOT = { exists = POL } } type = independence which = POL value = 1 when = 0}
+		command = { trigger = { exists = POL } type = secederegion which = POL value = "Poland" }
+		command = { trigger = { exists = ROM } type = secedeprovince which = ROM value = 300 }
+		command = { trigger = { exists = ROM } type = secedeprovince which = ROM value = 301 }
+		command = { trigger = { NOT = { event = 203064 } } type = trigger which = 203064 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108085] AUS | 1914 | Galicia Ceded to Russia (Galitzia cedida a Rusia)
+# Triggered by event 244019 in events/Minors/U09.txt
+# Triggered by event 108084 in events/Minors/AUS_14-37.txt
+# Trigger event 108084 in events/Minors/AUS_14-37.txt
+# Trigger event 244021 in events/Minors/U09.txt
+# Trigger event 244022 in events/Minors/U09.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108085
+	country = AUS
+	trigger = {
+		event = 244019
+		random = 35
+		exists = RUS
+		NOT = { event = 108084 }
+	}
+	name = "EVT_AUS_108085_NAME"
+	desc = "EVT_AUS_108085_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 29 month = june year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = secederegion which = RUS value = "Poland" }
+		command = { trigger = { exists = ROM } type = secedeprovince which = ROM value = 300 }
+		command = { trigger = { exists = ROM } type = secedeprovince which = ROM value = 301 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108086] AUS | 1914 | Hungary Terminates Union with Austria (Hungría disuelve la unión con Austria)
+# Triggered by event 244019 in events/Minors/U09.txt
+# Trigger event 159066 in events/Minors/HUN_14-38.txt
+# Trigger event 244025 in events/Minors/U09.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108086
+	country = AUS
+	trigger = {
+		event = 244019
+		random = 35
+	}
+	name = "EVT_AUS_108086_NAME"
+	desc = "EVT_AUS_108086_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 29 month = june year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = HUN value = 1 when = 0}
+		command = { type = secederegion which = HUN value = "Romania" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108087] AUS | 1914 | Trentino Secedes to Italy (Secesión del Trentino a Italia)
+# Triggered by event 244019 in events/Minors/U09.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108087
+	country = AUS
+	trigger = {
+		event = 244019
+		random = 60
+	}
+	name = "EVT_AUS_108087_NAME"
+	desc = "EVT_AUS_108087_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 29 month = june year = 1914 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = secedeprovince which = ITA value = 394 }
+		command = { type = secedeprovince which = ITA value = 401 }
+		command = { type = secedeprovince which = ITA value = 402 }
+		command = { type = secedeprovince which = ITA value = 403 }
+		command = { type = secedeprovince which = ITA value = 404 }
+		command = { type = secedeprovince which = ITA value = 405 }
+		command = { type = secedeprovince which = ITA value = 406 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108061] AUS | 1920 | The Formation of the Heimwehr (Formación del Heimwehr)
+# Trigger event 108062 in events/Minors/AUS_14-37.txt
+# Trigger event 108068 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108061
+	country = AUS
+	date = { day = 1 month = january year = 1920 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 90
+	trigger = {
+		NOT = {
+			OR = {
+				government = fascist
+				government = communist
+			}
+		}
+		local_flag = loser
+		dissent = 5
+		NOT = { ispuppet = AUS }
+	}
+	name = "EVT_AUS_108061_NAME"
+	desc = "EVT_AUS_108061_DESC"
+	picture = "nwo/internal_troops"
+	action = {
+		name = "EVT_AUS_108061_A"
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = domestic which = political_left value = -1 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 0
+		command = { type = dissent value = 7 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = sleepevent which = 108059 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108062] AUS | 1920 | The Formation of the Schutzbund (Formación del Schutzbund)
+# Triggered by event 108061 in events/Minors/AUS_14-37.txt
+# Trigger event 108068 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108062
+	country = AUS
+	date = { day = 1 month = january year = 1920 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		event = 108061
+		NOT = { government = communist }
+	}
+	name = "EVT_AUS_108062_NAME"
+	desc = "EVT_AUS_108062_DESC"
+	picture = "Minors/ccip_militia"
+	action = {
+		name = "EVT_AUS_108062_A"
+		ai_chance = 99
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = political_left value = 1 }
+	}
+	action = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 1
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = democratic value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108058] AUS | 1920 | The 1920 Parliamentary Elections (Elecciones de 1920)
+# Trigger event 108059 in events/Minors/AUS_14-37.txt
+# Trigger event 108060 in events/Minors/AUS_14-37.txt
+# Trigger event 108063 in events/Minors/AUS_14-37.txt
+# Trigger event 108065 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108058
+	country = AUS
+	save_date = yes
+	date = { day = 17 month = october year = 1920 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 20
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = AUS }
+	}
+	name = "EVT_AUS_108058_NAME"
+	desc = "EVT_AUS_108058_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "EVT_SHARED_01043_A"
+		ai_chance = 100
+		command = { trigger = { not = { minister = 115124 } } type = wakeminister which = 115124 }
+		command = { trigger = { ai = yes not = { minister = 115117 } } type = wakeminister which = 115117 }
+		command = { trigger = { ai = yes not = { minister = 115135 } } type = wakeminister which = 115135 }
+		command = { trigger = { ai = yes not = { minister = 115145 } } type = wakeminister which = 115145 }
+		command = { type = headofgovernment which = 115124 }
+		command = { trigger = { ai = yes } type = foreignminister which = 115117 }
+		command = { trigger = { ai = yes } type = armamentminister which = 115135 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 115145 }
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = domestic which = democratic value = 1 }
+	}
+	action = {
+		name = "EVT_SHARED_01043_B"
+		ai_chance = 3
+		command = { trigger = { not = { minister = 115123 } } type = wakeminister which = 115123 }
+		command = { trigger = { ai = yes not = { minister = 115116 } } type = wakeminister which = 115116 }
+		command = { trigger = { ai = yes not = { minister = 115134 } } type = wakeminister which = 115134 }
+		command = { trigger = { ai = yes not = { minister = 115144 } } type = wakeminister which = 115144 }
+		command = { type = headofgovernment which = 115123 }
+		command = { trigger = { ai = yes } type = foreignminister which = 115116 }
+		command = { trigger = { ai = yes } type = armamentminister which = 115134 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 115144 }
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = political_left value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108059] AUS | 1920 | President of the Republic: Michael Hainisch (Presidente Michael Hainisch)
+# Triggered by event 108058 in events/Minors/AUS_14-37.txt
+# Trigger event 108069 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108059
+	country = AUS
+	save_date = yes
+	date = { day = 9 month = december year = 1920 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		government = democratic
+		NOT = { incabinet = 115131 }
+		event = { id = 108058 days = 60 }
+	}
+	name = "EVT_AUS_108059_NAME"
+	desc = "EVT_AUS_108059_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { not = { minister = 115131 } } type = wakeminister which = 115131 }
+		command = { type = headofstate which = 115131 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108056] AUS | 1921 | The Carinthian Plebiscite (Plebiscito de Carintia)
+# Triggered by event 217017 in events/Minors/SER.txt
+# Trigger event 217018 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108056
+	country = AUS
+	name = "EVT_AUS_108056_NAME"
+	desc = "EVT_AUS_108056_DESC"
+	picture = "GLOBAL/congress"
+	style = 2
+	action = {
+		name = "EVT_AUS_108056_A"
+		ai_chance = 100
+		command = { type = relation which = SER value = -20 }
+		command = { type = trigger which = 217018 }
+		command = { type = domestic which = democratic value = 1 }
+	}
+	action = {
+		name = "EVT_AUS_108056_B"
+		ai_chance = 0
+		command = { type = secedeprovince which = SER value = 191 when = 2 }
+		command = { type = dissent value = 10 }
+		command = { type = relation which = SER value = 20 }
+		command = { type = domestic which = democratic value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108060] AUS | 1921 | Michael Mayr Resigns (Mayr dimite)
+# Triggered by event 108058 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108060
+	country = AUS
+	date = { day = 21 month = june year = 1921 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 5
+	trigger = {
+		event = { id = 108058 days = 120 }
+		incabinet = 115124
+	}
+	name = "EVT_AUS_108060_NAME"
+	desc = "EVT_AUS_108060_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { not = { minister = 115125 } } type = wakeminister which = 115125 }
+		command = { type = headofgovernment which = 115125 }
+		command = { type = sleepminister which = 115124 }
+		command = { type = sleepminister which = 115117 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108063] AUS | 1922 | Johann Schober Retires (Retiro de Schober)
+# Triggered by event 108058 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108063
+	country = AUS
+	date = { day = 29 month = may year = 1922 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		incabinet = 115125
+		event = { id = 108058 days = 500 }
+	}
+	name = "EVT_AUS_108063_NAME"
+	desc = "EVT_AUS_108063_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { not = { minister = 115127 } } type = wakeminister which = 115127 }
+		command = { type = headofgovernment which = 115127 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108065] AUS | 1923 | The 1923 Parliamentary Elections (Elecciones de 1923)
+# Triggered by event 108058 in events/Minors/AUS_14-37.txt
+# Trigger event 108067 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108065
+	country = AUS
+	save_date = yes
+	date = { day = 21 month = october year = 1923 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 10
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = AUS }
+		event = { id = 108058 days = 1080 }
+	}
+	name = "EVT_AUS_108065_NAME"
+	desc = "EVT_AUS_108065_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 115127
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01043_A"
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { trigger = { and = { ai = yes dissent = 30 incabinet = 115123 } } type = dissent value = -20 }
+		command = { trigger = { not = { minister = 115127 } } type = wakeminister which = 115127 }
+		command = { trigger = { ai = yes not = { minister = 115121 } } type = wakeminister which = 115121 }
+		command = { trigger = { ai = yes not = { minister = 115139 } } type = wakeminister which = 115139 }
+		command = { trigger = { ai = yes not = { minister = 115166 } } type = wakeminister which = 115166 }
+		command = { type = headofgovernment which = 115127 }
+		command = { trigger = { ai = yes } type = foreignminister which = 115121 }
+		command = { trigger = { ai = yes } type = armamentminister which = 115139 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 115166 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = political_left value = -1 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 115123
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01043_B"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 incabinet = 115127 } } type = dissent value = -20 }
+		command = { trigger = { not = { minister = 115123 } } type = wakeminister which = 115123 }
+		command = { trigger = { ai = yes not = { minister = 115114 } } type = wakeminister which = 115114 }
+		command = { trigger = { ai = yes not = { minister = 115132 } } type = wakeminister which = 115132 }
+		command = { trigger = { ai = yes not = { minister = 115142 } } type = wakeminister which = 115142 }
+		command = { type = headofgovernment which = 115123 }
+		command = { trigger = { ai = yes } type = foreignminister which = 115114 }
+		command = { trigger = { ai = yes } type = armamentminister which = 115132 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 115142 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = political_left value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108066] AUS | 1924 | Assassination Attempt! (¡Intento de magnicidio!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108066
+	country = AUS
+	date = { day = 1 month = june year = 1924 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 7
+	trigger = {
+		incabinet = 115127
+	}
+	name = "EVT_AUS_108066_NAME"
+	desc = "EVT_AUS_108066_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = freedom value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108067] AUS | 1927 | The 1927 Parliamentary Elections (Elecciones de 1927)
+# Triggered by event 108065 in events/Minors/AUS_14-37.txt
+# Trigger event 108070 in events/Minors/AUS_14-37.txt
+# Trigger event 108071 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108067
+	country = AUS
+	save_date = yes
+	date = { day = 24 month = april year = 1927 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 10
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = AUS }
+		event = { id = 108065 days = 1440 }
+	}
+	name = "EVT_AUS_108067_NAME"
+	desc = "EVT_AUS_108067_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 115127
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01045_A"
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { trigger = { and = { ai = yes dissent = 30 incabinet = 115123 } } type = dissent value = -20 }
+		command = { trigger = { not = { minister = 115127 } } type = wakeminister which = 115127 }
+		command = { trigger = { ai = yes not = { minister = 115157 } } type = wakeminister which = 115157 }
+		command = { trigger = { ai = yes not = { minister = 115139 } } type = wakeminister which = 115139 }
+		command = { trigger = { ai = yes not = { minister = 115166 } } type = wakeminister which = 115166 }
+		command = { type = headofgovernment which = 115127 }
+		command = { trigger = { ai = yes } type = foreignminister which = 115157 }
+		command = { trigger = { ai = yes } type = armamentminister which = 115139 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 115166 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = political_left value = -1 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 115123
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01043_B"
+		ai_chance = 5
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 incabinet = 115127 } } type = dissent value = -20 }
+		command = { trigger = { not = { minister = 115123 } } type = wakeminister which = 115123 }
+		command = { trigger = { ai = yes not = { minister = 115114 } } type = wakeminister which = 115114 }
+		command = { type = headofgovernment which = 115123 }
+		command = { trigger = { ai = yes } type = foreignminister which = 115114 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = political_left value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108068] AUS | 1927 | The Protocol for the Reconstruction of Austria (Reconstrucción económica)
+# Triggered by event 108061 in events/Minors/AUS_14-37.txt
+# Triggered by event 108062 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108068
+	country = AUS
+	date = { day = 0 month = july year = 1927 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 7
+	trigger = {
+		event = 108061
+		event = 108062
+		NOT = {
+			OR = {
+				government = communist
+				ideology = social_democrat
+			}
+		}
+	}
+	name = "EVT_SHARED_01044_NAME"
+	desc = "EVT_SHARED_01044_DESC"
+	picture = "GLOBAL/strike"
+	action = {
+		name = "ACTION_NAME_SUPPRESS_REVOLT"
+		ai_chance = 100
+		command = { type = revolt which = 195 }
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = freedom value = -1 }
+	}
+	action = {
+		name = "EVT_AUS_108068_A"
+		ai_chance = 0
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108069] AUS | 1928 | New President of Austria (Nuevo presidente de Austria)
+# Triggered by event 108059 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108069
+	country = AUS
+	save_date = yes
+	date = { day = 0 month = january year = 1928 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 1
+	trigger = {
+		event = { id = 108059 days = 2880 }
+		minister = 115001
+		incabinet = 115131
+	}
+	name = "EVT_AUS_108069_NAME"
+	desc = "EVT_AUS_108069_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { not = { minister = 115001 } } type = wakeminister which = 115001 }
+		command = { type = headofstate which = 115001 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108070] AUS | 1929 | Ignaz Seipel Resigns (Seipel dimite)
+# Triggered by event 108067 in events/Minors/AUS_14-37.txt
+# Trigger event 108071 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108070
+	save_date = yes
+	country = AUS
+	date = { day = 4 month = may year = 1929 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 7
+	trigger = {
+		incabinet = 115127
+		event = { id = 108067 days = 680 }
+	}
+	name = "EVT_AUS_108070_NAME"
+	desc = "EVT_AUS_108070_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { not = { minister = 115151 } } type = wakeminister which = 115151 }
+		command = { type = headofgovernment which = 115151 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108071] AUS | 1930 | The 1930 Parliamentary Elections (Elecciones de 1930)
+# Triggered by event 108070 in events/Minors/AUS_14-37.txt
+# Triggered by event 108067 in events/Minors/AUS_14-37.txt
+# Trigger event 108073 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108071
+	country = AUS
+	save_date = yes
+	date = { day = 9 month = november year = 1930 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 20
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = AUS }
+		or = {
+			not = { event = 108070 }
+			event = { id = 108070 days = 270 }
+		}
+		event = { id = 108067 days = 1080 }
+	}
+	name = "EVT_AUS_108071_NAME"
+	desc = "EVT_AUS_108071_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 115151
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01045_A"
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { trigger = { and = { ai = yes dissent = 30 incabinet = 115123 } } type = dissent value = -20 }
+		command = { trigger = { not = { minister = 115152 } } type = wakeminister which = 115152 }
+		command = { trigger = { ai = yes not = { minister = 115157 } } type = wakeminister which = 115157 }
+		command = { trigger = { ai = yes not = { minister = 115163 } } type = wakeminister which = 115163 }
+		command = { trigger = { ai = yes not = { minister = 115170 } } type = wakeminister which = 115170 }
+		command = { type = headofgovernment which = 115152 }
+		command = { trigger = { ai = yes } type = foreignminister which = 115157 }
+		command = { trigger = { ai = yes } type = armamentminister which = 115163 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 115170 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = political_left value = -1 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 115123
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01043_B"
+		ai_chance = 10
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 incabinet = 115151 } } type = dissent value = -20 }
+		command = { trigger = { not = { minister = 115123 } } type = wakeminister which = 115123 }
+		command = { trigger = { ai = yes not = { minister = 115114 } } type = wakeminister which = 115114 }
+		command = { type = headofgovernment which = 115123 }
+		command = { trigger = { ai = yes } type = foreignminister which = 115114 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = political_left value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108075] AUS | 1932 | The president of the National Council resigns (El presidente del Consejo Nacional dimite)
+# Triggered by event 108074 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108075
+	country = AUS
+	name = "EVT_AUS_108075_NAME"
+	desc = "EVT_AUS_108075_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108078] AUS | 1932 | Aligning with Italian fascism (Alineándose con el fascismo italiano)
+# Triggered by event 108076 in events/Minors/AUS_14-37.txt
+# Trigger event 166272 in events/ITA/ITA_20-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108078
+	country = AUS
+	name = "EVT_AUS_108078_NAME"
+	desc = "EVT_AUS_108078_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "EVT_AUS_108078_A"
+		ai_chance = 100
+		command = { type = trigger which = 166272 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = set_domestic which = democratic value = 3 }
+	}
+	action = {
+		name = "EVT_AUS_108078_B"
+		ai_chance = 0
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108073] AUS | 1932 | The 1932 Parliamentary Elections (Elecciones de 1932)
+# Triggered by event 108071 in events/Minors/AUS_14-37.txt
+# Trigger event 108074 in events/Minors/AUS_14-37.txt
+# Trigger event 108076 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108073
+	country = AUS
+	save_date = yes
+	date = { day = 9 month = may year = 1932 }
+	deathdate = { day = 1 month = january year = 1937 }
+	offset = 10
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = AUS }
+		event = { id = 108071 days = 720 }
+	}
+	name = "EVT_AUS_108073_NAME"
+	desc = "EVT_AUS_108073_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 115152
+					}
+				}
+			}
+		}
+		name = "EVT_AUS_108073_A"
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { trigger = { and = { ai = yes dissent = 30 incabinet = 115123 } } type = dissent value = -20 }
+		command = { trigger = { not = { minister = 115154 } } type = wakeminister which = 115154 }
+		command = { trigger = { ai = yes not = { minister = 115159 } } type = wakeminister which = 115159 }
+		command = { trigger = { ai = yes not = { minister = 115165 } } type = wakeminister which = 115165 }
+		command = { trigger = { ai = yes not = { minister = 115173 } } type = wakeminister which = 115173 }
+		command = { type = headofgovernment which = 115154 }
+		command = { trigger = { ai = yes } type = foreignminister which = 115159 }
+		command = { trigger = { ai = yes } type = armamentminister which = 115165 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 115173 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = political_left value = -1 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 115123
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01043_B"
+		ai_chance = 0
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 incabinet = 115152 } } type = dissent value = -20 }
+		command = { trigger = { not = { minister = 115123 } } type = wakeminister which = 115123 }
+		command = { trigger = { not = { minister = 115114 } } type = wakeminister which = 115114 }
+		command = { type = headofgovernment which = 115123 }
+		command = { type = foreignminister which = 115114 }
+		command = { type = domestic which = democratic value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108074] AUS | 1932 | Engelbert Dollfuss Nominated Chancellor (Dollfuss Canciller)
+# Triggered by event 108073 in events/Minors/AUS_14-37.txt
+# Trigger event 108075 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108074
+	country = AUS
+	date = { day = 20 month = may year = 1932 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 10
+	trigger = {
+		minister = 115150
+		NOT = { incabinet = 115150 }
+		incabinet = 115001
+		or = {
+			event = 108073
+			not = { government = democratic }
+			year = 1934
+		}
+	}
+	name = "EVT_AUS_108074_NAME"
+	desc = "EVT_AUS_108074_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 115150 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = event which = 108075 when = 14 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108076] AUS | 1932 | The Birth of Austrofascism (Nacimiento del austrofascismo)
+# Triggered by event 108073 in events/Minors/AUS_14-37.txt
+# Trigger event 108078 in events/Minors/AUS_14-37.txt
+# Trigger event 108077 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108076
+	country = AUS
+	date = { day = 21 month = may year = 1932 }
+	deathdate = { day = 1 month = january year = 1937 }
+	offset = 10
+	trigger = {
+		or = {
+			and = {
+				government = democratic
+				NOT = { ispuppet = AUS }
+				or = {
+					event = { id = 108073 days = 15 }
+					year = 1935
+				}
+			}
+			and = {
+				not = {
+					government = democratic
+					ispuppet = AUS
+				}
+			}
+		}
+		random = 30
+	}
+	name = "EVT_AUS_108076_NAME"
+	desc = "EVT_AUS_108076_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "EVT_AUS_108076_A"
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = set_domestic which = freedom value = 1 }
+		command = { type = event which = 108078 when = 7 }
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		name = "EVT_AUS_108076_B"
+		ai_chance = 0
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = dissent value = 20 }
+		command = { type = sleepevent which = 108077 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329062] AUS | 1933 | Communist Coup Attempt (Intento de golpe de Estado comunista)
+# Triggered by event 329058 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329062
+	random = no
+	country = AUS
+	one_action = yes
+	trigger = {
+		event = 329058
+		random = 5
+		atwar = no
+		not = { alliance = { country = DDR } }
+		not = { war = { country = DDR } }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_SHARED_00197_NAME"
+	desc = "EVT_SHARED_00197_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	action = {
+		ai_chance = 20
+		name = "EVT_SHARED_00197_A"
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = dissent value = -5 }
+		command = { type = country which = U16 }
+		command = { type = set_relation which = DDR value = 200 }
+		command = { type = set_relation which = SOV value = 200 }
+		command = { type = alliance which = SOV when = 1 }
+	}
+	action = {
+		ai_chance = 80
+		name = "EVT_SHARED_00197_B"
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108009] AUS | 1933 | Austrian Prohibition of Political Uniforms (Prohibición austriaca de uniformes políticos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108009
+	random = no
+	country = AUS
+	trigger = {
+			exists = AUS
+			}
+	date = { day = 03 month = may year = 1933 }
+	name = "EVT_SHARED_00697_NAME"
+	desc = "EVT_SHARED_00697_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+		command = { type = belligerence value = -1 }
+		command = { type = dissent value = 1 }
+		command = { type = relation which = GER value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108010] AUS | 1933 | German Tourist Fees on Visits to Austria (Impuestos turísticos a los alemanes que visitan Austria)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108010
+	random = no
+	country = AUS
+	trigger = {
+			exists = GER
+			}
+	date = { day = 20 month = june year = 1933 }
+	name = "EVT_SHARED_00700_NAME"
+	desc = "EVT_SHARED_00700_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_NO"
+		ai_chance = 100
+		command = { type = relation which = GER value = -10 }
+		command = { type = money value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108011] AUS | 1933 | Austrian Expulsion of Habicht (Expulsión austriaca de Habicht)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108011
+	random = no
+	country = AUS
+	trigger = {
+			exists = GER
+			}
+	date = { day = 29 month = june year = 1933 }
+	name = "EVT_SHARED_00701_NAME"
+	desc = "EVT_SHARED_00701_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = -5 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108000] AUS | 1934 | Nazi Putsch Attempt in Vienna (Intentona golpista nazi en Viena)
+# Triggered by event 329057 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108000
+	random = no
+	country = AUS
+	name = "EVT_AUS_108000_NAME"
+	desc = "EVT_SHARED_00195_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = sleepminister which = 115150 }
+		command = { type = headofgovernment which = 115002 }
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = relation which = GER value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108006] AUS | 1936 | Austrian State Visit to Rome (Visita de Estado Austriaca a Roma)
+# Triggered by event 329196 in events/ITA/ITA_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108006
+	random = no
+	country = AUS
+	name = "EVT_SHARED_00682_NAME"
+	desc = "EVT_SHARED_00682_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = 10 }
+		command = { type = relation which = ITA value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108007] AUS | 1936 | Austro-German Agreement (Acuerdo austro-alemán)
+# Triggered by event 329197 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108007
+	random = no
+	country = AUS
+	name = "EVT_SHARED_00683_NAME"
+	desc = "EVT_SHARED_00683_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+		command = { type = relation which = GER value = 10 }
+		command = { type = money value = 300 }
+		command = { type = supplies value = 2000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108012] AUS | 1936 | Fall of the Austrian Democratic Republic (Disolución de la República Democrática de Austria)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108012
+	random = no
+	country = AUS
+	name = "EVT_AUS_108012_NAME"
+	desc = "EVT_AUS_108012_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U16 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108046] AUS | 1936 | People's Republic Founded (República Popular)
+# Trigger event 108047 in events/Minors/AUS_14-37.txt
+# Trigger event 251002 in events/Minors/U16.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 108046
+   country = AUS
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U16
+            NOT = { ai = AUS }
+            NOT = { ai = U16 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U16
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U16 } }
+      command = { type = country which = U16 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U16
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = AUS }
+               control = { province = 195 data = -1 }
+            }
+         }
+         type = trigger which = 108047
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U16 }
+               NOT = { control = { province = 195 data = -1 } }
+            }
+         }
+         type = trigger which = 251002
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U16
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [108047] AUS | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 108046 in events/Minors/AUS_14-37.txt
+# Triggered by event 251001 in events/Minors/U16.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 108047
+   country = AUS
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U16 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [108050] AUS | 1936 | The USIA Conglomerate (El consorcio soviético USIA)
+# Trigger event 108053 in events/Minors/AUS_44-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108050
+	country = AUS
+	name = "EVT_AUS_108050_NAME"
+	desc = "EVT_AUS_108050_DESC"
+	picture = "nwo/usia"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = industrial_modifier which = total value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108051] AUS | 1936 | Devastation of Soviet Requisitions (Impacto de las incautaciones soviéticas)
+# Trigger event 108053 in events/Minors/AUS_44-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108051
+	country = AUS
+	name = "EVT_AUS_108051_NAME"
+	desc = "EVT_AUS_108051_DESC"
+	picture = "nwo/usia"
+	style = 1
+	action = {
+		name = "ACTION_NAME_HORRIBLE"
+		command = { type = dissent value = 25 }
+		command = { type = industrial_modifier which = total value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108064] AUS | 1936 | The Protocol for the Reconstruction of Austria (Reconstrucción económica)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108064
+	country = AUS
+	name = "EVT_SHARED_01044_NAME"
+	desc = "EVT_SHARED_01044_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108004] AUS | 1936 | Vienna Conference (Conferencia de Viena)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108004
+	random = no
+	country = AUS
+	trigger = {
+			exists = ITA
+			}
+	date = { day = 08 month = november year = 1936 }
+	name = "EVT_SHARED_00663_NAME"
+	desc = "EVT_SHARED_00663_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ITA value = 10 }
+		command = { type = relation which = HUN value = 10 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [108003] AUS | 1937 | Cabinet Reshuffle (Cambio de gobierno)
+# Trigger event 150032 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108003
+	random = no
+	country = AUS
+	trigger = {
+		OR = { random = 4 AND = { random = 55 year = 1938 } year = 1939 }
+		OR = {
+			AND = {
+				NOT = { guarantee = { country = ITA country = AUS } }
+				minister = 1
+			}
+			alliance = { country = GER country = ITA }
+		}
+	}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	style = 2
+	picture = "GLOBAL/anschluss"
+	date = { day = 1 month = january year = 1937 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 115013 }
+		command = { type = headofgovernment which = 115020 }
+		command = { type = foreignminister which = 115030 }
+		command = { type = armamentminister which = 115041 }
+		command = { type = ministerofsecurity which = 115055 }
+		command = { type = ministerofintelligence which = 115066 }
+		command = { type = chiefofstaff which = 115075 }
+		command = { type = chiefofarmy which = 115085 }
+		command = { type = chiefofnavy which = 115091 }
+		command = { type = chiefofair which = 115010 }
+		command = { type = dissent value = -1 }
+		command = { type = ai which = "switch/AUS_Anschluss.ai" }
+		command = { type = trigger which = 150032 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [108008] AUS | 1937 | Amnesty for Austrian National Socialists (Amnistía para los nacionalsocialistas austriacos)
+# Trigger event 150096 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108008
+	random = no
+	country = AUS
+	trigger = {
+			atwar = no
+			exists = GER
+			}
+	date = { day = 14 month = january year = 1937 }
+	name = "EVT_SHARED_00685_NAME"
+	desc = "EVT_SHARED_00685_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = 10 }
+		command = { type = trigger which = 150096 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [108005] AUS | 1937 | Austrian State Visit to Italy (Visita de Estado Austriaca a Italia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108005
+	random = no
+	country = AUS
+	trigger = {
+			exists = ITA
+			}
+	date = { day = 21 month = april year = 1937 }
+	name = "EVT_SHARED_00665_NAME"
+	desc = "EVT_SHARED_00665_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		command = { type = relation which = FRA value = -15 }
+		command = { type = relation which = CZE value = -15 }
+		}
+}

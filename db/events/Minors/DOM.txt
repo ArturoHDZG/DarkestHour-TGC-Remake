@@ -1,0 +1,734 @@
+# ============================================================================
+# File: events/Minors/DOM.txt (20 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [140023] DOM | 1924 | Joining the League of Nations (Entrar en la Sociedad)
+# Triggered by event 324498 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 231025 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 140023
+	persistent = no
+	country = DOM
+trigger = {
+		AND = { NOT = {
+		atwar = yes
+		OR = { event = 324498
+				local_flag = { which = league_of_nations when = 1 value = 1 }
+						}
+					}
+				}
+			}
+	name = "EVT_SHARED_01023_NAME"
+	desc = "EVT_SHARED_01023_DESC"
+	picture = "GLOBAL/aar_lon"
+	style = 2
+	date = { day = 1 month = january year = 1924 }
+	deathdate = { day = 1 month = january year = 1945 }
+	offset = 10
+	action = {
+		name = "EVT_SHARED_01023_A"
+		ai_chance = 100
+		command = { type = local_setflag which = league_of_nations }
+		command = { type = dissent value = -10 }
+		command = { type = 	relation which = ENG value = 50 }
+		command = { type = 	relation which = FRA value = 50 }
+		command = { type = 	relation which = ITA value = 50 }
+		command = { type = 	relation which = JAP value = 50 }
+		command = { type = 	relation which = USA value = 50 }
+		command = { trigger = { local_flag = disarm_army_10 } type = demobilize which = land when = 0 where = 0 value = 10 }
+		command = { trigger = { local_flag = disarm_army_25 } type = demobilize which = land when = 0 where = 0 value = 25 }
+		command = { trigger = { local_flag = disarm_army_50 } type = demobilize which = land when = 0 where = 0 value = 50 }
+		command = { trigger = { local_flag = disarm_army_75 } type = demobilize which = land when = 0 where = 0 value = 75 }
+		command = { type = event which = 231025 where = -1 when = 0 }
+	}
+	action ={
+		name = "EVT_SHARED_01023_B"
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = 	relation which = ENG value = -50 }
+		command = { type = 	relation which = FRA value = -50 }
+		command = { type = 	relation which = ITA value = -50 }
+		command = { type = 	relation which = JAP value = -50 }
+		command = { type = 	relation which = USA value = -50 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [140000] DOM | 1938 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140000
+	random = no
+	country = DOM
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		NOT = { ispuppet = DOM }
+		OR = {
+			government = democratic
+			ideology = paternal_autocrat
+			ideology = left_wing_radical
+			}
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = june year = 1938 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 320011 }
+		command = { type = headofgovernment which = 320017 }
+		command = { type = foreignminister which = 320027 }
+		command = { type = armamentminister which = 320004 }
+		command = { type = ministerofsecurity which = 320041 }
+		command = { type = ministerofintelligence which = 320006 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 320013 }
+		command = { type = headofgovernment which = 320019 }
+		command = { type = foreignminister which = 320003 }
+		command = { type = armamentminister which = 320036 }
+		command = { type = ministerofsecurity which = 320044 }
+		command = { type = ministerofintelligence which = 320050 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329524] DOM | 1940 | Diplomatic Talks: Dominican Republic (Negociaciones con República Dominicana)
+# Triggered by event 329517 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329524
+	random = no
+	country = DOM
+	trigger = {
+		random = 5
+		event = 329517
+		alliance = { country = BRA country = ENG }
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = DOM country = SOV } }
+		NOT = { alliance = { country = DOM country = ENG } }
+		NOT = { alliance = { country = DOM country = GER } }
+		NOT = { alliance = { country = DOM country = JAP } }
+		NOT = { war = { country = DOM country = ENG } }
+		NOT = { ispuppet = yes }
+	}
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_DOM_329524_NAME
+	desc = EVT_SHARED_00416_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = { trigger = { NOT = { army = 3 } }
+		ai_chance = 20
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } alliance = { country = ARG country = GER } }
+		ai_chance = 40
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 60
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } alliance = { country = ARG country = GER } }
+		ai_chance = 80
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 200
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 10 }
+		ai_chance = 900
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = {
+		ai_chance = 10
+		name = ACTION_NAME_NEUTRAL
+		command = { type = relation which = ENG value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140001] DOM | 1942 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140001
+	random = no
+	country = DOM
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		NOT = { ispuppet = DOM }
+		OR = {
+			government = democratic
+			ideology = paternal_autocrat
+			ideology = left_wing_radical
+			}
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = june year = 1942 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 320001 }
+		command = { type = headofgovernment which = 320018 }
+		command = { type = foreignminister which = 320027 }
+		command = { type = armamentminister which = 320034 }
+		command = { type = ministerofsecurity which = 320005 }
+		command = { type = ministerofintelligence which = 320048 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 320013 }
+		command = { type = headofgovernment which = 320020 }
+		command = { type = foreignminister which = 320029 }
+		command = { type = armamentminister which = 320037 }
+		command = { type = ministerofsecurity which = 320045 }
+		command = { type = ministerofintelligence which = 320050 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [140009] DOM | 1946 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140009
+	country = DOM
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 320001 }
+		command = { type = headofgovernment which = 320018 }
+		command = { type = foreignminister which = 320027 }
+		command = { type = armamentminister which = 320035 }
+		command = { type = ministerofsecurity which = 320042 }
+		command = { type = ministerofintelligence which = 320049 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 320014 }
+		command = { type = headofgovernment which = 320021 }
+		command = { type = foreignminister which = 320030 }
+		command = { type = armamentminister which = 320038 }
+		command = { type = ministerofsecurity which = 320045 }
+		command = { type = ministerofintelligence which = 320050 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140002] DOM | 1946 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140002
+	random = no
+	country = DOM
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		NOT = { ispuppet = DOM }
+		OR = {
+			government = democratic
+			ideology = paternal_autocrat
+			ideology = left_wing_radical
+			}
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = june year = 1946 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 320001 }
+		command = { type = headofgovernment which = 320018 }
+		command = { type = foreignminister which = 320027 }
+		command = { type = armamentminister which = 320035 }
+		command = { type = ministerofsecurity which = 320042 }
+		command = { type = ministerofintelligence which = 320049 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 320014 }
+		command = { type = headofgovernment which = 320021 }
+		command = { type = foreignminister which = 320030 }
+		command = { type = armamentminister which = 320038 }
+		command = { type = ministerofsecurity which = 320045 }
+		command = { type = ministerofintelligence which = 320050 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [140010] DOM | 1952 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140010
+	country = DOM
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 320068 }
+		command = { type = headofgovernment which = 320200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140003] DOM | 1952 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140003
+	random = no
+	country = DOM
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			headofstate = 320001
+			headofstate = 320064
+			}
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = august year = 1952 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = headofstate which = 320068 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [140011] DOM | 1957 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140011
+	country = DOM
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 320068 }
+		command = { type = headofgovernment which = 320201 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140012] DOM | 1960 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140012
+	country = DOM
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 320202 }
+		command = { type = headofgovernment which = 320203 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140022] DOM | 1961 | Assassination of Rafael Trujillo (Ajusticiamiento de Trujillo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140022
+	country = DOM
+	name = "EVT_DOM_140022_NAME"
+	desc = "EVT_DOM_140022_DESC"
+	picture = "nwo/assassination_of_trujillo"
+	style = 1
+	date = { day = 29 month = may year = 1961 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = sleepminister which = 320001 }
+		command = { type = sleepminister which = 320007 }
+		command = { type = sleepminister which = 320008 }
+		command = { type = sleepminister which = 320018 }
+		command = { type = sleepminister which = 320034 }
+		command = { type = sleepminister which = 320059 }
+		command = { type = sleepminister which = 320064 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140013] DOM | 1962 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140013
+	country = DOM
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 320204 }
+		command = { type = headofgovernment which = 320205 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140014] DOM | 1963 | Juan Bosch Elected President (Juan Bosch llega al poder)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140014
+	country = DOM
+	name = "EVT_DOM_140014_NAME"
+	desc = "EVT_DOM_140014_DESC"
+	picture = "nwo/juan_bosch"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 180
+	deathdate = { day = 29 month = september year = 1963 }
+	action = {
+		name = "EVT_DOM_140014_A"
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 320206 }
+		command = { type = headofgovernment which = 320207 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 5
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 320210 }
+		command = { type = headofgovernment which = 320211 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140015] DOM | 1963 | The Triumvirate Coup (Golpe del Triunvirato)
+# ----------------------------------------------------------------------------
+event = {
+	id = 140015
+	country = DOM
+	name = "EVT_DOM_140015_NAME"
+	desc = "EVT_DOM_140015_DESC"
+	picture = "nwo/triumvirate_coup"
+	style = 1
+	date = { day = 0 month = october year = 1963 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 320208 }
+		command = { type = headofgovernment which = 320209 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140016] DOM | 1965 | Operation Power Pack (Operación Power Pack)
+# Triggered by event 329792 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 140016
+	country = DOM
+	name = EVT_DOM_140016_NAME
+	desc = EVT_DOM_140016_DESC
+	picture = "nwo/operation_power_pack"
+	style = 1
+	trigger = {
+		event = 329792
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 320212 }
+		command = { type = headofgovernment which = 320213 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140017] DOM | 1966 | The Balaguer Era (La era de Joaquín Balaguer)
+# Triggered by event 329792 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 140017
+	country = DOM
+	name = EVT_DOM_140017_NAME
+	desc = EVT_DOM_140017_DESC
+	picture = "nwo/joaquin_balaguer"
+	style = 1
+	trigger = {
+		event = 329792
+	}
+	date = { day = 0 month = january year = 1966 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1969 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 320202 }
+		command = { type = headofgovernment which = 320214 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140018] DOM | 1970 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 329792 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 140018
+	country = DOM
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		event = 329792
+	}
+	date = { day = 0 month = january year = 1970 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1977 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 320215 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140019] DOM | 1978 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 329792 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 140019
+	country = DOM
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		event = 329792
+	}
+	date = { day = 0 month = january year = 1978 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1981 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 320216 }
+		command = { type = headofgovernment which = 320217 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140020] DOM | 1982 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 329792 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 140020
+	country = DOM
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		event = 329792
+	}
+	date = { day = 0 month = january year = 1982 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 320220 }
+		command = { type = headofgovernment which = 320218 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [140021] DOM | 1986 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 329792 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 140021
+	country = DOM
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		event = 329792
+	}
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 320220 }
+		command = { type = headofgovernment which = 320219 }
+	}
+}

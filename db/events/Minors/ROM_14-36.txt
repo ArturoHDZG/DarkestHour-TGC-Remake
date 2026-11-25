@@ -1,0 +1,2126 @@
+# ============================================================================
+# File: events/Minors/ROM_14-36.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [209064] ROM | 1914 | Romanian Armistice (Armisticio de Rumania)
+# Triggered by event 211035 in events/Minors/RUS_14-14.txt
+# Trigger event 147256 in events/FRA/FRA_Decisions.txt
+# Trigger event 147258 in events/FRA/FRA_Decisions.txt
+# Trigger event 209065 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209064
+	country = ROM
+	trigger = {
+		war = { country = ROM  country = U09 }
+		OR = {
+			AND = {
+				lost_national = { country = ROM value = 10 }
+				OR = {
+					NOT = { war = { country = RUS country = U09 } }
+					event = 211035
+				}
+			}
+			lost_national = { country = ROM value = 80 }
+			NOT = {
+				control = { province = 311 data = ROM }
+				control = { province = 316 data = ROM }
+			}
+		}
+	}
+	name = "EVT_ROM_209064_NAME"
+	desc = "EVT_ROM_209064_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+	name = "ACTION_NAME_DEFEAT"
+	command = { trigger = { ai = no} type = dissent value = 5 }
+		command = { trigger = {
+					participant = { country = ROM value = 1 }
+					alliance = { country = ROM country = ITA }
+					NOT = {
+						alliance = { country = ROM country = FRA }
+						alliance = { country = ROM country = ENG }
+						alliance = { country = ROM country = RUS }
+						alliance = { country = ROM country = USA } } }
+				type = alliance_leader which = ITA where = 0 }
+		command = { trigger = {
+					participant = { country = ROM value = 1 }
+					alliance = { country = ROM country = GRE }
+					NOT = {
+						alliance = { country = ROM country = FRA }
+						alliance = { country = ROM country = ENG }
+						alliance = { country = ROM country = RUS }
+						alliance = { country = ROM country = USA }
+						alliance = { country = ROM country = ITA } } }
+				type = alliance_leader which = GRE where = 0 }
+	command = { type = leave_alliance when = 1 }
+	command = { type = peace which = U08 value = 1 }
+	command = { type = peace which = U09 value = 1 }
+	command = { type = secedearea which = U09 value = "Transylvania" }
+	command = { type = secedeprovince which = U09 value = 300 }
+	command = { type = secedeprovince which = U09 value = 301 }
+	command = { type = demobilize which = land when = 0 where = 0 value = 10 }
+	command = { type = strength which = land when = 0 where = 0 value = 0.33 }
+	command = { type = strength which = air when = 0 where = 0 org = 0 value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209110] ROM | 1914 | The Outcome of the Great War (historical) (El Resultado de la Gran Guerra (histórica))
+# Trigger event 209112 in events/Minors/ROM_14-36.txt
+# Trigger event 209113 in events/Minors/ROM_14-36.txt
+# Trigger event 209115 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209110
+	country = ROM
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		atwar = no
+		owned = { province = 300 data = -1 }
+		owned = { province = 303 data = -1 }
+		owned = { province = 310 data = -1 }
+		NOT = { exists = U09 }
+	}
+	name = "EVT_ROM_209110_NAME"
+	desc = "EVT_ROM_209110_DESC"
+	picture = "GLOBAL/assistance"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -2 }
+		command = { type = local_setflag which = winner }
+		command = { trigger = { not = { flag = lon } } type = setflag which = lon }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209112] ROM | 1914 | Proclamation of Union (Proclamación de la Unión)
+# Triggered by event 209110 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209112
+	country = ROM
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		event = 209110
+		NOT = { owned = { province = 289 data = -1 } }
+	}
+	name = "EVT_ROM_209112_NAME"
+	desc = "EVT_ROM_209112_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = HUN value = -100 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209113] ROM | 1914 | Romanian Constitution of 1923 (Constitución rumana de 1923)
+# Triggered by event 209110 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209113
+	country = ROM
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		event = 209110
+		year = 1923
+		NOT = { ispuppet = ROM }
+	}
+	name = "EVT_ROM_209113_NAME"
+	desc = "EVT_ROM_209113_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209065] ROM | 1914 | The Treaty of Bucharest (El Tratado de Bucarest)
+# Triggered by event 209064 in events/Minors/ROM_14-36.txt
+# Triggered by event 223426 in events/SOV/SOV_14-33.txt
+# Trigger event 223426 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209065
+	country = ROM
+	trigger = {
+		event = 209064
+		random = 25
+	}
+	name = "EVT_ROM_209065_NAME"
+	desc = "EVT_ROM_209065_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger =  { participant = { country = BUL value = 2 } } type = secedeprovince which = BUL value = 307 when = 1 }
+		command = { trigger =  { participant = { country = BUL value = 2 } } type = secedeprovince which = BUL value = 310 when = 1 }
+		command = { trigger =  { participant = { country = BUL value = 2 } } type = secedeprovince which = BUL value = 313 when = 1 }
+		command = { trigger =  { participant = { country = BUL value = 2 } } type =	addcore which = 310	where = BUL }
+		command = { trigger =  { participant = { country = BUL value = 2 } } type =	addclaim which = 313 where = BUL }
+		command = { trigger = { participant = { country = U08 value = 2 } } type = access which = U08 }
+		command = { trigger = { participant = { country = U09 value = 2 } } type = access which = U09 }
+		command = { trigger = { participant = { country = BUL value = 2 } } type = access which = BUL }
+		command = { trigger = { participant = { country = OTT value = 2 } } type = access which = OTT }
+		command = { trigger = { event = 223426 owned = { province = 306 data = U09 } } type = secedeprovince which = ROM value = 306 when = 2 }
+		command = { trigger = { event = 223426 owned = { province = 304 data = U09 } } type = secedeprovince which = ROM value = 304 when = 2 }
+		command = { trigger = { event = 223426 owned = { province = 303 data = U09 } } type = secedeprovince which = ROM value = 303 when = 2 }
+		command = { trigger = { event = 223426 owned = { province = 305 data = U09 } } type = secedeprovince which = ROM value = 305 when = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209005] ROM | 1914 | Death of the Head of State (Muerte del Jefe del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209005
+	random = no
+	country = ROM
+	style = 2
+	trigger = {
+		headofstate = 110158
+	}
+	date = { day = 9 month = october year = 1914 }
+	name = "EVT_SHARED_00501_NAME"
+	desc = "EVT_SHARED_00501_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 110160 }
+		command = { type = sleepminister which = 110158 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209062] ROM | 1915 | Russian Offensive into Hungary (Ofensiva rusa en Hungría)
+# Triggered by event 147256 in events/FRA/FRA_Decisions.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 147257 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209062
+	country = ROM
+	name = "EVT_ROM_209062_NAME"
+	desc = "EVT_ROM_209062_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_JOIN_ENTENTE"
+		ai_chance= 95
+		command = { type = alliance which = FRA when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+		command = { type = trigger which = 147257 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NEUTRAL"
+		ai_chance = 5
+		command = { type = relation which = FRA value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209063] ROM | 1916 | Russian Success in Galicia (Éxito ruso en Galitzia)
+# Triggered by event 147258 in events/FRA/FRA_Decisions.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 147257 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209063
+	country = ROM
+	name = "EVT_ROM_209063_NAME"
+	desc = "EVT_ROM_209063_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = alliance which = FRA when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+		command = { type = trigger which = 147257 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209111] ROM | 1919 | War against Communist Hungary? (¿Guerra contra Hungría?)
+# Triggered by event 159069 in events/Minors/HUN_14-38.txt
+# Trigger event 159071 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209111
+	country = ROM
+	name = "EVT_ROM_209111_NAME"
+	desc = LOST_DESC
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 100
+		command = { type = war which = HUN }
+		command = { trigger = { ai = yes } type = ai which = "AAR/wars/nosurrender.ai" }
+		command = { type = trigger which = 159071 }
+	}
+	action = {
+		name = "EVT_ROM_209111_A"
+		ai_chance = 0
+		command = { type = domestic which = interventionism value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209118] ROM | 1919 | General Elections (Elecciones generales)
+# Trigger event 209119 in events/Minors/ROM_14-36.txt
+# Trigger event 209120 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209118
+	country = ROM
+	save_date = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ROM }
+	}
+	date = { day = 8 month = november year = 1919 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 20
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ROM_209118_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "EVT_SHARED_01102_A"
+		ai_chance = 98
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { trigger = { not = { minister = 110197 } } type = wakeminister which = 110197 }
+		command = { trigger = { ai = yes not = { minister = 110141 } } type = wakeminister which = 110141 }
+		command = { trigger = { ai = yes not = { minister = 110173 } } type = wakeminister which = 110173 }
+		command = { trigger = { ai = yes not = { minister = 110187 } } type = wakeminister which = 110187 }
+		command = { type = headofgovernment which = 110197 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110141 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110173 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110187 }
+	}
+	action = {
+		name = "EVT_SHARED_01102_B"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { not = { minister = 110196 } } type = wakeminister which = 110196 }
+		command = { trigger = { ai = yes not = { minister = 110140 } } type = wakeminister which = 110140 }
+		command = { trigger = { ai = yes not = { minister = 110186 } } type = wakeminister which = 110186 }
+		command = { type = headofgovernment which = 110196 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110140 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110186 }
+	}
+	action = {
+		name = "EVT_SHARED_01102_C"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { trigger = { not = { minister = 110198 } } type = wakeminister which = 110198 }
+		command = { trigger = { ai = yes not = { minister = 110192 } } type = wakeminister which = 110192 }
+		command = { type = headofgovernment which = 110198 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110192 }
+	}
+	action = {
+		name = "EVT_SHARED_01102_D"
+		ai_chance = 0
+		command = { type = dissent value = 1 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209119] ROM | 1920 | King Ferdinand dissolves Vaida-Voevod's government (El rey Fernando disuelve el gobierno de Vaida-Voevod)
+# Triggered by event 209118 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209119
+	country = ROM
+	trigger = {
+		government = democratic
+		OR = {
+			headofstate = 110159
+			headofstate = 110160
+		}
+		headofgovernment = 110197
+		event = { id = 209118 days = 170 }
+	}
+	date = { day = 12 month = march year = 1920 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 1
+	name = "EVT_ROM_209119_NAME"
+	desc = "EVT_ROM_209119_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = democratic value = -1 }
+		command = { trigger = { not = { minister = 110151 } } type = wakeminister which = 110151 }
+		command = { trigger = { not = { minister = 110143 } } type = wakeminister which = 110143 }
+		command = { trigger = { not = { minister = 110176 } } type = wakeminister which = 110176 }
+		command = { trigger = { not = { minister = 110190 } } type = wakeminister which = 110190 }
+		command = { type = headofgovernment which = 110151 }
+		command = { type = foreignminister which = 110143 }
+		command = { type = armamentminister which = 110176 }
+		command = { type = ministerofsecurity which = 110190 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209120] ROM | 1920 | General Elections (Elecciones generales)
+# Triggered by event 209118 in events/Minors/ROM_14-36.txt
+# Trigger event 209124 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209120
+	country = ROM
+	save_date = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ROM }
+		event = { id = 209118 days = 360 }
+	}
+	date = { day = 27 month = may year = 1920 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ROM_209120_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110151
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01103_A"
+		ai_chance = 98
+		command = { type = dissent value = -1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110197 incabinet = 110196 incabinet = 110198 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { trigger = { not = { minister = 110151 } } type = wakeminister which = 110151 }
+		command = { trigger = { ai = yes not = { minister = 110143 } } type = wakeminister which = 110143 }
+		command = { trigger = { ai = yes not = { minister = 110176 } } type = wakeminister which = 110176 }
+		command = { trigger = { ai = yes not = { minister = 110190 } } type = wakeminister which = 110190 }
+		command = { type = headofgovernment which = 110151 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110143 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110176 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110190 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110197
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01102_A"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110196 incabinet = 110198 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { trigger = { not = { minister = 110197 } } type = wakeminister which = 110197 }
+		command = { trigger = { ai = yes not = { minister = 110141 } } type = wakeminister which = 110141 }
+		command = { trigger = { ai = yes not = { minister = 110173 } } type = wakeminister which = 110173 }
+		command = { trigger = { ai = yes not = { minister = 110187 } } type = wakeminister which = 110187 }
+		command = { type = headofgovernment which = 110197 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110141 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110173 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110187 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110196
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01102_B"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110197 incabinet = 110198 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { not = { minister = 110196 } } type = wakeminister which = 110196 }
+		command = { trigger = { ai = yes not = { minister = 110141 } } type = wakeminister which = 110140 }
+		command = { trigger = { ai = yes not = { minister = 110187 } } type = wakeminister which = 110186 }
+		command = { type = headofgovernment which = 110196 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110140 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110186 }
+	}
+	action = {
+		name = "EVT_SHARED_01102_D"
+		ai_chance = 0
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110196 incabinet = 110197 incabinet = 110198 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209060] ROM | 1921 | The Little Entente (La Pequeña Entente)
+# Triggered by event 136049 in events/Minors/CZE_14-53.txt
+# Triggered by event 323006 in events/Minors/YUG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209060
+	random = no
+	country = ROM
+	name = "EVT_SHARED_01180_NAME"
+	desc = "EVT_SHARED_01180_DESC"
+	style = 2
+	picture = "Minors/little_entente"
+	action_a = {
+		name = "ACTION_NAME_SIGN"
+		ai_chance = 97
+                command = { type = relation which = CZE value = 25 }
+		command = { type = relation which = FRA value = 25 }
+                command = { type = relation which = YUG value = 25 }
+                command = { type = relation which = HUN value = -25 }
+                command = { type = alliance which = YUG }
+                command = { type = dissent value = -2 }
+		command = { type = domestic which = defense_lobby value = -1 }
+        }
+        action_b = {
+		name = "ACTION_NAME_DONT_SIGN"
+		ai_chance = 3
+		command = { type = relation which = CZE value = -50 }
+		command = { type = relation which = YUG value = -50 }
+		command = { type = sleepevent which = 209061 }
+                command = { type = domestic which = defense_lobby value = 1 }
+                command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209121] ROM | 1921 | Scandal in Avarescu's cabinet (Escándalo en el gabinete de Avarescu)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209121
+	country = ROM
+	trigger = {
+		headofgovernment = 110151
+		incabinet = 110176
+	}
+	date = { day = 1 month = march year = 1921 }
+	deathdate = { day = 29 month = march year = 1921 }
+	offset = 30
+	name = "EVT_ROM_209121_NAME"
+	desc = "EVT_ROM_209121_DESC"
+	action = {
+		name = "EVT_ROM_209121_A"
+		ai_chance = 100
+		command = { trigger = { not = { minister = 110168 } } type = wakeminister which = 110168 }
+		command = { type = armamentminister which = 110168 }
+		command = { type = dissent value = -1 }
+	}
+	action = {
+		name = "EVT_ROM_209121_B"
+		ai_chance = 1
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209122] ROM | 1921 | Alexandru Averescu resigns (Alexandru Averescu renuncia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209122
+	country = ROM
+	trigger = {
+		incabinet = 110151
+	}
+	date = { day = 17 month = december year = 1921 }
+	name = "EVT_ROM_209122_NAME"
+	desc = "EVT_ROM_209122_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { not = { minister = 110157 } } type = wakeminister which = 110157 }
+		command = { trigger = { not = { minister = 110146 } } type = wakeminister which = 110146 }
+		command = { trigger = { not = { minister = 110168 } } type = wakeminister which = 110168 }
+		command = { trigger = { not = { minister = 110195 } } type = wakeminister which = 110195 }
+		command = { type = headofgovernment which = 110157 }
+		command = { type = foreignminister which = 110146 }
+		command = { type = armamentminister which = 110168 }
+		command = { type = ministerofsecurity which = 110195 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209123] ROM | 1922 | Take Ionescu resigns (Take Ionescu renuncia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209123
+	country = ROM
+	trigger = {
+		incabinet = 110157
+	}
+	date = { day = 19 month = january year = 1922 }
+	name = "EVT_ROM_209123_NAME"
+	desc = "EVT_ROM_209123_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { not = { minister = 110196 } } type = wakeminister which = 110196 }
+		command = { trigger = { not = { minister = 110147 } } type = wakeminister which = 110147 }
+		command = { trigger = { not = { minister = 110178 } } type = wakeminister which = 110178 }
+		command = { trigger = { not = { minister = 110187 } } type = wakeminister which = 110187 }
+		command = { type = headofgovernment which = 110196 }
+		command = { type = foreignminister which = 110147 }
+		command = { type = armamentminister which = 110178 }
+		command = { type = ministerofsecurity which = 110187 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209124] ROM | 1922 | General Elections (Elecciones generales)
+# Triggered by event 209120 in events/Minors/ROM_14-36.txt
+# Trigger event 209126 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209124
+	country = ROM
+	save_date = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ROM }
+		event = { id = 209120 days = 720 }
+	}
+	date = { day = 3 month = march year = 1922 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 1
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ROM_209124_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110196
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01102_B"
+		ai_chance = 97
+		command = { type = dissent value = -1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110151 incabinet = 110197 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { not = { minister = 110196 } } type = wakeminister which = 110196 }
+		command = { trigger = { ai = yes not = { minister = 110196 } } type = wakeminister which = 110147 }
+		command = { trigger = { ai = yes not = { minister = 110178 } } type = wakeminister which = 110178 }
+		command = { trigger = { ai = yes not = { minister = 110187 } } type = wakeminister which = 110187 }
+		command = { type = headofgovernment which = 110196 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110147 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110178 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110187 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110151
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01103_A"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110196 incabinet = 110197 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { trigger = { not = { minister = 110151 } } type = wakeminister which = 110151 }
+		command = { trigger = { ai = yes not = { minister = 110143 } } type = wakeminister which = 110143 }
+		command = { trigger = { ai = yes not = { minister = 110176 } } type = wakeminister which = 110176 }
+		command = { trigger = { ai = yes not = { minister = 110190 } } type = wakeminister which = 110190 }
+		command = { type = headofgovernment which = 110151 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110143 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110176 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110190 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110198
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01102_C"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110151 incabinet = 110196 incabinet = 110197 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { trigger = { not = { minister = 110198 } } type = wakeminister which = 110198 }
+		command = { trigger = { ai = yes not = { minister = 110192 } } type = wakeminister which = 110192 }
+		command = { trigger = { ai = yes } type = headofgovernment which = 110198 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110192 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110197
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01102_A"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110151 incabinet = 110196 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { trigger = { not = { minister = 110197 } } type = wakeminister which = 110197 }
+		command = { trigger = { ai = yes not = { minister = 110141 } } type = wakeminister which = 110141 }
+		command = { trigger = { ai = yes not = { minister = 110173 } } type = wakeminister which = 110173 }
+		command = { trigger = { ai = yes not = { minister = 110187 } } type = wakeminister which = 110187 }
+		command = { type = headofgovernment which = 110197 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110141 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110173 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110187 }
+	}
+	action = {
+		name = "EVT_ROM_209124_A"
+		ai_chance = 0
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209125] ROM | 1925 | Royal scandal discovered! (¡Escándalo Real descubierto!)
+# Trigger event 209132 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209125
+	country = ROM
+	trigger = {
+		government = democratic
+		NOT = { headofstate = 110011 }
+	}
+	date = { day = 1 month = january year = 1925 }
+	deathdate = { day = 21 month = july year = 1927 }
+	offset = 180
+	name = "EVT_ROM_209125_NAME"
+	desc = "EVT_ROM_209125_DESC"
+	picture = "GLOBAL/congress"
+	style = 2
+	action = {
+		name = "EVT_ROM_209125_A"
+		ai_chance = 99
+		command = { type = dissent value = -3 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = event which = 209132 when = 1800 }
+	}
+	action = {
+		name = "EVT_ROM_209125_B"
+		ai_chance = 1
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = freedom value = 3 }
+		command = { type = sleepevent which = 209132 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209132] ROM | 1925 | The return of Carol II (El regreso de Carlos II)
+# Triggered by event 209125 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209132
+	country = ROM
+	name = "EVT_ROM_209132_NAME"
+	desc = "EVT_ROM_209132_DESC"
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { not = { minister = 110011 } } type = wakeminister which = 110011 }
+		command = { type = headofstate which = 110011 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209126] ROM | 1926 | General Elections (Elecciones generales)
+# Triggered by event 209124 in events/Minors/ROM_14-36.txt
+# Trigger event 209128 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209126
+	country = ROM
+	save_date = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ROM }
+		event = { id = 209124 days = 1440 }
+	}
+	date = { day = 29 month = march year = 1926 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 1
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ROM_209126_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110151
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01103_A"
+		ai_chance = 98
+		command = { type = dissent value = -1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110197 incabinet = 110198 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { trigger = { not = { minister = 110151 } } type = wakeminister which = 110151 }
+		command = { trigger = { ai = yes not = { minister = 110203 } } type = wakeminister which = 110203 }
+		command = { trigger = { ai = yes not = { minister = 110209 } } type = wakeminister which = 110209 }
+		command = { trigger = { ai = yes not = { minister = 110190 } } type = wakeminister which = 110190 }
+		command = { type = headofgovernment which = 110151 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110203 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110209 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110190 }
+	}
+	action = {
+		name = "EVT_ROM_209126_A"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110151 incabinet = 110196 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { trigger = { not = { minister = 110031 } } type = wakeminister which = 110031 }
+		command = { trigger = { ai = yes not = { minister = 110141 } } type = wakeminister which = 110141 }
+		command = { trigger = { ai = yes not = { minister = 110173 } } type = wakeminister which = 110173 }
+		command = { trigger = { ai = yes not = { minister = 110192 } } type = wakeminister which = 110192 }
+		command = { type = headofgovernment which = 110031 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110141 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110173 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110192 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110196
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01102_B"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110151 incabinet = 110197 incabinet = 110198 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { not = { minister = 110196 } } type = wakeminister which = 110196 }
+		command = { trigger = { ai = yes not = { minister = 110140 } } type = wakeminister which = 110140 }
+		command = { trigger = { ai = yes not = { minister = 110178 } } type = wakeminister which = 110178 }
+		command = { trigger = { ai = yes not = { minister = 110186 } } type = wakeminister which = 110186 }
+		command = { type = headofgovernment which = 110196 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110140 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110178 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110186 }
+	}
+	action = {
+		name = "EVT_ROM_209126_B"
+		ai_chance = 0
+		command = { type = dissent value = 1 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209115] ROM | 1927 | Formation of the Iron Guard (Formación de la Guardia de Hierro)
+# Triggered by event 209110 in events/Minors/ROM_14-36.txt
+# Trigger event 209116 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209115
+	country = ROM
+	date = { day = 1 month = january year = 1927 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 30
+	trigger = {
+		event = 209110
+		NOT = {
+			or = {
+				government = fascist
+				government = communist
+			}
+		}
+	}
+	name = "EVT_ROM_209115_NAME"
+	desc = "EVT_ROM_209115_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = freedom value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209127] ROM | 1927 | Averescu forced to resign (Averescu es obligado a renunciar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209127
+	country = ROM
+	trigger = {
+		government = democratic
+		incabinet = 110151
+	}
+	date = { day = 4 month = june year = 1927 }
+	name = "EVT_ROM_209127_NAME"
+	desc = "EVT_ROM_209127_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { not = { minister = 110199 } } type = wakeminister which = 110199 }
+		command = { trigger = { not = { minister = 110204 } } type = wakeminister which = 110204 }
+		command = { trigger = { not = { minister = 110211 } } type = wakeminister which = 110211 }
+		command = { trigger = { not = { minister = 110213 } } type = wakeminister which = 110213 }
+		command = { type = headofgovernment which = 110199 }
+		command = { type = foreignminister which = 110204 }
+		command = { type = armamentminister which = 110211 }
+		command = { type = ministerofsecurity which = 110213 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209128] ROM | 1927 | General Elections (Elecciones generales)
+# Triggered by event 209126 in events/Minors/ROM_14-36.txt
+# Trigger event 209131 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209128
+	country = ROM
+	save_date = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ROM }
+		event = { id = 209126 days = 360 }
+	}
+	date = { day = 14 month = june year = 1927 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 1
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ROM_209128_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110196
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01102_B"
+		ai_chance = 98
+		command = { type = dissent value = -1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110151 incabinet = 110031 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { not = { minister = 110196 } } type = wakeminister which = 110196 }
+		command = { trigger = { ai = yes not = { minister = 110205 } } type = wakeminister which = 110205 }
+		command = { trigger = { ai = yes not = { minister = 110178 } } type = wakeminister which = 110178 }
+		command = { trigger = { ai = yes not = { minister = 110215 } } type = wakeminister which = 110215 }
+		command = { type = headofgovernment which = 110196 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110205 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110178 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110215 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110031
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01104_A"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110151 incabinet = 110196 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { trigger = { not = { minister = 110031 } } type = wakeminister which = 110031 }
+		command = { trigger = { ai = yes not = { minister = 110141 } } type = wakeminister which = 110141 }
+		command = { trigger = { ai = yes not = { minister = 110173 } } type = wakeminister which = 110173 }
+		command = { trigger = { ai = yes not = { minister = 110192 } } type = wakeminister which = 110192 }
+		command = { type = headofgovernment which = 110031 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110141 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110173 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110192 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110151
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01103_A"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110031 incabinet = 110196 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { trigger = { not = { minister = 110151 } } type = wakeminister which = 110151 }
+		command = { trigger = { ai = yes not = { minister = 110200 } } type = wakeminister which = 110200 }
+		command = { trigger = { ai = yes not = { minister = 110209 } } type = wakeminister which = 110209 }
+		command = { trigger = { ai = yes not = { minister = 110190 } } type = wakeminister which = 110190 }
+		command = { type = headofgovernment which = 110151 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110200 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110209 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110190 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209129] ROM | 1927 | Death of King Ferdinand (Muerte del rey Fernando)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209129
+	country = ROM
+	trigger = {
+		OR = {
+			minister = 110159
+			minister = 110160
+		}
+	}
+	date = { day = 20 month = july year = 1927 }
+	name = "EVT_ROM_209129_NAME"
+	desc = "EVT_ROM_209129_DESC"
+	picture = "GLOBAL/minister_died2"
+	style = 2
+	action = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { not = { minister = 110013 } } type = wakeminister which = 110013 }
+		command = { type = headofstate which = 110013 }
+		command = { type = sleepminister which = 110159 }
+		command = { type = sleepminister which = 110160 }
+		command = { type = sleepminister which = 110120 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209130] ROM | 1927 | Death of Ion Bratianu (Muerte de Ion Bratianu)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209130
+	country = ROM
+	trigger = { minister = 110196 }
+	date = { day = 24 month = november year = 1927 }
+	name = "EVT_ROM_209130_NAME"
+	desc = "EVT_ROM_209130_DESC"
+	picture = "GLOBAL/minister_died2"
+	style = 2
+	action = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { incabinet = 110196 } type = headofgovernment which = 110200 }
+		command = { trigger = { incabinet = 110205 } type = foreignminister which = 110003 }
+		command = { type = sleepminister which = 110196 }
+		command = { type = sleepminister which = 110205 }
+		command = { type = sleepminister which = 110181 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209116] ROM | 1928 | Legionary terror (Terror legionario)
+# Triggered by event 209115 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209116
+	country = ROM
+	persistent = yes
+	date = { day = 1 month = january year = 1928 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 60
+	trigger = {
+		event = 209115
+		government = democratic
+	}
+	name = "EVT_ROM_209116_NAME"
+	desc = "EVT_ROM_209116_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209131] ROM | 1928 | General Elections (Elecciones generales)
+# Triggered by event 209128 in events/Minors/ROM_14-36.txt
+# Trigger event 209133 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209131
+	country = ROM
+	save_date = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ROM }
+		event = { id = 209128 days = 360 }
+	}
+	date = { day = 10 month = november year = 1928 }
+	deathdate = { day = 10 month = november year = 1929 }
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ROM_209131_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110031
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01104_A"
+		ai_chance = 98
+		command = { type = dissent value = -1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110151 incabinet = 110200 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { trigger = { not = { minister = 110031 } } type = wakeminister which = 110031 }
+		command = { trigger = { ai = yes not = { minister = 110206 } } type = wakeminister which = 110206 }
+		command = { trigger = { ai = yes not = { minister = 110177 } } type = wakeminister which = 110177 }
+		command = { trigger = { ai = yes not = { minister = 110218 } } type = wakeminister which = 110218 }
+		command = { type = headofgovernment which = 110031 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110206 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110177 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110218 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110200
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01102_B"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110151 incabinet = 110031 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { not = { minister = 110200 } } type = wakeminister which = 110200 }
+		command = { trigger = { ai = yes not = { minister = 110003 } } type = wakeminister which = 110003 }
+		command = { trigger = { ai = yes not = { minister = 110178 } } type = wakeminister which = 110178 }
+		command = { trigger = { ai = yes not = { minister = 110215 } } type = wakeminister which = 110215 }
+		command = { type = headofgovernment which = 110200 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110003 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110178 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110215 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110151
+					}
+				}
+			}
+		}
+		name = "EVT_ROM_209131_A"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110200 incabinet = 110031 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { trigger = { not = { minister = 110151 } } type = wakeminister which = 110151 }
+		command = { trigger = { ai = yes not = { minister = 110203 } } type = wakeminister which = 110203 }
+		command = { trigger = { ai = yes not = { minister = 110209 } } type = wakeminister which = 110209 }
+		command = { trigger = { ai = yes not = { minister = 110190 } } type = wakeminister which = 110190 }
+		command = { type = headofgovernment which = 110151 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110203 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110209 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110190 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209133] ROM | 1931 | General Elections (Elecciones generales)
+# Triggered by event 209131 in events/Minors/ROM_14-36.txt
+# Trigger event 209135 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209133
+	country = ROM
+	save_date = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ROM }
+		event = { id = 209131 days = 1080 }
+	}
+	date = { day = 5 month = june year = 1931 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ROM_209133_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 98
+		command = { type = dissent value = -1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110200 incabinet = 110031 incabinet = 110151 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { trigger = { not = { minister = 110202 } } type = wakeminister which = 110202 }
+		command = { trigger = { ai = yes not = { minister = 110208 } } type = wakeminister which = 110208 }
+		command = { trigger = { ai = yes not = { minister = 110176 } } type = wakeminister which = 110176 }
+		command = { trigger = { ai = yes not = { minister = 110194 } } type = wakeminister which = 110194 }
+		command = { type = headofgovernment which = 110202 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110208 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110176 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110194 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110031
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01104_A"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110200 incabinet = 110151 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { trigger = { not = { minister = 110031 } } type = wakeminister which = 110031 }
+		command = { trigger = { ai = yes not = { minister = 110206 } } type = wakeminister which = 110206 }
+		command = { trigger = { ai = yes not = { minister = 110177 } } type = wakeminister which = 110177 }
+		command = { trigger = { ai = yes not = { minister = 110216 } } type = wakeminister which = 110216 }
+		command = { type = headofgovernment which = 110031 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110208 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110177 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110216 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110151
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01103_A"
+		ai_chance = 1
+		command = { type = dissent value = -3 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110200 incabinet = 110031 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { trigger = { not = { minister = 110151 } } type = wakeminister which = 110151 }
+		command = { trigger = { ai = yes not = { minister = 110200 } } type = wakeminister which = 110200 }
+		command = { trigger = { ai = yes not = { minister = 110206 } } type = wakeminister which = 110206 }
+		command = { trigger = { ai = yes not = { minister = 110190 } } type = wakeminister which = 110190 }
+		command = { type = headofgovernment which = 110151 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110203 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110209 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110190 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209134] ROM | 1932 | Nicolae Iorga resigns (Nicolae Iorga renuncia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209134
+	country = ROM
+	trigger = {
+		incabinet = 110202
+		local_flag = depression
+	}
+	date = { day = 5 month = june year = 1932 }
+	deathdate = { day = 5 month = june year = 1933 }
+	offset = 2
+	name = "EVT_ROM_209134_NAME"
+	desc = "EVT_ROM_209134_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+		command = { trigger = { not = { minister = 110197 } } type = wakeminister which = 110197 }
+		command = { trigger = { not = { minister = 110141 } } type = wakeminister which = 110141 }
+		command = { trigger = { not = { minister = 110220 } } type = wakeminister which = 110220 }
+		command = { trigger = { not = { minister = 110216 } } type = wakeminister which = 110216 }
+		command = { type = headofgovernment which = 110197 }
+		command = { type = foreignminister which = 110141 }
+		command = { type = armamentminister which = 110220 }
+		command = { type = ministerofsecurity which = 110216 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209135] ROM | 1932 | General Elections (Elecciones generales)
+# Triggered by event 209133 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209135
+	country = ROM
+	save_date = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ROM }
+		event = { id = 209133 days = 360 }
+	}
+	date = { day = 26 month = july year = 1932 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 1
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ROM_209135_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110197
+					}
+				}
+			}
+		}
+		name = "EVT_ROM_209135_A"
+		ai_chance = 99
+		command = { trigger = { exists = U08 } type = relation which = U08 value = 50 }
+		command = { trigger = { exists = GER } type = relation which = GER value = 50 }
+		command = { type = dissent value = -1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110151 incabinet = 110202 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { trigger = { not = { minister = 110197 } } type = wakeminister which = 110197 }
+		command = { trigger = { ai = yes not = { minister = 110141 } } type = wakeminister which = 110141 }
+		command = { trigger = { ai = yes not = { minister = 110220 } } type = wakeminister which = 110220 }
+		command = { trigger = { ai = yes not = { minister = 110216 } } type = wakeminister which = 110216 }
+		command = { type = headofgovernment which = 110197 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110141 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110220 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110216 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					and = {
+						dissent = 30
+						incabinet = 110200
+					}
+				}
+			}
+		}
+		name = "EVT_SHARED_01102_B"
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { trigger = { and = { ai = yes dissent = 30 or = { incabinet = 110151 incabinet = 110202 incabinet = 110031 } } } type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { not = { minister = 110200 } } type = wakeminister which = 110200 }
+		command = { trigger = { ai = yes not = { minister = 110003 } } type = wakeminister which = 110003 }
+		command = { trigger = { ai = yes not = { minister = 110178 } } type = wakeminister which = 110178 }
+		command = { trigger = { ai = yes not = { minister = 110215 } } type = wakeminister which = 110215 }
+		command = { type = headofgovernment which = 110200 }
+		command = { trigger = { ai = yes } type = foreignminister which = 110003 }
+		command = { trigger = { ai = yes } type = armamentminister which = 110178 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 110215 }
+	}
+	action = {
+		name = "EVT_ROM_209135_B"
+		ai_chance = 0
+		command = { type = dissent value = 1 }
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 110016 }
+		command = { type = headofgovernment which = 110155 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209059] ROM | 1933 | Signing the Balkan Pact (Firma del Pacto Balcánico)
+# Triggered by event 329551 in events/Minors/YUG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209059
+	random = no
+	country = ROM
+	name = "EVT_SHARED_01179_NAME"
+	desc = "EVT_SHARED_01179_DESC"
+	style = 2
+	picture = "GLOBAL/balkan_pact"
+	action_a = {
+		name = "ACTION_NAME_SIGN"
+		ai_chance = 95
+                command = { type = relation which = YUG value = 25 }
+		command = { type = relation which = GRE value = 25 }
+		command = { type = relation which = TUR value = 25 }
+		command = { type = relation which = ALB value = -25 }
+		command = { type = relation which = ITA value = -25 }
+                command = { type = relation which = BUL value = -25 }
+                command = { type = relation which = HUN value = -25 }
+                command = { type = relation which = SOV value = -25 }
+                command = { type = dissent value = -2 }
+		command = { type = domestic which = defense_lobby value = -1 }
+        }
+        action_b = {
+		name = "ACTION_NAME_DONT_SIGN"
+		ai_chance = 5
+		command = { type = relation which = YUG value = -50 }
+		command = { type = relation which = GRE value = -50 }
+		command = { type = relation which = TUR value = -50 }
+		command = { type = relation which = ALB value = 25 }
+		command = { type = relation which = ITA value = 25 }
+                command = { type = relation which = BUL value = 25 }
+                command = { type = relation which = HUN value = 25 }
+                command = { type = relation which = SOV value = 25 }
+                command = { type = domestic which = defense_lobby value = 1 }
+                command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209061] ROM | 1933 | The end of the Little Entente (El fin de la Pequeña Entente)
+# Triggered by event 329552 in events/Minors/YUG.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209061
+	random = no
+	country = ROM
+	name = "EVT_SHARED_01181_NAME"
+	desc = "EVT_SHARED_01181_DESC"
+	style = 2
+	picture = "Minors/little_entente_end"
+	action_a = {
+		name = "EVT_SHARED_01182_A"
+		ai_chance = 97
+                command = { type = relation which = CZE value = -15 }
+		command = { type = relation which = YUG value = -15 }
+                command = { type = leave_alliance }
+                command = { type = dissent value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+        }
+        action_b = {
+		name = "EVT_SHARED_01182_B"
+		ai_chance = 3
+		command = { type = relation which = GER value = -50 }
+		command = { type = relation which = HUN value = -50 }
+                command = { type = domestic which = defense_lobby value = -1 }
+                command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209117] ROM | 1933 | Outlaw the Iron Guard? (¿Prohibir la Guardia de Hierro?)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209117
+	country = ROM
+	date = { day = 1 month = january year = 1933 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 30
+	trigger = {
+		NOT = {
+			or = {
+				ideology = fascist
+				ideology = nazi
+			}
+		}
+	}
+	name = "EVT_ROM_209117_NAME"
+	desc = "EVT_ROM_209117_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "ACTION_NAME_SUPPRESS_REVOLT"
+		ai_chance = 98
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = sleepevent which = 209116 }
+	}
+	action = {
+		name = "EVT_ROM_209117_A"
+		ai_chance = 2
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329067] ROM | 1933 | Communist Coup Attempt (Intento de golpe de Estado comunista)
+# Triggered by event 329058 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329067
+	random = no
+	country = ROM
+	one_action = yes
+	trigger = {
+		event = 329058
+		random = 5
+		atwar = no
+		not = { alliance = { country = DDR } }
+		not = { war = { country = DDR } }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_SHARED_00197_NAME"
+	desc = "EVT_SHARED_00197_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	action = {
+		ai_chance = 50
+		name = "EVT_SHARED_00197_A"
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = dissent value = -5 }
+		command = { type = country which = U30 }
+		command = { type = set_relation which = DDR value = 200 }
+		command = { type = set_relation which = SOV value = 200 }
+		command = { type = alliance which = SOV when = 1 }
+	}
+	action = {
+		ai_chance = 50
+		name = "EVT_SHARED_00197_B"
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209025] ROM | 1933 | Monument to Simion Murafa, Alexei Mateevici and Andrei Hodorogea. (Monumento a Simion Murafa, Alexei Mateevici y Andrei Hodorogea)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209025
+	random = no
+	country = ROM
+	style = 2
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 11 month = may year = 1933 }
+	name = "EVT_ROM_209025_NAME"
+	desc = "EVT_ROM_209025_DESC"
+	Picture = "ROM01"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = manpowerpool value = 10 }
+		command = { type = supplies value = -100 }
+		command = { type = money value = -50 }
+		command = { type = dissent value = -1 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 0
+		command = { type = dissent value = 1 }
+		command = { type = manpowerpool value = -10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209027] ROM | 1933 | Grivita Railcar Workshops strike. (Huelga de los talleres 'Grivita Railcar')
+# ----------------------------------------------------------------------------
+event = {
+	id = 209027
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 29 month = may year = 1933 }
+	name = "EVT_ROM_209027_NAME"
+	desc = "EVT_ROM_209027_DESC"
+	style = 2
+	Picture = "ROM03"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209026] ROM | 1933 | The Ploughmen's Front. (El 'Frente de Ploughmen')
+# ----------------------------------------------------------------------------
+event = {
+	id = 209026
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 23 month = June year = 1933 }
+	name = "EVT_ROM_209026_NAME"
+	desc = "EVT_ROM_209026_DESC"
+	style = 2
+	Picture = "ROM02"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209028] ROM | 1933 | The Government of Ion G. Duca. (El Gobierno de Ion G. Duca)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209028
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 14 month = November year = 1933 }
+	name = "EVT_ROM_209028_NAME"
+	desc = "EVT_ROM_209028_DESC"
+	style = 2
+	Picture = "ROM04"
+	action_a = {
+		name = "EVT_ROM_209028_A"
+		ai_chance = 100
+		command = { type = headofstate which = 110001 }
+		command = { type = headofgovernment which = 110198 }
+		command = { type = dissent value = -3 }
+	}
+	action_b = {
+		name = "EVT_ROM_209028_B"
+		ai_chance = 0
+		command = { type = headofstate which = 110001 }
+		command = { type = headofgovernment which = 110002 }
+		command = { type = dissent value = 3 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209029] ROM | 1933 | Ion Duca banned the Iron Guard. (Ion Duca prohibe la Guardia de Hierro)
+# Trigger event 209030 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209029
+	random = no
+	country = ROM
+	style = 2
+	trigger = {
+		headofgovernment = 110198
+		}
+	date = { day = 29 month = November year = 1933 }
+	name = "EVT_ROM_209029_NAME"
+	desc = "EVT_ROM_209029_DESC"
+	Picture = "ROM23"
+	action_a = {
+		name = "ACTION_NAME_SUPPRESS_REVOLT"
+		ai_chance = 100
+		command = { type = manpowerpool value = -5 }
+		command = { type = dissent value = -4 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 0
+		command = { type = dissent value = 4 }
+		command = { type = manpowerpool value = 5 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209030] ROM | 1933 | The assassination of Ion G. Duca. (El asesinato de Ion G. Duca)
+# Triggered by event 209029 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209030
+	random = no
+	country = ROM
+	trigger = {
+		event = 209029
+		}
+	date = { day = 29 month = December year = 1933 }
+	name = "EVT_ROM_209030_NAME"
+	desc = "EVT_ROM_209030_DESC"
+	style = 2
+	Picture = "ROM04"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 110002 }
+		command = { type = sleepminister which = 110198 }
+		command = { type = dissent value = 2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209031] ROM | 1934 | The Amicii URSS association. (La asociación 'Amicii URSS')
+# ----------------------------------------------------------------------------
+event = {
+	id = 209031
+	random = no
+	country = ROM
+	style = 2
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 11 month = may year = 1934 }
+	name = "EVT_ROM_209031_NAME"
+	desc = "EVT_ROM_209031_DESC"
+	Picture = "27mart"
+	action_a = {
+		name = "EVT_SHARED_00972_A"
+		ai_chance = 100
+		command = { type = manpowerpool value = 10 }
+		command = { type = supplies value = -50 }
+		command = { type = money value = -30 }
+		command = { type = dissent value = -2 }
+	}
+	action_b = {
+		name = "ACTION_NAME_SUPPRESS_REVOLT"
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = sleepevent which = 209032 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209033] ROM | 1934 | The Tour of Romania. (El 'Tour de Rumania')
+# ----------------------------------------------------------------------------
+event = {
+	id = 209033
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 15 month = June year = 1934 }
+	name = "EVT_ROM_209033_NAME"
+	desc = "EVT_ROM_209033_DESC"
+	style = 2
+	Picture = "ROM06"
+	action_a = {
+		name = "ACTION_NAME_AGREE"
+		ai_chance = 100
+		command = { type = dissent value = -2 }
+		command = { type = supplies value = -300 }
+		command = { type = money value = -300 }
+		command = { type = construct which = infrastructure where = 315 value = 5 }
+		command = { type = construct which = infrastructure where = 308 value = 5 }
+		command = { type = construct which = infrastructure where = 316 value = 5 }
+		command = { type = construct which = infrastructure where = 312 value = 5 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 0
+		command = { type = dissent value = 2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209034] ROM | 1935 | The creation of Straja Tarii. (La creación del 'Straja Tarii')
+# ----------------------------------------------------------------------------
+event = {
+	id = 209034
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 15 month = June year = 1935 }
+	name = "EVT_ROM_209034_NAME"
+	desc = "EVT_ROM_209034_DESC"
+	style = 2
+	Picture = "ROM07"
+	action_a = {
+		name = "ACTION_NAME_AGREE"
+		ai_chance = 100
+		command = { type = add_division which = "1.Straja Tarii phalanx" value = infantry when = 2 }
+		command = { type = add_division which = "2.Straja Tarii phalanx" value = infantry when = 2 }
+		command = { type = dissent value = -2 }
+		command = { type = supplies value = -100 }
+		command = { type = money value = -100 }
+		command = { type = manpowerpool value = -10 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 0
+		command = { type = dissent value = 2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209008] ROM | 1936 | Germany Aims at Aligning Romania (Acercamiento diplomático alemán a Rumania)
+# Triggered by event 329137 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209008
+	random = no
+	country = ROM
+	name = EVT_ROM_209008_NAME
+	desc = EVT_SHARED_00620_DESC
+  	style = 2
+	picture = "GLOBAL/romania_axis"
+	action_a = {
+		name = ACTION_NAME_JOIN_AXIS
+		ai_chance = 100
+		command = { type = alliance which = GER }
+		command = { type = relation which = GER value = 100 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 0
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209010] ROM | 1936 | Partition of Yugoslavia (Partición de Yugoslavia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209010
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00780_NAME"
+	desc = "EVT_SHARED_00780_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = { exists = YUG }
+		control = { province = 338 data = -3 }
+		participant = { country = ROM value = 2 }
+		OR = {
+			alliance = { country = ROM country = GER }
+			alliance = { country = ROM country = ITA }
+			alliance = { country = ROM country = HUN }
+			alliance = { country = ROM country = BUL }
+		}
+		OR = {
+			control = { province = 327 data = -1 }
+			control = { province = 328 data = -1 }
+			control = { province = 329 data = -1 }
+			control = { province = 330 data = -1 }
+			control = { province = 331 data = -1 }
+			control = { province = 332 data = -1 }
+			control = { province = 333 data = -1 }
+			control = { province = 334 data = -1 }
+			control = { province = 335 data = -1 }
+			control = { province = 336 data = -1 }
+			control = { province = 337 data = -1 }
+			control = { province = 338 data = -1 }
+			control = { province = 339 data = -1 }
+			control = { province = 340 data = -1 }
+			control = { province = 341 data = -1 }
+			control = { province = 342 data = -1 }
+			control = { province = 343 data = -1 }
+			control = { province = 344 data = -1 }
+			control = { province = 345 data = -1 }
+			control = { province = 346 data = -1 }
+			control = { province = 347 data = -1 }
+			control = { province = 349 data = -1 }
+			control = { province = 350 data = -1 }
+			control = { province = 351 data = -1 }
+			control = { province = 352 data = -1 }
+			control = { province = 353 data = -1 }
+			control = { province = 354 data = -1 }
+			control = { province = 355 data = -1 }
+			control = { province = 356 data = -1 }
+			control = { province = 357 data = -1 }
+			control = { province = 358 data = -1 }
+		}
+	}
+    date = { day = 0 month = january year = 1936 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 100
+		name = "EVT_SHARED_00780_A"
+		command = { type = dissent value = -1 }
+		command = { trigger = { alliance = { country = ROM country = ITA } } type = secedeprovince which = ITA value = 329 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = ITA } } type = secedeprovince which = ITA value = 332 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = ITA } } type = secedeprovince which = ITA value = 334 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = ITA } } type = secedeprovince which = ITA value = 335 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = ITA } } type = secedeprovince which = ITA value = 343 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = ITA } } type = secedeprovince which = ITA value = 349 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = ITA } } type = secedeprovince which = ITA value = 350 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 327 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 330 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 336 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 337 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 338 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 339 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 340 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 342 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 344 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 345 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 346 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 347 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 351 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 352 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 353 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 354 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 355 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 356 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 357 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secedeprovince which = GER value = 358 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = HUN } } type = secedeprovince which = HUN value = 341 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = BUL } } type = secedeprovince which = BUL value = 331 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = BUL } } type = secedeprovince which = BUL value = 328 when = 1 }
+		command = { trigger = { alliance = { country = ROM country = BUL } } type = secedeprovince which = BUL value = 333 when = 1 }
+	}
+	action_b = {
+		ai_chance = 0
+		name = "EVT_SHARED_00780_B"
+		command = { type = dissent value = 5 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = relation which = GER value = -25 }
+		command = { trigger = { alliance = { country = ROM country = ITA } } type = relation which = ITA value = -25 }
+		command = { trigger = { alliance = { country = ROM country = HUN } } type = relation which = HUN value = -25 }
+		command = { trigger = { alliance = { country = ROM country = BUL } } type = relation which = BUL value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209015] ROM | 1936 | End of the Soviet-Romanian War (Fin de la guerra soviético-rumana)
+# Triggered by event 223106 in events/SOV/SOV_36-38.txt
+# Trigger event 223107 in events/SOV/SOV_36-38.txt
+# Trigger event 223108 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209015
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00436_NAME"
+	desc = "EVT_SHARED_00437_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		ai_chance = 99
+		command = { type = trigger which = 223107 }
+		command = { type = secedeprovince which = SOV value = 303 }
+		command = { type = secedeprovince which = SOV value = 304 }
+		command = { type = secedeprovince which = SOV value = 305 }
+		command = { type = secedeprovince which = SOV value = 306 }
+		command = { type = secedeprovince which = SOV value = 302 }
+		command = { type = secedeprovince which = SOV value = 300 }
+		command = { type = domestic which = political_left value = -2 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = relation which = SOV value = -25 }
+		command = { type = relation which = GER value = 25 }
+		command = { type = peace which = SOV }
+		command = { type = dissent value = 10 }
+	}
+	action_b = {
+		name = "ACTION_NAME_REFUSE_PEACE"
+		ai_chance = 1
+		command = { type = trigger which = 223108 }
+		command = { type = domestic which = political_left value = -4 }
+		command = { type = domestic which = democratic value = 2 }
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = relation which = GER value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209016] ROM | 1936 | Molotov-Ribbentrop: Eastern Poland to USSR (Pacto M-R: Polonia oriental para la URSS)
+# Triggered by event 150053 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209016
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00393_NAME"
+	desc = "EVT_SHARED_00393_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = SOV value = 239 }
+		command = { type = secedeprovince which = SOV value = 250 }
+		command = { type = secedeprovince which = SOV value = 241 }
+		command = { type = secedeprovince which = SOV value = 242 }
+		command = { type = secedeprovince which = SOV value = 244 }
+		command = { type = secedeprovince which = SOV value = 247 }
+		command = { type = secedeprovince which = SOV value = 254 }
+		command = { type = secedeprovince which = SOV value = 245 }
+		command = { type = secedeprovince which = SOV value = 238 }
+		command = { type = secedeprovince which = SOV value = 248 }
+		command = { type = secedeprovince which = SOV value = 240 }
+		command = { type = secedeprovince which = SOV value = 231 }
+		command = { type = secedeprovince which = SOV value = 251 }
+		command = { type = secedeprovince which = SOV value = 255 }
+		command = { type = secedeprovince which = SOV value = 227 }
+		command = { type = secedeprovince which = SOV value = 257 }
+		command = { type = secedeprovince which = SOV value = 258 }
+		command = { type = secedeprovince which = SOV value = 225 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209018] ROM | 1936 | Hungarian Assault: Two-Front War (Puñalada por la espalda: Ataque húngaro)
+# Triggered by event 329013 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209018
+	random = no
+	country = ROM
+	name = "EVT_ROM_209018_NAME"
+	desc = "EVT_ROM_209018_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_MOBILIZE"
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209021] ROM | 1936 | Defeat of Bulgaria (Derrota de Bulgaria)
+# Triggered by event 118005 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209021
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00479_NAME"
+	desc = "EVT_SHARED_00971_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_HURRAH"
+		command = { type = dissent value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209022] ROM | 1936 | Defeat of Bulgaria (Derrota de Bulgaria)
+# Triggered by event 118006 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209022
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00479_NAME"
+	desc = "EVT_SHARED_00971_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_HURRAH"
+		command = { type = dissent value = -10 }
+	}
+}

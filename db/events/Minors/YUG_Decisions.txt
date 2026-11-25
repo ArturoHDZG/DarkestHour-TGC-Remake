@@ -1,0 +1,456 @@
+# ============================================================================
+# File: events/Minors/YUG_Decisions.txt (10 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [323010] YUG | 1933 | The Rupnik Line (La 'Linea Rupnik')
+# ----------------------------------------------------------------------------
+event = {
+	id = 323010
+	random = no
+	country = YUG
+	decision = { year = 1935	}
+	decision_trigger = {
+		money = 200
+		metal = 5000
+	}
+	trigger = { year = 1935 random = 40 }
+	name = "EVT_YUG_323010_NAME"
+	desc = "EVT_YUG_323010_DESC"
+	style = 2
+	picture = "Minors/rupnik"
+	decision_picture = "Minors/decision_rupnik"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = building_prod_mod which = land_fort value = 15 }
+		command = { trigger = { ai = no } type = money value = -200 }
+		command = { type = construct which = land_fort where = 347 value = 1 }
+                command = { type = construct which = land_fort where = 346 value = 1 }
+                command = { type = construct which = land_fort where = 349 value = 1 }
+                command = { trigger = { ai = no } type = metalpool value = -4000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323016] YUG | 1933 | Create the Nikola Tesla Institute (Crear el Instituto Nikola Tesla)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323016
+	random = no
+	country = YUG
+	decision = { year = 1936	}
+	decision_trigger = {
+		money = 400
+	}
+	trigger = { year = 1936 random = 40 }
+	name = "EVT_YUG_323016_NAME"
+	desc = "EVT_YUG_323016_DESC"
+	style = 2
+	picture = "Minors/institut"
+	decision_picture = "Minors/decision_institut"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { trigger = { ai = no } type = money value = -400 }
+                command = { type = research_mod value = 1 }
+                command = { type = waketeam which = 100024 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323017] YUG | 1933 | The six year plan. (Plan sexenal)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323017
+	random = no
+	country = YUG
+	decision = { year = 1938
+                     headofgovernment = 100002
+}
+	decision_trigger = {
+		money = 500
+                headofgovernment = 100002
+                supplies = 1000
+	}
+	trigger = { year = 1938 random = 40
+                    headofgovernment = 100002
+                    supplies = 1000
+                    money = 500
+    }
+	name = "EVT_SHARED_00973_NAME"
+	desc = "EVT_YUG_323017_DESC"
+	style = 2
+	picture = "GLOBAL/six_year_plan"
+	decision_picture = "GLOBAL/decision_6yearplan"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = building_prod_mod which = ic value = 10 }
+                command = { type = construct which = ic where = 339 value = 1 }
+		command = { type = construct which = ic where = 329 value = 1 }
+                command = { type = construct which = ic where = 355 value = 1 }
+                command = { type = dissent value = -3 }
+                command = { trigger = { ai = no } type = metalpool value = -500 }
+                command = { trigger = { ai = no } type = money value = -500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323029] YUG | 1933 | Pec-Boka Kotorska rail line (Línea de ferrocarril Pec-Boka Kotorska)
+# Triggered by event 166096 in events/ITA/ITA_20-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323029
+	random = no
+	country = YUG
+        decision = {
+		event = 166096
+	}
+	decision_trigger = {
+                        event = { id = 166096 days = 340 }
+	}
+	trigger = {
+                        event = { id = 166096 days = 340 }
+	}
+	name = "EVT_YUG_323029_NAME"
+	desc = "EVT_YUG_323029_DESC"
+	style = 2
+	picture = "Minors/skadar"
+	decision_picture = "GLOBAL/decision_shkoder"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no } type = money value = -200 }
+                command = { trigger = { ai = no } type = metalpool value = -1000 }
+                command = { type = construct which = infrastructure where = 361 value = 10 }
+                command = { type = construct which = infrastructure where = 329 value = 10 }
+                command = { type = construct which = infrastructure where = 332 value = 10 }
+                command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323030] YUG | 1933 | Establish relations with the Soviets (Establecer relaciones con los soviéticos)
+# Triggered by event 147024 in events/FRA/FRA_31-36.txt
+# Trigger event 223134 in events/SOV/SOV_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323030
+	random = no
+	country = YUG
+        decision = {
+		year = 1940
+	}
+	decision_trigger = {
+			event = 147024
+                        control = { province = 55 data = GER }
+                    NOT = {
+			OR = {
+			        ispuppet = SOV
+                                war = { country = YUG country = SOV }
+			}
+		}
+	}
+	trigger = {
+		        event = 147024
+                        control = { province = 55 data = GER }
+                    NOT = {
+			OR = {
+			        ispuppet = SOV
+                                war = { country = YUG country = SOV }
+			}
+		}
+	}
+	name = "EVT_SHARED_01186_NAME"
+	desc = "EVT_SHARED_01186_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision_picture = "GLOBAL/decision_anticominternpact"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no } type = money value = -50 }
+                command = { type = trigger which = 223134 }
+                command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329551] YUG | 1933 | The Balkan Pact (Pacto Balcánico)
+# Trigger event 209059 in events/Minors/ROM_14-36.txt
+# Trigger event 152011 in events/GRE/GRE_14-33.txt
+# Trigger event 235012 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329551
+	random = no
+	country = YUG
+	decision = {
+		exists = ROM
+                exists = TUR
+                exists = GRE
+		year = 1934
+                   NOT = {
+			OR = {
+				ispuppet = YUG
+				ispuppet = ROM
+				ispuppet = GRE
+                                ispuppet = GRE
+				war = { country = YUG country = ROM }
+				war = { country = YUG country = TUR }
+                                war = { country = YUG country = GRE }
+			}
+		}
+	}
+	decision_trigger = {
+		AND = {
+			headofstate = 100086
+                        year = 1934
+                        month = february
+		}
+	}
+	trigger = {
+		AND = {
+			headofstate = 100086
+                        year = 1934
+                        month = february
+                  NOT = {
+			OR = {
+				ispuppet = YUG
+				ispuppet = ROM
+				ispuppet = GRE
+                                ispuppet = GRE
+				war = { country = YUG country = ROM }
+				war = { country = YUG country = TUR }
+                                war = { country = YUG country = GRE }
+			}
+		}
+		}
+	}
+	name = "EVT_YUG_329551_NAME"
+	desc = "EVT_YUG_329551_DESC"
+	style = 2
+	picture = "GLOBAL/balkan_pact"
+	decision_picture = "Minors/decision_balkan_pact"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1934 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ROM value = 25 }
+		command = { type = relation which = GRE value = 25 }
+		command = { type = relation which = TUR value = 25 }
+		command = { type = relation which = ALB value = -25 }
+		command = { type = relation which = ITA value = -25 }
+                command = { type = relation which = BUL value = -25 }
+                command = { type = relation which = HUN value = -25 }
+                command = { type = relation which = SOV value = -25 }
+                command = { type = dissent value = -2 }
+		command = { type = trigger which = 209059 }
+                command = { type = trigger which = 152011 }
+                command = { type = trigger which = 235012 }
+                command = { type = domestic which = defense_lobby value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323006] YUG | 1933 | The Little Entente (La Pequeña Entente)
+# Trigger event 136022 in events/Minors/CZE_14-53.txt
+# Trigger event 209060 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323006
+	random = no
+	country = YUG
+	decision = {
+		year = 1933
+                exists = ROM
+                exists = CZE
+                exists = HUN
+	}
+	decision_trigger = {
+		AND = {
+			headofstate = 100086
+                        year = 1933
+                        exists = HUN
+		}
+	}
+	trigger = {
+		AND = {
+			headofstate = 100086
+                        year = 1933
+		}
+	}
+	name = "EVT_SHARED_01180_NAME"
+	desc = "EVT_SHARED_01180_DESC"
+	style = 2
+	picture = "Minors/little_entente"
+	decision_picture = "Minors/decision_little_entente"
+	date = { day = 0 month = february year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ROM value = 25 }
+		command = { type = relation which = FRA value = 25 }
+                command = { type = relation which = CZE value = 25 }
+		command = { type = relation which = ITA value = -25 }
+                command = { type = relation which = HUN value = -25 }
+                command = { type = dissent value = -3 }
+		command = { type = trigger which = 136022 }
+                command = { type = trigger which = 209060 }
+                command = { type = domestic which = defense_lobby value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323008] YUG | 1935 | Appoint Milan Stojadinovic (Nombrar a Milan Stojadinovic)
+# Triggered by event 323007 in events/Minors/YUG.txt
+# Trigger event 166095 in events/ITA/ITA_Decisions.txt
+# Trigger event 323009 in events/Minors/YUG_Decisions.txt
+# Trigger event 323013 in events/Minors/YUG.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323008
+	save_date = yes
+        random = no
+	country = YUG
+	decision = {
+		year = 1935
+                event = 323007
+	}
+	decision_trigger = {
+		       event = { id = 323007 days = 40 }
+                       AND = {
+			headofstate = 100001
+                        year = 1935
+		}
+	}
+	trigger = {
+	     event = { id = 323007 days = 40 }
+             AND = {
+			headofstate = 100001
+                        year = 1935
+		}
+	}
+	name = "EVT_YUG_323008_NAME"
+	desc = "EVT_YUG_323008_DESC"
+	style = 2
+	picture = "Minors/stojadinovic"
+	decision_picture = "Minors/decision_stojadinovic"
+	date = { day = 0 month = january year = 1935 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+                command = { type = dissent value = -10 }
+		command = { type = headofgovernment which = 100002 }
+                command = { type = foreignminister which = 100003 }
+                command = { type = chiefofarmy which = 100097 }
+                command = { type = chiefofnavy which = 100098 }
+                command = { type = ministerofsecurity which = 100096 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323009] YUG | 1935 | Yugoslav Radical Union (Unión Radical Yugoslava)
+# Triggered by event 323008 in events/Minors/YUG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323009
+	random = no
+	country = YUG
+	decision = {
+		year = 1935
+                event = 323008
+	}
+	decision_trigger = {
+		       event = { id = 323008 days = 40 }
+                       AND = {
+			headofgovernment = 100002
+		}
+	}
+	trigger = {
+	     event = { id = 323008 days = 40 }
+             AND = {
+			headofgovernment = 100002
+                        year = 1935
+		}
+	}
+	name = "EVT_YUG_323009_NAME"
+	desc = "EVT_YUG_323009_DESC"
+	style = 2
+	picture = "Minors/jrz"
+	decision_picture = "Minors/decision_jrz"
+	date = { day = 0 month = january year = 1935 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_AGREE"
+                command = { type = dissent value = -5 }
+		command = { type = domestic which = political_left value = -1 }
+                command = { type = money value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323021] YUG | 1937 | Yugoslav-Bulgarian pact of eternal friendship (Pacto yugoslavo-búlgaro de amistad eterna)
+# Trigger event 118021 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323021
+	random = no
+	country = YUG
+	decision = {
+		year = 1937
+                exists = BUL
+	}
+	decision_trigger = {
+		AND = {
+			headofgovernment = 100002
+                        year = 1937
+		}
+	}
+	trigger = {
+		AND = {
+			headofgovernment = 100002
+                        year = 1937
+		}
+		NOT = {
+			OR = {
+				ispuppet = YUG
+				ispuppet = BUL
+                                war = { country = YUG country = BUL }
+			}
+		}
+	}
+	name = "EVT_SHARED_01184_NAME"
+	desc = "EVT_SHARED_01184_DESC"
+	style = 2
+	picture = "Minors/borismilan"
+	decision_picture = "Minors/decision_borismilan"
+	date = { day = 0 month = january year = 1937 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ROM value = -15 }
+		command = { type = relation which = GRE value = -15 }
+		command = { type = relation which = TUR value = -15 }
+                command = { type = relation which = CZE value = -15 }
+                command = { type = dissent value = -2 }
+		command = { type = trigger which = 118021 }
+	}
+}

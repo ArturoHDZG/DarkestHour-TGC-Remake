@@ -1,0 +1,155 @@
+# ============================================================================
+# File: events/Minors/SLO.txt (4 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [221001] SLO | 1936 | Dissolution of Czechoslovakia (Disolución de Checoslovaquia)
+# Triggered by event 150040 in events/GER/GER_33-36.txt
+# Trigger event 159016 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 221001
+	random = no
+	country = SLO
+	name = "EVT_SLO_221001_NAME"
+	desc = "EVT_SLO_221001_DESC"
+	style = 2
+	picture = "GLOBAL/german_mobilization2"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 159016 }
+		command = { type = headofstate which = 280011 }
+		command = { type = headofgovernment which = 280014 }
+		command = { type = foreignminister which = 280017 }
+		command = { type = armamentminister which = 280021 }
+		command = { type = ministerofsecurity which = 280026 }
+		command = { type = ministerofintelligence which = 280033 }
+		command = { type = chiefofstaff which = 280038 }
+		command = { type = chiefofarmy which = 280040 }
+		command = { type = chiefofnavy which = 280043 }
+		command = { type = chiefofair which = 280045 }
+		command = { type = strength which = land when = 0 where = 0 org = 0 value = 0 }
+		command = { type = add_corps which = "Slovak Combat Group" value = land where = 208 }
+        command = { type = add_division which = "1. Pesi divize 'Jánošík'" value = infantry when = 9 }
+        command = { type = add_division which = "2. Pesi divize 'Škultéty'" value = infantry when = 9 }
+        command = { type = add_division which = "3. Pesi divize 'Rázus'" value = infantry when = 9 }
+		command = { type = manpowerpool value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [221002] SLO | 1936 | Molotov-Ribbentrop: Eastern Poland to USSR (Pacto M-R: Polonia oriental para la URSS)
+# Triggered by event 150053 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 221002
+	random = no
+	country = SLO
+	name = "EVT_SHARED_00393_NAME"
+	desc = "EVT_SHARED_00393_DESC"
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = SOV value = 10 }
+		command = { type = secedeprovince which = SOV value = 239 }
+		command = { type = secedeprovince which = SOV value = 254 }
+		command = { type = secedeprovince which = SOV value = 250 }
+		command = { type = secedeprovince which = SOV value = 241 }
+		command = { type = secedeprovince which = SOV value = 242 }
+		command = { type = secedeprovince which = SOV value = 244 }
+		command = { type = secedeprovince which = SOV value = 247 }
+		command = { type = secedeprovince which = SOV value = 245 }
+		command = { type = secedeprovince which = SOV value = 238 }
+		command = { type = secedeprovince which = SOV value = 248 }
+		command = { type = secedeprovince which = SOV value = 240 }
+		command = { type = secedeprovince which = SOV value = 251 }
+		command = { type = secedeprovince which = SOV value = 255 }
+		command = { type = secedeprovince which = SOV value = 257 }
+		command = { type = secedeprovince which = SOV value = 258 }
+		command = { type = secedeprovince which = SOV value = 249 }
+		command = { type = secedeprovince which = SOV value = 256 }
+		command = { type = secedeprovince which = SOV value = 253 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [221000] SLO | 1938 | Death of Andrej Hlinka (Muerte de Andrej Hlinka)
+# ----------------------------------------------------------------------------
+event = {
+	id = 221000
+	random = no
+	country = SLO
+	style = 2
+	trigger = {
+		minister = 280001
+		}
+	date = { year = 1938 month = august day = 16 }
+	name = "EVT_SLO_221000_NAME"
+	desc = "EVT_SLO_221000_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 280011 }
+		command = { type = headofgovernment which = 280014 }
+		command = { type = foreignminister which = 280017 }
+		command = { type = armamentminister which = 280021 }
+		command = { type = ministerofsecurity which = 280026 }
+		command = { type = ministerofintelligence which = 280033 }
+		command = { type = chiefofstaff which = 280038 }
+		command = { type = chiefofarmy which = 280040 }
+		command = { type = chiefofnavy which = 280043 }
+		command = { type = chiefofair which = 280045 }
+		command = { type = sleepminister which = 280001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329049] SLO | 1944 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329049
+	random = no
+	country = SLO
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		war = { country = GER country = SOV }
+		alliance = { country = SLO country = GER }
+		puppet = { country = SLO country = GER }
+		random = 5
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = august year = 1944 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 280012 }
+		command = { type = headofgovernment which = 280015 }
+		command = { type = foreignminister which = 280018 }
+		command = { type = armamentminister which = 280022 }
+		command = { type = ministerofsecurity which = 280028 }
+		command = { type = ministerofintelligence which = 280035 }
+		command = { type = chiefofstaff which = 280039 }
+		command = { type = chiefofarmy which = 280041 }
+		command = { type = chiefofnavy which = 280043 }
+		command = { type = chiefofair which = 280046 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}

@@ -1,0 +1,524 @@
+# ============================================================================
+# File: events/Minors/U30.txt (18 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [265021] U30 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 265022 in events/Minors/U30.txt
+# Trigger event 209107 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 265021
+   country = U30
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = ROM
+            NOT = { ai = ROM }
+            NOT = { ai = U30 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = ROM
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = ROM } }
+      command = { type = country which = ROM }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = ROM
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U30 }
+               control = { province = 316 data = -1 }
+            }
+         }
+         type = trigger which = 265022
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = ROM }
+               NOT = { control = { province = 316 data = -1 } }
+            }
+         }
+         type = trigger which = 209107
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = ROM
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [265022] U30 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 209106 in events/Minors/ROM_36-44.txt
+# Triggered by event 265021 in events/Minors/U30.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 265022
+   country = U30
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = ROM value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [265020] U30 | 1939 | Cession of Bessarabia (Cesión de Besarabia)
+# Triggered by event 207019 in events/AI/REB_AI_14-52.txt
+# Trigger event 223237 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 265020
+	country = U30
+	name = EVT_U30_265020_NAME
+	desc = EVT_U30_265020_DESC
+	picture = "nwo/bessarabia"
+	style = 1
+	trigger = {
+		flag = der_untergang
+		event = { id = 207019 days = 3 }
+		area = { area = "Bessarabia" value = 0 }
+		NOT = { exists = UKR }
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = SOV value = 300 when = 1 }
+		command = { type = secedeprovince which = SOV value = 302 when = 1 }
+		command = { type = secedeprovince which = SOV value = 303 when = 1 }
+		command = { type = secedeprovince which = SOV value = 304 when = 1 }
+		command = { type = secedeprovince which = SOV value = 305 when = 1 }
+		command = { type = secedeprovince which = SOV value = 306 when = 1 }
+		command = { type = trigger which = 223237 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265004] U30 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265004
+	country = U30
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 965001 }
+		command = { type = headofgovernment which = 965003 }
+		command = { type = foreignminister which = 965006 }
+		command = { type = armamentminister which = 965009 }
+		command = { type = ministerofsecurity which = 965010 }
+		command = { type = ministerofintelligence which = 965011 }
+		command = { type = chiefofstaff which = 965013 }
+		command = { type = chiefofarmy which = 965014 }
+		command = { type = chiefofnavy which = 965015 }
+		command = { type = chiefofair which = 965016 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265005] U30 | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265005
+	country = U30
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 965003 }
+		command = { type = foreignminister which = 965006 }
+		command = { type = armamentminister which = 965009 }
+		command = { type = ministerofsecurity which = 965010 }
+		command = { type = ministerofintelligence which = 965012 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265006] U30 | 1947 | Abdication of King Michael (Abdicación forzada del rey Miguel)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265006
+	country = U30
+	name = EVT_U30_265006_NAME
+	desc = EVT_U30_265006_DESC
+	picture = "nwo/king_michael_i"
+	style = 1
+	trigger = {
+		flag = cold_war
+		headofstate = 965001
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 965100 }
+		command = { type = sleepminister which = 965001 }
+		command = { type = flag_ext where = U30 which = _1948 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265007] U30 | 1952 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265007
+	country = U30
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 965100 }
+		command = { type = headofgovernment which = 965004 }
+		command = { type = foreignminister which = 965018 }
+		command = { type = flag_ext where = U30 which = _1952 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265008] U30 | 1954 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265008
+	country = U30
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 965101 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265009] U30 | 1955 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265009
+	country = U30
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 965100 }
+		command = { type = headofgovernment which = 965102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265010] U30 | 1961 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265010
+	country = U30
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 965103 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265011] U30 | 1965 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265011
+	country = U30
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1966 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 965104 }
+		command = { type = flag_ext where = U30 which = _1965 }
+		command = { type = name where = U30 which = U3065 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265012] U30 | 1967 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265012
+	country = U30
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1967 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 965105 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265013] U30 | 1974 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265013
+	country = U30
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 965106 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265014] U30 | 1979 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265014
+	country = U30
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1981 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 965107 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265017] U30 | 1980 | Ceau?escu's Debt Repayment and Austerity (Autarquía y austeridad de Ceau?escu)
+# Triggered by event 265016 in events/Minors/U30_Decisions.txt
+# Trigger event 265018 in events/Minors/U30.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 265017
+	country = U30
+	name = EVT_U30_265017_NAME
+	desc = EVT_U30_265017_DESC
+	picture = "nwo/nicolae_ceausescu"
+	style = 1
+	trigger = {
+		flag = cold_war
+		headofstate = 965105
+		event = 265016
+	}
+	date = { day = 0 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1984 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 20 }
+		command = { type = domestic which = freedom value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265015] U30 | 1982 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 265015
+	country = U30
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1982 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 965108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265018] U30 | 1989 | The Timi?oara Uprising (La insurrección de Timi?oara)
+# Triggered by event 265017 in events/Minors/U30.txt
+# Trigger event 265019 in events/Minors/U30.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 265018
+	country = U30
+	name = EVT_U30_265018_NAME
+	desc = EVT_U30_265018_DESC
+	picture = "nwo/romanian_revolution_1989"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+	}
+	date = { day = 16 month = december year = 1989 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 60
+		command = { type = dissent value = 30 }
+	}
+	action = {
+		name = ACTION_NAME_OFFER_PEACE
+		ai_chance = 40
+		trigger = { NOT = { event = 265017 } }
+		command = { type = dissent value = 10 }
+		command = { type = country which = ROM }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [265019] U30 | 1989 | The Romanian Revolution of 1989 (La Revolución Rumana de 1989)
+# Triggered by event 265018 in events/Minors/U30.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 265019
+	country = U30
+	name = EVT_U30_265019_NAME
+	desc = EVT_U30_265019_DESC
+	picture = "nwo/romanian_revolution_1989"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+		event = 265018
+	}
+	date = { day = 22 month = december year = 1989 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = EVT_U30_265019_A
+		ai_chance = 99
+		command = { type = dissent value = -10 }
+		command = { type = sleepminister which = 965105 }
+		command = { type = country which = ROM }
+		command = { type = end_puppet }
+		command = { type = leave_alliance }
+		command = { type = flag_ext where = ROM which = _1989 }
+	}
+	action = {
+		name = EVT_U30_265019_B
+		ai_chance = 1
+		command = { type = dissent value = 50 }
+		command = { type = end_puppet }
+	}
+}

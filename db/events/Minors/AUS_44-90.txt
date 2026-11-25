@@ -1,0 +1,979 @@
+# ============================================================================
+# File: events/Minors/AUS_44-90.txt (26 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [108026] AUS | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324459 in events/GLOBAL/MULTI_44-48.txt
+# Triggered by event 108049 in events/Minors/AUS_44-90.txt
+# Triggered by event 223286 in events/SOV/SOV_43-46.txt
+# Trigger event 324459 in events/GLOBAL/MULTI_44-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108026
+	country = AUS
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { trigger = { NOT = { event = 324459 } } type = headofstate which = 115014 }
+		command = { trigger = { NOT = { event = 324459 } } type = headofgovernment which = 115200 }
+		command = { trigger = { event = 324459 } type = headofstate which = 115201 }
+		command = { trigger = { event = 324459 } type = headofgovernment which = 115107 }
+		command = { type = foreignminister which = 115033 }
+		command = { type = armamentminister which = 115047 }
+		command = { type = ministerofsecurity which = 115060 }
+		command = { type = ministerofintelligence which = 115069 }
+		command = { type = chiefofstaff which = 115079 }
+		command = { type = chiefofarmy which = 115087 }
+		command = { type = chiefofnavy which = 115092 }
+		command = { type = chiefofair which = 115099 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108048] AUS | 1944 | Failure of Allied Recognition (Falta de reconocimiento a Renner)
+# Triggered by event 316245 in events/USA/USA_43-48.txt
+# Trigger event 324459 in events/GLOBAL/MULTI_44-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108048
+	country = AUS
+	name = "EVT_AUS_108048_NAME"
+	desc = "EVT_AUS_108048_DESC"
+	picture = "nwo/soviet_occupation_of_austria"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 95
+		command = { type = country which = U16 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108049] AUS | 1944 | Second Control Agreement for Austria (El Segundo Acuerdo de Control de Austria)
+# Triggered by event 316245 in events/USA/USA_43-48.txt
+# Trigger event 108027 in events/Minors/AUS_44-90.txt
+# Trigger event 108026 in events/Minors/AUS_44-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108049
+	country = AUS
+	name = "EVT_AUS_108049_NAME"
+	desc = "EVT_AUS_108049_DESC"
+	picture = "nwo/allied_occupation_of_austria"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 108026 }
+		command = { type = access which = SOV }
+		command = { type = access which = ENG }
+		command = { type = access which = USA }
+		command = { type = access which = FRA }
+		command = { type = set_domestic which = interventionism value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108027] AUS | 1945 | General Elections (Elecciones generales)
+# Triggered by event 324458 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 108049 in events/Minors/AUS_44-90.txt
+# Triggered by event 324459 in events/GLOBAL/MULTI_44-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108027
+	country = AUS
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+		OR = {
+			event = 324458
+			event = 108049
+		}
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { trigger = { NOT = { event = 324459 } } type = headofstate which = 115014 }
+		command = { type = headofgovernment which = 115107 }
+		command = { type = foreignminister which = 115032 }
+		command = { type = armamentminister which = 115109 }
+		command = { type = ministerofsecurity which = 115110 }
+		command = { type = ministerofintelligence which = 115112 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { trigger = { NOT = { event = 324459 } } type = headofstate which = 115014 }
+		command = { type = headofgovernment which = 115023 }
+		command = { type = foreignminister which = 115113 }
+		command = { type = armamentminister which = 115047 }
+		command = { type = ministerofsecurity which = 115060 }
+		command = { type = ministerofintelligence which = 115070 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108001] AUS | 1945 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108001
+	random = no
+	country = AUS
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = AUS }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = april year = 1945 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 115104 }
+		command = { type = headofgovernment which = 115107 }
+		command = { type = foreignminister which = 115032 }
+		command = { type = armamentminister which = 115109 }
+		command = { type = ministerofsecurity which = 115110 }
+		command = { type = ministerofintelligence which = 115112 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 115014 }
+		command = { type = headofgovernment which = 115023 }
+		command = { type = foreignminister which = 115113 }
+		command = { type = armamentminister which = 115047 }
+		command = { type = ministerofsecurity which = 115060 }
+		command = { type = ministerofintelligence which = 115070 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [108028] AUS | 1949 | General Elections (Elecciones generales)
+# Triggered by event 324459 in events/GLOBAL/MULTI_44-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108028
+	country = AUS
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { trigger = { NOT = { event = 324459 } } type = headofstate which = 115014 }
+		command = { type = headofgovernment which = 115107 }
+		command = { type = foreignminister which = 115034 }
+		command = { type = armamentminister which = 115046 }
+		command = { type = ministerofsecurity which = 115111 }
+		command = { type = ministerofintelligence which = 115069 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { trigger = { NOT = { event = 324459 } } type = headofstate which = 115014 }
+		command = { type = headofgovernment which = 115023 }
+		command = { type = foreignminister which = 115033 }
+		command = { type = armamentminister which = 115049 }
+		command = { type = ministerofsecurity which = 115060 }
+		command = { type = ministerofintelligence which = 115070 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 115106 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108045] AUS | 1949 | Accession to NATO (Adhesión a la OTAN)
+# Triggered by event 316202 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108045
+	country = AUS
+	name = EVT_AUS_108045_NAME
+	desc = EVT_AUS_108045_DESC
+	picture = "nwo/nato"
+	style = 1
+	trigger = {
+		OR = {
+			flag = cold_war
+			flag = ww3
+		}
+		NOT = { flag = isolationist_usa }
+		NOT = { alliance = { country = -1 country = USA } }
+		NOT = { alliance = { country = -1 country = SOV } }
+		NOT = { flag = neutral_austria }
+		event = 316202
+		relation = { which = USA value = -100 }
+		NOT = { relation = { which = SOV value = 150 } }
+	}
+    date = { day = 0 month = january year = 1949 }
+    offset = 90
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 98
+		command = { type = alliance which = USA }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = EVT_AUS_108045_A
+		ai_chance = 2
+		command = { type = domestic which = interventionism value = -4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108002] AUS | 1951 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108002
+	random = no
+	country = AUS
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		NOT = { ispuppet = AUS }
+		government = democratic
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = january year = 1951 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 115105 }
+		command = { type = headofgovernment which = 115108 }
+		command = { type = foreignminister which = 115032 }
+		command = { type = armamentminister which = 115109 }
+		command = { type = ministerofsecurity which = 115111 }
+		command = { type = ministerofintelligence which = 115112 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 115106 }
+		command = { type = headofgovernment which = 115023 }
+		command = { type = foreignminister which = 115113 }
+		command = { type = armamentminister which = 115047 }
+		command = { type = ministerofsecurity which = 115060 }
+		command = { type = ministerofintelligence which = 115070 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [108029] AUS | 1951 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108029
+	country = AUS
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 115201 }
+		command = { type = headofgovernment which = 115108 }
+		command = { type = foreignminister which = 115032 }
+		command = { type = armamentminister which = 115109 }
+		command = { type = ministerofsecurity which = 115111 }
+		command = { type = ministerofintelligence which = 115112 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 115201 }
+		command = { type = headofgovernment which = 115023 }
+		command = { type = foreignminister which = 115113 }
+		command = { type = armamentminister which = 115047 }
+		command = { type = ministerofsecurity which = 115060 }
+		command = { type = ministerofintelligence which = 115070 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108030] AUS | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108030
+	country = AUS
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 115201 }
+		command = { type = headofgovernment which = 115107 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 115201 }
+		command = { type = headofgovernment which = 115023 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108052] AUS | 1955 | The Austrian State Treaty (El Tratado de Estado de Austria)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108052
+	country = AUS
+	name = "EVT_AUS_108052_NAME"
+	desc = "EVT_AUS_108052_DESC"
+	picture = "nwo/austrian_state_treaty"
+	style = 1
+	trigger = {
+		flag = neutral_austria
+	}
+	date = { day = 14 month = may year = 1955 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -20 }
+		command = { type = end_puppet }
+		command = { type = leave_alliance }
+		command = { type = end_access which = SOV }
+		command = { type = end_access which = ENG }
+		command = { type = end_access which = USA }
+		command = { type = end_access which = FRA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108031] AUS | 1956 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108031
+	country = AUS
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 115204 }
+		command = { type = headofgovernment which = 115108 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 115202 }
+		command = { type = headofstate which = 115204 }
+		command = { type = headofgovernment which = 115203 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108053] AUS | 1958 | The Wirtschaftswunder (El Wirtschaftswunder)
+# Triggered by event 108050 in events/Minors/AUS_14-37.txt
+# Triggered by event 108051 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 108053
+	country = AUS
+	name = "EVT_AUS_108053_NAME"
+	desc = "EVT_AUS_108053_DESC"
+	picture = "nwo/wirtschaftswunder"
+	style = 1
+	date = { day = 1 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { event = 108050 } type = industrial_modifier which = total value = 10 }
+		command = { trigger = { event = 108051 } type = industrial_modifier which = total value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108032] AUS | 1959 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108032
+	country = AUS
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 115204 }
+		command = { type = headofgovernment which = 115108 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 115204 }
+		command = { type = headofgovernment which = 115203 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108033] AUS | 1962 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108033
+	country = AUS
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 115205 }
+		command = { type = headofgovernment which = 115206 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 115202 }
+		command = { type = headofgovernment which = 115203 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108034] AUS | 1965 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108034
+	country = AUS
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 115207 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108035] AUS | 1966 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108035
+	country = AUS
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1966 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1969 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 115209 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 115208 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108036] AUS | 1970 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108036
+	country = AUS
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1970 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 115208 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 115209 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108037] AUS | 1971 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108037
+	country = AUS
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1974 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 115208 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 115210 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108038] AUS | 1974 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108038
+	country = AUS
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 115211 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108039] AUS | 1975 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108039
+	country = AUS
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1975 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 115208 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 115212 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108040] AUS | 1979 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108040
+	country = AUS
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 115208 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 115213 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108041] AUS | 1983 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108041
+	country = AUS
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1983 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 115214 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 115215 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108042] AUS | 1986 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108042
+	country = AUS
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 115216 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108043] AUS | 1986 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108043
+	country = AUS
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 115217 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 115215 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+			command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [108044] AUS | 1990 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 108044
+	country = AUS
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 115217 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 115218 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}

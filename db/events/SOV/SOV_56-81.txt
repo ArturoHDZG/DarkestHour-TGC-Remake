@@ -1,0 +1,1534 @@
+# ============================================================================
+# File: events/SOV/SOV_56-81.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [223313] SOV | 1956 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223313
+	country = SOV
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = foreignminister which = 30087 }
+		command = { type = ministerofsecurity which = 30091 }
+		command = { type = ministerofintelligence which = 30216 }
+		command = { type = chiefofnavy which = 30215 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223348] SOV | 1956 | Launch of Sputnik 1 (Lanzamiento del Sputnik 1)
+# Triggered by event 207043 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207044 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207045 in events/AI/REB_AI_55-00.txt
+# Trigger event 207043 in events/AI/REB_AI_55-00.txt
+# Trigger event 207044 in events/AI/REB_AI_55-00.txt
+# Trigger event 207045 in events/AI/REB_AI_55-00.txt
+# Trigger event 207046 in events/AI/REB_AI_55-00.txt
+# Trigger event 207047 in events/AI/REB_AI_55-00.txt
+# Trigger event 207048 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+      id = 223348
+      country = SOV
+      name = EVT_SOV_223348_NAME
+      desc = EVT_SOV_223348_DESC
+	picture = "nwo/sputnik"
+      style = 1
+      action = {
+            name = ACTION_NAME_VICTORY
+            command = { type = dissent value = -10 }
+      }
+}
+
+# ----------------------------------------------------------------------------
+# [223349] SOV | 1956 | Launch of Explorer 1 (Lanzamiento del Explorer 1)
+# Triggered by event 207043 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207044 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207045 in events/AI/REB_AI_55-00.txt
+# Trigger event 207043 in events/AI/REB_AI_55-00.txt
+# Trigger event 207044 in events/AI/REB_AI_55-00.txt
+# Trigger event 207045 in events/AI/REB_AI_55-00.txt
+# Trigger event 207046 in events/AI/REB_AI_55-00.txt
+# Trigger event 207047 in events/AI/REB_AI_55-00.txt
+# Trigger event 207048 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+      id = 223349
+      country = SOV
+      name = EVT_SOV_223349_NAME
+      desc = EVT_SOV_223349_DESC
+	picture = "nwo/explorer_1"
+      style = 1
+      action = {
+            name = ACTION_NAME_OK
+            command = { type = dissent value = 10 }
+      }
+}
+
+# ----------------------------------------------------------------------------
+# [223375] SOV | 1956 | UN Resolution on the Suez Crisis (Resolución de la ONU sobre la Guerra de Suez)
+# Triggered by event 329997 in events/AI/REB_AI_55-00.txt
+# Trigger event 142067 in events/Minors/EGY_33-58.txt
+# Trigger event 142068 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223375
+	country = SOV
+	name = EVT_SHARED_00959_NAME
+	desc = EVT_SHARED_00959_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 99
+		trigger = {
+			NOT = { flag = un_suez_interventionveto }
+			NOT = { war = { country = EGY } }
+			NOT = { alliance = { country = ISR } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 1
+		trigger = {
+			NOT = { war = { country = EGY } }
+			NOT = { alliance = { country = ISR } }
+		}
+		command = { type = setflag which = un_suez_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 0
+		trigger = {
+			NOT = { alliance = { country = EGY } }
+		}
+		command = { type = setflag which = un_suez_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223378] SOV | 1956 | UN Resolution on the Hungarian Uprising (Resolución de la ONU sobre el Levantamiento Húngaro)
+# Triggered by event 207060 in events/AI/REB_AI_55-00.txt
+# Trigger event 207061 in events/AI/REB_AI_55-00.txt
+# Trigger event 248035 in events/Minors/U13.txt
+# Trigger event 329872 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223378
+	country = SOV
+	name = EVT_SHARED_00965_NAME
+	desc = EVT_SHARED_00965_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 100
+		command = { type = setflag which = un_hungary_totalveto }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 0
+		trigger = {
+			NOT = { war = { country = U13 } }
+			NOT = { alliance = { country = SOV } }
+		}
+		command = { type = setflag which = un_hungary_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 0
+		trigger = {
+			NOT = { flag = un_hungary_interventionveto }
+			NOT = { war = { country = U13 } }
+			NOT = { alliance = { country = SOV } }
+		}
+		command = { type = money value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329967] SOV | 1956 | Defiance of the Suez Ultimatum (Desafío al ultimátum de Suez)
+# Triggered by event 329966 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329967
+	country = SOV
+	name = EVT_SOV_329967_NAME
+	desc = EVT_SOV_329967_DESC
+	picture = "nwo/suez_war_intervention"
+	style = 1
+	trigger = {
+		war = { country = ISR country = EGY }
+		flag = cold_war
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 75
+		command = { type = alliance which = EGY }
+		command = { type = war which = USA }
+		command = { type = war which = ISR }
+		command = { type = dissent value = 3 }
+	}
+	action = {
+		name = EVT_SOV_329967_A
+		ai_chance = 25
+		command = { type = dissent value = 25 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223321] SOV | 1956 | The 20th Party Congress (El XX Congreso del Partido)
+# Trigger event 223322 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223321
+	country = SOV
+	name = EVT_SOV_223321_NAME
+	desc = EVT_SOV_223321_DESC
+	picture = "nwo/cpsu_congress_1956"
+	style = 1
+	trigger = {
+		headofstate = 30201
+	}
+	date = { day = 25 month = february year = 1956 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = EVT_SOV_223321_A
+		ai_chance = 90
+		command = { type = dissent value = 10 }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+	}
+	action = {
+		name = EVT_SOV_223321_B
+		ai_chance = 10
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = sleepevent which = 223322 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223328] SOV | 1956 | The 20th Party Congress (El XX Congreso del Partido)
+# Trigger event 223322 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223328
+	country = SOV
+	name = EVT_SOV_223328_NAME
+	desc = EVT_SOV_223328_DESC
+	picture = "nwo/cpsu_congress_1956"
+	style = 1
+	trigger = {
+		NOT = { headofstate = 30201 }
+	}
+	date = { day = 25 month = february year = 1956 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = EVT_SOV_223328_A
+		ai_chance = 90
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = sleepevent which = 223322 }
+	}
+	action = {
+		name = EVT_SOV_223328_B
+		ai_chance = 10
+		command = { type = dissent value = 10 }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223322] SOV | 1956 | The Khrushchev Thaw (El Deshielo de Jrushchov)
+# Triggered by event 223321 in events/SOV/SOV_56-81.txt
+# Triggered by event 223328 in events/SOV/SOV_56-81.txt
+# Trigger event 123066 in events/Minors/CHC_62-91.txt
+# Trigger event 263005 in events/Minors/U28.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223322
+	country = SOV
+	name = EVT_SOV_223322_NAME
+	desc = EVT_SOV_223322_DESC
+	picture = "nwo/tomb_of_stalin"
+	style = 1
+	trigger = {
+		headofstate = 30201
+		OR = {
+			event = 223321
+			event = 223328
+		}
+	}
+	date = { day = 1 month = april year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action_a = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -15 }
+		command = { type = domestic which = freedom value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329871] SOV | 1956 | United Nations Intervention in Hungary (Intervención de la ONU en Hungría)
+# Triggered by event 207061 in events/AI/REB_AI_55-00.txt
+# Trigger event 248016 in events/Minors/U13.txt
+# Trigger event 223268 in events/SOV/SOV_47-56.txt
+# Trigger event 316224 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329871
+	country = SOV
+	name = EVT_SOV_329871_NAME
+	desc = EVT_SOV_329871_DESC
+	picture = "nwo/united_nations"
+	style = 1
+	trigger = {
+		flag = cold_war
+		war = { country = SOV country = U13 }
+		event = 207061
+	}
+	date = { day = 1 month = june year = 1956 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_WITHDRAW
+		ai_chance = 80
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 248016 }
+		command = { type = trigger which = 223268 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 20
+		command = { type = dissent value = 50 }
+		command = { type = trigger which = 316224 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223267] SOV | 1956 | Soviet Deliberations on Hungary (Deliberaciones soviéticas sobre Hungría)
+# Triggered by event 248030 in events/Minors/U13.txt
+# Trigger event 207034 in events/Minors/REB.txt
+# Trigger event 207060 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223267
+	country = SOV
+	name = EVT_SOV_223267_NAME
+	desc = EVT_SOV_223267_DESC
+	picture = "nwo/hungarian_revolution_1956"
+	style = 1
+	trigger = {
+		event = 248030
+		flag = cold_war
+	}
+	date = { day = 4 month = november year = 1956 }
+	offset = 1
+	deathdate = { day = 6 month = november year = 1956 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 98
+		command = { type = dissent value = -2 }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 2
+		command = { type = dissent value = 10 }
+		
+		command = { type = sleepevent which = 207034 }
+		command = { type = sleepevent which = 207060 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329965] SOV | 1956 | US Stance on the Suez Conflict (Postura de EE. UU. en el conflicto de Suez)
+# Triggered by event 329964 in events/USA/USA_48-61.txt
+# Trigger event 329966 in events/USA/USA_48-61.txt
+# Trigger event 142056 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329965
+	country = SOV
+	name = EVT_SOV_329965_NAME
+	desc = EVT_SOV_329965_DESC
+	picture = "nwo/suez_war_intervention"
+	style = 1
+	trigger = {
+		event = 329964
+		war = { country = ISR country = EGY }
+		flag = cold_war
+	}
+	date = { day = 20 month = november year = 1956 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 50
+		command = { type = relation which = EGY value = 150 }
+		command = { type = relation which = ISR value = -150 }
+		command = { type = relation which = USA value = -100 }
+		command = { type = trigger which = 329966 }
+		command = { type = trigger which = 142056 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 40
+		command = { type = relation which = EGY value = 100 }
+		command = { type = relation which = ISR value = -100 }
+		command = { type = relation which = USA value = -50 }
+		command = { type = trigger which = 142056 }
+	}
+	action = {
+		name = EVT_SOV_329965_A
+		ai_chance = 10
+		command = { type = relation which = USA value = -10 }
+		command = { type = relation which = EGY value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223314] SOV | 1957 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223314
+	country = SOV
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = foreignminister which = 30088 }
+		command = { type = chiefofarmy which = 30047 }
+		command = { type = chiefofair which = 30143 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223315] SOV | 1958 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223315
+	country = SOV
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 30078 }
+		command = { type = ministerofintelligence which = 30092 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223008] SOV | 1958 | Resignation of Nikolai Bulganin (Dimisión de Nikolái Bulganin)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223008
+	random = no
+	country = SOV
+	style = 2
+	trigger = {
+		headofgovernment = 30086
+		}
+	date = { day = 27 month = march year = 1958 }
+	name = "EVT_SOV_223008_NAME"
+	desc = "EVT_SOV_223008_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofgovernment which = 30078 }
+		command = { type = sleepminister which = 30042 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [223316] SOV | 1959 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223316
+	country = SOV
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = armamentminister which = 30090 }
+		command = { type = chiefofstaff which = 30212 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223325] SOV | 1960 | Downing of the U-2 (Derribo del avión espía U-2)
+# Triggered by event 316255 in events/USA/USA_48-61.txt
+# Trigger event 123066 in events/Minors/CHC_62-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223325
+	country = SOV
+	name = EVT_SOV_223325_NAME
+	desc = EVT_SOV_223325_DESC
+	picture = "nwo/u2_incident"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223350] SOV | 1960 | Yuri Gagarin in Space (Yuri Gagarin en el espacio)
+# Triggered by event 207046 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207047 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207048 in events/AI/REB_AI_55-00.txt
+# Trigger event 207046 in events/AI/REB_AI_55-00.txt
+# Trigger event 207047 in events/AI/REB_AI_55-00.txt
+# Trigger event 207048 in events/AI/REB_AI_55-00.txt
+# Trigger event 207049 in events/AI/REB_AI_55-00.txt
+# Trigger event 207050 in events/AI/REB_AI_55-00.txt
+# Trigger event 207051 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+      id = 223350
+      country = SOV
+      name = EVT_SOV_223350_NAME
+      desc = EVT_SOV_223350_DESC
+	picture = "nwo/gagarin"
+      style = 1
+      action = {
+            name = ACTION_NAME_OK
+            command = { type = dissent value = -10 }
+      }
+}
+
+# ----------------------------------------------------------------------------
+# [223351] SOV | 1960 | Alan Shepard in Space (Alan Shepard en el espacio)
+# Triggered by event 207046 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207047 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207048 in events/AI/REB_AI_55-00.txt
+# Trigger event 207046 in events/AI/REB_AI_55-00.txt
+# Trigger event 207047 in events/AI/REB_AI_55-00.txt
+# Trigger event 207048 in events/AI/REB_AI_55-00.txt
+# Trigger event 207050 in events/AI/REB_AI_55-00.txt
+# Trigger event 207051 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+      id = 223351
+      country = SOV
+      name = EVT_SOV_223351_NAME
+      desc = EVT_SOV_223351_DESC
+	picture = "nwo/alan_shepard"
+      style = 1
+      action = {
+            name = ACTION_NAME_OK
+            command = { type = dissent value = 10 }
+      }
+}
+
+# ----------------------------------------------------------------------------
+# [223009] SOV | 1960 | Brezhnev Replaces Voroshilov (Brézhnev sustituye a Voroshílov)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223009
+	random = no
+	country = SOV
+	style = 2
+	trigger = {
+		headofstate = 30077
+		}
+	date = { day = 7 month = may year = 1960 }
+	name = "EVT_SOV_223009_NAME"
+	desc = "EVT_SOV_223009_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 30084 }
+		command = { type = sleepminister which = 30008 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [223226] SOV | 1960 | Intervention in Stanleyville (Apoyo a Stanleyville)
+# Trigger event 128022 in events/Minors/CON.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223226
+	country = SOV
+	name = EVT_SOV_223226_NAME
+	desc = EVT_SOV_223226_DESC
+	picture = "nwo/congo_crisis"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = CON
+	}
+	date = { day = 1 month = september year = 1960 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 90
+		command = { type = money value = -200 }
+		command = { type = trigger which = 128022 }
+	}
+	action = {
+		ai_chance = 10
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = sleepevent which = 128022 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223243] SOV | 1961 | F-84 Airspace Incursion (Incursión aérea de F-84)
+# Triggered by event 139034 in events/Minors/DFR.txt
+# Trigger event 316217 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223243
+	country = SOV
+	name = EVT_SOV_223243_NAME
+	desc = EVT_SOV_223243_DESC
+	picture = "nwo/f_84_thunderstreak"
+	style = 1
+	action = {
+		name = EVT_SOV_223243_A
+		ai_chance = 60
+		command = { type = dissent value = -3 }
+		command = { type = trigger which = 316217 }
+	}
+	action = {
+		name = EVT_SOV_223243_B
+		ai_chance = 40
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223317] SOV | 1961 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223317
+	country = SOV
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = ministerofintelligence which = 30093 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223200] SOV | 1961 | Construction of the Berlin Wall (Construcción del Muro de Berlín)
+# Triggered by event 316189 in events/USA/USA_61-91.txt
+# Trigger event 137022 in events/Minors/DDR_Decisions.txt
+# Trigger event 137015 in events/Minors/DDR.txt
+# Trigger event 223239 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223200
+	country = SOV
+	name = EVT_SOV_223200_NAME
+	desc = EVT_SOV_223200_DESC
+	picture = "nwo/berlin_wall"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = DDR
+		exists = DFR
+		event = 316189
+		flag = divided_berlin
+	}
+	date = { day = 13 month = august year = 1961 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 90
+		command = { type = dissent value = -3 }
+		command = { type = relation which = DDR value = 50 }
+		command = { type = relation which = DFR value = -100 }
+		command = { type = trigger which = 137015 }
+		command = { type = event which = 223239 where = SOV when = 1 }
+	}
+	action = {
+		name = EVT_SOV_223200_A
+		ai_chance = 10
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = DFR value = -50 }
+		command = { type = relation which = DDR value = 25 }
+		command = { type = dissent value = 8 }
+		command = { type = sleepevent which = 316190 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223201] SOV | 1961 | Armored Deployments at the Checkpoint (Despliegue de blindados en el paso fronterizo)
+# Triggered by event 316190 in events/USA/USA_61-91.txt
+# Trigger event 223240 in events/SOV/SOV_40-43.txt
+# Trigger event 316191 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223201
+	country = SOV
+	name = EVT_SOV_223201_NAME
+	desc = EVT_SOV_223201_DESC
+	picture = "nwo/berlin_crisis_1961"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = DDR
+		exists = DFR
+		event = 316190
+	}
+	date = { day = 27 month = october year = 1961 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_SOV_223201_A
+		ai_chance = 55
+		command = { type = dissent value = -3 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 43
+		command = { type = relation which = DFR value = -50 }
+		command = { type = relation which = DDR value = 25 }
+		command = { type = dissent value = 5 }
+		command = { type = sleepevent which = 316191 }
+		command = { type = event which = 223240 where = SOV when = 1 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 2
+		command = { type = dissent value = 20 }
+		command = { type = war which = USA }
+		command = { type = belligerence value = 20 }
+		command = { type = sleepevent which = 316191 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223202] SOV | 1961 | Mutual Disengagement at Checkpoint Charlie (Repliegue coordinado en el Checkpoint Charlie)
+# Triggered by event 316191 in events/USA/USA_61-91.txt
+# Trigger event 316192 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223202
+	country = SOV
+	name = EVT_SOV_223202_NAME
+	desc = EVT_SOV_223202_DESC
+	picture = "nwo/berlin_crisis_1961"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = DDR
+		exists = DFR
+		event = 316191
+	}
+	date = { day = 27 month = october year = 1961 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 98
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 2
+		command = { type = relation which = DFR value = -50 }
+		command = { type = relation which = DDR value = 25 }
+		command = { type = dissent value = 15 }
+		command = { type = war which = USA }
+		command = { type = sleepevent which = 316192 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223228] SOV | 1962 | US Diplomatic Protest over Cuba (Protesta diplomática de EE. UU. por Cuba)
+# Triggered by event 316209 in events/USA/USA_61-91.txt
+# Trigger event 223240 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223228
+	country = SOV
+	name = EVT_SOV_223228_NAME
+	desc = EVT_SOV_223228_DESC
+	picture = "nwo/cuban_missile_crisis_stevenson"
+	style = 1
+	action = {
+		name = EVT_SOV_223228_A
+		ai_chance = 95
+		command = { type = belligerence value = 10 }
+		command = { type = relation which = USA value = -50 }
+	}
+	action = {
+		name = ACTION_NAME_WITHDRAW
+		ai_chance = 5
+		command = { type = dissent value = 3 }
+		command = { trigger = { NOT = { flag = soviet_nuclear_advantage } } type = setflag which = american_nuclear_advantage }
+		command = { trigger = { flag = soviet_nuclear_advantage } type = clrflag which = soviet_nuclear_advantage }
+		command = { type = clrflag which = missiles_in_cuba }
+		command = { type = event which = 223240 where = SOV when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223229] SOV | 1962 | American Invasion of Cuba (Invasión estadounidense de Cuba)
+# Triggered by event 316209 in events/USA/USA_61-91.txt
+# Trigger event 223240 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223229
+	country = SOV
+	name = EVT_SOV_223229_NAME
+	desc = EVT_SOV_223229_DESC
+	picture = "nwo/cuban_missile_crisis_attack"
+	style = 1
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 70
+		command = { type = belligerence value = 10 }
+		command = { type = dissent value = 5 }
+		command = { type = war which = USA }
+	}
+	action = {
+		name = EVT_SOV_223229_A
+		ai_chance = 30
+		command = { type = dissent value = 15 }
+		command = { trigger = { NOT = { flag = soviet_nuclear_advantage } } type = setflag which = american_nuclear_advantage }
+		command = { trigger = { flag = soviet_nuclear_advantage } type = clrflag which = soviet_nuclear_advantage }
+		command = { type = clrflag which = missiles_in_cuba }
+		command = { type = event which = 223240 where = SOV when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223230] SOV | 1962 | Naval Quarantine of Cuba (Cuarentena naval sobre Cuba)
+# Triggered by event 316209 in events/USA/USA_61-91.txt
+# Trigger event 223240 in events/SOV/SOV_40-43.txt
+# Trigger event 316210 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223230
+	country = SOV
+	name = EVT_SOV_223230_NAME
+	desc = EVT_SOV_223230_DESC
+	picture = "nwo/cuban_missile_crisis_quarantine"
+	style = 1
+	action = {
+		name = EVT_SOV_223230_A
+		ai_chance = 90
+		command = { type = belligerence value = 10 }
+		command = { type = relation which = USA value = -100 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 8
+		command = { type = belligerence value = -20 }
+		command = { type = relation which = USA value = 100 }
+		command = { trigger = { NOT = { flag = soviet_nuclear_advantage } } type = setflag which = american_nuclear_advantage }
+		command = { trigger = { flag = soviet_nuclear_advantage } type = clrflag which = soviet_nuclear_advantage }
+		command = { type = clrflag which = missiles_in_cuba }
+		command = { type = event which = 223240 where = SOV when = 1 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 2
+		command = { type = war which = USA }
+		command = { type = dissent value = 15 }
+		command = { type = sleepevent which = 316210 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223231] SOV | 1962 | Cuban Missile Crisis Negotiations (Negociaciones por la Crisis de los Misiles)
+# Triggered by event 316210 in events/USA/USA_61-91.txt
+# Trigger event 316213 in events/USA/USA_61-91.txt
+# Trigger event 316211 in events/USA/USA_61-91.txt
+# Trigger event 316212 in events/USA/USA_61-91.txt
+# Trigger event 316210 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223231
+	country = SOV
+	name = EVT_SOV_223231_NAME
+	desc = EVT_SOV_223231_DESC
+	picture = "nwo/kennedy_khrushchev"
+	style = 1
+	action = {
+		name = EVT_SOV_223231_A
+		trigger = { flag = missiles_in_turkey }
+		ai_chance = 85
+		command = { type = relation which = USA value = -10 }
+		command = { type = trigger which = 316213 }
+	}
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 5
+		command = { type = belligerence value = -20 }
+		command = { type = relation which = USA value = 50 }
+		command = { type = trigger which = 316211 }
+	}
+	action = {
+		name = EVT_SOV_223231_B
+		trigger = {
+			exists = DDR
+			exists = DFR
+		}
+		ai_chance = 9
+		command = { type = relation which = USA value = -100 }
+		command = { type = trigger which = 316212 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_DEMANDS
+		ai_chance = 1
+		command = { type = relation which = USA value = -200 }
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223227] SOV | 1962 | Deployment of Missiles to Cuba (Despliegue de misiles en Cuba)
+# Trigger event 132048 in events/Minors/CUB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223227
+	country = SOV
+	name = EVT_SOV_223227_NAME
+	desc = EVT_SOV_223227_DESC
+	picture = "nwo/castro_with_khrushchev"
+	style = 1
+	trigger = {
+		flag = castro_rules
+		flag = cold_war
+	}
+	date = { day = 1 month = april year = 1962 }
+	offset = 7
+	deathdate = { day = 29 month = may year = 1962 }
+	action = {
+		name = EVT_SOV_223227_A
+		ai_chance = 88
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 12
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = sleepevent which = 132048 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223232] SOV | 1962 | Soviet Setback in Cuba (Retroceso diplomático soviético)
+# Triggered by event 316211 in events/USA/USA_61-91.txt
+# Triggered by event 316212 in events/USA/USA_61-91.txt
+# Triggered by event 316213 in events/USA/USA_61-91.txt
+# Trigger event 123066 in events/Minors/CHC_62-91.txt
+# Trigger event 223240 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223232
+	country = SOV
+	name = EVT_SOV_223232_NAME
+	desc = EVT_SOV_223232_DESC
+	picture = "nwo/cuban_missile_crisis_aftermath"
+	style = 1
+	trigger = {
+		OR = {
+			event = 316211
+			event = 316212
+			event = 316213
+		}
+		flag = cold_war
+		NOT = { flag = missiles_in_cuba }
+	}
+	date = { day = 1 month = december year = 1962 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = event which = 223240 where = SOV when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223233] SOV | 1962 | Resolution of the Cuban Crisis (Resolución de la Crisis de Cuba)
+# Triggered by event 316211 in events/USA/USA_61-91.txt
+# Triggered by event 316212 in events/USA/USA_61-91.txt
+# Triggered by event 316213 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223233
+	country = SOV
+	name = EVT_SOV_223233_NAME
+	desc = EVT_SOV_223233_DESC
+	picture = "nwo/cuban_missile_crisis_aftermath"
+	style = 1
+	trigger = {
+		OR = {
+			event = 316211
+			event = 316212
+			event = 316213
+		}
+		flag = cold_war
+		NOT = { flag = missiles_in_cuba }
+	}
+	date = { day = 1 month = december year = 1962 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_HORRIBLE
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223214] SOV | 1963 | The Grand Communist Alliance (La Gran Alianza Comunista)
+# Triggered by event 123066 in events/Minors/CHC_62-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223214
+	country = SOV
+	name = EVT_SOV_223214_NAME
+	desc = EVT_SOV_223214_DESC
+	picture = "nwo/mao_with_khrushchev"
+	style = 1
+	action = {
+		name = EVT_SOV_223214_A
+		ai_chance = 80
+		command = { type = dissent value = -5 }
+		command = { type = relation which = CHC value = -100 }
+	}
+	action = {
+		name = EVT_SOV_223214_B
+		ai_chance = 20
+		trigger = {
+			OR = {
+				NOT = { ai = yes }
+				domestic = { type = interventionism value = 3 }
+			}
+		}
+		command = { type = dissent value = 3 }
+		command = { type = alliance which = CHC }
+		command = { type = relation which = CHC value = 100 }
+		command = { type = belligerence value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223329] SOV | 1964 | Ousting of Nikita Khrushchev (Destitución de Nikita Jrushchov)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223329
+	country = SOV
+	name = EVT_SOV_223329_NAME
+	desc = EVT_SOV_223329_DESC
+	picture = "nwo/leonid_brezhnev"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1964 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1979 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 30339 }
+		command = { type = headofgovernment which = 30340 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223219] SOV | 1968 | Suppression of the Prague Spring (Aplastamiento de la Primavera de Praga)
+# Triggered by event 266019 in events/Minors/U31.txt
+# Triggered by event 266023 in events/Minors/U31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223219
+	country = SOV
+	name = EVT_SOV_223219_NAME
+	desc = EVT_SOV_223219_DESC
+	picture = "nwo/prague_spring_defeat"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = make_puppet which = U31 }
+		command = { type = setflag which = raise_soviet_bloc_coherence }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223352] SOV | 1968 | Soviet Manned Lunar Landing (Expedición lunar soviética L3)
+# Triggered by event 207049 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207050 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207051 in events/AI/REB_AI_55-00.txt
+# Trigger event 207049 in events/AI/REB_AI_55-00.txt
+# Trigger event 207050 in events/AI/REB_AI_55-00.txt
+# Trigger event 207051 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+      id = 223352
+      country = SOV
+      name = EVT_SOV_223352_NAME
+      desc = EVT_SOV_223352_DESC
+	picture = "nwo/in_the_ocean_of_storms"
+      style = 1
+      action = {
+            name = ACTION_NAME_OK
+            command = { type = dissent value = -10 }
+      }
+}
+
+# ----------------------------------------------------------------------------
+# [223353] SOV | 1968 | Apollo 11 Moon Landing (Alunizaje del Apolo 11)
+# Triggered by event 207049 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207050 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207051 in events/AI/REB_AI_55-00.txt
+# Trigger event 207049 in events/AI/REB_AI_55-00.txt
+# Trigger event 207050 in events/AI/REB_AI_55-00.txt
+# Trigger event 207051 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+      id = 223353
+      country = SOV
+      name = EVT_SOV_223353_NAME
+      desc = EVT_SOV_223353_DESC
+	picture = "nwo/apollo_11"
+      style = 1
+      action = {
+            name = ACTION_NAME_OK
+            command = { type = dissent value = 10 }
+      }
+}
+
+# ----------------------------------------------------------------------------
+# [329776] SOV | 1968 | Chinese Border Demands (Reclamaciones territoriales chinas)
+# Triggered by event 123068 in events/Minors/CHC_62-91.txt
+# Trigger event 329777 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329776
+	country = SOV
+	name = EVT_SOV_329776_NAME
+	desc = EVT_SOV_329776_DESC
+	picture = "nwo/sino_soviet_border_conflict"
+	style = 1
+	trigger = {
+		NOT = { war = { country = CHC country = SOV } }
+		exists = CHC
+		flag = cold_war
+		flag = sino_soviet_split
+		event = 123068
+	}
+	date = { day = 1 month = january year = 1968 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1968 }
+	action = {
+		name = ACTION_NAME_SEND_TROOPS
+		ai_chance = 95
+		command = { type = dissent value = -8 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = CHC value = -120 }
+	}
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		command = { type = dissent value = 8 }
+		command = { type = sleepevent which = 329777 }
+		command = { type = secedeprovince which = CHC value = 1104 when = 1 }
+		command = { type = relation which = CHC value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223218] SOV | 1968 | Warsaw Pact Stance on Prague (Posición del Pacto de Varsovia sobre Praga)
+# Triggered by event 266018 in events/Minors/U31.txt
+# Trigger event 266020 in events/Minors/U31.txt
+# Trigger event 266019 in events/Minors/U31.txt
+# Trigger event 266023 in events/Minors/U31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223218
+	country = SOV
+	name = EVT_SOV_223218_NAME
+	desc = EVT_SOV_223218_DESC
+	picture = "nwo/prague_spring"
+	style = 1
+	trigger = {
+		event = 266018
+		flag = cold_war
+	}
+	date = { day = 1 month = june year = 1968 }
+	offset = 14
+	deathdate = { day = 29 month = june year = 1968 }
+	action = {
+		name = EVT_SOV_223218_A
+		ai_chance = 98
+		command = { type = dissent value = -2 }
+	}
+	action = {
+		name = EVT_SOV_223218_B
+		ai_chance = 2
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 266020 }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223215] SOV | 1969 | Border Clashes Go Poorly (Retroceso fronterizo con China)
+# Triggered by event 123069 in events/Minors/CHC_62-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223215
+	country = SOV
+	name = EVT_SOV_223215_NAME
+	desc = EVT_SOV_223215_DESC
+	picture = "nwo/sino_soviet_border_conflict"
+	style = 1
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 55
+		command = { type = war which = SOV }
+	}
+	action = {
+		name = ACTION_NAME_WITHDRAW
+		ai_chance = 45
+		command = { type = dissent value = 15 }
+		command = { type = secedeprovince which = CHC value = 1104 when = 1 }
+		command = { type = secedeprovince which = CHC value = 1191 when = 1 }
+		command = { type = secedeprovince which = CHC value = 1192 when = 1 }
+		command = { type = secedeprovince which = CHC value = 1193 when = 1 }
+		command = { type = secedeprovince which = CHC value = 1194 when = 1 }
+		command = { type = secedeprovince which = CHC value = 1195 when = 1 }
+		command = { type = secedeprovince which = CHC value = 1196 when = 1 }
+		command = { type = secedeprovince which = CHC value = 1190 when = 1 }
+		command = { type = secedeprovince which = CHC value = 1185 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223216] SOV | 1969 | Inconclusive Border Talks (Negociaciones inconclusas)
+# Triggered by event 329777 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223216
+	country = SOV
+	name = EVT_SOV_223216_NAME
+	desc = EVT_SOV_223216_DESC
+	picture = "nwo/sino_soviet_border_conflict"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = secedeprovince which = CHC value = 1104 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223217] SOV | 1969 | Soviet Border Victory (Éxito fronterizo soviético)
+# Triggered by event 329777 in events/AI/REB_AI_55-00.txt
+# Trigger event 123071 in events/Minors/CHC_62-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223217
+	country = SOV
+	name = EVT_SOV_223217_NAME
+	desc = EVT_SOV_223217_DESC
+	picture = "nwo/sino_soviet_border_conflict"
+	style = 1
+	action = {
+		name = EVT_SOV_223217_A
+		ai_chance = 99
+		command = { type = dissent value = -8 }
+		command = { trigger = { control = { province = 1202 data = CHC } } type = secedeprovince which = SOV value = 1202 when = 2 }
+		command = { trigger = { control = { province = 1204 data = CHC } } type = secedeprovince which = SOV value = 1204 when = 2 }
+		command = { type = addclaim which = 1202 }
+		command = { type = addclaim which = 1204 }
+	}
+	action = {
+		name = EVT_SOV_223217_B
+		ai_chance = 1
+		command = { type = trigger which = 123071 }
+		command = { type = dissent value = 4 }
+		command = { type = addclaim which = 1200 }
+		command = { type = addclaim which = 1201 }
+		command = { type = addclaim which = 1197 }
+		command = { type = addclaim which = 1202 }
+		command = { type = addclaim which = 1204 }
+		command = { type = addclaim which = 1205 }
+		command = { type = addclaim which = 1212 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329772] SOV | 1977 | Soviet Intervention in Afghanistan (Intervención soviética en Afganistán)
+# Triggered by event 100010 in events/Minors/AFG.txt
+# Trigger event 100011 in events/Minors/AFG.txt
+# Trigger event 223213 in events/SOV/SOV_56-81.txt
+# Trigger event 329773 in events/Minors/UPS.txt
+# Trigger event 329774 in events/SOV/SOV_56-81.txt
+# Trigger event 329775 in events/SOV/SOV_82-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329772
+	country = SOV
+	name = EVT_SOV_329772_NAME
+	desc = EVT_SOV_329772_DESC
+	picture = "nwo/soviet_intervention_in_afghanistan"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 100010
+		exists = AFG
+		NOT = { puppet = { country = AFG country = USA } }
+		NOT = { puppet = { country = AFG country = ENG } }
+		NOT = { exists = UPS }
+	}
+	date = { day = 0 month = january year = 1977 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = EVT_SOV_329772_A
+		ai_chance = 98
+		command = { type = relation which = AFG value = -150 }
+		command = { type = dissent value = -7 }
+		command = { type = belligerence value = 15 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = raise_soviet_bloc_coherence }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 2
+		command = { type = dissent value = 7 }
+		command = { type = sleepevent which = 100011 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223213] SOV | 1980 | Soviet Victory in Afghanistan (Victoria soviética en Afganistán)
+# Triggered by event 329772 in events/SOV/SOV_56-81.txt
+# Triggered by event 314009 in events/Minors/UPS.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223213
+	country = SOV
+	name = EVT_SOV_223213_NAME
+	desc = EVT_SOV_223213_DESC
+	picture = "nwo/dem_rep_afghanistan"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = UPS
+		NOT = { exists = AFG }
+		event = 329772
+		NOT = { event = 314009 }
+	}
+	date = { day = 0 month = january year = 1980 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = alliance which = UPS }
+		command = { type = setflag which = raise_soviet_bloc_coherence }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223330] SOV | 1980 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223330
+	country = SOV
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1981 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 30338 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329774] SOV | 1980 | Escalation in Afghanistan (Escalada bélica en Afganistán)
+# Triggered by event 329772 in events/SOV/SOV_56-81.txt
+# Triggered by event 314009 in events/Minors/UPS.txt
+# Trigger event 314009 in events/Minors/UPS.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329774
+	country = SOV
+	persistent = yes
+	name = EVT_SOV_329774_NAME
+	desc = EVT_SOV_329774_DESC
+	picture = "nwo/soviet_intervention_in_afghanistan"
+	style = 1
+	trigger = {
+		war = { country = UPS country = AFG }
+		event = 329772
+		NOT = { event = 314009 }
+	}
+	date = { day = 0 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_SEND_TROOPS
+		ai_chance = 98
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 5 }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 2
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = -10 }
+		command = { type = trigger which = 314009 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223221] SOV | 1981 | Defeat of the Solidarity Movement (Supresión del movimiento Solidaridad)
+# Triggered by event 207015 in events/AI/REB_AI_14-52.txt
+# Triggered by event 266023 in events/Minors/U31.txt
+# Trigger event 267037 in events/Minors/U32.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223221
+	country = SOV
+	name = EVT_SOV_223221_NAME
+	desc = EVT_SOV_223221_DESC
+	picture = "nwo/solidarity_defeat"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = make_puppet which = U32 }
+		command = { type = setflag which = raise_soviet_bloc_coherence }
+		command = { type = trigger which = 267037 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223331] SOV | 1981 | Death of Leonid Brezhnev (Muerte de Leonid Brézhnev)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223331
+	country = SOV
+	name = EVT_SOV_223331_NAME
+	desc = EVT_SOV_223331_DESC
+	picture = "nwo/death_of_brezkhnev"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 30341 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223220] SOV | 1981 | The Crisis of Solidarity and the Warsaw Pact (La crisis de Solidaridad y el Pacto de Varsovia)
+# Triggered by event 267021 in events/Minors/U32.txt
+# Trigger event 266024 in events/Minors/U31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223220
+	country = SOV
+	name = EVT_SOV_223220_NAME
+	desc = EVT_SOV_223220_DESC
+	picture = "nwo/solidarity"
+	style = 1
+	trigger = {
+		event = 267021
+		flag = cold_war
+	}
+	date = { day = 1 month = november year = 1981 }
+	offset = 14
+	deathdate = { day = 29 month = november year = 1981 }
+	action = {
+		name = EVT_SOV_223220_A
+		ai_chance = 98
+		command = { type = dissent value = -2 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 2
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 266024 }
+		command = { type = setflag which = lower_soviet_bloc_coherence_2 }
+	}
+}

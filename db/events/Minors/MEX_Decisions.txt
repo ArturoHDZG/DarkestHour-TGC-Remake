@@ -1,0 +1,102 @@
+# ============================================================================
+# File: events/Minors/MEX_Decisions.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [183007] MEX | 1914 | United States Declares War on Germany (Estados Unidos declara la guerra a Alemania)
+# Triggered by event 183006 in events/Minors/MEX.txt
+# Triggered by event 316437 in events/USA/USA_Decisions.txt
+# Triggered by event 316415 in events/USA/USA_16-28.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 183007
+	country = MEX
+	decision = { event = 183006 }
+	decision_trigger = { war = { country = USA country = U08 } }
+	trigger = {
+		event = 183006
+		war = { country = USA country = U08 }
+		OR = {
+			event = 316437
+			NOT = { event = 316415 }
+		}
+		random = 4
+	}
+	name = "EVT_SHARED_00076_NAME"
+	desc = "EVT_SHARED_00076_DESC"
+	style = 2
+	picture = "GLOBAL/zimmermann_telegram"
+	date = { day = 4 month = august year = 1914 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = alliance which = U08 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [183008] MEX | 1914 | Confrontation over Veracruz (Confrontación armada por Veracruz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 183008
+	country = MEX
+	decision = { control = { province = 1968 data = USA } }
+	decision_trigger = { atwar = no }
+	trigger = {
+		control = { province = 1968 data = USA }
+		atwar = no
+		OR = {
+			year = 1915
+			AND = { year = 1914 month = 10 }
+			NOT = { exists = U57 exists = U58 exists = U59 }
+		}
+		random = 5
+	}
+	name = "EVT_MEX_183008_NAME"
+	desc = "EVT_MEX_183008_DESC"
+	style = 2
+	picture = "GLOBAL/veracruz_occupation"
+	date = { day = 4 month = august year = 1914 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = war which = USA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329405] MEX | 1933 | Mexico Supports Republican Spain (México apoya a la República Española)
+# Trigger event 225003 in events/Minors/SPR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329405
+	random = no
+	country = MEX
+	decision = { war = { country = SPA country = SPR } NOT = { war = { country = MEX country = SPR } } }
+	decision_trigger = { }
+	trigger = { war = { country = SPA country = SPR } NOT = { war = { country = MEX country = SPR } } random = 10 }
+	date = { day = 1 month = january year = 1933 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	name = EVT_SHARED_00312_NAME
+	desc = EVT_SHARED_00312_DESC
+	style = 2
+	picture = "GLOBAL/scw"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SPR value = 100 }
+		command = { type = relation which = SPA value = -50 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = relation which = FRA value = 25 }
+		command = { type = relation which = ENG value = 25 }
+		command = { type = relation which = GER value = -20 }
+		command = { type = relation which = ITA value = -20 }
+		command = { type = manpowerpool value = -2 }
+		command = { type = trade which = MEX where = SPA money = 1 }
+		command = { type = trigger which = 225003 }
+	}
+}

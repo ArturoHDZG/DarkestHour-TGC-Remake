@@ -1,0 +1,1591 @@
+# ============================================================================
+# File: events/GER/GER_14-33.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [150440] GER | 1914 | Offensive Chit Expired (Reserva Logística Ofensiva agotada)
+# Triggered by event 150028 in events/GER/GER_Decisions.txt
+# Triggered by event 150439 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150440
+	random = no
+	country = GER
+	name = "EVT_SHARED_00461_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GER/fall_gelb_the_western_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = -10 }
+		command = { type = morale which = land value = -10 }
+		command = { trigger = { ai = yes } type = morale which = land value = -10 }
+		command = { type = morale which = naval value = -10 }
+		command = { type = morale which = air value = -10 }
+		command = { type = speed which = land value = -2 }
+		command = { type = counterattack value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = encirclement value = -2 }
+		command = { type = hq_supply_eff value = -2 }
+		command = { type = sce_frequency value = -0.3 }
+		command = { type = attrition_mod value = -2 }
+		command = { type = trickleback_mod value = -5 }
+      		command = { type = mountain_attack which = land value = -10 }
+      		command = { type = hill_move which = land value = -8 }
+      		command = { type = hill_attack which = land value = -8 }
+      		command = { type = hill_defense which = land value = -8 }
+      		command = { type = forest_move which = land value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150527] GER | 1932 | Anglo-German Naval Pact (Pacto Naval Anglo-Alemán)
+# Triggered by event 143385 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150527
+	country = GER
+	name = "EVT_GER_150527_NAME"
+	Desc = "EVT_GER_150527_DESC"
+	Picture = "royal_navy_reinforcments"
+	action = {
+		name = "EVT_GER_150527_A"
+		ai_chance = 100
+		command = { type = local_setflag which = anglo_german_naval_agreement }
+		command = { type = deactivate_unit_type which = escort_carrier }
+		command = { type = deactivate_unit_type which = carrier }
+		command = { type = deactivate_unit_type which = battleship }
+		command = { type = local_clrflag which = disarm_naval_10 }
+		command = { type = local_clrflag which = disarm_naval_25 }
+		command = { type = local_setflag which = disarm_naval_50 }
+		command = { type = local_clrflag which = disarm_naval_100 }
+		command = { type = local_clrflag which = disarm_naval_150 }
+		command = { type = local_clrflag which = disarm_naval_200 }
+	}
+	action = {
+		name = "EVT_GER_150527_B"
+		ai_chance = 0
+		command = { type = 	belligerence value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150530] GER | 1932 | The Third Reich (El Tercer Reich)
+# Triggered by event 150533 in events/GER/GER_33-36.txt
+# Trigger event 108077 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150530
+	country = GER
+	date = { day = 0 month = 0 year = 1932 }
+	deathdate = { day = 1 month = january year = 1937 }
+	offset = 30
+	trigger = {
+		or	= {
+			ideology = nazi
+			ideology = fascist
+		}
+	}
+	name = "EVT_SHARED_01057_NAME"
+	Desc = "EVT_SHARED_01057_DESC"
+	Picture = "Sudetenland"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = addcore which = 216 }
+		command = { type = addcore which = 261 }
+		command = { type = addcore which = 181 }
+		command = { type = addcore which = 225 }
+		command = { type = addcore which = 224 }
+		command = { type = addcore which = 221 }
+		command = { type = addcore which = 197 }
+		command = { type = addcore which = 204 }
+		command = { type = addcore which = 194 }
+		command = { type = addcore which = 186 }
+		command = { type = addcore which = 195 }
+		command = { type = addcore which = 188 }
+		command = { type = addcore which = 190 }
+		command = { type = addcore which = 193 }
+		command = { type = addcore which = 187 }
+		command = { type = addcore which = 192 }
+		command = { type = addcore which = 191 }
+		command = { type = addcore which = 346 }
+		command = { type = addcore which = 349 }
+		command = { type = addcore which = 189 }
+		command = { type = addcore which = 402 }
+		command = { type = addcore which = 401 }
+		command = { type = addcore which = 389 }
+		command = { type = addcore which = 392 }
+		command = { type = addcore which = 104 }
+		command = { type = addcore which = 105 }
+		command = { type = addcore which = 107 }
+		command = { type = addcore which = 109 }
+		command = { type = addcore which = 110 }
+		command = { type = addcore which = 121 }
+		command = { type = dissent value = -50 }
+		command = { type = ai which = "Majors/GER/GER_1933.ai" }
+		command = { trigger = { exists = U23 } type = inherit which = U23 value = 1 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = domestic which = interventionism value = 4 }
+		command = { type = domestic which = defense_lobby value = 6 }
+		command = { type = alliance where = 1}
+		command = { type = alliance_leader which = GER	where = 1 }
+		command = { type = alliance_name which = "axis" where = 1 }
+		command = { type = end_access which = FRA }
+		command = { type = end_access which = ENG }
+		command = { type = end_access which = ITA }
+		command = { type = manpowerpool value = 300 }
+		command = { trigger = { not = { event = 150533 } not = { flag = hitler_arrested } } type = wakeminister which = 22 }
+		command = { trigger = { not = { event = 150533 } flag = hitler_free } type = headofgovernment which = 22 }
+		command = { trigger = { not = { event = 150533 } } type = wakeminister which = 268 }
+		command = { trigger = { not = { event = 150533 } } type = headofstate which = 268 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124145] GER | 1933 | Intervention in Sino-Soviet Conflict (Intervención en el conflicto sino-soviético)
+# Triggered by event 124142 in events/CHI/CHI_13-33.txt
+# Trigger event 124146 in events/CHI/CHI_13-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124145
+	country = GER
+	random = no
+	style = 2
+	name = EVT_SHARED_00176_NAME
+	desc = EVT_GER_124145_DESC
+	action = {
+		trigger = {
+			or = {
+				and = {
+					not = {
+						war = { country = GER country = CHI }
+						alliance = { country = GER country = SOV }
+						relation = { which = SOV value = 150 }
+					}
+					or = {
+						not = { relation = { which = SOV value = 50 } }
+						random = 50
+					}
+					or = {
+						relation = { which = CHI value = -50 }
+						random = 50
+					}
+				}
+				ai = no
+			}
+		}
+		ai_chance = 40
+		name = EVT_GER_124145_A
+		command = { type = setflag which = 2181019_AID }
+		command = { type = money value = -100 }
+		command = { trigger = { relation = { which = CHI value = 0 } } type = money value = 100 }
+		command = { trigger = { relation = { which = CHI value = 50 } } type = money value = 100 }
+		command = { trigger = { relation = { which = CHI value = 100 } } type = money value = 100 }
+		command = { trigger = { relation = { which = CHI value = 150 } } type = money value = 100 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = relation which = SOV value = -25 }
+		command = { type = event which = 124146 where = CHI when = 7 }
+	}
+	action = {
+		trigger = {
+			or = {
+				not = {
+					war = { country = GER country = CHI }
+					alliance = { country = GER country = SOV }
+				}
+				ai = no
+			}
+		}
+		ai_chance = 50
+		name = EVT_GER_124145_B
+		command = { type = setflag which = 2181019_ADV }
+		command = { type = money value = -100 }
+		command = { trigger = { relation = { which = CHI value = 0 } } type = money value = 100 }
+		command = { trigger = { relation = { which = CHI value = 50 } } type = money value = 100 }
+		command = { trigger = { relation = { which = CHI value = 100 } } type = money value = 100 }
+		command = { trigger = { relation = { which = CHI value = 150 } } type = money value = 100 }
+		command = { type = relation which = CHI value = 50 }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = event which = 124146 where = CHI when = 7 }
+	}
+	action = {
+		trigger = {
+			or = {
+				not = {
+					war = { country = GER country = SOV }
+				}
+				ai = no
+			}
+		}
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 10
+		command = { type = relation which = CHI value = 25 }
+		command = { type = relation which = SOV value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150002] GER | 1933 | Construction of the Reichsautobahn Network (Construcción de la red de autopistas (Reichsautobahn))
+# Triggered by event 150000 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150002
+	random = no
+	country = GER
+	trigger = {
+		event = 150000
+		OR = {
+			random = 5
+			AND = {
+				random = 50
+				year = 1935
+			}
+		}
+		OR = {
+			ai = yes
+			money = 200
+		}
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1964 }
+	name = "EVT_SHARED_00191_NAME"
+	desc = "EVT_SHARED_00191_DESC"
+	style = 2
+	picture = "GLOBAL/autobahn"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -2 }
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = construct which = infrastructure where = 138 value = 10 }
+		command = { type = construct which = infrastructure where = 139 value = 20 }
+		command = { trigger = { ai = no } type = money value = -200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150003] GER | 1933 | Construction of the Reichsautobahn Network (Construcción de la red de autopistas (Reichsautobahn))
+# Triggered by event 150000 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150003
+	random = no
+	country = GER
+	trigger = {
+		event = 150000
+		OR = {
+			random = 2
+			AND = {
+				random = 40
+				year = 1935
+			}
+		}
+		OR = {
+			ai = yes
+			money = 200
+		}
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1964 }
+	name = "EVT_SHARED_00191_NAME"
+	desc = "EVT_SHARED_00191_DESC"
+	style = 2
+	picture = "GLOBAL/autobahn"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { ai = no } type = money value = -200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150005] GER | 1933 | Unemployment Drops to 5 Percent (El desempleo desciende al 5 por ciento)
+# Triggered by event 150000 in events/GER/GER_Decisions.txt
+# Trigger event 150150 in events/GER/GER_Decisions.txt
+# Trigger event 150185 in events/GER/GER_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150005
+	random = no
+	country = GER
+	trigger = {
+		event = 150000
+		OR = {
+			random = 2
+			AND = {
+				random = 40
+				year = 1935
+			}
+		}
+	}
+	name = "EVT_SHARED_00193_NAME"
+	desc = "EVT_SHARED_00184_DESC"
+	style = 2
+	picture = "GLOBAL/unemployment_rate"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = dissent value = -5 }
+		command = { type = industrial_modifier which = total value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150087] GER | 1933 | Hitler Putsch Anniversary Interrupted by an Explosion (Aniversario del golpe de Hitler interrumpido por una explosión)
+# Trigger event 329373 in events/GER/GER_33-33_2.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150087
+	random = no
+	country = GER
+	one_action = yes
+	trigger = {
+		government = fascist
+		headofstate = 1
+		atwar = yes
+		control = { province = 179 data = GER }
+		random = 95
+		month = november
+		NOT = { month = december }
+	}
+	name = EVT_GER_150087_NAME
+	desc = EVT_GER_150087_DESC
+	style = 2
+	picture = "GER/elser_bomb_plot"
+	date = { day = 1 month = january year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		ai_chance = 93
+		name = EVT_GER_150087_A
+		command = { type = dissent value = -1 }
+	}
+	action = {
+		trigger = { ai = no difficulty = 2 }
+		ai_chance = 7
+		name = EVT_GER_150087_B
+		command = { type = headofstate which = 11 }
+		command = { type = headofgovernment which = 21 }
+		command = { type = sleepminister which = 1 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150142] GER | 1933 | Limited pact (Pacto limitado)
+# Triggered by event 163014 in events/Minors/IRE_14-59.txt
+# Trigger event 163015 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150142
+	random = no
+	country = GER
+	name = "EVT_GER_150142_NAME"
+	desc = "EVT_GER_150142_DESC"
+        style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action_a = {
+		name = "ACTION_NAME_AGREE"
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150143] GER | 1933 | Total pact (Pacto total)
+# Triggered by event 163014 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150143
+	random = no
+	country = GER
+	name = "EVT_GER_150143_NAME"
+	desc = "EVT_GER_150143_DESC"
+        style = 2
+	picture = "GLOBAL/wehrmacht"
+	action_a = {
+		name = "ACTION_NAME_PERFECT"
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150144] GER | 1933 | Ireland remains neutral (Irlanda permanece neutral)
+# Triggered by event 163014 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150144
+	random = no
+	country = GER
+	name = "EVT_GER_150144_NAME"
+	desc = "EVT_GER_150144_DESC"
+        style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = IRE value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150151] GER | 1933 | Polish Campaign Goals (Objetivos de la campaña de Polonia)
+# Triggered by event 329352 in events/GER/GER_33-33_2.txt
+# Trigger event 150320 in events/GER/GER_33-33_1.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150151
+	country = GER
+	name = EVT_SHARED_00276_NAME
+	desc = EVT_GER_150151_DESC
+	style = 2
+	picture = "GER/hitler_staff"
+	action = {
+		trigger = { not = { losses = 50000 } control = { province = 232 data = GER } }
+		name = ACTION_NAME_COUP_SUCCEEDS
+		command = { type = dissent value = -2 }
+		command = { type = supplies value = 5000 }
+	   	command = { trigger = { NOT = { technology = 2320 } } type = gain_tech which = 2320 }
+	   	command = { trigger = { NOT = { technology = 2330 } } type = gain_tech which = 2330 }
+	}
+	action = {
+		trigger = { or = { losses = 50000 not = { control = { province = 232 data = GER } } } }
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150152] GER | 1933 | French Campaign Goals (Objetivos de la campaña de Francia)
+# Triggered by event 329353 in events/GER/GER_33-33_2.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150152
+	country = GER
+	name = EVT_SHARED_00277_NAME
+	desc = EVT_GER_150152_DESC
+	style = 2
+	picture = "GER/hitler_eiffel_tower"
+	action = {
+		trigger = { control = { province = 55 data = GER } }
+		name = ACTION_NAME_COUP_SUCCEEDS
+		command = { type = dissent value = -5 }
+		command = { type = supplies value = 20000 }
+		command = { type = money value = 2000 }
+		command = { type = add_division value = light_armor when = 1 }
+		command = { type = add_leader_skill which = 94 value = 1 }
+		command = { type = add_leader_skill which = 229 value = 1 }
+	   	command = { trigger = { NOT = { technology = 2410 } } type = gain_tech which = 2410 }
+	   	command = { trigger = { NOT = { technology = 2420 } } type = gain_tech which = 2420 }
+	}
+	action = {
+		trigger = { not = { control = { province = 55 data = GER } } }
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150153] GER | 1933 | Russian Campaign Goals (Objetivos de la campaña de Rusia)
+# Triggered by event 329354 in events/GER/GER_33-33_2.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150153
+	country = GER
+	name = EVT_SHARED_00278_NAME
+	desc = EVT_GER_150153_DESC
+	style = 2
+	picture = "GER/barbarossa_logistics"
+	action = {
+		trigger = { control = { province = 572 } local_flag = Barba_Moscow }
+		name = ACTION_NAME_COUP_SUCCEEDS
+		command = { type = dissent value = -10 }
+		command = { type = supplies value = 20000 }
+		command = { type = oilpool value = 20000 }
+		command = { type = rarematerialspool value = 20000 }
+		command = { type = add_leader_skill which = 323 value = 1 }
+		command = { type = add_leader_skill which = 281 value = 1 }
+		command = { type = add_leader_skill which = 114 value = 1 }
+		command = { type = add_leader_skill which = 278 value = 1 }
+		command = { type = add_leader_skill which = 450 value = 1 }
+	   	command = { trigger = { NOT = { technology = 12120 } } type = gain_tech which = 12120 }
+	   	command = { trigger = { NOT = { technology = 12130 } } type = gain_tech which = 12130 }
+	   	command = { trigger = { NOT = { technology = 12140 } } type = gain_tech which = 12140 }
+		command = { type = local_clrflag which = Barba_Moscow }
+	}
+	action = {
+		trigger = { not = { control = { province = 572 } } local_flag = Barba_Moscow }
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		command = { type = dissent value = 2 }
+		command = { type = sleepleader which = 114 }
+		command = { type = local_clrflag which = Barba_Moscow }
+	}
+	action = {
+		trigger = { control = { province = 641 } control = { province = 617 } control = { province = 644 } local_flag = Barba_South }
+		name = ACTION_NAME_COUP_SUCCEEDS
+		command = { type = dissent value = -10 }
+		command = { type = supplies value = 20000 }
+		command = { type = oilpool value = 40000 }
+		command = { type = rarematerialspool value = 10000 }
+		command = { type = add_leader_skill which = 334 value = 1 }
+		command = { type = add_leader_skill which = 560 value = 1 }
+		command = { type = relation which = TUR value = 25 }
+		command = { type = local_clrflag which = Barba_South }
+	}
+	action = {
+		trigger = { OR = { not = { control = { province = 641 } } not = { control = { province = 617 } } not = { control = { province = 644 } } } local_flag = Barba_North }
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		command = { type = dissent value = 2 }
+		command = { type = local_clrflag which = Barba_North }
+	}
+	action = {
+		trigger = { control = { province = 599 } control = { province = 566 } control = { province = 553 } local_flag = Barba_North }
+		name = ACTION_NAME_COUP_SUCCEEDS
+		command = { type = dissent value = -10 }
+		command = { type = supplies value = 20000 }
+		command = { type = oilpool value = 10000 }
+		command = { type = rarematerialspool value = 30000 }
+		command = { type = add_leader_skill which = 182 value = 1 }
+		command = { type = add_leader_skill which = 449 value = 1 }
+		command = { type = relation which = FIN value = 25 }
+		command = { type = local_clrflag which = Barba_North }
+	}
+	action = {
+		trigger = { OR = { not = { control = { province = 599 } } not = { control = { province = 566 } } not = { control = { province = 553 } } } local_flag = Barba_North }
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		command = { type = dissent value = 2 }
+		command = { type = local_clrflag which = Barba_North }
+	}
+	action = {
+		trigger = { control = { province = 617 } control = { province = 589 } control = { province = 552 } local_flag = Barba_Even }
+		name = ACTION_NAME_COUP_SUCCEEDS
+		command = { type = dissent value = -10 }
+		command = { type = supplies value = 20000 }
+		command = { type = oilpool value = 20000 }
+		command = { type = rarematerialspool value = 20000 }
+		command = { type = add_leader_skill which = 278 value = 1 }
+		command = { type = add_leader_skill which = 450 value = 1 }
+		command = { type = local_clrflag which = Barba_Even }
+	}
+	action = {
+		trigger = { OR = { not = { control = { province = 617 } } not = { control = { province = 589 } } not = { control = { province = 552 } } } local_flag = Barba_Even }
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		command = { type = dissent value = 2 }
+		command = { type = local_clrflag which = Barba_Even }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150156] GER | 1933 | Peenemünde Research Center Completed (El Centro de Peenemünde entra en servicio)
+# Triggered by event 150155 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150156
+	random = no
+	country = GER
+	name = "EVT_GER_150156_NAME"
+	desc = "EVT_SHARED_00279_DESC"
+	style = 2
+	picture = "GER/peenemunde"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { trigger = { control = { province = 162 data = GER } } type = construct which = rocket_test where = 162 value = 1 }
+		command = { trigger = { control = { province = 162 data = -2 } } type = construct which = rocket_test where = -1 value = 1 }
+	  	command = { type = building_prod_mod which = rocket_test value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150161] GER | 1933 | The Enigma Cipher Machine (La máquina de cifrado Enigma)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150161
+	random = no
+	country = GER
+	trigger = { technology = 5350 random = 40 }
+	name = EVT_GER_150161_NAME
+	desc = EVT_SHARED_00281_DESC
+	style = 2
+	picture = "GLOBAL/enigma"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = intelligence which = them value = -10 }
+      		command = { type = surprise which = naval value = 10 }
+      		command = { type = surprise which = land value = 10 }
+      		command = { type = surprise which = air value = 10 }
+      		command = { type = army_detection which = them value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150168] GER | 1933 | Defend the Vemork Heavy Water Plant (Asegurar la planta de agua pesada de Vemork)
+# Triggered by event 150167 in events/GER/GER_Decisions.txt
+# Trigger event 329361 in events/ENG/ENG_Decisions.txt
+# Trigger event 329362 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150168
+	random = no
+	country = GER
+	name = "EVT_GER_150168_NAME"
+	desc = "EVT_GER_150168_DESC"
+	style = 2
+	picture = "GLOBAL/heavy_water"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { trigger = { control = { province = 486 data = GER } } type = construct which = nuclear_reactor where = 486 value = 1 }
+	  	command = { type = building_prod_mod which = nuclear_reactor value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150169] GER | 1933 | Heavy Water Facilities Sabotaged in Norway (Sabotaje exitoso en la planta de agua pesada de Noruega)
+# Triggered by event 329363 in events/ENG/ENG_25-34.txt
+# Triggered by event 329364 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150169
+	random = no
+	country = GER
+	persistent = yes
+	name = "EVT_GER_150169_NAME"
+	desc = "EVT_SHARED_00285_DESC"
+	style = 2
+	picture = "GLOBAL/heavy_water"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = construct which = nuclear_reactor where = 486 value = -1 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150170] GER | 1933 | Allied Sabotage at Vemork Foiled (Fracasa el intento de sabotaje en Vemork)
+# Triggered by event 329363 in events/ENG/ENG_25-34.txt
+# Triggered by event 329364 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150170
+	random = no
+	country = GER
+	persistent = yes
+	name = "EVT_GER_150170_NAME"
+	desc = "EVT_SHARED_00285_DESC"
+	style = 2
+	picture = "GLOBAL/heavy_water"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150173] GER | 1933 | Publication and Promotion of 'Mein Kampf' (Publicación y difusión de «Mein Kampf»)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150173
+	random = no
+	country = GER
+	trigger = { ideology = nazi headofstate = 1 atwar = no random = 10 }
+	name = "EVT_GER_150173_NAME"
+	desc = "EVT_GER_150173_DESC"
+	style = 2
+	picture = "GER/mein_kampf"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1939 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150176] GER | 1933 | Capture Fort Eben-Emael (Asalto al Fuerte Eben-Emael)
+# Triggered by event 329365 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150176
+	random = no
+	country = GER
+	one_action = yes
+	name = "EVT_SHARED_00289_NAME"
+	desc = "EVT_SHARED_00289_DESC"
+	style = 2
+	picture = "GER/eben_emael"
+	action = {
+		ai_chance = 70
+		name = EVT_GER_150176_A
+		command = { trigger = { NOT = { building = { province = 108 type = land_fort value = 3 } } } type = construct which = land_fort where = 108 value = -2 }
+		command = { trigger = { building = { province = 108 type = land_fort value = 3 } } type = construct which = land_fort where = 108 value = -3 }
+		command = { type = add_leader_skill which = 259 value = 1 }
+	}
+	action = {
+		ai_chance = 30
+		name = EVT_GER_150176_B
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150177] GER | 1933 | 8.8 cm Flak Deployed for Anti-Tank Support (El cañón de 88 mm como apoyo antitanque)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150177
+	random = no
+	country = GER
+	trigger = {
+		control = { province = 232 data = GER }
+		NOT = { exists = POL }
+		OR = { technology = 2470 technology = 2520 }
+		atwar = yes
+	}
+   	name = "EVT_GER_150177_NAME"
+	desc = "EVT_GER_150177_DESC"
+	style = 2
+	picture = "GER/88_gun"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+	name = ACTION_NAME_GREAT
+	command = { type = hard_attack which = anti_air value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150179] GER | 1933 | Leni Riefenstahl's 'Olympia' (El documental «Olympia» de Leni Riefenstahl)
+# Triggered by event 150158 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150179
+	random = no
+	country = GER
+	trigger = {
+		event = 150158
+		OR = { random = 20 year = 1938 }
+	}
+	name = EVT_GER_150179_NAME
+	desc = EVT_GER_150179_DESC
+	style = 2
+	picture = "GER/riefenstahl"
+	date = { day = 1 month = january year = 1933 }
+	offset = 40
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+	name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150183] GER | 1933 | Welthauptstadt Germania Urban Plan (Proyecto urbanístico «Welthauptstadt Germania»)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150183
+	random = no
+	country = GER
+	trigger = { incabinet = 65 atwar = yes region = { region = Germany } random = 40 }
+	name = "EVT_GER_150183_NAME"
+	desc = "EVT_GER_150183_DESC"
+	style = 2
+	picture = "GER/germania"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -2 }
+		command = { trigger = { ai = no } type = money value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150184] GER | 1933 | The Dismissal of Wilhelm Canaris (La destitución del almirante Wilhelm Canaris)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150184
+	random = no
+	country = GER
+	style = 2
+	trigger = {
+		 incabinet = 6
+		 atwar = yes
+		 year = 1943
+		 random = 20
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1999 }
+	name = EVT_GER_150184_NAME
+	desc = EVT_GER_150184_DESC
+	picture = "GER/canaris"
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_REFUSE
+		command = { type = ministerofintelligence which = 119 }
+		command = { type = sleepminister which = 6 }
+		command = { type = sleepminister which = 125 }
+		}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_KEEP_CURRENT
+		command = { type = dissent value = 2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [150185] GER | 1933 | Economic Recovery and Public Works Programmes (Recuperación económica y obras públicas en Alemania)
+# Triggered by event 150005 in events/GER/GER_14-33.txt
+# Trigger event 150249 in events/GER/GER_Decisions.txt
+# Trigger event 150251 in events/GER/GER_Decisions.txt
+# Trigger event 150259 in events/GER/GER_33-33_1.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150185
+	random = no
+	country = GER
+	trigger = { atwar = no random = 20 event = 150005 }
+	name = EVT_GER_150185_NAME
+	desc = EVT_GER_150185_DESC
+	style = 2
+	picture = "GER/economic_miracle"
+        date = { day = 1 month = january year = 1933 }
+        offset = 60
+	deathdate = { day = 29 month = december year = 1939 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { type = money value = 100 }
+		command = { trigger = { ai = no } type = building_prod_mod which = ic value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150197] GER | 1933 | The Raid on Scapa Flow is a Success (Éxito de la incursión en Scapa Flow)
+# Triggered by event 143132 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150197
+	random = no
+	country = GER
+	style = 2
+	picture = "GLOBAL/scapa_flow"
+	name = EVT_GER_150197_NAME
+	desc = EVT_SHARED_00294_DESC
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -2 }
+		command = { type = add_leader_skill which = 999 value = 1 }
+        }
+}
+
+# ----------------------------------------------------------------------------
+# [150198] GER | 1933 | The naval raid has failed (La incursión naval ha fracasado)
+# Triggered by event 143132 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150198
+	random = no
+	country = GER
+	style = 2
+	picture = "GLOBAL/scapa_flow"
+	name = EVT_GER_150198_NAME
+	desc = EVT_SHARED_00294_DESC
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+		command = { type = add_leader_skill which = 999 value = -1 }
+                                 }
+}
+
+# ----------------------------------------------------------------------------
+# [150200] GER | 1933 | Triumph of Blitzkrieg Tactics (Éxito de las tácticas de Blitzkrieg)
+# Triggered by event 150061 in events/GER/GER_Decisions.txt
+# Triggered by event 150191 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150200
+	random = no
+	country = GER
+	trigger = { control = { province = 55 data = GER } event = 150061 event = 150191 control = { province = 232 data = -3 } random = 60 }
+	name = EVT_GER_150200_NAME
+	desc = EVT_GER_150200_DESC
+	style = 2
+	picture = "GER/hitler_eiffel_tower"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+	   	command = { trigger = { NOT = { technology = 6270 } } type = gain_tech which = 6270 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150202] GER | 1933 | U-Boat Triumphs in the Atlantic (Éxitos de la guerra submarina en el Atlántico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150202
+	random = no
+	country = GER
+	trigger = {
+		losses = { type = transports value = 100 data = 1 }
+		submarine = { value = 3 when = now }
+		OR = {
+			war = { country = ENG country = GER }
+			war = { country = USA country = GER }
+		   }
+	}
+	name = EVT_GER_150202_NAME
+	desc = EVT_GER_150202_DESC
+	style = 2
+	picture = "GER/sinking_convoy"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+	   	command = { trigger = { NOT = { technology = 8620 } } type = gain_tech which = 8620 }
+		command = { type = add_leader_skill which = 388 value = 1 }
+		command = { type = add_leader_skill which = 996 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150204] GER | 1933 | Repayment of the State Loan (Reembolso del préstamo estatal)
+# Triggered by event 150203 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150204
+	random = no
+	country = GER
+	persistent = yes
+	name = "EVT_GER_150204_NAME"
+	desc = "EVT_SHARED_00296_DESC"
+	style = 2
+	picture = "GLOBAL/money_devaluation"
+	action = {
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		command = { type = money value = -1100 }
+		command = { type = local_clrflag which = state_loan }
+		command = { type = dissent value = -1 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		command = { type = sleepevent which = 150203 }
+		command = { trigger = { ai = no } type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150205] GER | 1933 | League of Nations Reaction to Rhineland Remilitarization (Reacción de la Sociedad de Naciones ante la remilitarización de Renania)
+# Triggered by event 329113 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150205
+	random = no
+	country = GER
+	one_action = yes
+	trigger = { event = 329113 atwar = no }
+	name = "EVT_GER_150205_NAME"
+	desc = "EVT_GER_150205_DESC"
+	style = 2
+	picture = "GLOBAL/rhineland"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		ai_chance = 90
+		name = "EVT_GER_150205_A"
+		command = { type = dissent value = -1 }
+	}
+	action = { trigger = { ai = no }
+		ai_chance = 5
+		name = "EVT_GER_150205_B"
+		command = { type = sleepevent which = 150203 }
+		command = { trigger = { ai = no } type = dissent value = 2 }
+		command = { type = local_setflag which = LON_bank_embargo }
+	}
+	action = { trigger = { ai = no }
+		ai_chance = 3
+		name = "EVT_GER_150205_C"
+		command = { type = sleepevent which = 150203 }
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { type = embargo which = ENG where = GER value = 1 }
+		command = { type = embargo which = FRA where = GER value = 1 }
+		command = { type = embargo which = CZE where = GER value = 1 }
+		command = { type = embargo which = BEL where = GER value = 1 }
+		command = { type = embargo which = GRE where = GER value = 1 }
+		command = { type = embargo which = HOL where = GER value = 1 }
+		command = { type = embargo which = SPR where = GER value = 1 }
+		command = { type = embargo which = LUX where = GER value = 1 }
+		command = { type = embargo which = DEN where = GER value = 1 }
+		command = { type = embargo which = NOR where = GER value = 1 }
+		command = { type = embargo which = IRE where = GER value = 1 }
+		command = { type = local_setflag which = LON_bank_embargo }
+	}
+	action = { trigger = { difficulty = 2 ai = no }
+		ai_chance = 2
+		name = "EVT_GER_150205_D"
+		command = { type = war which = ENG }
+		command = { type = war which = FRA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150206] GER | 1933 | The Škoda Armaments Complex (Los complejos industriales de las factorías Škoda)
+# Triggered by event 150038 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150206
+	random = no
+	country = GER
+	trigger = {
+		atwar = no
+		event = 150038
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	name = EVT_GER_150206_NAME
+	desc = EVT_GER_150206_DESC
+	picture = "GER/skoda"
+        style = 2
+	action = {
+		name = ACTION_NAME_GREAT
+                command = { type = dissent value = -1 }
+		command = { type = waketeam which = 30 }
+        }
+}
+
+# ----------------------------------------------------------------------------
+# [150207] GER | 1933 | Suicide of Adolf Hitler (Suicidio de Adolf Hitler)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150207
+	random = no
+	country = GER
+	name = EVT_GER_150207_NAME
+	desc = EVT_GER_150207_DESC
+	style = 2
+	picture = "GER/hitler_death"
+	trigger = {
+		control = { province = 163 data = -2 }
+		region = { region = Germany country = -2 value = 10 }
+		atwar = yes
+		incabinet = 1
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		ai_chance = 25
+		name = EVT_SHARED_00299_A
+		command = { type = dissent value = 5 }
+		command = { type = headofstate which = 11 }
+		command = { type = sleepminister which = 1 }
+	}
+	action = {
+		ai_chance = 10
+		name = EVT_SHARED_00299_B
+		command = { type = dissent value = 5 }
+		command = { type = headofstate which = 12 }
+		command = { type = sleepminister which = 1 }
+	}
+	action = {
+		ai_chance = 15
+		name = EVT_SHARED_00299_C
+		command = { type = dissent value = 10 }
+		command = { type = headofstate which = 276 }
+		command = { type = sleepminister which = 1 }
+	}
+	action = {
+		ai_chance = 50
+		name = EVT_GER_150207_A
+		command = { type = dissent value = 3 }
+		command = { type = headofstate which = 13 }
+		command = { type = headofgovernment which = 30 }
+		command = { type = sleepminister which = 1 }
+		command = { type = sleepminister which = 12 }
+		command = { type = sleepminister which = 23 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150208] GER | 1933 | Death of the Führer (Muerte del Führer)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150208
+	random = no
+	country = GER
+	name = EVT_GER_150208_NAME
+	desc = EVT_GER_150208_DESC
+	style = 2
+	picture = "GER/hitler_death"
+	trigger = {
+		incabinet = 1
+		year = 1947
+		random = 5
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		ai_chance = 50
+		name = EVT_SHARED_00299_A
+		command = { type = dissent value = 5 }
+		command = { type = headofstate which = 11 }
+		command = { type = sleepminister which = 1 }
+	}
+	action = {
+		ai_chance = 15
+		name = EVT_SHARED_00299_B
+		command = { type = dissent value = 5 }
+		command = { type = headofstate which = 12 }
+		command = { type = sleepminister which = 1 }
+	}
+	action = {
+		ai_chance = 25
+		name = EVT_SHARED_00299_C
+		command = { type = dissent value = 10 }
+		command = { type = headofstate which = 276 }
+		command = { type = sleepminister which = 1 }
+	}
+	action = {
+		ai_chance = 10
+		name = EVT_GER_150208_A
+		command = { type = dissent value = 3 }
+		command = { type = headofstate which = 278 }
+		command = { type = sleepminister which = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150209] GER | 1933 | The Warsaw Ghetto Uprising (El Levantamiento del Gueto de Varsovia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150209
+	random = no
+	country = GER
+	name = EVT_GER_150209_NAME
+	desc = EVT_GER_150209_DESC
+	style = 2
+	picture = "GER/warsaw_ghetto_uprising"
+	trigger = {
+		year = 1943
+		control = { province = 232 data = GER }
+		war = { country = GER country = SOV }
+		random = 25
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = revolt which = 232 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150210] GER | 1933 | Hitler's Berghof Mountain Residence (El Berghof en Obersalzberg)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150210
+	random = no
+	country = GER
+	name = EVT_GER_150210_NAME
+	desc = EVT_GER_150210_DESC
+	style = 2
+	picture = "GER/berghof"
+	trigger = {
+		incabinet = 1
+		atwar = no
+		random = 25
+		money = 100
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { trigger = { ai = no } type = money value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150211] GER | 1933 | Mountain Troops Secure Narvik (Éxito de las tropas de montaña en Narvik)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150211
+	random = no
+	country = GER
+	name = EVT_GER_150211_NAME
+	desc = EVT_GER_150211_DESC
+	style = 2
+	picture = "GER/alpenkorps"
+	trigger = {
+		not = { exists = NOR }
+		control = { province = 495 data = GER }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 1 month = june year = 1940 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = add_leader_skill which = 49 value = 1 }
+		command = { type = morale which = bergsjaeger value = 5 }
+		command = { type = blizzard_move which = bergsjaeger value = 5 }
+		command = { type = frozen_move which = bergsjaeger value = 5 }
+		command = { type = mountain_move which = bergsjaeger value = 5 }
+		command = { type = storm_move which = bergsjaeger value = 5 }
+		command = { type = snow_move which = bergsjaeger value = 5 }
+		command = { type = urban_move which = bergsjaeger value = 5 }
+		command = { type = blizzard_attack which = bergsjaeger value = 5 }
+		command = { type = frozen_attack which = bergsjaeger value = 5 }
+		command = { type = mountain_attack which = bergsjaeger value = 5 }
+		command = { type = storm_attack which = bergsjaeger value = 5 }
+		command = { type = snow_attack which = bergsjaeger value = 5 }
+		command = { type = urban_attack which = bergsjaeger value = 5 }
+		command = { type = blizzard_defense which = bergsjaeger value = 5 }
+		command = { type = frozen_defense which = bergsjaeger value = 5 }
+		command = { type = mountain_defense which = bergsjaeger value = 5 }
+		command = { type = storm_defense which = bergsjaeger value = 5 }
+		command = { type = snow_defense which = bergsjaeger value = 5 }
+		command = { type = urban_defense which = bergsjaeger value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150212] GER | 1933 | The Gleichschaltung Laws (Las Leyes de Gleichschaltung)
+# Triggered by event 150011 in events/GER/GER_Decisions.txt
+# Trigger event 143141 in events/ENG/ENG_25-34.txt
+# Trigger event 150213 in events/GER/GER_14-33.txt
+# Trigger event 150282 in events/GER/GER_33-33_1.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150212
+	random = no
+	country = GER
+	name = EVT_GER_150212_NAME
+	desc = EVT_GER_150212_DESC
+	style = 2
+	picture = "GLOBAL/reichstag"
+	trigger = {
+		event = 150011
+		random = 50
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150213] GER | 1933 | The German Labour Front (DAF) (El Frente Alemán del Trabajo (DAF))
+# Triggered by event 150212 in events/GER/GER_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150213
+	random = no
+	country = GER
+	name = EVT_GER_150213_NAME
+	desc = EVT_GER_150213_DESC
+	style = 2
+	picture = "GER/daf"
+	trigger = {
+		event = 150212
+		random = 75
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150214] GER | 1933 | Conversion of the Volkswagen to the Kübelwagen (El proyecto Volkswagen transformado en Kübelwagen)
+# Triggered by event 150265 in events/GER/GER_33-36.txt
+# Trigger event 150303 in events/GER/GER_33-33_1.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150214
+	random = no
+	country = GER
+	name = EVT_GER_150214_NAME
+	desc = EVT_GER_150214_DESC
+	style = 2
+	picture = "GER/volkswagen"
+	trigger = {
+		atwar = yes
+		headofstate = 1
+		random = 60
+		NOT = { OR = { technology = 1400 technology = 1390 } }
+		event = 150265
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 40
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = 2 }
+	   	command = { trigger = { NOT = { technology = 1390 } } type = gain_tech which = 1390 }
+	   	command = { trigger = { NOT = { technology = 1396 } } type = gain_tech which = 1396 }
+	   	command = { trigger = { NOT = { technology = 1400 } } type = gain_tech which = 1400 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150215] GER | 1933 | The Hitler Youth (Hitlerjugend) (Las Juventudes Hitlerianas (Hitlerjugend))
+# ----------------------------------------------------------------------------
+event = {
+	id = 150215
+	random = no
+	country = GER
+	name = EVT_GER_150215_NAME
+	desc = EVT_GER_150215_DESC
+	style = 2
+	picture = "GER/hitlerjugend"
+	trigger = {
+		headofstate = 1
+		random = 20
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { type = morale which = militia value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150216] GER | 1933 | The Thule Society (La Sociedad Thule)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150216
+	random = no
+	country = GER
+	name = EVT_GER_150216_NAME
+	desc = EVT_GER_150216_DESC
+	style = 2
+	picture = "GER/thule"
+	trigger = {
+		headofstate = 1
+		random = 5
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = wakeminister which = 37 }
+		command = { type = wakeminister which = 189 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150221] GER | 1933 | First Resistance Strike on the Acropolis (Primer acto de resistencia en la Acrópolis de Atenas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150221
+	random = no
+	country = GER
+	name = EVT_GER_150221_NAME
+	desc = EVT_GER_150221_DESC
+	style = 2
+	picture = "GER/swastika_athens"
+	trigger = {
+		control = { province = 377 }
+		NOT = { exists = GRE }
+		ai = no
+ }
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150230] GER | 1933 | Sinking of the SS Athenia (Hundimiento del transatlántico SS Athenia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150230
+	random = no
+	country = GER
+	name = EVT_GER_150230_NAME
+	desc = EVT_GER_150230_DESC
+	style = 2
+	picture = "GER/athenia"
+	trigger = { submarine = { value = 3 when = now } war = { country = ENG } war = { country = POL } }
+	date = { year = 1933 month = january day = 1 }
+	offset = 15
+	deathdate = { year = 1963 month = december day = 29 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = CAN value = -10 }
+		command = { type = relation which = USA value = -10 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150234] GER | 1933 | Atlantic U-Boat Pens Completed (Búnkeres atlánticos de submarinos completados)
+# Triggered by event 329401 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150234
+	random = no
+	country = GER
+	name = "EVT_GER_150234_NAME"
+	desc = "EVT_SHARED_00309_DESC"
+	style = 2
+	picture = "GER/uboat"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { trigger = { control = { province = 40 data = GER } } type = construct which = naval_base where = 40 value = 2 }
+		command = { trigger = { control = { province = 40 data = GER } } type = construct which = flak where = 40 value = 2 }
+		command = { trigger = { control = { province = 40 data = GER } } type = construct which = land_fort where = 40 value = 2 }
+		command = { trigger = { control = { province = 69 data = GER } } type = construct which = naval_base where = 69 value = 2 }
+		command = { trigger = { control = { province = 69 data = GER } } type = construct which = flak where = 69 value = 2 }
+		command = { trigger = { control = { province = 69 data = GER } } type = construct which = land_fort where = 69 value = 3 }
+		command = { trigger = { control = { province = 69 data = GER } } type = construct which = coastal_fort where = 69 value = 2 }
+		command = { trigger = { control = { province = 68 data = GER } } type = construct which = naval_base where = 68 value = 2 }
+		command = { trigger = { control = { province = 68 data = GER } } type = construct which = flak where = 68 value = 2 }
+		command = { trigger = { control = { province = 68 data = GER } } type = construct which = land_fort where = 68 value = 1 }
+		command = { trigger = { control = { province = 68 data = GER } } type = construct which = coastal_fort where = 68 value = 1 }
+		command = { trigger = { control = { province = 39 data = GER } } type = construct which = naval_base where = 39 value = 2 }
+		command = { trigger = { control = { province = 39 data = GER } } type = construct which = flak where = 39 value = 2 }
+		command = { trigger = { control = { province = 39 data = GER } } type = construct which = land_fort where = 39 value = 3 }
+		command = { trigger = { control = { province = 39 data = GER } } type = construct which = coastal_fort where = 39 value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150235] GER | 1933 | German-Afghan Relations (Relaciones bilaterales germano-afganas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150235
+	random = no
+	country = GER
+	trigger = { atwar = no random = 5 }
+	name = EVT_GER_150235_NAME
+	desc = EVT_GER_150235_DESC
+	style = 2
+	picture = "GLOBAL/events_empty"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = relation which = AFG value = 25 }
+		command = { trigger = { ai = no } type = trade which = AFG where = GER money = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150242] GER | 1933 | The Kreisau Circle (El Círculo de Kreisau)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150242
+	random = no
+	country = GER
+	trigger = { ai = no headofstate = 1 atwar = yes random = 2 }
+	name = EVT_GER_150242_NAME
+	desc = EVT_GER_150242_DESC
+	style = 2
+	picture = "GER/kreisau_circle"
+	date = { day = 1 month = january year = 1933 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150243] GER | 1933 | The White Rose Resistance Group (El grupo de resistencia «La Rosa Blanca»)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150243
+	random = no
+	country = GER
+	trigger = { ai = no headofstate = 1 atwar = yes random = 2 }
+	name = EVT_GER_150243_NAME
+	desc = EVT_GER_150243_DESC
+	style = 2
+	picture = "GER/white_rose"
+	date = { day = 1 month = january year = 1933 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150244] GER | 1933 | Institution of the Knight's Cross of the Iron Cross (Creación de la Cruz de Caballero de la Cruz de Hierro)
+# Triggered by event 329352 in events/GER/GER_33-33_2.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150244
+	random = no
+	country = GER
+	trigger = {
+		control = { province = 232 data = GER }
+		NOT = { exists = POL }
+		event = 329352
+		atwar = yes
+	}
+   	name = "EVT_GER_150244_NAME"
+	desc = "EVT_GER_150244_DESC"
+	style = 2
+	picture = "GER/iron_cross"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = add_leader_skill which = 278 value = 1 }
+		command = { type = add_leader_skill which = 334 value = 1 }
+		command = { type = add_leader_skill which = 20 value = 1 }
+		command = { type = add_leader_skill which = 281 value = 1 }
+		command = { type = add_leader_skill which = 188 value = 1 }
+		command = { type = add_leader_skill which = 333 value = 1 }
+		command = { type = add_leader_skill which = 560 value = 1 }
+		command = { type = add_leader_skill which = 313 value = 1 }
+		command = { type = add_leader_skill which = 439 value = 1 }
+		command = { type = add_leader_skill which = 408 value = 1 }
+		command = { type = add_leader_skill which = 450 value = 1 }
+	}
+}

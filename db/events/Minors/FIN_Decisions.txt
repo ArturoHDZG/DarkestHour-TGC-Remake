@@ -1,0 +1,51 @@
+# ============================================================================
+# File: events/Minors/FIN_Decisions.txt (1 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [146031] FIN | 1915 | Ask Germany for support? (¿Solicitar ayuda a Alemania?)
+# Triggered by event 146028 in events/Minors/FIN_14-51.txt
+# Trigger event 243008 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146031
+	random = no
+	country = FIN
+	decision = { }
+	decision_trigger = {
+		event = 146028
+		exists = U20
+		exists = FIN
+		war = { country = U20 country = FIN }
+		NOT = { war = { country = U08 country = FIN } }
+		NOT = { war = { country = U08 country = U20 } }
+	}
+	trigger = {
+		event = 146028
+		exists = U20
+		exists = FIN
+		war = { country = U20 country = FIN }
+		NOT = { war = { country = U08 country = FIN } }
+		NOT = { war = { country = U08 country = U20 } }
+	}
+	name = "EVT_FIN_146031_NAME"
+	desc = "EVT_FIN_146031_DESC"
+	style = 2
+	picture = "GLOBAL/finnish_senate_1917"
+	decision_picture = "Minors/decision_asienkorps"
+	date = { day = 0 month = june year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		ai_chance = 100
+		name = "ACTION_NAME_INTERVENE"
+		command = { type = relation which = U08 value = 10 }
+		command = { type = trigger which = 243008 }
+	}
+	action = {
+		ai_chance = 0
+		name = "ACTION_NAME_NO_NEED"
+		command = { type = dissent value = 3 }
+	}
+}

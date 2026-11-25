@@ -1,0 +1,117 @@
+# ============================================================================
+# THE GRAND CAMPAIGN REMAKE: AWAKENING OF AFRICA (DECOLONIZATION & ETHIOPIA)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231960] ALL (Human Player) | 1914-1950 | Master Decision: Awakening of Africa
+# ----------------------------------------------------------------------------
+event = {
+	id = 231960
+	random = no
+	decision = {
+		year = 1914
+	}
+	decision_trigger = {
+		year = 1914
+	}
+	trigger = {
+		ai = no
+	}
+	name = "EVT_231960_NAME"
+	desc = "EVT_231960_DESC"
+	style = 2
+	picture = "GLOBAL/north_africa_war"
+	decision_picture = "GLOBAL/decision_wargames"
+	date = { day = 1 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = "EVT_231960_A"
+		command = { }
+	}
+	action = {
+		name = "EVT_231960_B"
+		command = { type = setflag which = africa_path_early_decolonization }
+	}
+	action = {
+		name = "EVT_231960_C"
+		command = { type = setflag which = africa_path_ethiopia }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231961] ENG | 1919-1945 | Continental Pan-African Anticolonial Uprising
+# ----------------------------------------------------------------------------
+event = {
+	id = 231961
+	country = ENG
+	trigger = {
+		flag = africa_path_early_decolonization
+		exists = ENG
+	}
+	name = "EVT_231961_NAME"
+	desc = "EVT_231961_DESC"
+	style = 2
+	picture = "GLOBAL/north_africa_war"
+	date = { day = 11 month = november year = 1919 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = EGY value = 1 }
+		command = { type = independence which = SUD value = 1 }
+		command = { type = independence which = SOM value = 1 }
+		command = { type = independence which = NIG value = 1 }
+		command = { trigger = { exists = FRA } type = trigger which = 231963 }
+		command = { type = dissent value = -5 }
+		command = { type = setflag which = Africa_Decolonized_Early }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231963] FRA | 1919-1945 | French African Colonies Emancipation
+# ----------------------------------------------------------------------------
+event = {
+	id = 231963
+	country = FRA
+	name = "EVT_231963_NAME"
+	desc = "EVT_231963_DESC"
+	style = 2
+	picture = "nwo/south_african_referendum_1960"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = MOR value = 1 }
+		command = { type = independence which = ALG value = 1 }
+		command = { type = independence which = TUN value = 1 }
+		command = { type = independence which = MAD value = 1 }
+		command = { type = independence which = CON value = 1 }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231962] ETH | 1935-1945 | Triumph of the Lion of Judah: Greater Ethiopia
+# ----------------------------------------------------------------------------
+event = {
+	id = 231962
+	country = ETH
+	trigger = {
+		flag = africa_path_ethiopia
+		exists = ETH
+	}
+	name = "EVT_231962_NAME"
+	desc = "EVT_231962_DESC"
+	style = 2
+	picture = "GLOBAL/africane_orientale_italiana"
+	date = { day = 3 month = october year = 1935 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { war = { country = ETH country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { exists = SOM } type = inherit which = SOM value = 1 }
+		command = { type = dissent value = -20 }
+		command = { type = industrial_modifier which = total value = 25 }
+		command = { type = setflag which = Greater_Ethiopia_Formed }
+	}
+}

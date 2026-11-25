@@ -1,0 +1,96 @@
+# ============================================================================
+# File: events/Minors/CXB.txt (4 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [133003] CXB | 1914 | Tibetan Uprising (Levantamiento tibetano)
+# Triggered by event 232017 in events/Minors/TIB_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 133003
+	random = no
+	persistent = yes
+	country = CXB
+	name = "EVT_SHARED_01073_NAME"
+	desc = "EVT_SHARED_01074_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = relation which = TIB value = -50 }
+		command = { type = war which = TIB }
+		command = { type = belligerence value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124139] CXB | 1931 | 19th Army Defects (Deserción del 19.º Ejército de Ruta)
+# Triggered by event 123018 in events/Minors/CHC_30-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124139
+	random = no
+	country = CXB
+	picture = "GLOBAL/ccip_fjsoviet"
+	style = 2
+	name = EVT_SHARED_00167_NAME
+	desc = EVT_SHARED_00168_DESC
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = { war = { country = CHI country = CXB } }
+			}
+		}
+		name = ACTION_NAME_FIGHT
+		ai_chance = 100
+		command = { trigger = { ai = yes } type = ai which = "switch/ferocity_yes.ai" }
+		command = { trigger = { not = { war = { country = CHC country = CXB } } } type = war which = CHC }
+		command = { trigger = { not = { alliance = { country = CHI country = CXB } } } type = alliance which = CHI when = 2 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 0
+		command = { trigger = { alliance = { country = CHI country = CXB } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = CHC country = CXB } } type = peace which = CHC }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [133000] CXB | 1936 | Frontier Concessions to Japan (Cesiones fronterizas a Japón)
+# ----------------------------------------------------------------------------
+event = {
+	id = 133000
+	random = no
+	country = CXB
+	name = "EVT_SHARED_00491_NAME"
+	desc = "EVT_CXB_133000_DESC"
+	style = 2
+	picture = "GLOBAL/ccip_mukden"
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = JAP value = 1285 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [133002] CXB | 1942 | The Ma Clique Difangjun (El Difangjun de los Ma)
+# Triggered by event 329962 in events/CHI/CHI_37-45.txt
+# Trigger event 329741 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 133002
+	country = CXB
+	name = EVT_CXB_133002_NAME
+	desc = EVT_CXB_133002_DESC
+	picture = "nwo/difangjun"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_corps value = land where = 1252 }
+		command = { type = add_division which = militia when = 5 }
+	}
+}

@@ -1,0 +1,1892 @@
+# ============================================================================
+# File: events/GER/GER_38-40.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329208] GER | 1938 | Czecho-Slovak-German Agreement (Acuerdo checo-eslovaco-alemán)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329208
+	random = no
+	country = GER
+	trigger = {
+		exists = CZE
+		NOT = { war = { country = GER country = CZE } }
+			}
+	date = { day = 19 month = november year = 1938 }
+	name = "EVT_GER_329208_NAME"
+	desc = "EVT_GER_329208_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = relation which = CZE value = 15 }
+		command = { type = dissent  value = -1 }
+		command = { type = tc_mod value = 1 }
+		command = { type = construct which = infrastructure where = 166 value = 15 }
+		command = { type = construct which = infrastructure where = 194 value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150051] GER | 1939 | Molotov-Ribbentrop: Limited Treaty (Pacto Molotov-Ribbentrop: Acuerdo limitado)
+# Triggered by event 223087 in events/SOV/SOV_38-40.txt
+# Trigger event 241002 in events/Minors/U06.txt
+# Trigger event 150053 in events/GER/GER_36-37.txt
+# Trigger event 150057 in events/GER/GER_Decisions.txt
+# Trigger event 150460 in events/AI/GER_AI_33-36.txt
+# Trigger event 203011 in events/AI/POL_AI.txt
+# Trigger event 223097 in events/SOV/SOV_36-38.txt
+# Trigger event 223114 in events/SOV/SOV_Decisions.txt
+# Trigger event 223115 in events/SOV/SOV_43-46.txt
+# Trigger event 223172 in events/AI/SOV_AI_14-41.txt
+# Trigger event 329692 in events/AI/SOV_AI_14-41.txt
+# Trigger event 329693 in events/AI/SOV_AI_14-41.txt
+# Trigger event 329710 in events/AI/SOV_AI_14-41.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150051
+	random = no
+	country = GER
+	save_date = yes
+	name = "EVT_GER_150051_NAME"
+	desc = "EVT_GER_150051_DESC"
+	style = 2
+	picture = "GLOBAL/mol_rib"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = addcore which = 222 }
+		command = { type = addcore which = 226 }
+		command = { type = addcore which = 230 }
+		command = { trigger = { exists = U06 } type = trigger which = 241002 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150052] GER | 1939 | Molotov-Ribbentrop: Limited Pact Rejected (Pacto M-R: Rechazo del acuerdo limitado)
+# Triggered by event 223087 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150052
+	random = no
+	country = GER
+	name = "EVT_GER_150052_NAME"
+	desc = "EVT_GER_150052_DESC"
+	style = 2
+	picture = "GLOBAL/mol_rib"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = SOV value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150056] GER | 1939 | The Tripartite Pact (El Pacto Tripartito)
+# Trigger event 167016 in events/JAP/JAP_38-40.txt
+# Trigger event 166014 in events/ITA/ITA_36-40.txt
+# Trigger event 329126 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150056
+	random = no
+	country = GER
+	name = EVT_GER_150056_NAME
+	desc = EVT_GER_150056_DESC
+	style = 2
+	picture = "GLOBAL/tripartite_pact"
+	trigger = {
+		control = { province = 55 data = -3 }
+		random = 20
+		exists = JAP
+		exists = ITA
+		exists = SOV
+		NOT = { war = { country = GER country = ITA } }
+		NOT = { war = { country = GER country = JAP } }
+		NOT = { war = { country = JAP country = ITA } }
+		NOT = { alliance = { country = GER country = ENG } }
+		NOT = { alliance = { country = GER country = SOV } }
+		NOT = { alliance = { country = ITA country = ENG } }
+		NOT = { alliance = { country = ITA country = SOV } }
+		NOT = { alliance = { country = JAP country = ENG } }
+		NOT = { alliance = { country = JAP country = SOV } }
+	}
+	date = { day = 0 month = january year = 1939 }
+	offset = 6
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SOV value = -20 }
+		command = { type = trigger which = 167016 }
+		command = { type = trigger which = 166014 }
+	}
+	action = {
+		ai_chance = 0
+		name = EVT_GER_150056_A
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = trigger which = 167016 }
+	}
+	action = {
+		ai_chance = 0
+		name = EVT_GER_150056_B
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = trigger which = 166014 }
+	}
+	action = {
+		ai_chance = 0
+		name = EVT_GER_150056_C
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150077] GER | 1939 | Dissolution of Czechoslovakia (Desintegración de Checoslovaquia)
+# Triggered by event 159006 in events/Minors/HUN_38-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150077
+	random = no
+	country = GER
+	name = "EVT_SHARED_00610_NAME"
+	desc = "EVT_SHARED_00610_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150121] GER | 1939 | Norwegian Resistance to German Invasion (Resistencia noruega a la invasión alemana)
+# Triggered by event 329212 in events/Minors/NOR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150121
+	random = no
+	country = GER
+	name = "EVT_SHARED_00708_NAME"
+	desc = "EVT_SHARED_00708_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+			command = { type = dissent value = 1 }
+			command = { type = manpowerpool value = -4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150188] GER | 1939 | Industrial Assets of GM and Adam Opel AG (Activos industriales de General Motors y Adam Opel AG)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150188
+	random = no
+	country = GER
+	trigger = { atwar = no random = 70 control = { province = 207 data = GER } }
+	name = EVT_GER_150188_NAME
+	desc = EVT_GER_150188_DESC
+	style = 2
+	picture = "GER/gm"
+        date = { day = 1 month = january year = 1939 }
+        offset = 60
+	deathdate = { day = 29 month = december year = 1939 }
+	action = {
+		name = ACTION_NAME_GREAT
+	   	command = { trigger = { NOT = { technology = 5210 } } type = gain_tech which = 5210 }
+	   	command = { trigger = { NOT = { technology = 5220 } } type = gain_tech which = 5220 }
+	   	command = { trigger = { NOT = { technology = 5230 } } type = gain_tech which = 5230 }
+		command = { type = relation which = USA value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150189] GER | 1939 | Time Magazine Names Hitler 'Man of the Year' (Time Magazine designa a Hitler «Hombre del Año»)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150189
+	random = no
+	country = GER
+	trigger = { atwar = no }
+	name = EVT_GER_150189_NAME
+	desc = EVT_GER_150189_DESC
+	style = 1
+	picture = "GER/time"
+        date = { day = 1 month = january year = 1939 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150346] GER | 1939 | Armistice Talks: United Kingdom (Capitulación del Reino Unido)
+# Trigger event 143157 in events/ENG/ENG_38-39.txt
+# Trigger event 316144 in events/USA/USA_28-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150346
+	random = no
+	country = GER
+	name = EVT_GER_150346_NAME
+	desc = EVT_GER_150346_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		OR = {
+			control = { province = 55 data = -3 }
+			NOT = {
+				war = { country = FRA country = GER }
+			}
+		}
+		control = { province = 29 data = -3  }
+		lost_VP = { country = ENG value = 75 }
+		lost_IC = { country = ENG value = 75 }
+		NOT = { war = { country = SOV country = GER } }
+		NOT = { lost_national = { country = GER value = 15 } }
+		random = 50
+	}
+	date = { day = 0 month = january year = 1939 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OFFER_PEACE
+		command = { type = dissent value = -5 }
+		command = { type = money value = 5000 }
+		command = { type = addclaim which = 5 }
+		command = { type = addclaim which = 9 }
+		command = { type = addclaim which = 20 }
+		command = { type = addclaim which = 23 }
+		command = { type = trigger which = 143157 }
+	}
+	action_b = {
+		ai_chance = 0
+		name = ACTION_NAME_WAR
+		command = { type = dissent value = -2 }
+		command = { type = money value = 2500 }
+		command = { type = sleepevent which = 329504 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150363] GER | 1939 | Adlerhorst Military Headquarters (Complejo de mando militar Adlerhorst)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150363
+	random = no
+	country = GER
+	name = "EVT_GER_150363_NAME"
+	desc = "EVT_GER_150363_DESC"
+	style = 0
+	picture = "GER/adlerhorst_military_headquarters"
+	trigger = {
+		incabinet = 1
+		atwar = no
+		random = 25
+		money = 50
+		control = { province = 138 data = GER }
+	}
+	date = { day = 1 month = january year = 1939 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { trigger = { ai = no } type = money value = -50 }
+		command = { type = construct which = land_fort where = 138 value = 1 }
+		command = { type = construct which = flak where = 138 value = 2 }
+		command = { type = construct which = radar_station where = 138 value = 2 }
+		command = { type = add_corps which = "Führerbegleit Adlerhorst" value = land where = 138 }
+		command = { type = add_division which = "Führerbegleit" value = garrison when = 5 }
+	}
+	action_b = {
+		 name = "ACTION_NAME_NO_NEED"
+                 ai_chance = 1
+		 command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150392] GER | 1939 | Expansion of Aalborg Airfield in Denmark (Ampliación del aeródromo de Aalborg en Dinamarca)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150392
+	random = no
+	country = GER
+	trigger = {
+		metal = 100
+		energy = 100
+		supplies = 150
+                oil = 25
+		control = { province = 217 data = GER }
+		NOT = { war = { country = DEN country = GER } }
+	}
+	name = "EVT_GER_150392_NAME"
+	desc = "EVT_GER_150392_DESC"
+	style = 2
+	picture = "GER/expansion_of_aalborg_airfield_in_denmark"
+	date = { day = 1 month = january year = 1939 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1947 }
+	action_a = {
+		name = "EVT_GER_150392_A"
+		ai_chance = 99
+		command = { type = construct which = air_base where = 217 value = 4 }
+		command = { type = metalpool value = 100 }
+		command = { type = energypool value = -100 }
+		command = { type = supplies value = -150 }
+		command = { type = oilpool value = -25 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 1
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150501] GER | 1939 | South Africa Requests Armistice (Sudáfrica solicita el armisticio)
+# Triggered by event 324431 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150501
+	country = GER
+	name = EVT_GER_150501_NAME
+	desc = EVT_GER_150501_DESC
+	picture = "nwo/british_dominions"
+	style = 1
+	action = {
+		name = EVT_GER_150501_A
+		ai_chance = 99
+		command = { type = peace which = SAF value = 0 }
+	}
+	action = {
+		name = EVT_GER_150501_B
+		ai_chance = 1
+		command = { type = dissent value = 3 }
+		command = { type = belligerence value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150502] GER | 1939 | Canada Requests Armistice (Canadá solicita el armisticio)
+# Triggered by event 324431 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150502
+	country = GER
+	name = EVT_GER_150502_NAME
+	desc = EVT_GER_150502_DESC
+	picture = "nwo/british_dominions"
+	style = 1
+	action = {
+		name = EVT_GER_150502_A
+		ai_chance = 90
+		command = { type = peace which = CAN value = 0 }
+	}
+	action = {
+		name = EVT_GER_150502_B
+		ai_chance = 10
+		command = { type = dissent value = 3 }
+		command = { type = belligerence value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150503] GER | 1939 | Australia Requests Armistice (Australia solicita el armisticio)
+# Triggered by event 324431 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150503
+	country = GER
+	name = EVT_GER_150503_NAME
+	desc = EVT_GER_150503_DESC
+	picture = "nwo/british_dominions"
+	style = 1
+	action = {
+		name = EVT_GER_150503_A
+		ai_chance = 90
+		command = { type = peace which = AST value = 0 }
+	}
+	action = {
+		name = EVT_GER_150503_B
+		ai_chance = 10
+		command = { type = dissent value = 3 }
+		command = { type = belligerence value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150504] GER | 1939 | Dividing the Lebensraum (Reparto del Lebensraum)
+# Trigger event 167185 in events/JAP/JAP_38-40.txt
+# Trigger event 209109 in events/Minors/ROM_36-44.txt
+# Trigger event 146093 in events/Minors/FIN_14-51.txt
+# Trigger event 235025 in events/Minors/TUR.txt
+# Trigger event 223355 in events/SOV/SOV_36-38.txt
+# Trigger event 329976 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150504
+	country = GER
+	save_date = yes
+	name = EVT_GER_150504_NAME
+	desc = EVT_GER_150504_DESC
+	picture = "nwo/lebensraum_policy"
+	style = 1
+	trigger = {
+		flag = the_bitter_peace
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_GER_150504_A
+		ai_chance = 50
+		command = { type = sleepevent which = 150513 }
+		command = { type = sleepevent which = 150514 }
+		command = { trigger = { war = { country = SOV country = JAP } } type = trigger which = 167185 }
+		command = { trigger = { war = { country = SOV country = ROM } } type = trigger which = 209109 }
+		command = { trigger = { war = { country = SOV country = FIN } } type = trigger which = 146093 }
+		command = { trigger = { war = { country = SOV country = TUR } } type = trigger which = 235025 }
+		command = { trigger = { NOT = { war = { country = SOV country = JAP } } } type = sleepevent which = 223356 }
+		command = { trigger = { NOT = { war = { country = SOV country = ROM } } } type = sleepevent which = 150505 }
+		command = { trigger = { NOT = { war = { country = SOV country = FIN } } } type = sleepevent which = 150508 }
+		command = { trigger = { NOT = { war = { country = SOV country = JAP } } } type = sleepevent which = 223357 }
+		command = { trigger = { NOT = { war = { country = SOV country = ROM } } } type = sleepevent which = 150506 }
+		command = { trigger = { NOT = { war = { country = SOV country = FIN } } } type = sleepevent which = 150509 }
+	}
+	action = {
+		name = EVT_GER_150504_B
+		ai_chance = 30
+		command = { type = sleepevent which = 150512 }
+		command = { type = sleepevent which = 150514 }
+		command = { trigger = { war = { country = SOV country = JAP } } type = trigger which = 167185 }
+		command = { trigger = { war = { country = SOV country = ROM } } type = trigger which = 209109 }
+		command = { trigger = { war = { country = SOV country = FIN } } type = trigger which = 146093 }
+		command = { trigger = { war = { country = SOV country = TUR } } type = trigger which = 235025 }
+		command = { trigger = { NOT = { war = { country = SOV country = JAP } } } type = sleepevent which = 223356 }
+		command = { trigger = { NOT = { war = { country = SOV country = ROM } } } type = sleepevent which = 150505 }
+		command = { trigger = { NOT = { war = { country = SOV country = FIN } } } type = sleepevent which = 150508 }
+		command = { trigger = { NOT = { war = { country = SOV country = JAP } } } type = sleepevent which = 223357 }
+		command = { trigger = { NOT = { war = { country = SOV country = ROM } } } type = sleepevent which = 150506 }
+		command = { trigger = { NOT = { war = { country = SOV country = FIN } } } type = sleepevent which = 150509 }
+	}
+	action = {
+		name = EVT_GER_150504_C
+		ai_chance = 19
+		command = { type = sleepevent which = 150512 }
+		command = { type = sleepevent which = 150513 }
+		command = { trigger = { war = { country = SOV country = JAP } } type = trigger which = 167185 }
+		command = { trigger = { war = { country = SOV country = ROM } } type = trigger which = 209109 }
+		command = { trigger = { war = { country = SOV country = FIN } } type = trigger which = 146093 }
+		command = { trigger = { war = { country = SOV country = TUR } } type = trigger which = 235025 }
+		command = { trigger = { NOT = { war = { country = SOV country = JAP } } } type = sleepevent which = 223356 }
+		command = { trigger = { NOT = { war = { country = SOV country = ROM } } } type = sleepevent which = 150505 }
+		command = { trigger = { NOT = { war = { country = SOV country = FIN } } } type = sleepevent which = 150508 }
+		command = { trigger = { NOT = { war = { country = SOV country = JAP } } } type = sleepevent which = 223357 }
+		command = { trigger = { NOT = { war = { country = SOV country = ROM } } } type = sleepevent which = 150506 }
+		command = { trigger = { NOT = { war = { country = SOV country = FIN } } } type = sleepevent which = 150509 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 1
+		command = { type = dissent value = 20 }
+		command = { type = clrflag which = the_bitter_peace }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150526] GER | 1939 | Proclamation of Japanese neutrality (Proclamación de neutralidad japonesa)
+# Triggered by event 330166 in events/JAP/JAP_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150526
+	random = no
+	country = GER
+	name = "EVT_SHARED_01170_NAME"
+	desc = "EVT_SHARED_01170_DESC"
+	style = 2
+	picture = "GLOBAL/proclamation_of_japanese_neutrality"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329787] GER | 1939 | The Fall of the Third Reich (La caída del Tercer Reich)
+# Triggered by event 329315 in events/ITA/ITA_34-36.txt
+# Triggered by event 146084 in events/Minors/FIN_51-91.txt
+# Trigger event 146064 in events/Minors/FIN_14-51.txt
+# Trigger event 203035 in events/Minors/POL_14-89.txt
+# Trigger event 323037 in events/Minors/YUG.txt
+# Trigger event 324426 in events/GLOBAL/MULTI_39-44.txt
+# Trigger event 329791 in events/GLOBAL/ALL_36-40.txt
+# Trigger event 329315 in events/ITA/ITA_34-36.txt
+# Trigger event 146084 in events/Minors/FIN_51-91.txt
+# Trigger event 329789 in events/GLOBAL/ALL_36-40.txt
+# Trigger event 329790 in events/GLOBAL/ALL_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329787
+	country = GER
+	save_date = yes
+	name = EVT_GER_329787_NAME
+	desc = EVT_GER_329787_DESC
+	picture = "nwo/fall_of_third_reich"
+	style = 1
+	trigger = {
+		OR = {
+				war = { country = GER country = USA }
+				war = { country = GER country = ENG }
+				war = { country = GER country = FRA }
+			}
+		war = { country = GER country = SOV }
+		NOT = {
+			control = { province = 163 data = GER }
+			control = { province = 131 data = GER }
+			control = { province = 179 data = GER }
+			control = { province = 145 data = GER }
+			control = { province = 195 data = GER }
+			control = { province = 572 data = GER }
+			control = { province = 55 data = GER }
+			}
+		lost_national = { value = 30 }
+		NOT = { flag = cold_war }
+		NOT = { flag = ww3 }
+		NOT = { war = { country = USA country = SOV } }
+	}
+    date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_DEFEAT
+		command = { type = setflag which = der_untergang }
+		command = { type = sleepevent which = 329788 }
+		command = { type = sleepevent which = 329940 }
+		command = { type = dissent value = 30 }
+		command = { type = secederegion which = USA value = "Norway" when = 1 }
+		command = { type = secederegion which = USA value = "Denmark" when = 1 }
+		command = { type = sleepevent which = 329788 }
+		command = { type = trigger which = 329791 }
+		command = { trigger = { NOT = { event = 329315 } alliance = { country = ITA } NOT = { ai = ITA } } type = inherit which = ITA }
+		command = { trigger = { NOT = { event = 329315 } alliance = { country = ITA } ai = ITA } type = trigger which = 329315 }
+		command = { trigger = { NOT = { event = 146084 } war = { country = SOV country = FIN } } type = trigger which = 146084 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329939] GER | 1939 | The Fall of the Third Reich (La caída del Tercer Reich)
+# Triggered by event 329940 in events/GLOBAL/ALL_36-40.txt
+# Triggered by event 329315 in events/ITA/ITA_34-36.txt
+# Trigger event 324488 in events/GLOBAL/MULTI_39-44.txt
+# Trigger event 329791 in events/GLOBAL/ALL_36-40.txt
+# Trigger event 329315 in events/ITA/ITA_34-36.txt
+# Trigger event 329940 in events/GLOBAL/ALL_36-40.txt
+# Trigger event 329941 in events/GLOBAL/ALL_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329939
+	country = GER
+	save_date = yes
+	name = EVT_GER_329939_NAME
+	desc = EVT_GER_329939_DESC
+	picture = "nwo/peace_in_our_time"
+	style = 1
+	trigger = {
+		OR = {
+				war = { country = GER country = USA }
+				war = { country = GER country = ENG }
+				war = { country = GER country = FRA }
+			}
+		NOT = { war = { country = GER country = SOV } }
+		NOT = {
+			control = { province = 163 data = GER }
+			control = { province = 131 data = GER }
+			control = { province = 179 data = GER }
+			control = { province = 145 data = GER }
+			control = { province = 195 data = GER }
+			control = { province = 572 data = GER }
+			control = { province = 55 data = GER }
+			}
+		lost_national = { value = 30 }
+		NOT = { flag = cold_war }
+		NOT = { flag = ww3 }
+		NOT = { war = { country = USA country = SOV } }
+		NOT = { event = 329940 }
+	}
+    date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_DEFEAT
+		command = { type = setflag which = peace_in_our_time }
+		command = { type = sleepevent which = 329940 }
+		command = { type = sleepevent which = 329940 }
+		command = { type = dissent value = 30 }
+		command = { type = trigger which = 329791 }
+		command = { trigger = { NOT = { event = 329315 } alliance = { country = ITA } } type = trigger which = 329315 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150014] GER | 1939 | Resignation of Hjalmar Schacht (Dimisión de Hjalmar Schacht)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150014
+	random = no
+	country = GER
+	style = 2
+	trigger = {
+		headofstate = 1
+		minister = 59
+		Incabinet = 56
+		random = 95
+		}
+	date = { year = 1939 month = january day = 6 }
+	offset = 15
+	deathdate = { year = 1963 month = january day = 7 }
+	name = "EVT_GER_150014_NAME"
+	desc = "EVT_GER_150014_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 80
+		command = { type = armamentminister which = 59 }
+		command = { type = sleepminister which = 56 }
+		command = { type = dissent value = 1 }
+		}
+	action_b = {
+		name = "EVT_SHARED_00306_A"
+		ai_chance = 20
+		command = { type = dissent value = 3 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [150445] GER | 1939 | Battleship Gneisenau (Acorazado Gneisenau)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150445
+	random = no
+	country = GER
+	trigger = {
+	incabinet = 1
+	ai = no
+}
+	name = "EVT_GER_150445_NAME"
+	desc = "EVT_GER_150445_DESC"
+	style = 2
+	picture = "GER/battleship_gneisenau"
+	date = { day = 7 month = january year = 1939 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "Gneisenau" value = battlecruiser when = 3 where = naval_improved_hull_l }
+		command = { type = supplies value = -800 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150285] GER | 1939 | Completion of the New Reich Chancellery (Inauguración de la Nueva Cancillería del Reich)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150285
+	random = no
+	country = GER
+	trigger = {
+		OR = {
+			headofstate = 1
+			headofgovernment = 22
+		}
+	}
+   	name = EVT_GER_150285_NAME
+	desc = EVT_GER_150285_DESC
+	style = 2
+	picture = "GER/reichskanzlei"
+	date = { day = 8 month = january year = 1939 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { trigger = { ai = no } type = money value = -300 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150104] GER | 1939 | Death of Pope Pius XI (Muerte del Papa Pío XI)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150104
+	random = no
+	country = GER
+	trigger = {
+		exists = GER
+			}
+	date = { day = 09 month = february year = 1939 }
+	name = "EVT_SHARED_00693_NAME"
+	desc = "EVT_SHARED_00693_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150105] GER | 1939 | Resignation of Hungarian Premier (Renuncia del primer ministro húngaro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150105
+	random = no
+	country = GER
+	trigger = {
+		   exists = HUN
+		    }
+	date = { day = 14 month = february year = 1939 }
+	name = "EVT_SHARED_00694_NAME"
+	desc = "EVT_SHARED_00694_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = HUN value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150356] GER | 1939 | Reorganization of the Luftwaffe Command (Reorganización del mando de la Luftwaffe)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150356
+	random = no
+	country = GER
+	trigger = {
+		   incabinet = 10
+		   ideology = nazi
+		   ai = no
+}
+	name = "EVT_GER_150356_NAME"
+	desc = "EVT_GER_150356_DESC"
+	style = 2
+	picture = "GER/reorganization_of_the_luftwaffe_command"
+	date = { day = 15 month = february year = 1939 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = max_organization which = air value = 5 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [150241] GER | 1939 | Adolf Hitler's 50th Birthday (50.º cumpleaños de Adolf Hitler)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150241
+	random = no
+	country = GER
+	trigger = { headofstate = 1 atwar = no }
+	name = EVT_GER_150241_NAME
+	desc = EVT_GER_150241_DESC
+	style = 2
+	picture = "GER/military_parade"
+	date = { day = 19 month = april year = 1939 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -2 }
+		command = { trigger = { ai = no } type = supplies value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150391] GER | 1939 | Adolf Hitler's 50th Birthday Celebrations (Celebración del 50.º cumpleaños de Adolf Hitler)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150391
+	random = no
+	country = GER
+	trigger = { atwar = no }
+	name = "EVT_GER_150391_NAME"
+	desc = "EVT_GER_150391_DESC"
+	style = 2
+	picture = "GER/adolf_hitler_s_50th_birthday_celebrations"
+	date = { day = 19 month = april year = 1939 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { type = supplies value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150411] GER | 1939 | Infanterie-Regiment (motorisiert) 'Großdeutschland' (Regimiento de Infantería de Élite «Großdeutschland»)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150411
+	random = no
+	country = GER
+	trigger = {
+		   control = { province = 163 data = GER }
+		   ideology = nazi
+		   ai = no
+}
+	name = "EVT_GER_150411_NAME"
+	desc = "EVT_GER_150411_DESC"
+	style = 2
+	picture = "GER/infanterie_regiment_motorisiert_gro_deutschland"
+	date = { day = 21 month = april year = 1939 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = activate_division which = 14500 value = 1052 when = 0 }
+		command = { type = manpowerpool value = -13 }
+		command = { trigger = { ai = no } type = supplies value = -400 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150447] GER | 1939 | Heavy Cruiser Admiral Hipper (Crucero pesado Admiral Hipper)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150447
+	random = no
+	country = GER
+	trigger = {
+	incabinet = 1
+	ai = no
+}
+	name = "EVT_GER_150447_NAME"
+	desc = "EVT_SHARED_00462_DESC"
+	style = 2
+	picture = "GER/auxiliary_merchant_cruisers_hilfskreuzer"
+	date = { day = 28 month = april year = 1939 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "Admiral Hipper" value = heavy_cruiser when = 5 where = floatplane }
+		command = { type = supplies value = -500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150019] GER | 1939 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150019
+	random = no
+	country = GER
+	style = 2
+	trigger = {
+		minister = 33
+		government = fascist
+		}
+	date = { year = 1939 month = may day = 22 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 33 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [150107] GER | 1939 | German-Estonian-Latvian Non-Aggression Pact (Pacto alemán-estonio-letón de no agresión)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150107
+	random = no
+	country = GER
+	trigger = {
+		   exists = GER
+		    }
+	date = { day = 06 month = june year = 1939 }
+	name = "EVT_GER_150107_NAME"
+	desc = "EVT_GER_150107_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_DONT_SIGN"
+		ai_chance = 100
+		command = { type = relation which = LAT value = 25 }
+		command = { type = non_aggression which = GER where = LAT }
+		command = { type = relation which = EST value = 25 }
+		command = { type = non_aggression which = GER where = EST }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150357] GER | 1939 | Requisition Deutsche Lufthansa Aircraft? (¿Requisar aviones civiles de Lufthansa?)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150357
+	random = no
+	country = GER
+	trigger = {
+		   incabinet = 10
+		   ideology = nazi
+		   ai = no
+}
+	name = "EVT_SHARED_00441_NAME"
+	desc = "EVT_SHARED_00441_DESC"
+	style = 2
+	picture = "GER/requisition_deutsche_lufthansa_aircraft"
+	date = { day = 15 month = august year = 1939 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "2. Transportergeschwader" value = transport_plane when = 1 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150406] GER | 1939 | Raise the Brandenburg Commando Regiments (Creación de los comandos Brandenburgo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150406
+	random = no
+	country = GER
+	trigger = {
+		   control = { province = 163 data = GER }
+		   ideology = nazi
+		   ai = no
+}
+	name = "EVT_SHARED_00449_NAME"
+	desc = "EVT_GER_150406_DESC"
+	style = 2
+	picture = "GER/raise_the_brandenburg_commando_regiments"
+	date = { day = 17 month = august year = 1939 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "Bataillon Ebbinghaus" value = infantry when = 10 }
+		command = { trigger = { ai = no } type = supplies value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150448] GER | 1939 | Heavy Cruiser Blücher (Crucero pesado Blücher)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150448
+	random = no
+	country = GER
+	trigger = {
+	incabinet = 1
+	ai = no
+}
+	name = "EVT_GER_150448_NAME"
+	desc = "EVT_SHARED_00462_DESC"
+	style = 2
+	picture = "GER/heavy_cruiser_bl_cher"
+	date = { day = 19 month = september year = 1939 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "Blücher" value = heavy_cruiser when = 5 where = naval_anti_air_s }
+		command = { type = supplies value = -500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150401] GER | 1939 | 2. SS-Panzer-Division 'Das Reich' (2.ª División Panzer SS «Das Reich»)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150401
+	random = no
+	country = GER
+	trigger = {
+		   control = { province = 163 data = GER }
+		   ideology = nazi
+		   ai = no
+}
+	name = "EVT_GER_150401_NAME"
+	desc = "EVT_GER_150401_DESC"
+	style = 2
+	picture = "GER/2_ss_panzer_division_das_reich"
+	date = { day = 10 month = october year = 1939 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_corps which = "SS Division 'Das Reich'" value = land where = 163 when = 501 }
+		command = { type = activate_division which = 14500 value = 1045 when = 0 }
+		command = { type = manpowerpool value = -13 }
+		command = { trigger = { ai = no } type = supplies value = -400 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150149] GER | 1939 | Baltic Germans (Alemanes bálticos)
+# Triggered by event 174013 in events/Minors/LAT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150149
+	random = no
+	country = GER
+	trigger = {	event = 174013 }
+	name = "EVT_SHARED_00245_NAME"
+	desc = "EVT_GER_150149_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	date = { day = 29 month = october year = 1939 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1939 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = manpowerpool value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150402] GER | 1939 | 3. SS-Panzer-Division 'Totenkopf' (3.ª División Panzer SS «Totenkopf»)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150402
+	random = no
+	country = GER
+	trigger = {
+		   control = { province = 163 data = GER }
+		   ideology = nazi
+		   ai = no
+}
+	name = "EVT_GER_150402_NAME"
+	desc = "EVT_GER_150402_DESC"
+	style = 2
+	picture = "GER/3_ss_panzer_division_totenkopf"
+	date = { day = 10 month = november year = 1939 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_corps which = "SS Division 'Totenkopf" value = land where = 163 when = 496 }
+		command = { type = activate_division which = 14500 value = 1046 when = 0 }
+		command = { type = manpowerpool value = -13 }
+		command = { trigger = { ai = no } type = supplies value = -400 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329210] GER | 1939 | Battle of the Platte (Batalla del Río de la Plata)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329210
+	random = no
+	country = GER
+	trigger = {
+			war = { country = ENG country = GER }
+			}
+	date = { day = 12 month = december year = 1939 }
+	name = "EVT_SHARED_00696_NAME"
+	desc = "EVT_SHARED_00696_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = URU value = -30 }
+		command = { type = surprise which = naval value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150027] GER | 1940 | Resistance Carries Out Attacks (La Resistencia lleva a cabo ataques)
+# Triggered by event 236005 in events/Minors/U01_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150027
+	random = no
+	country = GER
+	persistent = yes
+	one_action = yes
+	name = EVT_GER_150027_NAME
+	desc = EVT_SHARED_00530_DESC
+	style = 2
+	picture = "GLOBAL/resistance"
+	action = { trigger = { control = { province = 37 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 37 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 39 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 39 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 41 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 41 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 38 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 38 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 40 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 40 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 59 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 59 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 42 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 42 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 47 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 47 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 44 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 44 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 46 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 46 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 43 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 43 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 48 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 48 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 60 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 60 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 53 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 53 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 55 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 55 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 56 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 56 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 50 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 50 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 49 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 49 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 51 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 51 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 52 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 52 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 103 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 103 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 101 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 101 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 102 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 102 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 99 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 99 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 54 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 54 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 100 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 100 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 96 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 96 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 104 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 104 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 106 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 106 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 107 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 107 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 105 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 105 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 57 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 57 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 58 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 58 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 66 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 66 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 95 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 95 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 69 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 69 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 70 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 70 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 68 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 68 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 67 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 67 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 83 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 83 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 84 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 84 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 80 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 80 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 77 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 77 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 79 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 79 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 82 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 82 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 81 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 81 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 89 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 89 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 86 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 86 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 87 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 87 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 94 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 94 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 90 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 90 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 91 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 91 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 75 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 75 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 71 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 71 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 78 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 78 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 93 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 93 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 92 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 92 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 88 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 88 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 85 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 85 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 98 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 98 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 73 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 73 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 74 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 74 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 72 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 72 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+	action = { trigger = { control = { province = 61 data = GER } }
+		ai_chance = 1
+		name = ACTION_NAME_DAMN
+		command = {  type = revolt which = 61 }
+		command = { type = clrflag which = resistance } command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150055] GER | 1940 | The Second Vienna Award (El Segundo Arbitraje de Viena)
+# Triggered by event 159019 in events/Minors/HUN_38-90.txt
+# Trigger event 209012 in events/Minors/ROM_36-44.txt
+# Trigger event 159020 in events/Minors/HUN_38-90.txt
+# Trigger event 209013 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150055
+	random = no
+	country = GER
+	name = "EVT_GER_150055_NAME"
+	desc = "EVT_GER_150055_DESC"
+	style = 2
+	picture = "GER/hitler_carol"
+	action_a = {
+		name = "EVT_GER_150055_A"
+		ai_chance = 95
+		command = { type = relation which = ROM value = -10 }
+		command = { type = relation which = HUN value = 10 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = trigger which = 209012 }
+	}
+	action_b = {
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		ai_chance = 5
+		command = { type = relation which = ROM value = 10 }
+		command = { type = relation which = HUN value = -10 }
+		command = { type = trigger which = 159020 }
+		command = { type = trigger which = 209013 }
+		command = { type = sleepevent which = 118000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150089] GER | 1940 | Battle of Oran and Mers el-Kabir (Batalla de Orán y Mers el-Kebir)
+# Triggered by event 143055 in events/ENG/ENG_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150089
+	random = no
+	country = GER
+	name = "EVT_SHARED_00660_NAME"
+	desc = "EVT_SHARED_00660_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = FRA value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150091] GER | 1940 | Greek Offensive in Albania (Ofensiva griega en Albania)
+# Triggered by event 329194 in events/GRE/GRE_38-49.txt
+# Trigger event 166049 in events/ITA/ITA_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150091
+	random = no
+	country = GER
+	name = "EVT_SHARED_00679_NAME"
+	desc = "EVT_SHARED_00679_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ITA value = -10 }
+		command = { type = trigger which = 166049 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150120] GER | 1940 | British Seizure of German Ship in Norwegian Waters (Confiscación británica de un barco alemán en aguas noruegas)
+# Triggered by event 329211 in events/ENG/ENG_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150120
+	random = no
+	country = GER
+	name = "EVT_SHARED_00707_NAME"
+	desc = "EVT_SHARED_00707_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		ai_chance = 100
+			command = { type = relation which = NOR value = -5 }
+			command = { type = manpowerpool value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150123] GER | 1940 | Florence Conference (Conferencia de Florencia)
+# Triggered by event 329227 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150123
+	random = no
+	country = GER
+	name = "EVT_SHARED_00715_NAME"
+	desc = "EVT_SHARED_00715_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ITA value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150239] GER | 1940 | The Second Neuschwabenland Expedition (Segunda expedición a Neuschwabenland)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150239
+	random = no
+	country = GER
+	trigger = { random = 20 atwar = no }
+	name = EVT_GER_150239_NAME
+	desc = EVT_GER_150239_DESC
+	style = 2
+	picture = "GER/neuschwabenland"
+	date = { day = 1 month = january year = 1940 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1941 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { trigger = { ai = no } type = money value = -50 }
+		command = { trigger = { NOT = { technology = 5920 } } type = gain_tech which = 5920 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150371] GER | 1940 | Führer Headquarters Tannenberg (Cuartel General del Führer Tannenberg)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150371
+	random = no
+	country = GER
+	name = "EVT_GER_150371_NAME"
+	desc = "EVT_GER_150371_DESC"
+	style = 2
+	picture = "GER/f_hrer_headquarters_tannenberg"
+	trigger = {
+		incabinet = 1
+		atwar = yes
+		random = 25
+		money = 50
+		control = { province = 135 data = GER }
+	}
+	date = { day = 1 month = january year = 1940 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		name = ACTION_NAME_ACCEPT
+                ai_chance = 99
+		command = { trigger = { ai = no } type = money value = -50 }
+		command = { type = construct which = land_fort where = 135 value = 1 }
+		command = { type = construct which = flak where = 135 value = 3 }
+		command = { type = construct which = radar_station where = 135 value = 2 }
+		command = { type = add_corps which = "Führerbegleit Tannenberg" value = land where = 135 }
+		command = { type = add_division which = "Führerbegleit" value = garrison when = 5 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+                ai_chance = 1
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150381] GER | 1940 | Atlantic Submarine Pens Completed (Búnkeres atlánticos de submarinos completados)
+# Triggered by event 150380 in events/GER/GER_40-41.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150381
+	random = no
+	country = GER
+	name = "EVT_GER_150381_NAME"
+	desc = "EVT_GER_150381_DESC"
+	style = 2
+	picture = "GER/atlantic_submarine_pens_completed"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = construct which = coastal_fort where = 39 value = 2 }
+		command = { type = construct which = flak where = 39 value = 6 }
+		command = { type = construct which = naval_base where = 39 value = 10 }
+		command = { type = construct which = coastal_fort where = 37 value = 2 }
+		command = { type = construct which = flak where = 37 value = 6 }
+		command = { type = construct which = naval_base where = 37 value = 10 }
+		command = { type = construct which = coastal_fort where = 40 value = 2 }
+		command = { type = construct which = flak where = 40 value = 6 }
+		command = { type = construct which = naval_base where = 40 value = 10 }
+		command = { type = construct which = coastal_fort where = 69 value = 2 }
+		command = { type = construct which = flak where = 69 value = 6 }
+		command = { type = construct which = naval_base where = 69 value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150393] GER | 1940 | Yugoslav Partisan Resistance Warfare (La guerra de guerrillas partisana en Yugoslavia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150393
+	random = no
+	country = GER
+	trigger = {
+		control = { province = 338 data = GER }
+		control = { province = 352 data = GER }
+	}
+	name = "EVT_GER_150393_NAME"
+	desc = "EVT_GER_150393_DESC"
+	style = 2
+	picture = "GER/yugoslav_partisan_resistance_warfare"
+	date = { day = 1 month = january year = 1940 }
+	offset = 45
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = province_revoltrisk which = 356 value = 16 }
+		command = { type = province_revoltrisk which = 355 value = 18 }
+		command = { type = province_revoltrisk which = 349 value = 17 }
+		command = { type = province_revoltrisk which = 345 value = 15 }
+		command = { type = province_revoltrisk which = 352 value = 17 }
+		command = { type = province_revoltrisk which = 347 value = 17 }
+		command = { type = province_revoltrisk which = 344 value = 17 }
+		command = { type = province_revoltrisk which = 353 value = 17 }
+		command = { type = province_revoltrisk which = 350 value = 18 }
+		command = { type = province_revoltrisk which = 351 value = 15 }
+		command = { type = province_revoltrisk which = 358 value = 16 }
+		command = { type = province_revoltrisk which = 354 value = 12 }
+		command = { type = province_revoltrisk which = 337 value = 17 }
+		command = { type = province_revoltrisk which = 341 value = 17 }
+		command = { type = province_revoltrisk which = 336 value = 18 }
+		command = { type = province_revoltrisk which = 340 value = 17 }
+		command = { type = province_revoltrisk which = 342 value = 15 }
+		command = { type = province_revoltrisk which = 335 value = 17 }
+		command = { type = province_revoltrisk which = 332 value = 18 }
+		command = { type = province_revoltrisk which = 338 value = 17 }
+		command = { type = province_revoltrisk which = 339 value = 16 }
+		command = { type = province_revoltrisk which = 336 value = 12 }
+		command = { type = province_revoltrisk which = 327 value = 17 }
+		command = { type = province_revoltrisk which = 329 value = 17 }
+		command = { type = province_revoltrisk which = 331 value = 18 }
+		command = { type = province_revoltrisk which = 328 value = 17 }
+		command = { type = province_revoltrisk which = 333 value = 15 }
+		command = { type = province_revoltrisk which = 334 value = 17 }
+		command = { type = province_revoltrisk which = 330 value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150394] GER | 1940 | Yugoslav Partisan Activity Subsides (Disminución de la actividad partisana en Yugoslavia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150394
+	random = no
+	country = GER
+	trigger = {
+				NOT = { control = { province = 356 data = GER }
+				      control = { province = 355 data = GER }
+				      control = { province = 349 data = GER }
+				      control = { province = 345 data = GER }
+				      control = { province = 352 data = GER }
+				      control = { province = 347 data = GER }
+				      control = { province = 357 data = GER }
+				      control = { province = 344 data = GER }
+				      control = { province = 353 data = GER }
+				      control = { province = 350 data = GER }
+				      control = { province = 351 data = GER }
+				      control = { province = 358 data = GER }
+				      control = { province = 354 data = GER }
+				      control = { province = 337 data = GER }
+				      control = { province = 341 data = GER }
+				      control = { province = 336 data = GER }
+				      control = { province = 340 data = GER }
+				      control = { province = 342 data = GER }
+				      control = { province = 335 data = GER }
+				      control = { province = 332 data = GER }
+				      control = { province = 338 data = GER }
+				      control = { province = 339 data = GER }
+				      control = { province = 336 data = GER }
+				      control = { province = 327 data = GER }
+				      control = { province = 329 data = GER }
+				      control = { province = 331 data = GER }
+				      control = { province = 328 data = GER }
+				      control = { province = 333 data = GER }
+				      control = { province = 334 data = GER }
+				      control = { province = 330 data = GER }
+}
+	}
+	name = "EVT_GER_150394_NAME"
+	desc = "EVT_GER_150394_DESC"
+	style = 2
+	picture = "GER/yugoslav_partisan_resistance_warfare"
+	date = { day = 1 month = january year = 1940 }
+	offset = 45
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = province_revoltrisk which = 356 value = 0 }
+		command = { type = province_revoltrisk which = 355 value = 0 }
+		command = { type = province_revoltrisk which = 349 value = 0 }
+		command = { type = province_revoltrisk which = 345 value = 0 }
+		command = { type = province_revoltrisk which = 352 value = 0 }
+		command = { type = province_revoltrisk which = 347 value = 0 }
+		command = { type = province_revoltrisk which = 344 value = 0 }
+		command = { type = province_revoltrisk which = 353 value = 0 }
+		command = { type = province_revoltrisk which = 350 value = 0 }
+		command = { type = province_revoltrisk which = 351 value = 0 }
+		command = { type = province_revoltrisk which = 358 value = 0 }
+		command = { type = province_revoltrisk which = 354 value = 0 }
+		command = { type = province_revoltrisk which = 337 value = 0 }
+		command = { type = province_revoltrisk which = 341 value = 0 }
+		command = { type = province_revoltrisk which = 336 value = 0 }
+		command = { type = province_revoltrisk which = 340 value = 0 }
+		command = { type = province_revoltrisk which = 342 value = 0 }
+		command = { type = province_revoltrisk which = 335 value = 0 }
+		command = { type = province_revoltrisk which = 332 value = 0 }
+		command = { type = province_revoltrisk which = 338 value = 0 }
+		command = { type = province_revoltrisk which = 339 value = 0 }
+		command = { type = province_revoltrisk which = 336 value = 0 }
+		command = { type = province_revoltrisk which = 327 value = 0 }
+		command = { type = province_revoltrisk which = 329 value = 0 }
+		command = { type = province_revoltrisk which = 331 value = 0 }
+		command = { type = province_revoltrisk which = 328 value = 0 }
+		command = { type = province_revoltrisk which = 333 value = 0 }
+		command = { type = province_revoltrisk which = 334 value = 0 }
+		command = { type = province_revoltrisk which = 330 value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150495] GER | 1940 | Establishment of The Hellenic State. (Establecimiento del Estado Helénico)
+# Triggered by event 152085 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150495
+	random = no
+	country = GER
+	name = "EVT_SHARED_00625_NAME"
+	desc = "EVT_SHARED_00625_DESC"
+	style = 2
+	picture = "GLOBAL/mussolini"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = GRE value = 200 }
+		command = { type = removeclaim which = 377 where = -1 }
+		command = { type = removeclaim which = 382 where = -1 }
+		command = { type = removeclaim which = 383 where = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329138] GER | 1940 | Leaders Leave for Reichskommissariat Ostland (Líderes parten hacia Reichskommissariat Ostland)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329138
+	country = GER
+	random = no
+	trigger = {
+		exists = U40
+		puppet = { country = U40 country = GER }
+		alliance = { country = U40 country = GER }
+	}
+	name = "EVT_GER_329138_NAME"
+	desc = "EVT_SHARED_00621_DESC"
+	style = 2
+	picture = "GLOBAL/german_mobilization2"
+	date = { day = 1 month = january year = 1940 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = sleepleader which = 487 }
+		command = { type = sleepleader which = 529 }
+		command = { type = sleepleader which = 22 }
+		command = { type = sleepleader which = 994 }
+	}
+}

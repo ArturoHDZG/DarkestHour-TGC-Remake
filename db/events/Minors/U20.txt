@@ -1,0 +1,283 @@
+# ============================================================================
+# File: events/Minors/U20.txt (7 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [255000] U20 | 1915 | The Finnish Socialist Workers' Republic (República Socialista Obrera de Finlandia)
+# Triggered by event 146028 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 255000
+	country = U20
+	name = "EVT_U20_255000_NAME"
+	desc = "EVT_U20_255000_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = name where = U20 which = U20_1918 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 915038 }
+		command = { type = headofgovernment which = 915039 }
+		command = { type = foreignminister which = 915040 }
+		command = { type = armamentminister which = 915041 }
+		command = { type = ministerofsecurity which = 915043 }
+		command = { type = ministerofintelligence which = 915046 }
+		command = { type = chiefofstaff which =  915047 }
+		command = { type = chiefofarmy which = 915049 }
+		command = { type = chiefofnavy which = 915052 }
+		command = { type = chiefofair which = 915053 }
+		command = { type = secedeprovince which = FIN value = 511 when = 1 }
+		command = { type = secedeprovince which = FIN value = 513 when = 1 }
+		command = { type = secedeprovince which = FIN value = 517 when = 1 }
+		command = { type = secedeprovince which = FIN value = 516 when = 1 }
+		command = { type = secedeprovince which = FIN value = 515 when = 1 }
+		command = { type = secedeprovince which = FIN value = 514 when = 1 }
+		command = { type = secedeprovince which = FIN value = 519 when = 1 }
+		command = { type = secedeprovince which = FIN value = 518 when = 1 }
+		command = { type = secedeprovince which = FIN value = 520 when = 1 }
+		command = { type = secedeprovince which = FIN value = 523 when = 1 }
+		command = { type = secedeprovince which = FIN value = 521 when = 1 }
+		command = { type = secedeprovince which = FIN value = 522 when = 1 }
+		command = { type = secedeprovince which = FIN value = 533 when = 1 }
+		command = { type = secedeprovince which = FIN value = 528 when = 1 }
+		command = { type = secedeprovince which = FIN value = 532 when = 1 }
+		command = { type = addcore which = 517 }
+		command = { type = addcore which = 519 }
+		command = { type = addcore which = 530 }
+		command = { type = addcore which = 531 }
+		command = { type = addcore which = 532 }
+		command = { type = add_corps which = "Helsingin punakaarti" value = land when = 915048 where = 525 }
+		command = { type = add_division which = "Helsingin punakaarti" value = infantry when = 3 }
+		command = { type = add_corps which = "Tampereen punakaarti" value = land when = 915051 where = 527 }
+		command = { type = add_division which = "Tampereen punakaarti" value = militia when = 1 }
+		command = { type = add_corps which = "Lahden punakaarti" value = land where = 529 }
+		command = { type = add_division which = "Lahden punakaarti" value = militia when = 1 }
+		command = { type = war which = FIN }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [255001] U20 | 1915 | Soviet Russia supports us! (¡La Rusia soviética respalda nuestra causa!)
+# Triggered by event 146029 in events/SOV/SOV_Decisions.txt
+# Trigger event 255002 in events/Minors/U20.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 255001
+	country = U20
+	name = "EVT_U20_255001_NAME"
+	desc = "EVT_U20_255001_DESC"
+	style = 2
+	picture = "Minors/finnish_red_guards"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -1 }
+		command = { type = supplies value = 500 }
+		command = { type = manpowerpool value = 7 }
+		command = { type = sleepminister which = 915053 }
+		command = { type = wakeminister which = 915048 }
+		command = { type = wakeminister which = 915051 }
+		command = { type = waketeam which = 915011 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [255002] U20 | 1915 | Victory in the Finnish Civil War (Victoria de la Guardia Blanca en Finlandia)
+# Triggered by event 146028 in events/Minors/FIN_14-51.txt
+# Triggered by event 255001 in events/Minors/U20.txt
+# Trigger event 255003 in events/Minors/U20.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 255002
+	random = no
+	country = U20
+	trigger = {
+		event = 146028
+		NOT = { exists = FIN }
+		control = { province = 525 data = -3 }
+	}
+	name = "EVT_SHARED_00061_NAME"
+	desc = "EVT_U20_255002_DESC"
+	style = 2
+	picture = "Minors/finnish_civil_war_victory"
+	date = { day = 0 month = june year = 1915 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = -10 }
+		command = { trigger = { event = 255001 } type = sleepminister which = 915053 }
+		command = { trigger = { event = 255001 } type = sleepminister which = 915048 }
+		command = { trigger = { event = 255001 } type = sleepminister which = 915051 }
+		command = { trigger = { event = 255001 } type = sleepteam which = 915011 }
+		command = { trigger = { exists = SOV NOT = { war = { country = SOV country = U20 } } } type = event which = 255003 where = U20 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [255003] U20 | 1915 | Join Soviet Russia? (¿Integrarse en la Rusia soviética?)
+# Triggered by event 255002 in events/Minors/U20.txt
+# Trigger event 223137 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 255003
+	random = no
+	country = U20
+	trigger = {
+		event = 255002
+		exists = SOV
+		control = { province = 525 data = -3 }
+		OR = {
+			control = { province = 553 data = SOV }
+			control = { province = 572 data = SOV }
+		}
+		OR = {
+			NOT = { ispuppet = U20 }
+			puppet = { country = U20 country = SOV }
+		}
+	}
+	name = "EVT_U20_255003_NAME"
+	desc = "EVT_U20_255003_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	date = { day = 0 month = june year = 1915 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		ai_chance = 50
+		name = "ACTION_NAME_YES"
+		command = { type = trigger which = 223137 }
+		command = { trigger = { ai = no } type = secederegion which = SOV value = "Finland" when = 1 }
+	}
+	action = {
+		ai_chance = 50
+		name = "ACTION_NAME_NO"
+		command = { type = relation which = SOV value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [255005] U20 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 255006 in events/Minors/U20.txt
+# Trigger event 146091 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 255005
+   country = U20
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = FIN
+            NOT = { ai = FIN }
+            NOT = { ai = U20 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = FIN
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = FIN } }
+      command = { type = country which = FIN }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = FIN
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U20 }
+               control = { province = 525 data = -1 }
+            }
+         }
+         type = trigger which = 255006
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = FIN }
+               NOT = { control = { province = 525 data = -1 } }
+            }
+         }
+         type = trigger which = 146091
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = FIN
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [255006] U20 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 146090 in events/Minors/FIN_14-51.txt
+# Triggered by event 255005 in events/Minors/U20.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 255006
+   country = U20
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = FIN value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [255004] U20 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 255004
+	country = U20
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 915002 }
+		command = { type = headofgovernment which = 915004 }
+		command = { type = foreignminister which = 915010 }
+		command = { type = armamentminister which = 915015 }
+		command = { type = ministerofsecurity which = 915019 }
+		command = { type = ministerofintelligence which = 915022 }
+		command = { type = chiefofstaff which = 915023 }
+		command = { type = chiefofarmy which = 915026 }
+		command = { type = chiefofnavy which = 915028 }
+		command = { type = chiefofair which = 915029 }
+	}
+}

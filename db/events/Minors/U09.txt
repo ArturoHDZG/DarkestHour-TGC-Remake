@@ -1,0 +1,906 @@
+# ============================================================================
+# File: events/Minors/U09.txt (30 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [244001] U09 | 1914 | Offensive Chit Expired (Reserva Logística Ofensiva agotada)
+# Triggered by event 244000 in events/Minors/U09_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244001
+	random = no
+	country = U09
+	name = "EVT_SHARED_00461_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GLOBAL/ww1_offensive"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = -10 }
+		command = { type = morale which = land value = -10 }
+		command = { trigger = { ai = yes } type = morale which = land value = -30 }
+		command = { type = morale which = naval value = -10 }
+		command = { type = morale which = air value = -10 }
+		command = { type = speed which = land value = -2 }
+		command = { type = counterattack value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = encirclement value = -2 }
+		command = { type = hq_supply_eff value = -2 }
+		command = { type = sce_frequency value = -0.3 }
+		command = { type = attrition_mod value = -2 }
+		command = { type = trickleback_mod value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244002] U09 | 1914 | Capitulation of Serbia (Capitulación de Serbia)
+# Triggered by event 217000 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244002
+	country = U09
+	name = "EVT_U09_244002_NAME"
+	desc = "EVT_U09_244002_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -5 }
+		command = { type = inherit which = SER }
+		command = { type = sleepevent which = 244037 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244003] U09 | 1914 | Capitulation of Montenegro (Capitulación de Montenegro)
+# Triggered by event 188000 in events/Minors/MTN.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244003
+	country = U09
+	name = "EVT_U09_244003_NAME"
+	desc = "EVT_U09_244003_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -2 }
+		command = { type = make_puppet which = MTN }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244014] U09 | 1914 | Serbia Rejects Ultimatum Demands (Serbia rechaza el ultimátum)
+# Triggered by event 217003 in events/Minors/SER.txt
+# Trigger event 244015 in events/Minors/U09_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244014
+	country = U09
+	name = "EVT_U09_244014_NAME"
+	desc = "EVT_U09_244014_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = SER value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244017] U09 | 1914 | Italy Reaffirms Neutrality Accord (Italia reafirma el pacto de neutralidad)
+# Triggered by event 166273 in events/ITA/ITA_14-20.txt
+# Triggered by event 166274 in events/ITA/ITA_14-20.txt
+# Triggered by event 166275 in events/ITA/ITA_14-20.txt
+# Trigger event 147308 in events/FRA/FRA_14-14.txt
+# Trigger event 147309 in events/FRA/FRA_14-14.txt
+# Trigger event 147312 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244017
+	country = U09
+	name = "EVT_SHARED_01007_NAME"
+	desc = "EVT_SHARED_01007_DESC"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = secedeprovince which = ITA value = 401 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244022] U09 | 1914 | Przemysl is Lost! (¡Pérdida de Przemysl!)
+# Triggered by event 108084 in events/Minors/AUS_14-37.txt
+# Triggered by event 108085 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244022
+	country = U09
+	trigger = {
+		atwar = yes
+		NOT = {
+			control = { province = 239 data = -1 }
+			control = { province = 239 data = REB }
+			event = 108084
+			event = 108085
+		}
+	}
+	name = "EVT_U09_244022_NAME"
+	desc = "EVT_U09_244022_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244023] U09 | 1914 | Prague is Lost! (¡Pérdida de Praga!)
+# Triggered by event 108082 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244023
+	country = U09
+	trigger = {
+		atwar = yes
+		NOT = {
+			control = { province = 207 data = -1 }
+			control = { province = 207 data = REB }
+			event = 108082
+		}
+	}
+	name = "EVT_U09_244023_NAME"
+	desc = "EVT_U09_244023_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244024] U09 | 1914 | Bratislava is Lost! (¡Pérdida de Bratislava!)
+# Triggered by event 108082 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244024
+	country = U09
+	trigger = {
+		atwar = yes
+		NOT = {
+			control = { province = 208 data = -1 }
+			control = { province = 208 data = REB }
+			event = 108082
+		}
+	}
+	name = "EVT_U09_244024_NAME"
+	desc = "EVT_U09_244024_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244025] U09 | 1914 | Budapest is Lost! (¡Pérdida de Budapest!)
+# Triggered by event 108086 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244025
+	country = U09
+	trigger = {
+		atwar = yes
+		NOT = {
+			control = { province = 284 data = -1 }
+			control = { province = 284 data = REB }
+			event = 108086
+		}
+	}
+	name = "EVT_U09_244025_NAME"
+	desc = "EVT_U09_244025_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244026] U09 | 1914 | Vienna is Lost! (¡Pérdida de Viena!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 244026
+	country = U09
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 195 data = -1 } }
+		NOT = { control = { province = 195 data = REB } }
+	}
+	name = "EVT_U09_244026_NAME"
+	desc = "EVT_U09_244026_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244027] U09 | 1914 | Sarajevo is Lost! (¡Pérdida de Sarajevo!)
+# Triggered by event 108083 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244027
+	country = U09
+	trigger = {
+		atwar = yes
+		NOT = {
+			control = { province = 355 data = -1 }
+			control = { province = 355 data = REB }
+			event = 108083
+		}
+	}
+	name = "EVT_U09_244027_NAME"
+	desc = "EVT_U09_244027_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244028] U09 | 1914 | Serbia Accepts Ultimatum (Serbia acepta el ultimátum)
+# Triggered by event 217003 in events/Minors/SER.txt
+# Trigger event 217003 in events/Minors/SER.txt
+# Trigger event 244015 in events/Minors/U09_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244028
+	country = U09
+	name = "EVT_U09_244028_NAME"
+	desc = "EVT_U09_244028_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = make_puppet which = SER }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244029] U09 | 1914 | Reports of Russian Mobilization (Indicios de movilización rusa)
+# Triggered by event 244031 in events/Minors/U09.txt
+# Trigger event 211044 in events/Minors/RUS_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244029
+	country = U09
+	trigger = {
+		flag = 1915_WWI
+		intelligence = { country = RUS value = 20 }
+		NOT = { intelligence = { country = RUS value = 30 } }
+		random = 10
+		NOT = { event = 244031 }
+		NOT = { war = { country = U08 country = RUS } }
+	}
+	name = "EVT_SHARED_00999_NAME"
+	desc = "EVT_SHARED_00999_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "EVT_SHARED_00999_A"
+		command = { type = trigger which = 211044 }
+	}
+	action_b = {
+		name = "EVT_SHARED_00999_B"
+		command = { type = relation which = RUS value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244030] U09 | 1914 | Russian Mobilization Confirmed (Confirmada la movilización rusa)
+# Triggered by event 244031 in events/Minors/U09.txt
+# Trigger event 211045 in events/Minors/RUS_14-14.txt
+# Trigger event 243120 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244030
+	country = U09
+	trigger = {
+		flag = 1915_WWI
+		intelligence = { country = RUS value = 30 }
+		random = 10
+		NOT = { event = 244031 }
+		NOT = { war = { country = U09 country = RUS } }
+	}
+	name = "EVT_SHARED_01000_NAME"
+	desc = "EVT_SHARED_01000_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "ACTION_NAME_ULTIMATUM"
+		command = { type = trigger which = 211045 }
+	}
+	action_b = {
+		name = "ACTION_NAME_MOBILIZE"
+		command = { type = peacetime_ic_mod value = 20 }
+		command = { type = trigger which = 243120 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244031] U09 | 1914 | Russian Mobilization Confirmed (Confirmada la movilización rusa)
+# Triggered by event 243119 in events/Minors/U08_14-18.txt
+# Trigger event 243121 in events/Minors/U08_Decisions.txt
+# Trigger event 244029 in events/Minors/U09.txt
+# Trigger event 244030 in events/Minors/U09.txt
+# Trigger event 244033 in events/Minors/U09_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244031
+	country = U09
+	name = "EVT_SHARED_01000_NAME"
+	desc = "EVT_SHARED_01000_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244032] U09 | 1914 | Anti-Austrian Demonstrations in Belgrade (Protestas contra Austria en Belgrado)
+# Triggered by event 211047 in events/Minors/RUS_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244032
+	country = U09
+	name = "EVT_SHARED_00105_NAME"
+	desc = "EVT_SHARED_00105_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244037] U09 | 1914 | Annexation of Serbia (Anexión de Serbia)
+# Trigger event 118024 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244037
+	country = U09
+	trigger = {
+		atwar = yes
+		control = { province = 338 data = -1 }
+		owned = { province = 338 data = -1 }
+		NOT = { exists = SER }
+	}
+	name = "EVT_U09_244037_NAME"
+	desc = "EVT_U09_244037_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 1 month = january year = 1914 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244038] U09 | 1914 | Armistice with Russia (Armisticio con Rusia)
+# Triggered by event 211054 in events/Minors/RUS_14-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244038
+	country = U09
+	name = "EVT_U09_244038_NAME"
+	desc = "EVT_U09_244038_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -3 }
+		command = { trigger = { exists = RUS } type = peace which = RUS value = 1 }
+		command = { trigger = { exists = SOV } type = peace which = SOV value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244039] U09 | 1914 | Armistice with France (Armisticio con Francia)
+# Triggered by event 147280 in events/FRA/FRA_14-14.txt
+# Triggered by event 147281 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244039
+	country = U09
+	name = "EVT_SHARED_01003_NAME"
+	desc = "EVT_SHARED_01003_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -3 }
+		command = { type = peace which = FRA value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244012] U09 | 1914 | Assassination of Archduke Franz Ferdinand (Asesinato del archiduque Francisco Fernando)
+# Trigger event 244013 in events/Minors/U09_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244012
+	country = U09
+	trigger = { }
+	name = "EVT_U09_244012_NAME"
+	desc = "EVT_U09_244012_DESC"
+	style = 2
+	picture = "Minors/franz_ferdinand_assassination"
+	date = { day = 27 month = june year = 1914 hour = 10 }
+	action = {
+		name = "ACTION_NAME_UNFORTUNATE"
+		command = { type = sleepminister which = 860053 }
+		command = { type = sleepleader which = 860049 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244018] U09 | 1914 | The Imperial Manifesto of Emperor Karl (El Manifiesto Imperial de Carlos I)
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Triggered by event 324519 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 108081 in events/Minors/AUS_14-37.txt
+# Trigger event 159093 in events/Minors/HUN_14-38.txt
+# Trigger event 244019 in events/Minors/U09.txt
+# Trigger event 244034 in events/Minors/U09_Decisions.txt
+# Trigger event 324519 in events/GLOBAL/MULTI_14-32.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244018
+	country = U09
+	trigger = {
+		OR = {
+			AND = {
+				random = 15
+				atwar = yes
+				dissent = 40
+				OR = {
+					lost_VP = { value = 30 }
+					lost_IC = { value = 30 }
+				}
+			}
+			AND = {
+				random = 15
+				ai = yes
+				atwar = yes
+				OR = {
+					event = 243101
+					event = 243107
+					event = 243116
+				}
+				OR = {
+					lost_VP = { value = 5 }
+					lost_IC = { value = 5 }
+				}
+			}
+			event = 324519
+			dissent = 60
+			OR = {
+				lost_VP = { value = 70 }
+				lost_IC = { value = 70 }
+			}
+		}
+	}
+	name = "EVT_U09_244018_NAME"
+	desc = "EVT_U09_244018_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 29 month = june year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "EVT_U09_244018_A"
+		ai_chance = 100
+		command = { type = dissent value = -5 }
+		command = { type = end_access which = U08 }
+		command = { type = removecore which = 196 }
+		command = { type = removecore which = 197 }
+		command = { type = removecore which = 198 }
+		command = { type = removecore which = 199 }
+		command = { type = removecore which = 200 }
+		command = { type = removecore which = 201 }
+		command = { type = removecore which = 202 }
+		command = { type = removecore which = 203 }
+		command = { type = removecore which = 204 }
+		command = { type = removecore which = 205 }
+		command = { type = removecore which = 206 }
+		command = { type = removecore which = 207 }
+		command = { type = removecore which = 208 }
+		command = { type = removecore which = 209 }
+		command = { type = removecore which = 210 }
+		command = { type = removecore which = 211 }
+		command = { type = removecore which = 212 }
+		command = { type = removecore which = 213 }
+		command = { type = removecore which = 214 }
+		command = { type = removecore which = 215 }
+		command = { type = removecore which = 336 }
+		command = { type = removecore which = 337 }
+		command = { type = removecore which = 338 }
+		command = { type = removecore which = 339 }
+		command = { type = removecore which = 340 }
+		command = { type = removecore which = 341 }
+		command = { type = removecore which = 344 }
+		command = { type = removecore which = 345 }
+		command = { type = removecore which = 346 }
+		command = { type = removecore which = 347 }
+		command = { type = removecore which = 349 }
+		command = { type = removecore which = 350 }
+		command = { type = removecore which = 351 }
+		command = { type = removecore which = 352 }
+		command = { type = removecore which = 353 }
+		command = { type = removecore which = 354 }
+		command = { type = removecore which = 355 }
+		command = { type = removecore which = 356 }
+		command = { type = removecore which = 357 }
+		command = { type = removecore which = 358 }
+		command = { type = removecore which = 235 }
+		command = { type = removecore which = 236 }
+		command = { type = removecore which = 237 }
+		command = { type = removecore which = 238 }
+		command = { type = removecore which = 239 }
+		command = { type = removecore which = 240 }
+		command = { type = removecore which = 241 }
+		command = { type = removecore which = 242 }
+		command = { type = removecore which = 300 }
+		command = { type = removecore which = 301 }
+		command = { type = removecore which = 276 }
+		command = { type = removecore which = 277 }
+		command = { type = removecore which = 278 }
+		command = { type = removecore which = 279 }
+		command = { type = removecore which = 280 }
+		command = { type = removecore which = 281 }
+		command = { type = removecore which = 282 }
+		command = { type = removecore which = 283 }
+		command = { type = removecore which = 284 }
+		command = { type = removecore which = 285 }
+		command = { type = removecore which = 286 }
+		command = { type = removecore which = 287 }
+		command = { type = removecore which = 288 }
+		command = { type = removecore which = 289 }
+		command = { type = removecore which = 291 }
+		command = { type = removecore which = 292 }
+		command = { type = removecore which = 293 }
+		command = { type = removecore which = 295 }
+		command = { type = removecore which = 296 }
+		command = { type = removecore which = 394 }
+		command = { type = removecore which = 401 }
+		command = { type = removecore which = 402 }
+		command = { type = removecore which = 403 }
+		command = { type = removecore which = 404 }
+		command = { type = removecore which = 405 }
+		command = { type = removecore which = 406 }
+		command = { type = removeclaim which = 338 }
+		command = { type = removeclaim which = 330 }
+		command = { type = removeclaim which = 342 }
+		command = { type = removeclaim which = 329 }
+		command = { type = removeclaim which = 340 }
+		command = { type = removeclaim which = 339 }
+		command = { type = removeclaim which = 327 }
+		command = { type = removeclaim which = 332 }
+		command = { type = removeclaim which = 335 }
+	}
+	action = {
+		name = "EVT_U09_244018_B"
+		ai_chance = 0
+		command = { type = dissent value = -5 }
+		command = { type = end_access which = U08 }
+		command = { type = removeclaim which = 338 }
+		command = { type = removeclaim which = 330 }
+		command = { type = removeclaim which = 342 }
+		command = { type = removeclaim which = 329 }
+		command = { type = removeclaim which = 340 }
+		command = { type = removeclaim which = 339 }
+		command = { type = removeclaim which = 327 }
+		command = { type = removeclaim which = 332 }
+		command = { type = removeclaim which = 335 }
+		command = { type = local_setflag which = AAR_Alternative_Manifesto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244019] U09 | 1914 | The US Lansing Note (La Nota Lansing de Estados Unidos)
+# Triggered by event 244018 in events/Minors/U09.txt
+# Triggered by event 324519 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 108054 in events/Minors/AUS_14-37.txt
+# Trigger event 108082 in events/Minors/AUS_14-37.txt
+# Trigger event 108083 in events/Minors/AUS_14-37.txt
+# Trigger event 108084 in events/Minors/AUS_14-37.txt
+# Trigger event 108085 in events/Minors/AUS_14-37.txt
+# Trigger event 108086 in events/Minors/AUS_14-37.txt
+# Trigger event 108087 in events/Minors/AUS_14-37.txt
+# Trigger event 159066 in events/Minors/HUN_14-38.txt
+# Trigger event 166223 in events/ITA/ITA_14-20.txt
+# Trigger event 231003 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231005 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231016 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231018 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231027 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 231029 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 231031 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 231150 in events/Minors/SER.txt
+# Trigger event 231151 in events/AI/ALL_AI.txt
+# Trigger event 231152 in events/AI/ALL_AI.txt
+# Trigger event 231160 in events/AI/ALL_AI.txt
+# Trigger event 243134 in events/Minors/U08_18-36.txt
+# Trigger event 324519 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 309036 in events/Minors/UCH.txt
+# Trigger event 316346 in events/USA/USA_14-16.txt
+# Trigger event 316352 in events/USA/USA_28-33.txt
+# Trigger event 324243 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 324244 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 324245 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 324253 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 324254 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244019
+	country = U09
+	trigger = {
+		event = 244018
+		random = 40
+	}
+	name = "EVT_U09_244019_NAME"
+	desc = "EVT_U09_244019_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 29 month = june year = 1914 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = country which = AUS }
+		command = { trigger = { NOT = { event = 324519 } } type = trigger which = 324519}
+		command = { trigger = { dissent = 60 } type = dissent value = -20 }
+		command = { trigger = { dissent = 50 } type = dissent value = -10 }
+		command = { trigger = { dissent = 40 } type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244009] U09 | 1914 | Funeral of Franz Ferdinand (Funeral de Franz Ferdinand)
+# ----------------------------------------------------------------------------
+event = {
+	id = 244009
+	country = U09
+	random = no
+	trigger = {
+		exists = U09
+	}
+	name = "EVT_U09_244009_NAME"
+	desc = "EVT_U09_244009_DESC"
+	style = 2
+	picture = "Minors/funeralferdinand"
+	date = { day = 2 month = july year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = SER value = -50 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231132] U09 | 1914 | Spirit of 1914 (Espíritu de 1914)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231132
+	country = U09
+	random = no
+	trigger = {
+		war = {country = SER}
+	}
+	name = "EVT_SHARED_01070_NAME"
+	desc = "EVT_SHARED_01070_DESC"
+	style = 2
+	picture = "Minors/spirt14u09"
+	date = { day = 1 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 6 month = september year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { type = manpowerpool value = 5000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244020] U09 | 1914 | Invasion of Hungary (Invasión de Hungría)
+# ----------------------------------------------------------------------------
+event = {
+	id = 244020
+	date = { day = 1 month = august year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	country = U09
+	trigger = {
+		atwar = yes
+		OR = {
+			control = { province = 212 data = RUS }
+			control = { province = 213 data = RUS }
+			control = { province = 214 data = RUS }
+			control = { province = 292 data = RUS }
+		}
+	}
+	name = "EVT_U09_244020_NAME"
+	desc = "EVT_U09_244020_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance= 95
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244021] U09 | 1914 | Invasion of Galicia (Invasión de Galitzia)
+# Triggered by event 108085 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244021
+	date = { day = 1 month = august year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	country = U09
+	trigger = {
+		atwar = yes
+		OR = {
+			control = { province = 235 data = RUS }
+			control = { province = 237 data = RUS }
+			control = { province = 239 data = RUS }
+			control = { province = 240 data = RUS }
+			control = { province = 242 data = RUS }
+			control = { province = 300 data = RUS }
+		}
+		NOT = { event = 108085 }
+	}
+	name = "EVT_U09_244021_NAME"
+	desc = "EVT_U09_244021_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		ai_chance= 95
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244036] U09 | 1915 | Armistice with Italy (Armisticio con Italia)
+# Triggered by event 166110 in events/ITA/ITA_14-20.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244036
+	country = U09
+	name = "EVT_U09_244036_NAME"
+	desc = "EVT_U09_244036_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -3 }
+		command = { type = peace which = ITA value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244035] U09 | 1916 | Death of Franz Joseph I (Muerte de Francisco José I)
+# ----------------------------------------------------------------------------
+event = {
+	id = 244035
+	random = no
+	country = U09
+	name = "EVT_U09_244035_NAME"
+	desc = "EVT_U09_244035_DESC"
+	picture = "GLOBAL/minister_died"
+	style = 2
+	trigger = { headofstate = 860001 }
+	date = { day = 20 month = november year = 1916 }
+	action_a = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = sleepminister which = 860001 }
+		command = { type = headofstate which = 860002 }
+        command = { type = headofgovernment which = 860007 }
+        command = { type = foreignminister which = 860013 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244040] U09 | 1918 | The Decline of the Austro-Hungarian Empire (La decadencia del Imperio austrohúngaro)
+# Trigger event 243153 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+		id = 244040
+		country = U09
+		trigger = { flag = cpvictory}
+	name = "EVT_U09_244040_NAME"
+	desc = "EVT_U09_244040_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 1 month = january year = 1918 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1923 }
+	action = {
+	name = ACTION_NAME_OK
+	command = {type = event which = 243153 where = U08 when = 14 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244011] U09 | 1936 | Italy Reaffirms Neutrality Accord (Italia reafirma el pacto de neutralidad)
+# ----------------------------------------------------------------------------
+event = {
+	id = 244011
+	country = U09
+	name = "EVT_SHARED_01007_NAME"
+	desc = "EVT_SHARED_01007_DESC"
+	style = 2
+	action = {
+		name = ACTION_NAME_PERFECT
+		command = { }
+		command = { trigger = { flag = U09_ITA_Trento } type = dissent value = 3 }
+		command = { trigger = { flag = U09_ITA_Trento_Trieste } type = dissent value = 5 }
+		command = { trigger = { flag = U09_ITA_Trento_Trieste_Dalmatia } type = dissent value = 7 }
+		command = { trigger = { OR = { flag = U09_ITA_Trento flag = U09_ITA_Trento_Trieste flag = U09_ITA_Trento_Trieste_Dalmatia } } type = secedeprovince which = ITA value = 401 }
+		command = { trigger = { OR = { flag = U09_ITA_Trento_Trieste flag = U09_ITA_Trento_Trieste_Dalmatia } } type = secedeprovince which = ITA value = 404 }
+		command = { trigger = { flag = U09_ITA_Trento_Trieste_Dalmatia } type = secedeprovince which = ITA value = 350 }
+		command = { trigger = { flag = U09_ITA_Trento_Trieste_Dalmatia } type = secedeprovince which = ITA value = 351 }
+		command = { trigger = { flag = U09_ITA_Trento_Trieste_Dalmatia } type = secedeprovince which = ITA value = 343 }
+		command = { trigger = { flag = U09_ITA_Trento } type = clrflag which = U09_ITA_Trento }
+		command = { trigger = { flag = U09_ITA_Trento_Trieste } type = clrflag which = U09_ITA_Trento_Trieste }
+		command = { trigger = { flag = U09_ITA_Trento_Trieste_Dalmatia } type = clrflag which = U09_ITA_Trento_Trieste_Dalmatia }
+	}
+}

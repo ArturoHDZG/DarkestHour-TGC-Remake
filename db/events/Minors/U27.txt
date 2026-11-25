@@ -1,0 +1,1308 @@
+# ============================================================================
+# File: events/Minors/U27.txt (44 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [262032] U27 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 262033 in events/Minors/U27.txt
+# Trigger event 323039 in events/Minors/YUG.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 262032
+   country = U27
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = YUG
+            NOT = { ai = YUG }
+            NOT = { ai = U27 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = YUG
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = YUG } }
+      command = { type = country which = YUG }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = YUG
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U27 }
+               control = { province = 338 data = -1 }
+            }
+         }
+         type = trigger which = 262033
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = YUG }
+               NOT = { control = { province = 338 data = -1 } }
+            }
+         }
+         type = trigger which = 323039
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = YUG
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [262033] U27 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 262032 in events/Minors/U27.txt
+# Triggered by event 323038 in events/Minors/YUG.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 262033
+   country = U27
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = YUG value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [262029] U27 | 1943 | Liberation of Yugoslavia (Liberación de Yugoslavia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262029
+	country = U27
+	persistent = yes
+	name = EVT_U27_262029_NAME
+	desc = EVT_U27_262029_DESC
+	picture = "nwo/yugoslav_lands"
+	style = 1
+	trigger = {
+		NOT = { local_flag = cores_returned }
+	}
+    date = { day = 0 month = january year = 1943 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = cores_returned }
+		command = { type = addcore which = 338 }
+		command = { type = addcore which = 344 }
+		command = { type = addcore which = 355 }
+		command = { type = addcore which = 352 }
+		command = { type = addcore which = 349 }
+		command = { type = addcore which = 346 }
+		command = { type = addcore which = 345 }
+		command = { type = addcore which = 353 }
+		command = { type = addcore which = 350 }
+		command = { type = addcore which = 354 }
+		command = { type = addcore which = 356 }
+		command = { type = addcore which = 343 }
+		command = { type = addcore which = 332 }
+		command = { type = addcore which = 330 }
+		command = { type = addcore which = 342 }
+		command = { type = addcore which = 329 }
+		command = { type = addcore which = 341 }
+		command = { type = addcore which = 336 }
+		command = { type = addcore which = 333 }
+		command = { type = addcore which = 328 }
+		command = { type = addcore which = 331 }
+		command = { type = addcore which = 334 }
+		command = { type = addcore which = 347 }
+		command = { type = addcore which = 357 }
+		command = { type = addcore which = 358 }
+		command = { type = addcore which = 351 }
+		command = { type = addcore which = 335 }
+		command = { type = addcore which = 340 }
+		command = { type = addcore which = 327 }
+		command = { type = addcore which = 337 }
+		command = { type = addcore which = 339 }
+		command = { type = addcore which = 403 }
+		command = { type = addcore which = 404 }
+		command = { type = addcore which = 406 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262034] U27 | 1943 | General Partisan Offensive (Ofensiva general partisana)
+# Triggered by event 329993 in events/GER/GER_41-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262034
+	country = U27
+	name = EVT_U27_262034_NAME
+	desc = EVT_U27_262034_DESC
+	picture = "nwo/tito_uprising"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_corps which = "Yugoslav Titoist Army" value = land where = 327 }
+		command = { type = add_division which = "Yugoslav Headquarters" value = hq when = 3 }
+		command = { type = add_division which = "Infantry Division" value = infantry when = 10 }
+		command = { type = add_division which = "Infantry Division" value = infantry when = 10 }
+		command = { type = add_division which = "Infantry Division" value = infantry when = 10 }
+		command = { type = add_division which = "Infantry Division" value = infantry when = 10 }
+		command = { type = add_division which = "Infantry Division" value = infantry when = 10 }
+		command = { type = add_corps which = "Yugoslav Titoist Army" value = land where = 329 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = add_corps which = "Yugoslav Titoist Army" value = land where = 335 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = add_corps which = "Yugoslav Titoist Army" value = land where = 342 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = add_corps which = "Yugoslav Titoist Army" value = land where = 327 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = add_division which = "Infantry Division" value = militia when = 5 }
+		command = { type = supplies value = 2000 }
+		command = { type = oilpool value = 200 }
+		command = { type = capital which = 335 }
+		command = { type = capital which = 342 }
+		command = { type = capital which = 327 }
+		command = { type = capital which = 329 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = set_domestic which = freedom value = 2 }
+		command = { type = set_domestic which = free_market value = 4 }
+		command = { type = set_domestic which = professional_army value = 3 }
+		command = { type = set_domestic which = defense_lobby value = 5 }
+		command = { type = set_domestic which = interventionism value = 5 }
+		command = { type = headofstate which = 950100 }
+		command = { type = headofgovernment which = 950003 }
+		command = { type = foreignminister which = 950101 }
+		command = { type = armamentminister which = 950005 }
+		command = { type = ministerofsecurity which = 950014 }
+		command = { type = ministerofintelligence which = 950006 }
+		command = { type = chiefofstaff which = 950009 }
+		command = { type = chiefofarmy which = 950010 }
+		command = { type = chiefofnavy which = 950011 }
+		command = { type = chiefofair which = 950008 }
+		command = { type = access which = SOV }
+		command = { type = alliance which = SOV }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262035] U27 | 1943 | Yugoslav Liberation Achieved (Victoria y liberación de Yugoslavia)
+# Triggered by event 329993 in events/GER/GER_41-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262035
+	country = U27
+	name = EVT_U27_262035_NAME
+	desc = EVT_U27_262035_DESC
+	picture = "nwo/tito_uprising"
+	style = 1
+	trigger = {
+		event = 329993
+		NOT = { exists = GER }
+	}
+    date = { day = 0 month = january year = 1943 }
+    offset = 7
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_VICTORY
+		command = { type = dissent value = -10 }
+		command = { type = setflag which = tito_uprising_successful }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262000] U27 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262000
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 950100 }
+		command = { type = headofgovernment which = 950003 }
+		command = { type = foreignminister which = 950101 }
+		command = { type = armamentminister which = 950005 }
+		command = { type = ministerofsecurity which = 950014 }
+		command = { type = ministerofintelligence which = 950006 }
+		command = { type = chiefofstaff which = 950009 }
+		command = { type = chiefofarmy which = 950010 }
+		command = { type = chiefofnavy which = 950011 }
+		command = { type = chiefofair which = 950008 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262036] U27 | 1946 | Yugoslav-Albanian Treaty of Friendship (Tratado de amistad yugoslavo-albanés)
+# Trigger event 263009 in events/Minors/U28.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262036
+	country = U27
+	name = EVT_U27_262036_NAME
+	desc = EVT_U27_262036_DESC
+	picture = "nwo/united_balkans"
+	style = 1
+	trigger = {
+		exists = U28
+		NOT = { flag = tito_stalin_split }
+	}
+	date = { day = 1 month = july year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 80
+		command = { type = relation which = U28 value = 100 }
+		command = { type = money value = -1000 }
+		command = { type = make_puppet which = U28 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 20
+		command = { type = relation which = U28 value = -100 }
+		command = { type = sleepevent which = 263009 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262031] U27 | 1947 | Greek Communists Appeal to Yugoslavia (Petición de los comunistas griegos a Yugoslavia)
+# Triggered by event 329849 in events/Minors/U33.txt
+# Trigger event 268006 in events/Minors/U33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262031
+	country = U27
+	name = EVT_U27_262031_NAME
+	desc = EVT_U27_262031_DESC
+	picture = "nwo/greek_civil_war"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 70
+		command = { type = trigger which = 268006 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 30
+		command = { type = relation which = GRE value = 20 }
+		command = { type = relation which = U33 value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262039] U27 | 1947 | The Bled Agreement (El Acuerdo de Bled)
+# Trigger event 264020 in events/Minors/U29.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262039
+	country = U27
+	name = EVT_U27_262039_NAME
+	desc = EVT_U27_262039_DESC
+	picture = "nwo/united_balkans"
+	style = 1
+	trigger = {
+		NOT = { flag = tito_stalin_split }
+		exists = U29
+	}
+	date = { day = 29 month = july year = 1947 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 95
+		command = { type = relation which = U29 value = 100 }
+		command = { type = relation which = SOV value = 50 }
+		command = { type = dissent value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = relation which = SOV value = -50 }
+		command = { type = relation which = U29 value = -50 }
+		command = { type = dissent value = 2 }
+		command = { type = sleepevent which = 264020 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262020] U27 | 1948 | Soviet-Yugoslav War (Guerra soviético-yugoslava)
+# Triggered by event 223223 in events/SOV/SOV_47-56.txt
+# Trigger event 223224 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262020
+	country = U27
+	name = EVT_U27_262020_NAME
+	desc = EVT_U27_262020_DESC
+	picture = "nwo/tito_at_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_FIGHT
+		command = { type = dissent value = -5 }
+		command = { type = leave_alliance }
+		command = { type = trigger which = 223224 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262021] U27 | 1948 | Yugoslavia Repels the Invasion (Yugoslavia rechaza la invasión)
+# Triggered by event 223224 in events/SOV/SOV_47-56.txt
+# Trigger event 223240 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262021
+	country = U27
+	name = EVT_U27_262021_NAME
+	desc = EVT_U27_262021_DESC
+	picture = "nwo/tito_at_war"
+	style = 1
+	trigger = {
+		event = { id = 223224 days = 90 }
+		exists = U27
+		OR = {
+			NOT = { exists = U13 }
+			NOT = { exists = U29 }
+			NOT = { exists = U30 }
+		}
+		war = { country = SOV country = U27 }
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -7 }
+		command = { type = peace which = SOV }
+		command = { type = independence which = U13 value = 1 }
+		command = { type = independence which = U29 value = 1 }
+		command = { type = independence which = U30 value = 1 }
+		command = { type = independence which = U31 value = 1 }
+		command = { type = independence which = U32 value = 1 }
+		command = { type = independence which = U16 value = 1 }
+		command = { type = independence which = U33 value = 1 }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+		command = { type = event which = 223240 where = SOV when = 2 }
+		command = { type = event which = 223240 where = SOV when = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262022] U27 | 1948 | Yugoslavia Repels the Invasion (Yugoslavia rechaza la invasión)
+# Triggered by event 223224 in events/SOV/SOV_47-56.txt
+# Trigger event 223240 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262022
+	country = U27
+	name = EVT_U27_262022_NAME
+	desc = EVT_U27_262022_DESC
+	picture = "nwo/tito_at_war"
+	style = 1
+	trigger = {
+		event = { id = 223224 days = 180 }
+		exists = U27
+		war = { country = SOV country = U27 }
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -7 }
+		command = { type = peace which = SOV }
+		command = { type = independence which = U13 value = 1 }
+		command = { type = independence which = U29 value = 1 }
+		command = { type = independence which = U30 value = 1 }
+		command = { type = independence which = U31 value = 1 }
+		command = { type = independence which = U32 value = 1 }
+		command = { type = independence which = U16 value = 1 }
+		command = { type = independence which = U33 value = 1 }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+		command = { type = event which = 223240 where = SOV when = 2 }
+		command = { type = event which = 223240 where = SOV when = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262023] U27 | 1948 | Trial of Josip Broz Tito (Juicio a Josip Broz Tito)
+# Triggered by event 223225 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262023
+	country = U27
+	name = EVT_U27_262023_NAME
+	desc = EVT_U27_262023_DESC
+	picture = "nwo/trial_of_tito"
+	style = 1
+	trigger = {
+		event = 223225
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = sleepminister which = 950001 }
+		command = { type = sleepminister which = 950002 }
+		command = { type = sleepminister which = 950003 }
+		command = { type = sleepminister which = 950010 }
+		command = { type = sleepminister which = 950011 }
+		command = { type = sleepteam which = 950011 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329785] U27 | 1948 | The Tito-Stalin Split (La ruptura Tito-Stalin)
+# Trigger event 223223 in events/SOV/SOV_47-56.txt
+# Trigger event 223222 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329785
+	country = U27
+	name = EVT_U27_329785_NAME
+	desc = EVT_U27_329785_DESC
+	picture = "nwo/josip_broz_tito"
+	style = 1
+	trigger = {
+		NOT = { puppet = { country = U27 country = SOV } }
+		exists = SOV
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = EVT_U27_329785_A
+		ai_chance = 80
+		command = { type = dissent value = 3 }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = leave_alliance }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT_DEMANDS
+		ai_chance = 20
+		command = { type = dissent value = 10 }
+		command = { type = relation which = SOV value = 100 }
+		command = { type = trigger which = 223222 }
+		command = { type = sleepevent which = 223223 }
+		command = { trigger = { NOT = { alliance = { country = U27 country = SOV } } } type = leave_alliance }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262024] U27 | 1950 | The Principles of Titoism (La doctrina del titoísmo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262024
+	country = U27
+	name = EVT_U27_262024_NAME
+	desc = EVT_U27_262024_DESC
+	picture = "nwo/tito_statue"
+	style = 1
+	trigger = {
+		flag = tito_stalin_split
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = EVT_U27_262024_A
+		ai_chance = 80
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = dissent value = -5 }
+		command = { type = relation which = USA value = 50 }
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = ENG value = 50 }
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = SOV value = -100 }
+	}
+	action = {
+		name = EVT_U27_262024_B
+		ai_chance = 20
+		command = { type = relation which = SOV value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262038] U27 | 1950 | The Seventh Republic Proclaimed (Proclamación de la Séptima República)
+# Triggered by event 263010 in events/Minors/U28.txt
+# Trigger event 223240 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262038
+	country = U27
+	name = EVT_U27_262038_NAME
+	desc = EVT_U27_262038_DESC
+	picture = "nwo/albania_in_yugoslavia"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = U28 }
+		command = { type = event which = 223240 where = SOV when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262041] U27 | 1950 | The South Slavic Federation (La Gran Federación Eslava)
+# Triggered by event 264021 in events/Minors/U29.txt
+# Trigger event 223240 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262041
+	country = U27
+	name = EVT_U27_262041_NAME
+	desc = EVT_U27_262041_DESC
+	picture = "nwo/bulgaria_in_yugoslavia"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = U29 }
+		command = { type = event which = 223240 where = SOV when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262037] U27 | 1950 | Integration of Albania into Yugoslavia (Integración de Albania en Yugoslavia)
+# Trigger event 223373 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262037
+	country = U27
+	name = EVT_U27_262037_NAME
+	desc = EVT_U27_262037_DESC
+	picture = "nwo/albania_in_yugoslavia"
+	style = 1
+	trigger = {
+		NOT = { flag = tito_stalin_split }
+	}
+	date = { day = 1 month = july year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = EVT_U27_262037_A
+		ai_chance = 80
+		command = { type = relation which = U28 value = 50 }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = belligerence value = 10 }
+	}
+	action = {
+		name = EVT_U27_262037_B
+		ai_chance = 20
+		command = { type = relation which = SOV value = 50 }
+		command = { type = relation which = U28 value = -50 }
+		command = { type = dissent value = -5 }
+		command = { type = sleepevent which = 223373 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262040] U27 | 1950 | Proposal for a Balkan Federation (Propuesta de Federación Balcánica)
+# Triggered by event 264020 in events/Minors/U29.txt
+# Trigger event 223374 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262040
+	country = U27
+	name = EVT_U27_262040_NAME
+	desc = EVT_U27_262040_DESC
+	picture = "nwo/bulgaria_in_yugoslavia"
+	style = 1
+	trigger = {
+		NOT = { flag = tito_stalin_split }
+		event = 264020
+	}
+	date = { day = 1 month = july year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = EVT_U27_262040_A
+		ai_chance = 75
+		command = { type = relation which = U29 value = 50 }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = belligerence value = 10 }
+	}
+	action = {
+		name = EVT_U27_262040_B
+		ai_chance = 25
+		command = { type = relation which = SOV value = 50 }
+		command = { type = relation which = U29 value = -50 }
+		command = { type = dissent value = -5 }
+		command = { type = sleepevent which = 223374 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262001] U27 | 1953 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262001
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { trigger = { puppet = { country = YUG country = SOV } } type = set_domestic which = democratic value = 2 }
+		command = { trigger = { puppet = { country = YUG country = SOV } } type = set_domestic which = political_left value = 7 }
+		command = { trigger = { NOT = { puppet = { country = YUG country = SOV } } } type = set_domestic which = democratic value = 3 }
+		command = { trigger = { NOT = { puppet = { country = YUG country = SOV } } } type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 950002 }
+		command = { type = foreignminister which = 950012 }
+		command = { type = armamentminister which = 100083 }
+		command = { type = armamentminister which = 950013 }
+		command = { type = ministerofsecurity which = 950014 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262030] U27 | 1954 | Annexation of Trieste (Anexión de Trieste por Yugoslavia)
+# Triggered by event 166162 in events/ITA/ITA_52-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 262030
+	country = U27
+	name = EVT_U27_262030_NAME
+	desc = EVT_U27_262030_DESC
+	picture = "nwo/free_city_of_trieste"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 75
+		command = { type = inherit which = U38 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329848] U27 | 1954 | Partition of Trieste (División del territorio de Trieste)
+# Trigger event 166161 in events/ITA/ITA_52-89.txt
+# Trigger event 166162 in events/ITA/ITA_52-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329848
+	country = U27
+	name = EVT_U27_329848_NAME
+	desc = EVT_U27_329848_DESC
+	picture = "nwo/free_city_of_trieste"
+	style = 1
+	trigger = {
+		flag = cold_war
+		ai = U38
+		exists = U38
+		NOT = { war = { country = U27 country = ITA } }
+	}
+	date = { day = 5 month = october year = 1954 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 90
+		command = { type = trigger which = 166161 }
+		command = { type = belligerence value = -5 }
+		command = { type = relation which = ITA value = 100 }
+		command = { type = relation which = USA value = 25 }
+	}
+	action = {
+		name = EVT_U27_329848_A
+		ai_chance = 10
+		command = { type = trigger which = 166162 }
+		command = { type = dissent value = 3 }
+		command = { type = belligerence value = 5 }
+		command = { type = relation which = ITA value = -150 }
+		command = { type = relation which = USA value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262025] U27 | 1961 | The Non-Aligned Movement (El Movimiento de Países No Alineados)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262025
+	country = U27
+	name = EVT_U27_262025_NAME
+	desc = EVT_U27_262025_DESC
+	picture = "nwo/non_aligned_movement"
+	style = 1
+	trigger = {
+		flag = tito_stalin_split
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_U27_262025_A
+		ai_chance = 80
+		command = { type = domestic which = interventionism value = 4 }
+		command = { type = dissent value = -5 }
+		command = { type = relation which = IND value = 100 }
+		command = { type = relation which = EGY value = 100 }
+		command = { type = relation which = INO value = 100 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 20
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262002] U27 | 1963 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262002
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1966 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 950102 }
+		command = { type = name where = U27 which = U2763 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262003] U27 | 1967 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262003
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1967 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1968 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 950103 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262004] U27 | 1969 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262004
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1969 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 950104 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262005] U27 | 1971 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262005
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1976 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 950105 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262026] U27 | 1974 | The 1974 Yugoslav Constitution (La Constitución yugoslava de 1974)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262026
+	country = U27
+	name = EVT_U27_262026_NAME
+	desc = EVT_U27_262026_DESC
+	picture = "nwo/tito_statue"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1979 }
+	action = {
+		name = EVT_U27_262026_A
+		ai_chance = 90
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		name = EVT_U27_262026_B
+		ai_chance = 20
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262006] U27 | 1977 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262006
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1977 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1979 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 950106 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262007] U27 | 1980 | Death of Josip Broz Tito (Muerte de Josip Broz Tito)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262007
+	country = U27
+	name = EVT_U27_262007_NAME
+	desc = EVT_U27_262007_DESC
+	picture = "nwo/tito_tomb"
+	style = 1
+	date = { day = 0 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 950001 }
+		command = { type = sleepminister which = 950002 }
+		command = { type = sleepminister which = 950003 }
+		command = { type = sleepminister which = 950010 }
+		command = { type = sleepminister which = 950011 }
+		command = { type = headofstate which = 950107 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262008] U27 | 1981 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262008
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1981 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 950108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262009] U27 | 1982 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262009
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1982 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 950109 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262010] U27 | 1982 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262010
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1982 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 950110 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262011] U27 | 1983 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262011
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1983 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1983 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 950111 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262012] U27 | 1984 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262012
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1984 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1984 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 950112 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262013] U27 | 1985 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262013
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1985 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 950113 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262014] U27 | 1986 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262014
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 950114 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262015] U27 | 1986 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262015
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 950115 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262016] U27 | 1987 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262016
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1987 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 950116 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262017] U27 | 1988 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262017
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 950117 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262018] U27 | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262018
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 950118 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262019] U27 | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262019
+	country = U27
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 950119 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262027] U27 | 1990 | Rising Ethnic Tensions in Yugoslavia (Crecimiento de las tensiones étnicas en Yugoslavia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262027
+	country = U27
+	name = EVT_U27_262027_NAME
+	desc = EVT_U27_262027_DESC
+	picture = "nwo/yugoslav_wars"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		trigger = { flag = autumn_of_nations }
+		command = { type = dissent value = 30 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = { NOT = { flag = autumn_of_nations } }
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [262028] U27 | 1991 | Disintegration of the League of Communists (Disolución de la Liga de los Comunistas de Yugoslavia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 262028
+	country = U27
+	name = EVT_U27_262028_NAME
+	desc = EVT_U27_262028_DESC
+	picture = "nwo/yugoslav_wars"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+	}
+	date = { day = 1 month = june year = 1991 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = EVT_U27_262028_A
+		ai_chance = 80
+		command = { type = dissent value = 5 }
+		command = { type = independence which = CRO value = 1 when = 1 }
+		command = { type = independence which = SLV value = 1 when = 1 }
+	}
+	action = {
+		name = EVT_U27_262028_B
+		ai_chance = 20
+		command = { type = dissent value = 30 }
+	}
+}

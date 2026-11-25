@@ -1,0 +1,128 @@
+# ============================================================================
+# File: events/Minors/U21.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [256001] U21 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 256002 in events/Minors/U21.txt
+# Trigger event 227031 in events/Minors/SWE_14-58.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 256001
+   country = U21
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = SWE
+            NOT = { ai = SWE }
+            NOT = { ai = U21 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = SWE
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = SWE } }
+      command = { type = country which = SWE }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = SWE
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U21 }
+               control = { province = 2159 data = -1 }
+            }
+         }
+         type = trigger which = 256002
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = SWE }
+               NOT = { control = { province = 2159 data = -1 } }
+            }
+         }
+         type = trigger which = 227031
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = SWE
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [256002] U21 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 227030 in events/Minors/SWE_14-58.txt
+# Triggered by event 256001 in events/Minors/U21.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 256002
+   country = U21
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = SWE value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [256000] U21 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 256000
+	country = U21
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 920005 }
+		command = { type = headofgovernment which = 920017 }
+		command = { type = foreignminister which = 920007 }
+		command = { type = armamentminister which = 920008 }
+		command = { type = ministerofsecurity which = 920009 }
+		command = { type = ministerofintelligence which = 920010 }
+		command = { type = chiefofstaff which = 920011 }
+		command = { type = chiefofarmy which = 920012 }
+		command = { type = chiefofnavy which = 920013 }
+		command = { type = chiefofair which = 920014 }
+	}
+}

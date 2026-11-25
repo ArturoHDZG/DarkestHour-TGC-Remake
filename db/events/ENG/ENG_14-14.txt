@@ -1,0 +1,1311 @@
+# ============================================================================
+# File: events/ENG/ENG_14-14.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [143041] ENG | 1914 | Offensive Chit Expired (Reserva Logística Ofensiva agotada)
+# Triggered by event 143040 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143041
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00461_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = -10 }
+		command = { type = morale which = land value = -10 }
+		command = { type = morale which = naval value = -10 }
+		command = { type = morale which = air value = -10 }
+		command = { type = speed which = land value = -2 }
+		command = { type = counterattack value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = encirclement value = -2 }
+		command = { type = hq_supply_eff value = -2 }
+		command = { type = sce_frequency value = -0.3 }
+		command = { type = attrition_mod value = -2 }
+		command = { type = trickleback_mod value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143186] ENG | 1914 | Operational Goals: Gallipoli (Objetivos operativos: Galípoli)
+# Triggered by event 143185 in events/ENG/ENG_Decisions.txt
+# Trigger event 143188 in events/ENG/ENG_14-14.txt
+# Trigger event 143189 in events/ENG/ENG_Decisions.txt
+# Trigger event 143190 in events/ENG/ENG_14-25.txt
+# Trigger event 152020 in events/GRE/GRE_14-33.txt
+# Trigger event 152021 in events/GRE/GRE_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143186
+	random = no
+	country = ENG
+	save_date = yes
+	name = "EVT_ENG_143186_NAME"
+	desc = "EVT_ENG_143186_DESC"
+	style = 2
+	picture = "GLOBAL/varyag"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {   }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143187] ENG | 1914 | French Support for the Dardanelles (Apoyo francés en los Dardanelos)
+# Triggered by event 147262 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143187
+	random = no
+	country = ENG
+	name = "EVT_ENG_143187_NAME"
+	desc = "EVT_ENG_143187_DESC"
+	style = 2
+	picture = "GLOBAL/varyag"
+	action_a = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "French division" value = infantry when = 1 where = none }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143188] ENG | 1914 | Beachhead Established at Cape Helles (Cabeza de playa en el cabo Helles)
+# Triggered by event 143186 in events/ENG/ENG_14-14.txt
+# Trigger event 143190 in events/ENG/ENG_14-25.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143188
+	country = ENG
+	trigger = {
+		event = 143186
+		NOT = { control = { province = 384 data = OTT } }
+	}
+	name = "EVT_ENG_143188_NAME"
+	desc = "EVT_ENG_143188_DESC"
+	style = 2
+	picture = "GLOBAL/varyag"
+	date = { day = 1 month = january year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -1 }
+		command = { type = sleepevent which = 143189  }
+		command = { type = sleepevent which = 143190  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143196] ENG | 1914 | Loss of Al-Arish (Pérdida de Al-Arish)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143196
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 1004 data = -3 } }
+		NOT = { control = { province = 1004 data = REB } }
+	}
+	name = "EVT_ENG_143196_NAME"
+	desc = "EVT_ENG_143196_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143197] ENG | 1914 | Loss of the Suez Canal (Pérdida del canal de Suez)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143197
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 900 data = -3 } }
+		NOT = { control = { province = 900 data = REB } }
+	}
+	name = "EVT_ENG_143197_NAME"
+	desc = "EVT_ENG_143197_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143198] ENG | 1914 | Loss of Alexandria (Pérdida de Alejandría)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143198
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 789 data = -3 } }
+		NOT = { control = { province = 789 data = REB } }
+	}
+	name = "EVT_ENG_143198_NAME"
+	desc = "EVT_ENG_143198_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143199] ENG | 1914 | Loss of Port Sudan (Pérdida de Port Sudan)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143199
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 813 data = -3 } }
+		NOT = { control = { province = 813 data = REB } }
+	}
+	name = "EVT_ENG_143199_NAME"
+	desc = "EVT_ENG_143199_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143200] ENG | 1914 | Loss of Khartoum (Pérdida de Jartum)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143200
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 810 data = -3 } }
+		NOT = { control = { province = 810 data = REB } }
+	}
+	name = "EVT_ENG_143200_NAME"
+	desc = "EVT_ENG_143200_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143201] ENG | 1914 | Fall of Cairo (Caída de El Cairo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143201
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 787 data = -3 } }
+		NOT = { control = { province = 787 data = REB } }
+	}
+	name = "EVT_ENG_143201_NAME"
+	desc = "EVT_ENG_143201_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143202] ENG | 1914 | Enemy Landing at Dover (Desembarco enemigo en Dover)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143202
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 28 data = -3 } }
+		NOT = { control = { province = 28 data = REB } }
+	}
+	name = "EVT_ENG_143202_NAME"
+	desc = "EVT_ENG_143202_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143203] ENG | 1914 | Enemy Landing at Norwich (Desembarco enemigo en Norwich)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143203
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 25 data = -3 } }
+		NOT = { control = { province = 25 data = REB } }
+	}
+	name = "EVT_ENG_143203_NAME"
+	desc = "EVT_ENG_143203_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143204] ENG | 1914 | Enemy Landing at Edinburgh (Desembarco enemigo en Edimburgo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143204
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 12 data = -3 } }
+		NOT = { control = { province = 12 data = REB } }
+	}
+	name = "EVT_ENG_143204_NAME"
+	desc = "EVT_ENG_143204_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143205] ENG | 1914 | Enemy Landing at Glasgow (Desembarco enemigo en Glasgow)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143205
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 11 data = -3 } }
+		NOT = { control = { province = 11 data = REB } }
+	}
+	name = "EVT_ENG_143205_NAME"
+	desc = "EVT_ENG_143205_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143206] ENG | 1914 | Enemy Landing at Manchester (Desembarco enemigo en Mánchester)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143206
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 17 data = -3 } }
+		NOT = { control = { province = 17 data = REB } }
+	}
+	name = "EVT_ENG_143206_NAME"
+	desc = "EVT_ENG_143206_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143207] ENG | 1914 | Enemy Landing at Cardiff (Desembarco enemigo en Cardiff)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143207
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 22 data = -3 } }
+		NOT = { control = { province = 22 data = REB } }
+	}
+	name = "EVT_ENG_143207_NAME"
+	desc = "EVT_ENG_143207_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143208] ENG | 1914 | Enemy Landing at Plymouth (Desembarco enemigo en Plymouth)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143208
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 23 data = -3 } }
+		NOT = { control = { province = 23 data = REB } }
+	}
+	name = "EVT_ENG_143208_NAME"
+	desc = "EVT_ENG_143208_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143209] ENG | 1914 | Enemy Landing at Dublin (Desembarco enemigo en Dublín)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143209
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 34 data = -3 } }
+		NOT = { control = { province = 34 data = REB } }
+	}
+	name = "EVT_ENG_143209_NAME"
+	desc = "EVT_ENG_143209_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143210] ENG | 1914 | Enemy Landing at Portsmouth (Desembarco enemigo en Portsmouth)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143210
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 27 data = -3 } }
+		NOT = { control = { province = 27 data = REB } }
+	}
+	name = "EVT_ENG_143210_NAME"
+	desc = "EVT_ENG_143210_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143211] ENG | 1914 | Fall of London (Caída de Londres)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143211
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 29 data = -3 } }
+		NOT = { control = { province = 29 data = REB } }
+	}
+	name = "EVT_ENG_143211_NAME"
+	desc = "EVT_ENG_143211_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143212] ENG | 1914 | Secret Russian Consultations on Serbia (Consultas secretas rusas sobre Serbia)
+# Triggered by event 211041 in events/Minors/RUS_Decisions.txt
+# Trigger event 211042 in events/Minors/RUS_14-14.txt
+# Trigger event 211043 in events/Minors/RUS_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143212
+	country = ENG
+	name = "EVT_ENG_143212_NAME"
+	desc = "EVT_ENG_143212_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 15
+		command = { type = relation which = RUS value = 25 }
+		command = { type = trigger which = 211042 }
+	}
+	action_b = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 85
+		command = { type = relation which = RUS value = -15 }
+		command = { type = trigger which = 211043 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143214] ENG | 1914 | German Submarine Counter-Blockade (Bloqueo submarino alemán)
+# Triggered by event 243124 in events/Minors/U08_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143214
+	country = ENG
+	name = "EVT_ENG_143214_NAME"
+	desc = "EVT_ENG_143214_DESC"
+	style = 2
+	picture = "GLOBAL/naval_blockade"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143215] ENG | 1914 | German Unrestricted Submarine Warfare (Guerra submarina irrestricta de Alemania)
+# Triggered by event 243125 in events/Minors/U08_Decisions.txt
+# Trigger event 143226 in events/ENG/ENG_14-14.txt
+# Trigger event 143391 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143215
+	country = ENG
+	name = "EVT_ENG_143215_NAME"
+	desc = "EVT_ENG_143215_DESC"
+	style = 2
+	picture = "GLOBAL/naval_blockade"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { type = stockpile which = all when = war value = -20 }
+		command = { type = embargo which = SWE where = ENG value = 1 }
+		command = { type = embargo which = NOR where = ENG value = 1 }
+		command = { type = embargo which = SPA where = ENG value = 1 }
+		command = { type = embargo which = POR where = ENG value = 1 }
+		command = { type = embargo which = USA where = ENG value = 1 }
+		command = { type = embargo which = CAN where = ENG value = 1 }
+		command = { type = embargo which = MEX where = ENG value = 1 }
+		command = { type = embargo which = BRA where = ENG value = 1 }
+		command = { type = embargo which = ARG where = ENG value = 1 }
+		command = { type = embargo which = CHL where = ENG value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143216] ENG | 1914 | Sinking of the RMS Lusitania (Hundimiento del RMS Lusitania)
+# Triggered by event 243126 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143216
+	country = ENG
+	name = "EVT_ENG_143216_NAME"
+	desc = "EVT_ENG_143216_DESC"
+	style = 2
+	picture = "GLOBAL/naval_blockade"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143217] ENG | 1914 | Lusitania Munitions Cargo Exposed (Contrabando bélico del Lusitania al descubierto)
+# Triggered by event 243126 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143217
+	country = ENG
+	name = "EVT_ENG_143217_NAME"
+	desc = "EVT_ENG_143217_DESC"
+	style = 2
+	picture = "GLOBAL/naval_blockade"
+	action = {
+		name = "ACTION_NAME_HORRIBLE"
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143224] ENG | 1914 | Germany Ratifies White Peace (Alemania acepta la paz blanca)
+# Triggered by event 243005 in events/Minors/U08_14-14.txt
+# Trigger event 143226 in events/ENG/ENG_14-14.txt
+# Trigger event 243133 in events/Minors/U08_14-18.txt
+# Trigger event 167062 in events/JAP/JAP_00-33.txt
+# Trigger event 243094 in events/Minors/U08_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143224
+	country = ENG
+	name = "EVT_SHARED_00054_NAME"
+	desc = "EVT_SHARED_00054_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = peace which = U08 value = 0 }
+		command = { type = peace which = U09 value = 0 }
+		command = { type = event which = 143226 where = ENG when = 1 }
+		command = { type = event which = 243133 where = U08 when = 1 }
+		command = { trigger = { NOT = { exists = HOL } } type = independence which = HOL value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = BEL } } type = independence which = BEL value = 1 when = 1 }
+		command = { type = setflag which = German_EndWWI }
+		command = { trigger = { alliance = { country = U08 country = OTT } } type = secedeprovince which = OTT value = 387 when = 1 }
+		command = { trigger = { alliance = { country = U08 country = OTT } } type = secedeprovince which = OTT value = 388 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143225] ENG | 1914 | Armistice with Germany (Armisticio con Alemania)
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143225
+	country = ENG
+	name = "EVT_SHARED_00056_NAME"
+	desc = "EVT_SHARED_00056_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143226] ENG | 1914 | The End of the German Blockade (El fin del bloqueo alemán)
+# Triggered by event 143222 in events/ENG/ENG_14-25.txt
+# Triggered by event 143224 in events/ENG/ENG_14-14.txt
+# Triggered by event 143215 in events/ENG/ENG_14-14.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143226
+	country = ENG
+	trigger = {
+		event = 143215
+		NOT = { war = { country = ENG country = U08 } }
+	}
+	name = "EVT_ENG_143226_NAME"
+	desc = "EVT_ENG_143226_DESC"
+	style = 2
+	picture = "GLOBAL/naval_blockade"
+	date = { day = 1 month = january year = 1914 }
+	offset = 31
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = stockpile which = all when = war value = 20 }
+		command = { type = embargo which = SWE where = ENG value = 0 }
+		command = { type = embargo which = NOR where = ENG value = 0 }
+		command = { type = embargo which = SPA where = ENG value = 0 }
+		command = { type = embargo which = POR where = ENG value = 0 }
+		command = { type = embargo which = USA where = ENG value = 0 }
+		command = { type = embargo which = CAN where = ENG value = 0 }
+		command = { type = embargo which = MEX where = ENG value = 0 }
+		command = { type = embargo which = BRA where = ENG value = 0 }
+		command = { type = embargo which = ARG where = ENG value = 0 }
+		command = { type = embargo which = CHL where = ENG value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143232] ENG | 1914 | The Goeben and Breslau Incident (El Incidente del Goeben y el Breslau)
+# Triggered by event 196025 in events/Minors/OTT.txt
+# Trigger event 196043 in events/Minors/OTT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143232
+	country = ENG
+	name = "EVT_ENG_143232_NAME"
+	desc = "EVT_ENG_143232_DESC"
+	style = 2
+	picture = "ENG/english_declaration_war"
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+		command = { type = war which = OTT }
+		command = { trigger = { NOT = { alliance = { country = OTT country = U08} } } type = event which = 196043 where = OTT when = 1}
+	}
+	action = {
+		name = "ACTION_NAME_PROTEST"
+		ai_chance = 95
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143233] ENG | 1914 | Ottoman Conciliation for Black Sea Raids (Desagravio otomano por el ataque en el mar Negro)
+# Triggered by event 196030 in events/Minors/OTT.txt
+# Trigger event 196043 in events/Minors/OTT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143233
+	country = ENG
+	name = "EVT_SHARED_00094_NAME"
+	desc = "EVT_SHARED_00093_DESC"
+	style = 2
+	picture = "GLOBAL/negotiaton"
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 90
+		command = { type = sleepevent which = 196029 }
+		command = { type = war which = OTT }
+		command = { trigger = { NOT = { alliance = { country = OTT country = U08} } } type = event which = 196043 where = OTT when = 1}
+	}
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143234] ENG | 1914 | Naval Mission Departs Constantinople (La misión naval británica evacua Constantinopla)
+# Triggered by event 196035 in events/Minors/OTT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143234
+	country = ENG
+	name = "EVT_ENG_143234_NAME"
+	desc = "EVT_SHARED_00097_DESC"
+	style = 2
+	picture = "GLOBAL/limpus"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = OTT value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143391] ENG | 1914 | The Outcome of the Great War (historical) (El fin de la Gran Guerra)
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Triggered by event 143215 in events/ENG/ENG_14-14.txt
+# Trigger event 143393 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143391
+	country = ENG
+	trigger = {
+		participant = { value = 1 }
+		atwar = no
+		event = 147311
+	}
+	name = "EVT_ENG_143391_NAME"
+	desc = "EVT_ENG_143391_DESC"
+	picture = "GLOBAL/aar_versailles"
+	style = 2
+	date = { day = 1 month = january year = 1914 }
+	offset = 30
+	deathdate = { day = 1 month = january year = 1936 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = alliance where = 2}
+		command = { type = alliance_leader which = ENG	where = 2 }
+		command = { type = alliance_name which = "allies" where = 2 }
+		command = { type = local_setflag which = winner }
+		command = { type = demobilize which = land when = 0 where = 0 value = 50 }
+		command = { type = local_clrflag which = disarm_army_10 }
+		command = { type = local_clrflag which = disarm_army_25 }
+		command = { type = local_setflag which = disarm_army_50 }
+		command = { type = local_clrflag which = disarm_army_75 }
+		command = { type = demobilize which = naval when = 0 where = 0 value = 150 }
+		command = { type = local_clrflag which = disarm_naval_10 }
+		command = { type = local_clrflag which = disarm_naval_25 }
+		command = { type = local_clrflag which = disarm_naval_50 }
+		command = { type = local_clrflag which = disarm_naval_100 }
+		command = { type = local_setflag which = disarm_naval_150 }
+		command = { type = local_clrflag which = disarm_naval_200 }
+		command = { type = demobilize which = air when = 0 where = 0 value = 10 }
+		command = { type = local_clrflag which = disarm_air_0 }
+		command = { type = local_clrflag which = disarm_air_1 }
+		command = { type = local_setflag which = disarm_air_3 }
+		command = { type = local_clrflag which = disarm_air_5 }
+		command = { trigger = { event = 143215 } type = stockpile which = all when = war value = 20 }
+		command = { type = domestic which = interventionism value = -4 }
+		command = { trigger = { not = { flag = lon } } type = setflag which = lon }
+		command = { type = ai which = "AAR/national_behavior/ENG_Behavior.ai" }
+		command = { trigger = { or = { flag = no_war_1933 flag = no_war_1936 flag = no_war_1939 } }
+				type = ai which = "AAR/wars/no_war.ai" }
+		command = { type = ai which = "AAR/unit-construction/aar-buildqueue-ENG-interwar.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143396] ENG | 1914 | The Hunger Marches (Las Marchas del Hambre)
+# Trigger event 231014 in events/GLOBAL/ALL_13-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143396
+	country = ENG
+	persistent = yes
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 180
+	trigger = {
+		atwar = no
+		local_flag = depression
+	}
+	name = "EVT_ENG_143396_NAME"
+	Desc = "EVT_ENG_143396_DESC"
+	Picture = "major_worker_strike"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type =	dissent value = 6 }
+		command = { trigger = { IC = 325 } type = event which = 231014 where = -1 when = 170 }
+		command = { trigger = { IC = 300 } type = event which = 231014 where = -1 when = 160 }
+		command = { trigger = { IC = 275 } type = event which = 231014 where = -1 when = 150 }
+		command = { trigger = { IC = 250 } type = event which = 231014 where = -1 when = 140 }
+		command = { trigger = { IC = 400 } type = event which = 231014 where = -1 when = 130 }
+		command = { trigger = { IC = 200 } type = event which = 231014 where = -1 when = 120 }
+		command = { trigger = { IC = 375 } type = event which = 231014 where = -1 when = 110 }
+		command = { trigger = { IC = 450 } type = event which = 231014 where = -1 when = 100 }
+		command = { trigger = { IC = 500 } type = event which = 231014 where = -1 when = 90 }
+		command = { trigger = { IC = 350 } type = event which = 231014 where = -1 when = 80 }
+		command = { trigger = { IC = 325 } type = event which = 231014 where = -1 when = 70 }
+		command = { trigger = { IC = 300 } type = event which = 231014 where = -1 when = 60 }
+		command = { trigger = { IC = 275 } type = event which = 231014 where = -1 when = 50 }
+		command = { trigger = { IC = 250 } type = event which = 231014 where = -1 when = 40 }
+		command = { trigger = { IC = 400 } type = event which = 231014 where = -1 when = 30 }
+		command = { trigger = { IC = 200 } type = event which = 231014 where = -1 when = 20 }
+		command = { trigger = { IC = 375 } type = event which = 231014 where = -1 when = 15 }
+		command = { trigger = { IC = 450 } type = event which = 231014 where = -1 when = 10 }
+		command = { trigger = { IC = 500 } type = event which = 231014 where = -1 when = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143419] ENG | 1914 | Treaty of Rome (Tratado de Roma)
+# Triggered by event 166287 in events/ITA/ITA_14-20.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 143419
+   country = ENG
+   random = no
+   name = "EVT_SHARED_01064_NAME"
+   desc = LOST_DESC
+	picture = "GLOBAL/diplomatic_campaign"
+   style = 2
+   action = {
+       name = ACTION_NAME_DAMN
+	   command = { type = money value = 1000 }
+	   command = { type = secedeprovince which = ITA value = 832 }
+	   command = { type = secedeprovince which = ITA value = 387 }
+	   command = { type = secedeprovince which = ITA value = 388 }
+	   command = { type = secedeprovince which = ITA value = 429 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [143420] ENG | 1914 | Fund Tibetan Rebels? (¿Financiar a los rebeldes tibetanos?)
+# Triggered by event 232013 in events/Minors/TIB_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143420
+	random = no
+	country = ENG
+	name = "EVT_ENG_143420_NAME"
+	desc = "EVT_ENG_143420_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	action = {
+		ai_chance = 90
+		name = "ACTION_NAME_ACCEPT"
+		command = { type = setflag which = 232016 }
+		command = { type = supplies value = -1000 }
+	}
+	action = {
+		ai_chance = 10
+		name = "EVT_ENG_143420_A"
+		command = { type = setflag which = 232014 }
+		command = { type = setflag which = 232015 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143421] ENG | 1914 | Tibet Seizes British Nepal! (¡El Tíbet se apodera del Nepal Británico!)
+# Triggered by event 232014 in events/Minors/TIB_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143421
+	random = no
+	country = ENG
+	name = "EVT_ENG_143421_NAME"
+	desc = "EVT_ENG_143421_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	action = {
+		ai_chance = 90
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		command = { type = secedeprovince which = TIB value = 1457 when = 2 }
+		command = { type = relation which = TIB value = -25 }
+	}
+	action = {
+		ai_chance = 10
+		name = "ACTION_NAME_INTERVENE"
+		command = { type = supplies value = -250 }
+		command = { type = relation which = TIB value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143422] ENG | 1914 | Tibet Seizes British Bhutan! (¡El Tíbet se apodera del Bután Británico!)
+# Triggered by event 232015 in events/Minors/TIB_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143422
+	random = no
+	country = ENG
+	name = "EVT_ENG_143422_NAME"
+	desc = "EVT_ENG_143422_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	action = {
+		ai_chance = 90
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		command = { type = secedeprovince which = TIB value = 1456 when = 2 }
+		command = { type = relation which = TIB value = -25 }
+	}
+	action = {
+		ai_chance = 10
+		name = "ACTION_NAME_INTERVENE"
+		command = { type = supplies value = -250 }
+		command = { type = relation which = TIB value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143423] ENG | 1914 | Tibet Seeks Intervention (Tíbet busca intervención)
+# Triggered by event 232018 in events/Minors/TIB_Decisions.txt
+# Trigger event 232019 in events/Minors/TIB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143423
+	random = no
+	country = ENG
+	name = "EVT_ENG_143423_NAME"
+	desc = "EVT_ENG_143423_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	action = {
+		ai_chance = 90
+		name = "ACTION_NAME_CEASEFIRE"
+		command = { type = trigger which = 232019 }
+		command = { type = relation which = UCH value = -50 }
+		command = { type = relation which = CHI value = -50 }
+		command = { type = relation which = CYN value = -50 }
+		command = { type = relation which = CXB value = -50 }
+	}
+	action = {
+		ai_chance = 10
+		name = "EVT_ENG_143423_A"
+		command = { type = relation which = UCH value = 20 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = relation which = CYN value = 20 }
+		command = { type = relation which = CXB value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143426] ENG | 1914 | Treaty of Balmoral: Harsh Terms (Tratado de Balmoral: Condiciones severas)
+# Triggered by event 243090 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143426
+	country = ENG
+	name = "EVT_ENG_143426_NAME"
+	desc = "EVT_ENG_143426_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = secedearea which = U08 value = "Bechuanaland" }
+		command = { type = secedearea which = U08 value = "North Rhodesia" }
+		command = { type = secedearea which = U08 value = "South Rhodesia" }
+		command = { type = secedearea which = U08 value = "Gold Coast" }
+		command = { type = secedearea which = U08 value = "North Nigeria" }
+		command = { type = secedearea which = U08 value = "South Nigeria" }
+		command = { type = secedearea which = U08 value = "Kenya" }
+		command = { type = secedearea which = U08 value = "Uganda" }
+		command = { type = secedearea which = U08 value = "Somaliland" }
+		command = { type = secedeprovince which = U08 value = 838 }
+		command = { type = secedeprovince which = U08 value = 852 }
+		command = { type = secedeprovince which = U08 value = 964 }
+		command = { type = secedeprovince which = U08 value = 979 }
+		command = { type = secedeprovince which = U08 value = 1053 }
+		command = { type = secedeprovince which = U08 value = 1051 }
+		command = { type = secedeprovince which = U08 value = 840 }
+		command = { type = secedearea which = U08 value = "Bougainville" }
+		command = { type = secedearea which = U08 value = "Guadalcanal" }
+		command = { type = secedearea which = U08 value = "Central Solomons" }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 387 }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 388 }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 1004 }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 1005 }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 1006 }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 1007 }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 1041 }
+		command = { trigger = { alliance = { country = OTT country = U08 } puppet = { country = U91 country = ENG } } type = end_mastery which = U91  }
+		command = { trigger = { alliance = { country = OTT country = U08 } puppet = { country = U53 country = ENG } } type = end_mastery which = U53  }
+		command = { trigger = { alliance = { country = OTT country = U08 } puppet = { country = OMN country = ENG } } type = end_mastery which = OMN  }
+		command = { trigger = { exists = IRE war = { country = IRE country = ENG } NOT = { participant = { country = IRE value = 4 } }  } type = peace which = IRE value = 1 }
+		command = { trigger = { NOT = { exists = IRE } } type = independence which = IRE value = 1 when = 1 }
+		command = { type = secedearea which = IRE value = "Eire" when = 1 }
+		command = { type = demobilize which = land when = 0 where = 0 value = 36 }
+		command = { type = strength which = land when = 0 where = 0 value = 0.33 }
+		command = { type = demobilize which = battleship when = 0 where = 0 value = 8 }
+		command = { type = demobilize which = battlecruiser when = 0 where = 0 value = 8 }
+		command = { type = demobilize which = heavy_cruiser when = 0 where = 0 value = 16 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143427] ENG | 1914 | Treaty of Balmoral: Moderate Terms (Tratado de Balmoral: Condiciones moderadas)
+# Triggered by event 243090 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143427
+	country = ENG
+	name = "EVT_ENG_143427_NAME"
+	desc = "EVT_ENG_143427_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+		command = { type = secedearea which = U08 value = "Bechuanaland" }
+		command = { type = secedearea which = U08 value = "North Rhodesia" }
+		command = { type = secedearea which = U08 value = "South Rhodesia" }
+		command = { type = secedearea which = U08 value = "Gold Coast" }
+		command = { type = secedeprovince which = U08 value = 979 }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 1004 }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 1005 }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 1006 }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 1007 }
+		command = { trigger = { alliance = { country = OTT country = U08 } } type = secedeprovince which = OTT value = 1041 }
+		command = { trigger = { alliance = { country = OTT country = U08 } puppet = { country = U91 country = ENG } } type = end_mastery which = U91  }
+		command = { type = demobilize which = land when = 0 where = 0 value = 36 }
+		command = { type = strength which = land when = 0 where = 0 value = 0.33 }
+		command = { type = demobilize which = battleship when = 0 where = 0 value = 8 }
+		command = { type = demobilize which = battlecruiser when = 0 where = 0 value = 8 }
+		command = { type = demobilize which = heavy_cruiser when = 0 where = 0 value = 16 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143449] ENG | 1914 | Armed Forces Officer Reorganization (Reorganización de oficiales de las fuerzas armadas)
+# Trigger event 143450 in events/ENG/ENG_14-14.txt
+# Trigger event 143451 in events/ENG/ENG_14-14.txt
+# Trigger event 143452 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143449
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	trigger = {
+		local_flag = ENGC1
+	}
+	date = { day = 1 month = January year = 1914 }
+	deathdate = { day = 1 month = January year = 1933 }
+	offset = 30
+	name = "EVT_SHARED_01087_NAME"
+	desc = "EVT_SHARED_01087_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 10347 }
+		command = { type = trigger which = 143450 }
+		command = { type = trigger which = 143451 }
+		command = { type = trigger which = 143452 }
+		command = { type = local_clrflag which = ENGC1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143450] ENG | 1914 | Leading The Army? (¿Liderando el ejército?)
+# Triggered by event 143449 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143450
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01088_NAME"
+	desc = "EVT_SHARED_01088_DESC"
+	action_a = {
+		ai_chance = 70
+		name = "EVT_SHARED_01088_A"
+		command = { type = chiefofarmy which = 10348 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_01088_B"
+		command = { type = chiefofarmy which = 10108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143451] ENG | 1914 | Leading the Navy? (¿Liderando la Armada?)
+# Triggered by event 143449 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143451
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01089_NAME"
+	desc = "EVT_SHARED_01089_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofnavy which = 10110 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143452] ENG | 1914 | Leading the Airforce? (¿Liderando la Fuerza Aérea?)
+# Triggered by event 143449 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143452
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01090_NAME"
+	desc = "EVT_SHARED_01090_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofair which = 10350}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143453] ENG | 1914 | Armed Forces Officer Reorganization (Reorganización de oficiales de las fuerzas armadas)
+# Trigger event 143454 in events/ENG/ENG_14-14.txt
+# Trigger event 143455 in events/ENG/ENG_14-14.txt
+# Trigger event 143456 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143453
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	trigger = {
+		local_flag = ENGC2
+	}
+	date = { day = 1 month = January year = 1914 }
+	deathdate = { day = 1 month = January year = 1933 }
+	offset = 30
+	name = "EVT_SHARED_01087_NAME"
+	desc = "EVT_SHARED_01087_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 10100 }
+		command = { type = trigger which = 143454 }
+		command = { type = trigger which = 143455 }
+		command = { type = trigger which = 143456 }
+		command = { type = local_clrflag which = ENGC2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143454] ENG | 1914 | Leading The Army? (¿Liderando el ejército?)
+# Triggered by event 143453 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143454
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01088_NAME"
+	desc = "EVT_SHARED_01088_DESC"
+	action_a = {
+		ai_chance = 30
+		name = "EVT_SHARED_01088_A"
+		command = { type = chiefofarmy which = 10348 }
+	}
+	action_b = {
+		ai_chance = 70
+		name = "EVT_SHARED_01088_B"
+		command = { type = chiefofarmy which = 10108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143455] ENG | 1914 | Leading the Navy? (¿Liderando la Armada?)
+# Triggered by event 143453 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143455
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01089_NAME"
+	desc = "EVT_SHARED_01089_DESC"
+	action_b = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofnavy which = 10110 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143456] ENG | 1914 | Leading the Airforce? (¿Liderando la Fuerza Aérea?)
+# Triggered by event 143453 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143456
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01090_NAME"
+	desc = "EVT_SHARED_01090_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofair which = 10350 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143457] ENG | 1914 | Armed Forces Officer Reorganization (Reorganización de oficiales de las fuerzas armadas)
+# Trigger event 143458 in events/ENG/ENG_14-14.txt
+# Trigger event 143459 in events/ENG/ENG_14-25.txt
+# Trigger event 143460 in events/ENG/ENG_14-25.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143457
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	trigger = {
+		local_flag = ENGC3
+	}
+	date = { day = 1 month = January year = 1914 }
+	deathdate = { day = 1 month = January year = 1933 }
+	offset = 30
+	name = "EVT_SHARED_01087_NAME"
+	desc = "EVT_SHARED_01087_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 10100 }
+		command = { type = trigger which = 143458 }
+		command = { type = trigger which = 143459 }
+		command = { type = trigger which = 143460 }
+		command = { type = local_clrflag which = ENGC3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143458] ENG | 1914 | Leading The Army? (¿Liderando el ejército?)
+# Triggered by event 143457 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143458
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01088_NAME"
+	desc = "EVT_ENG_143458_DESC"
+	action_a = {
+		ai_chance = 30
+		name = "EVT_SHARED_01088_A"
+		command = { type = chiefofarmy which = 10348 }
+	}
+	action_b = {
+		ai_chance = 70
+		name = "EVT_SHARED_01088_B"
+		command = { type = chiefofarmy which = 10108 }
+	}
+}

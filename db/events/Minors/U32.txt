@@ -1,0 +1,1069 @@
+# ============================================================================
+# File: events/Minors/U32.txt (38 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [267041] U32 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 267042 in events/Minors/U32.txt
+# Trigger event 203037 in events/Minors/POL_14-89.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 267041
+   country = U32
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = POL
+            NOT = { ai = POL }
+            NOT = { ai = U32 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = POL
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = POL } }
+      command = { type = country which = POL }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = POL
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U32 }
+               control = { province = 232 data = -1 }
+            }
+         }
+         type = trigger which = 267042
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = POL }
+               NOT = { control = { province = 232 data = -1 } }
+            }
+         }
+         type = trigger which = 203037
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = POL
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [267042] U32 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 203036 in events/Minors/POL_14-89.txt
+# Triggered by event 267041 in events/Minors/U32.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 267042
+   country = U32
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = POL value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [267034] U32 | 1939 | The Recovered Territories (Los Territorios Recuperados)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267034
+	country = U32
+	name = EVT_U32_267034_NAME
+	desc = EVT_U32_267034_DESC
+	picture = "nwo/territorial_exchanges"
+	style = 1
+	trigger = {	NOT = {	flag = poland_west_littlegains } }
+	date = { day = 0 month = january year = 1939 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = {
+				flag = poland_west_moregains
+				flag = poland_west_littlegains
+				flag = poland_west_hugegains
+			}
+		}
+		command = { type = addcore which = 166 }
+		command = { type = addcore which = 167 }
+		command = { type = addcore which = 155 }
+		command = { type = addcore which = 161 }
+		command = { type = addcore which = 158 }
+		command = { type = addcore which = 159 }
+		command = { type = addcore which = 165 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {	flag = poland_west_moregains }
+		command = { type = addcore which = 166 }
+		command = { type = addcore which = 167 }
+		command = { type = addcore which = 155 }
+		command = { type = addcore which = 161 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {	flag = poland_west_hugegains }
+		command = { type = addcore which = 166 }
+		command = { type = addcore which = 167 }
+		command = { type = addcore which = 155 }
+		command = { type = addcore which = 161 }
+		command = { type = addcore which = 158 }
+		command = { type = addcore which = 159 }
+		command = { type = addcore which = 165 }
+		command = { type = addcore which = 172 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267005] U32 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267005
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 975001 }
+		command = { type = headofgovernment which = 975006 }
+		command = { type = foreignminister which = 975017 }
+		command = { type = armamentminister which = 975022 }
+		command = { type = ministerofsecurity which = 975009 }
+		command = { type = ministerofintelligence which = 975100 }
+		command = { type = chiefofstaff which = 975027 }
+		command = { type = chiefofarmy which = 975101 }
+		command = { type = chiefofnavy which = 975102 }
+		command = { type = chiefofair which = 975103 }
+		command = { type = name where = U32 which = U3244 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267026] U32 | 1944 | The PKWN Manifesto (El Manifiesto del PKWN)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267026
+	country = U32
+	name = EVT_U32_267026_NAME
+	desc = EVT_U32_267026_DESC
+	picture = "nwo/pkwn_manifesto"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 21 month = july year = 1944 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = EVT_U32_267026_A
+		ai_chance = 95
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+	}
+	action = {
+		name = EVT_U32_267026_B
+		ai_chance = 5
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 8 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267006] U32 | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267006
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = foreignminister which = 975104 }
+		command = { type = chiefofarmy which = 975105 }
+		command = { type = name where = U32 which = U3244 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267007] U32 | 1946 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267007
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = ministerofintelligence which = 975106 }
+		command = { type = chiefofnavy which = 975107 }
+		command = { type = name where = U32 which = U3244 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267035] U32 | 1946 | The Cursed Soldiers (Los Soldados Malditos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267035
+	country = U32
+	name = EVT_U32_267035_NAME
+	desc = EVT_U32_267035_DESC
+	picture = "nwo/cursed_soldiers"
+	style = 1
+	date = { day = 0 month = january year = 1946 }
+    offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267027] U32 | 1946 | The Three Times Yes Referendum (El referéndum de «Tres veces sí»)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267027
+	country = U32
+	name = EVT_U32_267027_NAME
+	desc = EVT_U32_267027_DESC
+	picture = "nwo/3x_yes_referendum"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 29 month = june year = 1946 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 97
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = domestic which = freedom value = -2 }
+	}
+	action = {
+		name = EVT_U32_267027_A
+		ai_chance = 3
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267008] U32 | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267008
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 975002 }
+		command = { type = headofgovernment which = 975014 }
+		command = { type = foreignminister which = 975108 }
+		command = { type = chiefofnavy which = 975109 }
+		command = { type = chiefofair which = 975110 }
+		command = { type = name where = U32 which = U3244 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267028] U32 | 1947 | The Three-Year Reconstruction Plan (El Plan Trienal de Reconstrucción)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267028
+	country = U32
+	name = EVT_U32_267028_NAME
+	desc = EVT_U32_267028_DESC
+	picture = "nwo/polish_three_year_plan"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = industrial_modifier which = total value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267029] U32 | 1948 | Foundation of the PZPR (Fundación del PZPR)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267029
+	country = U32
+	name = EVT_U32_267029_NAME
+	desc = EVT_U32_267029_DESC
+	picture = "nwo/polish_communist_party"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 21 month = december year = 1948 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = freedom value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267030] U32 | 1948 | Imprisonment of Gomulka (Encarcelamiento de Gomulka)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267030
+	country = U32
+	name = EVT_U32_267030_NAME
+	desc = EVT_U32_267030_DESC
+	picture = "nwo/gomulka_speaking"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 21 month = december year = 1948 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = political_left value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267009] U32 | 1949 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267009
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = chiefofstaff which = 975111 }
+		command = { type = name where = U32 which = U3244 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267010] U32 | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267010
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = armamentminister which = 975112 }
+		command = { type = ministerofintelligence which = 975113 }
+		command = { type = chiefofnavy which = 975114 }
+		command = { type = chiefofair which = 975115 }
+		command = { type = name where = U32 which = U3244 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267031] U32 | 1950 | The Six-Year Plan (El Plan Sexenal)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267031
+	country = U32
+	name = EVT_U32_267031_NAME
+	desc = EVT_U32_267031_DESC
+	picture = "nwo/polish_six_year_plan"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1950 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = industrial_modifier which = total value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267011] U32 | 1951 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267011
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = foreignminister which = 975032 }
+		command = { type = ministerofintelligence which = 975116 }
+		command = { type = name where = U32 which = U3244 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267012] U32 | 1952 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267012
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 975002 }
+		command = { type = headofgovernment which = 975031 }
+		command = { type = foreignminister which = 975032 }
+		command = { type = armamentminister which = 975117 }
+		command = { type = ministerofintelligence which = 975118 }
+		command = { type = name where = U32 which = U32 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267013] U32 | 1953 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267013
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = ministerofintelligence which = 975119 }
+		command = { type = chiefofnavy which = 975120 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267014] U32 | 1954 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267014
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 975014 }
+		command = { type = ministerofsecurity which = 975121 }
+		command = { type = chiefofarmy which = 975122 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267015] U32 | 1955 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267015
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = chiefofnavy which = 975123 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267016] U32 | 1956 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267016
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 975124 }
+		command = { type = foreignminister which = 975125 }
+		command = { type = ministerofsecurity which = 975126 }
+		command = { type = ministerofintelligence which = 975127 }
+		command = { type = chiefofstaff which = 975128 }
+		command = { type = chiefofnavy which = 975129 }
+		command = { type = chiefofair which = 975130 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267032] U32 | 1956 | The Poznan Protests of 1956 (Las protestas de Poznan de 1956)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267032
+	country = U32
+	name = EVT_U32_267032_NAME
+	desc = EVT_U32_267032_DESC
+	picture = "nwo/poznan_protests"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 28 month = june year = 1956 }
+	offset = 1
+	deathdate = { day = 29 month = july year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267033] U32 | 1956 | The Polish Thaw (El Deshielo polaco de Octubre)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267033
+	country = U32
+	name = EVT_U32_267033_NAME
+	desc = EVT_U32_267033_DESC
+	picture = "nwo/polish_thaw"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 1 month = october year = 1956 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = EVT_U32_267033_A
+		ai_chance = 90
+		command = { type = dissent value = -10 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+	}
+	action = {
+		name = EVT_U32_267033_B
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = sleepevent which = 267033 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267017] U32 | 1957 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267017
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 975004 }
+		command = { type = ministerofsecurity which = 975131 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267018] U32 | 1960 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267018
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = armamentminister which = 975132 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267019] U32 | 1963 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267019
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1969 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = chiefofair which = 975133 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267020] U32 | 1970 | The 1970 Polish Worker Protests (Protestas obreras polacas de 1970)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267020
+	country = U32
+	name = EVT_U32_267020_NAME
+	desc = EVT_U32_267020_DESC
+	picture = "nwo/1970_polish_riots"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1970 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1979 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = headofstate which = 975188 }
+		command = { type = headofgovernment which = 975171 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267036] U32 | 1978 | Election of Pope John Paul II (Elección del Papa Juan Pablo II)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267036
+	country = U32
+	name = EVT_U32_267036_NAME
+	desc = EVT_U32_267036_DESC
+	picture = "nwo/john_paul_ii"
+	style = 1
+	trigger = {
+		flag = cold_war
+		random = 75
+	}
+	date = { day = 0 month = january year = 1978 }
+    offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = freedom value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267021] U32 | 1980 | Birth of the Solidarity Movement (Nacimiento del sindicato Solidaridad)
+# Trigger event 223220 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 267021
+	country = U32
+	name = EVT_U32_267021_NAME
+	desc = EVT_U32_267021_DESC
+	picture = "nwo/solidarity"
+	style = 1
+	trigger = {
+		flag = cold_war
+		atwar = no
+	}
+	date = { day = 0 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = EVT_U32_267021_A
+		ai_chance = 99
+		command = { type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = domestic which = freedom value = 3 }
+		command = { type = headofstate which = 975190 }
+		command = { type = headofgovernment which = 975191 }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+	}
+	action = {
+		name = EVT_U32_267021_B
+		ai_chance = 1
+		command = { type = dissent value = 15 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 975173 }
+		command = { type = headofgovernment which = 975174 }
+		command = { type = sleepevent which = 223220 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267022] U32 | 1981 | Imposition of Martial Law in Poland (Imposición de la ley marcial en Polonia)
+# Triggered by event 266023 in events/Minors/U31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 267022
+	country = U32
+	name = EVT_U32_267022_NAME
+	desc = EVT_U32_267022_DESC
+	picture = "nwo/polish_martial_law"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 975173 }
+		command = { type = headofgovernment which = 975174 }
+		command = { type = domestic which = freedom value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267037] U32 | 1981 | Defeat of the Solidarity Movement (Supresión del movimiento Solidaridad)
+# Triggered by event 223221 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 267037
+	country = U32
+	name = EVT_U32_267037_NAME
+	desc = EVT_U32_267037_DESC
+	picture = "nwo/solidarity_defeat"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 25 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = set_relation which = SOV value = 50 }
+		command = { type = headofstate which = 975173 }
+		command = { type = headofgovernment which = 975174 }
+		command = { type = domestic which = freedom value = -4 }
+		command = { type = local_clrflag which = block_ideology_switch }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267023] U32 | 1985 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267023
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1985 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 975192 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267024] U32 | 1988 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267024
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 975193 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267025] U32 | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267025
+	country = U32
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 975194 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267038] U32 | 1989 | Polish Round Table Negotiations (Negociaciones de la Mesa Redonda en Polonia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 267038
+	country = U32
+	name = EVT_U32_267038_NAME
+	desc = EVT_U32_267038_DESC
+	picture = "nwo/polish_round_table"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+	}
+	date = { day = 1 month = february year = 1989 }
+	offset = 30
+	deathdate = { day = 29 month = february year = 1989 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 99
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = democratic value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 1
+		command = { type = dissent value = 30 }
+		command = { type = sleepevent which = 267039 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267039] U32 | 1989 | The 1989 Polish Parliamentary Elections (Elecciones parlamentarias polacas de 1989)
+# Triggered by event 207015 in events/AI/REB_AI_14-52.txt
+# Trigger event 267040 in events/Minors/U32.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 267039
+	country = U32
+	name = EVT_U32_267039_NAME
+	desc = EVT_U32_267039_DESC
+	picture = "nwo/poland_1989"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+		event = 207015
+	}
+	date = { day = 4 month = june year = 1989 }
+	offset = 1
+	deathdate = { day = 29 month = june year = 1989 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 99
+		command = { type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 60405 }
+		command = { type = headofgovernment which = 60416 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = end_puppet }
+		command = { type = leave_alliance }
+	}
+	action = {
+		name = EVT_U32_267039_A
+		ai_chance = 1
+		command = { type = dissent value = 30 }
+		command = { type = sleepevent which = 267040 }
+		command = { type = end_puppet }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [267040] U32 | 1990 | Proclamation of the Republic of Poland (Nacimiento de la República de Polonia)
+# Triggered by event 267039 in events/Minors/U32.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 267040
+	country = U32
+	name = EVT_U32_267040_NAME
+	desc = EVT_U32_267040_DESC
+	picture = "nwo/crowned_eagle"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+		event = 267039
+	}
+	date = { day = 1 month = january year = 1990 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = country which = POL }
+		command = { type = local_clrflag which = block_ideology_switch }
+	}
+}

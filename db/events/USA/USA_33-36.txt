@@ -1,0 +1,2248 @@
+# ============================================================================
+# File: events/USA/USA_33-36.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329403] USA | 1933 | The Bracero Program (El Programa Bracero)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329403
+	random = no
+	country = USA
+	trigger = { atwar = yes alliance = { country = USA country = MEX } random = 15 }
+	date = { day = 1 month = january year = 1933 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	name = EVT_USA_329403_NAME
+	desc = EVT_USA_329403_DESC
+	style = 2
+	picture = "USA/bracero"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = manpowerpool value = 100 }
+		command = { type = relation which = MEX value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329408] USA | 1933 | War in the Pacific (Guerra en el Pacífico)
+# Trigger event 167040 in events/AI/JAP_AI_10-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329408
+	random = no
+	country = USA
+	trigger = { ai = no ai = JAP war = { country = JAP country = USA } }
+	name = EVT_USA_329408_NAME
+	desc = EVT_USA_329408_DESC
+	style = 2
+	picture = "GLOBAL/japan_conscription"
+	date = { day = 1 month = january year = 1933 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		command = { type = trigger which = 167040 }
+	}
+	action = {
+		name = EVT_USA_329408_A
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329435] USA | 1933 | Tokyo Rose Propaganda Broadcasts (Emisiones de propaganda de «Tokyo Rose»)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329435
+	random = no
+	country = USA
+	trigger = {
+		ai = no
+		war = { country = USA country = JAP }
+		random = 20
+	}
+	date = { year = 1933 month = january day = 1 }
+	offset = 60
+	deathdate = { year = 1999 month = december day = 29 }
+   	name = EVT_USA_329435_NAME
+	desc = EVT_USA_329435_DESC
+	style = 2
+	picture = "USA/tokyo_rose"
+	action = {
+		name = ACTION_NAME_DAMN
+      		command = { type = morale which = land value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316391] USA | 1933 | 20th Amendment (La enmienda 20)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316391
+	country = USA
+	style = 1
+	trigger = { exists = USA }
+	name = "EVT_USA_316391_NAME"
+	desc = "EVT_USA_316391_DESC"
+	picture = "USA/twentieth_amendment"
+	date = { day = 22 month = january year = 1933 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -0.4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316022] USA | 1933 | Aramco locates drill site in Saudi Arabia (Aramco localiza pozo de perforación en Arabia Saudí)
+# Triggered by event 316021 in events/USA/USA_Decisions.txt
+# Trigger event 215000 in events/Minors/SAU.txt
+# Trigger event 329056 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316022
+	random = no
+	country = USA
+	trigger = {
+		event = 316021
+		government = democratic
+		atwar = no
+		exists = SAU NOT = { atwar = SAU }
+		OR = {
+			AND = { year = 1937 random = 10 }
+			year = 1939
+		}
+	}
+	name = "EVT_SHARED_00187_NAME"
+	desc = "EVT_SHARED_00187_DESC"
+	style = 2
+	date = { day = 1 month = may year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	picture = "GLOBAL/aramco"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = sau value = 25 }
+		command = { type = trade which = SAU where = USA oil = -3 money = 1 value = 1 }
+		command = { type = trigger which = 215000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316396] USA | 1933 | The Business Plot (La trama de los negocios)
+# Trigger event 316397 in events/USA/USA_28-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316396
+	country = USA
+	random = no
+	trigger = {
+		exists = USA
+	}
+	name = "EVT_USA_316396_NAME"
+	desc = "EVT_USA_316396_DESC"
+	style = 2
+	picture = "USA/businessplot"
+	date = { day = 1 month = july year = 1933 }
+	action_a = {
+		ai_chance = 90
+		name = "EVT_USA_316396_A"
+		command = { type = dissent value = -1 }
+	}
+	action_b = {
+		ai_chance = 10
+		name = "EVT_USA_316396_B"
+		command = { type = dissent value = 10 }
+		command = { type = setflag which = USABP }
+		command = { type = trigger which = 316397 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316398] USA | 1933 | Butler Speaks (Discurso de Butler)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316398
+	country = USA
+	random = no
+	trigger = {
+		flag = USABP
+	}
+	name = "EVT_USA_316398_NAME"
+	desc = "EVT_USA_316398_DESC"
+	style = 2
+	picture = "USA/butlerspeaks"
+	date = { day = 10 month = july year = 1933 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316401] USA | 1933 | Opposition to the New Regime (Oposición al Nuevo Régimen)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316401
+	country = USA
+	random = no
+	trigger = {
+		flag = USABP
+	}
+	name = "EVT_USA_316401_NAME"
+	desc = "EVT_USA_316401_DESC"
+	style = 2
+	picture = "USA/congress1933"
+	date = { day = 25 month = july year = 1933 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316076] USA | 1934 | The National Housing Act (La Ley Nacional de Vivienda)
+# Triggered by event 316004 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316076
+	random = no
+	country = USA
+	trigger = { event = 316004 money = 100 random = 30 }
+	name = EVT_USA_316076_NAME
+	desc = EVT_USA_316076_DESC
+	style = 2
+	picture = "USA/fdr"
+	date = { day = 1 month = january year = 1934 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = money value = -100 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316077] USA | 1934 | The Glass-Steagall Banking Act (La Ley Bancaria Glass-Steagall)
+# Triggered by event 316005 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316077
+	random = no
+	country = USA
+	trigger = { event = 316005 money = 100 random = 30 }
+	name = EVT_USA_316077_NAME
+	desc = EVT_USA_316077_DESC
+	style = 2
+	picture = "USA/fdr"
+	date = { day = 1 month = january year = 1934 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = money value = -100 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316078] USA | 1934 | The Civilian Conservation Corps (El Cuerpo de Conservación Civil (CCC))
+# Triggered by event 316005 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316078
+	random = no
+	country = USA
+	trigger = { event = 316005 money = 100 random = 30 }
+	name = EVT_USA_316078_NAME
+	desc = EVT_USA_316078_DESC
+	style = 2
+	picture = "USA/ccc"
+	date = { day = 1 month = january year = 1934 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = money value = -100 }
+		command = { type = dissent value = -1 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316079] USA | 1934 | The Public Works Administration (La Administración de Obras Públicas (PWA))
+# Triggered by event 316005 in events/USA/USA_Decisions.txt
+# Trigger event 316083 in events/USA/USA_33-36.txt
+# Trigger event 316084 in events/USA/USA_33-36.txt
+# Trigger event 316085 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316079
+	random = no
+	country = USA
+	trigger = { event = 316005 money = 500 random = 10 }
+	name = EVT_USA_316079_NAME
+	desc = EVT_USA_316079_DESC
+	style = 2
+	picture = "USA/pwa"
+	date = { day = 1 month = january year = 1934 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = money value = -500 }
+		command = { type = dissent value = -2 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { trigger = { ai = yes } type = peacetime_ic_mod value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316339] USA | 1934 | Togo Heihachiro state funeral (Funeral de Estado de Togo Heihachiro)
+# Triggered by event 167368 in events/JAP/JAP_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316339
+	random = no
+	country = USA
+	name = "EVT_SHARED_01177_NAME"
+	desc = "EVT_SHARED_01177_DESC"
+	style = 2
+	picture = "GLOBAL/jap_69"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = dissent value = 1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [316354] USA | 1934 | End of Great Depression (Fin de la Gran Depresión)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316354
+	country = USA
+	date = { day = 1 month = january year = 1934 }
+	deathdate = { day = 1 month = january year = 1939 }
+	offset = 730
+	trigger = {
+		flag = great_depression
+	}
+	name = "EVT_USA_316354_NAME"
+	Desc = "EVT_USA_316354_DESC"
+	Picture = "Unemployment_rate"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = clrflag which = great_depression }
+		command = { type =	dissent value = -5 }
+		command = { type = ai which = "AAR/economic/aar-build_industry.ai" }
+		command = { trigger = { local_flag = gd_cashred_3 } type = free_money value = 3 }
+		command = { trigger = { local_flag = gd_cashred_9 } type = free_money value = 9 }
+		command = { trigger = { local_flag = gd_cashred_15 } type = free_money value = 15 }
+		command = { trigger = { local_flag = gd_cashred_21 } type = free_money value = 21 }
+		command = { trigger = { local_flag = gd_cashred_24 } type = free_money value = 24 }
+		command = { trigger = { local_flag = gd_cashred_30 } type = free_money value = 30 }
+		command = { trigger = { local_flag = gd_cashred_36 } type = free_money value = 36 }
+		command = { trigger = { local_flag = gd_cashred_45 } type = free_money value = 45 }
+		command = { trigger = { local_flag = gd_cashred_53 } type = free_money value = 53 }
+		command = { trigger = { local_flag = gd_cashred_60 } type = free_money value = 60 }
+		command = { trigger = { local_flag = gd_cashred_75 } type = free_money value = 75 }
+		command = { trigger = { local_flag = gd_cashred_90 } type = free_money value = 90 }
+		command = { trigger = { local_flag = gd_cashred_105 } type = free_money value = 105 }
+		command = { trigger = { local_flag = gd_cashred_120 } type = free_money value = 120 }
+		command = { trigger = { local_flag = gd_cashred_3 } type = local_clrflag which = gd_cashred_3 }
+		command = { trigger = { local_flag = gd_cashred_9 } type = local_clrflag which = gd_cashred_9 }
+		command = { trigger = { local_flag = gd_cashred_15 } type = local_clrflag which = gd_cashred_15 }
+		command = { trigger = { local_flag = gd_cashred_21 } type = local_clrflag which = gd_cashred_21 }
+		command = { trigger = { local_flag = gd_cashred_24 } type = local_clrflag which = gd_cashred_24 }
+		command = { trigger = { local_flag = gd_cashred_30 } type = local_clrflag which = gd_cashred_30 }
+		command = { trigger = { local_flag = gd_cashred_36 } type = local_clrflag which = gd_cashred_36 }
+		command = { trigger = { local_flag = gd_cashred_45 } type = local_clrflag which = gd_cashred_45 }
+		command = { trigger = { local_flag = gd_cashred_53 } type = local_clrflag which = gd_cashred_53 }
+		command = { trigger = { local_flag = gd_cashred_60 } type = local_clrflag which = gd_cashred_60 }
+		command = { trigger = { local_flag = gd_cashred_75 } type = local_clrflag which = gd_cashred_75 }
+		command = { trigger = { local_flag = gd_cashred_90 } type = local_clrflag which = gd_cashred_90 }
+		command = { trigger = { local_flag = gd_cashred_105 } type = local_clrflag which = gd_cashred_105 }
+		command = { trigger = { local_flag = gd_cashred_120 } type = local_clrflag which = gd_cashred_120 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316334] USA | 1934 | Hirota's Reassurance on the Open Door (Garantías diplomáticas de Hirota sobre China)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316334
+	random = no
+	country = USA
+	trigger = {
+            exists = JAP
+            }
+	date = { day = 03 month = april year = 1934 }
+	offset = 1
+	deathdate = { day = 05 month = april year = 1934 }
+	name = "EVT_SHARED_01149_NAME"
+	desc = "EVT_SHARED_01149_DESC"
+	style = 2
+	picture = "GLOBAL/hirota_s_reassurance_on_the_open"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = JAP value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316080] USA | 1934 | 1934 US Midterm Elections (Elecciones legislativas de EE. UU. de 1934)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316080
+	random = no
+	country = USA
+	trigger = { headofstate = 240001 }
+	name = EVT_USA_316080_NAME
+	desc = EVT_USA_316080_DESC
+	style = 2
+	picture = "GLOBAL/election_time"
+	date = { day = 5 month = november year = 1934 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316000] USA | 1935 | U.S.-Canadian Reciprocal Trade Agreement (Acuerdo de comercio recíproco entre los Estados Unidos y Canadá)
+# Triggered by event 329015 in events/Minors/CAN_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 316000
+         random = no
+         country = usa
+         name = "EVT_SHARED_00481_NAME"
+         desc = "EVT_SHARED_00481_DESC"
+         style = 2
+	picture = "GLOBAL/u_s_canadian_reciprocal_trade_agreement"
+           action_a = {
+                  name = "ACTION_NAME_GOOD"
+                  command = { type = relation which = can value = 30 }
+                  command = { type = supplies value = 1000   }
+                  command = { type = oilpool value = 1000   }
+                  command = { type = metalpool value = 2000 }
+                  command = { type = energypool value = 4000 }
+                  command = { type = rarematerialspool value = 800 }
+                  command = { type = money value = 100 }
+                  command = { type = construct which = ic where = -4 value = 1 }
+                  command = { type = construct which = ic where = -4 value = 2 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [316073] USA | 1935 | Supreme Court Invalidates the NIRA (El Tribunal Supremo invalida la NIRA)
+# Triggered by event 316007 in events/USA/USA_Decisions.txt
+# Trigger event 316074 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316073
+	random = no
+	country = USA
+	trigger = { headofstate = 240001 event = 316007 random = 10 }
+	name = EVT_USA_316073_NAME
+	desc = EVT_USA_316073_DESC
+	style = 2
+	picture = "USA/supreme_court"
+	date = { day = 1 month = january year = 1935 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		ai_chance = 100
+		name = EVT_USA_316073_A
+		command = { trigger = { ai = no } type = dissent value = 3 }
+		command = { }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_ACCEPT_DEMANDS
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { type = sleepevent which = 316074 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316083] USA | 1935 | Completion of Hoover Dam (Inauguración de la Presa Hoover)
+# Triggered by event 316079 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316083
+	random = no
+	country = USA
+	trigger = { event = 316079 money = 100 random = 10 }
+	name = EVT_USA_316083_NAME
+	desc = EVT_USA_316083_DESC
+	style = 2
+	picture = "USA/hoover_dam"
+	date = { day = 1 month = january year = 1935 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = money value = -100 }
+		command = { type = dissent value = -1 }
+		command = { type = construct which = infrastructure where = 1893 value = 10 }
+		command = { type = construct which = ic where = 1893 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316084] USA | 1935 | Opening of the Golden Gate Bridge (Inauguración del puente Golden Gate)
+# Triggered by event 316079 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316084
+	random = no
+	country = USA
+	trigger = { event = 316079 money = 100 random = 9 }
+	name = EVT_USA_316084_NAME
+	desc = EVT_USA_316084_DESC
+	style = 2
+	picture = "USA/golden_gate"
+	date = { day = 1 month = january year = 1935 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = money value = -100 }
+		command = { type = dissent value = -1 }
+		command = { type = construct which = infrastructure where = 1889 value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316085] USA | 1935 | The Mount Rushmore National Memorial (El Monumento Nacional Monte Rushmore)
+# Triggered by event 316079 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316085
+	random = no
+	country = USA
+	trigger = { event = 316079 money = 50 random = 11 }
+	name = EVT_USA_316085_NAME
+	desc = EVT_USA_316085_DESC
+	style = 2
+	picture = "USA/mount_rushmore"
+	date = { day = 1 month = january year = 1935 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = money value = -50 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316056] USA | 1936 | Collapse of the Italian Regime (Colapso del régimen italiano)
+# Triggered by event 329315 in events/ITA/ITA_34-36.txt
+# Trigger event 143122 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316056
+	random = no
+	country = USA
+	name = EVT_SHARED_00793_NAME
+	desc = EVT_SHARED_00793_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		trigger = { ai = ITA }
+		name = ACTION_NAME_OK
+		command = { type = inherit which = ITA }
+		command = { trigger = { alliance = { country = ENG country = USA } } type = trigger which = 143122 }
+	}
+	action = {
+		trigger = { NOT = { ai = ITA } }
+		name = ACTION_NAME_OK
+		command = { type = make_puppet which = ITA }
+		command = { type = alliance which = ITA when = 1 }
+		command = { type = coup_nation which = ITA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316057] USA | 1936 | Strike on Pearl Harbor (Ataque a Pearl Harbor)
+# Triggered by event 167034 in events/JAP/JAP_Decisions.txt
+# Trigger event 167035 in events/JAP/JAP_36-36.txt
+# Trigger event 167036 in events/JAP/JAP_36-36.txt
+# Trigger event 316071 in events/USA/USA_Decisions.txt
+# Trigger event 329391 in events/USA/USA_28-33.txt
+# ----------------------------------------------------------------------------
+event = {
+    id = 316057
+    random = no
+    country = USA
+            one_action = yes
+    name = EVT_SHARED_00800_NAME
+    desc = EVT_SHARED_00800_DESC
+    style = 2
+	picture = "GLOBAL/pearl_harbor"
+    action = {
+        name = "EVT_SHARED_00522_A"
+            ai_chance = 5
+        command = { type = remove_division which = "USS Arizona" value = USA }
+        command = { type = remove_division which = "USS Oklahoma" value = USA }
+        command = { type = remove_division which = "USS California" value = USA }
+        command = { type = remove_division which = "USS West Virginia" value = USA }
+        command = { type = remove_division which = "USS Nevada" value = USA }
+        command = { type = remove_division which = "USS Pennsylvania" value = USA }
+        command = { type = remove_division which = "USS Tennessee" value = USA }
+        command = { type = remove_division which = "USS Maryland" value = USA }
+        command = { type = remove_division which = "USS Lexington" value = USA }
+        command = { type = remove_division which = "USS Enterprise" value = USA }
+        command = { type = remove_division which = "USS San Francisco" value = USA }
+        command = { type = remove_division which = "USS Northampton" value = USA }
+        command = { type = remove_division which = "USS Salt Lake City" value = USA }
+        command = { type = remove_division which = "USS New Orleans" value = USA }
+        command = { type = remove_division which = "USS Raleigh" value = USA }
+        command = { type = remove_division which = "USS Helena" value = USA }
+        command = { type = remove_division which = "USS Cassin" value = USA }
+        command = { type = remove_division which = "USS Downes" value = USA }
+        command = { type = damage_division which = "USS Honolulu" value = USA where = 95 }
+        command = { type = damage_division which = "USS Shaw" value = USA where = 70 }
+        command = { type = damage_division which = "USS Cummings" value = USA where = 50 }
+        command = { type = dissent value = 20 }
+        command = { type = manpowerpool value = -20 }
+        command = { trigger = { NOT = { policy = { type = interventionism value = 8 } } } type = set_domestic which = interventionism value = 8 }
+        command = { trigger = { NOT = { policy = { type = defense_lobby value = 8 } } } type = set_domestic which = defense_lobby value = 8 }
+        command = { type = trigger which = 167035 }
+        command = { type = songs which = PearlHarbor.txt }
+    }
+    action = {
+        name = "EVT_SHARED_00522_B"
+        ai_chance = 10
+        command = { type = remove_division which = "USS Arizona" value = USA }
+        command = { type = remove_division which = "USS Oklahoma" value = USA }
+        command = { type = remove_division which = "USS California" value = USA }
+        command = { type = remove_division which = "USS West Virginia" value = USA }
+        command = { type = remove_division which = "USS Nevada" value = USA }
+        command = { type = remove_division which = "USS Pennsylvania" value = USA }
+        command = { type = remove_division which = "USS New Orleans" value = USA }
+        command = { type = remove_division which = "USS Raleigh" value = USA }
+        command = { type = remove_division which = "USS Cassin" value = USA }
+        command = { type = damage_division which = "USS Tennessee" value = USA where = 95 }
+        command = { type = damage_division which = "USS Maryland" value = USA where = 90 }
+        command = { type = damage_division which = "USS Honolulu" value = USA where = 95 }
+        command = { type = damage_division which = "USS Downes" value = USA where = 70 }
+        command = { type = damage_division which = "USS Shaw" value = USA where = 70 }
+        command = { type = dissent value = 10 }
+        command = { type = manpowerpool value = -15 }
+        command = { trigger = { NOT = { policy = { type = interventionism value = 8 } } } type = set_domestic which = interventionism value = 8 }
+        command = { trigger = { NOT = { policy = { type = defense_lobby value = 8 } } } type = set_domestic which = defense_lobby value = 8 }
+        command = { type = trigger which = 167035 }
+        command = { type = songs which = PearlHarbor.txt }
+    }
+    action = {
+        name = "EVT_SHARED_00522_C"
+            ai_chance = 15
+        command = { type = remove_division which = "USS Arizona" value = USA }
+        command = { type = remove_division which = "USS Oklahoma" value = USA }
+        command = { type = remove_division which = "USS California" value = USA }
+        command = { type = remove_division which = "USS West Virginia" value = USA }
+        command = { type = remove_division which = "USS Raleigh" value = USA }
+        command = { type = remove_division which = "USS Cassin" value = USA }
+        command = { type = damage_division which = "USS Nevada" value = USA where = 95 }
+        command = { type = damage_division which = "USS Pennsylvania" value = USA where = 95 }
+        command = { type = damage_division which = "USS Tennessee" value = USA where = 90 }
+        command = { type = damage_division which = "USS Maryland" value = USA where = 25 }
+        command = { type = damage_division which = "USS New Orleans" value = USA where = 90 }
+        command = { type = damage_division which = "USS Honolulu" value = USA where = 90 }
+        command = { type = damage_division which = "USS Downes" value = USA where = 60 }
+        command = { type = damage_division which = "USS Shaw" value = USA where = 60 }
+        command = { type = dissent value = 5 }
+        command = { type = manpowerpool value = -10 }
+        command = { trigger = { NOT = { policy = { type = interventionism value = 8 } } } type = set_domestic which = interventionism value = 8 }
+        command = { trigger = { NOT = { policy = { type = defense_lobby value = 8 } } } type = set_domestic which = defense_lobby value = 8 }
+        command = { type = trigger which = 167035 }
+        command = { type = songs which = PearlHarbor.txt }
+    }
+    action = {
+        name = "EVT_SHARED_00522_D"
+            ai_chance = 60
+        command = { type = remove_division which = "USS Arizona" value = USA }
+        command = { type = remove_division which = "USS Oklahoma" value = USA }
+        command = { type = remove_division which = "USS Cassin" value = USA }
+        command = { type = damage_division which = "USS California" value = USA where = 95 }
+        command = { type = damage_division which = "USS West Virginia" value = USA where = 95 }
+        command = { type = damage_division which = "USS Nevada" value = USA where = 75 }
+        command = { type = damage_division which = "USS Pennsylvania" value = USA where = 25 }
+        command = { type = damage_division which = "USS Tennessee" value = USA where = 15 }
+        command = { type = damage_division which = "USS Maryland" value = USA where = 20 }
+        command = { type = damage_division which = "USS New Orleans" value = USA where = 5 }
+        command = { type = damage_division which = "USS Raleigh" value = USA where = 40 }
+        command = { type = damage_division which = "USS Honolulu" value = USA where = 5 }
+        command = { type = damage_division which = "USS Downes" value = USA where = 50 }
+        command = { type = damage_division which = "USS Shaw" value = USA where = 50 }
+        command = { type = damage_division which = "USS Helena" value = USA where = 40 }
+        command = { type = dissent value = 5 }
+        command = { type = manpowerpool value = -10 }
+        command = { trigger = { NOT = { policy = { type = interventionism value = 8 } } } type = set_domestic which = interventionism value = 8 }
+        command = { trigger = { NOT = { policy = { type = defense_lobby value = 8 } } } type = set_domestic which = defense_lobby value = 8 }
+        command = { type = trigger which = 167035 }
+        command = { type = songs which = PearlHarbor.txt }
+    }
+    action = {
+        name = "EVT_SHARED_00522_E"
+        ai_chance = 10
+        command = { type = remove_division which = "USS Arizona" value = USA }
+        command = { type = damage_division which = "USS Oklahoma" value = USA where = 95 }
+        command = { type = damage_division which = "USS California" value = USA where = 50 }
+        command = { type = damage_division which = "USS West Virginia" value = USA where = 40 }
+        command = { type = damage_division which = "USS Raleigh" value = USA where = 40 }
+        command = { type = damage_division which = "USS Honolulu" value = USA where = 10 }
+        command = { type = damage_division which = "USS Cassin" value = USA where = 50 }
+        command = { type = dissent value = 2 }
+        command = { trigger = { NOT = { policy = { type = interventionism value = 8 } } } type = set_domestic which = interventionism value = 8 }
+        command = { trigger = { NOT = { policy = { type = defense_lobby value = 8 } } } type = set_domestic which = defense_lobby value = 8 }
+        command = { type = trigger which = 167036 }
+        command = { type = songs which = PearlHarbor.txt }
+    }
+}
+
+# ----------------------------------------------------------------------------
+# [316061] USA | 1936 | Lend-Lease Program Directives (Directivas de Préstamo y Arriendo)
+# Triggered by event 316060 in events/USA/USA_Decisions.txt
+# Trigger event 143128 in events/ENG/ENG_34-36.txt
+# Trigger event 329333 in events/USA/USA_Decisions.txt
+# Trigger event 329334 in events/USA/USA_Decisions.txt
+# Trigger event 329335 in events/USA/USA_Decisions.txt
+# Trigger event 329337 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316061
+	random = no
+	country = USA
+	name = EVT_USA_316061_NAME
+	desc = EVT_SHARED_00250_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316062] USA | 1936 | Lend-Lease Suspended: UK (Préstamo y Arriendo suspendido: Reino Unido)
+# Triggered by event 143127 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316062
+	random = no
+	country = USA
+	persistent = yes
+	name = EVT_SHARED_00254_NAME
+	desc = EVT_SHARED_00250_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 1832 value = 5 }
+		command = { type = construct which = ic where = 1805 value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316063] USA | 1936 | Lend-Lease Suspended: UK (Préstamo y Arriendo suspendido: Reino Unido)
+# Triggered by event 143127 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316063
+	random = no
+	country = USA
+	persistent = yes
+	name = EVT_SHARED_00254_NAME
+	desc = EVT_SHARED_00250_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 1832 value = 5 }
+		command = { type = construct which = ic where = 1805 value = 5 }
+		command = { type = construct which = ic where = 1889 value = 5 }
+		command = { type = construct which = ic where = 1846 value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316064] USA | 1936 | Lend-Lease Suspended: China (Préstamo y Arriendo suspendido: China)
+# Triggered by event 124023 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316064
+	random = no
+	country = USA
+	persistent = yes
+	name = EVT_SHARED_00255_NAME
+	desc = EVT_SHARED_00250_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 1845 value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316065] USA | 1936 | Lend-Lease Suspended: China (Préstamo y Arriendo suspendido: China)
+# Triggered by event 124023 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316065
+	random = no
+	country = USA
+	persistent = yes
+	name = EVT_SHARED_00255_NAME
+	desc = EVT_SHARED_00250_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 1845 value = 5 }
+		command = { type = construct which = ic where = 1825 value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316066] USA | 1936 | Lend-Lease Suspended: USSR (Préstamo y Arriendo suspendido: URSS)
+# Triggered by event 223049 in events/SOV/SOV_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316066
+	random = no
+	country = USA
+	persistent = yes
+	name = EVT_SHARED_00256_NAME
+	desc = EVT_SHARED_00250_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = extra_tc value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316067] USA | 1936 | Lend-Lease Suspended: USSR (Préstamo y Arriendo suspendido: URSS)
+# Triggered by event 223049 in events/SOV/SOV_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316067
+	random = no
+	country = USA
+	persistent = yes
+	name = EVT_SHARED_00256_NAME
+	desc = EVT_SHARED_00250_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = extra_tc value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316074] USA | 1936 | The Judicial Procedures Reform Bill (El plan de reforma judicial (Court-Packing))
+# Triggered by event 316073 in events/USA/USA_33-36.txt
+# Trigger event 316075 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316074
+	random = no
+	country = USA
+	trigger = { event = 316073 random = 30 }
+	name = EVT_USA_316074_NAME
+	desc = EVT_USA_316074_DESC
+	style = 2
+	picture = "USA/supreme_court"
+	date = { day = 1 month = january year = 1936 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316087] USA | 1936 | The America First Committee (El comité «America First»)
+# Triggered by event 143182 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316087
+	country = USA
+	random = no
+	trigger = { event = 143182 random = 20 headofstate = 240001 atwar = no ai = no }
+	name = EVT_USA_316087_NAME
+	desc = EVT_USA_316087_DESC
+	style = 2
+	picture = "nwo/america_first"
+	date = { day = 1 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1936 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316102] USA | 1936 | Gearing Up for War (Preparativos de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316102
+	random = no
+	country = USA
+	one_action = yes
+	name = EVT_USA_316102_NAME
+	desc = EVT_USA_316102_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = no
+		OR = {
+			NOT = { control = { province = 2089 data = CAN } }
+			NOT = { control = { province = 2090 data = CAN } }
+			NOT = { control = { province = 2117 data = CAN } }
+			NOT = { control = { province = 2118 data = CAN } }
+			NOT = { control = { province = 2132 data = CAN } }
+			NOT = { control = { province = 2128 data = CAN } }
+			NOT = { control = { province = 2133 data = CAN } }
+			control = { province = 2136 data = GER }
+			control = { province = 2136 data = ITA }
+			control = { province = 2136 data = SOV }
+			control = { province = 2136 data = JAP }
+			control = { province = 2137 data = GER }
+			control = { province = 2137 data = ITA }
+			control = { province = 2137 data = SOV }
+			control = { province = 2137 data = JAP }
+			control = { province = 2135 data = GER }
+			control = { province = 2135 data = ITA }
+			control = { province = 2135 data = SOV }
+			control = { province = 2135 data = JAP }
+			control = { province = 1783 data = GER }
+			control = { province = 1 data = GER }
+			control = { province = 1783 data = SOV }
+			control = { province = 1 data = SOV }
+			control = { province = 1773 data = GER }
+			control = { province = 1773 data = ITA }
+			control = { province = 1773 data = SOV }
+			control = { province = 1773 data = JAP }
+			NOT = { control = { province = 995 data = POR } }
+			alliance = { country = POR  country = GER }
+			access = { country = POR country = GER }
+			alliance = { country = POR  country = SOV }
+			access = { country = POR country = SOV }
+			alliance = { country = POR  country = JAP }
+			access = { country = POR country = JAP }
+			alliance = { country = POR  country = ITA }
+			access = { country = POR country = ITA }
+			alliance = { country = ARG  country = GER }
+			access = { country = ARG country = GER }
+			alliance = { country = ARG  country = SOV }
+			access = { country = ARG country = SOV }
+			alliance = { country = ARG  country = JAP }
+			access = { country = ARG country = JAP }
+			alliance = { country = ARG  country = ITA }
+			access = { country = ARG country = ITA }
+			under_attack = ARG
+			alliance = { country = MEX  country = GER }
+			access = { country = MEX country = GER }
+			alliance = { country = MEX  country = SOV }
+			access = { country = MEX country = SOV }
+			alliance = { country = MEX  country = JAP }
+			access = { country = MEX country = JAP }
+			alliance = { country = MEX  country = ITA }
+			access = { country = MEX country = ITA }
+			under_attack = MEX
+			alliance = { country = BRA  country = GER }
+			access = { country = BRA country = GER }
+			alliance = { country = BRA  country = SOV }
+			access = { country = BRA country = SOV }
+			alliance = { country = BRA  country = JAP }
+			access = { country = BRA country = JAP }
+			alliance = { country = BRA  country = ITA }
+			access = { country = BRA country = ITA }
+			under_attack = BRA
+			alliance = { country = VEN  country = GER }
+			access = { country = VEN country = GER }
+			alliance = { country = VEN  country = SOV }
+			access = { country = VEN country = SOV }
+			alliance = { country = VEN  country = JAP }
+			access = { country = VEN country = JAP }
+			alliance = { country = VEN  country = ITA }
+			access = { country = VEN country = ITA }
+			under_attack = VEN
+			alliance = { country = CUB  country = GER }
+			access = { country = CUB country = GER }
+			alliance = { country = CUB  country = SOV }
+			access = { country = CUB country = SOV }
+			alliance = { country = CUB  country = JAP }
+			access = { country = CUB country = JAP }
+			alliance = { country = CUB  country = ITA }
+			access = { country = CUB country = ITA }
+			under_attack = CUB
+			alliance = { country = COL  country = GER }
+			access = { country = COL country = GER }
+			alliance = { country = COL  country = SOV }
+			access = { country = COL country = SOV }
+			alliance = { country = COL  country = JAP }
+			access = { country = COL country = JAP }
+			alliance = { country = COL  country = ITA }
+			access = { country = COL country = ITA }
+			under_attack = COL
+		}
+		random = 20
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 95
+		name = EVT_USA_316102_A
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = peacetime_ic_mod value = 10 }
+		command = { type = manpowerpool value = 100 }
+	}
+	action = {
+		ai_chance = 5
+		name = EVT_USA_316102_B
+		command = { type = manpowerpool value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316104] USA | 1936 | Destroyers-for-Bases Agreement (Acuerdo de destructores por bases)
+# Triggered by event 316103 in events/ENG/ENG_Decisions.txt
+# Trigger event 143182 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316104
+	random = no
+	country = USA
+	name = EVT_SHARED_00421_NAME
+	desc = EVT_SHARED_00421_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_SIGN
+		command = { type = manpowerpool value = 5 }
+		command = { type = escort_pool which = USA value = -50 }
+		command = { type = relation which = ENG value = 30 }
+		command = { type = dissent value = 6 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = peacetime_ic_mod value = 10 }
+		command = { type = trigger which = 143182 }
+		command = { type = songs which = FDR1939.txt }
+	}
+	action = {
+		ai_chance = 0
+		name = EVT_USA_316104_A
+		command = { type = relation which = ENG value = -40 }
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316105] USA | 1936 | The Nanjing Massacre (La masacre de Nankín)
+# Triggered by event 329320 in events/JAP/JAP_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316105
+	random = no
+	country = USA
+	one_action = yes
+	name = "EVT_USA_316105_NAME"
+	desc = "EVT_USA_316105_DESC"
+	style = 2
+	picture = "GLOBAL/ccip_njm"
+	action = { ai_chance = 70
+		name = EVT_SHARED_00422_A
+		command = { type = relation which = JAP value = -30 }
+		command = { type = relation which = CHI value = 10 }
+	}
+	action = { ai_chance = 10
+		name = EVT_SHARED_00422_A
+		command = { type = relation which = JAP value = -40 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = { ai_chance = 20
+		name = EVT_SHARED_00422_B
+		command = { type = relation which = JAP value = 10 }
+		command = { type = relation which = CHI value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316106] USA | 1936 | The Arsenal of Democracy (El arsenal de la democracia)
+# Triggered by event 147021 in events/FRA/FRA_31-36.txt
+# Trigger event 316060 in events/USA/USA_Decisions.txt
+# Trigger event 316115 in events/USA/USA_Decisions.txt
+# Trigger event 316141 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316106
+	random = no
+	country = USA
+	name = EVT_USA_316106_NAME
+	desc = EVT_USA_316106_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		OR = {
+			atwar = yes
+			AND = {
+				atwar = no
+				war = { country = GER country = ENG }
+				event = 147021
+				random = 25
+			}
+			AND = {
+				atwar = no
+				NOT = { control = { province = 29 data = ENG } }
+				random = 25
+			}
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 10 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = GER value = -20 }
+		command = { type = build_time which = carrier when = on_upgrade  where = relative value = -35 }
+		command = { type = build_cost which = carrier when = on_upgrade  where = relative value = 35 }
+		command = { type = build_time which = light_carrier when = on_upgrade  where = relative value = -35 }
+		command = { type = build_cost which = light_carrier when = on_upgrade  where = relative value = 35 }
+		command = { type = build_time which = escort_carrier when = on_upgrade  value = -30 }
+		command = { type = build_cost which = escort_carrier when = on_upgrade  where = relative value = 20 }
+		command = { type = build_time which = battleship when = on_upgrade  where = relative value = -20 }
+		command = { type = build_cost which = battleship when = on_upgrade  where = relative value = 20 }
+		command = { type = build_time which = battlecruiser when = on_upgrade  where = relative value = -15 }
+		command = { type = build_cost which = battlecruiser when = on_upgrade  where = relative value = 15 }
+		command = { type = build_time which = heavy_cruiser when = on_upgrade  where = relative value = -30 }
+		command = { type = build_cost which = heavy_cruiser when = on_upgrade  where = relative value = 30 }
+		command = { type = build_time which = light_cruiser when = on_upgrade  where = relative value = -30 }
+		command = { type = build_cost which = light_cruiser when = on_upgrade  where = relative value = 30 }
+		command = { type = build_time which = destroyer when = on_upgrade  where = relative value = -30 }
+		command = { type = build_cost which = destroyer when = on_upgrade  where = relative value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316110] USA | 1936 | Fall of Gibraltar (Caída de Gibraltar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316110
+	random = no
+	country = USA
+	one_action = yes
+	name = EVT_USA_316110_NAME
+	desc = EVT_USA_316110_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = no
+		war = { country = GER country = ENG }
+		OR = {
+			control = { province = 348 data = SPA }
+			control = { province = 348 data = ITA }
+			control = { province = 348 data = GER }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 45
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 50
+		name = EVT_SHARED_00422_A
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = peacetime_ic_mod value = 10 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = GER value = -20 }
+		command = { type = manpowerpool value = 10 }
+	}
+	action = {
+		ai_chance = 50
+		name = EVT_SHARED_00422_B
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316111] USA | 1936 | Fall of Suez (Caída de Suez)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316111
+	random = no
+	country = USA
+	one_action = yes
+	name = EVT_USA_316111_NAME
+	desc = EVT_USA_316111_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = no
+		war = { country = GER country = ENG }
+		OR = {
+			control = { province = 900 data = ITA }
+			control = { province = 900 data = GER }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 45
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 50
+		name = EVT_SHARED_00422_A
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = peacetime_ic_mod value = 10 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = GER value = -20 }
+		command = { type = manpowerpool value = 10 }
+	}
+	action = {
+		ai_chance = 50
+		name = EVT_SHARED_00422_B
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316112] USA | 1936 | Capitulation of China (Capitulación de China)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316112
+	random = no
+	country = USA
+	one_action = yes
+	trigger = {
+		atwar = no
+		OR = {
+			NOT = { exists = CHI }
+			alliance = { country = CHI country = JAP }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 45
+	deathdate = { day = 29 month = december year = 1963 }
+	name = EVT_USA_316112_NAME
+	desc = EVT_USA_316112_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		ai_chance = 95
+		name = EVT_SHARED_00422_A
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = peacetime_ic_mod value = 10 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = JAP value = -20 }
+		command = { type = manpowerpool value = 10 }
+	}
+	action = {
+		ai_chance = 5
+		name = EVT_SHARED_00422_B
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316113] USA | 1936 | Allied Invasion of Norway (Invasión aliada de Noruega)
+# Triggered by event 329129 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316113
+	random = no
+	country = USA
+	one_action = yes
+	name = EVT_USA_316113_NAME
+	desc = EVT_USA_316113_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		ai_chance = 50
+		name = EVT_SHARED_00424_A
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = GER value = -20 }
+	}
+	action = {
+		ai_chance = 50
+		name = EVT_SHARED_00424_B
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = GER value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316117] USA | 1936 | Japanese Ultimatums on Indochina (Japón exige Indochina a Vichy)
+# Triggered by event 329096 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316117
+	random = no
+	country = USA
+	name = "EVT_USA_316117_NAME"
+	desc = "EVT_USA_316117_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = JAP value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316128] USA | 1936 | Relinquish Control: France (Cese de mando sobre Francia)
+# Triggered by event 316127 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316128
+	random = no
+	country = USA
+	trigger = {
+		ai = no
+		event = 316127
+		military_control = { country = FRA }
+		local_flag = military_control_FRA
+		OR = {
+			alliance = { country = USA country = FRA }
+			alliance = { country = USA country = GER }
+			NOT = { war = { country = GER country = FRA } }
+			NOT = { ai = FRA }
+		}
+	}
+	name = "EVT_USA_316128_NAME"
+	desc = "EVT_SHARED_00209_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type =  military_control which = USA where = FRA }
+		command	= { type = local_clrflag which = military_control_FRA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316129] USA | 1936 | US Capitulation: Japanese Terms (Capitulación de EE. UU.: Términos japoneses)
+# Trigger event 167055 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316129
+	random = no
+	country = USA
+	name = EVT_SHARED_00429_NAME
+	desc = EVT_SHARED_00429_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		war = { country = JAP country = USA }
+		OR = {
+			control = { province = 1886  data = JAP }
+			control = { province = 1887  data = JAP }
+			control = { province = 1889  data = JAP }
+			control = { province = 1874  data = JAP }
+		}
+		OR = {
+			lost_national = { country = USA value = 55 }
+			AND =  {
+				NOT = { nuked = 1 }
+				nuked = { country = USA  data = -1 }
+				lost_national = { country = USA value = 40 }
+			}
+			AND =  {
+				NOT = { nuked = 1 }
+				nuked = { country = USA  data = -2 }
+				lost_national = { country = USA value = 23 }
+			}
+			AND =  {
+				NOT = { nuked = 1 }
+				nuked = { country = USA  data = -3 }
+				lost_national = { country = USA value = 15 }
+			}
+		}
+		random = 50
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 80
+		name = ACTION_NAME_YES
+		command = { type = trigger which = 167055 }
+	}
+	action = {
+		ai_chance = 20
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = sleepevent which = 167055 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316130] USA | 1936 | The Fall of America - Japanese Demands (La caída de Estados Unidos: Demandas japonesas)
+# Triggered by event 167055 in events/JAP/JAP_36-36.txt
+# Trigger event 202006 in events/Minors/PHI.txt
+# Trigger event 177000 in events/Minors/LIB.txt
+# Trigger event 132010 in events/Minors/CUB.txt
+# Trigger event 316141 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316130
+	random = no
+	country = USA
+	name = EVT_USA_316130_NAME
+	desc = EVT_USA_316130_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		trigger = { flag = jappeace }
+		ai_chance = 80
+		name = ACTION_NAME_ACCEPT_PEACE
+		command = { type = dissent value = 10 }
+		command = { type = set_relation which = JAP value = 50 }
+		command = { type = non_aggression which = USA where = JAP }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = JAP value = 1 }
+		command = { type = clrflag which = jappeace }
+	}
+	action = {
+		trigger = { flag = japclaim0 }
+		ai_chance = 70
+		name = ACTION_NAME_ACCEPT_PEACE
+		command = { type = dissent value = 15 }
+		command = { type = set_relation which = JAP value = 50 }
+		command = { type = non_aggression which = USA where = JAP }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { trigger = { puppet = { country = PHI country = USA } } type = end_mastery which = PHI }
+		command = { trigger = { access = { country = PHI country = USA } } type = trigger which = 202006 }
+		command = { type =  secederegion which = JAP value = "American Pacific" when = 1 }
+		command = { type =  secederegion which = JAP value = "Asian Pacific" when = 1 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = JAP value = 1 }
+		command = { type = clrflag which = japclaim0 }
+	}
+	action = {
+		trigger = { flag = japclaim1 }
+		ai_chance = 60
+		name = ACTION_NAME_ACCEPT_PEACE
+		command = { type = dissent value = 30 }
+		command = { type = set_relation which = JAP value = 50 }
+		command = { type = non_aggression which = USA where = JAP }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { trigger = { puppet = { country = PHI country = USA } } type = end_mastery which = PHI }
+		command = { trigger = { access = { country = PHI country = USA } } type = trigger which = 202006 }
+		command = { trigger = { puppet = { country = LIB country = USA } } type = end_mastery which = LIB }
+		command = { trigger = { access = { country = LIB country = USA } } type = trigger which = 177000 }
+		command = { trigger = { access = { country = CUB country = USA } } type = trigger which = 132010 }
+		command = { type = secederegion which = JAP value = "American Pacific" when = 1 }
+		command = { type = secederegion which = JAP value = "Asian Pacific" when = 1 }
+		command = { type = secederegion which = JAP value = "North Solomon Islands" when = 1 }
+		command = { type = secedeprovince which = JAP value = 889 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secedeprovince which = GER value = 1778 when = 1 }
+		command = { trigger = { NOT = { alliance = { country = JAP country = GER } } } type = secedeprovince which = JAP value = 1778 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Iceland" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secedeprovince which = GER value = 1783 when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type = secederegion which = ENG value = "Iceland" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type = secedeprovince which = ENG value = 1783 when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type = secederegion which = CAN value = "Iceland" when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type = secedeprovince which = CAN value = 1783 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Caribbean" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA } } } type = secederegion which = ENG value = "Caribbean" when = 1 }
+		command = { trigger = { exists = FRA NOT = { ispuppet = FRA war = { country = FRA country = USA } exists = U01 } } type = secederegion which = FRA value = "Caribbean" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secedeprovince which = GER value = 348 when = 1 }
+		command = { type = secedeprovince which = JAP value = 348 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "West Africa" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Morocco" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Algeria" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Sahara" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Libya" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Tunisia" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Middle East" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Madagascar" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Egypt" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Sudan" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Ethiopia" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Horn of Africa" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "West Africa" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Morocco" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Algeria" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Sahara" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Libya" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Tunisia" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Middle East" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Madagascar" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Egypt" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Sudan" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Ethiopia" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Horn of Africa" when = 1 }
+		command = { type = secederegion which = JAP value = "West Africa" when = 1 }
+		command = { type = secederegion which = JAP value = "Morocco" when = 1 }
+		command = { type = secederegion which = JAP value = "Algeria" when = 1 }
+		command = { type = secederegion which = JAP value = "Sahara" when = 1 }
+		command = { type = secederegion which = JAP value = "Libya" when = 1 }
+		command = { type = secederegion which = JAP value = "Tunisia" when = 1 }
+		command = { type = secederegion which = JAP value = "Middle East" when = 1 }
+		command = { type = secederegion which = JAP value = "Madagascar" when = 1 }
+		command = { type = secederegion which = JAP value = "Egypt" when = 1 }
+		command = { type = secederegion which = JAP value = "Sudan" when = 1 }
+		command = { type = secederegion which = JAP value = "Ethiopia" when = 1 }
+		command = { type = secederegion which = JAP value = "Horn of Africa" when = 1 }
+		command = { type = sleepevent which = 316060 }
+		command = { type = sleepevent which = 329333 }
+		command = { type = sleepevent which = 329334 }
+		command = { type = sleepevent which = 329335 }
+		command = { type = sleepevent which = 143127 }
+		command = { type = sleepevent which = 124023 }
+		command = { type = sleepevent which = 223049 }
+		command = { type = sleepevent which = 329337 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = JAP value = 1 }
+		command = { type = clrflag which = japclaim1 }
+		command = { type = setflag which = usunrest }
+	}
+	action = {
+		trigger = { flag = japclaim2 }
+		ai_chance = 50
+		name = ACTION_NAME_ACCEPT_PEACE
+		command = { type = dissent value = 35 }
+		command = { type = set_relation which = JAP value = 50 }
+		command = { type = non_aggression which = USA where = JAP }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { trigger = { puppet = { country = PHI country = USA } } type = end_mastery which = PHI }
+		command = { trigger = { access = { country = PHI country = USA } } type = trigger which = 202006 }
+		command = { trigger = { puppet = { country = LIB country = USA } } type = end_mastery which = LIB }
+		command = { trigger = { access = { country = LIB country = USA } } type = trigger which = 177000 }
+		command = { trigger = { access = { country = CUB country = USA } } type = trigger which = 132010 }
+		command = { type = secederegion which = JAP value = "American Pacific" when = 1 }
+		command = { type = secederegion which = JAP value = "Asian Pacific" when = 1 }
+		command = { type = secedeprovince which = JAP value = 889 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secedeprovince which = GER value = 1778 when = 1 }
+		command = { trigger = { NOT = { alliance = { country = JAP country = GER } } } type = secedeprovince which = JAP value = 1778 when = 1 }
+		command = { trigger = { area = { area = "California" country = JAP } } type = secedearea which = JAP value = "California" when = 1 }
+		command = { trigger = { area = { area = "Washington" country = JAP } } type = secedearea which = JAP value = "Oregon" when = 1 }
+		command = { trigger = { area = { area = "Washington" country = JAP } } type = secedearea which = JAP value = "Washington" when = 1 }
+		command = { type = secederegion which = JAP value = "Alaska" when = 1 }
+		command = { trigger = { area = { area = "Georgia" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "Georgia" when = 1 }
+		command = { trigger = { area = { area = "Florida" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "Florida" when = 1 }
+		command = { trigger = { area = { area = "North Carolina" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "North Carolina" when = 1 }
+		command = { trigger = { area = { area = "South Carolina" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "South Carolina" when = 1 }
+		command = { trigger = { area = { area = "West Virginia" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "West Virginia" when = 1 }
+		command = { trigger = { area = { area = "Virginia" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "Virginia" when = 1 }
+		command = { trigger = { area = { area = "Pennsylvania" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "Pennsylvania" when = 1 }
+		command = { trigger = { area = { area = "Maryland_Delaware" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "Maryland_Delaware" when = 1 }
+		command = { trigger = { area = { area = "New Jersey" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "New Jersey" when = 1 }
+		command = { trigger = { area = { area = "New York" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "New York" when = 1 }
+		command = { trigger = { control = { province = 1796 data = GER } alliance = { country = JAP country = GER } } type = secedeprovince which = GER value = 1796 when = 1 }
+		command = { trigger = { control = { province = 1787 data = GER } alliance = { country = JAP country = GER } } type = secedeprovince which = GER value = 1787 when = 1 }
+		command = { trigger = { area = { area = "Massachussets" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "Massachussets" when = 1 }
+		command = { trigger = { area = { area = "Vermont" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "Vermont" when = 1 }
+		command = { trigger = { area = { area = "New Hampshire" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "New Hampshire" when = 1 }
+		command = { trigger = { area = { area = "Maine" country = GER } alliance = { country = JAP country = GER } } type = secedearea which = GER value = "Maine" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Iceland" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secedeprovince which = GER value = 1783 when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type = secederegion which = ENG value = "Iceland" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type = secedeprovince which = ENG value = 1783 when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type = secederegion which = CAN value = "Iceland" when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type = secedeprovince which = CAN value = 1783 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Caribbean" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA } } } type = secederegion which = ENG value = "Caribbean" when = 1 }
+		command = { trigger = { exists = FRA NOT = { ispuppet = FRA war = { country = FRA country = USA } exists = U01 } } type = secederegion which = FRA value = "Caribbean" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secedeprovince which = GER value = 348 when = 1 }
+		command = { type = secedeprovince which = JAP value = 348 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "West Africa" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Morocco" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Algeria" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Sahara" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Libya" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Tunisia" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Middle East" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Madagascar" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Egypt" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Sudan" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Ethiopia" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = ITA } } type = secederegion which = ITA value = "Horn of Africa" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "West Africa" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Morocco" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Algeria" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Sahara" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Libya" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Tunisia" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Middle East" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Madagascar" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Egypt" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Sudan" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Ethiopia" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = GER } } type = secederegion which = GER value = "Horn of Africa" when = 1 }
+		command = { type = secederegion which = JAP value = "West Africa" when = 1 }
+		command = { type = secederegion which = JAP value = "Morocco" when = 1 }
+		command = { type = secederegion which = JAP value = "Algeria" when = 1 }
+		command = { type = secederegion which = JAP value = "Sahara" when = 1 }
+		command = { type = secederegion which = JAP value = "Libya" when = 1 }
+		command = { type = secederegion which = JAP value = "Tunisia" when = 1 }
+		command = { type = secederegion which = JAP value = "Middle East" when = 1 }
+		command = { type = secederegion which = JAP value = "Madagascar" when = 1 }
+		command = { type = secederegion which = JAP value = "Egypt" when = 1 }
+		command = { type = secederegion which = JAP value = "Sudan" when = 1 }
+		command = { type = secederegion which = JAP value = "Ethiopia" when = 1 }
+		command = { type = secederegion which = JAP value = "Horn of Africa" when = 1 }
+		command = { type = sleepevent which = 316060 }
+		command = { type = sleepevent which = 329333 }
+		command = { type = sleepevent which = 329334 }
+		command = { type = sleepevent which = 329335 }
+		command = { type = sleepevent which = 143127 }
+		command = { type = sleepevent which = 124023 }
+		command = { type = sleepevent which = 223049 }
+		command = { type = sleepevent which = 329337 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = JAP value = 1 }
+		command = { type = clrflag which = japclaim2 }
+		command = { type = setflag which = usunrest }
+	}
+	action = {
+		ai_chance = 30
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316132] USA | 1936 | US Capitulation: Soviet Terms (Capitulación de EE. UU.: Términos soviéticos)
+# Trigger event 223085 in events/SOV/SOV_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316132
+	random = no
+	country = USA
+	name = EVT_SHARED_00431_NAME
+	desc = EVT_SHARED_00431_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		war = { country = SOV country = USA }
+		OR = {
+			area = { area = "Alaska" country = SOV }
+			control = { province = 1886  data = SOV }
+			control = { province = 1887  data = SOV }
+			control = { province = 1889  data = SOV }
+			control = { province = 1874  data = SOV }
+		}
+		OR = {
+			lost_national = { country = USA value = 55 }
+			AND =  {
+				NOT = { nuked = 1 }
+				nuked = { country = USA  data = -1 }
+				lost_national = { country = USA value = 40 }
+			}
+			AND =  {
+				NOT = { nuked = 1 }
+				nuked = { country = USA  data = -2 }
+				lost_national = { country = USA value = 23 }
+			}
+			AND =  {
+				NOT = { nuked = 1 }
+				nuked = { country = USA  data = -3 }
+				lost_national = { country = USA value = 15 }
+			}
+		}
+		random = 50
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 80
+		name = ACTION_NAME_YES
+		command = { type = trigger which = 223085 }
+	}
+	action = {
+		ai_chance = 20
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = sleepevent which = 223085 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316133] USA | 1936 | The Fall of America - Soviet Demands (La caída de Estados Unidos: Demandas soviéticas)
+# Triggered by event 223085 in events/SOV/SOV_33-36.txt
+# Trigger event 202006 in events/Minors/PHI.txt
+# Trigger event 177000 in events/Minors/LIB.txt
+# Trigger event 132010 in events/Minors/CUB.txt
+# Trigger event 316141 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316133
+	random = no
+	country = USA
+	name = EVT_USA_316133_NAME
+	desc = EVT_USA_316133_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		trigger = { flag = SOVpeace }
+		ai_chance = 80
+		name = ACTION_NAME_SIGN
+		command = { type = dissent value = 10 }
+		command = { type = set_relation which = SOV value = 50 }
+		command = { type = non_aggression which = USA where = SOV }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = SOV value = 1 }
+		command = { type = clrflag which = SOVpeace }
+	}
+	action = {
+		trigger = { flag = SOVclaim0 }
+		ai_chance = 70
+		name = ACTION_NAME_SIGN
+		command = { type = dissent value = 15 }
+		command = { type = set_relation which = SOV value = 50 }
+		command = { type = non_aggression which = USA where = SOV }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { type = secederegion which = SOV value = "Alaska"  when = 1 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = SOV value = 1 }
+		command = { type = clrflag which = SOVclaim0 }
+	}
+	action = {
+		trigger = { flag = SOVclaim1 }
+		ai_chance = 60
+		name = ACTION_NAME_SIGN
+		command = { type = dissent value = 30 }
+		command = { type = set_relation which = SOV value = 50 }
+		command = { type = non_aggression which = USA where = SOV }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { trigger = { puppet = { country = PHI country = USA } } type = end_mastery which = PHI }
+		command = { trigger = { access = { country = PHI country = USA } } type = trigger which = 202006 }
+		command = { trigger = { puppet = { country = LIB country = USA } } type = end_mastery which = LIB }
+		command = { trigger = { access = { country = LIB country = USA } } type = trigger which = 177000 }
+		command = { trigger = { access = { country = CUB country = USA } } type = trigger which = 132010 }
+		command = { type = secedeprovince which = SOV value = 889 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1778 when = 1 }
+		command = { type = secederegion which = SOV value = "Alaska" when = 1 }
+		command = { type = secederegion which = SOV value = "Iceland" when = 1 }
+		command = { type = secedeprovince which = SOV value = 1783 when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type =  secederegion which = ENG value = "Iceland" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type = secedeprovince which = ENG value = 1783 when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type =  secederegion which = CAN value = "Iceland" when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type = secedeprovince which = CAN value = 1783 when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } }  type =  secederegion which = ENG value = "Caribbean" when = 1 }
+		command = { trigger = { exists = FRA NOT = { ispuppet = FRA war = { country = FRA country = USA } exists = U01 } } type =  secederegion which = FRA value = "Caribbean" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type =  secederegion which = ENG value = "American Pacific" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type =  secederegion which = ENG value = "Asian Pacific" when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type =  secederegion which = AST value = "American Pacific" when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type =  secederegion which = AST value = "Asian Pacific" when = 1 }
+		command = { trigger = { exists = JAP NOT = { ispuppet = JAP war = { country = JAP country = USA} } } type =  secederegion which = JAP value = "American Pacific" when = 1 }
+		command = { trigger = { exists = JAP NOT = { ispuppet = JAP war = { country = JAP country = USA} } } type =  secederegion which = JAP value = "Asian Pacific" when = 1 }
+		command = { type = secedeprovince which = SOV value = 348 when = 1 }
+		command = { type = secederegion which = SOV value = "West Africa" when = 1 }
+		command = { type = secederegion which = SOV value = "Morocco" when = 1 }
+		command = { type = secederegion which = SOV value = "Algeria" when = 1 }
+		command = { type = secederegion which = SOV value = "Sahara" when = 1 }
+		command = { type = secederegion which = SOV value = "Libya" when = 1 }
+		command = { type = secederegion which = SOV value = "Tunisia" when = 1 }
+		command = { type = secederegion which = SOV value = "Middle East" when = 1 }
+		command = { type = secederegion which = SOV value = "Madagascar" when = 1 }
+		command = { type = secederegion which = SOV value = "Egypt" when = 1 }
+		command = { type = secederegion which = SOV value = "Sudan" when = 1 }
+		command = { type = secederegion which = SOV value = "Ethiopia" when = 1 }
+		command = { type = secederegion which = SOV value = "Horn of Africa" when = 1 }
+		command = { type = sleepevent which = 316060 }
+		command = { type = sleepevent which = 329333 }
+		command = { type = sleepevent which = 329334 }
+		command = { type = sleepevent which = 329335 }
+		command = { type = sleepevent which = 143127 }
+		command = { type = sleepevent which = 124023 }
+		command = { type = sleepevent which = 223049 }
+		command = { type = sleepevent which = 329337 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = SOV value = 1 }
+		command = { type = clrflag which = SOVclaim1 }
+		command = { type = setflag which = usunrest }
+	}
+	action = {
+		trigger = { flag = SOVclaim2 }
+		ai_chance = 50
+		name = ACTION_NAME_SIGN
+		command = { type = dissent value = 35 }
+		command = { type = set_relation which = SOV value = 50 }
+		command = { type = non_aggression which = USA where = SOV }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { trigger = { puppet = { country = PHI country = USA } } type = end_mastery which = PHI }
+		command = { trigger = { access = { country = PHI country = USA } } type = trigger which = 202006 }
+		command = { trigger = { puppet = { country = LIB country = USA } } type = end_mastery which = LIB }
+		command = { trigger = { access = { country = LIB country = USA } } type = trigger which = 177000 }
+		command = { trigger = { access = { country = CUB country = USA } } type = trigger which = 132010 }
+		command = { type = secedeprovince which = SOV value = 889 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1778 when = 1 }
+		command = { type = secederegion which = SOV value = "Alaska" when = 1 }
+		command = { trigger = { area = { area = "California" country = SOV } } type = secedearea which = SOV value = "California" when = 1 }
+		command = { trigger = { area = { area = "Washington" country = SOV } } type = secedearea which = SOV value = "Oregon" when = 1 }
+		command = { trigger = { area = { area = "Washington" country = SOV } } type = secedearea which = SOV value = "Washington" when = 1 }
+		command = { type = secederegion which = SOV value = "Iceland" when = 1 }
+		command = { type = secedeprovince which = SOV value = 1783 when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type =  secederegion which = ENG value = "Iceland" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type = secedeprovince which = ENG value = 1783 when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type =  secederegion which = CAN value = "Iceland" when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type = secedeprovince which = CAN value = 1783 when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } }  type =  secederegion which = ENG value = "Caribbean" when = 1 }
+		command = { trigger = { exists = FRA NOT = { ispuppet = FRA war = { country = FRA country = USA } exists = U01 } } type =  secederegion which = FRA value = "Caribbean" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type =  secederegion which = ENG value = "American Pacific" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type =  secederegion which = ENG value = "Asian Pacific" when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type =  secederegion which = AST value = "American Pacific" when = 1 }
+		command = { trigger = { exists = CAN NOT = { ispuppet = CAN war = { country = CAN country = USA} } } type =  secederegion which = AST value = "Asian Pacific" when = 1 }
+		command = { trigger = { exists = JAP NOT = { ispuppet = JAP war = { country = JAP country = USA} } } type =  secederegion which = JAP value = "American Pacific" when = 1 }
+		command = { trigger = { exists = JAP NOT = { ispuppet = JAP war = { country = JAP country = USA} } } type =  secederegion which = JAP value = "Asian Pacific" when = 1 }
+		command = { type = secedeprovince which = SOV value = 348 when = 1 }
+		command = { type = secederegion which = SOV value = "West Africa" when = 1 }
+		command = { type = secederegion which = SOV value = "Morocco" when = 1 }
+		command = { type = secederegion which = SOV value = "Algeria" when = 1 }
+		command = { type = secederegion which = SOV value = "Sahara" when = 1 }
+		command = { type = secederegion which = SOV value = "Libya" when = 1 }
+		command = { type = secederegion which = SOV value = "Tunisia" when = 1 }
+		command = { type = secederegion which = SOV value = "Middle East" when = 1 }
+		command = { type = secederegion which = SOV value = "Madagascar" when = 1 }
+		command = { type = secederegion which = SOV value = "Egypt" when = 1 }
+		command = { type = secederegion which = SOV value = "Sudan" when = 1 }
+		command = { type = secederegion which = SOV value = "Ethiopia" when = 1 }
+		command = { type = secederegion which = SOV value = "Horn of Africa" when = 1 }
+		command = { type = sleepevent which = 316060 }
+		command = { type = sleepevent which = 329333 }
+		command = { type = sleepevent which = 329334 }
+		command = { type = sleepevent which = 329335 }
+		command = { type = sleepevent which = 143127 }
+		command = { type = sleepevent which = 124023 }
+		command = { type = sleepevent which = 223049 }
+		command = { type = sleepevent which = 329337 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = SOV value = 1 }
+		command = { type = clrflag which = SOVclaim2 }
+		command = { type = setflag which = usunrest }
+	}
+	action = {
+		ai_chance = 30
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316134] USA | 1936 | US Capitulation: German Terms (Capitulación de EE. UU.: Términos alemanes)
+# Trigger event 150351 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316134
+	random = no
+	country = USA
+	name = EVT_SHARED_00432_NAME
+	desc = EVT_SHARED_00432_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		war = { country = GER country = USA }
+		OR = {
+			control = { province = 1789 data = GER }
+			control = { province = 1795 data = GER }
+			control = { province = 1809 data = GER }
+			control = { province = 1812 data = GER }
+			control = { province = 1953  data = GER }
+		}
+		OR = {
+			lost_national = { country = USA value = 55 }
+			AND =  {
+				NOT = { nuked = 1 }
+				nuked = { country = USA  data = -1 }
+				lost_national = { country = USA value = 40 }
+			}
+			AND =  {
+				NOT = { nuked = 1 }
+				nuked = { country = USA  data = -2 }
+				lost_national = { country = USA value = 23 }
+			}
+			AND =  {
+				NOT = { nuked = 1 }
+				nuked = { country = USA  data = -3 }
+				lost_national = { country = USA value = 15 }
+			}
+		}
+		random = 50
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 80
+		name = ACTION_NAME_YES
+		command = { type = trigger which = 150351 }
+	}
+	action = {
+		ai_chance = 20
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = sleepevent which = 150351 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316135] USA | 1936 | The Fall of America - German Demands (La caída de Estados Unidos: Demandas alemanas)
+# Triggered by event 150351 in events/GER/GER_36-36.txt
+# Trigger event 202006 in events/Minors/PHI.txt
+# Trigger event 177000 in events/Minors/LIB.txt
+# Trigger event 132010 in events/Minors/CUB.txt
+# Trigger event 316141 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316135
+	random = no
+	country = USA
+	name = EVT_USA_316135_NAME
+	desc = EVT_USA_316135_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		trigger = { flag = GERpeace }
+		ai_chance = 80
+		name = ACTION_NAME_SIGN
+		command = { type = dissent value = 10 }
+		command = { type = set_relation which = GER value = 50 }
+		command = { type = non_aggression which = USA where = GER }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { type = clrflag which = GERpeace }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = GER value = 1 }
+	}
+	action = {
+		trigger = { flag = GERclaim0 }
+		ai_chance = 70
+		name = ACTION_NAME_SIGN
+		command = { type = dissent value = 15 }
+		command = { type = set_relation which = GER value = 50 }
+		command = { type = non_aggression which = USA where = GER }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { type =  secederegion which = GER value = "Iceland" }
+		command = { type =  secederegion which = GER value = "Greenland" }
+		command = { trigger = { alliance = { country = GER country = JAP } } type = secederegion which = JAP value = "American Pacific" when = 1 }
+		command = { trigger = { alliance = { country = GER country = JAP } } type = secederegion which = JAP value = "Asian Pacific" when = 1 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = GER value = 1 }
+		command = { type = clrflag which = GERclaim0 }
+	}
+	action = {
+		trigger = { flag = GERclaim1 }
+		ai_chance = 60
+		name = ACTION_NAME_SIGN
+		command = { type = dissent value = 30 }
+		command = { type = set_relation which = GER value = 50 }
+		command = { type = non_aggression which = USA where = GER }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { trigger = { puppet = { country = PHI country = USA } } type = end_mastery which = PHI }
+		command = { trigger = { access = { country = PHI country = USA } } type = trigger which = 202006 }
+		command = { trigger = { puppet = { country = LIB country = USA } } type = end_mastery which = LIB }
+		command = { trigger = { access = { country = LIB country = USA } } type = trigger which = 177000 }
+		command = { trigger = { access = { country = CUB country = USA } } type = trigger which = 132010 }
+		command = { type = secederegion which = GER value = "Iceland" when = 1 }
+		command = { type = secederegion which = GER value = "Greenland" when = 1 }
+		command = { type = secedeprovince which = GER value = 889 when = 1 }
+		command = { type = secedeprovince which = GER value = 1778 when = 1 }
+		command = { type = secederegion which = GER value = "Caribbean" when = 1 }
+		command = { type = secedeprovince which = GER value = 1795 when = 1 }
+		command = { trigger = { alliance = { country = GER country = JAP } } type = secederegion which = JAP value = "American Pacific" when = 1 }
+		command = { trigger = { alliance = { country = GER country = JAP } } type = secederegion which = JAP value = "Asian Pacific" when = 1 }
+		command = { trigger = { alliance = { country = GER country = JAP } } type = secederegion which = JAP value = "North Solomon Islands" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type =  secederegion which = ENG value = "American Pacific" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type =  secederegion which = ENG value = "Asian Pacific" when = 1 }
+		command = { trigger = { exists = AST NOT = { ispuppet = AST war = { country = AST country = USA} } } type =  secederegion which = AST value = "American Pacific" when = 1 }
+		command = { trigger = { exists = AST NOT = { ispuppet = AST war = { country = AST country = USA} } } type =  secederegion which = AST value = "Asian Pacific" when = 1 }
+		command = { type = secedeprovince which = GER value = 348 when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "West Africa" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Morocco" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Algeria" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Sahara" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Libya" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Tunisia" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Middle East" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Madagascar" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Egypt" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Sudan" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Ethiopia" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Horn of Africa" when = 1 }
+		command = { type = secederegion which = GER value = "West Africa" when = 1 }
+		command = { type = secederegion which = GER value = "Morocco" when = 1 }
+		command = { type = secederegion which = GER value = "Algeria" when = 1 }
+		command = { type = secederegion which = GER value = "Sahara" when = 1 }
+		command = { type = secederegion which = GER value = "Libya" when = 1 }
+		command = { type = secederegion which = GER value = "Tunisia" when = 1 }
+		command = { type = secederegion which = GER value = "Middle East" when = 1 }
+		command = { type = secederegion which = GER value = "Madagascar" when = 1 }
+		command = { type = secederegion which = GER value = "Egypt" when = 1 }
+		command = { type = secederegion which = GER value = "Sudan" when = 1 }
+		command = { type = secederegion which = GER value = "Ethiopia" when = 1 }
+		command = { type = secederegion which = GER value = "Horn of Africa" when = 1 }
+		command = { type = sleepevent which = 316060 }
+		command = { type = sleepevent which = 329333 }
+		command = { type = sleepevent which = 329334 }
+		command = { type = sleepevent which = 329335 }
+		command = { type = sleepevent which = 143127 }
+		command = { type = sleepevent which = 124023 }
+		command = { type = sleepevent which = 223049 }
+		command = { type = sleepevent which = 329337 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = GER value = 1 }
+		command = { type = clrflag which = GERclaim1 }
+		command = { type = setflag which = usunrest }
+	}
+	action = {
+		trigger = { flag = GERclaim2 }
+		ai_chance = 50
+		name = ACTION_NAME_SIGN
+		command = { type = dissent value = 35 }
+		command = { type = set_relation which = GER value = 50 }
+		command = { type = non_aggression which = USA where = GER }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { trigger = { puppet = { country = PHI country = USA } } type = end_mastery which = PHI }
+		command = { trigger = { access = { country = PHI country = USA } } type = trigger which = 202006 }
+		command = { trigger = { puppet = { country = LIB country = USA } } type = end_mastery which = LIB }
+		command = { trigger = { access = { country = LIB country = USA } } type = trigger which = 177000 }
+		command = { trigger = { access = { country = CUB country = USA } } type = trigger which = 132010 }
+		command = { type = secederegion which = GER value = "Iceland" when = 1 }
+		command = { type = secederegion which = GER value = "Greenland" when = 1 }
+		command = { type = secedeprovince which = GER value = 889 when = 1 }
+		command = { type = secedeprovince which = GER value = 1778 when = 1 }
+		command = { type = secederegion which = GER value = "Caribbean" when = 1 }
+		command = { type =  secedeprovince which = GER value = 1795 when = 1 }
+		command = { trigger = { area = { area = "Georgia" country = GER } } type = secedearea which = GER value = "Georgia" when = 1 }
+		command = { trigger = { area = { area = "Florida" country = GER } } type = secedearea which = GER value = "Florida" when = 1 }
+		command = { trigger = { area = { area = "North Carolina" country = GER } } type = secedearea which = GER value = "North Carolina" when = 1 }
+		command = { trigger = { area = { area = "South Carolina" country = GER } } type = secedearea which = GER value = "South Carolina" when = 1 }
+		command = { trigger = { area = { area = "West Virginia" country = GER } } type = secedearea which = GER value = "West Virginia" when = 1 }
+		command = { trigger = { area = { area = "Virginia" country = GER } } type = secedearea which = GER value = "Virginia" when = 1 }
+		command = { trigger = { area = { area = "Pennsylvania" country = GER } } type = secedearea which = GER value = "Pennsylvania" when = 1 }
+		command = { trigger = { area = { area = "Maryland_Delaware" country = GER } } type = secedearea which = GER value = "Maryland_Delaware" when = 1 }
+		command = { trigger = { area = { area = "New Jersey" country = GER } } type = secedearea which = GER value = "New Jersey" when = 1 }
+		command = { trigger = { area = { area = "New York" country = GER } } type = secedearea which = GER value = "New York" when = 1 }
+		command = { trigger = { control = { province = 1796 data = GER } } type = secedeprovince which = GER value = 1796 when = 1 }
+		command = { trigger = { control = { province = 1787 data = GER } } type = secedeprovince which = GER value = 1787 when = 1 }
+		command = { trigger = { area = { area = "Massachussets" country = GER } } type = secedearea which = GER value = "Massachussets" when = 1 }
+		command = { trigger = { area = { area = "Vermont" country = GER } } type = secedearea which = GER value = "Vermont" when = 1 }
+		command = { trigger = { area = { area = "New Hampshire" country = GER } } type = secedearea which = GER value = "New Hampshire" when = 1 }
+		command = { trigger = { area = { area = "Maine" country = GER } } type = secedearea which = GER value = "Maine" when = 1 }
+		command = { trigger = { area = { area = "California" country = JAP } alliance = { country = GER country = JAP } } type = secedearea which = JAP value = "California" when = 1 }
+		command = { trigger = { area = { area = "Washington" country = JAP } alliance = { country = GER country = JAP } } type = secedearea which = JAP value = "Oregon" when = 1 }
+		command = { trigger = { area = { area = "Washington" country = JAP } alliance = { country = GER country = JAP } } type = secedearea which = JAP value = "Washington" when = 1 }
+		command = { trigger = { alliance = { country = GER country = JAP } } type = secederegion which = JAP value = "Alaska" when = 1 }
+		command = { trigger = { alliance = { country = GER country = JAP } } type = secederegion which = JAP value = "American Pacific" when = 1 }
+		command = { trigger = { alliance = { country = GER country = JAP } } type = secederegion which = JAP value = "Asian Pacific" when = 1 }
+		command = { trigger = { alliance = { country = GER country = JAP } } type = secederegion which = JAP value = "North Solomon Islands" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type =  secederegion which = ENG value = "American Pacific" when = 1 }
+		command = { trigger = { exists = ENG NOT = { ispuppet = ENG war = { country = ENG country = USA} } } type =  secederegion which = ENG value = "Asian Pacific" when = 1 }
+		command = { trigger = { exists = AST NOT = { ispuppet = AST war = { country = AST country = USA} } } type =  secederegion which = AST value = "American Pacific" when = 1 }
+		command = { trigger = { exists = AST NOT = { ispuppet = AST war = { country = AST country = USA} } } type =  secederegion which = AST value = "Asian Pacific" when = 1 }
+		command = { type = secedeprovince which = GER value = 348 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "West Africa" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Morocco" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Algeria" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Sahara" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Libya" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Tunisia" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Middle East" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Madagascar" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Egypt" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Sudan" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Ethiopia" when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secederegion which = ITA value = "Horn of Africa" when = 1 }
+		command = { type = secederegion which = GER value = "West Africa" when = 1 }
+		command = { type = secederegion which = GER value = "Morocco" when = 1 }
+		command = { type = secederegion which = GER value = "Algeria" when = 1 }
+		command = { type = secederegion which = GER value = "Sahara" when = 1 }
+		command = { type = secederegion which = GER value = "Libya" when = 1 }
+		command = { type = secederegion which = GER value = "Tunisia" when = 1 }
+		command = { type = secederegion which = GER value = "Middle East" when = 1 }
+		command = { type = secederegion which = GER value = "Madagascar" when = 1 }
+		command = { type = secederegion which = GER value = "Egypt" when = 1 }
+		command = { type = secederegion which = GER value = "Sudan" when = 1 }
+		command = { type = secederegion which = GER value = "Ethiopia" when = 1 }
+		command = { type = secederegion which = GER value = "Horn of Africa" when = 1 }
+		command = { type = sleepevent which = 316060 }
+		command = { type = sleepevent which = 329333 }
+		command = { type = sleepevent which = 329334 }
+		command = { type = sleepevent which = 329335 }
+		command = { type = sleepevent which = 143127 }
+		command = { type = sleepevent which = 124023 }
+		command = { type = sleepevent which = 223049 }
+		command = { type = sleepevent which = 329337 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = GER value = 1 }
+		command = { type = clrflag which = GERclaim2 }
+		command = { type = setflag which = usunrest }
+	}
+	action = {
+		ai_chance = 30
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316136] USA | 1936 | German-American Cold War (Guerra fría germano-estadounidense)
+# Trigger event 150352 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316136
+	random = no
+	country = USA
+	name = EVT_SHARED_00433_NAME
+	desc = EVT_SHARED_00433_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		random = 20
+		control = { province = 55 data = -2 }
+		control = { province = 163 data = -2 }
+		control = { province = 29 data = -2 }
+		control = { province = 572 data = -2 }
+		control = { province = 663 data = -2 }
+		control = { province = 553 data = -2 }
+		region = { region = "Northeast US" country = -1 value = 95 }
+		region = { region = "Midwest US" country = -1 value = 95 }
+		region = { region = "Northwest US" country = -1 value = 95 }
+		region = { region = "Southwest US" country = -1 value = 95 }
+		region = { region = "Southcentral US" country = -1 value = 95 }
+		region = { region = "Southeast US" country = -1 value = 95 }
+		OR = { control = { province = 348 data = -2 } control = { province = 900 data = -2 } control = { province = 419 data = -2 } }
+		NOT = { war = { country = ENG country = GER } }
+		war = { country = USA country = GER }
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 100
+		name = EVT_USA_316136_A
+		command = { type = trigger which = 150352 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = dissent value = -10 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_NO_NEED
+		command = { type = dissent value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316137] USA | 1936 | German-American Cold War (Guerra fría germano-estadounidense)
+# Triggered by event 150352 in events/GER/GER_36-36.txt
+# Trigger event 150353 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316137
+	random = no
+	country = USA
+	name = EVT_SHARED_00433_NAME
+	desc = EVT_SHARED_00433_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = trigger which = 150353 }
+		command = { trigger = { alliance = { country = U73 country = GER } } type = secederegion which = U73 value = "England" when = 1 }
+		command = { trigger = { alliance = { country = SCO country = GER } } type = secederegion which = SCO value = "Scotland" when = 1 }
+		command = { trigger = { alliance = { country = U73 country = GER } } type = secederegion which = U73 value = "Scotland" when = 1 }
+		command = { trigger = { NOT = { alliance = { country = U73 country = GER } } } type = secederegion which = GER value = "England" when = 1 }
+		command = { trigger = { NOT = { alliance = { country = U73 country = GER } alliance = { country = SCO country = GER } } } type = secederegion which = GER value = "Scotland" when = 1 }
+		command = { trigger = { alliance = { country = FRA country = GER } } type = secederegion which = FRA value = "France" when = 1 }
+		command = { trigger = { NOT = { alliance = { country = FRA country = GER } } } type = secederegion which = GER value = "France" when = 1 }
+		command = { type = secederegion which = GER value = "Benelux" when = 1 }
+		command = { trigger = { alliance = { country = SCA country = GER } } type = secederegion which = SCA value = Norway }
+		command = { trigger = { alliance = { country = SCA country = GER } } type = secederegion which = SCA value = Sweden }
+		command = { trigger = { alliance = { country = SCA country = GER } } type = secederegion which = SCA value = Finland }
+		command = { trigger = { alliance = { country = U45 country = GER } } type = secederegion which = U45 value = Norway }
+		command = { trigger = { alliance = { country = GER country = NOR } } type = secederegion which = NOR value = Norway }
+		command = { trigger = { NOT = { alliance = { country = SCA country = GER } alliance = { country = U45 country = GER } alliance = { country = GER country = NOR } } }
+					type = secederegion which = GER value = Norway when = 1 }
+		command = { trigger = { alliance = { country = SWE country = GER } } type = secederegion which = SWE value = Sweden }
+		command = { trigger = { NOT = { alliance = { country = SWE country = GER } } } type = secederegion which = GER value = Sweden when = 1}
+		command = { trigger = { alliance = { country = FIN country = GER } } type = secederegion which = FIN value = Finland }
+		command = { trigger = { NOT = { alliance = { country = FIN country = GER } } } type = secederegion which = GER value = Finland when = 1}
+		command = { type = secederegion which = GER value = Balkan when = 1 }
+		command = { type = secedeprovince which = -1 value = 348 }
+		command = { type = secedeprovince which = -1 value = 1371 }
+		command = { type = secederegion which = -1 value = "West Africa" when = 1 }
+		command = { type = secederegion which = -1 value = "Morocco" when = 1 }
+		command = { type = secederegion which = -1 value = "Algeria" when = 1 }
+		command = { type = secederegion which = -1 value = "Sahara" when = 1 }
+		command = { type = secederegion which = -1 value = "Libya" when = 1 }
+		command = { type = secederegion which = -1 value = "Tunisia" when = 1 }
+		command = { type = secederegion which = -1 value = "Middle East" when = 1 }
+		command = { type = secederegion which = -1 value = "Madagascar" when = 1 }
+		command = { type = secederegion which = -1 value = "Egypt" when = 1 }
+		command = { type = secederegion which = -1 value = "Sudan" when = 1 }
+		command = { type = secederegion which = -1 value = "Ethiopia" when = 1 }
+		command = { type = secederegion which = -1 value = "Horn of Africa" when = 1 }
+		command = { type = secederegion which = -1 value = "American Pacific" when = 1 }
+		command = { type = secederegion which = -1 value = "Asian Pacific" when = 1 }
+		command = { type = secederegion which = -1 value = "North Solomon Islands" when = 1 }
+	}
+}

@@ -1,0 +1,659 @@
+# ============================================================================
+# File: events/Minors/SAU.txt (18 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [215006] SAU | 1919 | First Nejd-Hejaz War (Primera Guerra Néyed-Hiyaz)
+# Trigger event 215007 in events/Minors/SAU.txt
+# Trigger event 215014 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215006
+	country = SAU
+	save_date = yes
+	date = { day = 1 month = 1 year = 1919 }
+	offset = 3
+	deathdate = { day = 1 month = january year = 1936 }
+	name = "EVT_SAU_215006_NAME"
+	desc = "EVT_SHARED_01065_DESC"
+	style = 2
+	trigger = {
+		atwar = no
+		not = {
+			or = {
+				ispuppet = U50
+				alliance = { country = U50 country = ENG }
+			}
+		}
+	}
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 100
+		command = { type = war which = U50	}
+	}
+	action = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 0
+		command = { type = relation which = U50 value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215007] SAU | 1919 | First Nejd-Hejaz War (Primera Guerra Néyed-Hiyaz)
+# Triggered by event 215006 in events/Minors/SAU.txt
+# Trigger event 215008 in events/Minors/SAU.txt
+# Trigger event 215014 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215007
+	country = SAU
+	save_date = yes
+	date = { day = 1 month = 1 year = 1919 }
+	offset = 10
+	deathdate = { day = 1 month = january year = 1936 }
+	trigger = {
+		event = { id = 215006 days = 60 }
+		or = {
+			random = 15
+			and = {
+				not = { exists = U50 }
+				control = { province = 1048 data = SAU }
+				control = { province = 1049 data = SAU }
+			}
+		}
+	}
+	name = "EVT_SAU_215007_NAME"
+	desc = "EVT_SHARED_01065_DESC"
+	style = 2
+	action = {
+		name = "EVT_SAU_215007_A"
+		trigger = { exists = U50 }
+		command = { type = dissent value = 2 }
+	}
+	action = {
+		name = "EVT_SHARED_01066_A"
+		trigger = {
+			not = { exists = U50 }
+			control = { province = 1048 data = SAU }
+			control = { province = 1049 data = SAU }
+		}
+		command = { type = dissent value = -5 }
+		command = { type = secedeprovince which = SAU when = 2 value = 1048 }
+		command = { type = secedeprovince which = SAU when = 2 value = 1049 }
+		command = { type = sleepevent which = 215014 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215008] SAU | 1919 | Nejd-Hejaz War Status (Estatus de la contienda)
+# Triggered by event 215007 in events/Minors/SAU.txt
+# Triggered by event 215014 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215008
+	country = SAU
+	persistent = yes
+	date = { day = 1 month = 1 year = 1919 }
+	offset = 15
+	deathdate = { day = 1 month = january year = 1936 }
+	trigger = {
+		event = { id = 215007 days = 120 }
+		or = {
+			random = 10
+			and = {
+				not = { exists = U50 }
+				control = { province = 1048 data = SAU }
+				control = { province = 1049 data = SAU }
+			}
+		}
+		not = { event = 215014 }
+	}
+	name = "EVT_SAU_215008_NAME"
+	desc = "EVT_SHARED_01065_DESC"
+	style = 2
+	action = {
+		name = EVT_SAU_215008_A
+		ai_chance = 30
+		command = { type = dissent value = 2 }
+		command = { type = peace which = U50 value = 0 }
+		command = { type = sleepevent which = 215008 }
+	}
+	action = {
+		trigger = {
+			not = { dissent = 25 }
+		}
+		name = "EVT_SAU_215008_B"
+		trigger = { not = { lost_national = { value = 20 } } exists = U50 }
+		ai_chance = 70
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		trigger = {
+			not = { exists = U50 }
+			control = { province = 1048 data = SAU }
+			control = { province = 1049 data = SAU }
+		}
+		name = "EVT_SHARED_01066_A"
+		command = { type = dissent value = -1 }
+		command = { type = sleepevent which = 215008 }
+		command = { type = sleepevent which = 215014 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215011] SAU | 1921 | 1922 Treaty of Uqair (Tratado de Uqair (1922))
+# Triggered by event 215010 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215011
+	country = SAU
+	name = "EVT_SAU_215011_NAME"
+	desc = "EVT_SAU_215011_DESC"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = removeclaim which = 1004 }
+		command = { type = removeclaim which = 1005 }
+		command = { type = removeclaim which = 1006 }
+		command = { type = removeclaim which = 1007 }
+		command = { type = removeclaim which = 1008 }
+		command = { type = removeclaim which = 1009 }
+		command = { type = removeclaim which = 1010 }
+		command = { type = removeclaim which = 1011 }
+		command = { type = removeclaim which = 1013 }
+		command = { type = removeclaim which = 1014 }
+		command = { type = removeclaim which = 1015 }
+		command = { type = removeclaim which = 1016 }
+		command = { type = removeclaim which = 1017 }
+		command = { type = removeclaim which = 1018 }
+		command = { type = removeclaim which = 1019 }
+		command = { type = removeclaim which = 1020 }
+		command = { type = removeclaim which = 1021 }
+		command = { type = removeclaim which = 1022 }
+		command = { type = removeclaim which = 1023 }
+		command = { type = removeclaim which = 1024 }
+		command = { type = removecore which = 1024 }
+		command = { type = removeclaim which = 1025 }
+		command = { type = removeclaim which = 1026 }
+		command = { type = removeclaim which = 1027 }
+		command = { type = removeclaim which = 1028 }
+		command = { type = removeclaim which = 1029 }
+		command = { type = removeclaim which = 1030 }
+		command = { type = removeclaim which = 1031 }
+		command = { type = removeclaim which = 1032 }
+		command = { type = removeclaim which = 1033 }
+		command = { type = removeclaim which = 1034 }
+		command = { type = removeclaim which = 1035 }
+		command = { type = removeclaim which = 1036 }
+		command = { type = removeclaim which = 1037 }
+		command = { type = removecore which = 1038 }
+		command = { type = removecore which = 1039 }
+		command = { type = removeclaim which = 1041 }
+		command = { type = removecore which = 1043 }
+		command = { type = removeclaim which = 1089 }
+		command = { type = removeclaim which = 1172 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215013] SAU | 1921 | Supplies from Britain (Suministros británicos)
+# Triggered by event 231038 in events/ENG/ENG_14-25.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215013
+	country = SAU
+	name = "EVT_SAU_215013_NAME"
+	desc = "EVT_SAU_215013_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = dissent value = -2 }
+		command = { type = supplies value = 1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215009] SAU | 1921 | Kuwait-Nejd Border War (Guerra Kuwait-Néyed)
+# Trigger event 143400 in events/ENG/ENG_14-25.txt
+# Trigger event 215010 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215009
+	country = SAU
+	save_date = yes
+	date = { day = 1 month = 7 year = 1921 }
+	offset = 1
+	deathdate = { day = 1 month = january year = 1936 }
+	name = "EVT_SAU_215009_NAME"
+	desc = "EVT_SAU_215009_DESC"
+	style = 2
+	trigger = {
+		exists = U91
+		atwar = no
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 100
+		command = { type = war which = U91	}
+		command = { type = trigger which = 143400 }
+	}
+	action = {
+		name = "EVT_SAU_215009_A"
+		ai_chance = 0
+		command = { type = relation which = U91 value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215010] SAU | 1921 | End of Nejd-Hejaz War (Fin de las hostilidades)
+# Triggered by event 159080 in events/Minors/HUN_14-38.txt
+# Triggered by event 215009 in events/Minors/SAU.txt
+# Trigger event 215011 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215010
+	country = SAU
+	date = { day = 1 month = 7 year = 1921 }
+	offset = 10
+	deathdate = { day = 1 month = january year = 1936 }
+	name = "EVT_SAU_215010_NAME"
+	desc = "EVT_SAU_215010_DESC"
+	style = 2
+	trigger = {
+		event = { id = 215009 days = 15 }
+		random = 10
+		or = {
+			war = { country = ENG country = SAU }
+			war = { country = U91 country = SAU }
+		}
+	}
+	action = {
+		trigger = {
+			war = { country = SAU country = ENG }
+			not = { control = { province = SAU data = 1041 } }
+			not = { lost_national = { value = 20 } }
+		}
+		name = "EVT_SAU_215010_A"
+		ai_chance = 100
+		command = { type = peace which = U91 value = 0 }
+		command = { type = peace which = ENG value = 0 }
+		command = { type = event which = 215011 where = SAU when = 400}
+	}
+	action = {
+		trigger = {
+			war = { country = SAU country = ENG }
+			control = { province = SAU data = 1041 }
+			lost_national = { value = 20 }
+		}
+		name = "ACTION_NAME_WITHDRAW"
+		ai_chance = 100
+		command = { trigger = { exists = U91 } type = peace which = U91 value = 0 }
+		command = { type = peace which = ENG value = 0 }
+		command = { type = event which = 215011 where = SAU when = 400}
+		command = { trigger = { not = { exists = U91 } }	type = independence which = U91 value = 1 when = 1 }
+		command = { trigger = { exists = U91 } type =	secedeprovince which = U91 value = 1041 }
+	}
+	action = {
+		trigger = {
+			war = { country = SAU country = ENG }
+			control = { province = SAU data = 1041 }
+			not = { lost_national = { value = 20 } }
+		}
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { trigger = { exists = U91 } type = peace which = U91 value = 0 }
+		command = { type = peace which = ENG value = 0 }
+	}
+	action = {
+		trigger = {
+			not = { war = { country = SAU country = ENG } }
+		}
+		name = "EVT_SAU_215010_B"
+		ai_chance = 100
+		command = { trigger = { exists = U91 } type = inherit which = U91 value = 0 }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215012] SAU | 1921 | The Conquest of Ha'il (La conquista de Haíl)
+# Trigger event 231038 in events/ENG/ENG_14-25.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215012
+	country = SAU
+	date = { day = 1 month = 10 year = 1921 }
+	offset = 30
+	deathdate = { day = 1 month = january year = 1936 }
+	name = "EVT_SAU_215012_NAME"
+	desc = "EVT_SAU_215012_DESC"
+	style = 2
+	trigger = {
+		exists = U52
+		atwar = no
+		not = {
+			or = {
+				ispuppet = U52
+				alliance = { country = U52 country =	ENG }
+			}
+		}
+	}
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 100
+		command = { type = war which = U52	}
+		command = { type = event which = 231038 where = ENG when = 30}
+	}
+	action = {
+		name = "EVT_SAU_215012_A"
+		ai_chance = 0
+		command = { type = relation which = U52 value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215014] SAU | 1924 | Second Nejd-Hejaz War (Segunda Guerra Néyed-Hiyaz)
+# Triggered by event 215006 in events/Minors/SAU.txt
+# Triggered by event 215007 in events/Minors/SAU.txt
+# Trigger event 215008 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215014
+	country = SAU
+	date = { day = 1 month = 1 year = 1924 }
+	offset = 30
+	deathdate = { day = 1 month = january year = 1936 }
+	name = "EVT_SAU_215014_NAME"
+	desc = "EVT_SAU_215014_DESC"
+	style = 2
+	trigger = {
+		exists = U50
+		atwar = no
+		not = {
+			or = {
+				ispuppet = U50
+				alliance = { country = U50 country = ENG }
+			}
+			and = {
+				control = { province = 1048 data = SAU }
+				control = { province = 1049 data = SAU }
+			}
+		}
+		event = { id = 215006 days = 360 }
+		or = {
+			not = { event = 215007 }
+			event = { id = 215007 days = 180 }
+		}
+	}
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 100
+		command = { type = 	war which = U50	}
+	}
+	action = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 0
+		command = { type = relation which = U50 value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215015] SAU | 1925 | Annexation of Hejaz (Anexión del Hiyaz)
+# Trigger event 215016 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215015
+	country = SAU
+	date = { day = 1 month = 11 year = 1925 }
+	offset = 30
+	deathdate = { day = 1 month = 1 year = 1933 }
+	name = "EVT_SAU_215015_NAME"
+	desc = "EVT_SAU_215015_DESC"
+	style = 2
+	trigger = {
+		atwar = no
+		not = {
+			exists = U50
+		}
+		control = { province = 1048 data = SAU }
+		control = { province = 1049 data = SAU }
+	}
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = name where = SAU which = Kingdom_of_Nejd_and_Hejaz }
+		command = { type = local_setflag which = U50_Incorporated }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215016] SAU | 1932 | Kingdom of Saudi Arabia (Reino de Arabia Saudita)
+# Triggered by event 215015 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215016
+	country = SAU
+	date = { day = 22 month = 8 year = 1932 }
+	offset = 15
+	deathdate = { day = 1 month = 1 year = 1936 }
+	name = "EVT_SAU_215016_NAME"
+	desc = "EVT_SAU_215016_DESC"
+	style = 2
+	trigger = {
+		event = 215015
+		not = { exists = U52 }
+		not = { exists = U50 }
+		control = { province = 1048 data = SAU }
+		control = { province = 1049 data = SAU }
+		control = { province = 1044 data = SAU }
+		control = { province = 1046 data = SAU }
+		atwar = no
+	}
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = name where = SAU which = ""	}
+		command = { type = flag_ext where = SAU which = "" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215000] SAU | 1933 | Aramco locates drill site in Saudi Arabia (Aramco localiza pozo de perforación en Arabia Saudí)
+# Triggered by event 316022 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215000
+	random = no
+	country = SAU
+	name = "EVT_SHARED_00187_NAME"
+	desc = "EVT_SHARED_00187_DESC"
+	style = 2
+	picture = "GLOBAL/aramco"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_prov_resource which = 1040 value = 3 where = oil }
+		command = { type = add_prov_resource which = 1047 value = 2 where = oil }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215001] SAU | 1933 | The Quincy Agreement (El Acuerdo del USS Quincy)
+# Triggered by event 329056 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215001
+	random = no
+	country = SAU
+	name = "EVT_SHARED_00188_NAME"
+	desc = "EVT_SHARED_00188_DESC"
+	style = 2
+	picture = "GLOBAL/quincy_agreement"
+	action = {
+		name = ACTION_NAME_OK
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215017] SAU | 1934 | Saudi-Yemeni War (Guerra saudí-yemení)
+# Trigger event 322008 in events/Minors/YEM.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215017
+	country = SAU
+	date = { day = 19 month = 2 year = 1934 }
+	offset = 5
+	deathdate = { day = 1 month = 1 year = 1935 }
+	name = "EVT_SAU_215017_NAME"
+	desc = "EVT_SAU_215017_DESC"
+	style = 2
+	trigger = {
+		exists = YEM
+		atwar = no
+		not = {
+			or = {
+				ispuppet = YEM
+				alliance = { country = YEM country = ENG }
+			}
+		}
+	}
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 100
+		command = { type = war which = YEM	}
+		command = { type = event which = 322008 where = YEM when = 120 }
+	}
+	action = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 0
+		command = { type = relation which = YEM value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215004] SAU | 1953 | Death of King Abdulaziz (Muerte del rey Ibn Saud)
+# ----------------------------------------------------------------------------
+event = {
+	id = 215004
+	country = SAU
+	name = EVT_SAU_215004_NAME
+	desc = EVT_SAU_215004_DESC
+	picture = "nwo/death"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 295001 }
+		command = { type = sleepminister which = 295044 }
+		command = { type = sleepminister which = 295045 }
+		command = { type = sleepminister which = 295046 }
+		command = { type = sleepminister which = 295048 }
+		command = { type = sleepminister which = 295049 }
+		command = { type = sleepminister which = 295050 }
+		command = { type = sleepminister which = 295051 }
+		command = { type = sleepminister which = 295052 }
+		command = { type = headofstate which = 295100 }
+		command = { type = headofgovernment which = 295101 }
+		command = { type = foreignminister which = 295014 }
+		command = { type = armamentminister which = 295020 }
+		command = { type = ministerofsecurity which = 295025 }
+		command = { type = ministerofintelligence which = 295029 }
+		command = { type = chiefofstaff which = 295034 }
+		command = { type = chiefofarmy which = 295037 }
+		command = { type = chiefofnavy which = 295039 }
+		command = { type = chiefofair which = 295043 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215005] SAU | 1960 | Saud's handling of economy (La gestión de la economía por parte de Saud)
+# ----------------------------------------------------------------------------
+event = {
+	id = 215005
+	country = SAU
+	name = EVT_SAU_215005_NAME
+	desc = LOST_DESC
+	picture = "nwo/king_saud"
+	style = 1
+	trigger = {
+		headofstate = 295100
+	}
+	date = { day = 1 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215003] SAU | 1990 | Victory in the Gulf War (Victoria en la Guerra del Golfo)
+# Triggered by event 316228 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215003
+	country = SAU
+	name = EVT_SAU_215003_NAME
+	desc = EVT_SAU_215003_DESC
+	picture = "nwo/desert_storm"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = leave_alliance }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [215002] SAU | 1991 | Operation Desert Storm (Operación Tormenta del Desierto)
+# Triggered by event 316227 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 215002
+	country = SAU
+	name = EVT_SAU_215002_NAME
+	desc = EVT_SAU_215002_DESC
+	picture = "nwo/desert_storm"
+	style = 1
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 95
+		command = { type = war which = IRQ }
+		command = { type = alliance which = USA }
+		command = { type = relation which = USA value = 150 }
+		command = { type = money value = -15000 }
+		command = { type = construct which = land_fort where = 1046 value = 3 }
+		command = { type = construct which = land_fort where = 1040 value = 3 }
+		command = { type = add_corps where = 1046 }
+		command = { type = add_division value = motorized when = 12 }
+		command = { type = add_division value = motorized when = 12 }
+		command = { type = add_division value = motorized when = 12 }
+		command = { type = add_division value = mechanized when = 9 }
+		command = { type = add_division value = mechanized when = 9 }
+		command = { type = add_division value = armor when = 11 }
+		command = { type = add_corps where = 1040 }
+		command = { type = add_division value = motorized when = 12 }
+		command = { type = add_division value = motorized when = 12 }
+		command = { type = add_division value = motorized when = 12 }
+		command = { type = add_division value = mechanized when = 9 }
+		command = { type = add_division value = mechanized when = 9 }
+		command = { type = add_division value = armor when = 11 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = relation which = USA value = -100 }
+	}
+}

@@ -1,0 +1,131 @@
+# ============================================================================
+# File: events/Minors/U67.txt (4 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [282001] U67 | 1914 | The Zhili-Anhui War (La Guerra Zhili-Anhui)
+# Triggered by event 309036 in events/Minors/UCH.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 282001
+	random = no
+	country = U67
+	name = EVT_SHARED_00043_NAME
+	desc = EVT_SHARED_00043_DESC
+	picture = "GLOBAL/ccip_beiyangarmy"
+	style = 2
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = U36 value = 1 }
+		command = { type = peace which = UCH value = 1 }
+		command = { trigger = { ai = yes } type = ai which = "switch/U67_1914ZhiliWar.ai" }
+		command = { type = end_access which = UCH }
+		command = { type = non_aggression which = U67 where = U36 }
+		command = { type = non_aggression which = U67 where = CHI }
+		command = { type = non_aggression which = U67 where = UCH }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [282002] U67 | 1914 | Fengtian Entry into the Zhili-Anhui War (Fengtian entra en la Guerra Zhili-Anhui)
+# Triggered by event 271012 in events/Minors/U36.txt
+# Triggered by event 309038 in events/Minors/UCH.txt
+# Trigger event 309039 in events/Minors/UCH.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 282002
+	random = no
+	country = U67
+	name = EVT_SHARED_00045_NAME
+	desc = EVT_U67_282002_DESC
+	picture = "GLOBAL/ccip_beiyangarmy"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = { event = 309038 }
+			}
+		}
+		name = ACTION_NAME_WAR
+		ai_chance = 90
+		command = { type = trigger which = 309039 }
+		command = { type = alliance which = U36 when = 1 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 10
+		command = { type = relation which = UCH value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [282000] U67 | 1916 | Rough Draft of the National Salvation Allied Army (Pacto del Ejército Aliado de Salvación Nacional)
+# Triggered by event 271005 in events/Minors/U36_Decisions.txt
+# Trigger event 271008 in events/Minors/U36_Decisions.txt
+# Trigger event 271010 in events/Minors/U36_Decisions.txt
+# Trigger event 309034 in events/Minors/UCH.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 282000
+	random = no
+	country = U67
+	name = EVT_U67_282000_NAME
+	desc = EVT_U67_282000_DESC
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 95
+		command = { type = relation which = U36 value = 100 }
+		command = { type = relation which = UCH value = -200 }
+	}
+	action = {
+		name = ACTION_NAME_DONT_SIGN
+		ai_chance = 5
+		command = { type = relation which = U36 value = -250 }
+		command = { type = relation which = UCH value = 250 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [271014] U67 | 1917 | Fengtian Clique Surrenders! (¡La camarilla de Fengtian capitula!)
+# Triggered by event 309036 in events/Minors/UCH.txt
+# Triggered by event 309039 in events/Minors/UCH.txt
+# Triggered by event 271013 in events/Minors/U36.txt
+# Trigger event 271013 in events/Minors/U36.txt
+# Trigger event 309042 in events/Minors/UCH.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 271014
+	random = no
+	country = U67
+	trigger = {
+		lost_national = { country = U67 value = 15 }
+		or = {
+			control = { province = 1237 data = UCH }
+			control = { province = 1235 data = UCH }
+			control = { province = 1216 data = UCH }
+			control = { province = 1209 data = UCH }
+		}
+		war = { country = U67 country = UCH }
+		event = 309036
+		event = 309039
+		not = { event = 271013 }
+		random = 35
+	}
+	name = EVT_U67_271014_NAME
+	desc = EVT_SHARED_00047_DESC
+	picture = "GLOBAL/ccip_cw"
+	style = 2
+	date = { day = 0 month = 1 year = 1917 }
+	offset = 5
+	deathdate = { day = 1 month = 1 year = 1924 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = UCH value = 1 }
+	}
+}

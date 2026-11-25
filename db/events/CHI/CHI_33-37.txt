@@ -1,0 +1,2224 @@
+# ============================================================================
+# File: events/CHI/CHI_33-37.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [124150] CHI | 1933 | Shanghai Incident (Incidente de Shanghai)
+# Triggered by event 167149 in events/JAP/JAP_Decisions.txt
+# Trigger event 167125 in events/JAP/JAP_00-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124150
+	random = no
+	country = CHI
+	name = EVT_SHARED_00181_NAME
+	desc = EVT_CHI_124150_DESC
+	picture = "GLOBAL/ccip_shanghai"
+	style = 2
+	action = {
+		name = ACTION_NAME_FIGHT
+		command = { type = trigger which = 167125 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124244] CHI | 1933 | Tanggu Truce (Tregua de Tanggu)
+# Triggered by event 167305 in events/JAP/JAP_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124244
+	random = no
+	country = CHI
+	name = "EVT_SHARED_01162_NAME"
+	desc = "EVT_SHARED_01162_DESC"
+	style = 2
+	picture = "GLOBAL/jap_23"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = peace which = JAP value = 0 }
+		command = { type = relation which = JAP value = 5 }
+		command = { type = relation which = USA value = 5 }
+		command = { type = relation which = ENG value = 5 }
+		command = { type = relation which = SOV value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124247] CHI | 1933 | Battle of Jehol (Batalla de Rehe)
+# Triggered by event 167367 in events/JAP/JAP_00-33.txt
+# Trigger event 167305 in events/JAP/JAP_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124247
+	random = no
+	country = CHI
+	name = "EVT_SHARED_01176_NAME"
+	desc = "EVT_SHARED_01176_DESC"
+	style = 2
+	picture = "GLOBAL/the_fall_of_wake_island"
+	action_a = {
+	name = ACTION_NAME_OK
+	command = { type = secedeprovince which = JAP value = 1240 }
+	command = { type = secedeprovince which = JAP value = 1246 }
+	command = { type = secedeprovince which = JAP value = 1236 }
+	command = { type = secedeprovince which = JAP value = 1245 }
+	command = { type = secedeprovince which = JAP value = 1235 }
+	command = { type = secedeprovince which = JAP value = 1216 }
+	command = { type = relation which = JAP value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124153] CHI | 1933 | Army Recovers (Recuperación del ejército)
+# Triggered by event 124152 in events/CHI/CHI_33-37.txt
+# Triggered by event 124000 in events/CHI/CHI_33-37.txt
+# Triggered by event 167126 in events/JAP/JAP_00-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124153
+	random = no
+	country = CHI
+	trigger = {
+		or = {
+			random = 2
+			and = {
+				random = 3
+				event = 124000
+			}
+			and = {
+				random = 2
+				not = { lost_national = { value = 40 } }
+			}
+			and = {
+				random = 3
+				event = { id = 167126 days = 180 }
+			}
+			and = {
+				ai = yes
+				not = { ai = JAP }
+				random = 15
+			}
+			and = {
+				ai = yes
+				lost_national = { value = 40 }
+				random = 10
+			}
+			and = {
+				ai = yes
+				lost_national = { value = 20 }
+				not = { ai = JAP }
+				random = 30
+			}
+			event = { id = 167126 days = 360 }
+		}
+		event = { id = 167126 days = 30 }
+	}
+	picture = "GLOBAL/ccip_gmd"
+	style = 2
+	name = EVT_CHI_124153_NAME
+	desc = EVT_CHI_124153_DESC
+	date = { day = 2 month = january year = 1933 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { trigger = { local_flag = 1330110082 } type = morale which = land value = 10 }
+		command = { trigger = { local_flag = 1330110083 } type = morale which = land value = 10 }
+		command = { trigger = { local_flag = 1330110082 } type = max_organization which = land value = 15 }
+		command = { trigger = { local_flag = 1330110083 } type = max_organization which = land value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124243] CHI | 1933 | The Invasion of Jehol Province (La Invasión de la Provincia de Jehol)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124243
+	random = no
+	country = CHI
+	trigger = {
+            exists = MAN
+            }
+	date = { day = 21 month = february year = 1933 }
+	offset = 1
+	deathdate = { day = 23 month = february year = 1933 }
+	name = "EVT_SHARED_01150_NAME"
+	desc = "EVT_SHARED_01150_DESC"
+	style = 2
+	picture = "GLOBAL/the_invasion_of_jehol_province"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = JAP value = -10 }
+		command = { type = manpowerpool value = -1 }
+		command = { type = add_leader_skill which = 50083 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124141] CHI | 1933 | Reaction to Xinjiang Invasion (Reacción a la intervención en Sinkiang)
+# Trigger event 223191 in events/SOV/SOV_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124141
+	country = CHI
+	random = no
+	trigger = {
+		flag = 2181003
+		not = { exists = UPE }
+		or = {
+			puppet = { country = SIK country = SOV }
+			and = {
+				not = { exists = SIK }
+				area = { area = "Xinjiang" country = SOV data = 1 value = 80 }
+			}
+		}
+	}
+	picture = "GLOBAL/ccip_gmd"
+	style = 2
+	date = { day = 0 month = 6 year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1936 }
+	name = EVT_CHI_124141_NAME
+	desc = EVT_CHI_124141_DESC
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 65
+		command = { type = trigger which = 223191 }
+        command = { type = dissent value = -5 }
+        command = { type = relation which = SOV value = -10 }
+		command = { type = clrflag which = 324316 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = { relation = { which = SOV value = 150 } }
+			}
+		}
+		name = ACTION_NAME_PROTEST
+		ai_chance = 0
+		command = { type = relation which = SOV value = -10 }
+		command = { type = sleepevent which = 223191 }
+		command = { type = sleepevent which = 124142 }
+		command = { type = sleepevent which = 223192 }
+		command = { type = sleepevent which = 324319 }
+		command = { type = sleepevent which = 324320 }
+		command = { type = sleepevent which = 324318 }
+		command = { type = sleepevent which = 123019 }
+		command = { type = sleepevent which = 124143 }
+		command = { type = sleepevent which = 124144 }
+		command = { type = sleepevent which = 124145 }
+		command = { type = sleepevent which = 124146 }
+		command = { type = sleepevent which = 124147 }
+		command = { type = clrflag which = 324316 }
+	}
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = { relation = { which = SOV value = 150 } }
+			}
+		}
+		name = EVT_SHARED_00150_A
+		ai_chance = 0
+		command = { type = relation which = SOV value = 20 }
+		command = { type = dissent value = 5 }
+		command = { type = sleepevent which = 223191 }
+		command = { type = sleepevent which = 124142 }
+		command = { type = sleepevent which = 223192 }
+		command = { type = sleepevent which = 324319 }
+		command = { type = sleepevent which = 324320 }
+		command = { type = sleepevent which = 324318 }
+		command = { type = sleepevent which = 123019 }
+		command = { type = sleepevent which = 124143 }
+		command = { type = sleepevent which = 124144 }
+		command = { type = sleepevent which = 124145 }
+		command = { type = sleepevent which = 124146 }
+		command = { type = sleepevent which = 124147 }
+		command = { type = clrflag which = 324316 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124248] CHI | 1934 | Togo Heihachiro state funeral (Funeral de Estado de Togo Heihachiro)
+# Triggered by event 167368 in events/JAP/JAP_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124248
+	random = no
+	country = CHI
+	name = "EVT_SHARED_01177_NAME"
+	desc = "EVT_SHARED_01177_DESC"
+	style = 2
+	picture = "GLOBAL/jap_69"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = dissent value = 1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [124129] CHI | 1935 | The He-Umezu Agreement (El Acuerdo He-Umezu)
+# Triggered by event 124128 in events/CHI/CHI_33-37.txt
+# Trigger event 324313 in events/GLOBAL/MULTI_32-39.txt
+# Trigger event 167121 in events/JAP/JAP_33-36.txt
+# Trigger event 124130 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124129
+	country = CHI
+	trigger = {
+		NOT = {
+			war = { country = JAP country = CHI }
+		}
+        exists = U74
+        event = 124128
+	}
+	name = EVT_SHARED_00160_NAME
+	desc = EVT_SHARED_00160_DESC
+	picture = "GLOBAL/ccip_mukden"
+    style = 2
+	date = { day = 0 month = may year = 1935 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	action = {
+		name = ACTION_NAME_DAMN
+		ai_chance = 100
+		command = { type = dissent value = 5 }
+		command = { type = event which = 324313 where = JAP when = 0 }
+	}
+	action = {
+        trigger = {
+            or = {
+                ai = no
+                and = {
+                    atwar = no
+                    ic = 120
+                }
+            }
+        }
+        ai_chance = 0
+		name = ACTION_NAME_FIGHT
+		command = { type = trigger which = 167121 }
+		command = { type = unlock_division which = 22000 value = 18 }
+		command = { type = unlock_division which = 22000 value = 19 }
+		command = { type = unlock_division which = 22000 value = 20 }
+		command = { type = unlock_division which = 22000 value = 21 }
+		command = { type = unlock_division which = 22000 value = 22 }
+		command = { type = unlock_division which = 22000 value = 23 }
+		command = { type = unlock_division which = 22000 value = 24 }
+		command = { type = unlock_division which = 22000 value = 25 }
+		command = { type = unlock_division which = 22000 value = 26 }
+		command = { type = unlock_division which = 22000 value = 28 }
+		command = { type = unlock_division which = 22000 value = 29 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124130] CHI | 1935 | The Chin-Doihara Agreement (El Acuerdo Chin-Doihara)
+# Triggered by event 124129 in events/CHI/CHI_33-37.txt
+# Trigger event 167122 in events/JAP/JAP_33-36.txt
+# Trigger event 131001 in events/Minors/CSX.txt
+# Trigger event 167123 in events/JAP/JAP_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124130
+	country = CHI
+	trigger = {
+		NOT = {
+			war = { country = JAP country = CHI }
+		}
+        event = 124129
+	}
+	name = EVT_SHARED_00161_NAME
+	desc = EVT_SHARED_00161_DESC
+	picture = "GLOBAL/ccip_mukden"
+    style = 2
+	date = { day = 0 month = june year = 1935 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	action = {
+		name = ACTION_NAME_DAMN
+		ai_chance = 80
+		command = { type = dissent value = 1 }
+		command = { type = trigger which = 167122 }
+		command = { type = trigger which = 131001 }
+        command = { type = secedeprovince which = JAP value = 1240 when = 2 }
+	}
+	action = {
+        trigger = {
+            or = {
+                ai = no
+                and = {
+                    atwar = no
+                    ic = 120
+                }
+            }
+        }
+        ai_chance = 20
+		name = ACTION_NAME_FIGHT
+		command = { type = trigger which = 167123 }
+		command = { type = unlock_division which = 22000 value = 18 }
+		command = { type = unlock_division which = 22000 value = 19 }
+		command = { type = unlock_division which = 22000 value = 20 }
+		command = { type = unlock_division which = 22000 value = 21 }
+		command = { type = unlock_division which = 22000 value = 22 }
+		command = { type = unlock_division which = 22000 value = 23 }
+		command = { type = unlock_division which = 22000 value = 24 }
+		command = { type = unlock_division which = 22000 value = 25 }
+		command = { type = unlock_division which = 22000 value = 26 }
+		command = { type = unlock_division which = 22000 value = 28 }
+		command = { type = unlock_division which = 22000 value = 29 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124242] CHI | 1935 | The East Hebei Autonomous Anti-Communist Council (El Consejo Autónomo Anticomunista de Hebei Oriental)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124242
+	random = no
+	country = CHI
+	trigger = {
+			exists = JAP
+			}
+	date = { day = 24 month = november year = 1935 }
+	offset = 1
+	deathdate = { day = 26 month = november year = 1935 }
+	name = "EVT_SHARED_01148_NAME"
+	desc = "EVT_SHARED_01148_DESC"
+	style = 2
+	picture = "GLOBAL/the_east_hebei_autonomous_anti_communist"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		command = { type = relation which = JAP value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124012] CHI | 1935 | Head of Government Changes (Cambios en la Jefatura de Gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124012
+	random = no
+	country = CHI
+	style = 2
+	trigger = {
+		headofgovernment = 55020
+		NOT = { government = communist }
+	}
+	name = "EVT_SHARED_00049_NAME"
+	desc = "EVT_SHARED_00502_DESC"
+       date = { day = 0 month = december year = 1935 }
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofgovernment which = 55324 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [124000] CHI | 1936 | Fall of Nanjing (Caída de Nankín)
+# Triggered by event 329320 in events/JAP/JAP_36-37.txt
+# Trigger event 124153 in events/CHI/CHI_33-37.txt
+# Trigger event 324324 in events/GLOBAL/MULTI_32-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124000
+	random = no
+	country = CHI
+	name = "EVT_CHI_124000_NAME"
+	desc = "EVT_CHI_124000_DESC"
+	style = 2
+	picture = "GLOBAL/ccip_njm"
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { exists = CGX } type = relation which = CGX value = 15 }
+		command = { trigger = { exists = CSX } type = relation which = CSX value = 20 }
+		command = { type = dissent value = -30 }
+		command = { type = capital which = 1299 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124001] CHI | 1936 | Recall of Falkenhausen Mission (Retirada de los asesores alemanes)
+# Triggered by event 124122 in events/CHI/CHI_33-37.txt
+# Triggered by event 150147 in events/GER/GER_36-36.txt
+# Trigger event 124122 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124001
+	random = no
+	country = CHI
+	name = "EVT_CHI_124001_NAME"
+	desc = "EVT_CHI_124001_DESC"
+  	style = 2
+	picture = "GLOBAL/ccip_wjw"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+		command = { type = sleepminister which = 55303 }
+		command = { type = sleepteam which = 55005 when = 1 }
+		command = { type = relation which = GER value = -40 }
+		command = { type = relation which = JAP value = -10 }
+		command = { type = relation which = MAN value = -50 }
+        command = { trigger = { event = 124122 } type = build_cost which = infantry when = on_upgrade where = relative value = 20 }
+        command = { trigger = { event = 124122 } type = build_cost which = artillery when = on_upgrade where = relative value = 20 }
+        command = { trigger = { event = 124122 } type = build_cost which = armored_Car when = on_upgrade where = relative value = 20 }
+		command = { type = end_trades which = CHI where = GER }
+        }
+	}
+
+# ----------------------------------------------------------------------------
+# [124002] CHI | 1936 | Relocate Industry: Guangzhou (Evacuar industria: Cantón)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124002
+	random = no
+	country = CHI
+	name = EVT_CHI_124002_NAME
+	desc = EVT_SHARED_00492_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = yes
+		local_flag = CHIIndustry
+		control = { province = 1369 data = CHI }
+		control = { province = 1297 data = CHI }
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = CHIIndustry }
+        command = { type = construct which = ic where = 1369 value = -3 }
+        command = { type = construct which = ic where = 1299 value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124003] CHI | 1936 | Relocate Industry: Taiyuan (Evacuar industria: Taiyuan)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124003
+	random = no
+	country = CHI
+	name = EVT_CHI_124003_NAME
+	desc = EVT_SHARED_00492_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = yes
+		local_flag = CHIIndustry
+		control = { province = 1252 data = CHI }
+		control = { province = 1264 data = CHI }
+		OR = {
+			NOT = { control = { province = 1251 data = CHI } }
+			NOT = { control = { province = 1242 data = CHI } }
+			NOT = { control = { province = 1254 data = CHI } }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = CHIIndustry }
+        command = { type = construct which = ic where = 1252 value = -1 }
+        command = { type = construct which = ic where = 1264 value = 1 }
+		command = { type = construct which = infrastructure where = 1264 value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124004] CHI | 1936 | Relocate Industry: Nanking (Evacuar industria: Nankín)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124004
+	random = no
+	country = CHI
+	name = EVT_CHI_124004_NAME
+	desc = EVT_SHARED_00492_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = yes
+		local_flag = CHIIndustry
+		control = { province = 1337 data = CHI }
+		control = { province = 1345 data = CHI }
+		control = { province = 1297 data = CHI }
+		control = { province = 1307 data = CHI }
+		OR = {
+			NOT = { control = { province = 1338 data = CHI } }
+			NOT = { control = { province = 1346 data = CHI } }
+			NOT = { control = { province = 1348 data = CHI } }
+			NOT = { control = { province = 1336 data = CHI } }
+			NOT = { control = { province = 1340 data = CHI } }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = CHIIndustry }
+        command = { type = construct which = ic where = 1337 value = -3 }
+		command = { type = construct which = ic where = 1345 value = -1 }
+        command = { type = construct which = ic where = 1299 value = 3 }
+		command = { type = construct which = ic where = 1307 value = 1 }
+		command = { type = construct which = infrastructure where = 1307 value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124005] CHI | 1936 | Relocate Industry: Jinan (Evacuar industria: Jinan)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124005
+	random = no
+	country = CHI
+	name = EVT_CHI_124005_NAME
+	desc = EVT_SHARED_00492_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = yes
+		local_flag = CHIIndustry
+		control = { province = 1330 data = CHI }
+		control = { province = 1297 data = CHI }
+		OR = {
+			NOT = { control = { province = 1249 data = CHI } }
+			NOT = { control = { province = 1331 data = CHI } }
+			NOT = { control = { province = 1332 data = CHI } }
+			NOT = { control = { province = 1339 data = CHI } }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = CHIIndustry }
+        command = { type = construct which = ic where = 1330 value = -1 }
+        command = { type = construct which = ic where = 1297 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124006] CHI | 1936 | Relocate Industry: Zhengzhou (Evacuar industria: Zhengzhou)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124006
+	random = no
+	country = CHI
+	name = EVT_CHI_124006_NAME
+	desc = EVT_SHARED_00492_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = yes
+		local_flag = CHIIndustry
+		control = { province = 1324 data = CHI }
+		control = { province = 1297 data = CHI }
+		OR = {
+			NOT = { control = { province = 1341 data = CHI } }
+			NOT = { control = { province = 1319 data = CHI } }
+			NOT = { control = { province = 1323 data = CHI } }
+			NOT = { control = { province = 1322 data = CHI } }
+			NOT = { control = { province = 1326 data = CHI } }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = CHIIndustry }
+        command = { type = construct which = ic where = 1356 value = -1 }
+        command = { type = construct which = ic where = 1297 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124008] CHI | 1936 | The Liangguang Incident (El incidente de Liangguang)
+# Triggered by event 329032 in events/Minors/CGX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124008
+	random = no
+	country = CHI
+	name = EVT_SHARED_00493_NAME
+	desc = EVT_SHARED_00493_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = belligerence which = CHI value = 1 }
+		command = { trigger = { dissent = 20 } type = dissent value = 1 }
+		command = { trigger = { dissent = 10 NOT = { dissent = 20 } } type = dissent value = 3 }
+		command = { trigger = { NOT = { dissent = 10 } } type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124018] CHI | 1936 | The China Question: First Proposal (La cuestión china: Primera oferta de paz)
+# Triggered by event 329323 in events/JAP/JAP_Decisions.txt
+# Trigger event 167026 in events/JAP/JAP_36-36.txt
+# Trigger event 167027 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124018
+	random = no
+	country = CHI
+	name = EVT_SHARED_00796_NAME
+	desc = EVT_SHARED_00796_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		trigger = { flag = China_surrender_puppet }
+		ai_chance = 99
+		name = "ACTION_NAME_REFUSE_PEACE"
+		command = { type = trigger which = 167026 }
+	}
+	action = {
+		trigger = { flag = China_surrender_puppet }
+		ai_chance = 1
+		name = "ACTION_NAME_SURRENDER"
+		command = { type = access which = JAP }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = JAP value = 1 }
+		command = { type = strength which = militia when = 0 where = 0 org = 0 value = 0 }
+		command = { trigger = { NOT = { exists = U87 } } type = country which = U87 }
+		command = { trigger = { exists = U87 puppet = {  country = U87 country = JAP } } type = secederegion which = U87 value = "China" when = 1 }
+		command = { type = dissent value = 20 }
+		command = { type = secedeprovince which = JAP value = 1247 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1241 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1328 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1331 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1334 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1343 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1338 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1346 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1345 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1342 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1348 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1358 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1356 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1375 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1370 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1369 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1368 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1383 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1365 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedearea which = MEN value = "Chahar" when = 1 }
+      	command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1268 when = 1 }
+      	command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1269 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1270 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1272 when = 1 }
+		command = { trigger = { NOT ={ exists = MEN } } type = secedearea which = JAP value = "Chahar" when = 1 }
+      	command = { trigger = { NOT ={ exists = MEN } } type = secedeprovince which = JAP value = 1268 when = 1 }
+		command = { trigger = { NOT ={ exists = MEN } } type = secedeprovince which = JAP value = 1269 when = 1 }
+		command = { trigger = { NOT ={ exists = MEN } } type = secedeprovince which = JAP value = 1270 when = 1 }
+		command = { trigger = { NOT ={ exists = MEN } } type = secedeprovince which = JAP value = 1272 when = 1 }
+		command = { type = secedearea which = JAP value = "Heilongjiang" when = 1 }
+      	command = { type = secedearea which = JAP value = "Jilin" when = 1 }
+		command = { type = secedearea which = JAP value = "Liaoning" when = 1 }
+      	command = { type = secedearea which = JAP value = "Rehe" when = 1 }
+		command = { type = secederegion which = JAP value = "Korea" when = 1 }
+		command = { type = secedeprovince which = JAP value = 1219 when = 1 }
+		command = { type = sleepteam which = 55006 }
+		command = { type = sleepteam which = 55005 }
+		command = { type = sleepminister which = 55002 }
+		command = { type = sleepminister which = 55049 }
+		command = { type = sleepminister which = 55304 }
+		command = { type = sleepminister which = 55368 }
+		command = { type = sleepleader which = 50377 }
+		command = { type = relation which = USA value = -100 }
+		command = { trigger = { NOT = { year = 1945 } } type = headofstate which = 1250011 }
+		command = { trigger = { year = 1945 } type = headofstate which = 1250031 }
+		command = { type = headofgovernment which = 1250012 }
+		command = { type = foreignminister which = 1250013 }
+		command = { type = armamentminister which = 1250014 }
+		command = { type = ministerofsecurity which = 1250015 }
+		command = { type = ministerofintelligence which = 1250016 }
+		command = { type = chiefofstaff which = 1250017 }
+		command = { type = chiefofarmy which = 1250018 }
+		command = { type = chiefofnavy which = 1250019 }
+		command = { type = chiefofair which = 1250020 }
+		command = { type = trigger which = 167027 }
+    }
+	action = {
+		trigger = { flag = China_surrender_north }
+		ai_chance = 60
+		name = "ACTION_NAME_REFUSE_PEACE"
+		command = { type = trigger which = 167026 }
+	}
+	action = {
+		trigger = { flag = China_surrender_north }
+        ai_chance = 4
+		name = "ACTION_NAME_SURRENDER"
+		command = { type = dissent value = 5 }
+		command = { type = secedearea which = JAP value = "Hebei" when = 1 }
+		command = { type = secedearea which = JAP value = "Shandong" when = 1 }
+      	command = { type = secedearea which = JAP value = "Jiangsu" when = 1 }
+		command = { type = secedeprovince which = JAP value = 1323 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedearea which = MEN value = "Chahar" when = 1 }
+      	command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1268 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1269 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1270 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1272 when = 1 }
+		command = { type = secedearea which = JAP value = "Heilongjiang" when = 1 }
+      	command = { type = secedearea which = JAP value = "Jilin" when = 1 }
+		command = { type = secedearea which = JAP value = "Liaoning" when = 1 }
+      	command = { type = secedearea which = JAP value = "Rehe" when = 1 }
+		command = { type = secederegion which = JAP value = "Korea" when = 1 }
+		command = { type = secedeprovince which = JAP value = 1219 when = 1 }
+		command = { type = sleepteam which = 55006 }
+		command = { type = sleepteam which = 55005 }
+		command = { type = sleepminister which = 55002 }
+		command = { type = sleepminister which = 55049 }
+		command = { type = sleepminister which = 55304 }
+		command = { type = sleepminister which = 55368 }
+		command = { type = sleepleader which = 50377 }
+		command = { type = relation which = USA value = -30 }
+		command = { type = strength which = militia when = 0 where = 0 org = 0 value = 0 }
+		command = { type = trigger which = 167027 }
+		command = { type = clrflag which = China_surrender_north }
+	}
+	action = {
+		trigger = { flag = China_surrender_coasts }
+		ai_chance = 93
+		name = "ACTION_NAME_REFUSE_PEACE"
+		command = { type = trigger which = 167026 }
+	}
+	action = {
+		trigger = { flag = China_surrender_coasts }
+		ai_chance = 7
+		name = "ACTION_NAME_SURRENDER"
+		command = { type = dissent value = 10 }
+		command = { type = secedearea which = JAP value = "Hebei" when = 1 }
+		command = { type = secedearea which = JAP value = "Shandong" when = 1 }
+		command = { type = secedeprovince which = JAP value = 1323 when = 1 }
+		command = { type = secedearea which = JAP value = "Jiangsu" when = 1 }
+		command = { type = secedearea which = JAP value = "Zhejiang" when = 1 }
+		command = { type = secedearea which = JAP value = "Fujian" when = 1 }
+		command = { type = secedearea which = JAP value = "Guangdong" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedearea which = MEN value = "Chahar" when = 1 }
+      	command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1268 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1269 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1270 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1272 when = 1 }
+		command = { type = secedearea which = JAP value = "Heilongjiang" when = 1 }
+      	command = { type = secedearea which = JAP value = "Jilin" when = 1 }
+		command = { type = secedearea which = JAP value = "Liaoning" when = 1 }
+      	command = { type = secedearea which = JAP value = "Rehe" when = 1 }
+		command = { type = secederegion which = JAP value = "Korea" when = 1 }
+		command = { type = secedeprovince which = JAP value = 1219 when = 1 }
+      	command = { type = sleepteam which = 55006 }
+		command = { type = sleepteam which = 55005 }
+		command = { type = sleepminister which = 55002 }
+		command = { type = sleepminister which = 55049 }
+		command = { type = sleepminister which = 55304 }
+		command = { type = sleepminister which = 55368 }
+		command = { type = sleepleader which = 50377 }
+		command = { type = relation which = USA value = -60 }
+		command = { type = strength which = militia when = 0 where = 0 org = 0 value = 0 }
+		command = { type = trigger which = 167027 }
+		command = { type = clrflag which = China_surrender_coasts }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124019] CHI | 1936 | The China Question: Final Proposal (La cuestión china: Oferta de paz final)
+# Triggered by event 329324 in events/JAP/JAP_Decisions.txt
+# Trigger event 167028 in events/JAP/JAP_36-36.txt
+# Trigger event 167029 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124019
+	random = no
+	country = CHI
+	name = EVT_SHARED_00799_NAME
+	desc = EVT_SHARED_00796_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		trigger = { flag = China_surrender_puppet }
+		ai_chance = 40
+		name = "ACTION_NAME_REFUSE_PEACE"
+		command = { type = trigger which = 167028 }
+		command = { type = clrflag which = China_surrender_puppet }
+	}
+	action = {
+		trigger = { flag = China_surrender_puppet }
+		ai_chance = 60
+		name = "ACTION_NAME_SURRENDER"
+		command = { type = access which = JAP }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = JAP value = 1 }
+		command = { type = strength which = militia when = 0 where = 0 org = 0 value = 0 }
+		command = { trigger = { NOT = { exists = U87 } } type = country which = U87 }
+		command = { trigger = { exists = U87 puppet = {  country = U87 country = JAP } } type = secederegion which = U87 value = "China" when = 1 }
+		command = { type = dissent value = 20 }
+		command = { type = secedeprovince which = JAP value = 1247 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1241 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1328 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1331 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1334 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1343 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1338 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1346 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1345 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1342 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1348 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1358 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1356 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1375 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1370 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1369 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1368 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1383 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1365 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedearea which = MEN value = "Chahar" when = 1 }
+      	command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1268 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1269 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1270 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1272 when = 1 }
+		command = { trigger = { NOT ={ exists = MEN } } type = secedearea which = JAP value = "Chahar" when = 1 }
+      	command = { trigger = { NOT ={ exists = MEN } } type = secedeprovince which = JAP value = 1268 when = 1 }
+      	command = { trigger = { NOT ={ exists = MEN } } type = secedeprovince which = JAP value = 1269 when = 1 }
+		command = { trigger = { NOT ={ exists = MEN } } type = secedeprovince which = JAP value = 1270 when = 1 }
+		command = { trigger = { NOT ={ exists = MEN } } type = secedeprovince which = JAP value = 1272 when = 1 }
+		command = { type = secedearea which = JAP value = "Heilongjiang" when = 1 }
+      	command = { type = secedearea which = JAP value = "Jilin" when = 1 }
+		command = { type = secedearea which = JAP value = "Liaoning" when = 1 }
+      	command = { type = secedearea which = JAP value = "Rehe" when = 1 }
+		command = { type = secederegion which = JAP value = "Korea" when = 1 }
+		command = { type = secedeprovince which = JAP value = 1219 when = 1 }
+		command = { type = sleepteam which = 55006 }
+		command = { type = sleepteam which = 55005 }
+		command = { type = sleepminister which = 55002 }
+		command = { type = sleepminister which = 55049 }
+		command = { type = sleepminister which = 55304 }
+		command = { type = sleepminister which = 55368 }
+		command = { type = sleepleader which = 50377 }
+		command = { type = relation which = USA value = -100 }
+		command = { trigger = { NOT = { year = 1945 } } type = headofstate which = 1250011 }
+		command = { trigger = { year = 1945 } type = headofstate which = 1250031 }
+		command = { type = headofgovernment which = 1250012 }
+		command = { type = foreignminister which = 1250013 }
+		command = { type = armamentminister which = 1250014 }
+		command = { type = ministerofsecurity which = 1250015 }
+		command = { type = ministerofintelligence which = 1250016 }
+		command = { type = chiefofstaff which = 1250017 }
+		command = { type = chiefofarmy which = 1250018 }
+		command = { type = chiefofnavy which = 1250019 }
+		command = { type = chiefofair which = 1250020 }
+		command = { type = trigger which = 167029 }
+	}
+	action = {
+		trigger = { flag = China_surrender_north }
+		ai_chance = 0
+		name = "ACTION_NAME_REFUSE_PEACE"
+		command = { type = trigger which = 167028 }
+		command = { type = clrflag which = China_surrender_north }
+	}
+	action = {
+		trigger = { flag = China_surrender_north }
+		ai_chance = 100
+		name = "ACTION_NAME_SURRENDER"
+		command = { type = dissent value = 5 }
+		command = { type = secedearea which = JAP value = "Hebei" when = 1 }
+		command = { type = secedearea which = JAP value = "Shandong" when = 1 }
+      	command = { type = secedearea which = JAP value = "Jiangsu" when = 1 }
+		command = { type = secedeprovince which = JAP value = 1323 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedearea which = MEN value = "Chahar" when = 1 }
+      	command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1268 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1269 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1270 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1272 when = 1 }
+		command = { type = secedearea which = JAP value = "Heilongjiang" when = 1 }
+      	command = { type = secedearea which = JAP value = "Jilin" when = 1 }
+		command = { type = secedearea which = JAP value = "Liaoning" when = 1 }
+      	command = { type = secedearea which = JAP value = "Rehe" when = 1 }
+		command = { type = secederegion which = JAP value = "Korea" when = 1 }
+		command = { type = secedeprovince which = JAP value = 1219 when = 1 }
+		command = { type = sleepteam which = 55006 }
+		command = { type = sleepteam which = 55005 }
+		command = { type = sleepminister which = 55002 }
+		command = { type = sleepminister which = 55049 }
+		command = { type = sleepminister which = 55304 }
+		command = { type = sleepminister which = 55368 }
+		command = { type = sleepleader which = 50377 }
+		command = { type = relation which = USA value = -30 }
+		command = { type = strength which = militia when = 0 where = 0 org = 0 value = 0 }
+		command = { type = trigger which = 167029 }
+		command = { type = clrflag which = China_surrender_north }
+	}
+	action = {
+		trigger = { flag = China_surrender_coasts }
+		ai_chance = 20
+		name = "ACTION_NAME_REFUSE_PEACE"
+		command = { type = trigger which = 167028 }
+		command = { type = clrflag which = China_surrender_coasts }
+	}
+	action = {
+		trigger = { flag = China_surrender_coasts }
+		ai_chance = 80
+		name = "ACTION_NAME_SURRENDER"
+		command = { type = dissent value = 10 }
+		command = { type = secedearea which = JAP value = "Hebei" when = 1 }
+		command = { type = secedearea which = JAP value = "Shandong" when = 1 }
+		command = { type = secedeprovince which = JAP value = 1323 when = 1 }
+		command = { type = secedearea which = JAP value = "Jiangsu" when = 1 }
+		command = { type = secedearea which = JAP value = "Zhejiang" when = 1 }
+		command = { type = secedearea which = JAP value = "Fujian" when = 1 }
+		command = { type = secedearea which = JAP value = "Guangdong" when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedearea which = MEN value = "Chahar" when = 1 }
+      	command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1268 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1269 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1270 when = 1 }
+		command = { trigger = { alliance = { country = JAP country = MEN } } type = secedeprovince which = MEN value = 1272 when = 1 }
+		command = { type = secedearea which = JAP value = "Heilongjiang" when = 1 }
+      	command = { type = secedearea which = JAP value = "Jilin" when = 1 }
+		command = { type = secedearea which = JAP value = "Liaoning" when = 1 }
+      	command = { type = secedearea which = JAP value = "Rehe" when = 1 }
+		command = { type = secederegion which = JAP value = "Korea" when = 1 }
+		command = { type = secedeprovince which = JAP value = 1219 when = 1 }
+      	command = { type = sleepteam which = 55006 }
+		command = { type = sleepteam which = 55005 }
+		command = { type = sleepminister which = 55002 }
+		command = { type = sleepminister which = 55049 }
+		command = { type = sleepminister which = 55304 }
+		command = { type = sleepminister which = 55368 }
+		command = { type = sleepleader which = 50377 }
+		command = { type = relation which = USA value = -60 }
+		command = { type = strength which = militia when = 0 where = 0 org = 0 value = 0 }
+		command = { type = trigger which = 167029 }
+		command = { type = clrflag which = China_surrender_coasts }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124020] CHI | 1936 | Lend-Lease: China (Préstamo y Arriendo: China)
+# Triggered by event 329334 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124020
+	random = no
+	country = CHI
+	persistent = yes
+	name = EVT_SHARED_00252_NAME
+	desc = EVT_SHARED_00249_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = metalpool value = 1000 }
+		command = { type = oilpool value = 1000 }
+		command = { type = supplies value = 1000 }
+		command = { type = rarematerialspool value = 1000 }
+		command = { type = setflag which = Lend_Lease_to_CHI1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124021] CHI | 1936 | Lend-Lease: China (Préstamo y Arriendo: China)
+# Triggered by event 329334 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124021
+	random = no
+	country = CHI
+	persistent = yes
+	name = EVT_SHARED_00252_NAME
+	desc = EVT_SHARED_00249_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 1390 value = 5 }
+		command = { type = setflag which = Lend_Lease_to_CHI2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124022] CHI | 1936 | Lend-Lease: China (Préstamo y Arriendo: China)
+# Triggered by event 329334 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124022
+	random = no
+	country = CHI
+	persistent = yes
+	name = EVT_SHARED_00252_NAME
+	desc = EVT_SHARED_00249_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 1390 value = 5 }
+		command = { type = construct which = ic where = 1413 value = 5 }
+		command = { type = setflag which = Lend_Lease_to_CHI3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124023] CHI | 1936 | Lend-Lease Suspended: China (Préstamo y Arriendo suspendido: China)
+# Trigger event 316064 in events/USA/USA_33-36.txt
+# Trigger event 316065 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124023
+	random = no
+	country = CHI
+	persistent = yes
+	trigger = {
+		OR = {
+			flag = Lend_Lease_to_CHI2
+			flag = Lend_Lease_to_CHI3
+		}
+		OR = {
+			NOT = { war = { country = CHI country = JAP } }
+			war = { country = CHI country = USA }
+			war = { country = CHI country = ENG }
+			war = { country = CHI country = HOL }
+			NOT = { OR = { control = { province = 1415 data = ENG } control = { province = 1415 data = USA } control = { province = 1415 data = U02 } } }
+			 NOT = { OR = { control = { province = 1442 data = ENG } control = { province = 1442 data = USA } control = { province = 1442 data = U02 } } }
+			 NOT = { OR = { control = { province = 1414 data = ENG } control = { province = 1414 data = USA } control = { province = 1414 data = U02 } } }
+			 NOT = { OR = { control = { province = 1408 data = ENG } control = { province = 1408 data = USA } control = { province = 1408 data = U02 } } }
+			 NOT = { OR = { control = { province = 1409 data = ENG } control = { province = 1409 data = USA } control = { province = 1409 data = U02 } } }
+			 NOT = { OR = { control = { province = 1389 data = CHI } AND = { alliance = { country = CHI country = CYN } control = { province = 1389 data = CYN } } } }
+			 NOT = { OR = { control = { province = 1385 data = CHI } AND = { alliance = { country = CHI country = CYN } control = { province = 1385 data = CYN } } } }
+			 NOT = { OR = { control = { province = 1390 data = CHI } AND = { alliance = { country = CHI country = CYN } control = { province = 1390 data = CYN } } } }
+		}
+	}
+	name = EVT_SHARED_00255_NAME
+	desc = EVT_SHARED_00250_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	date = { day = 0 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = june year = 1999 }
+	action = {
+		trigger = { flag = Lend_Lease_to_CHI2 }
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 1390 value = -5 }
+		command = { type = end_trades which = USA where = CHI }
+		command = { type = trigger which = 316064 }
+		command = { type = clrflag which = Lend_Lease_to_CHI2 }
+	}
+	action = {
+		trigger = { flag = Lend_Lease_to_CHI3 }
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 1390 value = -5 }
+		command = { type = construct which = ic where = 1413 value = -5 }
+		command = { type = end_trades which = USA where = CHI }
+		command = { type = trigger which = 316065 }
+		command = { type = clrflag which = Lend_Lease_to_CHI3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124026] CHI | 1936 | Pitman Act: Financial Credits Secured (Ley Pitman: Créditos concedidos)
+# Triggered by event 316098 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124026
+	random = no
+	country = CHI
+	name = EVT_CHI_124026_NAME
+	desc = EVT_CHI_124026_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { trigger = { ai = no } type = money value = -50 }
+		command = { type = supplies value = 1500 }
+		command = { type = oilpool value = 250 }
+		command = { type = wakeminister which = 55368 }
+		command = { type = waketeam which = 55007 }
+	   	command = { type = gain_tech which = 9010 }
+	   	command = { trigger = { NOT = { technology = 5310 } } type = gain_tech which = 5310 }
+	   	command = { trigger = { technology = 5310 NOT = { technology = 54010 } } type = gain_tech which = 54010 }
+	   	command = { trigger = { technology = 5310 NOT = { technology = 5316 } } type = gain_tech which = 5316 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124062] CHI | 1936 | Assuming Past Government Debt (Asumir la deuda del gobierno anterior)
+# Trigger event 324241 in events/GLOBAL/MULTI_14-32.txt
+# ----------------------------------------------------------------------------
+event = {
+	random = no
+	id = 124062
+	persistent = yes
+	country = CHI
+	name = EVT_SHARED_00020_NAME
+	desc = EVT_SHARED_00020_DESC
+	style = 2
+	picture = "GLOBAL/ccip_1913loan"
+	action = {
+		ai_chance = 20
+		name = ACTION_NAME_ACCEPT
+		command = { type = dissent value = 10 }
+		command = { trigger = { exists = USA } type = relation which = USA value = 20 }
+		command = { trigger = { exists = ENG } type = relation which = ENG value = 20 }
+		command = { trigger = { exists = SOV } type = relation which = SOV value = 20 }
+		command = { trigger = { exists = RUS } type = relation which = RUS value = 20 }
+		command = { trigger = { exists = GER } type = relation which = GER value = 20 }
+		command = { trigger = { exists = JAP } type = relation which = JAP value = -10 }
+		command = { trigger = { exists = U08 } type = relation which = U08 value = 20 }
+		command = { trigger = { exists = FRA } type = relation which = FRA value = 20 }
+		command = { trigger = { flag = 1913loan_1 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_1 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_1 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_2 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_2 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_2 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_3 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_3 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_3 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_4 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_4 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_4 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_5 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_5 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_5 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_6 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_6 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_6 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_7 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_7 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_7 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_8 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_8 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_8 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_9 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_9 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_9 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_10 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_10 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_10 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_11 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_11 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_11 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_12 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_12 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_12 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_13 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_13 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_13 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_14 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_14 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_14 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_15 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_15 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_15 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_16 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_16 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_16 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_17 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_17 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_17 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_18 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_18 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_18 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_19 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_19 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_19 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_20 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_20 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_20 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_21 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_21 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_21 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_22 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_22 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_22 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_23 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_23 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_23 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_24 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_24 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_24 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_25 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_25 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_25 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_26 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_26 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_26 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_27 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_27 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_27 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_28 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_28 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_28 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_29 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_29 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_29 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_30 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_30 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_30 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_31 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_31 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_31 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_32 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_32 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_32 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_33 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_33 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_33 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_34 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_34 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_34 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_35 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_35 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_35 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_36 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_36 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_36 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_37 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_37 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_37 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_38 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_38 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_38 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_39 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_39 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_39 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_40 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_40 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_40 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_41 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_41 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_41 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_42 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_42 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_42 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_43 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_43 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_43 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_44 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_44 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_44 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_45 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_45 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_45 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_46 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_46 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_46 } type = industrial_modifier which = total value = -2 }
+		command = { trigger = { flag = 1913loan_47 } type = research_mod value = -2 }
+		command = { trigger = { flag = 1913loan_47 } type = tc_mod value = -2 }
+		command = { trigger = { flag = 1913loan_47 } type = industrial_modifier which = total value = -2 }
+	}
+	action = {
+		ai_chance = 80
+		name = ACTION_NAME_DECLINE
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = USA } type = relation which = USA value = 20 }
+		command = { trigger = { exists = ENG } type = relation which = ENG value = -20 }
+		command = { trigger = { exists = SOV } type = relation which = SOV value = -20 }
+		command = { trigger = { exists = RUS } type = relation which = RUS value = -20 }
+		command = { trigger = { exists = GER } type = relation which = GER value = -20 }
+		command = { trigger = { exists = JAP } type = relation which = JAP value = 10 }
+		command = { trigger = { exists = U08 } type = relation which = U08 value = -20 }
+		command = { trigger = { exists = FRA } type = relation which = FRA value = -20 }
+		command = { type = setflag which = 1913loan_revoked }
+		command = { type = sleepevent which = 324241 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124115] CHI | 1936 | Defending Nanjing (La defensa de Nankin)
+# Trigger event 124116 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124115
+	random = no
+	country = CHI
+	name = EVT_SHARED_00141_NAME
+	desc = EVT_CHI_124115_DESC
+	picture = "CHI/ccip_nanjing_map"
+	style = 2
+	action = {
+		name = EVT_CHI_124115_A
+		command = { type = dissent value = -1 }
+		command = { trigger = { not = { year = 1933 } } type = event which = 124116 where = CHI when = 2160 }
+		command = { trigger = { year = 1933 } type = event which = 124116 where = CHI when = 1440 }
+	}
+	action = {
+		trigger = {
+			money = 100
+		}
+		name = EVT_CHI_124115_B
+		command = { type = dissent value = -1 }
+		command = { type = money value = -100 }
+		command = { trigger = { not = { year = 1933 } } type = event which = 124116 where = CHI when = 1440 }
+		command = { trigger = { year = 1993 } type = event which = 124116 where = CHI when = 720 }
+	}
+	action = {
+		name = EVT_CHI_124115_C
+		command = { type = local_setflag which = 1330110052_ARMY }
+		command = { type = event which = 124116 where = CHI when = 360 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124116] CHI | 1936 | Defending Nanjing (La defensa de Nankin)
+# Triggered by event 124115 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124116
+	random = no
+	country = CHI
+	persistent = yes
+	picture = "CHI/ccip_nanjing_map"
+	style = 2
+	name = EVT_SHARED_00141_NAME
+	desc = EVT_CHI_124116_DESC
+	action = {
+		trigger = {
+			not = { local_flag = 1330110052_ARMY }
+			control = { province = 1337 data = CHI  }
+		}
+		name = EVT_CHI_124116_A
+		command = { trigger = { control = { province = 1337 data = CHI } } type = construct which = land_fort where = 1337 value = 2 }
+		command = { trigger = { control = { province = 1345 data = CHI } } type = construct which = land_fort where = 1345 value = 2 }
+		command = { trigger = { control = { province = 1334 data = CHI } } type = construct which = land_fort where = 1334 value = 2 }
+		command = { trigger = { not = { local_flag = 1330110052 } } type = event which = 124116 when = 360 where = CHI }
+		command = { type = local_setflag which = 124116 }
+	}
+	action = {
+		trigger = {
+			local_flag = 1330110052_ARMY
+		}
+		name = EVT_CHI_124116_B
+		command = { type = add_division which = "Capital Defense Force" value = infantry when = 8 where = artillery }
+		command = { type = add_division which = "Capital Defense Force" value = infantry when = 8 where = artillery }
+		command = { type = add_division which = "Capital Defense Force" value = infantry when = 8 where = artillery }
+		command = { type = local_clrflag which = 1330110052_ARMY }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124117] CHI | 1936 | The Nanjing Decade (La decada de Nankin)
+# Trigger event 124118 in events/CHI/CHI_13-33.txt
+# Trigger event 124120 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124117
+	random = no
+	country = CHI
+	one_action = yes
+	save_date = yes
+	name = EVT_CHI_124117_NAME
+	desc = EVT_CHI_124117_DESC
+	style = 2
+	picture = "GLOBAL/invest_infrastructures"
+	action = {
+		trigger = {
+			not = { research_mod = 50 }
+		}
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { trigger = { not = { dissent = 20 } } type = dissent value = 5 }
+		command = { trigger = { not = { dissent = 30 } } type = dissent value = 5 }
+		command = { type = building_prod_mod which = infrastructure value = 10 }
+		command = { type = building_prod_mod which = ic value = 10 }
+		command = { type = research_mod value = 15 }
+		command = { type = local_setflag which = 1330110043_15 }
+		command = { type = wartime_ic_mod value = -50 }
+	}
+	action = {
+		trigger = {
+			not = { research_mod = 75 }
+			research_mod = 50
+		}
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { trigger = { not = { dissent = 20 } } type = dissent value = 5 }
+		command = { trigger = { not = { dissent = 30 } } type = dissent value = 5 }
+		command = { type = building_prod_mod which = infrastructure value = 10 }
+		command = { type = building_prod_mod which = ic value = 10 }
+		command = { type = research_mod value = 10 }
+		command = { type = local_setflag which = 1330110043_10 }
+		command = { type = wartime_ic_mod value = -50 }
+	}
+	action = {
+		trigger = {
+			research_mod = 75
+		}
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { trigger = { not = { dissent = 20 } } type = dissent value = 5 }
+		command = { trigger = { not = { dissent = 30 } } type = dissent value = 5 }
+		command = { type = building_prod_mod which = infrastructure value = 10 }
+		command = { type = building_prod_mod which = ic value = 10 }
+		command = { type = research_mod value = 5 }
+		command = { type = local_setflag which = 1330110043_5 }
+		command = { type = wartime_ic_mod value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124120] CHI | 1936 | Communist Agitation (Agitación comunista urbana)
+# Triggered by event 124117 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124120
+	random = no
+	country = CHI
+	persistent = yes
+	trigger = {
+		not = { dissent = 5 }
+		exists = CHC
+		not = { war = { country = CHI country = JAP } }
+        or = {
+            random = 5
+            and = {
+                war = { country = CHI country = CHC }
+                random = 20
+            }
+        }
+		event = 124117
+	}
+	picture = "GLOBAL/ccip_unrest"
+	style = 2
+	name = EVT_CHI_124120_NAME
+	desc = EVT_CHI_124120_DESC
+	date = { day = 0 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+        command = { trigger = { ai = no dissent = 4 war = { country = CHI country = CHC } } type = revolt which = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124121] CHI | 1936 | Wang Jingwei becomes Fascist (Wang Jingwei adopta el fascismo)
+# Trigger event 150494 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124121
+	random = no
+	country = CHI
+	picture = "GLOBAL/ccip_wjw"
+	style = 2
+	name = EVT_CHI_124121_NAME
+	desc = EVT_CHI_124121_DESC
+	action = {
+		name = ACTION_NAME_OK
+		command = { }
+		command = { trigger = { exists = GER } type = event which = 150494 where = GER when = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124122] CHI | 1936 | Sino-German Cooperation Pact (Pacto de Cooperación sino-alemán)
+# Triggered by event 124001 in events/CHI/CHI_33-37.txt
+# Triggered by event 150494 in events/GER/GER_36-36.txt
+# Trigger event 124001 in events/CHI/CHI_33-37.txt
+# Trigger event 124137 in events/CHI/CHI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124122
+	random = no
+	country = CHI
+	persistent = yes
+	picture = "GLOBAL/ccip_wjw"
+	style = 2
+	name = EVT_SHARED_00142_NAME
+	desc = EVT_CHI_124122_DESC
+	action = {
+		trigger = {
+			not = {
+				local_flag = 1330110050_1
+				event = 124001
+			}
+		}
+		name = ACTION_NAME_GREAT
+		command = { trigger = { not = { ai = yes } dissent = 40 } type = dissent value = -5 }
+		command = { type = gain_tech which = 5050 }
+		command = { type = gain_tech which = 5830 }
+		command = { type = gain_tech which = 5060 }
+		command = { type = gain_tech which = 5710 }
+		command = { type = gain_tech which = 5010 }
+		command = { type = gain_tech which = 6210 }
+		command = { type = waketeam which = 55005 when = 1 }
+        command = { type = build_cost which = infantry when = on_upgrade where = relative value = -20 }
+        command = { type = build_cost which = artillery when = on_upgrade where = relative value = -20 }
+        command = { type = build_cost which = armored_car when = on_upgrade where = relative value = -20 }
+		command = { type = add_prov_resource which = rare_materials where = 1352 value = 2 }
+        command = { type = add_prov_resource which = rare_materials where = 1347 value = 2 }
+        command = { type = add_prov_resource which = rare_materials where = 1346 value = 2 }
+        command = { type = add_prov_resource which = rare_materials where = 1345 value = 2 }
+        command = { type = add_prov_resource which = rare_materials where = 1348 value = 2 }
+        command = { type = add_prov_resource which = rare_materials where = 1305 value = 2 }
+        command = { type = add_prov_resource which = rare_materials where = 1303 value = 2 }
+        command = { type = add_prov_resource which = rare_materials where = 1304 value = 2 }
+        command = { type = add_prov_resource which = rare_materials where = 1306 value = 2 }
+		command = { type = local_setflag which = 1330110050_1 }
+		command = { type = event which = 124122 where = CHI when = 180 }
+	}
+	action = {
+		trigger = {
+			not = {
+				local_flag = 1330110050_2
+				event = 124001
+			}
+			local_flag = 1330110050_1
+		}
+		name = ACTION_NAME_GREAT
+        command = { type = construct which = ic where = 1313 value = 1 }
+        command = { type = construct which = ic where = 1317 value = 1 }
+        command = { type = construct which = ic where = 1318 value = 1 }
+        command = { type = construct which = ic where = 1307 value = 1 }
+        command = { type = construct which = ic where = 1308 value = 1 }
+        command = { type = construct which = ic where = 1297 value = 1 }
+        command = { type = construct which = ic where = 1299 value = 1 }
+		command = { type = local_setflag which = 1330110050_2 }
+		command = { type = event which = 124122 where = CHI when = 180 }
+	}
+	action = {
+		trigger = {
+			not = {
+				or = {
+					local_flag = 1330110050_3
+					event = 124001
+				}
+			}
+			local_flag = 1330110050_2
+		}
+		name = ACTION_NAME_GREAT
+        command = { type = construct which = infrastructure where = 1351 value = 10 }
+        command = { type = construct which = infrastructure where = 1345 value = 10 }
+        command = { type = construct which = infrastructure where = 1352 value = 10 }
+        command = { type = construct which = infrastructure where = 1355 value = 10 }
+        command = { type = construct which = infrastructure where = 1311 value = 10 }
+        command = { type = construct which = infrastructure where = 1306 value = 10 }
+        command = { type = construct which = infrastructure where = 1305 value = 10 }
+        command = { type = construct which = infrastructure where = 1312 value = 10 }
+        command = { type = construct which = infrastructure where = 1317 value = 10 }
+        command = { type = construct which = infrastructure where = 1318 value = 20 }
+        command = { type = construct which = infrastructure where = 1308 value = 20 }
+        command = { type = construct which = infrastructure where = 1368 value = 10 }
+        command = { type = construct which = infrastructure where = 1369 value = 10 }
+		command = { type = construct which = infrastructure where = 1313 value = 20 }
+        command = { type = construct which = infrastructure where = 1307 value = 20 }
+        command = { type = construct which = infrastructure where = 1297 value = 20 }
+        command = { type = construct which = infrastructure where = 1299 value = 20 }
+		command = { type = sleepevent which = 124122 }
+    }
+}
+
+# ----------------------------------------------------------------------------
+# [124128] CHI | 1936 | The Tanggu Truce (La Tregua de Tanggu)
+# Triggered by event 167134 in events/JAP/JAP_36-36.txt
+# Trigger event 167120 in events/JAP/JAP_36-36.txt
+# Trigger event 286003 in events/Minors/U74.txt
+# Trigger event 124129 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124128
+	country = CHI
+	name = EVT_SHARED_00158_NAME
+	desc = EVT_CHI_124128_DESC
+	picture = "GLOBAL/ccip_mukden"
+    style = 2
+	action = {
+    	trigger = {
+            not = {
+                war = { country = JAP country = CHI }
+            }
+        }
+		name = ACTION_NAME_DAMN
+		ai_chance = 100
+		command = { type = independence which = U74 value = 1 when = 0 }
+        command = { type = flag_ext where = U74 which = "_EHAC" }
+        command = { type = name where = U74 which = EHAC }
+		command = { type = secedeprovince which = U74 value = 1241 when = 2 }
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { type = trigger which = 167120 }
+		command = { type = trigger which = 286003 }
+	}
+	action = {
+        trigger = {
+            not = {
+                war = { country = JAP country = CHI }
+            }
+            or = {
+                ai = no
+                and = {
+                    atwar = no
+                    ic = 120
+                }
+            }
+        }
+        ai_chance = 0
+		name = ACTION_NAME_WAR
+		command = { type = dissent value = -10 }
+		command = { type = war which = JAP }
+		command = { type = unlock_division which = 22000 value = 18 }
+		command = { type = unlock_division which = 22000 value = 19 }
+		command = { type = unlock_division which = 22000 value = 20 }
+		command = { type = unlock_division which = 22000 value = 21 }
+		command = { type = unlock_division which = 22000 value = 22 }
+		command = { type = unlock_division which = 22000 value = 23 }
+		command = { type = unlock_division which = 22000 value = 24 }
+		command = { type = unlock_division which = 22000 value = 25 }
+		command = { type = unlock_division which = 22000 value = 26 }
+		command = { type = unlock_division which = 22000 value = 28 }
+		command = { type = unlock_division which = 22000 value = 29 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124152] CHI | 1936 | Battle of Nanjing (Batalla de Nankin)
+# Triggered by event 324324 in events/GLOBAL/MULTI_32-39.txt
+# Trigger event 124153 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124152
+	random = no
+	country = CHI
+	name = EVT_CHI_124152_NAME
+	desc = EVT_CHI_124152_DESC
+	picture = "CHI/ccip_nanjing_map"
+	style = 2
+	action = {
+		ai_chance = 99
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = dissent value = -5 }
+		command = { type = morale which = land value = -10 }
+        command = { type = max_organization which = land value = -15 }
+		command = { type = local_setflag which = 124152 }
+	}
+	action = {
+		ai_chance = 1
+		name = ACTION_NAME_WITHDRAW
+		command = { type = dissent value = 20 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		command = { type = sleepevent which = 124000 }
+		command = { type = sleepevent which = 329320 }
+        command = { type = relation which = ENG value = -15 }
+		command = { type = relation which = USA value = -15 }
+		command = { type = relation which = FRA value = -15 }
+		command = { type = relation which = SOV value = -15 }
+		command = { type = relation which = CHC value = -50 }
+		command = { type = relation which = CYN value = -50 }
+		command = { type = relation which = CXB value = -50 }
+		command = { type = relation which = CGX value = -50 }
+		command = { type = relation which = CSX value = -50 }
+		command = { type = capital which = 1299 }
+		command = { type = secedeprovince which = JAP value = 1337 when = 1 }
+		command = { type = event which = 124153 where = CHI when = 14 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124193] CHI | 1936 | Reclaiming Qing Imperial Lands (Reivindicación de tierras Qing)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124193
+	country = CHI
+	name = EVT_CHI_124193_NAME
+	desc = EVT_CHI_124193_DESC
+	picture = "nwo/sino_russian_unequal_treaties"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = addcore which = 1119 }
+		command = { type = addcore which = 1541 }
+		command = { type = addcore which = 1542 }
+		command = { type = addcore which = 1171 }
+		command = { type = addcore which = 1174 }
+		command = { type = addcore which = 1175 }
+		command = { type = addcore which = 1176 }
+		command = { type = addcore which = 1185 }
+		command = { type = addcore which = 1187 }
+		command = { type = addcore which = 1188 }
+		command = { type = addcore which = 1189 }
+		command = { type = addcore which = 1190 }
+		command = { type = addcore which = 1191 }
+		command = { type = addcore which = 1192 }
+		command = { type = addcore which = 1193 }
+		command = { type = addcore which = 1194 }
+		command = { type = addcore which = 1195 }
+		command = { type = addcore which = 1196 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124216] CHI | 1936 | The Xinjiang Difangjun (El Difangjun de Sinkiang)
+# Trigger event 329741 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124216
+	country = CHI
+	name = EVT_CHI_124216_NAME
+	desc = EVT_CHI_124216_DESC
+	picture = "nwo/difangjun"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_corps value = land where = 1281 }
+		command = { type = add_division which = militia when = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124223] CHI | 1936 | Independence in Southeast Asia (Descolonización en el sudeste asiático)
+# Triggered by event 167189 in events/JAP/JAP_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124223
+	country = CHI
+	name = EVT_CHI_124223_NAME
+	desc = EVT_CHI_124223_DESC
+	picture = "nwo/liberation_of_asia"
+	style = 1
+	trigger = {
+		flag = the_jewel_voice
+		event = { id = 167189 days = 3 }
+	}
+	date = { day = 1 month = january year = 1936 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { OR = { control = { province = 1395 data = -1 } control = { province = 1399 data = -1 } } NOT = { exists = VIE } } type = independence which = VIE value = 1 }
+		command = { trigger = { control = { province = 1405 data = -1 } NOT = { exists = LAO } } type = independence which = LAO value = 1 }
+		command = { trigger = { control = { province = 1400 data = -1 } NOT = { exists = CMB } } type = independence which = CMB value = 1 }
+		command = { trigger = { area = { area = "Siam" value = 30 } NOT = { exists = SIA } } type = independence which = SIA value = 1 }
+		command = { trigger = { control = { province = 1624 data = -1 } NOT = { exists = SAR } } type = independence which = SAR value = 1 }
+		command = { trigger = { control = { province = 1625 data = -1 } NOT = { exists = BRU } } type = independence which = BRU value = 1 }
+		command = { trigger = { control = { province = 1432 data = -1 } NOT = { exists = U75 } } type = independence which = U75 value = 1 }
+		command = { trigger = { area = { area = "Malacka" value = 20 } NOT = { exists = MLY } } type = independence which = MLY value = 1 }
+		command = { trigger = { region = { region = "Indonesia" value = 15 } NOT = { exists = INO } } type = independence which = INO value = 1 }
+		command = { trigger = { region = { region = "Australia" value = 20 } NOT = { exists = AST } } type = independence which = AST value = 1 }
+		command = { trigger = { region = { region = "India" value = 40 } NOT = { exists = IND } } type = independence which = IND value = 1 }
+		command = { trigger = { area = { area = "Ceylon" value = 100 } NOT = { exists = U83 } } type = independence which = U83 value = 1 }
+		command = { trigger = { AND = { area = { area = "Burma" value = 50 } area = { area = "North Burma" value = 50 } } NOT = { exists = BUR } } type = independence which = BUR value = 1 }
+		command = { trigger = { OR = { area = { area = "Bengal" value = 50 } area = { area = "Pakistan" value = 50 } } NOT = { exists = PAK } } type = independence which = PAK value = 1 }
+		command = { trigger = { region = { region = "Philippines" value = 50 } NOT = { exists = PHI } } type = independence which = PHI value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124224] CHI | 1936 | The Fate of the Emperor (El destino del emperador de Japón)
+# Triggered by event 124222 in events/CHI/CHI_37-45.txt
+# Triggered by event 167191 in events/JAP/JAP_36-36.txt
+# Trigger event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124224
+	country = CHI
+	name = EVT_CHI_124224_NAME
+	desc = EVT_CHI_124224_DESC
+	picture = "nwo/macarthur_with_hirohito"
+	style = 1
+	trigger = {
+		flag = the_jewel_voice
+		event = 124222
+		event = { id = 167191 days = 3 }
+	}
+	date = { day = 1 month = january year = 1936 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_CHI_124224_A
+		ai_chance = 60
+		command = { type = relation which = JAP value = -50 }
+		command = { type = trigger which = 167194 }
+	}
+	action = {
+		name = EVT_CHI_124224_B
+		ai_chance = 40
+		command = { type = relation which = JAP value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329026] CHI | 1936 | Reintegration of Mongolia (Reintegración de Mongolia)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329026
+	random = no
+	country = CHI
+	name = "EVT_CHI_329026_NAME"
+	desc = "EVT_CHI_329026_DESC"
+	style = 2
+	picture = "CHI/ccip_natarmy"
+	trigger = {
+		event = 223096
+		exists = MON
+		alliance = { country = CHI country = GER }
+		alliance = { country = MON country = SOV }
+		NOT = {
+			alliance = { country = JAP country = GER }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_HURRAH"
+		command = { type = inherit which = MON }
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329029] CHI | 1936 | Huayuankow Dike Demolition (Inundación de Huayuankow)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329029
+	random = no
+	country = CHI
+	name = EVT_CHI_329029_NAME
+	desc = EVT_CHI_329029_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		war = { country = JAP country = CHI }
+		control = { province = 1241 data = JAP }
+		NOT = {
+		   OR = {
+		      control = { province = 1323 data = CSX }
+		      control = { province = 1323 data = CHC }
+		      control = { province = 1323 data = CXB }
+		      control = { province = 1323 data = CGX }
+		      control = { province = 1323 data = CYN }
+		      control = { province = 1323 data = CHI }
+		   }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 90
+		name = EVT_CHI_329029_A
+		command = { type = construct which = ic where = 1324 value = -3 }
+		command = { type = construct which = infrastructure where = 1324 value = -25 }
+		command = { type = construct which = ic where = 1325 value = -2 }
+		command = { type = construct which = infrastructure where = 1325 value = -15 }
+		command = { type = construct which = ic where = 1326 value = -2 }
+		command = { type = construct which = infrastructure where = 1326 value = -25 }
+		command = { type = dissent value = 2 }
+	}
+	action = {
+		ai_chance = 10
+		name = EVT_CHI_329029_B
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329030] CHI | 1936 | The Xi'an Incident (El incidente de Xi'an)
+# Trigger event 124095 in events/AI/CHI_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329030
+	random = no
+	country = CHI
+	name = EVT_CHI_329030_NAME
+	desc = EVT_CHI_329030_DESC
+	style = 2
+	picture = "CHI/ccip_natoff"
+	trigger = {
+		war = { country = CHI country = CHC }
+		headofgovernment = 55002
+		NOT = {
+			war = { country = CHI country = JAP }
+		}
+		random = 30
+	}
+	date = { day = 0 month = march year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = february year = 1937 }
+	action = {
+		name = EVT_CHI_329030_A
+		ai_chance = 100
+		command = { type = dissent value = -5 }
+		command = { type = peace which = CHC value = 0 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = relation which = CHC value = 10 }
+		command = { type = relation which = CSX value = 20 }
+		command = { type = relation which = CGX value = 10 }
+		command = { type = relation which = CYN value = 5 }
+		command = { type = relation which = CXB value = 10 }
+		command = { type = relation which = SIK value = 15 }
+		command = { type = sleepminister which = 55012 }
+		command = { type = sleepleader which = 50338 }
+		command = { type = sleepminister which = 55008 }
+		command = { type = sleepminister which = 55069 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = relation which = CHC value = -20 }
+		command = { type = relation which = CGX value = -5 }
+		command = { type = relation which = CSX value = -10 }
+		command = { type = relation which = CYN value = -5 }
+		command = { type = relation which = CXB value = -5 }
+		command = { type = relation which = SIK value = -5 }
+		command = { type = sleepminister which = 55012 }
+		command = { type = sleepleader which = 50338 }
+		command = { type = sleepevent which = 329031 }
+		command = { type = sleepminister which = 55008 }
+		command = { type = sleepminister which = 55069 }
+	}
+	action = {
+		name = EVT_CHI_329030_B
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+		command = { type = peace which = CHC value = 0 }
+		command = { type = alliance which = CHC when = 1 }
+		command = { type = alliance which = CSX when = 1 }
+		command = { type = alliance which = CGX when = 1 }
+		command = { type = alliance which = CYN when = 1 }
+		command = { type = alliance which = CXB when = 1 }
+		command = { type = domestic which = democratic value = 2 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = domestic which = interventionism value = 2 }
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = sleepevent which = 329031 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330060] CHI | 1936 | Nationalists Consolidate Control over Guangdong (Los nacionalistas toman el control de Guangdong)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330060
+	random = no
+	country = CHI
+	trigger = {
+			NOT = { war = { country = CHI } }
+			}
+	date = { day = 18 month = july year = 1936 }
+	offset = 1
+	deathdate = { day = 20 month = july year = 1936 }
+	name = "EVT_CHI_330060_NAME"
+	desc = "EVT_CHI_330060_DESC"
+	style = 2
+	picture = "GLOBAL/nationalists_consolidate_control_over_guangdong"
+	action = {
+		name = "ACTION_NAME_VICTORY"
+		ai_chance = 100
+		command = { type = relation which = JAP value = -10 }
+		command = { type = relation which = CGX value = -20 }
+		command = { type = dissent value = -2 }
+		command = { type = add_leader_skill which = 50048 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330107] CHI | 1936 | The Fengtai Incident (El Incidente de Fengtai)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330107
+	random = no
+	country = CHI
+	trigger = {
+            NOT = { war = { country = JAP  } }
+            }
+	date = { day = 17 month = september year = 1936 }
+	offset = 1
+	deathdate = { day = 19 month = september year = 1936 }
+	name = "EVT_SHARED_01144_NAME"
+	desc = "EVT_SHARED_01144_DESC"
+	style = 2
+	picture = "GLOBAL/the_fengtai_incident"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = JAP value = -5 }
+		command = { type = manpowerpool value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330109] CHI | 1936 | The Chang-Kawagoe Negotiations (Las conversaciones Chang-Kawagoe)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330109
+	random = no
+	country = CHI
+	trigger = {
+            NOT = { war = { country = CHI  } }
+            }
+	date = { day = 23 month = september year = 1936 }
+	offset = 1
+	deathdate = { day = 25 month = september year = 1936 }
+	name = "EVT_SHARED_01145_NAME"
+	desc = "EVT_CHI_330109_DESC"
+	style = 2
+	picture = "GLOBAL/proclamation_of_japanese_neutrality"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = CHI value = 5 }
+		command = { type = belligerence value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330064] CHI | 1936 | Japanese Secret Demands to China (Demandas secretas japonesas a China)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330064
+	random = no
+	country = CHI
+	trigger = {
+			NOT = { war = { country = CHI } }
+			}
+	date = { day = 02 month = october year = 1936 }
+	offset = 1
+	deathdate = { day = 04 month = october year = 1936 }
+	name = "EVT_SHARED_01112_NAME"
+	desc = "EVT_SHARED_01112_DESC"
+	style = 2
+	picture = "GLOBAL/japan_repudiates_the_open_door_policy"
+	action = {
+		name = "ACTION_NAME_NO"
+		ai_chance = 100
+		command = { type = relation which = JAP value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124007] CHI | 1937 | Operation Zet: Soviet Aid Arrives (Operación Zet: Llegan los suministros)
+# Triggered by event 329028 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124007
+	random = no
+	country = CHI
+	name = EVT_CHI_124007_NAME
+	desc = EVT_CHI_124007_DESC
+	style = 2
+	picture = "GLOBAL/ccip_ccpsov"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = air_base where = 1297 value = 1 }
+		command = { type = add_corps which = "Op Zet Exp. Force 1" value = air where = 1297 }
+		command = { type = add_division which = "Interceptor Force" value = interceptor when = 7 }
+		command = { type = add_corps which = "Op Zet Exp. Force 2" value = air where = 1297 }
+		command = { type = add_division which = "Bomber Force" value = tactical_bomber when = 6 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = supplies value = 1500 }
+		command = { type = oilpool value = 250 }
+		command = { type = non_aggression which = SOV where = CHI }
+		command = { type = wakeleader which = 50375 }
+	   	command = { type = gain_tech which = 6310 }
+	   	command = { trigger = { NOT = { technology = 5820 } } type = gain_tech which = 5820 }
+	   	command = { trigger = { technology = 5820 NOT = { technology = 5050 } } type = gain_tech which = 5050 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124015] CHI | 1937 | Japanese Blockade of Tianjin (Bloqueo japonés de Tianjín)
+# Triggered by event 329250 in events/JAP/JAP_36-37.txt
+# Trigger event 143091 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124015
+	random = no
+	country = CHI
+	name = "EVT_SHARED_00737_NAME"
+	desc = "EVT_SHARED_00737_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = FRA value = 10 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = money value = 2000 }
+		command = { type = supplies value = 7000 }
+		command = { type = trigger which = 143091 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124239] CHI | 1937 | Operations along the Yellow River (Operaciones en el Río Amarillo)
+# Triggered by event 167200 in events/JAP/JAP_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124239
+	random = no
+	country = CHI
+	name = "EVT_SHARED_01117_NAME"
+	desc = "EVT_SHARED_01117_DESC"
+	style = 2
+	picture = "GLOBAL/operations_along_the_yellow_river"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = manpowerpool value = -5 }
+		command = { type = dissent value = -1 }
+		command = { type = supplies value = -200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124249] CHI | 1937 | Operation Zet (Operación 'Zet')
+# Triggered by event 231124 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124249
+	random = no
+	country = CHI
+	name = "EVT_CHI_124249_NAME"
+	desc = "EVT_CHI_124249_DESC"
+	style = 2
+	picture = "GLOBAL/assistance"
+	action_a = {
+		ai_chance = 95
+		name = "EVT_CHI_124249_A"
+		command = { type = construct which = air_base where = 1360 value = 1 }
+		command = { type = add_corps which = "Op Zet Exp. Force 1" value = air where = 1360 }
+		command = { type = add_division which = "Interceptor Force" value = interceptor when = 7 }
+		command = { type = add_corps which = "Op Zet Exp. Force 2" value = air where = 1360 }
+		command = { type = add_division which = "Bomber Force" value = tactical_bomber when = 4 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = supplies value = 1500 }
+		command = { type = oilpool value = 250 }
+		command = { type = non_aggression which = SOV where = CHI }
+		command = { type = wakeleader which = 50377 }
+	   	command = { type = gain_tech which = 6310 }
+	   	command = { trigger = { NOT = { technology = 5820 } } type = gain_tech which = 5820 }
+	   	command = { trigger = { technology = 5820 NOT = { technology = 5050 } } type = gain_tech which = 5050 }
+	}
+	action_b = {
+		ai_chance = 5
+		name = "ACTION_NAME_NO_NEED"
+		command = { type = domestic which = defense_lobby value = -1 }
+	}
+}

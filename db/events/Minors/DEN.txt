@@ -1,0 +1,1261 @@
+# ============================================================================
+# File: events/Minors/DEN.txt (31 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329065] DEN | 1933 | Communist Coup Attempt (Intento de golpe de Estado comunista)
+# Triggered by event 329058 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329065
+	random = no
+	country = DEN
+	one_action = yes
+	trigger = {
+		event = 329058
+		random = 5
+		atwar = no
+		not = { alliance = { country = DDR } }
+		not = { war = { country = DDR } }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_SHARED_00197_NAME"
+	desc = "EVT_SHARED_00197_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	action = {
+		ai_chance = 70
+		name = "EVT_SHARED_00197_A"
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = dissent value = -5 }
+		command = { type = country which = U22 }
+		command = { type = set_relation which = DDR value = 200 }
+		command = { type = set_relation which = SOV value = 200 }
+		command = { type = alliance which = SOV when = 1 }
+	}
+	action = {
+		ai_chance = 30
+		name = "EVT_SHARED_00197_B"
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138005] DEN | 1936 | Fall of the People's Republic of Denmark (Caída de la República Popular de Dinamarca)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 138005
+	random = no
+	country = DEN
+	name = "EVT_DEN_138005_NAME"
+	desc = "EVT_DEN_138005_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U22 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138039] DEN | 1936 | People's Republic Founded (República Popular)
+# Trigger event 138040 in events/Minors/DEN.txt
+# Trigger event 257002 in events/Minors/U22.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 138039
+   country = DEN
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U22
+            NOT = { ai = DEN }
+            NOT = { ai = U22 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U22
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U22 } }
+      command = { type = country which = U22 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U22
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = DEN }
+               control = { province = 294 data = -1 }
+            }
+         }
+         type = trigger which = 138040
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U22 }
+               NOT = { control = { province = 294 data = -1 } }
+            }
+         }
+         type = trigger which = 257002
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U22
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [138040] DEN | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 138039 in events/Minors/DEN.txt
+# Triggered by event 257001 in events/Minors/U22.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 138040
+   country = DEN
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U22 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [329274] DEN | 1936 | German Ultimatum to Denmark (Ultimátum alemán a Dinamarca)
+# Trigger event 150139 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329274
+	random = no
+	country = DEN
+	name = EVT_DEN_329274_NAME
+	desc = EVT_SHARED_00758_DESC
+	style = 2
+	picture = "GLOBAL/fall_weserubung"
+	trigger = {
+		war = { country = GER country = DEN }
+		NOT = { control = { province = 216 data = DEN } }
+		NOT = { exists = POL }
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 99
+		name = ACTION_NAME_BACK_DOWN
+		 command = { type = leave_alliance when = 1 }
+		 command = { type = peace which = GER value = 1 }
+		 command = { type = access which = GER }
+		 command = { type = domestic which = political_left value = -2 }
+		 command = { type = domestic which = freedom value = -2 }
+		 command = { type = domestic which = democratic value = -2 }
+		 command = { type = relation which = GER value = 10 }
+		command = { type = secedeprovince which = ENG value = 1783 }
+		command = { type = secedeprovince which = ENG value = 1 }
+		command = { type = secedeprovince which = ENG value = 3 }
+		command = { type = secedeprovince which = ENG value = 2 }
+		command = { type = trigger which = 150139 }
+	}
+	action_b = {
+		ai_chance = 1
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138001] DEN | 1938 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138001
+	random = no
+	country = DEN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = DEN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = november year = 1938 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 75001 }
+		command = { type = headofgovernment which = 75002 }
+		command = { type = foreignminister which = 75003 }
+		command = { type = armamentminister which = 75004 }
+		command = { type = ministerofsecurity which = 75005 }
+		command = { type = ministerofintelligence which = 75058 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 75095 }
+		command = { type = headofgovernment which = 75016 }
+		command = { type = foreignminister which = 75024 }
+		command = { type = armamentminister which = 75036 }
+		command = { type = ministerofsecurity which = 75049 }
+		command = { type = ministerofintelligence which = 75063 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [138018] DEN | 1945 | General Elections (Elecciones generales)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 138018
+	country = DEN
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 75018 }
+		command = { type = foreignminister which = 75023 }
+		command = { type = armamentminister which = 75034 }
+		command = { type = ministerofsecurity which = 75048 }
+		command = { type = ministerofintelligence which = 75062 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 75014 }
+		command = { type = foreignminister which = 75023 }
+		command = { type = armamentminister which = 75040 }
+		command = { type = ministerofsecurity which = 75048 }
+		command = { type = ministerofintelligence which = 75061 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138019] DEN | 1947 | Death of Christian X (Muerte de Christian X)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138019
+	country = DEN
+	name = "EVT_DEN_138019_NAME"
+	desc = "EVT_DEN_138019_DESC"
+	picture = "nwo/frederick_ix"
+	style = 1
+	trigger = {
+		OR = {
+			headofstate = 75001
+			headofstate = 75011
+			headofstate = 75095
+		}
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = sleepminister which = 75001 }
+		command = { type = sleepminister which = 75011 }
+		command = { type = sleepminister which = 75095 }
+		command = { type = sleepminister which = 75077 }
+		command = { type = headofstate which = 75097 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138020] DEN | 1947 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138020
+	country = DEN
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 75101 }
+		command = { type = foreignminister which = 75102 }
+		command = { type = armamentminister which = 75103 }
+		command = { type = ministerofsecurity which = 75104 }
+		command = { type = ministerofintelligence which = 75061 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 75018 }
+		command = { type = foreignminister which = 75027 }
+		command = { type = armamentminister which = 75040 }
+		command = { type = ministerofsecurity which = 75051 }
+		command = { type = ministerofintelligence which = 75061 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+			command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138000] DEN | 1947 | Death of King Christian X (Muerte de Cristián X)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138000
+	random = no
+	country = DEN
+	style = 2
+	trigger = {
+		OR = {
+			headofstate = 75001
+			headofstate = 75011
+			headofstate = 75095
+		}
+	}
+	date = { day = 20 month = january year = 1947 }
+	name = "EVT_DEN_138000_NAME"
+	desc = "EVT_DEN_138000_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 75001 } type = headofstate which = 75096 }
+		command = { trigger = { OR = { headofstate = 75011 headofstate = 75095 } } type = headofstate which = 75097 }
+		command = { type = sleepminister which = 75001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [138002] DEN | 1947 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138002
+	random = no
+	country = DEN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = DEN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = november year = 1947 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 75096 }
+		command = { type = headofgovernment which = 75101 }
+		command = { type = foreignminister which = 75102 }
+		command = { type = armamentminister which = 75103 }
+		command = { type = ministerofsecurity which = 75104 }
+		command = { type = ministerofintelligence which = 75061 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 75097 }
+		command = { type = headofgovernment which = 75018 }
+		command = { type = foreignminister which = 75027 }
+		command = { type = armamentminister which = 75040 }
+		command = { type = ministerofsecurity which = 75051 }
+		command = { type = ministerofintelligence which = 75061 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [138021] DEN | 1950 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138021
+	country = DEN
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 75105 }
+		command = { type = foreignminister which = 75027 }
+		command = { type = armamentminister which = 75106 }
+		command = { type = ministerofsecurity which = 75107 }
+		command = { type = ministerofintelligence which = 75061 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 75101 }
+		command = { type = foreignminister which = 75102 }
+		command = { type = armamentminister which = 75103 }
+		command = { type = ministerofsecurity which = 75104 }
+		command = { type = ministerofintelligence which = 75061 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138003] DEN | 1950 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138003
+	random = no
+	country = DEN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = DEN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = november year = 1950 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 75097 }
+		command = { type = headofgovernment which = 75105 }
+		command = { type = foreignminister which = 75027 }
+		command = { type = armamentminister which = 75106 }
+		command = { type = ministerofsecurity which = 75107 }
+		command = { type = ministerofintelligence which = 75061 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 75096 }
+		command = { type = headofgovernment which = 75101 }
+		command = { type = foreignminister which = 75102 }
+		command = { type = armamentminister which = 75103 }
+		command = { type = ministerofsecurity which = 75104 }
+		command = { type = ministerofintelligence which = 75061 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [138022] DEN | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138022
+	country = DEN
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 75101 }
+		command = { type = foreignminister which = 75108 }
+		command = { type = armamentminister which = 75035 }
+		command = { type = ministerofsecurity which = 75104 }
+		command = { type = ministerofintelligence which = 75061 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 75105 }
+		command = { type = foreignminister which = 75027 }
+		command = { type = armamentminister which = 75106 }
+		command = { type = ministerofsecurity which = 75107 }
+		command = { type = ministerofintelligence which = 75061 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138004] DEN | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138004
+	random = no
+	country = DEN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = DEN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = april year = 1953 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 75096 }
+		command = { type = headofgovernment which = 75101 }
+		command = { type = foreignminister which = 75108 }
+		command = { type = armamentminister which = 75035 }
+		command = { type = ministerofsecurity which = 75109 }
+		command = { type = ministerofintelligence which = 75061 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 75097 }
+		command = { type = headofgovernment which = 75105 }
+		command = { type = foreignminister which = 75027 }
+		command = { type = armamentminister which = 75106 }
+		command = { type = ministerofsecurity which = 75107 }
+		command = { type = ministerofintelligence which = 75061 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [138023] DEN | 1957 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138023
+	country = DEN
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofgovernment which = 76200 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 75105 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138024] DEN | 1960 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138024
+	country = DEN
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofgovernment which = 76201 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 76202 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138025] DEN | 1964 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138025
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1964 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76203 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 75105 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138026] DEN | 1966 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138026
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1966 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1967 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76203 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76204 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138027] DEN | 1968 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138027
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1968 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76203 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76205 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138028] DEN | 1971 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138028
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76203 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76206 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138029] DEN | 1972 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138029
+	country = DEN
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 75001 }
+		command = { type = sleepminister which = 75011 }
+		command = { type = sleepminister which = 75077 }
+		command = { type = sleepminister which = 75095 }
+		command = { type = sleepminister which = 75134 }
+		command = { type = sleepminister which = 75158 }
+		command = { type = sleepminister which = 75161 }
+		command = { type = headofstate which = 76211 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138030] DEN | 1973 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138030
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1973 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1974 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76207 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76208 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138031] DEN | 1975 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138031
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1975 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1976 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76207 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76204 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138032] DEN | 1977 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138032
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1977 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76207 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76208 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138033] DEN | 1979 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138033
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76207 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76209 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138034] DEN | 1981 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138034
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1983 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76212 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76207 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138035] DEN | 1984 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138035
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1984 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76212 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76207 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138036] DEN | 1987 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138036
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1987 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76212 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76207 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138037] DEN | 1988 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138037
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76212 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76210 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [138038] DEN | 1990 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 138038
+	country = DEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 76212 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 76210 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}

@@ -1,0 +1,968 @@
+# ============================================================================
+# File: events/Minors/U02.txt (33 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [237013] U02 | 1914 | Peace with the Central Powers (Paz con las Potencias Centrales)
+# Triggered by event 243004 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 237013
+	country = U02
+	name = "EVT_SHARED_00055_NAME"
+	desc = "EVT_SHARED_00055_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = U08 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237043] U02 | 1914 | British Indian Army (Ejército británico-indio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 237043
+	random = no
+	country = U02
+	date = { year = 1914 month = july day = 1 }
+	name = "EVT_U02_237043_NAME"
+	desc = "EVT_U02_237043_DESC"
+	style = 1
+	picture = "Minors/british_indian_army"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = -30 }
+		command = { type = morale which = land value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [196041] U02 | 1914 | British Evacuation of Southern Persia (Evacuación británica del sur de Persia)
+# Triggered by event 201005 in events/Minors/PER.txt
+# Triggered by event 196004 in events/Minors/OTT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 196041
+	country = U02
+	trigger = {
+		event = 201005
+		NOT = { war = { country = PER country = U02 } }
+		NOT = { war = { country = OTT country = U02 } }
+		event = 196004
+		exists = PER
+		OR = {
+			control = { province = 1089 data = -1 }
+			control = { province = 1090 data = -1 }
+			control = { province = 1091 data = -1 }
+			control = { province = 1093 data = -1 }
+		}
+	}
+	name = "EVT_U02_196041_NAME"
+	desc = "EVT_SHARED_00100_DESC"
+	style = 2
+	picture = "GLOBAL/persia"
+	date = { day = 28 month = july year = 1914 }
+	offset = 61
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = PER value = 5 }
+		command = { type = secedeprovince which = PER value = 1089 when = 1 }
+		command = { type = secedeprovince which = PER value = 1090 when = 1 }
+		command = { type = secedeprovince which = PER value = 1091 when = 1 }
+		command = { type = secedeprovince which = PER value = 1093 when = 1 }
+		command = { type = removeclaim which = 1089 where = U02 }
+		command = { type = removeclaim which = 1090 where = U02 }
+		command = { type = removeclaim which = 1091 where = U02 }
+		command = { type = removeclaim which = 1093 where = U02 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237042] U02 | 1919 | Rowlatt Act (Decreto Rowlatt)
+# ----------------------------------------------------------------------------
+event = {
+	id = 237042
+	country = U02
+	random = no
+	trigger = {
+		exists = U02
+	}
+	name = "EVT_SHARED_01054_NAME"
+	desc = "EVT_SHARED_01054_DESC"
+	style = 2
+	picture = "GLOBAL/blackbill"
+	date = { day = 17 month = march year = 1919 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ENG value = 10 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329012] U02 | 1933 | Join the Allies (Unirse a los Aliados)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329012
+         random = no
+         country = u02
+         trigger = {
+		war = { country =eng  country = ger }
+		NOT = { war = { country = u02 country = ENG }  }
+		NOT = { alliance = { country = u02 country = eng }  }
+         }
+         name = "ACTION_NAME_JOIN_ALLIES"
+         desc = "EVT_SHARED_00469_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1933 }
+         offset = 3
+         deathdate = { day = 29 month = december year = 1941 }
+	picture = "Minors/commonwealth"
+           action_a = {
+                  name = "EVT_SHARED_00469_A"
+                  ai_chance = 100
+                  command = { type = domestic which = freedom value = 1 }
+                  command = { type = domestic which = democratic value = 1 }
+                  command = { type = domestic which = defense_lobby value = 1 }
+                  command = { type = domestic which = interventionism value = 1 }
+                  command = { type = sleepevent which = 324000 }
+                  command = { type = set_relation which = ENG value = 200 }
+                  command = { type = alliance which = ENG }
+                  command = { type = dissent value = -50 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00469_B"
+                  command = { type = dissent value = 25 }
+                  command = { type = domestic which = interventionism value = -2 }
+                  command = { type = domestic which = defense_lobby value = -2 }
+                  command = { type = relation which = eng value = -150 }
+                  command = { type = relation which = ger value = 50 }
+                  ai_chance = 0
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [237000] U02 | 1933 | Gandhi founds Harijan (Gandhi funda el 'Harijan')
+# ----------------------------------------------------------------------------
+event = {
+	id = 237000
+	random = no
+	country = U02
+	date = { day = 16 month = february year = 1933 }
+	name = "EVT_U02_237000_NAME"
+	desc = "EVT_U02_237000_DESC"
+	style = 0
+	picture = "Minors/british_indian_army"
+	action_a = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = revolt which = -2 }
+		command = { type = revolt which = -2 }
+		command = { type = revolt which = -2 }
+		command = { type = revolt which = -2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [237010] U02 | 1933 | Indian Civil Disobedience Campaign (Campaña india de desobediencia civil)
+# ----------------------------------------------------------------------------
+event = {
+	id = 237010
+	random = no
+	country = U02
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 02 month = august year = 1933 }
+	name = "EVT_SHARED_00747_NAME"
+	desc = "EVT_SHARED_00747_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		ai_chance = 100
+		command = { type = relation which = ENG value = -5 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237001] U02 | 1934 | Creation of Royal Indian Navy (Creación de la 'Royal Indian Navy')
+# Triggered by event 329004 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 237001
+         random = no
+         country = u02
+         name = "EVT_SHARED_00470_NAME"
+         desc = "EVT_SHARED_00470_DESC"
+         style = 2
+	picture = "GLOBAL/creation_of_royal_indian_navy"
+           action_a = {
+                  name = "ACTION_NAME_AGREE"
+                  command = { type = money value = -50 }
+                  command = { type = manpowerpool value = -50 }
+                  command = { type = add_division which = "1st Destroyer Division" value = destroyer when = 0   }
+                  command = { type = add_division which = "2st Destroyer Division" value = destroyer when = 0   }
+                  command = { type = add_division which = "1st Submarine Division" value = submarine when = 0   }
+                  command = { type = add_division which = "1st Transport Division" value = transport when = 0   }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329003] U02 | 1934 | Indian general election, 1934 (Elección general de la India en 1934)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329003
+         random = no
+         country = u02
+         trigger = {
+                   puppet = { country = u02 country = eng }
+         }
+         name = "EVT_U02_329003_NAME"
+         desc = "EVT_U02_329003_DESC"
+         style = 2
+         date = { day = 9 month = february year = 1934 }
+	picture = "Minors/indian_general_election_1934"
+           action_a = {
+                  name = "ACTION_NAME_EXCELLENT"
+                  command = { type = dissent value = -1 }
+                  command = { type = domestic which = democratic value = 1 }
+                  command = { type = relation which = eng value = 5 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329005] U02 | 1934 | Gandhi resigned from Congress (Gandhi dimite del congreso)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329005
+         random = no
+         country = u02
+         trigger = {
+                   puppet = { country = u02 country = ENG }
+                   atwar = NO
+         }
+         name = "EVT_U02_329005_NAME"
+         desc = "EVT_U02_329005_DESC"
+         style = 2
+         date = { day = 24 month = october year = 1934 }
+	picture = "Minors/gandhi_resigned_from_congress"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = 1 }
+                  command = { type = relation which = ENG value = -15 }
+                  command = { type = domestic which = democratic value = -1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [237002] U02 | 1935 | Government of India Act 1935 (Ley del Gobierno de la India de 1935)
+# Triggered by event 329006 in events/ENG/ENG_34-36.txt
+# Trigger event 329008 in events/Minors/U02.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 237002
+         random = no
+         country = u02
+         name = "EVT_SHARED_00471_NAME"
+         desc = "EVT_SHARED_00471_DESC"
+         style = 2
+	picture = "GLOBAL/government_of_india_act_1935"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = relation which = eng value = 20 }
+                  command = { type = dissent value = -2 }
+                  command = { type = domestic which = freedom value = 1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [237004] U02 | 1935 | Establishment of Reserve Bank of India (Establecimiento del Banco de Reserva de la India)
+# Triggered by event 329007 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 237004
+         random = no
+         country = u02
+         name = "EVT_SHARED_00472_NAME"
+         desc = "EVT_SHARED_00472_DESC"
+         style = 2
+	picture = "GLOBAL/establishment_of_reserve_bank_of_india"
+           action_a = {
+                  name = "ACTION_NAME_GREAT"
+                  command = { type = peacetime_ic_mod value = 5 }
+                  command = { type = money value = 300 }
+                  command = { type = construct which = ic where = -4 value = 1 }
+                  command = { type = construct which = ic where = -4 value = 1 }
+                  command = { type = construct which = ic where = -4 value = 1 }
+                  command = { type = domestic which = free_market value = 1 }
+                  command = { type = dissent value = -3 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [237003] U02 | 1935 | The Balochistan earthquake (El terremoto de Baluchistán)
+# ----------------------------------------------------------------------------
+event = {
+         id = 237003
+         random = no
+         country = u02
+         trigger = {
+         }
+         name = "EVT_U02_237003_NAME"
+         desc = "EVT_U02_237003_DESC"
+         style = 2
+         date = { day = 29 month = may year = 1935 }
+	picture = "Minors/the_balochistan_earthquake"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = manpowerpool value = -40 }
+                  command = { type = construct which = infrastructure where = 1529 value = -20 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [237032] U02 | 1936 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 237032
+	country = U02
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1939 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 825001 }
+		command = { type = headofgovernment which = 825100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237037] U02 | 1936 | Fate of the British Raj (El destino del Raj Británico)
+# Trigger event 167152 in events/JAP/JAP_36-36.txt
+# Trigger event 150500 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 237037
+	country = U02
+	name = EVT_U02_237037_NAME
+	desc = EVT_U02_237037_DESC
+	picture = "nwo/british_raj_surrender"
+	style = 1
+	trigger = {
+		OR = {
+			flag = isolation_of_uk
+			flag = dissolution_of_uk
+			flag = annexation_of_uk
+		}
+		OR = {
+			war = { country = GER }
+			war = { country = JAP }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 30
+		command = { type = leave_alliance }
+		command = { type = dissent value = 5 }
+		command = { type = country which = IND }
+	}
+	action = {
+		name = EVT_U02_237037_A
+		ai_chance = 50
+		trigger = {
+			region = { region = "India" country = JAP data = 1 value = 20 }
+			}
+		command = { type = leave_alliance }
+		command = { type = dissent value = 5 }
+		command = { type = country which = IND }
+		command = { type = independence which = PAK }
+		command = { type = independence which = U80 }
+		command = { type = independence which = BUR }
+		command = { type = trigger which = 167152 }
+	}
+	action = {
+		name = EVT_U02_237037_B
+		ai_chance = 20
+		trigger = {
+			region = { region = "India" country = GER data = 1 value = 20 }
+			}
+		command = { type = leave_alliance }
+		command = { type = dissent value = 5 }
+		command = { type = country which = IND }
+		command = { type = independence which = PAK }
+		command = { type = independence which = U80 }
+		command = { type = independence which = BUR }
+		command = { type = trigger which = 150500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237008] U02 | 1936 | Head of State Resigns (Dimisión del Jefe de Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 237008
+	random = no
+	country = U02
+	style = 2
+	trigger = {
+		headofstate =  825089
+	}
+	date = { day = 17 month = april year = 1936 }
+	name = "EVT_SHARED_00507_NAME"
+	desc = "EVT_SHARED_00507_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 825001 }
+		command = { type = sleepminister which = 825089 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237009] U02 | 1937 | British Concessions to All-India Party (Concesiones británicas al 'Partido de Toda La India')
+# Triggered by event 143068 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 237009
+	random = no
+	country = U02
+	name = "EVT_SHARED_00729_NAME"
+	desc = "EVT_SHARED_00729_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -3 }
+		command = { type = relation which = ENG value = 25 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329008] U02 | 1937 | Provincial Assembly Elections in India (Elecciones de la Asamblea Provincial en la India)
+# Triggered by event 237002 in events/Minors/U02.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329008
+         random = no
+         country = u02
+         trigger = {
+                   event = 237002
+                   puppet = { country = u02 country = eng }
+         }
+         name = "EVT_U02_329008_NAME"
+         desc = "EVT_U02_329008_DESC"
+         style = 2
+         date = { day = 9 month = february year = 1937 }
+	picture = "Minors/provincial_assembly_elections_in_india"
+           action_a = {
+                  name = "ACTION_NAME_EXCELLENT"
+                  command = { type = dissent value = -1 }
+                  command = { type = domestic which = democratic value = 1 }
+                  command = { type = relation which = eng value = 5 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [237012] U02 | 1938 | Destiny of the Commonwealth (El futuro del Imperio)
+# Triggered by event 143167 in events/ENG/ENG_38-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 237012
+	random = no
+	country = U02
+	name = "EVT_SHARED_00407_NAME"
+	desc = "EVT_SHARED_00408_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "ACTION_NAME_JOIN_ALLIANCE"
+		ai_chance = 50
+		command = { type = setflag which = U02acc}
+	}
+	action = {
+		trigger = { flag = U02cap}
+		name = "ACTION_NAME_JOIN_ALLIANCE"
+		ai_chance = 90
+		command = { type = setflag which = U02acc}
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 50
+		command = {}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329009] U02 | 1939 | World War II and Indian involvement (La Segunda Guerra Mundial y la participación india)
+# Trigger event 237005 in events/Minors/U02.txt
+# Trigger event 143000 in events/ENG/ENG_38-39.txt
+# Trigger event 329010 in events/ENG/ENG_39-43.txt
+# Trigger event 329011 in events/Minors/U02.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329009
+         random = no
+         country = u02
+         trigger = {
+                   atwar = yes
+                   puppet = { country = u02 country = eng }
+         }
+         name = "EVT_SHARED_00473_NAME"
+         desc = "EVT_SHARED_00473_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1939 }
+         offset = 1
+         deathdate = { day = 29 month = december year = 1941 }
+	picture = "GLOBAL/world_war_ii_and_indian_involvement"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = relation which = eng value = -15 }
+                  command = { type = industrial_modifier which = total value = -35 }
+                  command = { type = delete_unit which = -1 }
+                  command = { type = delete_unit which = -1 }
+                  command = { type = trigger which = 143000 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [237005] U02 | 1940 | Resolution of Lahore (Resolución de Lahore)
+# Triggered by event 329009 in events/Minors/U02.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 237005
+         random = no
+         country = u02
+         trigger = {
+                   event = 329009
+                   NOT = {
+                            exists = pak
+                   }
+                   puppet = { country = u02 country = eng }
+         }
+         name = "EVT_U02_237005_NAME"
+         desc = "EVT_U02_237005_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1940 }
+         offset = 20
+         deathdate = { day = 29 month = december year = 1940 }
+	picture = "Minors/resolution_of_lahore"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = 3 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [237033] U02 | 1940 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 237033
+	country = U02
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1940 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1942 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 825001 }
+		command = { type = headofgovernment which = 825101 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237006] U02 | 1942 | Cripps' mission (Misión 'Cripps')
+# Triggered by event 329010 in events/ENG/ENG_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 237006
+         random = no
+         country = u02
+         name = "EVT_SHARED_00474_NAME"
+         desc = "EVT_SHARED_00474_DESC"
+         style = 2
+	picture = "GLOBAL/cripps_mission"
+           action_a = {
+                  name = "ACTION_NAME_FAILURE"
+                  command = { type = dissent value = 1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329011] U02 | 1942 | Quit India Movement (Movimiento 'Salir de la India')
+# Triggered by event 329009 in events/Minors/U02.txt
+# Trigger event 237007 in events/Minors/U02.txt
+# Trigger event 143001 in events/ENG/ENG_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329011
+         random = no
+         country = u02
+         trigger = {
+                   event = 329009
+                   puppet = { country = u02 country = eng }
+                   exists = eng
+         }
+         name = "EVT_SHARED_00475_NAME"
+         desc = "EVT_SHARED_00475_DESC"
+         style = 2
+         date = { day = 29 month = august year = 1942 }
+	picture = "GLOBAL/quit_india_movement_2"
+           action_a = {
+                  name = "ACTION_NAME_UNFORTUNATE"
+                  command = { type = dissent value = 1 }
+                  command = { type = delete_unit which = -1 }
+                  command = { type = delete_unit which = -1 }
+                  command = { type = delete_unit which = -1 }
+                  command = { type = delete_unit which = -1 }
+                  command = { type = delete_unit which = -1 }
+                  command = { type = delete_unit which = -1 }
+                  command = { type = trigger which = 143001 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [237034] U02 | 1943 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 237034
+	country = U02
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1943 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 825012 }
+		command = { type = headofgovernment which = 825101 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237035] U02 | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 237035
+	country = U02
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 825012 }
+		command = { type = headofgovernment which = 825102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237007] U02 | 1946 | Royal Indian Navy mutiny (Motín de la Royal Indian Navy)
+# Triggered by event 329011 in events/Minors/U02.txt
+# Trigger event 143002 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 237007
+         random = no
+         country = u02
+         trigger = {
+                   event = 329011
+                   NOT = {
+                            exists = pak
+                            exists = ind
+                   }
+                   puppet = { country = u02 country = eng }
+         }
+         name = "EVT_U02_237007_NAME"
+         desc = "EVT_U02_237007_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1946 }
+         offset = 20
+         deathdate = { day = 29 month = december year = 1946 }
+	picture = "GLOBAL/quit_india_movement"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = 1 }
+                  command = { type = trigger which = 143002 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [237038] U02 | 1946 | The Separation of Burma (Separación de Birmania)
+# Triggered by event 143320 in events/ENG/ENG_43-54.txt
+# Trigger event 143319 in events/ENG/ENG_43-54.txt
+# Trigger event 237041 in events/Minors/U02.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 237038
+	country = U02
+	persistent = yes
+	name = EVT_U02_237038_NAME
+	desc = EVT_U02_237038_DESC
+	picture = "nwo/independence_of_burma"
+	style = 1
+	trigger = {
+		area = { area = "North Burma" country = -1 data = 1 value = 50 }
+		area = { area = "Burma" country = -1 data = 1 value = 50 }
+		atwar = no
+		flag = cold_war_pacific
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 100
+		command = { type = independence which = BUR value = 1 }
+		command = { type = trigger which = 143319 }
+	}
+	action = {
+		name = ACTION_NOT_NOW
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+		command = { type = belligerence value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237036] U02 | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 237036
+	country = U02
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 825011 }
+		command = { type = headofgovernment which = 825014 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237039] U02 | 1947 | Independence of India and Pakistan (Independencia de India y Pakistán)
+# Triggered by event 143320 in events/ENG/ENG_43-54.txt
+# Triggered by event 237041 in events/Minors/U02.txt
+# Trigger event 143283 in events/ENG/ENG_43-54.txt
+# Trigger event 288000 in events/Minors/U80.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 237039
+	country = U02
+	name = EVT_U02_237039_NAME
+	desc = EVT_U02_237039_DESC
+	picture = "nwo/independence_of_india"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = U80 value = 1 }
+		command = { type = independence which = PAK value = 1 }
+		command = { type = secedeprovince which = PAK value = 1536 when = 1 }
+		command = { type = secedeprovince which = PAK value = 1444 when = 1 }
+		command = { type = secedeprovince which = PAK value = 1449 when = 1 }
+		command = { type = secedeprovince which = PAK value = 1445 when = 1 }
+		command = { type = secedeprovince which = PAK value = 1450 when = 1 }
+		command = { type = secedeprovince which = PAK value = 1439 when = 1 }
+		command = { type = country which = IND }
+		command = { type = strength which = all when = 0 where = 1 value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237040] U02 | 1947 | Federation of All India (Federación de Toda la India)
+# Triggered by event 143320 in events/ENG/ENG_43-54.txt
+# Trigger event 143282 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 237040
+	country = U02
+	name = EVT_U02_237040_NAME
+	desc = EVT_U02_237040_DESC
+	picture = "nwo/independence_of_india"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = country which = IND }
+		command = { type = dissent value = 40 }
+		command = { type = province_revoltrisk which = 1538 value = 30 }
+		command = { type = province_revoltrisk which = 1533 value = 30 }
+		command = { type = province_revoltrisk which = 1532 value = 30 }
+		command = { type = province_revoltrisk which = 1534 value = 30 }
+		command = { type = province_revoltrisk which = 1539 value = 30 }
+		command = { type = province_revoltrisk which = 1537 value = 30 }
+		command = { type = province_revoltrisk which = 1530 value = 30 }
+		command = { type = province_revoltrisk which = 1529 value = 30 }
+		command = { type = province_revoltrisk which = 1536 value = 30 }
+		command = { type = province_revoltrisk which = 1539 value = 30 }
+		command = { type = province_revoltrisk which = 1444 value = 30 }
+		command = { type = province_revoltrisk which = 1449 value = 30 }
+		command = { type = province_revoltrisk which = 1439 value = 30 }
+		command = { type = province_revoltrisk which = 1445 value = 30 }
+		command = { type = province_revoltrisk which = 1450 value = 30 }
+		command = { type = province_revoltrisk which = 1540 value = 30 }
+		command = { type = province_revoltrisk which = 1442 value = 30 }
+		command = { type = province_revoltrisk which = 1411 value = 30 }
+		command = { type = province_revoltrisk which = 1406 value = 30 }
+		command = { type = province_revoltrisk which = 1407 value = 30 }
+		command = { type = province_revoltrisk which = 1408 value = 30 }
+		command = { type = province_revoltrisk which = 1409 value = 30 }
+		command = { type = province_revoltrisk which = 1420 value = 30 }
+		command = { type = province_revoltrisk which = 1419 value = 30 }
+		command = { type = province_revoltrisk which = 1415 value = 30 }
+		command = { type = province_revoltrisk which = 1410 value = 30 }
+		command = { type = province_revoltrisk which = 1417 value = 30 }
+		command = { type = province_revoltrisk which = 1416 value = 30 }
+		command = { type = province_revoltrisk which = 1412 value = 30 }
+		command = { type = province_revoltrisk which = 1413 value = 30 }
+		command = { type = province_revoltrisk which = 1418 value = 30 }
+		command = { type = province_revoltrisk which = 1443 value = 30 }
+		command = { type = province_revoltrisk which = 1421 value = 30 }
+		command = { type = province_revoltrisk which = 1458 value = 30 }
+		command = { type = province_revoltrisk which = 1455 value = 30 }
+		command = { type = province_revoltrisk which = 1414 value = 30 }
+		command = { type = province_revoltrisk which = 1440 value = 30 }
+		command = { type = province_revoltrisk which = 1441 value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237011] U02 | 1948 | Fate of Burma (El destino de Birmania)
+# Trigger event 119001 in events/Minors/BUR.txt
+# Trigger event 143111 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 237011
+	random = no
+	country = U02
+	trigger = {
+		government = democratic
+		random = 8
+		control = { province = 1415 data = U02 }
+		atwar = no
+		NOT = {
+			exists = BUR
+			exists = GER
+		}
+	}
+	name = "EVT_SHARED_00764_NAME"
+	desc = "EVT_SHARED_00764_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1948 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 95
+		command = { type = independence which = BUR value = 1 }
+		command = { type = trigger which = 119001 }
+		command = { type = trigger which = 143111 }
+	}
+	action_b = {
+		name = "ACTION_NAME_SUPPRESS_REVOLT"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [237041] U02 | 1950 | The Indian Dilemma (El dilema de la India)
+# Triggered by event 237038 in events/Minors/U02.txt
+# Triggered by event 143320 in events/ENG/ENG_43-54.txt
+# Trigger event 237039 in events/Minors/U02.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 237041
+	country = U02
+	persistent = yes
+	name = EVT_U02_237041_NAME
+	desc = EVT_U02_237041_DESC
+	picture = "nwo/independence_of_india"
+	style = 1
+	trigger = {
+		event = 237038
+		event = 143320
+		OR = {
+			NOT = { exists = IND }
+			NOT = { exists = BUR }
+		}
+		exists = U02
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 1000
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = BUR value = 1 }
+		command = { type = trigger which = 237039 }
+	}
+	action = {
+		name = EVT_U02_237041_A
+		ai_chance = 20
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 20 }
+	}
+}

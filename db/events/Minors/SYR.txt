@@ -1,0 +1,1166 @@
+# ============================================================================
+# File: events/Minors/SYR.txt (36 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [228033] SYR | 1933 | Formation of National Army (Creación del ejército)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228033
+	country = SYR
+	name = EVT_SHARED_00916_NAME
+	desc = EVT_SHARED_00916_DESC
+	picture = "nwo/foundation_of_army"
+	style = 1
+	date = { day = 1 month = january year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228004] SYR | 1936 | Iraqi Reinforcements in Palestine (Refuerzos iraquíes en Palestina)
+# Triggered by event 164014 in events/Minors/IRQ.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 228004
+	random = no
+	country = SYR
+	trigger = { }
+	name = "EVT_SYR_228004_NAME"
+	desc = "EVT_SYR_228004_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		ai_chance = 80
+		name = ACTION_NAME_OK
+		command = { type = add_division which = "Iraqi Expeditionary Force" value = infantry when = 8 }
+		command = { type = add_division which = "Iraqi Expeditionary Force" value = infantry when = 8 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [228038] SYR | 1936 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228038
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1936 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 430001 }
+		command = { type = headofgovernment which = 430200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329280] SYR | 1936 | Proclamation of Israel (Proclamación del Estado de Israel)
+# Triggered by event 165001 in events/Minors/ISR.txt
+# Trigger event 164014 in events/Minors/IRQ.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329280
+	random = no
+	country = SYR
+	trigger = {
+		NOT = {
+			ispuppet = SYR
+			alliance = { country = SYR country = ENG }
+			alliance = { country = SYR country = USA }
+			alliance = { country = SYR country = GER }
+			alliance = { country = SYR country = SOV }
+			}
+		OR = {
+			event = 165001
+			AND = {
+				country = ISR
+				NOT = {
+					ispuppet = ISR
+					alliance = { country = ISR country = ENG }
+					alliance = { country = ISR country = USA }
+					alliance = { country = ISR country = GER }
+					alliance = { country = ISR country = SOV }
+					}
+				}
+			}
+		}
+	name = "EVT_SHARED_00767_NAME"
+	desc = "EVT_SHARED_00771_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 80
+		name = "ACTION_NAME_WAR"
+		command = { type = belligerence which = SYR value = 10 }
+		command = { type = set_relation which = EGY value = 150 }
+ 		command = { type = set_relation which = JOR value = 150 }
+		command = { type = set_relation which = LEB value = 150 }
+		command = { type = set_relation which = IRQ value = 100 }
+		command = { type = war which = ISR }
+		command = { type = trigger which = 164014 }
+		}
+	action_b = {
+		ai_chance = 20
+		name = "ACTION_NAME_NEUTRAL"
+		command = { type = set_relation which = EGY value = -50 }
+ 		command = { type = set_relation which = JOR value = -50 }
+		command = { type = set_relation which = LEB value = -50 }
+		command = { type = set_relation which = IRQ value = -50 }
+		command = { type = set_relation which = ISR value = 75 }
+		command = { type = set_relation which = ENG value = 75 }
+		command = { type = set_relation which = USA value = 75 }
+		command = { type = set_relation which = FRA value = 75 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [228039] SYR | 1937 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228039
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1937 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1938 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430012 }
+		command = { type = headofgovernment which = 430022 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228040] SYR | 1939 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228040
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1939 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1940 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430013 }
+		command = { type = headofgovernment which = 430201 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228032] SYR | 1941 | Colonial Military Bases (Bases militares coloniales)
+# Triggered by event 147159 in events/FRA/FRA_39-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 228032
+	country = SYR
+	name = EVT_SHARED_00874_NAME
+	desc = EVT_SHARED_00874_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = access which = FRA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228041] SYR | 1941 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228041
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1941 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430202 }
+		command = { type = headofgovernment which = 430203 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228042] SYR | 1942 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228042
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1942 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1942 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430014 }
+		command = { type = headofgovernment which = 430204 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228043] SYR | 1943 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228043
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1943 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1943 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430205 }
+		command = { type = headofgovernment which = 430200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329822] SYR | 1943 | Full Sovereignty Achieved (Independencia total)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329822
+	country = SYR
+	name = EVT_SHARED_00908_NAME
+	desc = EVT_SHARED_00908_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		puppet = { country = SYR country = FRA }
+		flag = cold_war
+		NOT = { atwar = FRA }
+	}
+	date = { day = 1 month = january year = 1943 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = end_puppet }
+		command = { type = end_access which = FRA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228044] SYR | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228044
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430015 }
+		command = { type = headofgovernment which = 430206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228045] SYR | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228045
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430015 }
+		command = { type = headofgovernment which = 430207 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228005] SYR | 1946 | Syrian Independence (Independencia de Siria)
+# Triggered by event 147090 in events/FRA/FRA_39-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 228005
+	random = no
+	country = SYR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = { }
+	name = "EVT_SYR_228005_NAME"
+	desc = "EVT_SYR_228005_DESC"
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 430015 }
+		command = { type = headofgovernment which = 430021 }
+		command = { type = foreignminister which = 430026 }
+		command = { type = armamentminister which = 430072 }
+		command = { type = ministerofsecurity which = 430074 }
+		command = { type = ministerofintelligence which = 430076 }
+		command = { type = chiefofstaff which = 430047 }
+		command = { type = chiefofarmy which = 430051 }
+		command = { type = chiefofnavy which = 430054 }
+		command = { type = chiefofair which = 430057 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [228046] SYR | 1946 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228046
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430015 }
+		command = { type = headofgovernment which = 430206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228047] SYR | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228047
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430015 }
+		command = { type = headofgovernment which = 430022 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228048] SYR | 1949 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228048
+	country = SYR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 430060 }
+		command = { type = headofgovernment which = 430066 }
+		command = { type = foreignminister which = 430073 }
+		command = { type = armamentminister which = 430075 }
+		command = { type = ministerofsecurity which = 430074 }
+		command = { type = ministerofintelligence which = 430076 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 430014 }
+		command = { type = headofgovernment which = 430022 }
+		command = { type = foreignminister which = 430027 }
+		command = { type = armamentminister which = 430033 }
+		command = { type = ministerofsecurity which = 430039 }
+		command = { type = ministerofintelligence which = 430044 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228003] SYR | 1949 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228003
+	random = no
+	country = SYR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = march year = 1949 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 430060 }
+		command = { type = headofgovernment which = 430064 }
+		command = { type = foreignminister which = 430073 }
+		command = { type = armamentminister which = 430075 }
+		command = { type = ministerofsecurity which = 430074 }
+		command = { type = ministerofintelligence which = 430076 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 430014 }
+		command = { type = headofgovernment which = 430022 }
+		command = { type = foreignminister which = 430027 }
+		command = { type = armamentminister which = 430033 }
+		command = { type = ministerofsecurity which = 430039 }
+		command = { type = ministerofintelligence which = 430044 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [228000] SYR | 1949 | Popular Revolution Victorious! (¡Triunfo de la revolución!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228000
+	random = no
+	country = SYR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00496_NAME"
+	desc = "EVT_SHARED_00496_DESC"
+	date = { day = 1 month = august year = 1949 }
+	offset = 20
+	deathdate = { day = 29 month = november year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 430012 }
+		command = { type = headofgovernment which = 430066 }
+		command = { type = foreignminister which = 430073 }
+		command = { type = armamentminister which = 430075 }
+		command = { type = ministerofsecurity which = 430074 }
+		command = { type = ministerofintelligence which = 430076 }
+		command = { type = chiefofstaff which = 430071 }
+		command = { type = chiefofarmy which = 430051 }
+		command = { type = chiefofnavy which = 430054 }
+		command = { type = chiefofair which = 430077 }
+		command = { type = dissent value = 3 }
+		command = { type = sleepminister which = 430047 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [228049] SYR | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228049
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430012 }
+		command = { type = headofgovernment which = 430067 }
+		command = { type = foreignminister which = 430073 }
+		command = { type = armamentminister which = 430075 }
+		command = { type = ministerofsecurity which = 430074 }
+		command = { type = ministerofintelligence which = 430076 }
+		command = { type = chiefofstaff which = 430071 }
+		command = { type = chiefofarmy which = 430051 }
+		command = { type = chiefofnavy which = 430054 }
+		command = { type = chiefofair which = 430077 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228050] SYR | 1951 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228050
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430012 }
+		command = { type = headofgovernment which = 430063 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228001] SYR | 1951 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228001
+	random = no
+	country = SYR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = december year = 1951 }
+	offset = 20
+	deathdate = { day = 29 month = july year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 430061 }
+		command = { type = headofgovernment which = 430069 }
+		command = { type = foreignminister which = 430073 }
+		command = { type = armamentminister which = 430075 }
+		command = { type = ministerofsecurity which = 430074 }
+		command = { type = ministerofintelligence which = 430076 }
+		command = { type = chiefofstaff which = 430071 }
+		command = { type = chiefofarmy which = 430051 }
+		command = { type = chiefofnavy which = 430054 }
+		command = { type = chiefofair which = 430077 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [228051] SYR | 1952 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228051
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 430061 }
+		command = { type = headofgovernment which = 430069 }
+		command = { type = foreignminister which = 430073 }
+		command = { type = armamentminister which = 430075 }
+		command = { type = ministerofsecurity which = 430074 }
+		command = { type = ministerofintelligence which = 430076 }
+		command = { type = chiefofstaff which = 430071 }
+		command = { type = chiefofarmy which = 430051 }
+		command = { type = chiefofnavy which = 430054 }
+		command = { type = chiefofair which = 430077 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228052] SYR | 1953 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228052
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430062 }
+		command = { type = headofgovernment which = 430070 }
+		command = { type = foreignminister which = 430073 }
+		command = { type = armamentminister which = 430075 }
+		command = { type = ministerofsecurity which = 430074 }
+		command = { type = ministerofintelligence which = 430076 }
+		command = { type = chiefofstaff which = 430071 }
+		command = { type = chiefofarmy which = 430051 }
+		command = { type = chiefofnavy which = 430054 }
+		command = { type = chiefofair which = 430077 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228002] SYR | 1953 | Popular Revolution Victorious! (¡Triunfo de la revolución!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228002
+	random = no
+	country = SYR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00496_NAME"
+	desc = "EVT_SHARED_00496_DESC"
+	date = { day = 1 month = august year = 1953 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 430062 }
+		command = { type = headofgovernment which = 430070 }
+		command = { type = foreignminister which = 430073 }
+		command = { type = armamentminister which = 430075 }
+		command = { type = ministerofsecurity which = 430074 }
+		command = { type = ministerofintelligence which = 430076 }
+		command = { type = chiefofstaff which = 430071 }
+		command = { type = chiefofarmy which = 430051 }
+		command = { type = chiefofnavy which = 430054 }
+		command = { type = chiefofair which = 430077 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [228053] SYR | 1954 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228053
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430012 }
+		command = { type = headofgovernment which = 430208 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228054] SYR | 1956 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228054
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430015 }
+		command = { type = headofgovernment which = 430209 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228055] SYR | 1957 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228055
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430015 }
+		command = { type = headofgovernment which = 430208 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228059] SYR | 1958 | Accession to the United Arab Republic (Integración en la República Árabe Unida)
+# Triggered by event 142059 in events/Minors/EGY_Decisions.txt
+# Trigger event 142060 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 228059
+	country = SYR
+	name = EVT_SYR_228059_NAME
+	desc = EVT_SYR_228059_DESC
+	picture = "nwo/united_arab_republic"
+	style = 1
+	trigger = {
+		event = 142059
+		exists = EGY
+		flag = cold_war
+		atwar = no
+		}
+	date = { day = 1 month = february year = 1958 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_SURRENDER_GAMEOVER
+		ai_chance = 90
+		command = { type = relation which = EGY value = 200 }
+		command = { type = trigger which = 142060 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 10
+		command = { type = relation which = EGY value = -100 }
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228056] SYR | 1961 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228056
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 430210 }
+		command = { type = headofgovernment which = 430211 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228057] SYR | 1962 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228057
+	country = SYR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 430210 }
+		command = { type = headofgovernment which = 430212 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228058] SYR | 1963 | Ba'athist Coup in Syria (Golpe baazista en Siria)
+# ----------------------------------------------------------------------------
+event = {
+	id = 228058
+	country = SYR
+	name = EVT_SYR_228058_NAME
+	desc = EVT_SYR_228058_DESC
+	picture = "nwo/baath_party_coup"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 430213 }
+		command = { type = headofgovernment which = 430214 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228034] SYR | 1967 | Arab Mobilization (1967) (Coalición árabe en 1967)
+# Triggered by event 142049 in events/Minors/EGY_61-86.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 228034
+	country = SYR
+	name = EVT_SYR_228034_NAME
+	desc = EVT_SYR_228034_DESC
+	picture = "nwo/six_day_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 95
+		command = { type = leave_alliance }
+		command = { type = war which = ISR }
+		command = { type = alliance which = EGY }
+		command = { type = dissent value = -10 }
+		command = { type = belligerence value = 15 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 5
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228035] SYR | 1967 | Defeat in the Six-Day War (Derrota en la Guerra de los Seis Días)
+# Triggered by event 329904 in events/Minors/ISR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 228035
+	country = SYR
+	name = EVT_SYR_228035_NAME
+	desc = EVT_SYR_228035_DESC
+	picture = "nwo/six_day_war"
+	decision_picture = "nwo/d_six_day_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_HORRIBLE
+		command = { type = dissent value = 10 }
+		command = { type = secedeprovince which = ISR value = 1020 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228036] SYR | 1973 | Syria Enters the Conflict (Siria entra en combate)
+# Triggered by event 142051 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 228036
+	country = SYR
+	name = EVT_SYR_228036_NAME
+	desc = EVT_SYR_228036_DESC
+	picture = "nwo/yom_kippur_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 90
+		command = { type = leave_alliance }
+		command = { type = war which = ISR }
+		command = { type = alliance which = EGY }
+		command = { type = dissent value = -5 }
+		command = { type = belligerence value = 5 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		trigger = { ai = yes }
+		ai_chance = 10
+		command = { type = relation which = EGY value = -100 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [228037] SYR | 1973 | Yom Kippur Ceasefire Accepted (Tregua de Yom Kipur pactada)
+# Triggered by event 142053 in events/Minors/EGY_61-86.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 228037
+	country = SYR
+	name = EVT_SYR_228037_NAME
+	desc = EVT_SYR_228037_DESC
+	picture = "nwo/yom_kippur_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT_PEACE
+		ai_chance = 100
+		command = { type = peace which = ISR }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}

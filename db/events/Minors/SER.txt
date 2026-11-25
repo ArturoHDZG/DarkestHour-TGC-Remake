@@ -1,0 +1,1095 @@
+# ============================================================================
+# File: events/Minors/SER.txt (33 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [217000] SER | 1914 | The Entente Concludes Peace (La Entente firma la paz)
+# Triggered by event 243005 in events/Minors/U08_14-14.txt
+# Triggered by event 243009 in events/Minors/U08_14-14.txt
+# Triggered by event 243144 in events/Minors/U08_14-18.txt
+# Trigger event 244002 in events/Minors/U09.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217000
+	country = SER
+	name = "EVT_SHARED_00053_NAME"
+	desc = "EVT_SHARED_00053_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		ai_chance = 10
+		name = "ACTION_NAME_SURRENDER_GAMEOVER"
+		command = { type = trigger which = 244002 }
+	}
+	action = {
+		ai_chance = 90
+		name = "ACTION_NAME_LEAVE_ALLIANCE"
+		command = { type = leave_alliance when = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217001] SER | 1914 | Serbia Appeals to Russia (Serbia pide amparo a Rusia)
+# Triggered by event 244013 in events/Minors/U09_Decisions.txt
+# Trigger event 211005 in events/Minors/RUS_14-14.txt
+# Trigger event 217003 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217001
+	country = SER
+	name = "EVT_SER_217001_NAME"
+	desc = "EVT_SER_217001_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 211005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217002] SER | 1914 | Russia Guarantees Serbia (Rusia garantiza a Serbia)
+# Triggered by event 211005 in events/Minors/RUS_14-14.txt
+# Trigger event 217003 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217002
+	country = SER
+	name = "EVT_SER_217002_NAME"
+	desc = "EVT_SER_217002_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = RUS value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217005] SER | 1914 | The Great Retreat across Albania (La Gran Retirada por Albania)
+# Triggered by event 101016 in events/Minors/ALB.txt
+# Trigger event 152027 in events/GRE/GRE_14-33.txt
+# Trigger event 329554 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217005
+	country = SER
+	name = "EVT_SER_217005_NAME"
+	desc = "EVT_SER_217005_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = inherit which = ALB }
+		command = { type = strength which = land when = 1 where = 1 value = -0.25 }
+		command = { type = disorg_division which = -1 where = 50 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [217006] SER | 1914 | Anti-Austrian Demonstrations in Belgrade (Protestas contra Austria en Belgrado)
+# Triggered by event 211047 in events/Minors/RUS_Decisions.txt
+# Trigger event 217007 in events/Minors/SER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217006
+	country = SER
+	name = "EVT_SHARED_00105_NAME"
+	desc = "EVT_SHARED_00105_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+		command = { type = ai_prepare_war which = U09 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217008] SER | 1914 | The Kingdom of Serbs, Croats and Slovenes (El Reino de los Serbios, Croatas y Eslovenos)
+# Triggered by event 108083 in events/Minors/AUS_14-37.txt
+# Trigger event 159067 in events/Minors/HUN_14-38.txt
+# Trigger event 217010 in events/Minors/SER.txt
+# Trigger event 217011 in events/Minors/SER.txt
+# Trigger event 217017 in events/Minors/SER.txt
+# Trigger event 217032 in events/AI/Minors_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217008
+	country = SER
+	name = "EVT_SER_217008_NAME"
+	desc = "EVT_SER_217008_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_GREAT"
+		command = { trigger = { exists = MTN ai = MTN NOT = { war = { country = MTN country = SER } } } type = inherit which = MTN }
+		command = { trigger = { exists = SLV ai = SLV NOT = { war = { country = SLV country = SER } } } type = inherit which = SLV }
+		command = { trigger = { exists = CRO ai = CRO NOT = { war = { country = CRO country = SER } } } type = inherit which = CRO }
+		command = { trigger = { exists = BOS ai = BOS NOT = { war = { country = BOS country = SER } } } type = inherit which = BOS }
+		command = { trigger = { control = { province = 338 data = -1 } control = { province = 338 data = -1 } } type = capital which = 338 }
+		command = { type = addcore which = 332 }
+		command = { type = addcore which = 335 }
+		command = { type = addclaim which = 354 }
+		command = { type = addclaim which = 328 }
+		command = { type = addclaim which = 333 }
+		command = { type = addclaim which = 334 }
+		command = { type = addclaim which = 341 }
+		command = { type = addclaim which = 343 }
+		command = { type = addclaim which = 344 }
+		command = { type = addclaim which = 345 }
+		command = { type = addclaim which = 346 }
+		command = { type = addclaim which = 347 }
+		command = { type = addclaim which = 349 }
+		command = { type = addclaim which = 350 }
+		command = { type = addclaim which = 351 }
+		command = { type = addclaim which = 352 }
+		command = { type = addclaim which = 353 }
+		command = { type = addclaim which = 355 }
+		command = { type = addclaim which = 356 }
+		command = { type = addclaim which = 357 }
+		command = { type = addclaim which = 358 }
+		command = { type = name where = SER which = SER1919 }
+		command = { type = flag_ext where = SER which = "_serbs_croats_slovenes" }
+		command	= { trigger = { ai = yes NOT = { manpower = 39 } } type = manpowerpool value = 39 }
+		command = { trigger = { ai = yes NOT = { army = 4 } } type = build_division which = infantry cost = -0.1 where = 3 }
+		command = { trigger = { ai = yes NOT = { army = 4 } } type = build_division which = infantry cost = -0.1 where = 3 }
+		command = { trigger = { ai = yes NOT = { army = 4 } } type = build_division which = infantry cost = -0.1 where = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217009] SER | 1914 | Join the war with Russia (Unirse a la guerra junto a Rusia)
+# Triggered by event 211046 in events/Minors/RUS_Decisions.txt
+# Triggered by event 217007 in events/Minors/SER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217009
+	country = SER
+	style = 1
+	name = "EVT_SER_217009_NAME"
+	desc = "EVT_SER_217009_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance when = 1 }
+		command = { trigger = { participant = { country = RUS value = 1 } } type = alliance which = 2 when = 1 }
+		command = { trigger = { NOT = { participant = { country = RUS value = 1 } } } type = alliance which = RUS when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217010] SER | 1914 | A New Kingdom (Un nuevo reino)
+# Triggered by event 217008 in events/Minors/SER.txt
+# Triggered by event 243083 in events/Minors/U08_14-14.txt
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Trigger event 136049 in events/Minors/CZE_14-53.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217010
+	country = SER
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		atwar = no
+		event = 217008
+		or = {
+			event = 243083
+			event = 147311
+		}
+	}
+	name = "EVT_SER_217010_NAME"
+	desc = "EVT_SER_217010_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = local_setflag which = winner }
+		command = { type = local_clrflag which = disarm_10 }
+		command = { type = local_clrflag which = disarm_25 }
+		command = { type = local_clrflag which = disarm_75 }
+		command = { type = local_setflag which = disarm_50 }
+		command = { trigger = { not = { army = 6 } } type = add_division value = infantry when = 1 }
+		command = { trigger = { not = { army = 6 } } type = add_division value = infantry when = 1 }
+		command = { trigger = { not = { army = 6 } } type = add_division value = infantry when = 1 }
+		command = { trigger = { not = { army = 6 } } type = add_division value = infantry when = 1 }
+		command = { type = dissent value = 3 }
+		command = { trigger = { not = { flag = lon } } type = setflag which = lon }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217011] SER | 1914 | First Cabinet Crisis (Primera crisis de gobierno)
+# Triggered by event 217008 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217011
+	country = SER
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 10
+	trigger = {
+		incabinet = 415080
+		event = 217008
+	}
+	name = "EVT_SER_217011_NAME"
+	desc = "EVT_SER_217011_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "EVT_SER_217011_A"
+		ai_chance = 100
+		command = { type = headofgovernment which = 415081 }
+		command = { type = dissent value = 1 }
+	}
+	action = {
+		name = "EVT_SER_217011_B"
+		ai_chance = 0
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = dissent value = 3 }
+	}
+	action = {
+		name = "EVT_SER_217011_C"
+		ai_chance = 0
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = freedom value = 2 }
+		command = { type = headofgovernment which = 415081 }
+		command = { type = dissent value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217013] SER | 1914 | Parliamentary Deadlock (Bloqueo parlamentario)
+# Trigger event 217014 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217013
+	country = SER
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 60
+	trigger = {
+		government = democratic
+		incabinet = 415088
+		NOT = { ispuppet = SER }
+	}
+	name = "EVT_SER_217013_NAME"
+	desc = "EVT_SER_217013_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217014] SER | 1914 | Davidovic Resigns (Dimisión de Davidovic)
+# Triggered by event 217013 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217014
+	country = SER
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 10
+	trigger = {
+		event = 217013
+	}
+	name = "EVT_SER_217014_NAME"
+	desc = "EVT_SER_217014_DESC"
+	picture = "GLOBAL/congress"
+	style = 2
+	action = {
+		name = "EVT_SER_217014_A"
+		ai_chance = 99
+		command = { type = headofgovernment which = 415081 }
+		command = { type = dissent value = -1 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE_PEACE"
+		ai_chance = 1
+		command = { type = dissent value = 6 }
+		command = { type = province_revoltrisk which = 338 value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231150] SER | 1914 | Formation of Yugoslavia (Creación de Yugoslavia)
+# Triggered by event 244019 in events/Minors/U09.txt
+# Triggered by event 217027 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 231150
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	country = SER
+	offset = 365
+	trigger = {
+		not = { exists = YUG }
+		event = 244019
+		event = 217027
+		owned = { province = 355 data = SER }
+		owned = { province = 352 data = SER }
+		owned = { province = 346 data = SER }
+	}
+	name = "EVT_SER_231150_NAME"
+	Desc = "EVT_SER_231150_DESC"
+	Picture = "assistance"
+	action = {
+		name = "EVT_SER_231150_A"
+		ai_chance = 100
+		command = { type = dissent value = 50 }
+		command = { type = dissent value = -20 }
+		command = { type = flag_ext where = SER which = "" }
+		command = { type = country which = YUG }
+		command = { type = flag_ext where = YUG which = "" }
+		command = { type = name where = YUG }
+		command = { type = leave_alliance }
+		command = { type = addcore which = 338 }
+		command = { type = addcore which = 352 }
+		command = { type = addcore which = 355 }
+		command = { type = addcore which = 349 }
+		command = { type = addcore which = 346 }
+		command = { type = addcore which = 345 }
+		command = { type = addcore which = 344 }
+		command = { type = addcore which = 353 }
+		command = { type = addcore which = 350 }
+		command = { type = addcore which = 354 }
+		command = { type = addcore which = 356 }
+		command = { type = addcore which = 343 }
+		command = { type = addcore which = 332 }
+		command = { type = addcore which = 330 }
+		command = { type = addcore which = 342 }
+		command = { type = addcore which = 329 }
+		command = { type = addcore which = 341 }
+		command = { type = addcore which = 336 }
+		command = { type = addcore which = 333 }
+		command = { type = addcore which = 328 }
+		command = { type = addcore which = 331 }
+		command = { type = addcore which = 334 }
+		command = { type = addcore which = 347 }
+		command = { type = addcore which = 357 }
+		command = { type = addcore which = 358 }
+		command = { type = addcore which = 351 }
+		command = { type = addcore which = 335 }
+		command = { type = addcore which = 340 }
+		command = { type = addcore which = 327 }
+		command = { type = addcore which = 337 }
+		command = { type = addcore which = 339 }
+	}
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 0
+		command = { type = domestic which = political_left value = -2 }
+		command = { type = domestic which = democratic value = -5 }
+		command = { type = addcore which = 338 }
+		command = { type = addcore which = 352 }
+		command = { type = addcore which = 355 }
+		command = { type = addcore which = 349 }
+		command = { type = addcore which = 346 }
+		command = { type = addcore which = 345 }
+		command = { type = addcore which = 344 }
+		command = { type = addcore which = 353 }
+		command = { type = addcore which = 350 }
+		command = { type = addcore which = 354 }
+		command = { type = addcore which = 356 }
+		command = { type = addcore which = 343 }
+		command = { type = addcore which = 332 }
+		command = { type = addcore which = 330 }
+		command = { type = addcore which = 342 }
+		command = { type = addcore which = 329 }
+		command = { type = addcore which = 341 }
+		command = { type = addcore which = 336 }
+		command = { type = addcore which = 333 }
+		command = { type = addcore which = 328 }
+		command = { type = addcore which = 331 }
+		command = { type = addcore which = 334 }
+		command = { type = addcore which = 347 }
+		command = { type = addcore which = 357 }
+		command = { type = addcore which = 358 }
+		command = { type = addcore which = 351 }
+		command = { type = addcore which = 335 }
+		command = { type = addcore which = 340 }
+		command = { type = addcore which = 327 }
+		command = { type = addcore which = 337 }
+		command = { type = addcore which = 339 }
+		command = { type = addcore which = 403 }
+		command = { type = addcore which = 406 }
+		command = { type = addcore which = 361 }
+		command = { type = addcore which = 359 }
+		command = { type = addcore which = 362 }
+		command = { type = addcore which = 360 }
+		command = { type = addcore which = 404 }
+		command = { type = independence which = CRO }
+		command = { type = war which = CRO }
+		command = { type = independence which = BOS }
+		command = { type = war which = BOS }
+		command = { type = independence which = SLV }
+		command = { type = war which = SLV }
+		command = { type = dissent value = 40 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217003] SER | 1914 | Response to the Austro-Hungarian Ultimatum (Respuesta al ultimátum austrohúngaro)
+# Triggered by event 217001 in events/Minors/SER.txt
+# Triggered by event 244028 in events/Minors/U09.txt
+# Triggered by event 217002 in events/Minors/SER.txt
+# Trigger event 196018 in events/Minors/OTT.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 244014 in events/Minors/U09.txt
+# Trigger event 244028 in events/Minors/U09.txt
+# Trigger event 211036 in events/Minors/RUS_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217003
+ 	country = SER
+	trigger = {
+		event = 217001
+		NOT = { event = 244028 }
+	}
+	name = "EVT_SER_217003_NAME"
+	desc = "EVT_SER_217003_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 25 month = july year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1914 }
+	action_a = {
+		trigger = { event = 217002 }
+		ai_chance = 98
+		name = "EVT_SER_217003_A"
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+		command = { trigger = { alliance = { country = MTN country = SER } NOT = { policy = { country = MTN type = professional_army value = 8 } } } type = event which = 329341 where = MTN }
+		command = { type = trigger which = 244014 }
+	}
+	action_b = {
+		ai_chance = 2
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		command = { type = trigger which = 244028 }
+		command = { type = trigger which = 211036 }
+		command = { type = dissent value = 5 }
+		command = { type = demobilize which = land when = 0 where = 0 value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329554] SER | 1918 | Freedom for Albania (Libertad para Albania)
+# Triggered by event 217005 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329554
+	random = no
+	country = SER
+	trigger = {
+		event = 217005
+		not = {
+			exists = ALB
+			war = { country = GER country = ENG }
+			war = { country = GER country = FRA }
+			war = { country = U08 country = ENG }
+			war = { country = U08 country = FRA }
+			war = { country = U09 country = ENG }
+			war = { country = U09 country = FRA }
+		}
+	}
+	name = "EVT_SER_329554_NAME"
+	desc = "EVT_SER_329554_DESC"
+	style = 2
+	picture = "Minors/little_entente_end"
+	decision_picture = "Minors/decision_little_entente"
+	date = { day = 0 month = january year = 1918 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1939 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = ALB }
+		command = { type = relation which = ALB value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217012] SER | 1919 | Party Realignment (Realineamiento político)
+# ----------------------------------------------------------------------------
+event = {
+	id = 217012
+	country = SER
+	date = { day = 0 month = august year = 1919 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 20
+	trigger = {
+		government = democratic
+		incabinet = 415081
+	}
+	name = "EVT_SER_217012_NAME"
+	desc = "EVT_SER_217012_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 415088 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217015] SER | 1920 | General Rail Strike (Huelga de ferrocarriles)
+# ----------------------------------------------------------------------------
+event = {
+	id = 217015
+	country = SER
+	date = { day = 0 month = april year = 1920 }
+	deathdate = { day = 6 month = january year = 1929 }
+	offset = 30
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SER }
+	}
+	name = "EVT_SER_217015_NAME"
+	desc = "EVT_SER_217015_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+		command = { type = headofgovernment which = 415087 }
+		command = { type = province_revoltrisk which = 327 value = 20 }
+		command = { type = province_revoltrisk which = 328 value = 20 }
+		command = { type = province_revoltrisk which = 329 value = 20 }
+		command = { type = province_revoltrisk which = 330 value = 20 }
+		command = { type = province_revoltrisk which = 331 value = 20 }
+		command = { type = province_revoltrisk which = 332 value = 20 }
+		command = { type = province_revoltrisk which = 333 value = 20 }
+		command = { type = province_revoltrisk which = 334 value = 20 }
+		command = { type = province_revoltrisk which = 335 value = 20 }
+		command = { type = province_revoltrisk which = 336 value = 23 }
+		command = { type = province_revoltrisk which = 337 value = 20 }
+		command = { type = province_revoltrisk which = 338 value = 25 }
+		command = { type = province_revoltrisk which = 339 value = 20 }
+		command = { type = province_revoltrisk which = 340 value = 20 }
+		command = { type = province_revoltrisk which = 341 value = 23 }
+		command = { type = province_revoltrisk which = 342 value = 20 }
+		command = { type = province_revoltrisk which = 343 value = 25 }
+		command = { type = province_revoltrisk which = 344 value = 25 }
+		command = { type = province_revoltrisk which = 345 value = 25 }
+		command = { type = province_revoltrisk which = 346 value = 25 }
+		command = { type = province_revoltrisk which = 347 value = 25 }
+		command = { type = province_revoltrisk which = 349 value = 25 }
+		command = { type = province_revoltrisk which = 350 value = 25 }
+		command = { type = province_revoltrisk which = 350 value = 25 }
+		command = { type = province_revoltrisk which = 351 value = 25 }
+		command = { type = province_revoltrisk which = 352 value = 25 }
+		command = { type = province_revoltrisk which = 353 value = 23 }
+		command = { type = province_revoltrisk which = 354 value = 23 }
+		command = { type = province_revoltrisk which = 355 value = 25 }
+		command = { type = province_revoltrisk which = 356 value = 20 }
+		command = { type = province_revoltrisk which = 357 value = 20 }
+		command = { type = province_revoltrisk which = 358 value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217016] SER | 1920 | Croatian Peasant Revolt (Revueltas campesinas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 217016
+	country = SER
+	date = { day = 0 month = september year = 1920 }
+	deathdate = { day = 6 month = january year = 1929 }
+	offset = 20
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SER }
+	}
+	name = "EVT_SER_217016_NAME"
+	desc = "EVT_SER_217016_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = revolt which = 347 }
+		command = { type = revolt which = 352 }
+		command = { type = province_revoltrisk which = 343 value = 30 }
+		command = { type = province_revoltrisk which = 344 value = 30 }
+		command = { type = province_revoltrisk which = 345 value = 30 }
+		command = { type = province_revoltrisk which = 346 value = 30 }
+		command = { type = province_revoltrisk which = 349 value = 30 }
+		command = { type = province_revoltrisk which = 350 value = 30 }
+		command = { type = province_revoltrisk which = 351 value = 30 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217028] SER | 1920 | 1920 National Elections (Elecciones de 1920)
+# Trigger event 217029 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217028
+	country = SER
+	save_date = yes
+	date = { day = 28 month = november year = 1920 }
+	deathdate = { day = 1 month = january year = 1925 }
+	offset = 5
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SER }
+	}
+	name = "EVT_SER_217028_NAME"
+	desc = "EVT_SER_217028_DESC"
+	action = {
+		name = "EVT_SHARED_01079_A"
+		ai_chance = 100
+		command = { type = headofgovernment which = 415088 }
+		command = { trigger = { ai = yes } type = foreignminister which = 415079 }
+		command = { trigger = { ai = yes } type = armamentminister which = 415104 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 415110 }
+	}
+	action = {
+		name = "EVT_SHARED_01079_B"
+		ai_chance = 0
+		command = { type = headofgovernment which = 415080 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217017] SER | 1921 | The Carinthian Question (La cuestión de Carintia)
+# Triggered by event 108081 in events/Minors/AUS_14-37.txt
+# Triggered by event 217008 in events/Minors/SER.txt
+# Trigger event 108056 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217017
+	country = SER
+	date = { day = 1 month = january year = 1921 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		event = 108081
+		event = 217008
+		NOT = {
+			war = { country = SER country = AUS }
+			alliance = { country = SER country = AUS }
+			control = { province = 191 data = SER }
+			ispuppet = SER
+		}
+	}
+	name = "EVT_SER_217017_NAME"
+	desc = "EVT_SER_217017_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "EVT_SER_217017_A"
+		ai_chance = 99
+		command = { type = relation which = AUS value = -10 }
+		command = { type = trigger which = 108056 }
+	}
+	action = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 1
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217018] SER | 1921 | Austria rejects our claim (Austria rechaza nuestro reclamo)
+# Triggered by event 108056 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217018
+	country = SER
+	name = "EVT_SER_217018_NAME"
+	desc = "EVT_SER_217018_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 1
+		command = { type = war which = AUS }
+		command = { type = dissent value = 15 }
+		command = { type = set_relation which = ENG value = -200 }
+		command = { type = set_relation which = FRA value = -200 }
+		command = { type = set_relation which = ITA value = -100 }
+		command = { type = set_relation which = CZE value = -100 }
+		command = { type = set_relation which = ROM value = -100 }
+	}
+	action = {
+		name = "EVT_SER_217018_A"
+		ai_chance = 99
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217019] SER | 1921 | Constituent Elections (Elecciones de 1920)
+# ----------------------------------------------------------------------------
+event = {
+	id = 217019
+	country = SER
+	trigger = {
+		incabinet = 415087
+	}
+	date = { day = 1 month = january year = 1921 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 1
+	name = "EVT_SER_217019_NAME"
+	desc = "EVT_SER_217019_DESC"
+	picture = "GLOBAL/minister_died2"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 415080 }
+		command = { type = sleepminister which = 415087 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217022] SER | 1921 | The Little Entente (La Pequeña Entente)
+# Triggered by event 136049 in events/Minors/CZE_14-53.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217022
+	country = SER
+	name = "EVT_SER_217022_NAME"
+	desc = "EVT_SER_217022_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = alliance which = CZE }
+		command = { type = relation which = CZE value = 100 }
+		command = { type = alliance which = ROM }
+		command = { type = relation which = ROM value = 100 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = "ACTION_NAME_DECLINE"
+		ai_chance = 0
+		command = { type = relation which = CZE value = -30 }
+		command = { type = domestic which = defense_lobby value = -1 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217021] SER | 1921 | Vidovdan Constitution (Constitución de Vidovdan)
+# ----------------------------------------------------------------------------
+event = {
+	id = 217021
+	country = SER
+	date = { day = 1 month = april year = 1921 }
+	deathdate = { day = 1 month = january year = 1923 }
+	offset = 30
+	trigger = {
+		OR = {
+			incabinet = 415093
+			incabinet = 415094
+		}
+		NOT = { ispuppet = SER }
+	}
+	name = "EVT_SER_217021_NAME"
+	desc = "EVT_SER_217021_DESC"
+	picture = "GLOBAL/congress"
+	style = 2
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = freedom value = 1 }
+	}
+	action = {
+		name = "EVT_SER_217021_A"
+		ai_chance = 0
+		command = { type = dissent value = 4 }
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = domestic which = freedom value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217020] SER | 1921 | Succession of Alexander (Muerte de Pedro I)
+# ----------------------------------------------------------------------------
+event = {
+	id = 217020
+	country = SER
+	date = { day = 16 month = august year = 1921 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 1
+	trigger = {
+		minister = 415093
+		minister = 415094
+	}
+	name = "EVT_SER_217020_NAME"
+	desc = "EVT_SER_217020_DESC"
+	picture = "GLOBAL/minister_died2"
+	style = 2
+	action = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { government = democratic } type = headofstate which = 415125 }
+		command = { trigger = { government = fascist } type = headofstate which = 415092 }
+		command = { type = sleepminister which = 415093 }
+		command = { type = sleepminister which = 415094 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217029] SER | 1923 | 1923 Elections (Elecciones de 1923)
+# Triggered by event 217028 in events/Minors/SER.txt
+# Trigger event 217030 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217029
+	country = SER
+	save_date = yes
+	date = { day = 18 month = march year = 1923 }
+	deathdate = { day = 1 month = january year = 1928 }
+	offset = 5
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SER }
+		event = { id = 217028 days = 1080 }
+	}
+	name = "EVT_SER_217029_NAME"
+	desc = "EVT_SER_217029_DESC"
+	action = {
+		name = "EVT_SHARED_01079_B"
+		ai_chance = 100
+		command = { type = headofgovernment which = 415080 }
+		command = { trigger = { ai = yes } type = foreignminister which = 415069 }
+		command = { trigger = { ai = yes } type = armamentminister which = 415100 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 415117 }
+		command = { type = domestic which = freedom value = -1 }
+	}
+	action = {
+		name = "EVT_SHARED_01079_A"
+		ai_chance = 0
+		command = { type = headofgovernment which = 415088 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217030] SER | 1925 | 1925 Elections (Elecciones de 1925)
+# Triggered by event 217029 in events/Minors/SER.txt
+# Trigger event 217031 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217030
+	country = SER
+	save_date = yes
+	date = { day = 8 month = february year = 1925 }
+	deathdate = { day = 1 month = january year = 1929 }
+	offset = 5
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SER }
+		event = { id = 217029 days = 720 }
+	}
+	name = "EVT_SER_217030_NAME"
+	desc = "EVT_SER_217030_DESC"
+	action = {
+		name = "EVT_SHARED_01079_B"
+		ai_chance = 100
+		command = { type = headofgovernment which = 415080 }
+		command = { trigger = { ai = yes } type = foreignminister which = 415069 }
+		command = { trigger = { ai = yes } type = armamentminister which = 415100 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 415120 }
+	}
+	action = {
+		name = "EVT_SHARED_01079_A"
+		ai_chance = 0
+		command = { type = headofgovernment which = 415088 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217031] SER | 1927 | 1927 Elections (Elecciones de 1927)
+# Triggered by event 217030 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217031
+	country = SER
+	save_date = yes
+	date = { day = 11 month = september year = 1927 }
+	deathdate = { day = 1 month = january year = 1931 }
+	offset = 5
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SER }
+		event = { id = 217030 days = 720 }
+	}
+	name = "EVT_SER_217031_NAME"
+	desc = "EVT_SER_217031_DESC"
+	action = {
+		name = "EVT_SHARED_01079_B"
+		ai_chance = 100
+		command = { type = headofgovernment which = 415080 }
+		command = { trigger = { ai = yes } type = foreignminister which = 415069 }
+		command = { trigger = { ai = yes } type = armamentminister which = 415100 }
+		command = { trigger = { ai = yes } type = ministerofsecurity which = 415117 }
+	}
+	action = {
+		name = "EVT_SHARED_01079_A"
+		ai_chance = 0
+		command = { type = headofgovernment which = 415088 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217026] SER | 1928 | Deputies Shot in Assembly! (¡Tiroteo en la Asamblea!)
+# Trigger event 217027 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217026
+	country = SER
+	date = { day = 20 month = june year = 1928 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 1
+	trigger = {
+		not = { government = communist }
+		atwar = no
+	}
+	name = "EVT_SER_217026_NAME"
+	desc = "EVT_SER_217026_DESC"
+	picture = "GLOBAL/minister_died2"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { type = province_revoltrisk which = 343 value = 50 }
+		command = { type = province_revoltrisk which = 344 value = 50 }
+		command = { type = province_revoltrisk which = 345 value = 50 }
+		command = { type = province_revoltrisk which = 346 value = 50 }
+		command = { type = province_revoltrisk which = 347 value = 50 }
+		command = { type = province_revoltrisk which = 349 value = 50 }
+		command = { type = province_revoltrisk which = 351 value = 50 }
+		command = { type = province_revoltrisk which = 352 value = 55 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217027] SER | 1929 | The 6th January Dictatorship (Dictadura del 6 de enero)
+# Triggered by event 217026 in events/Minors/SER.txt
+# Trigger event 231150 in events/Minors/SER.txt
+# Trigger event 323041 in events/Minors/YUG.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217027
+	country = SER
+	date = { day = 6 month = january year = 1929 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 1
+	trigger = {
+		minister = 415092
+		event = 217026
+		NOT = { exists = YUG }
+	}
+	name = "EVT_SER_217027_NAME"
+	desc = "EVT_SER_217027_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = set_domestic which = freedom value = 3 }
+		command = { type = headofstate which = 100093 }
+		command = { type = headofgovernment which = 100086 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217023] SER | 1936 | Italian Expansionism (Expansionismo italiano)
+# Trigger event 143402 in events/ENG/ENG_34-36.txt
+# Trigger event 147239 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217023
+	country = SER
+	name = "EVT_SER_217023_NAME"
+	desc = "EVT_SER_217023_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "EVT_SER_217023_A"
+		ai_chance = 100
+		command = { type = trigger which = 143402 }
+		command = { type = trigger which = 147239 }
+	}
+	action = {
+		name = "EVT_SER_217023_B"
+		ai_chance = 0
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217024] SER | 1936 | UK Guarantees Independence (Garantía británica)
+# Triggered by event 143402 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217024
+	country = SER
+	name = "EVT_SER_217024_NAME"
+	desc = "EVT_SER_217024_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = relation which = ENG value = 40 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217025] SER | 1936 | France Guarantees Independence (Garantía francesa)
+# Triggered by event 147239 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217025
+	country = SER
+	name = "EVT_SER_217025_NAME"
+	desc = "EVT_SER_217025_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = relation which = FRA value = 40 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329300] SER | 1936 | A New Flag (Una nueva bandera)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329300
+	random = no
+	country = SER
+	trigger = {
+		puppet = { country = SER country = GER }
+	}
+	name = "EVT_SHARED_00069_NAME"
+	desc = "EVT_SHARED_00069_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 16
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 100
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = flag_ext where = SER which = _fas }
+	}
+}

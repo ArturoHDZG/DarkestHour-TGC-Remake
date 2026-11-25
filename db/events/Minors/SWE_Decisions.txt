@@ -1,0 +1,494 @@
+# ============================================================================
+# File: events/Minors/SWE_Decisions.txt (11 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [227048] SWE | 1914 | The Eight-Hour Workday Legislation (La jornada laboral de ocho horas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 227048
+	random = no
+	country = SWE
+	name = EVT_SWE_227048_NAME
+	desc = EVT_SWE_227048_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		atwar = no
+	}
+	decision_trigger = {
+		domestic = { type = political_left value = 2 }
+	}
+	date = { day = 0 month = january year = 1914 }
+	offset = 15
+    deathdate = {day = 0 month = 0 year = 1936}
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = peacetime_ic_mod value = -20 }
+		command = { type = sleepevent which = 227049 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [227066] SWE | 1914 | Offer Peace to Russia (Ofrecer la paz a Rusia)
+# Triggered by event 231142 in events/Minors/SWE_14-58.txt
+# Trigger event 211067 in events/Minors/RUS_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 227066
+	random = no
+	country = SWE
+	name = "EVT_SWE_227066_NAME"
+	desc = "EVT_SWE_227066_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		event = { id = 231142 days = 5 }
+	}
+	decision_trigger = {
+		flag = Swe_Eastern
+		war = { country = SWE country = RUS }
+		AND = {
+			control = { province = 521 data = SWE }
+			control = { province = 524 data = SWE }
+			control = { province = 525 data = SWE }
+		}
+	}
+	date = { day = 0 month = july year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1924 }
+	action = {
+		ai_chance = 99
+		name = "EVT_SWE_227066_A"
+		command = { type = trigger which = 211067 }
+		command = { type = relation which = U08 value = -125 }
+	}
+	action = {
+	        ai_chance = 1
+		name = "EVT_SWE_227066_B"
+		command = { type = relation which = U08 value = 100 }
+		command = { type = secederegion which = SWE value = "Finland" when = 2 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [231140] SWE | 1914 | The Finnish Campaign (La Campaña de Finlandia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231140
+	random = no
+	country = SWE
+	name = "EVT_SWE_231140_NAME"
+	desc = "EVT_SWE_231140_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		war = { country = SWE country = RUS }
+	}
+	decision_trigger = {
+	}
+	date = { day = 0 month = july year = 1914 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1924 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = muddy_attack which = land value = 5 }
+		command = { type = plain_attack which = land value = 5 }
+		command = { type = mountain_attack which = land value = 5 }
+		command = { type = hill_attack which = land value = 5 }
+		command = { type = forest_attack which = land value = 5 }
+		command = { type = urban_attack which = land value = 5 }
+		command = { type = addclaim which = 511 }
+		command = { type = addclaim which = 512 }
+		command = { type = addclaim which = 513 }
+		command = { type = addclaim which = 514 }
+		command = { type = addclaim which = 515 }
+		command = { type = addclaim which = 516 }
+		command = { type = addclaim which = 517 }
+		command = { type = addclaim which = 518 }
+		command = { type = addclaim which = 519 }
+		command = { type = addclaim which = 520 }
+		command = { type = addclaim which = 521 }
+		command = { type = addclaim which = 522 }
+		command = { type = addclaim which = 523 }
+		command = { type = addclaim which = 524 }
+		command = { type = addclaim which = 525 }
+		command = { type = addclaim which = 526 }
+		command = { type = addclaim which = 527 }
+		command = { type = addclaim which = 528 }
+		command = { type = addclaim which = 529 }
+		command = { type = addclaim which = 530 }
+		command = { type = addclaim which = 531 }
+		command = { type = addclaim which = 532 }
+		command = { type = addclaim which = 533 }
+		command = { type = setflag which = Swe_Eastern }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [227044] SWE | 1914 | The Gotland Anchorage Arrangement (El acuerdo naval sobre fondeaderos en Gotland)
+# Triggered by event 243052 in events/Minors/U08_14-14.txt
+# Trigger event 243053 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 227044
+	random = no
+	country = SWE
+	name = EVT_SWE_227044_NAME
+	desc = EVT_SWE_227044_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		atwar = no
+	}
+	decision_trigger = {
+		event = { id = 243052 }
+	}
+	trigger = {
+		ai = yes
+		random = 25
+	}
+	date = { day = 10 month = july year = 1914 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1914 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 243053}
+		command = { type = access which = U08 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [227059] SWE | 1914 | The State Industrial Commission (Statens Industrikommission) (La Comisión Industrial del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 227059
+	random = no
+	country = SWE
+	name = "EVT_SWE_227059_NAME"
+	desc = "EVT_SWE_227059_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+	}
+	decision_trigger = {
+	}
+	date = { day = 0 month = august year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1919 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = peacetime_ic_mod value = -5 }
+		command = { type = free_money value = -0.1 }
+		command = { type = waketeam which = 40035 }
+		command = { trigger = { policy = { type = free_market value = 7 }} type = domestic which = free_market value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [227058] SWE | 1914 | Foodstuff Price Controls (Control de precios de alimentos básicos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 227058
+	random = no
+	country = SWE
+	name = "EVT_SWE_227058_NAME"
+	desc = "EVT_SWE_227058_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+	}
+	decision_trigger = {
+	}
+	date = { day = 0 month = september year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1919 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = money value = 200 }
+		command = { type = dissent value = -5 }
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = domestic which = free_market value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [227056] SWE | 1915 | Financial Moratorium on Private Debts (Moratoria de deudas financieras)
+# ----------------------------------------------------------------------------
+event = {
+	id = 227056
+	random = no
+	country = SWE
+	name = "EVT_SWE_227056_NAME"
+	desc = "EVT_SWE_227056_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+	}
+	decision_trigger = {
+		NOT = { money = 500 }
+	}
+	date = { day = 0 month = january year = 1915 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1919 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = money value = 200 }
+		command = { type = domestic which = free_market value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [227057] SWE | 1915 | National Bank Emergency Currency Powers (Privilegios monetarios del Banco Nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 227057
+	random = no
+	country = SWE
+	name = "EVT_SWE_227057_NAME"
+	desc = "EVT_SWE_227057_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+	}
+	decision_trigger = {
+		NOT = { money = 500 }
+	}
+	date = { day = 0 month = january year = 1915 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1919 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = free_money value = 1 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [227060] SWE | 1917 | Enactment of Universal Suffrage (Implantación del sufragio universal)
+# ----------------------------------------------------------------------------
+event = {
+	id = 227060
+	random = no
+	country = SWE
+	name = "EVT_SWE_227060_NAME"
+	desc = "EVT_SWE_227060_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		NOT = {
+			incabinet = 40138
+			incabinet = 40139
+			flag = Swe_Universal
+		}
+	}
+	decision_trigger = {
+		NOT = {
+			incabinet = 40138
+			incabinet = 40139
+			ideology = paternal_autocrat
+			ideology = fascist
+			ideology = nazi
+		}
+	}
+	date = { day = 0 month = october year = 1917 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		ai_chance = 100
+		name = "ACTION_NAME_VICTORY"
+		command	= { type = setflag which = Swe_Universal }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = domestic which = political_left value = 2 }
+		command = { type = dissent value = -4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [227063] SWE | 1918 | Demand Plebiscite on Åland (Exigir un plebiscito en Åland)
+# Triggered by event 227062 in events/Minors/SWE_14-58.txt
+# Trigger event 146095 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 227063
+	random = no
+	country = SWE
+	name = "EVT_SWE_227063_NAME"
+	desc = "EVT_SWE_227063_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	save_date = yes
+	decision = {
+		event = { id = 227062 }
+		exists = FIN
+		NOT = {
+			ispuppet = FIN
+		}
+	}
+	decision_trigger = {
+		event = { id = 227062 days = 150 }
+		exists = FIN
+		NOT = { war = { country = SWE country = FIN } }
+		NOT = {
+			ispuppet = FIN
+		}
+	}
+	trigger = {
+		event = { id = 227062 days = 300 }
+		exists = FIN
+		NOT = {
+			ispuppet = FIN
+		}
+	}
+	date = { day = 26 month = january year = 1918 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1921 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = relation which = FIN value = -100 }
+		command = { type = trigger which = 146095 }
+		command = { type = addcore which = 526 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329540] SWE | 1936 | Swedish Strategy in the Winter War (Estrategia sueca ante el conflicto)
+# Triggered by event 223094 in events/SOV/SOV_36-38.txt
+# Trigger event 146014 in events/Minors/FIN_14-51.txt
+# Trigger event 146013 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329540
+	random = no
+	country = SWE
+	decision = {
+		war = { country = SOV country = FIN }
+		NOT = { war = { country = SOV country = SWE } }
+		event = 223094
+		NOT = {
+			alliance = { country = FIN country = GER }
+			alliance = { country = SWE country = GER }
+			alliance = { country = SWE country = FIN }
+			alliance = { country = SWE country = ENG }
+			alliance = { country = SWE country = SOV }
+		}
+	}
+	decision_trigger = {
+		manpower = 13
+		supplies = 1000
+	}
+	trigger = {
+		war = { country = SOV country = FIN }
+		NOT = { war = { country = SOV country = SWE } }
+		event = 223094
+		NOT = {
+			alliance = { country = FIN country = GER }
+			alliance = { country = SWE country = FIN }
+			alliance = { country = SWE country = GER }
+			alliance = { country = SWE country = ENG }
+			alliance = { country = SWE country = SOV }
+		}
+	}
+	name = "EVT_SWE_329540_NAME"
+	desc = "EVT_SWE_329540_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 17 month = july year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		trigger = {
+			OR = {
+				ideology = social_conservative
+				ideology = paternal_autocrat
+				ideology = fascist
+				ideology = nazi
+			}
+		}
+		name = "EVT_SWE_329540_A"
+		ai_chance = 90
+		command = { type = belligerence which = SWE value = 1 }
+		command = { type = alliance which = FIN when = 1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = relation which = FIN value = 25 }
+		command = { type = relation which = NOR value = 10 }
+		command = { type = trigger which = 146014 }
+		command = { type = setflag which = anti_bolshevik_sweden }
+	}
+	action = {
+		trigger = {
+			OR = {
+				ideology = social_conservative
+				ideology = paternal_autocrat
+				ideology = fascist
+				ideology = nazi
+			}
+		}
+		name = "EVT_SWE_329540_B"
+		ai_chance = 10
+		command = { type = manpowerpool value = -10 }
+		command = { type = supplies value = -1000 }
+		command = { type = relation which = SOV value = -20 }
+		command = { type = relation which = FIN value = 10 }
+		command = { type = relation which = NOR value = 5 }
+		command = { type = trigger which = 146013 }
+	}
+	action = {
+		trigger = {
+			NOT = {
+				OR = {
+					ideology = social_conservative
+					ideology = paternal_autocrat
+					ideology = fascist
+					ideology = nazi
+				}
+			}
+		}
+		name = "EVT_SWE_329540_C"
+		ai_chance = 98
+		command = { type = relation which = SOV value = -20 }
+		command = { type = relation which = FIN value = 10 }
+		command = { type = relation which = NOR value = 5 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = supplies value = -1000 }
+		command = { type = trigger which = 146013 }
+	}
+	action = {
+		trigger = {
+			NOT = {
+				OR = {
+					ideology = social_conservative
+					ideology = paternal_autocrat
+					ideology = fascist
+					ideology = nazi
+				}
+			}
+		}
+		name = "EVT_SWE_329540_D"
+		ai_chance = 2
+		command = { type = belligerence which = SWE value = 1 }
+		command = { type = alliance which = FIN when = 1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = relation which = FIN value = 25 }
+		command = { type = relation which = NOR value = 10 }
+		command = { type = access which = FIN }
+		command = { type = trigger which = 146014 }
+		command = { type = setflag which = anti_bolshevik_sweden }
+	}
+}

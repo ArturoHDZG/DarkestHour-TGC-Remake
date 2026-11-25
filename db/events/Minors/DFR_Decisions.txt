@@ -1,0 +1,140 @@
+# ============================================================================
+# File: events/Minors/DFR_Decisions.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [139035] DFR | 1970 | Brandt's Ostpolitik (La Ostpolitik de Brandt)
+# Trigger event 139036 in events/Minors/DFR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139035
+	country = DFR
+	name = EVT_DFR_139035_NAME
+	desc = EVT_DFR_139035_DESC
+	picture = "nwo/ostpolitik"
+	decision_picture = "nwo/d_ostpolitik"
+	style = 1
+	decision = {
+		flag = cold_war
+		exists = DDR
+	}
+	trigger = {
+		flag = cold_war
+		exists = DDR
+	}
+	date = { day = 1 month = january year = 1970 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = EVT_DFR_139035_A
+		ai_chance = 80
+		command = { type = dissent value = -3 }
+		command = { type = relation which = DDR value = 100 }
+		command = { type = relation which = SOV value = 20 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_DEMANDS
+		trigger = { ai = yes }
+		ai_chance = 20
+		command = { type = relation which = DDR value = -5 }
+		command = { type = sleepevent which = 139036 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139036] DFR | 1970 | The Treaty of Warsaw (Tratado de Varsovia (1970))
+# Triggered by event 139035 in events/Minors/DFR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139036
+	country = DFR
+	name = EVT_DFR_139036_NAME
+	desc = EVT_DFR_139036_DESC
+	picture = "nwo/ostpolitik"
+	decision_picture = "nwo/d_ostpolitik"
+	style = 1
+	decision = {
+		flag = cold_war
+		exists = U32
+		event = 139035
+	}
+	trigger = {
+		flag = cold_war
+		exists = U32
+		event = 139035
+	}
+	date = { day = 1 month = january year = 1970 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 80
+		command = { type = dissent value = -3 }
+		command = { type = relation which = U32 value = 100 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = removeclaim which = 155 }
+		command = { type = removeclaim which = 158 }
+		command = { type = removeclaim which = 159 }
+		command = { type = removeclaim which = 161 }
+		command = { type = removeclaim which = 164 }
+		command = { type = removeclaim which = 165 }
+		command = { type = removeclaim which = 166 }
+		command = { type = removeclaim which = 167 }
+		command = { type = removeclaim which = 168 }
+		command = { type = removeclaim which = 181 }
+		command = { type = removeclaim which = 182 }
+		command = { type = removeclaim which = 183 }
+		command = { type = removeclaim which = 184 }
+		command = { type = removeclaim which = 185 }
+		command = { type = belligerence value = -10 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		trigger = { ai = yes }
+		ai_chance = 20
+		command = { type = relation which = DDR value = -5 }
+		command = { type = sleepevent which = 139036 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329784] DFR | 1990 | German Unity Consummated (Reunificación consumada)
+# Triggered by event 137019 in events/Minors/DDR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329784
+	country = DFR
+	name = EVT_DFR_329784_NAME
+	desc = EVT_DFR_329784_DESC
+	picture = "nwo/united_germany"
+	style = 1
+	decision = {
+		event = 137019
+		flag = autumn_of_nations
+		exists = DDR
+		flag = cold_war
+		NOT = { war = { country = DDR country = DFR } }
+	}
+	trigger = {
+		event = 137019
+		flag = autumn_of_nations
+		exists = DDR
+		flag = cold_war
+		NOT = { war = { country = DDR country = DFR } }
+	}
+	date = { day = 3 month = october year = 1990 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 100
+		command = { type = dissent value = -20 }
+		command = { type = inherit which = DDR }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}

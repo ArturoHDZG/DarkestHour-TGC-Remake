@@ -1,0 +1,36 @@
+name: Mod Verification Audit
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            ai
+            config
+            db
+            gfx
+            map
+            scenarios
+            tools
+            AGENTS.md
+            README.md
+            Readme.txt
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Master Mod Audit
+        run: python tools/master_mod_audit.py
+
+      - name: Run Europa Engine Syntax & Localization Audit
+        run: python tools/syntax_check.py

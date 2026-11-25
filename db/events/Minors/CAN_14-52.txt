@@ -1,0 +1,1429 @@
+# ============================================================================
+# File: events/Minors/CAN_14-52.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [121037] CAN | 1914 | Peace with the Central Powers (Paz con las Potencias Centrales)
+# Triggered by event 243004 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 121037
+	country = CAN
+	name = "EVT_SHARED_00055_NAME"
+	desc = "EVT_SHARED_00055_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = U08 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121081] CAN | 1914 | Komagata Maru incident (Incidente de Komagata Maru)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121081
+	country = CAN
+	random = no
+	trigger = {
+		exists = JAP
+	}
+	name = "EVT_SHARED_01051_NAME"
+	desc = "EVT_SHARED_01051_DESC"
+	style = 2
+	picture = "GLOBAL/komagatamaru"
+	date = { day = 5 month = july year = 1914 }
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = { type = relation which = JAP value = -10 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121082] CAN | 1914 | War Mesures Act (Decreto de medidas de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121082
+	country = CAN
+	random = no
+	trigger = {
+		atwar = yes
+	}
+	name = "EVT_CAN_121082_NAME"
+	desc = "EVT_CAN_121082_DESC"
+	style = 2
+	picture = "Minors/canarmy"
+	date = { day = 4 month = august year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121080] CAN | 1919 | The Royal Canadian Mounted Police (La Real Policía Montada Canadiense)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121080
+	country = CAN
+	random = no
+	trigger = {
+		exists = CAN
+	}
+	name = "EVT_CAN_121080_NAME"
+	desc = "EVT_CAN_121080_DESC"
+	style = 2
+	picture = "Minors/mounties"
+	date = { day = 0 month = february year = 1919 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { type = manpowerpool value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121083] CAN | 1919 | Kinmel Park mutiny (Motín del Parque Kinmel)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121083
+	country = CAN
+	random = no
+	trigger = {
+		exists = ENG
+	}
+	name = "EVT_SHARED_01053_NAME"
+	desc = "EVT_SHARED_01053_DESC"
+	style = 2
+	picture = "GLOBAL/kinmelpark"
+	date = { day = 3 month = march year = 1919 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121014] CAN | 1933 | British Commonwealth Air Training Plan (Plan de entrenamiento aéreo de la Commonwealth Británica)
+# Triggered by event 329021 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 121014
+         random = no
+         country = can
+         trigger = {
+         }
+         name = "EVT_SHARED_00486_NAME"
+         desc = "EVT_SHARED_00486_DESC"
+         style = 2
+	picture = "Minors/british_commonwealth_air_training_plan"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = {  }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121033] CAN | 1933 | The RAF Eagle Squadrons (Los Escuadrones Águila de la RAF)
+# Triggered by event 329395 in events/USA/USA_28-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 121033
+	random = no
+	country = CAN
+	name = EVT_SHARED_00300_NAME
+	desc = EVT_SHARED_00300_DESC
+	style = 2
+	picture = "GLOBAL/eagle_squadrons"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = manpowerpool value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121034] CAN | 1933 | The 1944 Canadian Conscription Crisis (Crisis del servicio militar en Canadá de 1944)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121034
+	random = no
+	country = CAN
+	trigger = { policy = { type = professional_army value = 7 } atwar = yes }
+	name = EVT_CAN_121034_NAME
+	desc = EVT_CAN_121034_DESC
+	style = 2
+	picture = "GLOBAL/riots"
+	date = { day = 1 month = january year = 1933 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329014] CAN | 1933 | Join the Allies (Unirse a los Aliados)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329014
+         random = no
+         country = can
+         trigger = {
+		war = { country =eng  country = ger }
+		NOT = { war = { country = can country = ENG }  }
+		NOT = { alliance = { country = can country = eng }  }
+         }
+         name = "ACTION_NAME_JOIN_ALLIES"
+         desc = "EVT_SHARED_00469_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1933 }
+         offset = 3
+         deathdate = { day = 29 month = december year = 1947 }
+	picture = "Minors/commonwealth"
+           action_a = {
+                  name = "EVT_SHARED_00469_A"
+                  ai_chance = 100
+                  command = { type = domestic which = freedom value = 1 }
+                  command = { type = domestic which = democratic value = 1 }
+                  command = { type = domestic which = defense_lobby value = 1 }
+                  command = { type = domestic which = interventionism value = 1 }
+                  command = { type = sleepevent which = 324000 }
+                  command = { type = set_relation which = ENG value = 200 }
+                  command = { type = alliance which = ENG }
+                  command = { type = dissent value = -50 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00469_B"
+                  command = { type = dissent value = 25 }
+                  command = { type = domestic which = interventionism value = -2 }
+                  command = { type = domestic which = defense_lobby value = -2 }
+                  command = { type = relation which = eng value = -150 }
+                  command = { type = relation which = ger value = 50 }
+                  ai_chance = 0
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121005] CAN | 1934 | Reconstruction Party of Canada (Partido de la Reconstrucción de Canadá)
+# ----------------------------------------------------------------------------
+event = {
+         id = 121005
+         random = no
+         country = can
+         trigger = {
+                   government = democratic
+         }
+         name = "EVT_CAN_121005_NAME"
+         desc = "EVT_CAN_121005_DESC"
+         style = 2
+         date = { day = 26 month = october year = 1934 }
+	picture = "Minors/reconstruction_party_of_canada"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = -1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121000] CAN | 1935 | Bank of Canada Opened (Inicia operaciones el Banco de Canadá)
+# ----------------------------------------------------------------------------
+event = {
+         id = 121000
+         random = no
+         country = can
+         trigger = {
+                   exists = USA
+         }
+         name = "EVT_CAN_121000_NAME"
+         desc = "EVT_CAN_121000_DESC"
+         style = 2
+         date = { day = 11 month = march year = 1935 }
+	picture = "Minors/bank_of_canada_opened"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = -1 }
+                  command = { type = peacetime_ic_mod value = 1 }
+                  command = { type = money value = 250 }
+                  command = { type = domestic which = free_market value = -1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121006] CAN | 1935 | David Dunlap Observatory (Observatorio David Dunlap)
+# ----------------------------------------------------------------------------
+event = {
+         id = 121006
+         random = no
+         country = can
+         trigger = {
+         }
+         name = "EVT_CAN_121006_NAME"
+         desc = "EVT_CAN_121006_DESC"
+         style = 2
+         date = { day = 7 month = may year = 1935 }
+	picture = "Minors/david_dunlap_observatory"
+           action_a = {
+                  name = "ACTION_NAME_EXCELLENT"
+                  command = { type = money value = -15 }
+                  command = { type = research_mod value = 1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121001] CAN | 1935 | On-to-Ottawa Trek (Manifestación 'On-to-Ottawa Trek')
+# ----------------------------------------------------------------------------
+event = {
+         id = 121001
+         random = no
+         country = can
+         trigger = {
+                   atwar = no
+         }
+         name = "EVT_CAN_121001_NAME"
+         desc = "EVT_CAN_121001_DESC"
+         style = 2
+         date = { day = 1 month = july year = 1935 }
+	picture = "Minors/on_to_ottawa_trek"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = 2 }
+                  command = { type = money value = -100 }
+                  command = { type = manpowerpool value = -10 }
+                  command = { type = domestic which = political_left value = 1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121031] CAN | 1935 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121031
+	random = no
+	country = CAN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = CAN }
+	}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 13 month = october year = 1935 }
+	action_a = {
+		ai_chance = 70
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 220183 }
+		command = { type = headofgovernment which = 220002 }
+		command = { type = foreignminister which = 220003 }
+		command = { type = armamentminister which = 220004 }
+		command = { type = ministerofsecurity which = 220005 }
+		command = { type = ministerofintelligence which = 220006 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 220182 }
+		command = { type = headofgovernment which = 220013 }
+		command = { type = foreignminister which = 220019 }
+		command = { type = armamentminister which = 220185 }
+		command = { type = ministerofsecurity which = 220177 }
+		command = { type = ministerofintelligence which = 220060 }
+	}
+	action_c = {
+		ai_chance = 5
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121007] CAN | 1935 | Timiskaming earthquake (Terremoto de Timiskaming)
+# ----------------------------------------------------------------------------
+event = {
+         id = 121007
+         random = no
+         country = can
+         trigger = {
+         }
+         name = "EVT_CAN_121007_NAME"
+         desc = "EVT_CAN_121007_DESC"
+         style = 2
+         date = { day = 1 month = november year = 1935 }
+	picture = "Minors/timiskaming_earthquake"
+           action_a = {
+                  name = "ACTION_NAME_UNFORTUNATE"
+                  command = { type = construct which = infrastructure where = 2114 value = -10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121024] CAN | 1935 | Head of State Resigns (Dimisión del Jefe de Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121024
+	random = no
+	country = CAN
+	style = 2
+	trigger = {
+		OR = {
+			headofstate =  220182
+			headofstate =  220183
+		}
+	}
+	date = { day = 1 month = november year = 1935 }
+	name = "EVT_SHARED_00507_NAME"
+	desc = "EVT_SHARED_00507_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 220182 } type = headofstate which = 220094 }
+		command = { trigger = { headofstate = 220183 } type = headofstate which = 220001 }
+		command = { type = sleepminister which = 220182 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329015] CAN | 1935 | U.S.-Canadian Reciprocal Trade Agreement (Acuerdo de comercio recíproco entre los Estados Unidos y Canadá)
+# Trigger event 316000 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329015
+         random = no
+         country = can
+         trigger = {
+                   NOT = {
+                            war = { country = usa country = can }
+                   }
+                   exists = usa
+         }
+         name = "EVT_SHARED_00481_NAME"
+         desc = "EVT_SHARED_00481_DESC"
+         style = 2
+         date = { day = 15 month = november year = 1935 }
+	picture = "GLOBAL/u_s_canadian_reciprocal_trade_agreement"
+           action_a = {
+                  name = "ACTION_NAME_GOOD"
+                  command = { type = relation which = usa value = 30 }
+                  command = { type = supplies value = 1000   }
+                  command = { type = oilpool value = 1000  }
+                  command = { type = metalpool value = 2000 }
+                  command = { type = energypool value = 4000 }
+                  command = { type = rarematerialspool value = 800 }
+                  command = { type = money value = 100 }
+                  command = { type = construct which = ic where = -4 value = 1 }
+                  command = { type = construct which = ic where = -4 value = 1 }
+                  command = { type = trigger which = 316000 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121002] CAN | 1937 | Anglo-Canadian-US. Trade Agreement (Acuerdo comercial anglo-canadiense-estadounidense)
+# Triggered by event 316001 in events/USA/USA_36-38.txt
+# Trigger event 143003 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 121002
+         random = no
+         country = can
+         name = "EVT_SHARED_00482_NAME"
+         desc = "EVT_SHARED_00482_DESC"
+        style = 2
+	picture = "GLOBAL/anglo_canadian_us_trade_agreement"
+           action_a = {
+                  name = "ACTION_NAME_SIGN"
+                  ai_chance = 90
+                  command = { type = relation which = usa value = 10 }
+                  command = { type = relation which = eng value = 10 }
+                  command = { type = trigger which = 143003 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_REFUSE"
+                  ai_chance = 10
+                  command = { type = dissent value = 1 }
+                  command = { type = relation which = usa value = -10 }
+                  command = { type = relation which = eng value = -10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121003] CAN | 1937 | Anglo-Canadian-US. Trade Agreement success (El éxito del acuerdo comercial anglo-canadiense-estadounidense)
+# Triggered by event 143003 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 121003
+         random = no
+         country = can
+         name = "EVT_SHARED_00483_NAME"
+         desc = "EVT_SHARED_00483_DESC"
+        style = 2
+	picture = "GLOBAL/anglo_canadian_us_trade_agreement_success"
+           action_a = {
+                  name = "ACTION_NAME_EXCELLENT"
+                  command = { type = dissent value = -1 }
+                  command = { type = relation which = eng value = 35 }
+                  command = { type = relation which = usa value = 35 }
+                  command = { type = supplies value = 3000   }
+                  command = { type = oilpool value = 3000   }
+                  command = { type = metalpool value = 8000 }
+                  command = { type = energypool value = 10000 }
+                  command = { type = rarematerialspool value = 2500 }
+                  command = { type = money value = 120 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121008] CAN | 1937 | Trans-Canada Air Lines
+# ----------------------------------------------------------------------------
+event = {
+         id = 121008
+         random = no
+         country = can
+         trigger = {
+         }
+         name = "EVT_CAN_121008_NAME"
+         desc = "EVT_CAN_121008_DESC"
+         style = 2
+         date = { day = 10 month = april year = 1937 }
+	picture = "Minors/trans_canada_air_lines"
+           action_a = {
+                  name = "ACTION_NAME_AGREE"
+                  ai_chance = 95
+                  command = { type = money value = -80 }
+                  command = { type = manpowerpool value = -1 }
+                  command = { type = dissent value = -2 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 5
+                  command = { }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121004] CAN | 1938 | The Kings visits Canada (Los reyes visitan Canadá)
+# Triggered by event 329017 in events/ENG/ENG_38-39.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 121004
+         random = no
+         country = can
+         name = "EVT_SHARED_00484_NAME"
+         desc = "EVT_SHARED_00484_DESC"
+         style = 2
+	picture = "GLOBAL/the_kings_visits_canada"
+           action_a = {
+                  name = "ACTION_NAME_GOOD"
+                  command = { type = dissent value = -1 }
+                  command = { type = relation which = eng value = 15 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121009] CAN | 1938 | Vaccination for tuberculosis (Vacunación contra la tuberculosis)
+# ----------------------------------------------------------------------------
+event = {
+         id = 121009
+         random = no
+         country = can
+         trigger = {
+                   random = 7
+         }
+         name = "EVT_CAN_121009_NAME"
+         desc = "EVT_CAN_121009_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1938 }
+         offset = 12
+         deathdate = { day = 29 month = december year = 1938 }
+	picture = "Minors/vaccination_for_tuberculosis"
+           action_a = {
+                  name = "ACTION_NAME_ACCEPT"
+                  ai_chance = 97
+                  command = { type = money value = -30 }
+                  command = { type = relative_manpower value = 2 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 3
+                  command = { type = dissent value = 3 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121016] CAN | 1938 | Alaska Highway
+# Triggered by event 316003 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 121016
+         random = no
+         country = can
+         name = "EVT_SHARED_00487_NAME"
+         desc = "EVT_SHARED_00487_DESC"
+         style = 2
+	picture = "GLOBAL/alaska_highway"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = construct which = infrastructure where = 2148 value = 30 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121035] CAN | 1938 | Collapse of the British Empire (Colapso del Imperio británico)
+# Triggered by event 143166 in events/AI/ENG_AI_33-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 121035
+	random = no
+	name = "EVT_SHARED_00406_NAME"
+	desc = "EVT_CAN_121035_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	country = CAN
+	action = {
+		name = "ACTION_NAME_UNFORTUNATE"
+		command = { type = inherit which = ENG value = 1}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121036] CAN | 1938 | Destiny of the Commonwealth (El futuro del Imperio)
+# Triggered by event 143167 in events/ENG/ENG_38-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 121036
+	random = no
+	country = CAN
+	name = "EVT_SHARED_00407_NAME"
+	desc = "EVT_SHARED_00408_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "ACTION_NAME_JOIN_ALLIANCE"
+		ai_chance = 70
+		command = { type = setflag which = CANacc}
+	}
+	action = {
+		trigger = { flag = CANcap}
+		name = "ACTION_NAME_JOIN_ALLIANCE"
+		ai_chance = 90
+		command = { type = setflag which = CANacc}
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 30
+		command = {}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329019] CAN | 1938 | The War Measures Act (La ley de medidas de guerra)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329019
+         random = no
+         country = can
+         trigger = {
+                   alliance = { country = can country = eng }
+                   atwar = yes
+         }
+         name = "EVT_CAN_329019_NAME"
+         desc = "EVT_CAN_329019_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1938 }
+         offset = 3
+         deathdate = { day = 29 month = december year = 1942 }
+	picture = "Minors/the_war_measures_act"
+           action_a = {
+                  name = "ACTION_NAME_SUPPRESS_REVOLT"
+                  ai_chance = 90
+                  command = { type = dissent value = -2 }
+                  command = { type = domestic which = freedom value = -1 }
+                  command = { type = relation which = sov value = -15 }
+                  command = { type = relation which = ita value = -15 }
+                  command = { type = relation which = ger value = -15 }
+                  command = { type = relation which = usa value = 15 }
+                  command = { type = relation which = eng value = 15 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 10
+                  command = { type = dissent value = 2 }
+                  command = { type = relation which = ita value = 10 }
+                  command = { type = relation which = ger value = 10 }
+                  command = { type = relation which = sov value = 10 }
+                  command = { type = relation which = usa value = -5 }
+                  command = { type = relation which = eng value = -5 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329020] CAN | 1938 | National Resources Mobilization Act (Ley de movilización de recursos nacionales)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329020
+         random = no
+         country = can
+         trigger = {
+                   alliance = { country = can country = eng }
+                   atwar = yes
+         }
+         name = "EVT_CAN_329020_NAME"
+         desc = "EVT_CAN_329020_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1938 }
+         offset = 3
+         deathdate = { day = 29 month = december year = 1941 }
+	picture = "Minors/national_resources_mobilization_act"
+           action_a = {
+                  name = "ACTION_NAME_ACCEPT"
+                  ai_chance = 97
+                  command = { type = dissent value = 3 }
+                  command = { type = manpowerpool value = 70 }
+                  command = { type = relative_manpower value = 3 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 3
+                  command = { type = dissent value = 3 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329024] CAN | 1938 | The mobilization schemes (Los esquemas de movilización)
+# Triggered by event 231040 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329024
+         random = no
+         country = can
+         trigger = {
+                   alliance = { country = can country = eng }
+                   event = 231040
+         }
+         name = "EVT_CAN_329024_NAME"
+         desc = "EVT_CAN_329024_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1938 }
+         offset = 30
+         deathdate = { day = 29 month = december year = 1944 }
+	picture = "Minors/national_resources_mobilization_act"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = add_division which = "3rd Canadian Infantry Div." value = infantry when = 0 }
+                  command = { type = add_division which = "4th Canadian Armoured Div." value = armor when = 0 }
+                  command = { type = add_division which = "5th Canadian Armoured Div." value = armor when = 0 }
+                  command = { type = add_division which = "6th Canadian Infantry Div." value = infantry when = 0 }
+                  command = { type = add_division which = "7th Canadian Infantry Div." value = infantry when = 0 }
+                  command = { type = add_division which = "8th Canadian Infantry Div." value = infantry when = 0 }
+                  command = { type = manpowerpool value = -40 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329018] CAN | 1938 | Naval Program (Programa naval)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329018
+         random = no
+         country = can
+         trigger = {
+                   random = 10
+                   war = { country = can  country = ger }
+         }
+         name = "EVT_CAN_329018_NAME"
+         desc = "EVT_CAN_329018_DESC"
+         style = 2
+         date = { day = 1 month = september year = 1938 }
+         offset = 8
+         deathdate = { day = 29 month = december year = 1943 }
+	picture = "Minors/naval_program"
+           action_a = {
+                  name = "ACTION_NAME_AGREE"
+                  ai_chance = 90
+                  command = { type = domestic which = defense_lobby value = 1 }
+                  command = { type = supplies value = -800  }
+                  command = { type = money value = -80 }
+                  command = { type = manpowerpool value = -1 }
+                  command = { type = build_time which = naval when = on_upgrade where = relative value = -20 }
+                  command = { type = build_cost which = naval when = on_upgrade where = relative value = -20 }
+                  command = { type = build_division which = destroyer   }
+                  command = { type = build_division which = destroyer   }
+                  command = { type = build_division which = destroyer   }
+                  command = { type = build_division which = destroyer   }
+                  command = { type = build_division which = destroyer   }
+                  command = { type = build_division which = destroyer   }
+                  command = { type = build_division which = destroyer   }
+                  command = { type = build_division which = destroyer   }
+                  command = { type = build_division which = destroyer   }
+                  command = { type = build_division which = destroyer   }
+                  command = { type = build_division which = light_cruiser   }
+                  command = { type = build_division which = light_cruiser   }
+                  command = { type = build_division which = light_cruiser   }
+                  command = { type = build_division which = light_cruiser   }
+                  command = { type = build_division which = light_cruiser   }
+                  command = { type = build_division which = submarine   }
+                  command = { type = build_division which = submarine   }
+                  command = { type = build_division which = submarine   }
+                  command = { type = build_division which = transport   }
+                  command = { type = build_division which = transport   }
+                  command = { type = build_time which = naval when = on_upgrade where = relative value = 20 }
+                  command = { type = build_cost which = naval when = on_upgrade where = relative value = 20 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 10
+                  command = { }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121023] CAN | 1939 | Minister Resigns (Dimisión de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121023
+	random = no
+	country = CAN
+	style = 2
+	trigger = {
+		incabinet = 220004
+		}
+	date = { day = 22 month = september year = 1939 }
+	name = "EVT_SHARED_00500_NAME"
+	desc = "EVT_SHARED_00500_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = armamentminister which = 220028 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121011] CAN | 1940 | Icefields Parkway
+# ----------------------------------------------------------------------------
+event = {
+         id = 121011
+         random = no
+         country = can
+         trigger = {
+                   random = 8
+         }
+         name = "EVT_CAN_121011_NAME"
+         desc = "EVT_CAN_121011_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1940 }
+         offset = 8
+         deathdate = { day = 29 month = december year = 1940 }
+	picture = "Minors/icefields_parkway"
+           action_a = {
+                  name = "ACTION_NAME_EXCELLENT"
+                  command = { type = dissent value = -1 }
+                  command = { type = money value = -10 }
+                  command = { type = construct which = infrastructure where = 2092 value = 10 }
+                  command = { type = construct which = infrastructure where = 2104 value = 10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121015] CAN | 1940 | British Commonwealth Air Training Plan (Plan de entrenamiento aéreo de la Commonwealth Británica)
+# Triggered by event 143006 in events/ENG/ENG_39-43.txt
+# Triggered by event 143007 in events/ENG/ENG_39-43.txt
+# Triggered by event 143008 in events/ENG/ENG_39-43.txt
+# Triggered by event 143009 in events/ENG/ENG_39-43.txt
+# Triggered by event 143010 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 121015
+         random = no
+         country = can
+         trigger = {
+         }
+         name = "EVT_SHARED_00486_NAME"
+         desc = "EVT_SHARED_00486_DESC"
+         style = 2
+          persistent = yes
+	picture = "Minors/british_commonwealth_air_training_plan"
+           action_a = {
+                  name = ACTION_NAME_OK
+                 command = { type = build_time which = air when = on_upgrade where = relative value = -5 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121019] CAN | 1940 | Minister Resigns (Dimisión de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121019
+	random = no
+	country = CAN
+	style = 2
+	trigger = {
+		OR = {
+			headofstate = 220001
+			headofstate = 220094
+		}
+	}
+	date = { day = 11 month = february year = 1940 }
+	name = "EVT_SHARED_00500_NAME"
+	desc = "EVT_SHARED_00500_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 220001 } type = headofstate which = 220096 }
+		command = { trigger = { headofstate = 220094 } type = headofstate which = 220095 }
+		command = { type = sleepminister which = 220001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [121025] CAN | 1940 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121025
+	random = no
+	country = CAN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = CAN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = march year = 1940 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 220097 }
+		command = { type = headofgovernment which = 220002 }
+		command = { type = foreignminister which = 220003 }
+		command = { type = armamentminister which = 220028 }
+		command = { type = ministerofsecurity which = 220005 }
+		command = { type = ministerofintelligence which = 220058 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 220098 }
+		command = { type = headofgovernment which = 220014 }
+		command = { type = foreignminister which = 220021 }
+		command = { type = armamentminister which = 220031 }
+		command = { type = ministerofsecurity which = 220044 }
+		command = { type = ministerofintelligence which = 220060 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [121020] CAN | 1940 | Minister Resigns (Dimisión de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121020
+	random = no
+	country = CAN
+	style = 2
+	trigger = {
+		OR = {
+			headofstate = 220096
+			headofstate = 220095
+		}
+	}
+	date = { day = 21 month = june year = 1940 }
+	name = "EVT_SHARED_00500_NAME"
+	desc = "EVT_SHARED_00500_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 220096 } type = headofstate which = 220097 }
+		command = { trigger = { headofstate = 220095 } type = headofstate which = 220098 }
+		command = { type = sleepminister which = 220095 }
+		command = { type = sleepevent which = 316144 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [121010] CAN | 1940 | Unemployment benefits (Beneficios de desempleado)
+# ----------------------------------------------------------------------------
+event = {
+         id = 121010
+         random = no
+         country = can
+         trigger = {
+         }
+         name = "EVT_CAN_121010_NAME"
+         desc = "EVT_CAN_121010_DESC"
+         style = 2
+         date = { day = 7 month = august year = 1940 }
+	picture = "GLOBAL/unemployment_rate"
+           action_a = {
+                  name = "ACTION_NAME_ACCEPT"
+                  ai_chance = 95
+                  command = { type = money value = -60 }
+                  command = { type = dissent value = -3 }
+                  command = { type = industrial_modifier which = total value = 1 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 5
+                  command = { type = dissent value = 1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329023] CAN | 1940 | Town class destroyers (Destructores clase 'Town')
+# Triggered by event 231040 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329023
+         random = no
+         country = can
+         trigger = {
+                   alliance = { country = can country = eng }
+                   event = 231040
+         }
+         name = "EVT_CAN_329023_NAME"
+         desc = "EVT_CAN_329023_DESC"
+         style = 2
+         date = { day = 1 month = october year = 1940 }
+         offset = 1
+         deathdate = { day = 29 month = december year = 1942 }
+	picture = "Minors/town_class_destroyers"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = add_division which = "HMCS Uganda" value = light_cruiser when = 4 }
+                  command = { type = add_division which = "HMCS Ontario" value = light_cruiser when = 4 }
+                  command = { type = add_division which = "3st Destroyer Flotilla" value = destroyer when = 4 }
+                  command = { type = add_division which = "4th Destroyer Flotilla" value = destroyer when = 4 }
+                  command = { type = add_division which = "5th Destroyer Flotilla" value = destroyer when = 4 }
+                  command = { type = add_division which = "6th Destroyer Flotilla" value = destroyer when = 4 }
+                  command = { type = add_division which = "7th Destroyer Flotilla" value = destroyer when = 4 }
+                  command = { type = add_division which = "8th Destroyer Flotilla" value = destroyer when = 4 }
+                  command = { type = manpowerpool value = -30 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121032] CAN | 1941 | Churchill Official Visit to Canada (Visita oficial de Churchill a Canadá)
+# Triggered by event 329270 in events/ENG/ENG_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 121032
+	random = no
+	country = CAN
+	name = "EVT_SHARED_00755_NAME"
+	desc = "EVT_SHARED_00755_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ENG value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121012] CAN | 1941 | Strike in Arvida (Huelga en Arvida)
+# ----------------------------------------------------------------------------
+event = {
+         id = 121012
+         random = no
+         country = can
+         trigger = {
+         }
+         name = "EVT_CAN_121012_NAME"
+         desc = "EVT_CAN_121012_DESC"
+         style = 2
+         date = { day = 24 month = july year = 1941 }
+	picture = "GLOBAL/strike"
+           action_a = {
+                  name = "ACTION_NAME_UNFORTUNATE"
+                  command = { type = dissent value = 2 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121022] CAN | 1941 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121022
+	random = no
+	country = CAN
+	style = 2
+	trigger = {
+		minister = 220005
+		}
+	date = { day = 26 month = november year = 1941 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = ministerofsecurity which = 220045 }
+		command = { type = sleepminister which = 220005 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [121051] CAN | 1946 | New Governor-General (Nuevo gobernador general)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121051
+	country = CAN
+	name = "EVT_SHARED_00868_NAME"
+	desc = "EVT_SHARED_00868_DESC"
+	picture = "nwo/governor_general"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 220100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121026] CAN | 1946 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121026
+	random = no
+	country = CAN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = CAN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = march year = 1946 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 220100 }
+		command = { type = headofgovernment which = 220002 }
+		command = { type = foreignminister which = 220003 }
+		command = { type = armamentminister which = 220029 }
+		command = { type = ministerofsecurity which = 220042 }
+		command = { type = ministerofintelligence which = 220059 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 220099 }
+		command = { type = headofgovernment which = 220015 }
+		command = { type = foreignminister which = 220022 }
+		command = { type = armamentminister which = 220032 }
+		command = { type = ministerofsecurity which = 220046 }
+		command = { type = ministerofintelligence which = 220061 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [121021] CAN | 1946 | Minister Resigns (Dimisión de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121021
+	random = no
+	country = CAN
+	style = 2
+	trigger = {
+		OR = {
+			headofstate = 220097
+			headofstate = 220098
+		}
+	}
+	date = { day = 12 month = april year = 1946 }
+	name = "EVT_SHARED_00500_NAME"
+	desc = "EVT_SHARED_00500_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 220097 } type = headofstate which = 220100 }
+		command = { trigger = { headofstate = 220098 } type = headofstate which = 220099 }
+		command = { type = sleepminister which = 220097 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [121072] CAN | 1947 | Alberta Oil Strike (Petróleo en Alberta)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121072
+	country = CAN
+	name = EVT_CAN_121072_NAME
+	desc = EVT_CAN_121072_DESC
+	picture = "nwo/canadian_oil_fields"
+	style = 1
+	trigger = {
+		control = { province = 2103 data = -1 }
+		control = { province = 2104 data = -1 }
+	}
+	date = { day = 1 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_prov_resource which = 2103 value = 4 where = oil }
+		command = { type = add_prov_resource which = 2104 value = 2 where = oil }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121013] CAN | 1948 | Control of Newfoundland (Control de Terranova)
+# Triggered by event 280001 in events/Minors/U60_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 121013
+         random = no
+         country = can
+         name = "EVT_SHARED_00485_NAME"
+         desc = "EVT_CAN_121013_DESC"
+         style = 2
+	picture = "Minors/control_of_newfoundland"
+           action_a = {
+                  name = "ACTION_NAME_EXCELLENT"
+                  command = { type = supplies value = 700 }
+                  command = { type = oilpool value = 200 }
+                  command = { type = construct which = ic where = -1 value = 1 }
+                  command = { type = dissent value = -1 }
+                  command = { type = addclaim which = 2136 }
+                  command = { type = addclaim which = 2137 }
+                  command = { type = addclaim which = 2138 }
+                  command = { type = inherit which = U60 }
+                  command = { type = secedeprovince which = CAN value = 2136 when = 2 }
+                  command = { type = secedeprovince which = CAN value = 2137 when = 2 }
+                  command = { type = secedeprovince which = CAN value = 2138 when = 2 }
+                  command = { trigger = { ai = no } type = money value = -100 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [121052] CAN | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121052
+	country = CAN
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 220101 }
+		command = { type = foreignminister which = 220104 }
+		command = { type = armamentminister which = 220106 }
+		command = { type = ministerofsecurity which = 220108 }
+		command = { type = ministerofintelligence which = 220110 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 220102 }
+		command = { type = foreignminister which = 220105 }
+		command = { type = armamentminister which = 220107 }
+		command = { type = ministerofsecurity which = 220109 }
+		command = { type = ministerofintelligence which = 220110 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121071] CAN | 1948 | Newfoundland Enters Canada (Terranova entra en Canadá)
+# Triggered by event 121058 in events/Minors/CAN_52-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 121071
+	country = CAN
+	name = EVT_CAN_121071_NAME
+	desc = EVT_CAN_121071_DESC
+	picture = "nwo/newfoundland"
+	style = 1
+	trigger = {
+		event = 121058
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = addcore which = 2136 }
+		command = { type = addcore which = 2137 }
+		command = { type = addcore which = 2138 }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121027] CAN | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121027
+	random = no
+	country = CAN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = CAN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = november year = 1948 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 220100 }
+		command = { type = headofgovernment which = 220101 }
+		command = { type = foreignminister which = 220104 }
+		command = { type = armamentminister which = 220106 }
+		command = { type = ministerofsecurity which = 220108 }
+		command = { type = ministerofintelligence which = 220110 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 220099 }
+		command = { type = headofgovernment which = 220102 }
+		command = { type = foreignminister which = 220105 }
+		command = { type = armamentminister which = 220107 }
+		command = { type = ministerofsecurity which = 220109 }
+		command = { type = ministerofintelligence which = 220110 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [121053] CAN | 1952 | New Governor-General (Nuevo gobernador general)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121053
+	country = CAN
+	name = "EVT_SHARED_00868_NAME"
+	desc = "EVT_SHARED_00868_DESC"
+	picture = "nwo/governor_general"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 220112 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [121054] CAN | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 121054
+	country = CAN
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 220101 }
+		command = { type = foreignminister which = 220104 }
+		command = { type = armamentminister which = 220106 }
+		command = { type = ministerofsecurity which = 220108 }
+		command = { type = ministerofintelligence which = 220111 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 220103 }
+		command = { type = foreignminister which = 220105 }
+		command = { type = armamentminister which = 220107 }
+		command = { type = ministerofsecurity which = 220109 }
+		command = { type = ministerofintelligence which = 220111 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+			command = { }
+	}
+}

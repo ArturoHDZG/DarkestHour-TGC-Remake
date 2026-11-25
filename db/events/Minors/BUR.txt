@@ -1,0 +1,434 @@
+# ============================================================================
+# File: events/Minors/BUR.txt (15 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [119012] BUR | 1933 | Formation of National Army (Creación del ejército)
+# ----------------------------------------------------------------------------
+event = {
+	id = 119012
+	country = BUR
+	name = EVT_SHARED_00916_NAME
+	desc = EVT_SHARED_00916_DESC
+	picture = "nwo/foundation_of_army"
+	style = 1
+	date = { day = 1 month = january year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119013] BUR | 1946 | Colonial Military Bases (Bases militares coloniales)
+# Triggered by event 143319 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 119013
+	country = BUR
+	name = EVT_SHARED_00874_NAME
+	desc = EVT_SHARED_00874_DESC
+	picture = "nwo/independence_of_burma"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = access which = ENG }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119014] BUR | 1946 | Independence of Burma (Independencia de Birmania)
+# Triggered by event 329873 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 119014
+	country = BUR
+	name = EVT_BUR_119014_NAME
+	desc = EVT_BUR_119014_DESC
+	picture = "nwo/independence_of_burma"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119001] BUR | 1948 | Burmese Independence (Independencia de Birmania)
+# Triggered by event 143108 in events/ENG/ENG_43-54.txt
+# Triggered by event 237011 in events/Minors/U02.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 119001
+	random = no
+	country = BUR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		}
+	name = "EVT_SHARED_00765_NAME"
+	desc = "EVT_SHARED_00764_DESC"
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 465012 }
+		command = { type = headofgovernment which = 465054 }
+		command = { type = foreignminister which = 465020 }
+		command = { type = armamentminister which = 465024 }
+		command = { type = ministerofsecurity which = 465028 }
+		command = { type = ministerofintelligence which = 465032 }
+		command = { type = chiefofstaff which = 465036 }
+		command = { type = chiefofarmy which = 465041 }
+		command = { type = chiefofnavy which = 465046 }
+		command = { type = chiefofair which = 465050 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [119002] BUR | 1948 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324494 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 119002
+	country = BUR
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = flag_ext where = BUR which = _socialist }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 465012 }
+		command = { type = headofgovernment which = 465054 }
+		command = { type = foreignminister which = 465020 }
+		command = { type = armamentminister which = 465024 }
+		command = { type = ministerofsecurity which = 465028 }
+		command = { type = ministerofintelligence which = 465032 }
+		command = { type = chiefofstaff which = 465036 }
+		command = { type = chiefofarmy which = 465041 }
+		command = { type = chiefofnavy which = 465046 }
+		command = { type = chiefofair which = 465050 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119011] BUR | 1948 | Northern Insurgencies (Insurrecciones en el norte)
+# ----------------------------------------------------------------------------
+event = {
+	id = 119011
+	country = BUR
+	persistent = yes
+	name = "EVT_BUR_119011_NAME"
+	desc = "EVT_BUR_119011_DESC"
+	picture = "nwo/burmese_insurgency"
+	style = 1
+	date = { day = 1 month = january year = 1948 }
+	offset = 720
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { flag = CHC_won_civil_war } type = dissent value = 12 }
+		command = { trigger = { NOT = { flag = CHC_won_civil_war } } type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119003] BUR | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 119003
+	country = BUR
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = flag_ext which = _socialist }
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 465053 }
+		command = { type = headofgovernment which = 465054 }
+		command = { type = foreignminister which = 465020 }
+		command = { type = armamentminister which = 465024 }
+		command = { type = ministerofsecurity which = 465028 }
+		command = { type = ministerofintelligence which = 465032 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = flag_ext which = _socialist }
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 465013 }
+		command = { type = headofgovernment which = 465017 }
+		command = { type = foreignminister which = 465021 }
+		command = { type = armamentminister which = 465025 }
+		command = { type = ministerofsecurity which = 465029 }
+		command = { type = ministerofintelligence which = 465033 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = flag_ext which = _socialist }
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119000] BUR | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 119000
+	random = no
+	country = BUR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = BUR }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = march year = 1952 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 465053 }
+		command = { type = headofgovernment which = 465054 }
+		command = { type = foreignminister which = 465020 }
+		command = { type = armamentminister which = 465024 }
+		command = { type = ministerofsecurity which = 465028 }
+		command = { type = ministerofintelligence which = 465032 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 465013 }
+		command = { type = headofgovernment which = 465017 }
+		command = { type = foreignminister which = 670021 }
+		command = { type = armamentminister which = 465025 }
+		command = { type = ministerofsecurity which = 465029 }
+		command = { type = ministerofintelligence which = 465033 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [119004] BUR | 1957 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 119004
+	country = BUR
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = flag_ext which = _socialist }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 465100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119005] BUR | 1962 | Ne Win's Coup (Golpe de Ne Win)
+# ----------------------------------------------------------------------------
+event = {
+	id = 119005
+	country = BUR
+	name = "EVT_BUR_119005_NAME"
+	desc = "EVT_BUR_119005_DESC"
+	picture = "nwo/ne_win"
+	style = 1
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 465101 }
+		command = { type = headofgovernment which = 465102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119010] BUR | 1962 | Burmese Way to Socialism (Vía birmana al socialismo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 119010
+	country = BUR
+	name = "EVT_BUR_119010_NAME"
+	desc = "EVT_BUR_119010_DESC"
+	picture = "nwo/burmese_road_to_socialism"
+	style = 1
+	date = { day = 1 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = dissent value = 10 }
+		command = { type = money value = -2000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119006] BUR | 1974 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 119006
+	country = BUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1976 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 465101 }
+		command = { type = headofgovernment which = 465103 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119007] BUR | 1977 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 119007
+	country = BUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1977 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 465107 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119008] BUR | 1981 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 119008
+	country = BUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 465106 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [119009] BUR | 1988 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 119009
+	country = BUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 465104 }
+		command = { type = headofgovernment which = 465105 }
+	}
+}

@@ -1,0 +1,53 @@
+# ============================================================================
+# File: events/Minors/U33_Decisions.txt (1 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329851] U33 | 1946 | Resumption of the Greek Civil War (Reanudación armada de la Guerra Civil Griega)
+# Triggered by event 268010 in events/Minors/U33.txt
+# Trigger event 152210 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329851
+	country = U33
+	persistent = yes
+	name = EVT_U33_329851_NAME
+	desc = EVT_U33_329851_DESC
+	picture = "nwo/greek_civil_war"
+	decision_picture = "nwo/d_greek_civil_war"
+	style = 1
+	decision = {
+		NOT = { war = { country = GRE country = U33 } }
+		NOT = { alliance = { country = USA country = GRE } }
+		NOT = { alliance = { country = SOV country = GRE } }
+		NOT = { alliance = { country = GRE country = U33 } }
+		exists = GRE
+		flag = cold_war
+		NOT = { event = 268010 }
+	}
+	trigger = {
+		NOT = { war = { country = GRE country = U33 } }
+		NOT = { alliance = { country = USA country = GRE } }
+		NOT = { alliance = { country = SOV country = GRE } }
+		NOT = { alliance = { country = GRE country = U33 } }
+		exists = GRE
+		flag = cold_war
+		NOT = { event = 268010 }
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 50
+		command = { trigger = { alliance = { country = USA country = GRE } } type = trigger which = 152210 }
+		command = { trigger = { NOT = { alliance = { country = USA country = GRE } } } type = war which = U33 }
+	}
+	action = {
+		name = EVT_U33_329851_A
+		ai_chance = 50
+		trigger = { ai = yes }
+		command = { type = relation which = GRE value = 1 }
+	}
+}

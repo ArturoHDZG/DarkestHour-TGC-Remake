@@ -1,0 +1,449 @@
+# ============================================================================
+# File: events/Minors/PHI.txt (14 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [202003] PHI | 1933 | Head of State Resigns (Dimisión del Jefe de Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202003
+	random = no
+	country = PHI
+	style = 2
+	trigger = {
+		headofstate =  325082
+	}
+	date = { day = 14 month = july year = 1933 }
+	name = "EVT_SHARED_00507_NAME"
+	desc = "EVT_SHARED_00507_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 325083 }
+		command = { type = sleepminister which = 325082 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [202005] PHI | 1935 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202005
+	random = no
+	country = PHI
+	style = 2
+	one_action = yes
+	trigger = {
+		OR = {
+			government = democratic
+			headofstate =  325083
+		}
+		OR = {
+			NOT = { ispuppet = PHI }
+			puppet = { country = PHI country = USA }
+		}
+	}
+	date = { day = 14 month = november year = 1935 }
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		ai_chance = 99
+		name = "EVT_SHARED_00512_B"
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 325001 }
+		command = { type = sleepminister which = 325083 }
+	}
+	action_b = {
+		ai_chance = 1
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [202006] PHI | 1936 | US Military Access Revoked (Revocación de acceso militar a EE. UU.)
+# Triggered by event 316130 in events/USA/USA_33-36.txt
+# Triggered by event 316133 in events/USA/USA_33-36.txt
+# Triggered by event 316135 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 202006
+	random = no
+	country = PHI
+	name = EVT_PHI_202006_NAME
+	desc = EVT_PHI_202006_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OF_COURSE
+		command = { type = end_access which = USA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [202001] PHI | 1941 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202001
+	random = no
+	country = PHI
+	style = 2
+	trigger = {
+		minister = 325017
+		}
+	date = { year = 1941 month = december day = 29 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 325017 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [202000] PHI | 1944 | Death of the Head of State (Muerte del Jefe del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202000
+	random = no
+	country = PHI
+	style = 2
+	trigger = {
+		minister = 325001
+		}
+	date = { year = 1944 month = august day = 1 }
+	name = "EVT_SHARED_00501_NAME"
+	desc = "EVT_SHARED_00501_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 325018 }
+		command = { type = sleepminister which = 325001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [202007] PHI | 1946 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202007
+	country = PHI
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 325015 }
+		command = { type = headofgovernment which = 325016 }
+		command = { type = foreignminister which = 325023 }
+		command = { type = armamentminister which = 325035 }
+		command = { type = ministerofsecurity which = 325046 }
+		command = { type = ministerofintelligence which = 325059 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 325014 }
+		command = { type = headofgovernment which = 325213 }
+		command = { type = foreignminister which = 325023 }
+		command = { type = armamentminister which = 325035 }
+		command = { type = ministerofsecurity which = 325046 }
+		command = { type = ministerofintelligence which = 325059 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329942] PHI | 1946 | Relations with USA (Relaciones con Estados Unidos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329942
+	country = PHI
+	name = EVT_PHI_329942_NAME
+	desc = LOST_DESC
+	picture = "nwo/philippines_and_usa"
+	style = 1
+	trigger = {
+		flag = cold_war_pacific
+		puppet = { country = PHI country = USA }
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = end_puppet }
+		command = { type = access which = USA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [202004] PHI | 1946 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202004
+	random = no
+	country = PHI
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = march year = 1946 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 325015 }
+		command = { type = headofgovernment which = 325066 }
+		command = { type = foreignminister which = 325023 }
+		command = { type = armamentminister which = 325035 }
+		command = { type = ministerofsecurity which = 325046 }
+		command = { type = ministerofintelligence which = 325059 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [202012] PHI | 1948 | Hukbalahap Rebellion (Rebelión de Hukbalahap)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202012
+	country = PHI
+	name = EVT_PHI_202012_NAME
+	desc = LOST_DESC
+	picture = "nwo/hukbalahap_rebellion"
+	style = 1
+	trigger = {
+		flag = cold_war_pacific
+		NOT = { government = communist }
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [202002] PHI | 1948 | Death of the Head of State (Muerte del Jefe del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202002
+	random = no
+	country = PHI
+	style = 2
+	trigger = {
+		headofstate = 325015
+		}
+	date = { day = 15 month = april year = 1948 }
+	name = "EVT_SHARED_00501_NAME"
+	desc = "EVT_SHARED_00501_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 325011 }
+		command = { type = headofgovernment which = 325016 }
+		command = { type = sleepminister which = 325015 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [202008] PHI | 1949 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202008
+	country = PHI
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 325011 }
+		command = { type = headofgovernment which = 325200 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 325067 }
+		command = { type = headofgovernment which = 325201 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [202009] PHI | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202009
+	country = PHI
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 325203 }
+		command = { type = headofgovernment which = 325204 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 325011 }
+		command = { type = headofgovernment which = 325202 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [202010] PHI | 1957 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202010
+	country = PHI
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 325207 }
+		command = { type = headofgovernment which = 325208 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 325205 }
+		command = { type = headofgovernment which = 325206 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [202011] PHI | 1961 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 202011
+	country = PHI
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 325209 }
+		command = { type = headofgovernment which = 325210 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 325211 }
+		command = { type = headofgovernment which = 325212 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}

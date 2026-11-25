@@ -1,0 +1,203 @@
+# ============================================================================
+# File: events/Minors/OTT_Decisions.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [196026] OTT | 1914 | Entry of the Ottoman Empire into the War? (¿Entrada del Imperio otomano en la guerra?)
+# Triggered by event 196020 in events/Minors/OTT.txt
+# Triggered by event 196003 in events/Minors/OTT.txt
+# Triggered by event 196004 in events/Minors/OTT.txt
+# Triggered by event 196005 in events/Minors/OTT.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Trigger event 236016 in events/GLOBAL/ALL_26-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 196026
+	country = OTT
+	decision = {
+		event = 196020
+		flag = U08_OTT_Secret_Treaty
+		NOT = { war = { country = OTT country = U08 } }
+		NOT = { alliance = { country = OTT country = U08 } }
+		NOT = { event = 196003 }
+		NOT = { event = 196004 }
+		NOT = { event = 196005 }
+		NOT = { event = 243116 }
+		NOT = { event = 243101 }
+		NOT = { event = 243107 }
+		ai = no
+	}
+	decision_trigger = {
+		atwar = U08
+		ai = no
+	}
+	trigger = {
+		ai = no
+		event = 196020
+		flag = U08_OTT_Secret_Treaty
+		NOT = { war = { country = OTT country = U08 } }
+		NOT = { alliance = { country = OTT country = U08 } }
+		NOT = { event = 196003 }
+		NOT = { event = 196004 }
+		NOT = { event = 196005 }
+		NOT = { event = 243116 }
+		NOT = { event = 243101 }
+		NOT = { event = 243107 }
+		atwar = U08
+		OR = {
+			under_attack = U08
+			AND = {
+				NOT = { under_attack = U08 }
+			}
+		}
+	}
+	name = "EVT_SHARED_00091_NAME"
+	desc = "EVT_SHARED_00091_DESC"
+	style = 2
+	picture = "Minors/dreikaiser"
+	decision_picture = "Minors/decision_dreikaiser"
+	date = { day = 28 month = july year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1917 }
+	action = {
+		trigger = { NOT = { under_attack = U08 } }
+		name = "ACTION_NAME_JOIN_CENTRAL"
+		ai_chance = 5
+		command = { type = relation which = U08 value = 20 }
+		command = { type = alliance which = U08 when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 236016 }
+	}
+	action = {
+		trigger = { NOT = { under_attack = U08 } }
+		name = "ACTION_NAME_NO"
+		ai_chance = 95
+		command = { type = relation which = U08 value = -10 }
+	}
+	action = {
+		trigger = { under_attack = U08 }
+		name = "ACTION_NAME_JOIN_CENTRAL"
+		ai_chance = 95
+		command = { type = relation which = U08 value = 20 }
+		command = { type = alliance which = U08 when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 236016 }
+	}
+	action = {
+		trigger = { under_attack = U08 }
+		name = "ACTION_NAME_NO"
+		ai_chance = 5
+		command = { type = relation which = U08 value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [175001] OTT | 1914 | Declare Jihad (Proclamar la Yihad)
+# Trigger event 175002 in events/Minors/LBY.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 175001
+	country = OTT
+	decision = {
+		OR = {
+			war = { country = OTT country = ENG }
+			war = { country = OTT country = FRA }
+			war = { country = OTT country = RUS }
+		}
+	}
+	decision_trigger = {
+		OR = {
+			war = { country = OTT country = ENG }
+			war = { country = OTT country = FRA }
+			war = { country = OTT country = RUS }
+		}
+	}
+	trigger = {
+		OR = {
+			war = { country = OTT country = ENG }
+			war = { country = OTT country = FRA }
+			war = { country = OTT country = RUS }
+		}
+	}
+	name = "EVT_OTT_175001_NAME"
+	desc = "EVT_SHARED_00070_DESC"
+	style = 2
+	picture = "GLOBAL/ottoman_declaration_war"
+	decision_picture = "GLOBAL/decision_ottoman_declaration_war"
+	date = { day = 0 month = august year = 1914 }
+	offset = 61
+	deathdate = { day = 29 month = december year = 1919 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = belligerence value = 5 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { trigger = { exists = LBY NOT = { ispuppet = LBY war = { country = LBY country = OTT } } } type = event which = 175002 where = LBY when = 30 }
+	}
+	action = {
+		name = "ACTION_NAME_NO"
+		ai_chance = 1
+		command = { type = belligerence value = -2 }
+		command = { type = domestic which = defense_lobby value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [175004] OTT | 1915 | The Senussi are ready to strike (Los sanusies listos para atacar)
+# Triggered by event 166112 in events/ITA/ITA_14-20.txt
+# Trigger event 175005 in events/Minors/LBY.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 175004
+	country = OTT
+	decision = {
+		event = 166112
+		NOT = { war = { country = OTT country = LBY } }
+		NOT = { alliance = { country = OTT country = LBY } }
+		NOT = { alliance = { country = GER country = LBY } }
+		NOT = { alliance = { country = RUS country = LBY } }
+		NOT = { alliance = { country = FRA country = LBY } }
+		NOT = { alliance = { country = ITA country = LBY } }
+		NOT = { alliance = { country = ENG country = LBY } }
+	}
+	decision_trigger = {
+		war = { country = OTT country = ENG }
+		NOT = { war = { country = ENG country = LBY } }
+		money = 50
+		supplies = 500
+	}
+	trigger = {
+		event = 166112
+		NOT = { war = { country = OTT country = LBY } }
+		NOT = { alliance = { country = OTT country = LBY } }
+		NOT = { alliance = { country = GER country = LBY } }
+		NOT = { alliance = { country = RUS country = LBY } }
+		NOT = { alliance = { country = FRA country = LBY } }
+		NOT = { alliance = { country = ITA country = LBY } }
+		NOT = { alliance = { country = ENG country = LBY } }
+		war = { country = OTT country = ENG }
+		NOT = { war = { country = ENG country = LBY } }
+	}
+	name = "EVT_OTT_175004_NAME"
+	desc = "EVT_SHARED_00071_DESC"
+	style = 2
+	picture = "GLOBAL/baghdad_captured"
+	decision_picture = "Minors/decision_austrian_troops_jerusalem"
+	date = { day = 0 month = january year = 1915 }
+	offset = 121
+	deathdate = { day = 29 month = december year = 1919 }
+	action = {
+		name = "EVT_OTT_175004_A"
+		ai_chance = 99
+		command = { type = belligerence value = 5 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = trigger which = 175005 }
+	}
+	action = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 1
+		command = { type = belligerence value = -2 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}

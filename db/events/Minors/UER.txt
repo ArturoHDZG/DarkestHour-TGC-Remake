@@ -1,0 +1,407 @@
+# ============================================================================
+# File: events/Minors/UER.txt (9 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [310003] UER | 1914 | Consolidation of the White Army (Unificación de las fuerzas del Ejército Blanco)
+# Triggered by event 310001 in events/Minors/UER.txt
+# Triggered by event 310002 in events/Minors/UER.txt
+# Triggered by event 310005 in events/Minors/UER.txt
+# Trigger event 310005 in events/Minors/UER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 310003
+	country = UER
+	trigger = {
+		event = 310001
+		event = 310002
+		random = 25
+		NOT = { event = 310005 }
+	}
+	name = "EVT_UER_310003_NAME"
+	desc = "EVT_UER_310003_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [310005] UER | 1914 | Request Recall of General Janin (Petición de relevo del general Janin)
+# Triggered by event 310004 in events/Minors/UER.txt
+# Triggered by event 310003 in events/Minors/UER.txt
+# Trigger event 310003 in events/Minors/UER.txt
+# Trigger event 310006 in events/Minors/UER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 310005
+	country = UER
+	name = "EVT_UER_310005_NAME"
+	desc = "EVT_UER_310005_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = remove_division which = "1. Czechoslovak Division" value = UER }
+		command = { type = remove_division which = "2. Czechoslovak Division" value = UER }
+		command = { type = remove_division which = "3. Czechoslovak Division" value = UER }
+		command = { type = event which = 310006 where = UER when = 15 }
+		command = { type = sleepleader which = 1360078 }
+		command = { type = sleepminister which = 1360011 }
+		command = { type = sleepminister which = 1360013 }
+		command = { type = sleepleader which = 1360079 }
+		command = { type = sleepleader which = 1360080 }
+		command = { type = sleepleader which = 1360081 }
+		command = { type = sleepleader which = 1360082 }
+		command = { type = sleepminister which = 1360049 }
+		command = { type = sleepleader which = 1360083 }
+		command = { type = sleepleader which = 1360084 }
+		command = { type = sleepleader which = 1360085 }
+		command = { type = sleepleader which = 1360086 }
+		command = { type = sleepleader which = 1360087 }
+		command = { trigger = { NOT = { event = 310003 } } type = sleepevent which = 310003 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [310006] UER | 1914 | Janin Retained in Command (Janin ratificado en el mando)
+# Triggered by event 147298 in events/FRA/FRA_36-38.txt
+# Triggered by event 310005 in events/Minors/UER.txt
+# Trigger event 281001 in events/Minors/U62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 310006
+	country = UER
+	name = "EVT_UER_310006_NAME"
+	desc = "EVT_UER_310006_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = sleepminister which = 1360006 }
+		command = { type = sleepminister which = 1360013 }
+		command = { type = sleepminister which = 1360054 }
+		command = { type = secedeprovince which = SOV value = 1162 when = 1 }
+		command = { type = demobilize which = land when = 0 where = 1 value = 3 }
+		command = { type = trigger which = 281001 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329556] UER | 1914 | Janin and the Czechoslovak Legion (El general Janin y la Legión Checoslovaca)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329556
+	country = UER
+	persistent = yes
+	trigger = {
+		random = 10
+		exists = SOV
+		war = { country = SOV country = UER }
+		NOT = { dissent = 25 }
+	}
+	name = "EVT_SHARED_00129_NAME"
+	desc = "EVT_SHARED_00129_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = june year = 1914 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { }
+		command = { trigger = { dissent = 20 } type = dissent value = 0.5 }
+		command = { trigger = { dissent = 10 NOT = { dissent = 20 } } type = dissent value = 1 }
+		command = { trigger = { NOT = { dissent = 10 } } type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [310004] UER | 1914 | Friction with the Czechoslovak Legion (Fricciones con la Legión Checoslovaca)
+# Triggered by event 310001 in events/Minors/UER.txt
+# Triggered by event 310002 in events/Minors/UER.txt
+# Trigger event 310005 in events/Minors/UER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 310004
+	country = UER
+	trigger = {
+		event = 310001
+		event = 310002
+		NOT = {
+			control = { province = 1138 data = -1 }
+			control = { province = 572 data = -1 }
+			control = { province = 553 data = -1 }
+			control = { province = 1151 data = -1 }
+			control = { province = 663 data = -1 }
+			control = { province = 668 data = -1 }
+		}
+	}
+	name = "EVT_UER_310004_NAME"
+	desc = "EVT_UER_310004_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 4 month = august year = 1914 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = event which = 310005 where = UER when = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [310012] UER | 1914 | The Basmachi propose cooperation (Los Basmachi proponen cooperación)
+# Triggered by event 329557 in events/Minors/UPE_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 310012
+	country = UER
+	name = "EVT_UER_310012_NAME"
+	desc = "EVT_SHARED_00136_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 4 month = august year = 1914 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "EVT_UER_310012_A"
+		ai_chance = 80
+		command = { type = relation which = UPE value = -50 }
+	}
+	action = {
+		name = "EVT_UER_310012_B"
+		ai_chance = 20
+		command = { type = alliance which = UPE }
+		command = { type = setflag which = UPE_guarantee }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [310000] UER | 1936 | The Ufa Directorate (El Directorio de Ufá)
+# Trigger event 310001 in events/Minors/UER.txt
+# Trigger event 310002 in events/Minors/UER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 310000
+	country = UER
+	name = "EVT_SHARED_00109_NAME"
+	desc = "EVT_SHARED_00109_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 1360001 }
+		command = { type = headofgovernment which = 1360009 }
+		command = { type = foreignminister which = 1360014 }
+		command = { type = armamentminister which = 1360031 }
+		command = { type = ministerofsecurity which = 1360020 }
+		command = { type = ministerofintelligence which = 1360051 }
+		command = { type = chiefofstaff which = 1360055 }
+		command = { type = chiefofarmy which = 1360062 }
+		command = { type = access which = U62 }
+		command = { type = war which = SOV }
+		command = { type = capital which = 1131 }
+		command = { type = trigger which = 310001 }
+		command = { type = event which = 310002 where = UER when = 60 }
+		command = { type = remove_units which = land where = REB when = 2 value = "Far East Siberia" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Irkutsk" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Northern Permafrost" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Kazakstan" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Central Asia" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Krasnoyarsk" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Tomsk" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Novosibirsk" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Eastern Russia" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Russia" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Urals" }
+		command = { trigger = { owned = { province = 668 data = UER } control = { province = 668 data = REB } } type = secedeprovince which = UER value = 668 when = 2 }
+		command = { trigger = { owned = { province = 672 data = UER } control = { province = 672 data = REB } } type = secedeprovince which = UER value = 672 when = 2 }
+		command = { trigger = { owned = { province = 669 data = UER } control = { province = 669 data = REB } } type = secedeprovince which = UER value = 669 when = 2 }
+		command = { trigger = { owned = { province = 665 data = UER } control = { province = 665 data = REB } } type = secedeprovince which = UER value = 665 when = 2 }
+		command = { trigger = { owned = { province = 498 data = UER } control = { province = 498 data = REB } } type = secedeprovince which = UER value = 498 when = 2 }
+		command = { trigger = { owned = { province = 499 data = UER } control = { province = 499 data = REB } } type = secedeprovince which = UER value = 499 when = 2 }
+		command = { trigger = { owned = { province = 500 data = UER } control = { province = 500 data = REB } } type = secedeprovince which = UER value = 500 when = 2 }
+		command = { trigger = { owned = { province = 501 data = UER } control = { province = 501 data = REB } } type = secedeprovince which = UER value = 501 when = 2 }
+		command = { trigger = { owned = { province = 502 data = UER } control = { province = 502 data = REB } } type = secedeprovince which = UER value = 502 when = 2 }
+		command = { trigger = { owned = { province = 503 data = UER } control = { province = 503 data = REB } } type = secedeprovince which = UER value = 503 when = 2 }
+		command = { trigger = { owned = { province = 504 data = UER } control = { province = 504 data = REB } } type = secedeprovince which = UER value = 504 when = 2 }
+		command = { trigger = { owned = { province = 505 data = UER } control = { province = 505 data = REB } } type = secedeprovince which = UER value = 505 when = 2 }
+		command = { trigger = { owned = { province = 506 data = UER } control = { province = 506 data = REB } } type = secedeprovince which = UER value = 506 when = 2 }
+		command = { trigger = { owned = { province = 507 data = UER } control = { province = 507 data = REB } } type = secedeprovince which = UER value = 507 when = 2 }
+		command = { trigger = { owned = { province = 1108 data = UER } control = { province = 1108 data = REB } } type = secedeprovince which = UER value = 1108 when = 2 }
+		command = { trigger = { owned = { province = 1109 data = UER } control = { province = 1109 data = REB } } type = secedeprovince which = UER value = 1109 when = 2 }
+		command = { trigger = { owned = { province = 1110 data = UER } control = { province = 1110 data = REB } } type = secedeprovince which = UER value = 1110 when = 2 }
+		command = { trigger = { owned = { province = 1111 data = UER } control = { province = 1111 data = REB } } type = secedeprovince which = UER value = 1111 when = 2 }
+		command = { trigger = { owned = { province = 1112 data = UER } control = { province = 1112 data = REB } } type = secedeprovince which = UER value = 1112 when = 2 }
+		command = { trigger = { owned = { province = 1113 data = UER } control = { province = 1113 data = REB } } type = secedeprovince which = UER value = 1113 when = 2 }
+		command = { trigger = { owned = { province = 1114 data = UER } control = { province = 1114 data = REB } } type = secedeprovince which = UER value = 1114 when = 2 }
+		command = { trigger = { owned = { province = 1115 data = UER } control = { province = 1115 data = REB } } type = secedeprovince which = UER value = 1115 when = 2 }
+		command = { trigger = { owned = { province = 1116 data = UER } control = { province = 1116 data = REB } } type = secedeprovince which = UER value = 1116 when = 2 }
+		command = { trigger = { owned = { province = 1117 data = UER } control = { province = 1117 data = REB } } type = secedeprovince which = UER value = 1117 when = 2 }
+		command = { trigger = { owned = { province = 1118 data = UER } control = { province = 1118 data = REB } } type = secedeprovince which = UER value = 1118 when = 2 }
+		command = { trigger = { owned = { province = 1135 data = UER } control = { province = 1135 data = REB } } type = secedeprovince which = UER value = 1135 when = 2 }
+		command = { trigger = { owned = { province = 1136 data = UER } control = { province = 1136 data = REB } } type = secedeprovince which = UER value = 1136 when = 2 }
+		command = { trigger = { owned = { province = 1137 data = UER } control = { province = 1137 data = REB } } type = secedeprovince which = UER value = 1137 when = 2 }
+		command = { trigger = { owned = { province = 1138 data = UER } control = { province = 1138 data = REB } } type = secedeprovince which = UER value = 1138 when = 2 }
+		command = { trigger = { owned = { province = 1139 data = UER } control = { province = 1139 data = REB } } type = secedeprovince which = UER value = 1139 when = 2 }
+		command = { trigger = { owned = { province = 1140 data = UER } control = { province = 1140 data = REB } } type = secedeprovince which = UER value = 1140 when = 2 }
+		command = { trigger = { owned = { province = 1141 data = UER } control = { province = 1141 data = REB } } type = secedeprovince which = UER value = 1141 when = 2 }
+		command = { trigger = { owned = { province = 1142 data = UER } control = { province = 1142 data = REB } } type = secedeprovince which = UER value = 1142 when = 2 }
+		command = { trigger = { owned = { province = 1143 data = UER } control = { province = 1143 data = REB } } type = secedeprovince which = UER value = 1143 when = 2 }
+		command = { trigger = { owned = { province = 1144 data = UER } control = { province = 1144 data = REB } } type = secedeprovince which = UER value = 1144 when = 2 }
+		command = { trigger = { owned = { province = 1145 data = UER } control = { province = 1145 data = REB } } type = secedeprovince which = UER value = 1145 when = 2 }
+		command = { trigger = { owned = { province = 1146 data = UER } control = { province = 1146 data = REB } } type = secedeprovince which = UER value = 1146 when = 2 }
+		command = { trigger = { owned = { province = 1147 data = UER } control = { province = 1147 data = REB } } type = secedeprovince which = UER value = 1147 when = 2 }
+		command = { trigger = { owned = { province = 660 data = UER } control = { province = 660 data = REB } } type = secedeprovince which = UER value = 660 when = 2 }
+		command = { trigger = { owned = { province = 664 data = UER } control = { province = 664 data = REB } } type = secedeprovince which = UER value = 664 when = 2 }
+		command = { trigger = { owned = { province = 666 data = UER } control = { province = 666 data = REB } } type = secedeprovince which = UER value = 666 when = 2 }
+		command = { trigger = { owned = { province = 667 data = UER } control = { province = 667 data = REB } } type = secedeprovince which = UER value = 667 when = 2 }
+		command = { trigger = { owned = { province = 690 data = UER } control = { province = 690 data = REB } } type = secedeprovince which = UER value = 690 when = 2 }
+		command = { trigger = { owned = { province = 1131 data = UER } control = { province = 1131 data = REB } } type = secedeprovince which = UER value = 1131 when = 2 }
+		command = { trigger = { owned = { province = 1132 data = UER } control = { province = 1132 data = REB } } type = secedeprovince which = UER value = 1132 when = 2 }
+		command = { trigger = { owned = { province = 1133 data = UER } control = { province = 1133 data = REB } } type = secedeprovince which = UER value = 1133 when = 2 }
+		command = { trigger = { owned = { province = 1134 data = UER } control = { province = 1134 data = REB } } type = secedeprovince which = UER value = 1134 when = 2 }
+		command = { trigger = { owned = { province = 1119 data = UER } control = { province = 1119 data = REB } } type = secedeprovince which = UER value = 1119 when = 2 }
+		command = { trigger = { owned = { province = 1156 data = UER } control = { province = 1156 data = REB } } type = secedeprovince which = UER value = 1156 when = 2 }
+		command = { trigger = { owned = { province = 1157 data = UER } control = { province = 1157 data = REB } } type = secedeprovince which = UER value = 1157 when = 2 }
+		command = { trigger = { owned = { province = 1158 data = UER } control = { province = 1158 data = REB } } type = secedeprovince which = UER value = 1158 when = 2 }
+		command = { trigger = { owned = { province = 1069 data = UER } control = { province = 1069 data = REB } } type = secedeprovince which = UER value = 1069 when = 2 }
+		command = { trigger = { owned = { province = 1070 data = UER } control = { province = 1070 data = REB } } type = secedeprovince which = UER value = 1070 when = 2 }
+		command = { trigger = { owned = { province = 1163 data = UER } control = { province = 1163 data = REB } } type = secedeprovince which = UER value = 1163 when = 2 }
+		command = { trigger = { owned = { province = 1164 data = UER } control = { province = 1164 data = REB } } type = secedeprovince which = UER value = 1164 when = 2 }
+		command = { trigger = { owned = { province = 1165 data = UER } control = { province = 1165 data = REB } } type = secedeprovince which = UER value = 1165 when = 2 }
+		command = { trigger = { owned = { province = 1166 data = UER } control = { province = 1166 data = REB } } type = secedeprovince which = UER value = 1166 when = 2 }
+		command = { trigger = { owned = { province = 1191 data = UER } control = { province = 1191 data = REB } } type = secedeprovince which = UER value = 1191 when = 2 }
+		command = { trigger = { owned = { province = 1192 data = UER } control = { province = 1192 data = REB } } type = secedeprovince which = UER value = 1192 when = 2 }
+		command = { trigger = { owned = { province = 1193 data = UER } control = { province = 1193 data = REB } } type = secedeprovince which = UER value = 1193 when = 2 }
+		command = { trigger = { owned = { province = 1194 data = UER } control = { province = 1194 data = REB } } type = secedeprovince which = UER value = 1194 when = 2 }
+		command = { trigger = { owned = { province = 1195 data = UER } control = { province = 1195 data = REB } } type = secedeprovince which = UER value = 1195 when = 2 }
+		command = { trigger = { owned = { province = 1196 data = UER } control = { province = 1196 data = REB } } type = secedeprovince which = UER value = 1196 when = 2 }
+		command = { type = add_corps which = "Siberian Cossack Corp" value = land when = 1360071 where = 1138 }
+		command = { type = add_division which = "1st Siberian Cossack Division" value = cavalry when = 3 }
+		command = { type = add_division which = "2nd Siberian Cossack Division" value = cavalry when = 3 }
+		command = { type = add_corps which = "Ataman Annenkov Corp" value = land when = 1360003 where = 1138 }
+		command = { type = add_division which = "Ataman Annenkov Partisan Division" value = infantry when = 3 where = -77 }
+		command = { type = add_corps which = "1st Rifle Corp" value = land when = 1360003 where = 667 }
+		command = { type = add_division which = "1st Rifle Division" value = infantry when = 3 where = -77 }
+		command = { type = add_corps which = "2nd Rifle Corp" value = land when = 1360003 where = 665 }
+		command = { type = add_division which = "2nd Rifle Partisan Division" value = infantry when = 3 where = -77 }
+		command = { type = add_corps which = "3rd Rifle Corp" value = land when = 1360003 where = 667 }
+		command = { type = add_division which = "3rd Rifle Division" value = infantry when = 3 where = -77 }
+		command = { type = add_corps which = "4th Rifle Corp" value = land when = 1360003 where = 1131 }
+		command = { type = add_division which = "4th Rifle Division" value = infantry when = 3 where = -77 }
+		command = { type = add_corps which = "6th Rifle Corp" value = land when = 1360003 where = 656 }
+		command = { type = add_division which = "6th Rifle Division" value = infantry when = 3 where = -77 }
+		command = { type = add_corps which = "Orenburg Cossack Corp" value = land when = 1360068 where = 1134 }
+		command = { type = add_division which = "1st Orenburg Cossack Division" value = cavalry when = 3 where = -66 }
+		command = { type = add_division which = "2nd Orenburg Cossack Division" value = cavalry when = 3 where = -66 }
+		command = { type = add_division which = "4th Orenburg Cossack Division" value = cavalry when = 3 where = -50 }
+		command = { type = add_division which = "2nd Rifle Division" value = infantry when = 3 where = -92 }
+		command = { type = add_division which = "5th Rifle Division" value = infantry when = 3 where = -98 }
+		command = { type = add_division which = "9th Bashkir Rifle Division" value = infantry when = 3 where = -77 }
+		command = { type = add_corps which = "Urals Cossack Corp" value = land when = 1360062 where = 1113 }
+		command = { type = add_division which = "1th Urals Cossack Division" value = cavalry when = 3 where = -66 }
+		command = { type = add_division which = "2th Urals Cossack Division" value = cavalry when = 3 where = -66 }
+		command = { type = add_division which = "3rd Urals Cossack Division" value = cavalry when = 3 where = -66 }
+		command = { type = add_division which = "4th Urals Cossack Division" value = cavalry when = 3 where = -50}
+		command = { type = set_domestic which = professional_army value = 7 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = local_clrflag which = MOB10 }
+		command = { trigger = { NOT = { local_flag = MOB9 } } type = local_clrflag which = MOB9 }
+		command = { trigger = { NOT = { local_flag = MOB8 } } type = local_clrflag which = MOB8 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = local_setflag which = MOB7 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = local_setflag which = MOB6 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = local_setflag which = MOB5 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = local_setflag which = MOB4 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = local_setflag which = MOB3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { trigger = { NOT = { local_flag = RES } } type = local_setflag which = RES }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [310001] UER | 1936 | The Omsk State Conference (La Conferencia de Estado en Omsk)
+# Triggered by event 310000 in events/Minors/UER.txt
+# Trigger event 310003 in events/Minors/UER.txt
+# Trigger event 310004 in events/Minors/UER.txt
+# Trigger event 317002 in events/Minors/UTC.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 310001
+	country = UER
+	name = "EVT_UER_310001_NAME"
+	desc = "EVT_UER_310001_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { type = relation which = FRA value = 20 }
+		command = { type = relation which = U08 value = -10 }
+		command = { type = relation which = U09 value = -20 }
+		command = { type = wakeleader which = 1360078 }
+		command = { type = sleepminister which = 1360011 }
+		command = { type = sleepminister which = 1360013 }
+		command = { type = wakeleader which = 1360079 }
+		command = { type = wakeleader which = 1360080 }
+		command = { type = wakeleader which = 1360081 }
+		command = { type = wakeleader which = 1360082 }
+		command = { type = sleepminister which = 1360049 }
+		command = { type = wakeleader which = 1360083 }
+		command = { type = wakeleader which = 1360084 }
+		command = { type = wakeleader which = 1360085 }
+		command = { type = wakeleader which = 1360086 }
+		command = { type = wakeleader which = 1360087 }
+		command = { type = add_corps which = "1. Czechoslovak Corp" value = land when = 1360078 where = 1131 }
+		command = { type = add_division which = "1. Czechoslovak Division" value = infantry when = 3 }
+		command = { type = add_corps which = "2. Czechoslovak Corp" value = land when = 1360013 where = 1132 }
+		command = { type = add_division which = "2. Czechoslovak Division" value = infantry when = 3 }
+		command = { type = add_corps which = "3. Czechoslovak Corp" value = land when = 1360082 where = 1156 }
+		command = { type = add_division which = "3. Czechoslovak Division" value = infantry when = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [310002] UER | 1936 | Kolchak's Coup in Omsk (El golpe de Estado de Kolchak en Omsk)
+# Triggered by event 310000 in events/Minors/UER.txt
+# Trigger event 310003 in events/Minors/UER.txt
+# Trigger event 310004 in events/Minors/UER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 310002
+	country = UER
+	name = "EVT_UER_310002_NAME"
+	desc = "EVT_UER_310002_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = flag_ext where = UER which = "_OMSK" }
+		command = { type = name where = UER which = UER_OMSK }
+		command = { type = capital which = 1138 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 1360006 }
+		command = { type = headofgovernment which = 1360013 }
+		command = { type = foreignminister which = 1360014 }
+		command = { type = armamentminister which = 1360032 }
+		command = { type = ministerofsecurity which = 1360021 }
+		command = { type = ministerofintelligence which = 1360052 }
+		command = { type = chiefofstaff which = 1360062 }
+		command = { type = chiefofarmy which = 1360066 }
+		command = { type = chiefofnavy which = 1360070 }
+		command = { type = sleepminister which = 1360055 }
+	}
+}

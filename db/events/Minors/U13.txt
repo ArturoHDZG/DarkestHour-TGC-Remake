@@ -1,0 +1,800 @@
+# ============================================================================
+# File: events/Minors/U13.txt (26 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [248033] U13 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 248034 in events/Minors/U13.txt
+# Trigger event 159064 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 248033
+   country = U13
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = HUN
+            NOT = { ai = HUN }
+            NOT = { ai = U13 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = HUN
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = HUN } }
+      command = { type = country which = HUN }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = HUN
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U13 }
+               control = { province = 284 data = -1 }
+            }
+         }
+         type = trigger which = 248034
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = HUN }
+               NOT = { control = { province = 284 data = -1 } }
+            }
+         }
+         type = trigger which = 159064
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = HUN
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [248034] U13 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 159063 in events/Minors/HUN_14-38.txt
+# Triggered by event 248033 in events/Minors/U13.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 248034
+   country = U13
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = HUN value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [248009] U13 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248009
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 880100 }
+		command = { type = headofgovernment which = 880101 }
+		command = { type = foreignminister which = 880011 }
+		command = { type = armamentminister which = 880015 }
+		command = { type = ministerofsecurity which = 880021 }
+		command = { type = ministerofintelligence which = 880025 }
+		command = { type = chiefofstaff which = 880026 }
+		command = { type = chiefofarmy which = 880027 }
+		command = { type = chiefofnavy which = 880030 }
+		command = { type = chiefofair which = 880032 }
+		command = { type = name where = U13 which = U1346 }
+		command = { type = flag_ext where = U13 which = _1946 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248010] U13 | 1946 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248010
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 880002 }
+		command = { type = headofgovernment which = 880102 }
+		command = { type = armamentminister which = 880016 }
+		command = { type = ministerofsecurity which = 880021 }
+		command = { type = ministerofintelligence which = 880025 }
+		command = { type = name where = U13 which = U1346 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248011] U13 | 1948 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248011
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 880005 }
+		command = { type = headofgovernment which = 880038 }
+		command = { type = foreignminister which = 880012 }
+		command = { type = armamentminister which = 880016 }
+		command = { type = ministerofsecurity which = 880043 }
+		command = { type = ministerofintelligence which = 880025 }
+		command = { type = name where = U13 which = U13 }
+		command = { type = flag_ext where = U13 which = "" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248025] U13 | 1948 | Formation of the MDP (Creación del Partido de los Trabajadores Húngaros)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248025
+	country = U13
+	name = EVT_U13_248025_NAME
+	desc = EVT_U13_248025_DESC
+	picture = "nwo/hungarian_communist_party"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = free_market value = -3 }
+		command = { type = domestic which = freedom value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248026] U13 | 1949 | The Rajk Show Trial (El juicio contra László Rajk)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248026
+	country = U13
+	name = EVT_U13_248026_NAME
+	desc = EVT_U13_248026_DESC
+	picture = "nwo/rajk_trial"
+	style = 1
+	trigger = {
+		OR = {
+			incabinet = 880004
+			incabinet = 880007
+			incabinet = 880012
+			incabinet = 880019
+			incabinet = 880025
+		}
+		flag = cold_war
+	}
+	date = { day = 1 month = may year = 1949 }
+	offset = 60
+	deathdate = { day = 29 month = october year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = sleepminister which = 880004 }
+		command = { type = sleepminister which = 880007 }
+		command = { type = sleepminister which = 880012 }
+		command = { type = sleepminister which = 880019 }
+		command = { type = sleepminister which = 880025 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248012] U13 | 1952 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248012
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 880005 }
+		command = { type = headofgovernment which = 880008 }
+		command = { type = foreignminister which = 880041 }
+		command = { type = armamentminister which = 880042 }
+		command = { type = ministerofsecurity which = 880043 }
+		command = { type = ministerofintelligence which = 880023 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248013] U13 | 1953 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248013
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = april year = 1953 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 880103 }
+		command = { type = headofgovernment which = 880039 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248014] U13 | 1955 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248014
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 880103 }
+		command = { type = headofgovernment which = 880104 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248015] U13 | 1956 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248015
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 90
+	deathdate = { day = 29 month = march year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 880105 }
+		command = { type = headofgovernment which = 880039 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248016] U13 | 1956 | Triumph of the Hungarian Revolution (Triunfo de la Revolución Húngara)
+# Triggered by event 207034 in events/Minors/REB.txt
+# Triggered by event 223270 in events/SOV/SOV_47-56.txt
+# Triggered by event 329871 in events/SOV/SOV_56-81.txt
+# Trigger event 207034 in events/Minors/REB.txt
+# Trigger event 223240 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 248016
+	country = U13
+	name = EVT_U13_248016_NAME
+	desc = EVT_U13_248016_DESC
+	picture = "nwo/hungarian_revolution_1956_victory"
+	style = 1
+	action = {
+		name = EVT_U13_248016_A
+		ai_chance = 98
+		command = { type = headofstate which = 880106 }
+		command = { type = headofgovernment which = 880101 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+		command = { type = event which = 223240 where = SOV when = 2 }
+		command = { type = event which = 223240 where = SOV when = 3 }
+	}
+	action = {
+		name = EVT_U13_248016_B
+		ai_chance = 2
+		command = { type = headofstate which = 880106 }
+		command = { type = headofgovernment which = 880101 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+		command = { type = event which = 223240 where = SOV when = 2 }
+		command = { type = event which = 223240 where = SOV when = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248017] U13 | 1956 | Crushing of the Hungarian Uprising (Aplastamiento de la Revolución Húngara)
+# Triggered by event 248032 in events/Minors/U13.txt
+# Trigger event 223239 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 248017
+	country = U13
+	name = EVT_U13_248017_NAME
+	desc = EVT_U13_248017_DESC
+	picture = "nwo/hungarian_revolution_1956_aftermath"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 880107 }
+		command = { type = headofgovernment which = 880108 }
+		command = { type = setflag which = raise_soviet_bloc_coherence }
+		command = { type = event which = 223239 where = SOV when = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248032] U13 | 1956 | Failure of Hungarian Revolution (Fracaso de la Revolución Húngara)
+# Triggered by event 207034 in events/Minors/REB.txt
+# Trigger event 207034 in events/Minors/REB.txt
+# Trigger event 248017 in events/Minors/U13.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 248032
+	country = U13
+	name = EVT_U13_248032_NAME
+	desc = EVT_U13_248032_DESC
+	picture = "nwo/hungarian_revolution_1956_defeat"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = set_relation which = SOV value = 50 }
+		command = { type = trigger which = 248017 }
+		command = { type = local_clrflag which = block_ideology_switch }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248035] U13 | 1956 | United Nations Extends Aid to Hungary (La ONU aprueba asistencia para Hungría)
+# Triggered by event 316292 in events/USA/USA_48-61.txt
+# Triggered by event 143373 in events/ENG/ENG_55-82.txt
+# Triggered by event 147222 in events/FRA/FRA_48-59.txt
+# Triggered by event 124235 in events/CHI/CHI_45-75.txt
+# Triggered by event 123109 in events/Minors/CHC_45-62.txt
+# Triggered by event 223378 in events/SOV/SOV_56-81.txt
+# Trigger event 207034 in events/Minors/REB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 248035
+	country = U13
+	name = EVT_U13_248035_NAME
+	desc = EVT_U13_248035_DESC
+	picture = "nwo/united_nations"
+	style = 1
+	trigger = {
+		OR = {
+			NOT = { exists = USA }
+			event = 316292
+		}
+		OR = {
+			NOT = { exists = ENG }
+			event = 143373
+		}
+		OR = {
+			NOT = { exists = FRA }
+			event = 147222
+		}
+		OR = {
+			NOT = { exists = CHI }
+			flag = CHC_in_UNSC
+			event = 124235
+		}
+		OR = {
+			NOT = { exists = CHC }
+			NOT = { flag = CHC_in_UNSC }
+			event = 123109
+		}
+		OR = {
+			NOT = { exists = SOV }
+			event = 223378
+			flag = un_soviet_boycott
+		}
+		NOT = { flag = un_hungary_totalveto }
+		flag = un_hungary_interventionveto
+	}
+	date = { day = 1 month = june year = 1956 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = 2500 }
+		command = { type = supplies value = 10000 }
+		command = { type = manpowerpool value = 50 when = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248029] U13 | 1956 | The Hungarian Revolution (La Revolución Húngara)
+# Trigger event 248030 in events/Minors/U13.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 248029
+	country = U13
+	name = EVT_U13_248029_NAME
+	desc = EVT_U13_248029_DESC
+	picture = "nwo/hungarian_revolution_1956"
+	style = 1
+	trigger = {
+		flag = cold_war
+		atwar = no
+	}
+	date = { day = 23 month = october year = 1956 }
+	offset = 1
+	deathdate = { day = 25 month = october year = 1956 }
+	action = {
+		name = EVT_U13_248029_A
+		ai_chance = 95
+		command = { type = dissent value = 5 }
+		command = { type = set_relation which = SOV value = -200 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = headofstate which = 880105 }
+		command = { type = headofgovernment which = 880039 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_TROOPS
+		ai_chance = 5
+		command = { type = dissent value = 30 }
+		command = { type = sleepevent which = 248030 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248030] U13 | 1956 | Proclamation of Hungarian Neutrality (Proclamación de la neutralidad húngara)
+# Triggered by event 248029 in events/Minors/U13.txt
+# Trigger event 223267 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 248030
+	country = U13
+	name = EVT_U13_248030_NAME
+	desc = EVT_U13_248030_DESC
+	style = 1
+	trigger = {
+		event = 248029
+		flag = cold_war
+		atwar = no
+	}
+	date = { day = 29 month = october year = 1956 }
+	offset = 1
+	deathdate = { day = 2 month = november year = 1956 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		command = { type = leave_alliance }
+		command = { type = end_puppet }
+		command = { type = end_access which = SOV }
+		command = { type = end_guarantee which = SOV where = U13 }
+		command = { type = end_non_aggression which = SOV where = U13 }
+	}
+	action = {
+		name = EVT_U13_248030_A
+		ai_chance = 5
+		command = { type = dissent value = 20 }
+		command = { type = sleepevent which = 223267 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248018] U13 | 1958 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248018
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 880107 }
+		command = { type = headofgovernment which = 880109 }
+		command = { type = flag_ext where = U13 which = _1957 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248019] U13 | 1961 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248019
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 880107 }
+		command = { type = headofgovernment which = 880108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248020] U13 | 1965 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248020
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1966 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 880110 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248021] U13 | 1967 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248021
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1967 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1974 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 880111 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248022] U13 | 1975 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248022
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1975 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 880112 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248023] U13 | 1987 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248023
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1987 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 880113 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248024] U13 | 1988 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 248024
+	country = U13
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 880114 }
+		command = { type = headofgovernment which = 880115 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248027] U13 | 1989 | Hungarian Round Table Talks (Mesa Redonda de Hungría)
+# Trigger event 248028 in events/Minors/U13.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 248027
+	country = U13
+	name = EVT_U13_248027_NAME
+	desc = EVT_U13_248027_DESC
+	picture = "nwo/hungarian_round_table"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+	}
+	date = { day = 1 month = june year = 1989 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 99
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = freedom value = 5 }
+	}
+	action = {
+		name = EVT_U13_248027_A
+		ai_chance = 1
+		command = { type = dissent value = 25 }
+		command = { type = sleepevent which = 248028 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [248028] U13 | 1989 | Proclamation of the Republic of Hungary (Proclamación de la República de Hungría)
+# Triggered by event 248027 in events/Minors/U13.txt
+# Trigger event 159061 in events/Minors/HUN_38-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 248028
+	country = U13
+	name = EVT_U13_248028_NAME
+	desc = EVT_U13_248028_DESC
+	picture = "nwo/hungary_1989"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+		event = 248027
+	}
+	date = { day = 1 month = october year = 1989 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 99
+		command = { type = country which = HUN }
+		command = { type = trigger which = 159061 }
+		command = { type = end_puppet }
+		command = { type = leave_alliance }
+		command = { type = flag_ext where = HUN which = _1989 }
+	}
+	action = {
+		name = EVT_U13_248028_A
+		ai_chance = 1
+		command = { type = dissent value = 25 }
+		command = { type = end_puppet }
+	}
+}

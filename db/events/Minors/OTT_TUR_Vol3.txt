@@ -1,0 +1,2582 @@
+# ============================================================================
+# THE GRAND CAMPAIGN REMAKE: OTTOMAN EMPIRE & TURKEY VOL. 3
+# 110 CASCADING DILEMMA EVENTS, CLIMAXES & CONTROLLED REGIONAL PEACES (1900-1999)
+# Covers Italo-Turkish War, Balkan Wars, Independence, Pax Germanica Civil War,
+# Cyprus Operation, and Aegean Escalation Chains.
+# ============================================================================
+
+# ============================================================================
+# CADENA 1: LA GUERRA ÍTALO-TURCA Y LA PAZ DE OUCHY (1911-1912)
+# ============================================================================
+
+# [232400] ITA | 1911 | Italian Ultimatum for Tripoli and Cyrenaica
+event = {
+	id = 232400
+	country = ITA
+	trigger = {
+		exists = ITA
+		exists = OTT
+		NOT = { war = { country = ITA country = OTT } }
+	}
+	name = "EVT_232400_NAME"
+	desc = "EVT_232400_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 26 month = september year = 1911 }
+	offset = 1
+	deathdate = { day = 30 month = september year = 1911 }
+
+	action = {
+		name = "EVT_232400_A"
+		ai_chance = 85
+		command = { trigger = { exists = OTT } type = trigger which = 232401 }
+		command = { type = set_domestic which = defense_lobby value = 8 }
+	}
+	action = {
+		name = "EVT_232400_B"
+		ai_chance = 15
+		command = { type = dissent value = 5 }
+		command = { trigger = { exists = OTT } type = relation which = OTT value = 20 }
+	}
+}
+
+# [232401] OTT | 1911 | The Sublime Porte's Reply to Italy
+event = {
+	id = 232401
+	country = OTT
+	name = "EVT_232401_NAME"
+	desc = "EVT_232401_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232401_A"
+		ai_chance = 90
+		command = { type = war which = ITA }
+		command = { type = dissent value = -5 }
+		command = { type = set_domestic which = defense_lobby value = 9 }
+		command = { trigger = { exists = ITA } type = trigger which = 232402 }
+	}
+	action = {
+		name = "EVT_232401_B"
+		ai_chance = 10
+		command = { type = dissent value = 15 }
+		command = { type = money value = 500 }
+	}
+}
+
+# [232402] ITA | 1911 | Italian Landing in Tripoli
+event = {
+	id = 232402
+	country = ITA
+	name = "EVT_232402_NAME"
+	desc = "EVT_232402_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232402_A"
+		ai_chance = 85
+		command = { type = supplies value = -1000 }
+		command = { trigger = { exists = OTT } type = trigger which = 232403 }
+	}
+	action = {
+		name = "EVT_232402_B"
+		ai_chance = 15
+		command = { type = dissent value = 3 }
+	}
+}
+
+# [232403] OTT | 1911 | Kemal and Enver Mobilize Libyan Tribal Guerillas
+event = {
+	id = 232403
+	country = OTT
+	name = "EVT_232403_NAME"
+	desc = "EVT_232403_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232403_A"
+		ai_chance = 85
+		command = { type = supplies value = -500 }
+		command = { type = manpowerpool value = -5 }
+		command = { trigger = { exists = ITA } type = trigger which = 232404 }
+	}
+	action = {
+		name = "EVT_232403_B"
+		ai_chance = 15
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232404] ITA | 1912 | Italian Escalation: Occupation of the Dodecanese
+event = {
+	id = 232404
+	country = ITA
+	name = "EVT_232404_NAME"
+	desc = "EVT_232404_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232404_A"
+		ai_chance = 85
+		command = { type = supplies value = -800 }
+		command = { trigger = { exists = OTT } type = trigger which = 232405 }
+	}
+	action = {
+		name = "EVT_232404_B"
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}
+
+# [232405] OTT | 1912 | The Straits Crisis: Closing the Dardanelles
+event = {
+	id = 232405
+	country = OTT
+	name = "EVT_232405_NAME"
+	desc = "EVT_232405_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232405_A"
+		ai_chance = 80
+		command = { trigger = { exists = RUS } type = relation which = RUS value = -30 }
+		command = { type = dissent value = 3 }
+		command = { trigger = { exists = OTT } type = trigger which = 232406 }
+	}
+	action = {
+		name = "EVT_232405_B"
+		ai_chance = 20
+		command = { type = dissent value = -3 }
+		command = { trigger = { exists = OTT } type = trigger which = 232406 }
+	}
+}
+
+# [232406] OTT | 1912 | Treaty of Ouchy: Controlled Peace with Italy
+event = {
+	id = 232406
+	country = OTT
+	name = "EVT_232406_NAME"
+	desc = "EVT_232406_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232406_A"
+		ai_chance = 90
+		command = { type = peace which = ITA value = 0 }
+		command = { type = dissent value = -5 }
+		command = { trigger = { exists = ITA } type = trigger which = 232407 }
+	}
+	action = {
+		name = "EVT_232406_B"
+		ai_chance = 10
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232407] ITA | 1912 | Ratification of the Treaty of Ouchy
+event = {
+	id = 232407
+	country = ITA
+	name = "EVT_232407_NAME"
+	desc = "EVT_232407_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232407_A"
+		ai_chance = 95
+		command = { type = peace which = OTT value = 0 }
+		command = { type = dissent value = -10 }
+	}
+	action = {
+		name = "EVT_232407_B"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ============================================================================
+# CADENA 2: LA PRIMERA GUERRA BALCÁNICA Y EL MURO DE ÇATALCA (1912-1913)
+# ============================================================================
+
+# [232408] BUL | 1912 | The Balkan League Joint Ultimatum
+event = {
+	id = 232408
+	country = BUL
+	trigger = {
+		exists = BUL
+		exists = OTT
+		NOT = { war = { country = BUL country = OTT } }
+	}
+	name = "EVT_232408_NAME"
+	desc = "EVT_232408_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 8 month = october year = 1912 }
+	offset = 1
+	deathdate = { day = 15 month = october year = 1912 }
+
+	action = {
+		name = "EVT_232408_A"
+		ai_chance = 90
+		command = { trigger = { exists = OTT } type = trigger which = 232409 }
+	}
+	action = {
+		name = "EVT_232408_B"
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232409] OTT | 1912 | Sublime Porte Rejects Balkan Meddling
+event = {
+	id = 232409
+	country = OTT
+	name = "EVT_232409_NAME"
+	desc = "EVT_232409_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232409_A"
+		ai_chance = 90
+		command = { type = war which = BUL }
+		command = { trigger = { exists = SER } type = war which = SER }
+		command = { trigger = { exists = GRE } type = war which = GRE }
+		command = { trigger = { exists = OTT } type = trigger which = 232410 }
+	}
+	action = {
+		name = "EVT_232409_B"
+		ai_chance = 10
+		command = { type = dissent value = 20 }
+	}
+}
+
+# [232410] OTT | 1912 | Imperial Emergency Mobilization
+event = {
+	id = 232410
+	country = OTT
+	name = "EVT_232410_NAME"
+	desc = "EVT_232410_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232410_A"
+		ai_chance = 85
+		command = { type = manpowerpool value = 30 }
+		command = { type = supplies value = -1500 }
+		command = { trigger = { exists = BUL } type = trigger which = 232411 }
+	}
+	action = {
+		name = "EVT_232410_B"
+		ai_chance = 15
+		command = { type = supplies value = 500 }
+	}
+}
+
+# [232411] BUL | 1912 | Siege of Adrianople (Edirne)
+event = {
+	id = 232411
+	country = BUL
+	name = "EVT_232411_NAME"
+	desc = "EVT_232411_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232411_A"
+		ai_chance = 85
+		command = { type = supplies value = -1200 }
+		command = { trigger = { exists = GRE } type = trigger which = 232412 }
+	}
+	action = {
+		name = "EVT_232411_B"
+		ai_chance = 15
+		command = { type = supplies value = 400 }
+	}
+}
+
+# [232412] GRE | 1912 | Fall of Salonica to the Greek Crown Prince
+event = {
+	id = 232412
+	country = GRE
+	name = "EVT_232412_NAME"
+	desc = "EVT_232412_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232412_A"
+		ai_chance = 90
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = OTT } type = trigger which = 232413 }
+	}
+	action = {
+		name = "EVT_232412_B"
+		ai_chance = 10
+		command = { type = supplies value = 300 }
+	}
+}
+
+# [232413] OTT | 1912 | Battle of Luleburgaz: Retreat to the Fortress
+event = {
+	id = 232413
+	country = OTT
+	name = "EVT_232413_NAME"
+	desc = "EVT_232413_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232413_A"
+		ai_chance = 85
+		command = { type = supplies value = -1000 }
+		command = { type = dissent value = 5 }
+		command = { trigger = { exists = OTT } type = trigger which = 232414 }
+	}
+	action = {
+		name = "EVT_232413_B"
+		ai_chance = 15
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232414] OTT | 1912 | The Stand at the Catalca Fortified Line
+event = {
+	id = 232414
+	country = OTT
+	name = "EVT_232414_NAME"
+	desc = "EVT_232414_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232414_A"
+		ai_chance = 85
+		command = { type = supplies value = -1500 }
+		command = { type = dissent value = -8 }
+		command = { trigger = { exists = BUL } type = trigger which = 232415 }
+	}
+	action = {
+		name = "EVT_232414_B"
+		ai_chance = 15
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232415] BUL | 1912 | Armistice at Catalca: Bulgarian Halt
+event = {
+	id = 232415
+	country = BUL
+	name = "EVT_232415_NAME"
+	desc = "EVT_232415_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232415_A"
+		ai_chance = 85
+		command = { type = dissent value = -5 }
+		command = { trigger = { exists = OTT } type = trigger which = 232416 }
+	}
+	action = {
+		name = "EVT_232415_B"
+		ai_chance = 15
+		command = { type = supplies value = -1000 }
+	}
+}
+
+# [232416] OTT | 1913 | Treaty of London: The Enos-Midia Line (Controlled Peace)
+event = {
+	id = 232416
+	country = OTT
+	name = "EVT_232416_NAME"
+	desc = "EVT_232416_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232416_A"
+		ai_chance = 90
+		command = { type = peace which = BUL value = 0 }
+		command = { trigger = { exists = SER } type = peace which = SER value = 0 }
+		command = { trigger = { exists = GRE } type = peace which = GRE value = 0 }
+		command = { type = dissent value = 10 }
+		command = { trigger = { exists = BUL } type = trigger which = 232417 }
+	}
+	action = {
+		name = "EVT_232416_B"
+		ai_chance = 10
+		command = { type = dissent value = 25 }
+	}
+}
+
+# [232417] BUL | 1913 | Ratification of the Treaty of London
+event = {
+	id = 232417
+	country = BUL
+	name = "EVT_232417_NAME"
+	desc = "EVT_232417_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232417_A"
+		ai_chance = 95
+		command = { type = peace which = OTT value = 0 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = "EVT_232417_B"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ============================================================================
+# CADENA 3: LA SEGUNDA GUERRA BALCÁNICA Y LA RECONQUISTA DE EDIRNE (1913)
+# ============================================================================
+
+# [232418] BUL | 1913 | Second Balkan War Erupts Among the Allies
+event = {
+	id = 232418
+	country = BUL
+	trigger = {
+		exists = BUL
+		exists = SER
+		NOT = { war = { country = BUL country = SER } }
+	}
+	name = "EVT_232418_NAME"
+	desc = "EVT_232418_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 29 month = june year = 1913 }
+	offset = 1
+	deathdate = { day = 5 month = july year = 1913 }
+
+	action = {
+		name = "EVT_232418_A"
+		ai_chance = 90
+		command = { type = war which = SER }
+		command = { trigger = { exists = GRE } type = war which = GRE }
+		command = { trigger = { exists = OTT } type = trigger which = 232419 }
+	}
+	action = {
+		name = "EVT_232418_B"
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232419] OTT | 1913 | The Dilemma: Advance to Recapture Historic Edirne?
+event = {
+	id = 232419
+	country = OTT
+	name = "EVT_232419_NAME"
+	desc = "EVT_232419_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232419_A"
+		ai_chance = 90
+		command = { type = war which = BUL }
+		command = { type = supplies value = -1000 }
+		command = { trigger = { exists = OTT } type = trigger which = 232420 }
+	}
+	action = {
+		name = "EVT_232419_B"
+		ai_chance = 10
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232420] OTT | 1913 | Enver Bey Leads the Advance into Eastern Thrace
+event = {
+	id = 232420
+	country = OTT
+	name = "EVT_232420_NAME"
+	desc = "EVT_232420_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232420_A"
+		ai_chance = 85
+		command = { type = supplies value = -800 }
+		command = { trigger = { exists = OTT } type = trigger which = 232421 }
+	}
+	action = {
+		name = "EVT_232420_B"
+		ai_chance = 15
+		command = { type = dissent value = 3 }
+	}
+}
+
+# [232421] OTT | 1913 | Triumphant Re-entry into Edirne
+event = {
+	id = 232421
+	country = OTT
+	name = "EVT_232421_NAME"
+	desc = "EVT_232421_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232421_A"
+		ai_chance = 90
+		command = { type = dissent value = -15 }
+		command = { type = addcore which = 437 }
+		command = { trigger = { exists = BUL } type = trigger which = 232422 }
+	}
+	action = {
+		name = "EVT_232421_B"
+		ai_chance = 10
+		command = { type = supplies value = 500 }
+	}
+}
+
+# [232422] BUL | 1913 | Bulgaria Sues for Armistice
+event = {
+	id = 232422
+	country = BUL
+	name = "EVT_232422_NAME"
+	desc = "EVT_232422_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232422_A"
+		ai_chance = 90
+		command = { type = dissent value = -5 }
+		command = { trigger = { exists = OTT } type = trigger which = 232423 }
+	}
+	action = {
+		name = "EVT_232422_B"
+		ai_chance = 10
+		command = { type = supplies value = -800 }
+	}
+}
+
+# [232423] OTT | 1913 | Treaty of Constantinople: Controlled Peace
+event = {
+	id = 232423
+	country = OTT
+	name = "EVT_232423_NAME"
+	desc = "EVT_232423_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232423_A"
+		ai_chance = 95
+		command = { type = peace which = BUL value = 0 }
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = BUL } type = trigger which = 232424 }
+	}
+	action = {
+		name = "EVT_232423_B"
+		ai_chance = 5
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232424] BUL | 1913 | Bulgaria Cedes Edirne and Accepts Peace
+event = {
+	id = 232424
+	country = BUL
+	name = "EVT_232424_NAME"
+	desc = "EVT_232424_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232424_A"
+		ai_chance = 95
+		command = { type = peace which = OTT value = 0 }
+		command = { type = dissent value = -5 }
+		command = { trigger = { exists = OTT } type = trigger which = 232425 }
+	}
+	action = {
+		name = "EVT_232424_B"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232425] OTT | 1913 | Army Reorganization Under Liman von Sanders
+event = {
+	id = 232425
+	country = OTT
+	name = "EVT_232425_NAME"
+	desc = "EVT_232425_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232425_A"
+		ai_chance = 85
+		command = { type = industrial_modifier which = total value = 4 }
+		command = { type = set_domestic which = defense_lobby value = 9 }
+		command = { trigger = { exists = GER } type = relation which = GER value = 30 }
+	}
+	action = {
+		name = "EVT_232425_B"
+		ai_chance = 15
+		command = { type = money value = 300 }
+	}
+}
+
+# ============================================================================
+# CADENA 4: LA CRISIS DE LOS DARDANELOS Y ENTRADA EN WWI (1914)
+# ============================================================================
+
+# [232426] OTT | 1914 | Flight of the Goeben and Breslau to the Straits
+event = {
+	id = 232426
+	country = OTT
+	trigger = {
+		exists = OTT
+		exists = GER
+	}
+	name = "EVT_232426_NAME"
+	desc = "EVT_232426_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+	date = { day = 10 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 15 month = august year = 1914 }
+
+	action = {
+		name = "EVT_232426_A"
+		ai_chance = 85
+		command = { trigger = { exists = OTT } type = trigger which = 232427 }
+	}
+	action = {
+		name = "EVT_232426_B"
+		ai_chance = 15
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232427] OTT | 1914 | British Ultimatum Regarding the German Warships
+event = {
+	id = 232427
+	country = OTT
+	name = "EVT_232427_NAME"
+	desc = "EVT_232427_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232427_A"
+		ai_chance = 85
+		command = { trigger = { exists = OTT } type = trigger which = 232428 }
+	}
+	action = {
+		name = "EVT_232427_B"
+		ai_chance = 15
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232428] OTT | 1914 | The Fictitious Purchase: Yavuz and Midilli
+event = {
+	id = 232428
+	country = OTT
+	name = "EVT_232428_NAME"
+	desc = "EVT_232428_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232428_A"
+		ai_chance = 85
+		command = { type = dissent value = -5 }
+		command = { trigger = { exists = GER } type = trigger which = 232429 }
+	}
+	action = {
+		name = "EVT_232428_B"
+		ai_chance = 15
+		command = { type = money value = 500 }
+	}
+}
+
+# [232429] GER | 1914 | Souchon's Secret Black Sea Instructions
+event = {
+	id = 232429
+	country = GER
+	name = "EVT_232429_NAME"
+	desc = "EVT_232429_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232429_A"
+		ai_chance = 85
+		command = { trigger = { exists = OTT } type = trigger which = 232430 }
+	}
+	action = {
+		name = "EVT_232429_B"
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}
+
+# [232430] OTT | 1914 | The Black Sea Raid on Odessa and Sevastopol
+event = {
+	id = 232430
+	country = OTT
+	name = "EVT_232430_NAME"
+	desc = "EVT_232430_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232430_A"
+		ai_chance = 85
+		command = { trigger = { exists = RUS } type = trigger which = 232431 }
+	}
+	action = {
+		name = "EVT_232430_B"
+		ai_chance = 15
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232431] RUS | 1914 | Russian Declaration of War on the Ottoman Empire
+event = {
+	id = 232431
+	country = RUS
+	name = "EVT_232431_NAME"
+	desc = "EVT_232431_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232431_A"
+		ai_chance = 90
+		command = { type = war which = OTT }
+		command = { trigger = { exists = ENG } type = trigger which = 232432 }
+	}
+	action = {
+		name = "EVT_232431_B"
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232432] ENG | 1914 | Allied Ultimatum to the Sublime Porte
+event = {
+	id = 232432
+	country = ENG
+	name = "EVT_232432_NAME"
+	desc = "EVT_232432_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232432_A"
+		ai_chance = 90
+		command = { trigger = { exists = OTT } type = trigger which = 232433 }
+	}
+	action = {
+		name = "EVT_232432_B"
+		ai_chance = 10
+		command = { type = dissent value = 2 }
+	}
+}
+
+# [232433] OTT | 1914 | Formal Ottoman Entry into the Great War
+event = {
+	id = 232433
+	country = OTT
+	name = "EVT_232433_NAME"
+	desc = "EVT_232433_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232433_A"
+		ai_chance = 90
+		command = { type = war which = ENG }
+		command = { trigger = { exists = FRA } type = war which = FRA }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = "EVT_232433_B"
+		ai_chance = 10
+		command = { type = dissent value = 20 }
+	}
+}
+
+# ============================================================================
+# CADENA 5: GUERRA DE INDEPENDENCIA Y TRATADO DE LAUSANA (1919-1923)
+# ============================================================================
+
+# [232434] OTT | 1918 | Armistice of Mudros & Allied Occupation
+event = {
+	id = 232434
+	country = OTT
+	trigger = {
+		exists = OTT
+		NOT = { flag = cpvictory }
+	}
+	name = "EVT_232434_NAME"
+	desc = "EVT_232434_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 30 month = october year = 1918 }
+	offset = 1
+	deathdate = { day = 15 month = november year = 1918 }
+
+	action = {
+		name = "EVT_232434_A"
+		ai_chance = 85
+		command = { type = dissent value = 20 }
+		command = { trigger = { exists = GRE } type = trigger which = 232435 }
+	}
+	action = {
+		name = "EVT_232434_B"
+		ai_chance = 15
+		command = { type = dissent value = 30 }
+	}
+}
+
+# [232435] GRE | 1919 | Greek Landing at Smyrna (Izmir)
+event = {
+	id = 232435
+	country = GRE
+	name = "EVT_232435_NAME"
+	desc = "EVT_232435_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232435_A"
+		ai_chance = 90
+		command = { type = supplies value = -500 }
+		command = { trigger = { exists = TUR } type = trigger which = 232436 }
+	}
+	action = {
+		name = "EVT_232435_B"
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232436] TUR | 1919 | Atatürk Lands at Samsun: Spark of Independence
+event = {
+	id = 232436
+	country = TUR
+	name = "EVT_232436_NAME"
+	desc = "EVT_232436_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232436_A"
+		ai_chance = 90
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = TUR } type = trigger which = 232437 }
+	}
+	action = {
+		name = "EVT_232436_B"
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232437] TUR | 1919 | The Amasya Circular: Sovereign Resistance
+event = {
+	id = 232437
+	country = TUR
+	name = "EVT_232437_NAME"
+	desc = "EVT_232437_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232437_A"
+		ai_chance = 90
+		command = { type = dissent value = -5 }
+		command = { trigger = { exists = TUR } type = trigger which = 232438 }
+	}
+	action = {
+		name = "EVT_232437_B"
+		ai_chance = 10
+		command = { type = money value = -200 }
+	}
+}
+
+# [232438] TUR | 1919 | Erzurum and Sivas Congresses: The National Pact
+event = {
+	id = 232438
+	country = TUR
+	name = "EVT_232438_NAME"
+	desc = "EVT_232438_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232438_A"
+		ai_chance = 90
+		command = { type = manpowerpool value = 25 }
+		command = { trigger = { exists = OTT } type = trigger which = 232439 }
+	}
+	action = {
+		name = "EVT_232438_B"
+		ai_chance = 10
+		command = { type = supplies value = 300 }
+	}
+}
+
+# [232439] OTT | 1920 | The Sultan Signs the Treaty of Sevres
+event = {
+	id = 232439
+	country = OTT
+	name = "EVT_232439_NAME"
+	desc = "EVT_232439_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232439_A"
+		ai_chance = 85
+		command = { type = dissent value = 30 }
+		command = { trigger = { exists = TUR } type = trigger which = 232440 }
+	}
+	action = {
+		name = "EVT_232439_B"
+		ai_chance = 15
+		command = { type = dissent value = 40 }
+	}
+}
+
+# [232440] TUR | 1920 | Grand National Assembly Rejects Sevres as Treason
+event = {
+	id = 232440
+	country = TUR
+	name = "EVT_232440_NAME"
+	desc = "EVT_232440_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232440_A"
+		ai_chance = 95
+		command = { type = dissent value = -15 }
+		command = { type = war which = GRE }
+		command = { trigger = { exists = TUR } type = trigger which = 232441 }
+	}
+	action = {
+		name = "EVT_232440_B"
+		ai_chance = 5
+		command = { type = dissent value = 20 }
+	}
+}
+
+# [232441] TUR | 1921 | Battles of Inonu: The Western Front Holds
+event = {
+	id = 232441
+	country = TUR
+	name = "EVT_232441_NAME"
+	desc = "EVT_232441_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232441_A"
+		ai_chance = 85
+		command = { type = supplies value = -1000 }
+		command = { type = dissent value = -5 }
+		command = { trigger = { exists = TUR } type = trigger which = 232442 }
+	}
+	action = {
+		name = "EVT_232441_B"
+		ai_chance = 15
+		command = { type = supplies value = 500 }
+	}
+}
+
+# [232442] TUR | 1921 | Battle of Sakarya: The Epic Turn of the Tide
+event = {
+	id = 232442
+	country = TUR
+	name = "EVT_232442_NAME"
+	desc = "EVT_232442_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232442_A"
+		ai_chance = 90
+		command = { type = supplies value = -2000 }
+		command = { type = dissent value = -15 }
+		command = { trigger = { exists = TUR } type = trigger which = 232443 }
+	}
+	action = {
+		name = "EVT_232442_B"
+		ai_chance = 10
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232443] TUR | 1922 | The Great Counter-Offensive (Buyuk Taarruz)
+event = {
+	id = 232443
+	country = TUR
+	name = "EVT_232443_NAME"
+	desc = "EVT_232443_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232443_A"
+		ai_chance = 90
+		command = { type = supplies value = -2500 }
+		command = { trigger = { exists = TUR } type = trigger which = 232444 }
+	}
+	action = {
+		name = "EVT_232443_B"
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232444] TUR | 1922 | Liberation of Izmir: Armies to the Mediterranean!
+event = {
+	id = 232444
+	country = TUR
+	name = "EVT_232444_NAME"
+	desc = "EVT_232444_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232444_A"
+		ai_chance = 95
+		command = { type = dissent value = -20 }
+		command = { trigger = { exists = ENG } type = trigger which = 232445 }
+	}
+	action = {
+		name = "EVT_232444_B"
+		ai_chance = 5
+		command = { type = supplies value = 500 }
+	}
+}
+
+# [232445] ENG | 1922 | The Chanak Crisis: Stand-Off at the Dardanelles
+event = {
+	id = 232445
+	country = ENG
+	name = "EVT_232445_NAME"
+	desc = "EVT_232445_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232445_A"
+		ai_chance = 85
+		command = { trigger = { exists = TUR } type = trigger which = 232446 }
+	}
+	action = {
+		name = "EVT_232445_B"
+		ai_chance = 15
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232446] TUR | 1922 | Armistice of Mudanya: Greek Evacuation of Thrace
+event = {
+	id = 232446
+	country = TUR
+	name = "EVT_232446_NAME"
+	desc = "EVT_232446_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232446_A"
+		ai_chance = 95
+		command = { type = peace which = GRE value = 0 }
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = TUR } type = trigger which = 232447 }
+	}
+	action = {
+		name = "EVT_232446_B"
+		ai_chance = 5
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232447] TUR | 1923 | Treaty of Lausanne: Controlled Peace
+event = {
+	id = 232447
+	country = TUR
+	name = "EVT_232447_NAME"
+	desc = "EVT_232447_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232447_A"
+		ai_chance = 95
+		command = { type = peace which = GRE value = 0 }
+		command = { trigger = { exists = ENG } type = peace which = ENG value = 0 }
+		command = { trigger = { exists = FRA } type = peace which = FRA value = 0 }
+		command = { type = dissent value = -20 }
+		command = { type = industrial_modifier which = total value = 10 }
+	}
+	action = {
+		name = "EVT_232447_B"
+		ai_chance = 5
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ============================================================================
+# CADENA 6: LA CRISIS DE MOSUL CON GRAN BRETAÑA (1924-1926)
+# ============================================================================
+
+# [232448] TUR | 1924 | Claiming the Mosul Vilayet Under the National Pact
+event = {
+	id = 232448
+	country = TUR
+	trigger = {
+		exists = TUR
+		exists = ENG
+	}
+	name = "EVT_232448_NAME"
+	desc = "EVT_232448_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 19 month = may year = 1924 }
+	offset = 1
+	deathdate = { day = 31 month = may year = 1924 }
+
+	action = {
+		name = "EVT_232448_A"
+		ai_chance = 85
+		command = { trigger = { exists = ENG } type = trigger which = 232449 }
+	}
+	action = {
+		name = "EVT_232448_B"
+		ai_chance = 15
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232449] ENG | 1924 | British Rejection to Defend Iraqi Oil Mandate
+event = {
+	id = 232449
+	country = ENG
+	name = "EVT_232449_NAME"
+	desc = "EVT_232449_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232449_A"
+		ai_chance = 85
+		command = { trigger = { exists = TUR } type = trigger which = 232450 }
+	}
+	action = {
+		name = "EVT_232449_B"
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}
+
+# [232450] TUR | 1924 | The Golden Horn Conference: Diplomatic Deadlock
+event = {
+	id = 232450
+	country = TUR
+	name = "EVT_232450_NAME"
+	desc = "EVT_232450_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232450_A"
+		ai_chance = 85
+		command = { trigger = { exists = ENG } type = trigger which = 232451 }
+	}
+	action = {
+		name = "EVT_232450_B"
+		ai_chance = 15
+		command = { type = money value = 200 }
+	}
+}
+
+# [232451] ENG | 1924 | British Naval Demonstration in the Gulf
+event = {
+	id = 232451
+	country = ENG
+	name = "EVT_232451_NAME"
+	desc = "EVT_232451_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232451_A"
+		ai_chance = 85
+		command = { trigger = { exists = TUR } type = trigger which = 232452 }
+	}
+	action = {
+		name = "EVT_232451_B"
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}
+
+# [232452] TUR | 1924 | Turkish Border Mobilization: War or Arbitration?
+event = {
+	id = 232452
+	country = TUR
+	name = "EVT_232452_NAME"
+	desc = "EVT_232452_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232452_A"
+		ai_chance = 85
+		command = { trigger = { exists = TUR } type = trigger which = 232453 }
+	}
+	action = {
+		name = "EVT_232452_B"
+		ai_chance = 15
+		command = { type = war which = ENG }
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232453] TUR | 1925 | League of Nations Ruling: The Brussels Line
+event = {
+	id = 232453
+	country = TUR
+	name = "EVT_232453_NAME"
+	desc = "EVT_232453_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232453_A"
+		ai_chance = 85
+		command = { trigger = { exists = TUR } type = trigger which = 232454 }
+	}
+	action = {
+		name = "EVT_232453_B"
+		ai_chance = 15
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232454] TUR | 1926 | Treaty of Ankara: Peace for Petroleum Royalties
+event = {
+	id = 232454
+	country = TUR
+	name = "EVT_232454_NAME"
+	desc = "EVT_232454_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232454_A"
+		ai_chance = 90
+		command = { type = money value = 800 }
+		command = { type = industrial_modifier which = total value = 4 }
+		command = { type = dissent value = -5 }
+		command = { trigger = { exists = ENG } type = trigger which = 232455 }
+	}
+	action = {
+		name = "EVT_232454_B"
+		ai_chance = 10
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232455] ENG | 1926 | Ratification of the Treaty of Ankara
+event = {
+	id = 232455
+	country = ENG
+	name = "EVT_232455_NAME"
+	desc = "EVT_232455_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232455_A"
+		ai_chance = 95
+		command = { trigger = { exists = TUR } type = relation which = TUR value = 40 }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = "EVT_232455_B"
+		ai_chance = 5
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ============================================================================
+# CADENA 7: PAX GERMANICA: GUERRA CIVIL OTOMANA Y SURGIMIENTO DE TURQUÍA (1934-1936)
+# ============================================================================
+
+# [232456] OTT | 1934 | Pax Germanica: Levant Economic Depression in the Realm
+event = {
+	id = 232456
+	country = OTT
+	trigger = {
+		exists = OTT
+		flag = cpvictory
+	}
+	name = "EVT_232456_NAME"
+	desc = "EVT_232456_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 15 month = march year = 1934 }
+	offset = 1
+	deathdate = { day = 31 month = march year = 1934 }
+
+	action = {
+		name = "EVT_232456_A"
+		ai_chance = 80
+		command = { type = dissent value = 10 }
+		command = { trigger = { exists = OTT } type = trigger which = 232457 }
+	}
+	action = {
+		name = "EVT_232456_B"
+		ai_chance = 20
+		command = { type = money value = -400 }
+	}
+}
+
+# [232457] OTT | 1934 | Tax Strike in Anatolian Provinces
+event = {
+	id = 232457
+	country = OTT
+	name = "EVT_232457_NAME"
+	desc = "EVT_232457_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232457_A"
+		ai_chance = 80
+		command = { type = dissent value = 5 }
+		command = { trigger = { exists = OTT } type = trigger which = 232458 }
+	}
+	action = {
+		name = "EVT_232457_B"
+		ai_chance = 20
+		command = { type = supplies value = -500 }
+	}
+}
+
+# [232458] OTT | 1934 | The Ankara Officers' Manifesto
+event = {
+	id = 232458
+	country = OTT
+	name = "EVT_232458_NAME"
+	desc = "EVT_232458_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232458_A"
+		ai_chance = 85
+		command = { trigger = { exists = OTT } type = trigger which = 232459 }
+	}
+	action = {
+		name = "EVT_232458_B"
+		ai_chance = 15
+		command = { type = dissent value = -5 }
+	}
+}
+
+# [232459] OTT | 1934 | The Sultan Orders the Arrest of Rebel Generals
+event = {
+	id = 232459
+	country = OTT
+	name = "EVT_232459_NAME"
+	desc = "EVT_232459_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232459_A"
+		ai_chance = 85
+		command = { trigger = { exists = OTT } type = trigger which = 232460 }
+	}
+	action = {
+		name = "EVT_232459_B"
+		ai_chance = 15
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232460] TUR | 1934 | PROCLAMATION OF THE REPUBLIC OF TURKEY IN ANKARA!
+event = {
+	id = 232460
+	country = TUR
+	name = "EVT_232460_NAME"
+	desc = "EVT_232460_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232460_A"
+		ai_chance = 90
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = dissent value = -15 }
+		command = { trigger = { exists = OTT } type = trigger which = 232461 }
+	}
+	action = {
+		name = "EVT_232460_B"
+		ai_chance = 10
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232461] OTT | 1934 | Sublime Porte Declares Ankara in State of Rebellion
+event = {
+	id = 232461
+	country = OTT
+	name = "EVT_232461_NAME"
+	desc = "EVT_232461_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232461_A"
+		ai_chance = 90
+		command = { type = war which = TUR }
+		command = { trigger = { exists = TUR } type = trigger which = 232462 }
+	}
+	action = {
+		name = "EVT_232461_B"
+		ai_chance = 10
+		command = { type = dissent value = 25 }
+	}
+}
+
+# [232462] TUR | 1934 | Formation of the Republican National Army
+event = {
+	id = 232462
+	country = TUR
+	name = "EVT_232462_NAME"
+	desc = "EVT_232462_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232462_A"
+		ai_chance = 90
+		command = { type = manpowerpool value = 40 }
+		command = { type = supplies value = 1500 }
+		command = { trigger = { exists = OTT } type = trigger which = 232463 }
+	}
+	action = {
+		name = "EVT_232462_B"
+		ai_chance = 10
+		command = { type = supplies value = 500 }
+	}
+}
+
+# [232463] OTT | 1934 | Outbreak of the Ottoman Civil War: Battle of Eskisehir
+event = {
+	id = 232463
+	country = OTT
+	name = "EVT_232463_NAME"
+	desc = "EVT_232463_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232463_A"
+		ai_chance = 85
+		command = { type = supplies value = -2000 }
+		command = { trigger = { exists = TUR } type = trigger which = 232464 }
+	}
+	action = {
+		name = "EVT_232463_B"
+		ai_chance = 15
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232464] TUR | 1934 | Republican Victory on the Central Anatolian Line
+event = {
+	id = 232464
+	country = TUR
+	name = "EVT_232464_NAME"
+	desc = "EVT_232464_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232464_A"
+		ai_chance = 90
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = OTT } type = trigger which = 232465 }
+	}
+	action = {
+		name = "EVT_232464_B"
+		ai_chance = 10
+		command = { type = supplies value = 500 }
+	}
+}
+
+# [232465] OTT | 1935 | Panic in Istanbul: Republican Advance Toward Bursa
+event = {
+	id = 232465
+	country = OTT
+	name = "EVT_232465_NAME"
+	desc = "EVT_232465_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232465_A"
+		ai_chance = 85
+		command = { type = dissent value = 15 }
+		command = { trigger = { exists = U08 } type = trigger which = 232466 }
+	}
+	action = {
+		name = "EVT_232465_B"
+		ai_chance = 15
+		command = { type = supplies value = -1000 }
+	}
+}
+
+# [232466] U08 | 1935 | German Emperor Dispatches Peace Mediator to the Levant
+event = {
+	id = 232466
+	country = U08
+	name = "EVT_232466_NAME"
+	desc = "EVT_232466_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232466_A"
+		ai_chance = 90
+		command = { trigger = { exists = OTT } type = trigger which = 232467 }
+	}
+	action = {
+		name = "EVT_232466_B"
+		ai_chance = 10
+		command = { type = dissent value = 2 }
+	}
+}
+
+# [232467] OTT | 1935 | German Ultimatum to Both Factions: Cease Fire!
+event = {
+	id = 232467
+	country = OTT
+	name = "EVT_232467_NAME"
+	desc = "EVT_232467_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232467_A"
+		ai_chance = 90
+		command = { trigger = { exists = TUR } type = trigger which = 232468 }
+	}
+	action = {
+		name = "EVT_232467_B"
+		ai_chance = 10
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232468] TUR | 1935 | Ankara's Dilemma: Storm Istanbul or Accept Partition?
+event = {
+	id = 232468
+	country = TUR
+	name = "EVT_232468_NAME"
+	desc = "EVT_232468_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232468_A"
+		ai_chance = 85
+		command = { trigger = { exists = OTT } type = trigger which = 232469 }
+	}
+	action = {
+		name = "EVT_232468_B"
+		ai_chance = 15
+		command = { type = supplies value = -2000 }
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232469] OTT | 1935 | The Sultan's Compromise: Protect the Arab Realm
+event = {
+	id = 232469
+	country = OTT
+	name = "EVT_232469_NAME"
+	desc = "EVT_232469_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232469_A"
+		ai_chance = 90
+		command = { trigger = { exists = TUR } type = trigger which = 232470 }
+	}
+	action = {
+		name = "EVT_232469_B"
+		ai_chance = 10
+		command = { type = dissent value = 20 }
+	}
+}
+
+# [232470] TUR | 1935 | Peace Conference of Izmir Under German Aegis
+event = {
+	id = 232470
+	country = TUR
+	name = "EVT_232470_NAME"
+	desc = "EVT_232470_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232470_A"
+		ai_chance = 90
+		command = { trigger = { exists = TUR } type = trigger which = 232471 }
+	}
+	action = {
+		name = "EVT_232470_B"
+		ai_chance = 10
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232471] TUR | 1935 | The Treaty of Izmir: Birth of Sovereign Turkey!
+event = {
+	id = 232471
+	country = TUR
+	name = "EVT_232471_NAME"
+	desc = "EVT_232471_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232471_A"
+		ai_chance = 95
+		command = { type = peace which = OTT value = 0 }
+		command = { type = dissent value = -20 }
+		command = { trigger = { exists = OTT } type = trigger which = 232472 }
+	}
+	action = {
+		name = "EVT_232471_B"
+		ai_chance = 5
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232472] OTT | 1935 | Reorganization of the Arab-Levantine Sultanate
+event = {
+	id = 232472
+	country = OTT
+	name = "EVT_232472_NAME"
+	desc = "EVT_232472_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232472_A"
+		ai_chance = 95
+		command = { type = peace which = TUR value = 0 }
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = TUR } type = trigger which = 232473 }
+	}
+	action = {
+		name = "EVT_232472_B"
+		ai_chance = 5
+		command = { type = dissent value = 20 }
+	}
+}
+
+# [232473] TUR | 1935 | Promulgation of the Republican Constitution of Ankara
+event = {
+	id = 232473
+	country = TUR
+	name = "EVT_232473_NAME"
+	desc = "EVT_232473_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232473_A"
+		ai_chance = 95
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = industrial_modifier which = total value = 8 }
+		command = { trigger = { exists = OTT } type = trigger which = 232474 }
+	}
+	action = {
+		name = "EVT_232473_B"
+		ai_chance = 5
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232474] OTT | 1935 | Charter of the Mesopotamian-Arabian Realm
+event = {
+	id = 232474
+	country = OTT
+	name = "EVT_232474_NAME"
+	desc = "EVT_232474_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232474_A"
+		ai_chance = 90
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = TUR } type = trigger which = 232475 }
+	}
+	action = {
+		name = "EVT_232474_B"
+		ai_chance = 10
+		command = { type = money value = 500 }
+	}
+}
+
+# [232475] TUR | 1936 | Turkish-Ottoman Non-Aggression and Straits Transit Pact
+event = {
+	id = 232475
+	country = TUR
+	name = "EVT_232475_NAME"
+	desc = "EVT_232475_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232475_A"
+		ai_chance = 95
+		command = { trigger = { exists = OTT } type = relation which = OTT value = 50 }
+		command = { type = dissent value = -10 }
+	}
+	action = {
+		name = "EVT_232475_B"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ============================================================================
+# CADENA 8: PAX GERMANICA: CRISIS FRONTERIZA OTOMANO-PERSA DE ABADÁN (1941-1943)
+# ============================================================================
+
+# [232476] OTT | 1941 | Shatt al-Arab Petroleum Rights Dispute
+event = {
+	id = 232476
+	country = OTT
+	trigger = {
+		exists = OTT
+		exists = PER
+		flag = cpvictory
+	}
+	name = "EVT_232476_NAME"
+	desc = "EVT_232476_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 12 month = may year = 1941 }
+	offset = 1
+	deathdate = { day = 30 month = may year = 1941 }
+
+	action = {
+		name = "EVT_232476_A"
+		ai_chance = 85
+		command = { trigger = { exists = PER } type = trigger which = 232477 }
+	}
+	action = {
+		name = "EVT_232476_B"
+		ai_chance = 15
+		command = { type = money value = 300 }
+	}
+}
+
+# [232477] PER | 1941 | Persia Fortifies Abadan Refineries
+event = {
+	id = 232477
+	country = PER
+	name = "EVT_232477_NAME"
+	desc = "EVT_232477_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232477_A"
+		ai_chance = 85
+		command = { trigger = { exists = OTT } type = trigger which = 232478 }
+	}
+	action = {
+		name = "EVT_232477_B"
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}
+
+# [232478] OTT | 1941 | Cross-Border Skirmishes Along the Karun River
+event = {
+	id = 232478
+	country = OTT
+	name = "EVT_232478_NAME"
+	desc = "EVT_232478_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232478_A"
+		ai_chance = 85
+		command = { trigger = { exists = PER } type = trigger which = 232479 }
+	}
+	action = {
+		name = "EVT_232478_B"
+		ai_chance = 15
+		command = { type = dissent value = 3 }
+	}
+}
+
+# [232479] PER | 1941 | The Shah Issues Ultimatum to Basra Garrison
+event = {
+	id = 232479
+	country = PER
+	name = "EVT_232479_NAME"
+	desc = "EVT_232479_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232479_A"
+		ai_chance = 85
+		command = { trigger = { exists = OTT } type = trigger which = 232480 }
+	}
+	action = {
+		name = "EVT_232479_B"
+		ai_chance = 15
+		command = { type = dissent value = 4 }
+	}
+}
+
+# [232480] OTT | 1941 | Mobilization of the Basra Army Corps
+event = {
+	id = 232480
+	country = OTT
+	name = "EVT_232480_NAME"
+	desc = "EVT_232480_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232480_A"
+		ai_chance = 85
+		command = { type = war which = PER }
+		command = { trigger = { exists = OTT } type = trigger which = 232481 }
+	}
+	action = {
+		name = "EVT_232480_B"
+		ai_chance = 15
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232481] OTT | 1941 | The Basra Offensive: Seizing the Delta
+event = {
+	id = 232481
+	country = OTT
+	name = "EVT_232481_NAME"
+	desc = "EVT_232481_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232481_A"
+		ai_chance = 85
+		command = { type = supplies value = -1200 }
+		command = { trigger = { exists = PER } type = trigger which = 232482 }
+	}
+	action = {
+		name = "EVT_232481_B"
+		ai_chance = 15
+		command = { type = dissent value = 3 }
+	}
+}
+
+# [232482] PER | 1942 | Persian Court Requests Diplomatic Mediation
+event = {
+	id = 232482
+	country = PER
+	name = "EVT_232482_NAME"
+	desc = "EVT_232482_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232482_A"
+		ai_chance = 90
+		command = { trigger = { exists = OTT } type = trigger which = 232483 }
+	}
+	action = {
+		name = "EVT_232482_B"
+		ai_chance = 10
+		command = { type = dissent value = 8 }
+	}
+}
+
+# [232483] OTT | 1942 | Mediation to Prevent Broader Middle Eastern Conflict
+event = {
+	id = 232483
+	country = OTT
+	name = "EVT_232483_NAME"
+	desc = "EVT_232483_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232483_A"
+		ai_chance = 90
+		command = { trigger = { exists = OTT } type = trigger which = 232484 }
+	}
+	action = {
+		name = "EVT_232483_B"
+		ai_chance = 10
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232484] OTT | 1942 | Treaty of Tehran: Controlled Peace and Petroleum Sharing
+event = {
+	id = 232484
+	country = OTT
+	name = "EVT_232484_NAME"
+	desc = "EVT_232484_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232484_A"
+		ai_chance = 95
+		command = { type = peace which = PER value = 0 }
+		command = { type = money value = 800 }
+		command = { type = dissent value = -8 }
+		command = { trigger = { exists = PER } type = trigger which = 232485 }
+	}
+	action = {
+		name = "EVT_232484_B"
+		ai_chance = 5
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232485] PER | 1942 | Ratification of the Treaty of Tehran
+event = {
+	id = 232485
+	country = PER
+	name = "EVT_232485_NAME"
+	desc = "EVT_232485_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232485_A"
+		ai_chance = 95
+		command = { type = peace which = OTT value = 0 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = "EVT_232485_B"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ============================================================================
+# CADENA 9: LA CRISIS DE CHIPRE DE 1974 (GUERRA REGIONAL CONTROLADA)
+# ============================================================================
+
+# [232486] TUR | 1974 | The EOKA-B Coup in Nicosia
+event = {
+	id = 232486
+	country = TUR
+	trigger = {
+		exists = TUR
+		NOT = { flag = cpvictory }
+	}
+	name = "EVT_232486_NAME"
+	desc = "EVT_232486_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 15 month = july year = 1974 }
+	offset = 1
+	deathdate = { day = 16 month = july year = 1974 }
+
+	action = {
+		name = "EVT_232486_A"
+		ai_chance = 90
+		command = { trigger = { exists = ENG } type = trigger which = 232487 }
+	}
+	action = {
+		name = "EVT_232486_B"
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232487] ENG | 1974 | Britain Declines Joint Intervention Under 1960 Treaty
+event = {
+	id = 232487
+	country = ENG
+	name = "EVT_232487_NAME"
+	desc = "EVT_232487_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232487_A"
+		ai_chance = 90
+		command = { trigger = { exists = TUR } type = trigger which = 232488 }
+	}
+	action = {
+		name = "EVT_232487_B"
+		ai_chance = 10
+		command = { type = dissent value = 2 }
+	}
+}
+
+# [232488] TUR | 1974 | Turkish Ultimatum for Constitutional Restoration
+event = {
+	id = 232488
+	country = TUR
+	name = "EVT_232488_NAME"
+	desc = "EVT_232488_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232488_A"
+		ai_chance = 90
+		command = { trigger = { exists = GRE } type = trigger which = 232489 }
+	}
+	action = {
+		name = "EVT_232488_B"
+		ai_chance = 10
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232489] GRE | 1974 | Greek Junta Defies the Ultimatum
+event = {
+	id = 232489
+	country = GRE
+	name = "EVT_232489_NAME"
+	desc = "EVT_232489_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232489_A"
+		ai_chance = 90
+		command = { trigger = { exists = TUR } type = trigger which = 232490 }
+	}
+	action = {
+		name = "EVT_232489_B"
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232490] TUR | 1974 | Operation Atila Phase I: Amphibious Landing at Kyrenia
+event = {
+	id = 232490
+	country = TUR
+	name = "EVT_232490_NAME"
+	desc = "EVT_232490_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232490_A"
+		ai_chance = 95
+		command = { type = supplies value = -1500 }
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = GRE } type = trigger which = 232491 }
+	}
+	action = {
+		name = "EVT_232490_B"
+		ai_chance = 5
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232491] GRE | 1974 | Mobilization Crisis and Fall of the Greek Junta
+event = {
+	id = 232491
+	country = GRE
+	name = "EVT_232491_NAME"
+	desc = "EVT_232491_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232491_A"
+		ai_chance = 90
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = dissent value = -5 }
+		command = { trigger = { exists = TUR } type = trigger which = 232492 }
+	}
+	action = {
+		name = "EVT_232491_B"
+		ai_chance = 10
+		command = { type = supplies value = -1000 }
+	}
+}
+
+# [232492] TUR | 1974 | Geneva Diplomatic Talks: Deadlock Over Cantons
+event = {
+	id = 232492
+	country = TUR
+	name = "EVT_232492_NAME"
+	desc = "EVT_232492_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232492_A"
+		ai_chance = 85
+		command = { trigger = { exists = TUR } type = trigger which = 232493 }
+	}
+	action = {
+		name = "EVT_232492_B"
+		ai_chance = 15
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232493] TUR | 1974 | Operation Atila Phase II: Securing Northern Cyprus
+event = {
+	id = 232493
+	country = TUR
+	name = "EVT_232493_NAME"
+	desc = "EVT_232493_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232493_A"
+		ai_chance = 90
+		command = { type = supplies value = -2000 }
+		command = { trigger = { exists = TUR } type = trigger which = 232494 }
+	}
+	action = {
+		name = "EVT_232493_B"
+		ai_chance = 10
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232494] TUR | 1974 | United Nations Security Council Demands Ceasefire
+event = {
+	id = 232494
+	country = TUR
+	name = "EVT_232494_NAME"
+	desc = "EVT_232494_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232494_A"
+		ai_chance = 90
+		command = { trigger = { exists = TUR } type = trigger which = 232495 }
+	}
+	action = {
+		name = "EVT_232494_B"
+		ai_chance = 10
+		command = { type = dissent value = 10 }
+	}
+}
+
+# [232495] TUR | 1974 | August 16 Ceasefire: The Green Line Established
+event = {
+	id = 232495
+	country = TUR
+	name = "EVT_232495_NAME"
+	desc = "EVT_232495_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232495_A"
+		ai_chance = 95
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = TUR } type = trigger which = 232496 }
+	}
+	action = {
+		name = "EVT_232495_B"
+		ai_chance = 5
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232496] TUR | 1974 | Proclamation of the Turkish Federated State of Cyprus
+event = {
+	id = 232496
+	country = TUR
+	name = "EVT_232496_NAME"
+	desc = "EVT_232496_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232496_A"
+		ai_chance = 95
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = TUR } type = trigger which = 232497 }
+	}
+	action = {
+		name = "EVT_232496_B"
+		ai_chance = 5
+		command = { type = money value = 500 }
+	}
+}
+
+# [232497] TUR | 1974 | Controlled Regional Peace: Freezing the Cyprus Border
+event = {
+	id = 232497
+	country = TUR
+	name = "EVT_232497_NAME"
+	desc = "EVT_232497_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+
+	action = {
+		name = "EVT_232497_A"
+		ai_chance = 95
+		command = { type = peace which = GRE value = 0 }
+		command = { trigger = { exists = CYP } type = peace which = CYP value = 0 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = "EVT_232497_B"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ============================================================================
+# CADENA 10: LA CRISIS DE LOS ISLOTES DE IMIA / KARDAK EN EL EGEO (1996)
+# ============================================================================
+
+# [232498] TUR | 1996 | Cargo Vessel Grounding on Kardak/Imia Islet
+event = {
+	id = 232498
+	country = TUR
+	trigger = {
+		exists = TUR
+		exists = GRE
+	}
+	name = "EVT_232498_NAME"
+	desc = "EVT_232498_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+	date = { day = 25 month = december year = 1995 }
+	offset = 1
+	deathdate = { day = 15 month = january year = 1996 }
+
+	action = {
+		name = "EVT_232498_A"
+		ai_chance = 85
+		command = { trigger = { exists = GRE } type = trigger which = 232499 }
+	}
+	action = {
+		name = "EVT_232498_B"
+		ai_chance = 15
+		command = { type = money value = 200 }
+	}
+}
+
+# [232499] GRE | 1996 | Greek Commandos Raise Flag on the Eastern Islet
+event = {
+	id = 232499
+	country = GRE
+	name = "EVT_232499_NAME"
+	desc = "EVT_232499_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232499_A"
+		ai_chance = 85
+		command = { trigger = { exists = TUR } type = trigger which = 232500 }
+	}
+	action = {
+		name = "EVT_232499_B"
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}
+
+# [232500] TUR | 1996 | Prime Minister Ciller's Stern Ultimatum
+event = {
+	id = 232500
+	country = TUR
+	name = "EVT_232500_NAME"
+	desc = "EVT_232500_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232500_A"
+		ai_chance = 90
+		command = { trigger = { exists = TUR } type = trigger which = 232501 }
+	}
+	action = {
+		name = "EVT_232500_B"
+		ai_chance = 10
+		command = { type = dissent value = 8 }
+	}
+}
+
+# [232501] TUR | 1996 | Elite SAT Naval Commandos Land on the Western Islet
+event = {
+	id = 232501
+	country = TUR
+	name = "EVT_232501_NAME"
+	desc = "EVT_232501_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232501_A"
+		ai_chance = 90
+		command = { trigger = { exists = GRE } type = trigger which = 232502 }
+	}
+	action = {
+		name = "EVT_232501_B"
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [232502] GRE | 1996 | Warships Face Off at Point-Blank Range
+event = {
+	id = 232502
+	country = GRE
+	name = "EVT_232502_NAME"
+	desc = "EVT_232502_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232502_A"
+		ai_chance = 90
+		command = { trigger = { exists = USA } type = trigger which = 232503 }
+	}
+	action = {
+		name = "EVT_232502_B"
+		ai_chance = 10
+		command = { type = supplies value = -1000 }
+	}
+}
+
+# [232503] USA | 1996 | Emergency Mediation by Holbrooke and the White House
+event = {
+	id = 232503
+	country = USA
+	name = "EVT_232503_NAME"
+	desc = "EVT_232503_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232503_A"
+		ai_chance = 95
+		command = { trigger = { exists = TUR } type = trigger which = 232504 }
+	}
+	action = {
+		name = "EVT_232503_B"
+		ai_chance = 5
+		command = { type = dissent value = 1 }
+	}
+}
+
+# [232504] TUR | 1996 | De-escalation Agreement: 'No Troops, No Flags'
+event = {
+	id = 232504
+	country = TUR
+	name = "EVT_232504_NAME"
+	desc = "EVT_232504_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232504_A"
+		ai_chance = 95
+		command = { type = dissent value = -5 }
+		command = { trigger = { exists = TUR } type = trigger which = 232505 }
+	}
+	action = {
+		name = "EVT_232504_B"
+		ai_chance = 5
+		command = { type = dissent value = 15 }
+	}
+}
+
+# [232505] TUR | 1996 | Aegean Peace Preserved Through Determined Deterrence
+event = {
+	id = 232505
+	country = TUR
+	name = "EVT_232505_NAME"
+	desc = "EVT_232505_DESC"
+	style = 2
+	picture = "Minors/sk_kaiserliche_marine"
+
+	action = {
+		name = "EVT_232505_A"
+		ai_chance = 95
+		command = { trigger = { exists = GRE } type = relation which = GRE value = 25 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = "EVT_232505_B"
+		ai_chance = 5
+		command = { type = money value = 300 }
+	}
+}
+
+# ============================================================================
+# MÓDULO 11: MODERNIZACIÓN ESTATISTA E INDUSTRIAL DE TURQUÍA (1934-1995)
+# ============================================================================
+
+# [232506] TUR | 1934 | First Five-Year Industrial Plan: Sumerbank and Etibank
+event = {
+	id = 232506
+	country = TUR
+	trigger = {
+		exists = TUR
+	}
+	name = "EVT_232506_NAME"
+	desc = "EVT_232506_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 17 month = april year = 1934 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1934 }
+
+	action = {
+		name = "EVT_232506_A"
+		ai_chance = 85
+		command = { type = money value = -600 }
+		command = { type = industrial_modifier which = total value = 7 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = "EVT_232506_B"
+		ai_chance = 15
+		command = { type = money value = 400 }
+		command = { type = dissent value = 4 }
+	}
+}
+
+# [232507] TUR | 1937 | Nationalization of Foreign Railroads in Anatolia
+event = {
+	id = 232507
+	country = TUR
+	trigger = {
+		exists = TUR
+	}
+	name = "EVT_232507_NAME"
+	desc = "EVT_232507_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 15 month = november year = 1937 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1937 }
+
+	action = {
+		name = "EVT_232507_A"
+		ai_chance = 85
+		command = { type = money value = -400 }
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = "EVT_232507_B"
+		ai_chance = 15
+		command = { type = supplies value = 800 }
+	}
+}
+
+# [232508] TUR | 1992 | The Southeastern Anatolia Project: The Ataturk Dam
+event = {
+	id = 232508
+	country = TUR
+	trigger = {
+		exists = TUR
+	}
+	name = "EVT_232508_NAME"
+	desc = "EVT_232508_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 25 month = july year = 1992 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1992 }
+
+	action = {
+		name = "EVT_232508_A"
+		ai_chance = 90
+		command = { type = supplies value = -3000 }
+		command = { type = money value = -1200 }
+		command = { type = industrial_modifier which = total value = 12 }
+		command = { type = dissent value = -10 }
+	}
+	action = {
+		name = "EVT_232508_B"
+		ai_chance = 10
+		command = { type = money value = -300 }
+		command = { type = industrial_modifier which = total value = 4 }
+	}
+}
+
+# [232509] TUR | 1995 | Accession to the European Customs Union
+event = {
+	id = 232509
+	country = TUR
+	trigger = {
+		exists = TUR
+	}
+	name = "EVT_232509_NAME"
+	desc = "EVT_232509_DESC"
+	style = 2
+	picture = "archive/ottoman_troops"
+	date = { day = 31 month = december year = 1995 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1995 }
+
+	action = {
+		name = "EVT_232509_A"
+		ai_chance = 85
+		command = { type = money value = 1500 }
+		command = { type = industrial_modifier which = total value = 8 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = "EVT_232509_B"
+		ai_chance = 15
+		command = { type = supplies value = 2000 }
+		command = { type = money value = -300 }
+	}
+}

@@ -1,0 +1,57 @@
+# ============================================================================
+# File: events/Minors/TAN_Decisions.txt (1 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329548] TAN | 1944 | Annexation of Tannu Tuva (Anexión de Tannu Tuvá)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# Trigger event 223112 in events/SOV/SOV_43-46.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329548
+	random = no
+	country = TAN
+	name = EVT_TAN_329548_NAME
+	desc = EVT_TAN_329548_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		exists = TAN
+		exists = SOV
+		alliance = { country = SOV country = TAN }
+		control = { province = 1119 data = TAN }
+		NOT = {
+			event = 223096
+		}
+	}
+	decision_trigger = {
+		alliance = { country = SOV country = TAN }
+		control = { province = 1119 data = TAN }
+	}
+	trigger = {
+		exists = TAN
+		exists = SOV
+		alliance = { country = SOV country = TAN }
+		control = { province = 1119 data = TAN }
+		NOT = {
+			event = 223096
+		}
+	}
+	date = { day = 0 month = november year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 100
+		command = { type = dissent value = -5 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = trigger which = 223112 }
+	}
+	action_b = {
+		ai_chance = 0
+		name = ACTION_NAME_REFUSE
+		command = { type = dissent value = 1 }
+		command = { type = money value = -25 }
+	}
+}

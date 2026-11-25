@@ -1,0 +1,1324 @@
+# ============================================================================
+# File: events/ITA/ITA_52-89.txt (35 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [166158] ITA | 1952 | The European Coal and Steel Community (Comunidad Europea del Carbón y del Acero)
+# Triggered by event 147178 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166158
+	country = ITA
+	name = EVT_ITA_166158_NAME
+	desc = EVT_ITA_166158_DESC
+	picture = "nwo/european_coal_and_steel_community"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 147178
+	}
+	date = { day = 23 month = july year = 1952 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 95
+		command = { type = energypool value = 20000 }
+		command = { type = metalpool value = 10000 }
+	}
+	action = {
+		name = ACTION_NAME_DONT_SIGN
+		ai_chance = 5
+		command = { type = relation which = FRA value = -50 }
+		command = { type = relation which = DFR value = -50 }
+		command = { type = relation which = BEL value = -50 }
+		command = { type = relation which = HOL value = -50 }
+		command = { type = relation which = LUX value = -50 }
+		command = { type = sleepevent which = 147179 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166171] ITA | 1953 | General Elections (Elecciones generales)
+# Triggered by event 166194 in events/ITA/ITA_52-89.txt
+# Triggered by event 166195 in events/ITA/ITA_52-89.txt
+# Triggered by event 166184 in events/ITA/ITA_52-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166171
+	country = ITA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = local_clrflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 25134 }
+		command = { type = foreignminister which = 25135 }
+		command = { type = armamentminister which = 25137 }
+		command = { type = ministerofsecurity which = 25138 }
+		command = { type = ministerofintelligence which = 25091 }
+		command = { type = chiefofstaff which = 25311 }
+		command = { type = chiefofarmy which = 25317 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		trigger = { NOT = { event = 166194 event = 166195 } }
+		command = { type = dissent value = -6 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { trigger = { NOT = { event = 166184 } } type = headofgovernment which = 25300 }
+		command = { trigger = { event = 166184 } type = headofgovernment which = 25031 }
+		command = { type = foreignminister which = 25042 }
+		command = { type = armamentminister which = 25064 }
+		command = { type = ministerofsecurity which = 25081 }
+		command = { type = ministerofintelligence which = 25093 }
+		command = { type = chiefofstaff which = 25311 }
+		command = { type = chiefofarmy which = 25317 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 10
+		trigger = { event = 166194 }
+		command = { type = dissent value = -6 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { trigger = { NOT = { event = 166184 } } type = headofgovernment which = 25300 }
+		command = { trigger = { event = 166184 } type = headofgovernment which = 25031 }
+		command = { type = foreignminister which = 25042 }
+		command = { type = armamentminister which = 25064 }
+		command = { type = ministerofsecurity which = 25081 }
+		command = { type = ministerofintelligence which = 25093 }
+		command = { type = chiefofstaff which = 25311 }
+		command = { type = chiefofarmy which = 25317 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 10
+		trigger = { event = 166195 }
+		command = { type = dissent value = -6 }
+		command = { type = local_clrflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 25030 }
+		command = { type = foreignminister which = 25042 }
+		command = { type = armamentminister which = 25064 }
+		command = { type = ministerofsecurity which = 25081 }
+		command = { type = ministerofintelligence which = 25093 }
+		command = { type = chiefofstaff which = 25311 }
+		command = { type = chiefofarmy which = 25317 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166012] ITA | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166012
+	random = no
+	country = ITA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ITA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = august year = 1953 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 25020 }
+		command = { type = headofgovernment which = 25026 }
+		command = { type = foreignminister which = 25038 }
+		command = { type = armamentminister which = 25061 }
+		command = { type = ministerofsecurity which = 25091 }
+		command = { type = ministerofintelligence which = 25118 }
+		command = { type = chiefofstaff which = 25135 }
+		command = { type = chiefofarmy which = 25159 }
+		command = { type = chiefofnavy which = 25176 }
+		command = { type = chiefofair which = 25187 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 25203 }
+		command = { type = headofgovernment which = 25030 }
+		command = { type = foreignminister which = 25046 }
+		command = { type = armamentminister which = 25060 }
+		command = { type = ministerofsecurity which = 25218 }
+		command = { type = ministerofintelligence which = 25121 }
+		command = { type = chiefofstaff which = 25135 }
+		command = { type = chiefofarmy which = 25159 }
+		command = { type = chiefofnavy which = 25176 }
+		command = { type = chiefofair which = 25187 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [166161] ITA | 1954 | Partition of Trieste (División del territorio de Trieste)
+# Triggered by event 329848 in events/Minors/U27.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166161
+	country = ITA
+	name = EVT_ITA_166161_NAME
+	desc = EVT_ITA_166161_DESC
+	picture = "nwo/free_city_of_trieste"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = U38 }
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166162] ITA | 1954 | Yugoslav Demands Over Trieste (Reclamación yugoslava sobre Trieste)
+# Triggered by event 329848 in events/Minors/U27.txt
+# Trigger event 262030 in events/Minors/U27.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166162
+	country = ITA
+	name = EVT_ITA_166162_NAME
+	desc = EVT_ITA_166162_DESC
+	picture = "nwo/free_city_of_trieste"
+	style = 1
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 95
+		command = { type = dissent value = 3 }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT_DEMANDS
+		ai_chance = 5
+		command = { type = trigger which = 262030 }
+		command = { type = dissent value = 5 }
+		command = { type = relation which = U27 value = 100 }
+		command = { type = relation which = SOV value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166172] ITA | 1954 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166172
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+		headofgovernment = 25134
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 25301 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166157] ITA | 1955 | Britain and European Unification (Gran Bretaña y la unión europea)
+# Triggered by event 147175 in events/FRA/FRA_48-59.txt
+# Trigger event 147176 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166157
+	country = ITA
+	name = EVT_ITA_166157_NAME
+	desc = EVT_ITA_166157_DESC
+	picture = "nwo/united_states_of_europe"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		event = 147175
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_SURRENDER_GAMEOVER
+		ai_chance = 80
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+	}
+	action = {
+		name = EVT_ITA_166157_A
+		ai_chance = 15
+		command = { type = sleepevent which = 147176 }
+		command = { type = sleepevent which = 147177 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = end_puppet }
+		command = { type = sleepevent which = 139009 }
+		command = { type = sleepevent which = 110059 }
+		command = { type = sleepevent which = 157034 }
+		command = { type = sleepevent which = 179011 }
+		command = { type = sleepevent which = 147176 }
+		command = { type = sleepevent which = 147177 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166173] ITA | 1955 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166173
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 25302 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166174] ITA | 1955 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166174
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+		headofgovernment = 25301
+	}
+	date = { day = 0 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 25303 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166175] ITA | 1957 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166175
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+		headofgovernment = 25303
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 25304 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166159] ITA | 1957 | Common Market Growth (Crecimiento del Mercado Común)
+# Triggered by event 147173 in events/FRA/FRA_48-59.txt
+# Triggered by event 147179 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166159
+	country = ITA
+	name = EVT_ITA_166159_NAME
+	desc = EVT_ITA_166159_DESC
+	picture = "nwo/european_economic_community"
+	style = 1
+	trigger = {
+		event = 147179
+	}
+	date = { day = 25 month = march year = 1957 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 7 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166176] ITA | 1958 | General Elections (Elecciones generales)
+# Triggered by event 166194 in events/ITA/ITA_52-89.txt
+# Triggered by event 166195 in events/ITA/ITA_52-89.txt
+# Triggered by event 166184 in events/ITA/ITA_52-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166176
+	country = ITA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = local_clrflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = local_clrflag which = block_ideology_switch }
+		command = { type = headofgovernment which = 25305 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		trigger = { NOT = { event = 166194 event = 166195 } }
+		command = { type = dissent value = -1 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { trigger = { NOT = { event = 166184 } } type = headofgovernment which = 25300 }
+		command = { trigger = { event = 166184 } type = headofgovernment which = 25031 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 10
+		trigger = { event = 166194 }
+		command = { type = dissent value = -1 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { trigger = { NOT = { event = 166184 } } type = headofgovernment which = 25300 }
+		command = { trigger = { event = 166184 } type = headofgovernment which = 25031 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 10
+		trigger = { event = 166195 }
+		command = { type = dissent value = -1 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 25030 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166177] ITA | 1959 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166177
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+		headofgovernment = 25305
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 25303 }
+		command = { type = chiefofstaff which = 25312 }
+		command = { type = chiefofarmy which = 25318 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166178] ITA | 1960 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166178
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+		headofgovernment = 25303
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 25305 }
+		command = { type = chiefofarmy which = 25319 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166203] ITA | 1960 | The PCI in the 1960s (El PCI en los años 60)
+# Trigger event 166205 in events/ITA/ITA_40-50.txt
+# Trigger event 166206 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166203
+	country = ITA
+	one_action = yes
+	name = EVT_ITA_166203_NAME
+	desc = EVT_ITA_166203_DESC
+	picture = "nwo/italian_communist_party"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = EVT_ITA_166203_A
+		ai_chance = 90
+		trigger = { local_flag = very_moderate_ICP }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = EVT_ITA_166203_B
+		ai_chance = 1
+		trigger = { local_flag = very_moderate_ICP }
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 166205 }
+	}
+	action = {
+		name = EVT_ITA_166203_C
+		ai_chance = 9
+		trigger = { local_flag = very_moderate_ICP }
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 166206 }
+	}
+	action = {
+		name = EVT_ITA_166203_A
+		ai_chance = 80
+		trigger = { local_flag = moderate_ICP }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = EVT_ITA_166203_B
+		ai_chance = 5
+		trigger = { local_flag = moderate_ICP }
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 166205 }
+	}
+	action = {
+		name = EVT_ITA_166203_C
+		ai_chance = 15
+		trigger = { local_flag = moderate_ICP }
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 166206 }
+	}
+	action = {
+		name = EVT_ITA_166203_A
+		ai_chance = 60
+		trigger = { local_flag = radical_ICP }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = EVT_ITA_166203_B
+		ai_chance = 10
+		trigger = { local_flag = radical_ICP }
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 166205 }
+	}
+	action = {
+		name = EVT_ITA_166203_C
+		ai_chance = 30
+		trigger = { local_flag = radical_ICP }
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 166206 }
+	}
+	action = {
+		name = EVT_ITA_166203_A
+		ai_chance = 10
+		trigger = { local_flag = very_radical_ICP }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = EVT_ITA_166203_B
+		ai_chance = 50
+		trigger = { local_flag = very_radical_ICP }
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 166205 }
+	}
+	action = {
+		name = EVT_ITA_166203_C
+		ai_chance = 40
+		trigger = { local_flag = very_radical_ICP }
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 166206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166179] ITA | 1962 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166179
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 25306 }
+		command = { type = chiefofarmy which = 25320 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166180] ITA | 1963 | General Elections (Elecciones generales)
+# Triggered by event 166194 in events/ITA/ITA_52-89.txt
+# Triggered by event 166195 in events/ITA/ITA_52-89.txt
+# Triggered by event 166184 in events/ITA/ITA_52-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166180
+	country = ITA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = local_clrflag which = block_ideology_switch }
+		command = { type = headofgovernment which = 25307 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		trigger = { NOT = { event = 166194 event = 166195 } }
+		command = { type = dissent value = -1 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { trigger = { NOT = { event = 166184 } } type = headofgovernment which = 25300 }
+		command = { trigger = { event = 166184 } type = headofgovernment which = 25321 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 10
+		trigger = { event = 166194 }
+		command = { type = dissent value = -1 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { trigger = { NOT = { event = 166184 } } type = headofgovernment which = 25300 }
+		command = { trigger = { event = 166184 } type = headofgovernment which = 25031 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 10
+		trigger = { event = 166195 }
+		command = { type = dissent value = -1 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 25030 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166181] ITA | 1965 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166181
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1967 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 25322 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166182] ITA | 1968 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166182
+	country = ITA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1968 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1969 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 25324 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 25323 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166183] ITA | 1970 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166183
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1970 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 25325 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166184] ITA | 1971 | Cabinet Reshuffle (Reorganización del gobierno)
+# Trigger event 166169 in events/ITA/ITA_40-50.txt
+# Trigger event 166171 in events/ITA/ITA_52-89.txt
+# Trigger event 166176 in events/ITA/ITA_52-89.txt
+# Trigger event 166180 in events/ITA/ITA_52-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166184
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 25326 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166185] ITA | 1972 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166185
+	country = ITA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 25327 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 25321 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166186] ITA | 1973 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166186
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1973 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 25324 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166187] ITA | 1974 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166187
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 25328 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166188] ITA | 1976 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166188
+	country = ITA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1976 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1977 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 25327 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 25321 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166189] ITA | 1978 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166189
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1978 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 25335 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166210] ITA | 1978 | Assassination of Aldo Moro (Asesinato de Aldo Moro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166210
+	country = ITA
+	name = EVT_ITA_166210_NAME
+	desc = EVT_ITA_166210_DESC
+	picture = "nwo/aldo_moro"
+	style = 1
+	trigger = {
+		random = 50
+	}
+	date = { day = 9 month = may year = 1978 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_MOURN
+		command = { type = dissent value = 5 }
+		command = { type = sleepminister which = 25307 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166190] ITA | 1979 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166190
+	country = ITA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1979 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 25329 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 25321 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166191] ITA | 1980 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166191
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 25330 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166192] ITA | 1981 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166192
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 25331 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166193] ITA | 1983 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166193
+	country = ITA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1983 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1984 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 25336 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 25332 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166194] ITA | 1985 | Cabinet Reshuffle (Reorganización del gobierno)
+# Trigger event 166169 in events/ITA/ITA_40-50.txt
+# Trigger event 166171 in events/ITA/ITA_52-89.txt
+# Trigger event 166176 in events/ITA/ITA_52-89.txt
+# Trigger event 166180 in events/ITA/ITA_52-89.txt
+# Trigger event 166204 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166194
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1985 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 25333 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166195] ITA | 1987 | General Elections (Elecciones generales)
+# Trigger event 166169 in events/ITA/ITA_40-50.txt
+# Trigger event 166171 in events/ITA/ITA_52-89.txt
+# Trigger event 166176 in events/ITA/ITA_52-89.txt
+# Trigger event 166180 in events/ITA/ITA_52-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166195
+	country = ITA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1987 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 25336 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 25334 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166196] ITA | 1988 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166196
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 25332 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166197] ITA | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166197
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 25327 }
+	}
+}

@@ -1,0 +1,438 @@
+# ============================================================================
+# File: events/Minors/U59.txt (10 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [279004] U59 | 1910 | Victory in Mexico City! (¡Toma de la Ciudad de México!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 279004
+	country = U59
+	persistent = yes
+	trigger = {
+		control = { province = 1974 data = U59 }
+		atwar = yes
+		NOT = { tech_team = 1110010 }
+		NOT = { tech_team = 1110011 }
+		NOT = { tech_team = 1110012 }
+	}
+	date = { day = 1 month = january year = 1910 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_SHARED_00127_NAME"
+	desc = "EVT_SHARED_00127_DESC"
+	picture = "GLOBAL/ww1_offensive"
+	style = 2
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = waketeam which = 1110010 }
+		command = { type = waketeam which = 1110011 }
+		command = { type = waketeam which = 1110012 }
+		command = { type = supplies value = -100 }
+		command = { type = money value = -30 }
+		command = { type = dissent value = -2 }
+		command = { trigger = { exists = U58 NOT = { war = { country = U59 country = U58 } } } type = relation which = U58 value = 5 }
+		command = { trigger = { exists = MEX war = { country = U59 country = MEX } } type = steal_tech which = MEX value = -1 }
+		command = { trigger = { exists = U57 war = { country = U59 country = U57 } } type = steal_tech which = U57 value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [279005] U59 | 1910 | Loss of Mexico City (Pérdida de la Ciudad de México)
+# ----------------------------------------------------------------------------
+event = {
+	id = 279005
+	country = U59
+	persistent = yes
+	trigger = {
+		NOT = { control = { province = 1974 data = U59 } }
+		tech_team = 1110010
+		tech_team = 1110011
+		tech_team = 1110012
+	}
+	name = "EVT_SHARED_00128_NAME"
+	desc = "EVT_SHARED_00128_DESC"
+	picture = "GLOBAL/ww1_offensive"
+	style = 2
+	date = { day = 1 month = january year = 1910 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = sleepteam which = 1110010 }
+		command = { type = sleepteam which = 1110011 }
+		command = { type = sleepteam which = 1110012 }
+		command = { type = supplies value = 20 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [279006] U59 | 1910 | Captured Enemy Supplies (Captura de suministros enemigos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 279006
+	country = U59
+	persistent = yes
+	one_action = yes
+	trigger = {
+		atwar = yes
+		random = 5
+		NOT = { supplies = 1000 }
+		NOT = { IC = 7 }
+	}
+	name = "EVT_U59_279006_NAME"
+	desc = "EVT_U59_279006_DESC"
+	picture = "GLOBAL/lend_lease"
+	style = 2
+	date = { day = 1 month = january year = 1910 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+		ai_chance = 5
+		name = ACTION_NAME_OK
+		command = { type = resource which = supplies value = 25 }
+	}
+	action = {
+		ai_chance = 10
+		name = "ACTION_NAME_GOOD"
+		command = { type = resource which = supplies value = 50 }
+	}
+	action = {
+		ai_chance = 20
+		name = "ACTION_NAME_GREAT"
+		command = { type = resource which = supplies value = 200 }
+		command = { type = resource which = money value = 20 }
+	}
+	action = {
+		ai_chance = 50
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = resource which = supplies value = 350 }
+		command = { type = resource which = money value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [279007] U59 | 1910 | Clandestine Factory Arms Shipments (Contrabando de armas desde las fábricas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 279007
+	country = U59
+	persistent = yes
+	one_action = yes
+	trigger = {
+		atwar = yes
+		random = 7
+		NOT = { supplies = 1000 }
+		NOT = { IC = 5 }
+		OR = {
+			AND = {
+				control = { province = 1974 data = MEX }
+				war = { country = U59 country = MEX }
+			}
+			AND = {
+				control = { province = 1974 data = U57 }
+				war = { country = U59 country = U57 }
+			}
+		}
+	}
+	name = "EVT_U59_279007_NAME"
+	desc = "EVT_U59_279007_DESC"
+	picture = "GLOBAL/lend_lease"
+	style = 2
+	date = { day = 1 month = january year = 1910 }
+	offset = 45
+	deathdate = { day = 29 month = december year = 1917 }
+	action = {
+		ai_chance = 3
+		name = ACTION_NAME_OK
+		command = { type = resource which = supplies value = 20 }
+	}
+	action = {
+		ai_chance = 10
+		name = "ACTION_NAME_GOOD"
+		command = { type = resource which = supplies value = 40 }
+	}
+	action = {
+		ai_chance = 20
+		name = "ACTION_NAME_GREAT"
+		command = { type = resource which = supplies value = 60 }
+	}
+	action = {
+		ai_chance = 35
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = resource which = supplies value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [183012] U59 | 1914 | The Convention of Aguascalientes (La Convención de Aguascalientes)
+# Triggered by event 277003 in events/Minors/U57.txt
+# Trigger event 277005 in events/Minors/U57.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 183012
+	country = U59
+	name = "EVT_SHARED_00079_NAME"
+	desc = "EVT_SHARED_00079_DESC"
+	picture = "Minors/convention_of_aguascalientes"
+	style = 2
+	action = {
+		trigger = {
+			exists = U57
+			exists = U58
+			NOT = { war = { country = U57 country = U59 } }
+			war = { country = U57 country = U58 }
+			NOT = { alliance = { country = U58 country = U59 } }
+			NOT = { alliance = { country = U57 country = U59 } }
+			flag = U58_alliance_U59
+		}
+		ai_chance = 90
+		name = "ACTION_NAME_JOIN_ALLIANCE"
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = alliance which = U58 when = 1 }
+		command = { type = dissent value = -5 }
+		command = { type = local_clrflag which = MEX_Conv }
+		command = { type = clrflag which = U58_alliance_U59 }
+		command = { trigger = { ai = yes } type = ai which = "switch/U59_Convention.ai" }
+	}
+	action = {
+		trigger = {
+			exists = U57
+			exists = U58
+			NOT = { alliance = { country = U58 country = U59 } }
+			NOT = { alliance = { country = U57 country = U59 } }
+		}
+		ai_chance = 5
+		name = "EVT_U59_183012_A"
+		command = { type = domestic which = interventionism value = 2 }
+		command = { type = war which = U57 }
+		command = { type = war which = U58 }
+		command = { type = dissent value = -2 }
+		command = { trigger = { flag = U58_alliance_U59 } type = clrflag which = U58_alliance_U59 }
+		command = { type = local_clrflag which = MEX_Conv }
+		command = { trigger = { ai = yes } type = ai which = "switch/U59_Convention_B.ai" }
+	}
+	action = {
+		trigger = {
+			exists = U57
+			NOT = { exists = U58 }
+			NOT = { war = { country = U59 country = U57 } }
+			NOT = { alliance = { country = U59 country = U57 } }
+		}
+		ai_chance = 90
+		name = "EVT_SHARED_00080_A"
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = war which = U57 }
+		command = { type = dissent value = -5 }
+		command = { type = local_clrflag which = MEX_Conv }
+		command = { trigger = { ai = yes } type = ai which = "switch/U59_Convention.ai" }
+	}
+	action = {
+		trigger = {
+			exists = U57
+			NOT = { war = { country = U57 country = U59 } }
+			ai = yes
+		}
+		ai_chance = 5
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		command = { type = local_clrflag which = MEX_Conv }
+		command = { type = trigger which = 277005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [279000] U59 | 1914 | Zapatistas Win the Revolution (Los zapatistas triunfan en la Revolución)
+# Trigger event 183015 in events/Minors/MEX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 279000
+	country = U59
+	trigger = {
+		atwar = no
+		NOT = {
+			exists = MEX
+			exists = U57
+			exists = U58
+		}
+		control = { province = 1974 data = U59 }
+	}
+	name = "EVT_U59_279000_NAME"
+	desc = "EVT_U59_279000_DESC"
+	picture = "Minors/rheinland"
+	style = 2
+	date = { day = 1 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = dissent value = -5 }
+		command = { type = country which = MEX }
+		command = { type = trigger which = 183015 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [279001] U59 | 1914 | Conventionalist Coalition Wins the Revolution (La alianza de Zapata y Villa gana la Revolución)
+# Trigger event 183015 in events/Minors/MEX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 279001
+	country = U59
+	trigger = {
+		atwar = no
+		NOT = {
+			exists = MEX
+			exists = U57
+		}
+		exists = U58
+		alliance = { country = U58 country = U59 }
+		control = { province = 1974 data = U59 }
+	}
+	name = "EVT_U59_279001_NAME"
+	desc = "EVT_U59_279001_DESC"
+	picture = "Minors/rheinland"
+	style = 2
+	date = { day = 1 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+		trigger = { ai = U58 }
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U58 value = 1 }
+		command = { type = dissent value = -5 }
+		command = { type = country which = MEX }
+		command = { type = trigger which = 183015 }
+	}
+	action = {
+		trigger = { NOT = { ai = U58 } }
+		name = "ACTION_NAME_WAR"
+		command = { type = leave_alliance when = 1 }
+		command = { type = dissent value = 5 }
+		command = { type = war which = U58 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [279003] U59 | 1914 | The Final Revolutionary Decision (La encrucijada final de la Revolución)
+# Triggered by event 324219 in events/GLOBAL/MULTI_00-14.txt
+# Trigger event 277005 in events/Minors/U57.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 279003
+	country = U59
+	name = "EVT_SHARED_00081_NAME"
+	desc = "EVT_SHARED_00081_DESC"
+	picture = "GLOBAL/peace_conference"
+	style = 2
+	action = {
+		ai_chance = 80
+		name = "ACTION_NAME_WAR"
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = war which = U57 }
+		command = { type = dissent value = -5 }
+		command = { type = clrflag which = MEX_Convention }
+	}
+	action = {
+		trigger = { ai = yes }
+		ai_chance = 20
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		command = { type = trigger which = 277005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [279008] U59 | 1915 | New Volunteers Join Zapatista Brigadas (Nuevos reclutas en las brigadas zapatistas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 279008
+	country = U59
+	random = yes
+	persistent = yes
+	one_action = yes
+	trigger = {
+		atwar = yes
+		random = 10
+		NOT = { IC = 7 }
+	}
+	name = "EVT_U59_279008_NAME"
+	desc = "EVT_U59_279008_DESC"
+	picture = "GLOBAL/soviet_reinforcements"
+	style = 2
+	date = { day = 1 month = january year = 1915 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		ai_chance = 5
+		name = ACTION_NAME_OK
+		command = { type = manpowerpool value = 0.5 when = 1 }
+	}
+	action = {
+		ai_chance = 10
+		name = "ACTION_NAME_GOOD"
+		command = { type = manpowerpool value = 1 when = 1 }
+	}
+	action = {
+		ai_chance = 20
+		name = "ACTION_NAME_GREAT"
+		command = { type = manpowerpool value = 2 when = 1 }
+	}
+	action = {
+		ai_chance = 50
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = manpowerpool value = 5 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [279002] U59 | 1918 | Assassination of Emiliano Zapata (Asesinato de Emiliano Zapata)
+# Triggered by event 183016 in events/Minors/U57.txt
+# Trigger event 277007 in events/Minors/U57.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 279002
+	country = U59
+	name = "EVT_U59_279002_NAME"
+	desc = "EVT_U59_279002_DESC"
+	picture = "Minors/zapata_assassination"
+	style = 2
+	action = {
+		ai_chance = 80
+		name = "EVT_U59_279002_A"
+		command = { type = sleepminister which = 1110001 }
+		command = { type = sleepleader which = 1110050 }
+		command = { type = sleepteam which = 1110000 }
+		command = { type = headofstate which = 1110025 }
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = domestic which = professional_army value = -1  }
+		command = { type = relation which = U58 value = -150 }
+		command = { type = relation which = MEX value = -150 }
+		command = { type = max_organization which = land value = -15 }
+		command = { type = morale which = land value = -15 }
+		command = { type = manpowerpool value = -10 when = 1 }
+	}
+	action = {
+		name = "EVT_U59_279002_B"
+		ai_chance = 10
+		command = { type = sleepminister which = 1110001 }
+		command = { type = sleepleader which = 1110050 }
+		command = { type = sleepteam which = 1110000 }
+		command = { type = headofstate which = 1110027 }
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = domestic which = professional_army value = -1 }
+		command = { type = relation which = U58 value = -150 }
+		command = { type = relation which = MEX value = -150 }
+		command = { type = max_organization which = land value = -15 }
+		command = { type = morale which = land value = -15 }
+		command = { type = manpowerpool value = -10 when = 1 }
+	}
+	action = {
+		trigger = { ai = yes }
+		ai_chance = 10
+		name = "EVT_U59_279002_C"
+		command = { type = trigger which = 277007 }
+	}
+}

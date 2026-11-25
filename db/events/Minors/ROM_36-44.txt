@@ -1,0 +1,1595 @@
+# ============================================================================
+# File: events/Minors/ROM_36-44.txt (46 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [209023] ROM | 1936 | Defeat of Hungary (Derrota de Hungría)
+# Triggered by event 159025 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209023
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00781_NAME"
+	desc = "EVT_ROM_209023_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_HURRAH"
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209057] ROM | 1936 | Triumph of Greater Romania (Nacimiento de la Gran Rumanía)
+# Triggered by event 150354 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209057
+	random = no
+	country = ROM
+	name = "EVT_ROM_209057_NAME"
+	desc = "EVT_ROM_209057_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = dissent value = -10 }
+		command = { type = addclaim which = 626 }
+		command = { type = addclaim which = 625 }
+		command = { type = addclaim which = 620 }
+		command = { type = addclaim which = 619 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209058] ROM | 1936 | Fall of the Socialist Republic of Romania (Caída de la República Socialista de Rumania)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209058
+	random = no
+	country = ROM
+	name = "EVT_ROM_209058_NAME"
+	desc = "EVT_ROM_209058_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U30 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209106] ROM | 1936 | People's Republic Founded (República Popular)
+# Trigger event 209107 in events/Minors/ROM_36-44.txt
+# Trigger event 265022 in events/Minors/U30.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 209106
+   country = ROM
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U30
+            NOT = { ai = ROM }
+            NOT = { ai = U30 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U30
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U30 } }
+      command = { type = country which = U30 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U30
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = ROM }
+               control = { province = 316 data = -1 }
+            }
+         }
+         type = trigger which = 209107
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U30 }
+               NOT = { control = { province = 316 data = -1 } }
+            }
+         }
+         type = trigger which = 265022
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U30
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [209107] ROM | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 209106 in events/Minors/ROM_36-44.txt
+# Triggered by event 265021 in events/Minors/U30.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 209107
+   country = ROM
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U30 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [209019] ROM | 1936 | Romanian Capitulation to Bulgaria (Rendición de Rumanía ante Bulgaria)
+# Triggered by event 329301 in events/Minors/HUN_14-38.txt
+# Trigger event 118003 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209019
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00477_NAME"
+	desc = "EVT_SHARED_00477_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		event = 329301
+		control = { province = 316 data = BUL }
+		war = { country = BUL country = ROM }
+		NOT = {
+			alliance = { country = BUL country = HUN }
+		}
+		NOT = {
+			alliance = { country = BUL country = GER }
+			alliance = { country = ROM country = GER }
+		}
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = peace which = BUL }
+		command = { type = secedeprovince which = BUL value = 307 }
+		command = { type = domestic which = political_left value = 3 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 118003 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209020] ROM | 1936 | Romanian Capitulation to Bulgaria (Rendición de Rumanía ante Bulgaria)
+# Triggered by event 329301 in events/Minors/HUN_14-38.txt
+# Trigger event 118004 in events/Minors/BUL.txt
+# Trigger event 159024 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209020
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00477_NAME"
+	desc = "EVT_SHARED_00477_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		event = 329301
+		OR = {
+			control = { province = 316 data = BUL }
+			control = { province = 316 data = HUN }
+		}
+		war = { country = BUL country = ROM }
+		war = { country = HUN country = ROM }
+		alliance = { country = BUL country = HUN }
+		NOT = {
+			alliance = { country = BUL country = GER }
+			alliance = { country = ROM country = GER }
+			alliance = { country = HUN country = GER }
+		}
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = peace which = BUL }
+		command = { type = peace which = HUN }
+		command = { type = secedeprovince which = BUL value = 307 }
+		command = { type = secedeprovince which = HUN value = 296 }
+		command = { type = secedeprovince which = HUN value = 292 }
+		command = { type = secedeprovince which = HUN value = 288 }
+		command = { type = secedeprovince which = HUN value = 293 }
+		command = { type = secedeprovince which = HUN value = 287 }
+		command = { type = secedeprovince which = HUN value = 291 }
+		command = { type = secedeprovince which = HUN value = 289 }
+		command = { type = secedeprovince which = HUN value = 286 }
+		command = { type = secedeprovince which = HUN value = 285 }
+		command = { type = secedeprovince which = HUN value = 295 }
+		command = { type = domestic which = political_left value = 3 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = dissent value = 20 }
+		command = { type = trigger which = 118004 }
+		command = { type = trigger which = 159024 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209024] ROM | 1936 | Romanian Capitulation to Bulgaria (Rendición de Rumanía ante Bulgaria)
+# Triggered by event 209014 in events/Minors/ROM_36-44.txt
+# Trigger event 159024 in events/Minors/HUN_14-38.txt
+# Trigger event 118004 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209024
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00477_NAME"
+	desc = "EVT_ROM_209024_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		event = 209014
+		control = { province = 316 data = -2 }
+		war = { country = HUN country = ROM }
+		NOT = {
+			alliance = { country = ROM country = GER }
+			alliance = { country = ROM country = SOV }
+			puppet = { country = ROM country = SOV }
+		}
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { trigger = { war = { country = ROM country = BUL } } type = setflag which = ROM_BUL_War }
+		command = { type = leave_alliance }
+		command = { type = peace which = HUN }
+		command = { trigger = { flag = ROM_BUL_War } type = peace which = BUL }
+		command = { trigger = { flag = ROM_BUL_War } type = secedeprovince which = BUL value = 307 }
+		command = { type = secedeprovince which = HUN value = 285 }
+		command = { type = secedeprovince which = HUN value = 286 }
+		command = { type = secedeprovince which = HUN value = 287 }
+		command = { type = secedeprovince which = HUN value = 288 }
+		command = { type = secedeprovince which = HUN value = 289 }
+		command = { type = secedeprovince which = HUN value = 291 }
+		command = { type = secedeprovince which = HUN value = 292 }
+		command = { type = secedeprovince which = HUN value = 293 }
+		command = { type = secedeprovince which = HUN value = 295 }
+		command = { type = secedeprovince which = HUN value = 296 }
+		command = { type = domestic which = political_left value = 3 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = dissent value = 20 }
+		command = { type = trigger which = 159024 }
+		command = { trigger = { flag = ROM_BUL_War } type = trigger which = 118004 }
+		command = { trigger = { flag = ROM_BUL_War } type = clrflag which = ROM_BUL_War }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209032] ROM | 1936 | 1936 Craiova Trial. (Juicio de Craiova de 1936)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209032
+	random = no
+	country = ROM
+	style = 2
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 5 month = June year = 1936 }
+	name = "EVT_ROM_209032_NAME"
+	desc = "EVT_ROM_209032_DESC"
+	Picture = "ROM05"
+	action_a = {
+		name = "EVT_ROM_209032_A"
+		ai_chance = 100
+		command = { type = manpowerpool value = -3 }
+		command = { type = dissent value = 1 }
+	}
+	action_b = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 0
+		command = { type = dissent value = -1 }
+		command = { type = manpowerpool value = 3 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209006] ROM | 1937 | War over Czechoslovakia (Guerra por Checoslovaquia)
+# Triggered by event 136007 in events/Minors/CZE_14-53.txt
+# Triggered by event 150083 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209006
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00611_NAME"
+	desc = "EVT_SHARED_00611_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 5
+		command = { type = alliance which = CZE }
+		command = { type = war which = GER }
+	}
+	action = {
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		ai_chance = 95
+		command = {  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209011] ROM | 1937 | Soviet Claims on Bessarabia (Reclamación soviética de Besarabia)
+# Triggered by event 223090 in events/SOV/SOV_Decisions.txt
+# Trigger event 223091 in events/SOV/SOV_36-38.txt
+# Trigger event 223092 in events/SOV/SOV_36-38.txt
+# Trigger event 209105 in events/AI/ROM_AI.txt
+# Trigger event 329574 in events/AI/BUL_AI.txt
+# Trigger event 329637 in events/AI/HUN_AI.txt
+# Trigger event 329676 in events/AI/ROM_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209011
+	random = no
+	country = ROM
+	name = "EVT_ROM_209011_NAME"
+	desc = "EVT_ROM_209011_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 98
+		command = { type = secedeprovince which = SOV value = 304 }
+		command = { type = secedeprovince which = SOV value = 305 }
+		command = { type = secedeprovince which = SOV value = 306 }
+		command = { type = secedeprovince which = SOV value = 303 }
+		command = { type = secedeprovince which = SOV value = 302 }
+		command = { type = secedeprovince which = SOV value = 300 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = trigger which = 223091 }
+	}
+	action_b = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 2
+		command = { type = war which = SOV }
+		command = { type = domestic which = political_left value = -2 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SOV value = -25 }
+		command = { type = relation which = GER value = 15 }
+		command = { type = trigger which = 223092 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209035] ROM | 1937 | The 1937 general elections. (Las elecciones generales de 1937)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209035
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 28 month = December year = 1937 }
+	name = "EVT_ROM_209035_NAME"
+	desc = "EVT_ROM_209035_DESC"
+	style = 2
+	Picture = "elections1935"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 110019 }
+		command = { type = dissent value = 1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209000] ROM | 1938 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209000
+	random = no
+	country = ROM
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = january year = 1938 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1938 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 110012 }
+		command = { type = headofgovernment which = 110020 }
+		command = { type = foreignminister which = 110035 }
+		command = { type = armamentminister which = 110053 }
+		command = { type = ministerofsecurity which = 110065 }
+		command = { type = ministerofintelligence which = 110079 }
+		command = { type = chiefofstaff which = 110088 }
+		command = { type = chiefofarmy which = 110100 }
+		command = { type = chiefofnavy which = 110107 }
+		command = { type = chiefofair which = 110112 }
+		command = { type = dissent value = -3 }
+		command = { type = sleepminister which = 110019 }
+		command = { type = sleepminister which = 110063 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209009] ROM | 1938 | Changing Allegiances (Cambio de bando)
+# Trigger event 223031 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209009
+	random = no
+	country = ROM
+	name = EVT_ROM_209009_NAME
+	desc = EVT_ROM_209009_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = { exists = U30 }
+		war = { country = GER country = SOV }
+		war = { country = ROM country = SOV }
+		OR = {
+			control = { province = 291 data = SOV }
+			control = { province = 309 data = SOV }
+			control = { province = 311 data = SOV }
+			control = { province = 316 data = SOV }
+		}
+	}
+	date = { day = 0 month = january year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 95
+		name = ACTION_NAME_JOIN_COMINTERN
+		command = { type = end_puppet }
+		command = { type = set_relation which = SOV value = 50 }
+		command = { type = set_relation which = GER value = -50 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = domestic which = defense_lobby value = -1 }
+		command = { type = trigger which = 223031 }
+		command = { type = headofstate which = 110077 }
+		command = { type = headofgovernment which = 110028 }
+		command = { type = foreignminister which = 110046 }
+		command = { type = armamentminister which = 110062 }
+		command = { type = ministerofsecurity which = 110076 }
+		command = { type = ministerofintelligence which = 110085 }
+		command = { type = chiefofstaff which = 110095 }
+		command = { type = chiefofarmy which = 110105 }
+		command = { type = chiefofnavy which = 110111 }
+		command = { type = chiefofair which = 110116 }
+	}
+	action_b = {
+		ai_chance = 5
+		name = ACTION_NAME_JOIN_AXIS
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = defense_lobby value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209049] ROM | 1938 | The execution of King Carol II. (La ejecución del rey Carlos II)
+# Triggered by event 209036 in events/Minors/ROM_36-44.txt
+# Trigger event 209050 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209049
+	random = no
+	country = ROM
+	name = "EVT_ROM_209049_NAME"
+	desc = "EVT_ROM_209049_DESC"
+	style = 2
+	picture = "Minors/the_execution_of_king_carol_ii"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 110014 }
+		command = { type = sleepminister which = 110001 }
+		command = { type = sleepminister which = 110011 }
+		command = { type = sleepminister which = 110012 }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209036] ROM | 1938 | A Royal dictatorship declared. (Es declarada una Dictadura Real)
+# Trigger event 209049 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209036
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 11 month = February year = 1938 }
+	name = "EVT_ROM_209036_NAME"
+	desc = "EVT_ROM_209036_DESC"
+	style = 2
+	Picture = "ROM08"
+	action_a = {
+		name = "EVT_ROM_209036_A"
+		ai_chance = 100
+		command = { type = sleepevent which = 209040 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 110020 }
+		command = { type = dissent value = -2 }
+	}
+	action_b = {
+		name = "EVT_ROM_209036_B"
+		ai_chance = 0
+		command = { type = sleepevent which = 209037 }
+		command = { type = sleepevent which = 209039 }
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = set_domestic which = free_market value = 5 }
+		command = { type = set_domestic which = freedom value = 2 }
+		command = { type = headofgovernment which = 110155 }
+		command = { type = dissent value = 8 }
+		command = { type = revolt which = 311 }
+		command = { type = revolt which = 310 }
+		command = { type = revolt which = 315 }
+		command = { type = trigger which = 209049 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209037] ROM | 1938 | 1938 Constitution of Romania. (Constitución de Rumania de 1938)
+# Trigger event 209048 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209037
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 20 month = February year = 1938 }
+	name = "EVT_ROM_209037_NAME"
+	desc = "EVT_ROM_209037_DESC"
+	style = 2
+	Picture = "little_entente_end"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = freedom value = 2 }
+		command = { type = dissent value = -2 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 0
+		command = { type = dissent value = 5 }
+		command = { type = revolt which = 311 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209048] ROM | 1938 | The death of Corneliu Zelea Codreanu. (La muerte de Corneliu Zelea Codreanu)
+# Triggered by event 209037 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209048
+	random = no
+	country = ROM
+	trigger = {
+		event = 209037
+		}
+	date = { day = 26 month = April year = 1938 }
+	name = "EVT_ROM_209048_NAME"
+	desc = "EVT_ROM_209048_DESC"
+	style = 2
+	Picture = "ROM17"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = sleepminister which = 110016 }
+		command = { type = sleepminister which = 110155 }
+		command = { type = dissent value = 2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209053] ROM | 1938 | The death of Octavian Goga. (La muerte de Octavian Goga)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209053
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 7 month = May year = 1938 }
+	name = "EVT_ROM_209053_NAME"
+	desc = "EVT_ROM_209053_DESC"
+	style = 2
+	Picture = "ROM20"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = sleepminister which = 110019 }
+		command = { type = dissent value = 1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209050] ROM | 1938 | Romania referendum of 1938. (Referéndum en Rumania de 1938)
+# Triggered by event 209049 in events/Minors/ROM_36-44.txt
+# Trigger event 209051 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209050
+	random = no
+	country = ROM
+	trigger = {
+		event = 209049
+		}
+	date = { day = 7 month = September year = 1938 }
+	name = "EVT_ROM_209050_NAME"
+	desc = "EVT_ROM_209050_DESC"
+	style = 2
+	Picture = "elections1935"
+	action_a = {
+		name = "EVT_ROM_209050_A"
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = set_domestic which = free_market value = 5 }
+		command = { type = set_domestic which = freedom value = 2 }
+		command = { type = headofstate which = 110016 }
+		command = { type = headofgovernment which = 110030 }
+		command = { type = sleepminister which = 110013 }
+		command = { type = sleepminister which = 110014 }
+		command = { type = dissent value = -5 }
+		command = { type = flag_ext where = ROM which = _iron }
+		command = { type = name where = ROM which = "ROM38" }
+	}
+	action_b = {
+		name = "EVT_ROM_209050_B"
+		ai_chance = 0
+		command = { type = dissent value = 5 }
+		command = { type = revolt which = 311 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209052] ROM | 1938 | The death of Alexandru Averescu. (La muerte de Alexandru Averescu)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209052
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 2 month = October year = 1938 }
+	name = "EVT_ROM_209052_NAME"
+	desc = "EVT_ROM_209052_DESC"
+	style = 2
+	Picture = "ROM19"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = sleepminister which = 110121 }
+		command = { type = sleepminister which = 110126 }
+		command = { type = sleepminister which = 110137 }
+		command = { type = sleepminister which = 110151 }
+		command = { type = sleepminister which = 110156 }
+		command = { type = sleepminister which = 110190 }
+		command = { type = sleepminister which = 110193 }
+		command = { type = dissent value = 1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329226] ROM | 1938 | German Occupation of Romania (Ocupación alemana de Rumania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329226
+	random = no
+	country = ROM
+	trigger = {
+			alliance = { country = GER country = ROM }
+			}
+	date = { day = 07 month = october year = 1938 }
+	offset = 10
+	deathdate = { day = 09 month = october year = 1945 }
+	name = "EVT_SHARED_00714_NAME"
+	desc = "EVT_SHARED_00714_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = relation which = GER value = 20 }
+		command = { trigger = { NOT = { technology = 6900 } } type = gain_tech which = 6900 }
+	   	command = { trigger = { NOT = { technology = 2650 } } type = gain_tech which = 2650 }
+	   	command = { trigger = { NOT = { technology = 2030 } } type = gain_tech which = 2030 }
+		command = { trigger = { NOT = { technology = 2040 } } type = gain_tech which = 2040 }
+		command = { trigger = { NOT = { technology = 6130 } } type = gain_tech which = 6130 }
+		command = { type = add_division value = light_armor when = 1 }
+		command = { type = construct which = flak where = 311 value = 4 }
+		command = { type = construct which = infrastructure where = 311 value = 20 }
+		command = { type = construct which = radar_station where = 311 value = 1 }
+		command = { trigger = { ai = no } type = metalpool value = -2000 }
+		command = { trigger = { ai = no } type = money value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209054] ROM | 1938 | The Vrancea earthquake. (El terremoto de Vrancea)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209054
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 10 month = November year = 1938 }
+	name = "EVT_ROM_209054_NAME"
+	desc = "EVT_ROM_209054_DESC"
+	style = 2
+	Picture = "ROM21"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = construct which = infrastructure where = 299 value = -5 }
+		command = { type = dissent value = 1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209001] ROM | 1939 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209001
+	random = no
+	country = ROM
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 6
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 6
+					}
+				dissent = 3
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = january year = 1939 }
+	offset = 20
+	deathdate = { day = 29 month = july year = 1939 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 110011 }
+		command = { type = headofgovernment which = 110021 }
+		command = { type = foreignminister which = 110037 }
+		command = { type = armamentminister which = 110054 }
+		command = { type = ministerofsecurity which = 110066 }
+		command = { type = ministerofintelligence which = 110080 }
+		command = { type = chiefofstaff which = 110089 }
+		command = { type = chiefofarmy which = 110099 }
+		command = { type = chiefofnavy which = 110107 }
+		command = { type = chiefofair which = 110010 }
+		command = { type = dissent value = -1 }
+		command = { type = sleepminister which = 110020 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209007] ROM | 1939 | War over Czechoslovakia (Guerra por Checoslovaquia)
+# Triggered by event 136014 in events/Minors/CZE_14-53.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209007
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00611_NAME"
+	desc = "EVT_SHARED_00611_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 95
+		command = { type = alliance which = CZE }
+		command = { type = war which = HUN }
+	}
+	action = {
+		name = "EVT_ROM_209007_A"
+		ai_chance = 5
+		command = { type = relation which = CZE value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209109] ROM | 1939 | Bitter Peace Negotiations with Romania (Negociaciones de la Paz Amarga con Rumania)
+# Triggered by event 150504 in events/GER/GER_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209109
+	country = ROM
+	name = EVT_ROM_209109_NAME
+	desc = EVT_ROM_209109_DESC
+	picture = "nwo/romanian_gains_in_ussr"
+	style = 1
+	action = {
+		name = EVT_ROM_209109_A
+		trigger = {
+			OR = {
+				control = { province = 238 data = -1 }
+				control = { province = 258 data = -1 }
+				control = { province = 248 data = -1 }
+				control = { province = 163 data = -1 }
+			}
+		}
+		command = { type = dissent value = -5 }
+		command = { type = sleepevent which = 150506 }
+		command = { type = sleepevent which = 150507 }
+	}
+	action = {
+		name = EVT_ROM_209109_B
+		trigger = {
+			NOT = {
+				control = { province = 238 data = -1 }
+				control = { province = 258 data = -1 }
+				control = { province = 248 data = -1 }
+				control = { province = 163 data = -1 }
+			}
+		}
+		command = { type = dissent value = -3 }
+		command = { type = sleepevent which = 150505 }
+		command = { type = sleepevent which = 150507 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209039] ROM | 1939 | The death of Miron Cristea. (La muerte de Miron Cristea)
+# Trigger event 209041 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209039
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 6 month = March year = 1939 }
+	name = "EVT_SHARED_00974_NAME"
+	desc = "EVT_ROM_209039_DESC"
+	style = 2
+	Picture = "ROM09"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 110021 }
+		command = { type = sleepminister which = 110020 }
+		command = { type = dissent value = 1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209040] ROM | 1939 | The death of Miron Cristea. (La muerte de Miron Cristea)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209040
+	random = no
+	country = ROM
+	trigger = {
+		exists = ROM
+		}
+	date = { day = 6 month = March year = 1939 }
+	name = "EVT_SHARED_00974_NAME"
+	desc = "EVT_ROM_209040_DESC"
+	style = 2
+	Picture = "ROM09"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = sleepminister which = 110020 }
+		command = { type = dissent value = 1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209002] ROM | 1939 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209002
+	random = no
+	country = ROM
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 6
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 6
+					}
+				dissent = 3
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = august year = 1939 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1939 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 110013 }
+		command = { type = headofgovernment which = 110002 }
+		command = { type = foreignminister which = 110039 }
+		command = { type = armamentminister which = 110055 }
+		command = { type = ministerofsecurity which = 110005 }
+		command = { type = ministerofintelligence which = 110081 }
+		command = { type = chiefofstaff which = 110090 }
+		command = { type = chiefofarmy which = 110101 }
+		command = { type = chiefofnavy which = 110009 }
+		command = { type = chiefofair which = 110010 }
+		command = { type = dissent value = -1 }
+		command = { type = sleepminister which = 110011 }
+		command = { type = sleepminister which = 110021 }
+		command = { type = sleepminister which = 110022 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209041] ROM | 1939 | The assassination of Armand Calinescu. (El asesinato de Armand Calinescu)
+# Triggered by event 209039 in events/Minors/ROM_36-44.txt
+# Trigger event 209042 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209041
+	random = no
+	country = ROM
+	trigger = {
+		event = 209039
+		}
+	date = { day = 21 month = September year = 1939 }
+	name = "EVT_ROM_209041_NAME"
+	desc = "EVT_ROM_209041_DESC"
+	style = 2
+	Picture = "ROM10"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 110022 }
+		command = { type = sleepminister which = 110021 }
+		command = { type = sleepminister which = 110064 }
+		command = { type = dissent value = 3 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209042] ROM | 1939 | Constantin Argetoianu takes power. (Constantin Argetoianu toma el poder)
+# Triggered by event 209041 in events/Minors/ROM_36-44.txt
+# Trigger event 209043 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209042
+	random = no
+	country = ROM
+	trigger = {
+		event = 209041
+		}
+	date = { day = 28 month = September year = 1939 }
+	name = "EVT_ROM_209042_NAME"
+	desc = "EVT_ROM_209042_DESC"
+	style = 2
+	Picture = "ROM11"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 110023 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209043] ROM | 1939 | Gheorghe Tatarescu takes power. (Gheorghe Tatarescu toma el poder)
+# Triggered by event 209042 in events/Minors/ROM_36-44.txt
+# Trigger event 209044 in events/Minors/ROM_36-44.txt
+# Trigger event 209045 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209043
+	random = no
+	country = ROM
+	trigger = {
+		event = 209042
+		}
+	date = { day = 24 month = November year = 1939 }
+	name = "EVT_ROM_209043_NAME"
+	desc = "EVT_ROM_209043_DESC"
+	style = 2
+	Picture = "ROM12"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 110002 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209051] ROM | 1939 | The Jilava Massacre. (La masacre de Jilava)
+# Triggered by event 209050 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209051
+	random = no
+	country = ROM
+	trigger = {
+		event = 209050
+		}
+	date = { day = 26 month = November year = 1939 }
+	name = "EVT_SHARED_00975_NAME"
+	desc = "EVT_ROM_209051_DESC"
+	style = 2
+	Picture = "ROM16"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = sleepminister which = 110022 }
+		command = { type = sleepminister which = 110006 }
+		command = { type = sleepminister which = 110021 }
+		command = { type = sleepminister which = 110064 }
+		command = { type = sleepminister which = 110198 }
+		command = { type = dissent value = 2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209012] ROM | 1940 | The Second Vienna Award (El Segundo Arbitraje de Viena)
+# Triggered by event 150055 in events/GER/GER_38-40.txt
+# Trigger event 159021 in events/Minors/HUN_38-90.txt
+# Trigger event 159022 in events/Minors/HUN_38-90.txt
+# Trigger event 329574 in events/AI/BUL_AI.txt
+# Trigger event 329637 in events/AI/HUN_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+    id = 209012
+    random = no
+    country = ROM
+    name = "EVT_ROM_209012_NAME"
+    desc = "EVT_ROM_209012_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+    action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 99
+		command = { type = relation which = HUN value = 20 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = secedeprovince which = HUN value = 288 }
+		command = { type = secedeprovince which = HUN value = 296 }
+		command = { type = secedeprovince which = HUN value = 292 }
+		command = { type = secedeprovince which = HUN value = 293 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = trigger which = 159021 }
+    }
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 1
+		command = { type = leave_alliance }
+		command = { type = relation which = HUN value = -25 }
+		command = { type = relation which = GER value = -20 }
+		command = { type = trigger which = 159022 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209013] ROM | 1940 | Vienna Award: Axis Favors Romania (Arbitraje de Viena: Decisión favorable a Rumanía)
+# Triggered by event 150055 in events/GER/GER_38-40.txt
+# Trigger event 329676 in events/AI/ROM_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209013
+	random = no
+	country = ROM
+	name = "EVT_ROM_209013_NAME"
+	desc = "EVT_ROM_209013_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = GER value = 10 }
+		command = { type = relation which = HUN value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209014] ROM | 1940 | Declaration of War (Declaración de guerra)
+# Triggered by event 159022 in events/Minors/HUN_38-90.txt
+# Trigger event 209024 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209014
+	random = no
+	country = ROM
+	name = "EVT_ROM_209014_NAME"
+	desc = "EVT_ROM_209014_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = war which = HUN }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209017] ROM | 1940 | Bulgarian Claims on Dobruja (Reclamación búlgara sobre Dobruja)
+# Triggered by event 118000 in events/Minors/BUL.txt
+# Trigger event 118002 in events/Minors/BUL.txt
+# Trigger event 118001 in events/Minors/BUL.txt
+# Trigger event 329574 in events/AI/BUL_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209017
+	random = no
+	country = ROM
+	name = "EVT_SHARED_00476_NAME"
+	desc = "EVT_SHARED_00476_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 98
+		command = { type = secedeprovince which = BUL value = 307 }
+		command = { type = construct which = naval_base where = 310 value = 1 }
+		command = { type = construct which = naval_base where = 307 value = -2 }
+		command = { type = dissent value = 2 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = trigger which = 118002 }
+	}
+	action_b = {
+		name = "ACTION_NAME_REFUSE_PEACE"
+		ai_chance = 2
+		command = { type = leave_alliance }
+		command = { type = peace which = ENG value = 1 }
+		command = { type = peace which = USA value = 1 }
+		command = { type = peace which = CAN value = 1 }
+		command = { type = peace which = MEX value = 1 }
+		command = { type = peace which = VEN value = 1 }
+		command = { type = peace which = PAN value = 1 }
+		command = { type = peace which = LIB value = 1 }
+		command = { type = peace which = PHI value = 1 }
+		command = { type = peace which = JAP value = 1 }
+		command = { type = peace which = SOV value = 1 }
+		command = { type = peace which = CHI value = 1 }
+		command = { type = peace which = CHC value = 1 }
+		command = { type = peace which = CSX value = 1 }
+		command = { type = peace which = CGX value = 1 }
+		command = { type = peace which = CXB value = 1 }
+		command = { type = peace which = SIK value = 1 }
+		command = { type = peace which = CYN value = 1 }
+		command = { type = end_guarantee which = SOV where = ROM }
+		command = { type = end_guarantee which = GER where = ROM }
+		command = { type = set_relation which = BUL value = -150 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = -10 }
+		command = { type = trigger which = 118001 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209046] ROM | 1940 | National Legionary State. (Estado Nacional Legionario)
+# Triggered by event 209045 in events/Minors/ROM_36-44.txt
+# Trigger event 209047 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209046
+	random = no
+	country = ROM
+	name = "EVT_ROM_209046_NAME"
+	desc = "EVT_ROM_209046_DESC"
+	style = 2
+	picture = "Minors/national_legionary_state"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 110025 }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209044] ROM | 1940 | Ion Gigurtu takes power. (Ion Gigurtu toma el poder)
+# Triggered by event 209043 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209044
+	random = no
+	country = ROM
+	trigger = {
+		event = 209043
+		}
+	date = { day = 4 month = July year = 1940 }
+	name = "EVT_ROM_209044_NAME"
+	desc = "EVT_ROM_209044_DESC"
+	style = 2
+	Picture = "ROM13"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 110024 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209003] ROM | 1940 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209003
+	random = no
+	country = ROM
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = GER
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 4 month = september year = 1940 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1944 }
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 90
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 110014 }
+		command = { type = headofgovernment which = 110025 }
+		command = { type = foreignminister which = 110041 }
+		command = { type = armamentminister which = 110057 }
+		command = { type = ministerofsecurity which = 110069 }
+		command = { type = ministerofintelligence which = 110082 }
+		command = { type = chiefofstaff which = 110091 }
+		command = { type = chiefofarmy which = 110102 }
+		command = { type = chiefofair which = 110113 }
+		command = { type = dissent value = -3 }
+		command = { type = sleepminister which = 110011 }
+		command = { type = sleepminister which = 110021 }
+		command = { type = sleepminister which = 110022 }
+		command = { type = sleepminister which = 110023 }
+		command = { type = sleepminister which = 110020 }
+		command = { type = sleepminister which = 110019 }
+		command = { type = sleepminister which = 110063 }
+		}
+	action_b = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 10
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209045] ROM | 1940 | The abdication of King Carol II. (La abdicación del rey Carlos II)
+# Triggered by event 209043 in events/Minors/ROM_36-44.txt
+# Trigger event 209046 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209045
+	random = no
+	country = ROM
+	trigger = {
+		event = 209043
+		}
+	date = { day = 7 month = September year = 1940 }
+	name = "EVT_ROM_209045_NAME"
+	desc = "EVT_ROM_209045_DESC"
+	style = 2
+	Picture = "ROM14"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = set_domestic which = freedom value = 2 }
+		command = { type = headofstate which = 110014 }
+		command = { type = sleepminister which = 110001 }
+		command = { type = sleepminister which = 110011 }
+		command = { type = sleepminister which = 110012 }
+		command = { type = dissent value = 2 }
+		command = { type = trigger which = 209046 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209047] ROM | 1940 | The Jilava Massacre. (La masacre de Jilava)
+# Triggered by event 209046 in events/Minors/ROM_36-44.txt
+# Trigger event 209055 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209047
+	random = no
+	country = ROM
+	trigger = {
+		event = 209046
+		}
+	date = { day = 26 month = November year = 1940 }
+	name = "EVT_SHARED_00975_NAME"
+	desc = "EVT_ROM_209047_DESC"
+	style = 2
+	Picture = "ROM16"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = sleepminister which = 110022 }
+		command = { type = sleepminister which = 110006 }
+		command = { type = dissent value = 2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209056] ROM | 1941 | Diplomatic Talks: Romania (Negociaciones con Rumanía)
+# Triggered by event 143171 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209056
+	random = no
+	country = ROM
+	name = EVT_SHARED_00411_NAME
+	desc = EVT_SHARED_00410_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = { trigger = { NOT = { army = 20 } }
+		ai_chance = 5
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 20 NOT = { army = 30 } alliance = { country = BUL country = GER } }
+		ai_chance = 20
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 20 NOT = { army = 30 } NOT = { alliance = { country = BUL country = GER } } }
+		ai_chance = 40
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 30 NOT = { army = 40 } alliance = { country = BUL country = GER } }
+		ai_chance = 40
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 30 NOT = { army = 40 } NOT = { alliance = { country = BUL country = GER } } }
+		ai_chance = 80
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 40 }
+		ai_chance = 900
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = {
+		ai_chance = 50
+		name = ACTION_NAME_NEUTRAL
+		command = { type = relation which = ENG value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [209055] ROM | 1941 | Legionnaires' rebellion and Bucharest pogrom. (La rebelión de los legionarios y el pogromo de Bucarest)
+# Triggered by event 209047 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209055
+	random = no
+	country = ROM
+	trigger = {
+		event = 209047
+		}
+	date = { day = 21 month = January year = 1941 }
+	name = "EVT_ROM_209055_NAME"
+	desc = "EVT_ROM_209055_DESC"
+	style = 2
+	Picture = "ROM22"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = sleepminister which = 110074 }
+		command = { type = sleepminister which = 110018 }
+		command = { type = sleepminister which = 110030 }
+		command = { type = sleepminister which = 110048 }
+		command = { type = dissent value = 2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209004] ROM | 1944 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 209004
+	random = no
+	country = ROM
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		Incabinet = 110025
+		atwar = yes
+		control = { province = 626 data = SOV }
+		control = { province = 304 data = SOV }
+		control = { province = 242 data = SOV }
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = january year = 1944 }
+	offset = 20
+	deathdate = { day = 29 month = july year = 1944 }
+	action_a = {
+		ai_chance = 75
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 110014 }
+		command = { type = headofgovernment which = 110026 }
+		command = { type = foreignminister which = 110044 }
+		command = { type = armamentminister which = 110059 }
+		command = { type = ministerofsecurity which = 110071 }
+		command = { type = ministerofintelligence which = 110079 }
+		command = { type = chiefofstaff which = 110093 }
+		command = { type = chiefofarmy which = 110103 }
+		command = { type = chiefofnavy which = 110109 }
+		command = { type = chiefofair which = 110114 }
+		command = { type = dissent value = -1 }
+		command = { type = sleepteam which = 110010 }
+		command = { type = sleepminister which = 110025 }
+		}
+	action_b = {
+		ai_chance = 25
+		name = "ACTION_NAME_WAR"
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [209108] ROM | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 209108
+	country = ROM
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 110013 }
+		command = { type = headofgovernment which = 110027 }
+		command = { type = foreignminister which = 110045 }
+		command = { type = armamentminister which = 110060 }
+		command = { type = ministerofsecurity which = 110073 }
+		command = { type = ministerofintelligence which = 110081 }
+		command = { type = chiefofstaff which = 110094 }
+		command = { type = chiefofarmy which = 110104 }
+		command = { type = chiefofnavy which = 110110 }
+		command = { type = chiefofair which = 110115 }
+	}
+}

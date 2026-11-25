@@ -1,0 +1,524 @@
+# ============================================================================
+# File: events/Minors/RUS_14-91.txt (15 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [231133] RUS | 1914 | Spirit of 1914 (Espíritu de 1914)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231133
+	country = RUS
+	random = no
+	trigger = {
+	war = {country = U08}
+	}
+	name = "EVT_SHARED_01070_NAME"
+	desc = "EVT_SHARED_01070_DESC"
+	style = 2
+	picture = "Minors/spirt14rus"
+	date = { day = 1 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 6 month = september year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { type = manpowerpool value = 5000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211054] RUS | 1914 | Russian Military Collapse (Colapso militar de Rusia)
+# Trigger event 211004 in events/Minors/RUS_Decisions.txt
+# Trigger event 243132 in events/Minors/U08_14-18.txt
+# Trigger event 244038 in events/Minors/U09.txt
+# Trigger event 243091 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 211054
+   country = RUS
+	trigger = {
+		random = 25
+		war = {country = U08 country = RUS }
+		control = { province = 553 data = -2 }
+		control = { province = 572 data = -2 }
+		control = { province = 663 data = -2 }
+		lost_national = { value = 10 }
+	}
+	name = "EVT_RUS_211054_NAME"
+	desc = "EVT_RUS_211054_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = december year = 1914 }
+	offset = 7
+	deathdate = { day = 15 month = november year = 1925 }
+	action = {
+		name = "ACTION_NAME_SURRENDER"
+		command = { trigger = {
+					participant = { country = RUS value = 1 }
+					alliance = { country = RUS country = USA }
+					NOT = {
+						alliance = { country = RUS country = FRA }
+						alliance = { country = RUS country = ENG } } }
+				type = alliance_leader which = USA where = 0 }
+		command = { trigger = {
+					participant = { country = RUS value = 1 }
+					alliance = { country = RUS country = ITA }
+					NOT = {
+						alliance = { country = RUS country = FRA }
+						alliance = { country = RUS country = ENG }
+						alliance = { country = RUS country = USA } } }
+				type = alliance_leader which = ITA where = 0 }
+		command = { trigger = {
+					participant = { country = RUS value = 1 }
+					alliance = { country = RUS country = ROM }
+					NOT = {
+						alliance = { country = RUS country = FRA }
+						alliance = { country = RUS country = ENG }
+						alliance = { country = RUS country = USA }
+						alliance = { country = RUS country = ITA } } }
+				type = alliance_leader which = ROM where = 0 }
+		command = { trigger = {
+					participant = { country = RUS value = 1 }
+					alliance = { country = RUS country = GRE }
+					NOT = {
+						alliance = { country = RUS country = FRA }
+						alliance = { country = RUS country = ENG }
+						alliance = { country = RUS country = USA }
+						alliance = { country = RUS country = ITA }
+						alliance = { country = RUS country = ROM } } }
+				type = alliance_leader which = GRE where = 0 }
+		command = { type = dissent value = 10 }
+		command = { trigger = { war = { country = U08 country = RUS } } type = trigger which = 243132 }
+		command = { trigger = { war = { country = U09 country = RUS } } type = trigger which = 244038 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = U08 value = 1 }
+		command = { type = peace which = U09 value = 1 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE_PEACE"
+		command = { type = dissent value = 30 }
+		command = { type = sleepevent which = 243091 }
+		command = { type = sleepevent which = 211068 }
+		command = { type = sleepevent which = 211069 }
+		command = { type = strength which = land when = 1 where = 0 value = -0.15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211048] RUS | 1915 | Poland Occupied by Enemy Forces (Polonia bajo ocupación enemiga)
+# Triggered by event 211008 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211048
+	country = RUS
+	persistent = yes
+	trigger = {
+		atwar = yes
+		event = 211008
+		NOT = { control = { province = 232 data = -3 } }
+	}
+	name = "EVT_RUS_211048_NAME"
+	desc = "EVT_RUS_211048_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1915 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211049] RUS | 1915 | Belarus Occupied by Enemy Forces (Bielorrusia bajo ocupación enemiga)
+# Triggered by event 211010 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211049
+	country = RUS
+	persistent = yes
+	trigger = {
+		atwar = yes
+		event = 211010
+		NOT = { control = { province = 599 data = -1 } }
+	}
+	name = "EVT_RUS_211049_NAME"
+	desc = "EVT_RUS_211049_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1915 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211050] RUS | 1915 | Latvia Occupied by Enemy Forces (Letonia bajo ocupación enemiga)
+# Triggered by event 211009 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211050
+	country = RUS
+	persistent = yes
+	trigger = {
+		atwar = yes
+		event = 211009
+		NOT = { control = { province = 264 data = -1 } }
+	}
+	name = "EVT_RUS_211050_NAME"
+	desc = "EVT_RUS_211050_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1915 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211057] RUS | 1915 | Red Agitation (Agitación roja)
+# ----------------------------------------------------------------------------
+event = {
+	country = RUS
+	id = 211057
+	persistent = yes
+	random = no
+	style = 2
+	trigger = {
+		war = { country = U08  country = RUS }
+		alliance = { country = FRA  country = RUS }
+	}
+	name = "EVT_RUS_211057_NAME"
+	desc = "EVT_RUS_211057_DESC"
+	picture = "GLOBAL/nicolausiifled"
+	date = { day = 0 month = january year = 1915 }
+	offset = 360
+	deathdate = { day = 0 month = july year = 1918 }
+	action_a = {
+		name = "ACTION_NAME_HURRAH"
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211070] RUS | 1915 | Great Britain Takes the Tsar in (Gran Bretaña acoge a la familia imperial)
+# Triggered by event 143428 in events/ENG/ENG_14-25.txt
+# ----------------------------------------------------------------------------
+event = {
+		id = 211070
+		country = RUS
+		name = "EVT_RUS_211070_NAME"
+		desc = "EVT_RUS_211070_DESC"
+		style = 2
+	picture = "GLOBAL/nicolausiifled"
+		action = {
+			name = "ACTION_NAME_GOOD"
+			command = { type = dissent value = -5 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [211071] RUS | 1915 | Protective Custody for the Tsar (Custodia preventiva para el zar)
+# Triggered by event 143428 in events/ENG/ENG_14-25.txt
+# ----------------------------------------------------------------------------
+event = {
+		id = 211071
+		country = RUS
+		name = "EVT_RUS_211071_NAME"
+		desc = "EVT_RUS_211071_DESC"
+		style = 2
+	picture = "GLOBAL/nicolausiifled"
+		action = {
+			name = ACTION_NAME_OK
+			command = { type = dissent value = 5 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [211072] RUS | 1915 | A Seat at the Peace Table (Un asiento en la mesa de negociaciones)
+# Triggered by event 243083 in events/Minors/U08_14-14.txt
+# Trigger event 243145 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+		id = 211072
+		country = RUS
+		trigger = {
+		event = 243083
+		}
+		name = "EVT_RUS_211072_NAME"
+		desc = "EVT_RUS_211072_DESC"
+		style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+		date = { day = 1 month = january year = 1915 }
+		offset = 30
+		deathdate = { day = 29 month = december year = 1920 }
+		action = {
+		name = ACTION_NAME_OK
+		command = { type =	addcore which = 222 where = RUS }
+		command = { type =	addcore which = 181 where = RUS }
+		command = { type =	addcore which = 182 where = RUS }
+		command = { type =	addcore which = 183 where = RUS }
+		command = { type =	addcore which = 184 where = RUS }
+		command = { type =	addcore which = 185 where = RUS }
+		command = { type =	addcore which = 261 where = RUS }
+		command = { type = trigger which = 243145}
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [211064] RUS | 1917 | General Strike in Petrograd (Huelga general en Petrogrado)
+# Trigger event 211020 in events/Minors/RUS_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211064
+	country = RUS
+	trigger = {
+		atwar = yes
+		flag = force_rus_rev
+	}
+	name = "EVT_SHARED_00102_NAME"
+	desc = "EVT_SHARED_00102_DESC"
+	style = 2
+	picture = "GLOBAL/strikesruspetro"
+	date = { day = 8 month = march year = 1917 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211059] RUS | 1936 | The Russian Republic Established (Proclamación de la República de Rusia)
+# Triggered by event 223282 in events/SOV/SOV_36-38.txt
+# Trigger event 207037 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211059
+	country = RUS
+	save_date = yes
+	name = EVT_RUS_211059_NAME
+	desc = EVT_RUS_211059_DESC
+	picture = "nwo/republics_of_ussr"
+	style = 1
+	trigger = {
+		flag = novus_ordo_seclorum
+		event = { id = 223282 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = set_domestic which = free_market value = 8 }
+		command = { type = set_domestic which = freedom value = 7 }
+		command = { type = set_domestic which = interventionism value = 0 }
+		command = { type = headofstate which = 515013 }
+		command = { type = headofgovernment which = 515068 }
+		command = { type = foreignminister which = 515003 }
+		command = { type = armamentminister which = 515029 }
+		command = { type = ministerofsecurity which = 515031 }
+		command = { type = ministerofintelligence which = 515037 }
+		command = { type = chiefofstaff which = 515007 }
+		command = { type = chiefofarmy which = 515008 }
+		command = { type = chiefofnavy which = 515058 }
+		command = { type = chiefofair which = 515067 }
+		command = { type = secederegion which = ROM value = "Romania" when = 1 }
+		command = { type = secederegion which = U30 value = "Romania" when = 1 }
+		command = { type = independence which = LIT value = 1 }
+		command = { type = independence which = LAT value = 1 }
+		command = { type = independence which = EST value = 1 }
+		command = { type = independence which = BLR value = 1 }
+		command = { type = independence which = UKR value = 1 }
+		command = { type = independence which = AZB value = 1 }
+		command = { type = independence which = GEO value = 1 }
+		command = { type = independence which = ARM value = 1 }
+		command = { type = independence which = KAZ value = 1 }
+		command = { type = independence which = TRK value = 1 }
+		command = { type = independence which = UZB value = 1 }
+		command = { type = independence which = KYG value = 1 }
+		command = { type = independence which = TAJ value = 1 }
+		command = { type = secedeprovince which = UKR value = 215 when = 1 }
+		command = { type = secedearea which = GEO value = "Georgia" when = 1 }
+		command = { type = secedeprovince which = GEO value = 707 when = 1 }
+		command = { type = secedeprovince which = GEO value = 710 when = 1 }
+		command = { type = secederegion which = KAZ value = "Kazakstan" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211060] RUS | 1936 | Restoration of the Russian Empire (Restauración del Imperio Ruso)
+# Triggered by event 223282 in events/SOV/SOV_36-38.txt
+# Trigger event 207037 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211060
+	country = RUS
+	save_date = yes
+	name = EVT_RUS_211060_NAME
+	desc = EVT_RUS_211060_DESC
+	picture = "nwo/empire_of_russia"
+	style = 1
+	trigger = {
+		flag = novus_ordo_seclorum
+		event = { id = 223282 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = set_domestic which = free_market value = 8 }
+		command = { type = set_domestic which = freedom value = 5 }
+		command = { type = set_domestic which = interventionism value = 2 }
+		command = { type = headofstate which = 515012 }
+		command = { type = headofgovernment which = 515002 }
+		command = { type = foreignminister which = 515022 }
+		command = { type = armamentminister which = 515023 }
+		command = { type = ministerofsecurity which = 515033 }
+		command = { type = ministerofintelligence which = 515040 }
+		command = { type = chiefofstaff which = 515044 }
+		command = { type = chiefofarmy which = 515057 }
+		command = { type = chiefofnavy which = 515063 }
+		command = { type = chiefofair which = 515066 }
+		command = { type = secederegion which = ROM value = "Romania" when = 1 }
+		command = { type = secederegion which = U30 value = "Romania" when = 1 }
+		command = { type = independence which = LIT value = 1 }
+		command = { type = independence which = LAT value = 1 }
+		command = { type = independence which = EST value = 1 }
+		command = { type = make_puppet which = LIT }
+		command = { type = make_puppet which = LAT }
+		command = { type = make_puppet which = EST }
+		command = { type = alliance which = LIT }
+		command = { type = alliance which = LAT }
+		command = { type = alliance which = EST }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211061] RUS | 1936 | Partition and Military Occupation of Russia (Partición y ocupación militar de Rusia)
+# Triggered by event 223282 in events/SOV/SOV_36-38.txt
+# Trigger event 207037 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211061
+	country = RUS
+	save_date = yes
+	name = EVT_RUS_211061_NAME
+	desc = EVT_RUS_211061_DESC
+	picture = "nwo/americans_in_vladivostok"
+	style = 1
+	trigger = {
+		flag = novus_ordo_seclorum
+		event = { id = 223282 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secederegion which = USA value = "Urals" when = 1 }
+		command = { type = secederegion which = USA value = "Northern Permafrost" when = 1 }
+		command = { type = secederegion which = USA value = "Tomsk" when = 1 }
+		command = { type = secederegion which = USA value = "Novosibirsk" when = 1 }
+		command = { type = secederegion which = USA value = "Krasnoyarsk" when = 1 }
+		command = { type = secederegion which = USA value = "Irkutsk" when = 1 }
+		command = { trigger = { OR = { guarantee = { country = USA country = JAP } puppet = { country = JAP country = USA } alliance = { country = USA country = JAP } } } type = secedearea which = JAP value = "Primorski" when = 1 }
+		command = { trigger = { OR = { guarantee = { country = USA country = JAP } puppet = { country = JAP country = USA } alliance = { country = USA country = JAP } } } type = secedearea which = JAP value = "Sakhalin_Kuriles" when = 1 }
+		command = { type = secederegion which = USA value = "Far East Siberia" when = 1 }
+		command = { type = secederegion which = ROM value = "Romania" when = 1 }
+		command = { type = secederegion which = U30 value = "Romania" when = 1 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = set_domestic which = free_market value = 8 }
+		command = { type = set_domestic which = freedom value = 6 }
+		command = { type = set_domestic which = interventionism value = 0 }
+		command = { type = headofstate which = 515013 }
+		command = { type = headofgovernment which = 515068 }
+		command = { type = foreignminister which = 515003 }
+		command = { type = armamentminister which = 515029 }
+		command = { type = ministerofsecurity which = 515031 }
+		command = { type = ministerofintelligence which = 515037 }
+		command = { type = chiefofstaff which = 515007 }
+		command = { type = chiefofarmy which = 515008 }
+		command = { type = chiefofnavy which = 515058 }
+		command = { type = chiefofair which = 515067 }
+		command = { type = independence which = LIT value = 1 }
+		command = { type = independence which = LAT value = 1 }
+		command = { type = independence which = EST value = 1 }
+		command = { type = independence which = BLR value = 1 }
+		command = { type = independence which = UKR value = 1 }
+		command = { type = independence which = AZB value = 1 }
+		command = { type = independence which = GEO value = 1 }
+		command = { type = independence which = ARM value = 1 }
+		command = { type = independence which = KAZ value = 1 }
+		command = { type = independence which = TRK value = 1 }
+		command = { type = independence which = UZB value = 1 }
+		command = { type = independence which = KYG value = 1 }
+		command = { type = independence which = TAJ value = 1 }
+		command = { type = secedeprovince which = UKR value = 215 when = 1 }
+		command = { type = secedearea which = GEO value = "Georgia" when = 1 }
+		command = { type = secedeprovince which = GEO value = 707 when = 1 }
+		command = { type = secedeprovince which = GEO value = 710 when = 1 }
+		command = { type = secederegion which = KAZ value = "Kazakstan" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211062] RUS | 1939 | NTS Assumes Power in Russia (El NTS asume el gobierno en Rusia)
+# Triggered by event 316239 in events/USA/USA_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211062
+	country = RUS
+	name = EVT_RUS_211062_NAME
+	desc = EVT_RUS_211062_DESC
+	picture = "nwo/national_alliance_of_russian_solidarists"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 75
+		command = { type = domestic which = political_left value = -1 }
+		command = { trigger = { NOT = { year = 1934 } } type = headofgovernment which = 515301 }
+		command = { trigger = { year = 1934 NOT = { year = 1954 } } type = headofgovernment which = 515303 }
+		command = { trigger = { year = 1954 } type = headofgovernment which = 515305 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211063] RUS | 1991 | Dissolution of the Soviet Union (Disolución de la Unión Soviética)
+# ----------------------------------------------------------------------------
+event = {
+	id = 211063
+	country = RUS
+	name = EVT_RUS_211063_NAME
+	desc = EVT_RUS_211063_DESC
+	picture = "nwo/end_of_ussr"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+		exists = SOV
+	}
+	date = { day = 20 month = december year = 1991 }
+	offset = 6
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -25 }
+		command = { type = inherit which = SOV value = 1 }
+	}
+}

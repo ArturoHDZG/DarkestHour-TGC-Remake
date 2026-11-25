@@ -1,0 +1,986 @@
+# ============================================================================
+# File: events/AI/ALL_AI.txt (16 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [231151] ALL | 1914 | AI_EVENT
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Triggered by event 244019 in events/Minors/U09.txt
+# Triggered by event 243083 in events/Minors/U08_14-14.txt
+# Triggered by event 243091 in events/Minors/U08_14-14.txt
+# Triggered by event 223425 in events/SOV/SOV_14-33.txt
+# Triggered by event 223426 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 231151
+	persistent = yes
+	trigger = {
+		atwar = no
+		or = {
+			and = {
+				or = {
+					event = 147311
+					event = 243101
+					event = 243107
+					event = 243116
+				}
+				event = 244019
+			}
+			and = {
+				event = 243083
+				or = {
+					event = 243091
+					event = 223425
+					event = 223426
+				}
+			}
+		}
+		NOT = { local_flag = AAR_Interwar_AI_init }
+		ai = yes
+	}
+	date = { day = 1 month = 1 year = 1914 }
+	offset = 30
+	deathdate = { day = 29 month = 10 year = 1935 }
+	name = AI_EVENT
+	action = {
+		ai_chance = 100
+		trigger = {
+			NOT = { OR = {
+				country = GER
+				country = ENG
+				country = FRA
+				country = USA
+				country = JAP
+				country = ITA
+				country = CZE
+				country = SOV
+			} }
+		}
+		command = { type = local_setflag which = AAR_Interwar_AI_init }
+		command = { type = ai which = "AAR/economic/aar-province-construction-regular.ai" }
+		command = { type = local_setflag which = AAR_behavior_regular }
+		command = { type = ai which = "AAR/economic/aar-build_industry-disable.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_airbase-medium.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_navalbase-small.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_landfort-small.ai" }
+	}
+	action = {
+		ai_chance = 100
+		trigger = {
+			OR = {
+				country = GER
+				country = U08
+			}
+		}
+		command = { type = local_setflag which = AAR_Interwar_AI_init }
+		command = { type = ai which = "AAR/economic/aar-province-construction-pacifist.ai" }
+		command = { type = local_setflag which = AAR_behavior_pacifist }
+		command = { type = ai which = "AAR/economic/aar-build_landfort-GER.ai" }
+		command = { type = ai which = "AAR/unit-construction/aar-buildqueue-GER-interwar.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_navalbase-medium.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_industry.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_airbase-big.ai" }
+	}
+	action = {
+		ai_chance = 100
+		trigger = {
+			country = ENG
+		}
+		command = { type = local_setflag which = AAR_Interwar_AI_init }
+		command = { type = ai which = "AAR/economic/aar-province-construction-pacifist.ai" }
+		command = { type = local_setflag which = AAR_behavior_pacifist }
+		command = { type = ai which = "AAR/unit-construction/aar-buildqueue-ENG-interwar.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_industry-disable.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_navalbase-medium.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_airbase-big.ai" }
+	}
+	action = {
+		ai_chance = 100
+		trigger = {
+			country = FRA
+		}
+		command = { type = local_setflag which = AAR_Interwar_AI_init }
+		command = { type = ai which = "AAR/economic/aar-build_airbase-medium.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_navalbase-medium.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_landfort-big.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_industry-disable.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_landfort-toGER.ai" }
+		command = { type = ai which = "AAR/economic/aar-province-construction-pacifist.ai" }
+		command = { type = local_setflag which = AAR_behavior_pacifist }
+	}
+	action = {
+		ai_chance = 100
+		trigger = {
+			country = USA
+		}
+		command = { type = local_setflag which = AAR_Interwar_AI_init }
+		command = { type = ai which = "AAR/economic/aar-build_airbase-big.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_navalbase-big.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_industry-disable.ai" }
+		command = { type = ai which = "AAR/unit-construction/aar-buildqueue-USA-interwar.ai" }
+		command = { type = ai which = "AAR/economic/aar-province-construction-pacifist.ai" }
+		command = { type = local_setflag which = AAR_behavior_pacifist }
+	}
+	action = {
+		ai_chance = 100
+		trigger = {
+			country = JAP
+		}
+		command = { type = local_setflag which = AAR_Interwar_AI_init }
+		command = { type = ai which = "AAR/economic/aar-build_airbase-big.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_industry.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_navalbase-big.ai" }
+		command = { type = ai which = "AAR/unit-construction/aar-buildqueue-JAP-interwar-early.ai" }
+		command = { type = ai which = "AAR/economic/aar-province-construction-regular.ai" }
+		command = { type = local_setflag which = AAR_behavior_regular }
+	}
+	action = {
+		ai_chance = 100
+		trigger = {
+			country = ITA
+		}
+		command = { type = local_setflag which = AAR_Interwar_AI_init }
+		command = { type = ai which = "Majors/ITA/ITA_1936.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_airbase-medium.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_industry.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_navalbase-big.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_landfort-medium.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_landfort-ITA.ai" }
+		command = { type = ai which = "AAR/economic/aar-province-construction-regular.ai" }
+		command = { type = local_setflag which = AAR_behavior_regular }
+		command = { type = ai which = "AAR/unit-construction/aar-buildqueue-ITA-interwar.ai" }
+	}
+	action = {
+		ai_chance = 100
+		trigger = {
+			country = CZE
+		}
+		command = { type = local_setflag which = AAR_Interwar_AI_init }
+		command = { type = ai which = "AAR/economic/aar-build_airbase-medium.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_landfort-medium.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_landfort-toGER.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_industry-disable.ai" }
+		command = { type = ai which = "AAR/economic/aar-province-construction-pacifist.ai" }
+		command = { type = local_setflag which = AAR_behavior_pacifist }
+	}
+	action = {
+		ai_chance = 100
+		trigger = {
+			OR = {
+				country = SOV
+				country = RUS
+			}
+		}
+		command = { type = local_setflag which = AAR_Interwar_AI_init }
+		command = { type = ai which = "AAR/economic/aar-build_airbase-medium.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_industry.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_landfort-small.ai" }
+		command = { type = ai which = "AAR/economic/aar-build_landfort-SOV.ai" }
+		command = { type = ai which = "AAR/economic/aar-province-construction-pacifist.ai" }
+		command = { type = local_setflag which = AAR_behavior_pacifist }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231023] ALL | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 231023
+	persistent = yes
+	date = { day = 1 month = october year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1937 }
+	trigger = {
+		not = { local_flag = depression }
+		not = { local_flag = depression_over }
+		OR = {
+			money = 5000
+			AND = {
+				NOT = { IC = 80 }
+				money = 3000
+			}
+			AND = {
+				NOT = { IC = 50 }
+				money = 2000
+			}
+		}
+		ai = yes
+		atwar = no
+	}
+	name = "AI_EVENT"
+	action = {
+		ai_chance = 25
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 15 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 50 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = air_base where = -1 value = 1 }
+		command = { trigger = { IC = 15 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { money = 4000 IC = 50 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { money = 5000 IC = 80 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -4 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -1 value = 1 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = dissent value = -1 }
+		command = { trigger = { IC = 80 } type = money value = -5000 }
+		command = { trigger = { IC = 50 NOT = { IC = 80 } } type = money value = -3000 }
+		command = { trigger = { IC = 15 NOT = { IC = 50 } } type = money value = -2000 }
+		command = { trigger = { NOT = { IC = 15 } } type = money value = -750 }
+	}
+	action = {
+		ai_chance = 50
+		trigger = {
+			or = {
+				government = fascist
+				local_flag = loser
+			}
+		}
+		command = { type = dissent value = -1 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 15 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 50 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 80 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 80 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = air_base where = -1 value = 1 }
+		command = { trigger = { IC = 15 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 50 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 80 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 80 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -1 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -4 value = 1 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { trigger = { IC = 80 } type = money value = -5000 }
+		command = { trigger = { IC = 50 NOT = { IC = 80 } } type = money value = -3000 }
+		command = { trigger = { IC = 15 NOT = { IC = 50 } } type = money value = -2000 }
+		command = { trigger = { NOT = { IC = 15 } } type = money value = -750 }
+	}
+	action = {
+		ai_chance = 50
+		trigger = {
+			or = {
+				government = fascist
+				local_flag = loser
+			}
+		}
+		command = { type = dissent value = -1 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 15 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 50 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 80 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 15 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 50 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 80 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -1 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -4 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -4 value = 1 }
+		command = { trigger = { IC = 80 } type = money value = -5000 }
+		command = { trigger = { IC = 50 NOT = { IC = 80 } } type = money value = -3000 }
+		command = { trigger = { IC = 15 NOT = { IC = 50 } } type = money value = -2000 }
+		command = { trigger = { NOT = { IC = 15 } } type = money value = -750 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231024] ALL | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 231024
+	persistent = yes
+	date = { day = 1 month = october year = 1914 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1937 }
+	trigger = {
+		atwar = no
+		ai = yes
+	}
+	name = "AI_EVENT"
+	action = {
+		ai_chance = 25
+		trigger = {
+			not = { government = fascist }
+			not = { local_flag = loser }
+		}
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 50 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 15 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 50 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 80 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 80 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -1 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -4 value = 1 }
+		command = { trigger = { or = {
+			and = {
+				government = democratic
+				not = { policy = { type = free_market value = 7 } }
+			}
+			and = {
+				government = fascist
+				not = { policy = { type = free_market value = 4 } }
+			}
+			and = {
+				local_flag = loser
+				not = { policy = { type = free_market value = 5 } }
+			}
+		} } type = domestic which = free_market value = 1 }
+		command = { type = dissent value = -1 }
+	}
+	action = {
+		ai_chance = 50
+		trigger = {
+			or = {
+				government = fascist
+				local_flag = loser
+			}
+		}
+		command = { type = dissent value = -1 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 15 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 50 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 80 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 80 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 15 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 50 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 80 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 80 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 80 } type = construct which = air_base where = -1 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -1 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -4 value = 1 }
+		command = { trigger = { or = {
+			and = {
+				government = democratic
+				not = { policy = { type = free_market value = 7 } }
+			}
+			and = {
+				government = fascist
+				not = { policy = { type = free_market value = 4 } }
+			}
+			and = {
+				local_flag = loser
+				not = { policy = { type = free_market value = 5 } }
+			}
+		} } type = domestic which = free_market value = 1 }
+	}
+	action = {
+		ai_chance = 50
+		trigger = {
+			or = {
+				government = fascist
+				local_flag = loser
+			}
+		}
+		command = { type = dissent value = -1 }
+		command = { trigger = { IC = 50 } type = construct which = ic where = -1 value = 1 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 15 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 50 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { IC = 80 } type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 15 } type = construct which = air_base where = -1 value = 1 }
+		command = { trigger = { IC = 50 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 80 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { IC = 80 } type = construct which = air_base where = -4 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -4 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -4 value = 1 }
+		command = { trigger = { or = { country = JAP country = JAP } } type = construct which = naval_base where = -1 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231154] ALL | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 231154
+	random = no
+	persistent = yes
+	date = { day = 1 month = 10 year = 1914 }
+	offset = 30
+	deathdate = { day = 29 month = 11 year = 1935 }
+	name = AI_EVENT
+	trigger = {
+		local_flag = AAR_Interwar_AI_init
+		NOT = { local_flag = AAR_Interwar_AI_1936_done }
+		NOT = { local_flag = AAR_Interwar_AI_1936 }
+		ai = yes
+		OR = {
+			AND = {
+				NOT = { local_flag = AAR_Interwar_AI_espionage_communist }
+				OR = {
+					participant = { value = 3 }
+					government = communist
+				}
+				NOT = { participant = { value = 1 } }
+				NOT = { participant = { value = 2 } }
+			}
+			AND = {
+				NOT = { local_flag = AAR_Interwar_AI_espionage_democratic }
+				OR = {
+					participant = { value = 1 }
+					government = democratic
+				}
+				NOT = { participant = { value = 2 } }
+				NOT = { participant = { value = 3 } }
+			}
+			AND = {
+				NOT = { local_flag = AAR_Interwar_AI_espionage_fascist }
+				OR = {
+					participant = { value = 2 }
+					government = fascist
+				}
+				NOT = { participant = { value = 1 } }
+				NOT = { participant = { value = 3 } }
+			}
+		}
+	}
+	action = {
+		trigger = {
+			NOT = { local_flag = AAR_Interwar_AI_espionage_democratic }
+			OR = {
+				participant = { value = 1 }
+				government = democratic
+			}
+			NOT = { participant = { value = 2 } }
+			NOT = { participant = { value = 3 } }
+		}
+		command = { type = ai which = "AAR/espionage/aar-espionage-interwar-democratic.ai" }
+		command = { type = local_clrflag which = AAR_Interwar_AI_espionage_communist }
+		command = { type = local_clrflag which = AAR_Interwar_AI_espionage_fascist }
+		command = { type = local_setflag which = AAR_Interwar_AI_espionage_democratic }
+	}
+	action = {
+		trigger = {
+			NOT = { local_flag = AAR_Interwar_AI_espionage_fascist }
+			OR = {
+				participant = { value = 2 }
+				government = fascist
+			}
+			NOT = { participant = { value = 1 } }
+			NOT = { participant = { value = 3 } }
+		}
+		command = { type = ai which = "AAR/espionage/aar-espionage-interwar-fascist.ai" }
+		command = { type = local_clrflag which = AAR_Interwar_AI_espionage_democratic }
+		command = { type = local_clrflag which = AAR_Interwar_AI_espionage_communist }
+		command = { type = local_setflag which = AAR_Interwar_AI_espionage_fascist }
+	}
+	action = {
+		trigger = {
+			NOT = { local_flag = AAR_Interwar_AI_espionage_communist }
+			OR = {
+				participant = { value = 3 }
+				government = communist
+			}
+			NOT = { participant = { value = 1 } }
+			NOT = { participant = { value = 2 } }
+		}
+		command = { type = ai which = "AAR/espionage/aar-espionage-interwar-comintern.ai" }
+		command = { type = local_clrflag which = AAR_Interwar_AI_espionage_democratic }
+		command = { type = local_clrflag which = AAR_Interwar_AI_espionage_fascist }
+		command = { type = local_setflag which = AAR_Interwar_AI_espionage_communist }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231155] ALL | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 231155
+	random = no
+	persistent = yes
+	trigger = {
+		atwar = yes
+		local_flag = AAR_Interwar_AI_init
+		not = { local_flag = AAR_behavior_atwar }
+		NOT = { local_flag = AAR_Interwar_AI_1936_done }
+		NOT = { local_flag = AAR_Interwar_AI_1936 }
+		ai = yes
+	}
+	date = { day = 1 month = 10 year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = 09 year = 1935 }
+	name = AI_EVENT
+	action = {
+		command = { type = ai which = "AAR/economic/aar-province-construction-atwar.ai" }
+		command = { type = local_setflag which = AAR_behavior_atwar }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231156] ALL | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 231156
+	random = no
+	persistent = yes
+	trigger = {
+		atwar = no
+		local_flag = AAR_behavior_atwar
+		NOT = { local_flag = AAR_Interwar_AI_1936_done }
+		NOT = { local_flag = AAR_Interwar_AI_1936 }
+		ai = yes
+	}
+	date = { day = 1 month = 10 year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = 09 year = 1935 }
+	name = AI_EVENT
+	action = {
+		command = { trigger = { local_flag = AAR_behavior_pacifist } type = ai which = "AAR/economic/aar-province-construction-pacifist.ai" }
+		command = { trigger = { local_flag = AAR_behavior_regular } type = ai which = "AAR/economic/aar-province-construction-regular.ai" }
+		command = { trigger = { local_flag = AAR_behavior_gearing } type = ai which = "AAR/economic/aar-province-construction-gearing.ai" }
+		command = { type = local_clrflag which = AAR_behavior_atwar }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231161] ALL | 1914 | AI_EVENT
+# Triggered by event 243061 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 231161
+	random = no
+	persistent = no
+	trigger = {
+		atwar = no
+		event = 243061
+		or = {
+			country = U08
+			country = GER
+		}
+		NOT = { local_flag = AAR_Interwar_AI_1933_done }
+		NOT = { local_flag = AAR_Interwar_AI_1936_done }
+		ai = yes
+	}
+	date = { day = 1 month = 10 year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = 09 year = 1935 }
+	name = AI_EVENT
+	action = {
+		command = { type = ai which = "AAR/economic/aar-province-construction-regular.ai" }
+		command = { type = ai which = "AAR/unit-construction/aar-buildqueue-GER-interwar.ai" }
+		command = { type = local_clrflag which = AAR_behavior_pacifist }
+		command = { type = local_clrflag which = AAR_behavior_gearing }
+		command = { type = local_setflag which = AAR_behavior_regular }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231162] ALL | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 231162
+	random = no
+	persistent = no
+	trigger = {
+		atwar = no
+		or = {
+			country = U08
+			country = GER
+		}
+		year = 1931
+		NOT = { local_flag = AAR_Interwar_AI_1933_done }
+		NOT = { local_flag = AAR_Interwar_AI_1936_done }
+		ai = yes
+	}
+	date = { day = 1 month = 10 year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = 09 year = 1935 }
+	name = AI_EVENT
+	action = {
+		command = { type = ai which = "AAR/economic/aar-build-highttech.ai" }
+		command = { type = local_clrflag which = AAR_behavior_pacifist }
+		command = { type = local_clrflag which = AAR_behavior_regular }
+		command = { type = local_setflag which = AAR_behavior_gearing }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231160] ALL | 1920 | AI_EVENT
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Triggered by event 244019 in events/Minors/U09.txt
+# Triggered by event 243083 in events/Minors/U08_14-14.txt
+# Triggered by event 243091 in events/Minors/U08_14-14.txt
+# Triggered by event 223425 in events/SOV/SOV_14-33.txt
+# Triggered by event 223426 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 231160
+	persistent = yes
+	date = { day = 1 month = 1 year = 1920 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1933 }
+	trigger = {
+		atwar = yes
+		not = { atwar = U08 }
+		not = { atwar = GER }
+		not = { atwar = ENG }
+		not = { atwar = FRA }
+		not = { atwar = JAP }
+		not = { atwar = ITA }
+		or = {
+			war = { country = AUS }
+			war = { country = CZE }
+			war = { country = HUN }
+			war = { country = YUG }
+			war = { country = ROM }
+			war = { country = SER }
+		}
+		or = {
+			country = AUS
+			country = CZE
+			country = HUN
+			country = YUG
+			country = ROM
+			country = SER
+		}
+		or = {
+			and = {
+				or = {
+					event = 147311
+					event = 243101
+					event = 243107
+					event = 243116
+				}
+				event = 244019
+			}
+			and = {
+				event = 243083
+				or = {
+					event = 243091
+					event = 223425
+					event = 223426
+				}
+			}
+		}
+		local_flag = lon_member
+		random = 50
+	}
+	name = "AI_EVENT"
+	action = {
+		command = { trigger = { war = { country = AUS } } type = peace which = AUS value = 0 }
+		command = { trigger = { war = { country = CZE } } type = peace which = CZE value = 0 }
+		command = { trigger = { war = { country = HUN } } type = peace which = HUN value = 0 }
+		command = { trigger = { war = { country = YUG } } type = peace which = YUG value = 0 }
+		command = { trigger = { war = { country = ROM } } type = peace which = ROM value = 0 }
+		command = { trigger = { war = { country = SER } } type = peace which = SER value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231159] ALL | 1926 | AI_EVENT
+# Triggered by event 143393 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 231159
+	random = no
+	persistent = yes
+	name = "AI_EVENT"
+	action = {
+		command = { type = ai which = "AAR/national_behavior/Commonwealth.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231037] ALL | 1929 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 231037
+	name = "AI_EVENT"
+	trigger = {
+		ai = yes
+	}
+	date = { day = 2 month = june year = 1929 }
+	action = {  trigger = { country = USA }
+		command = { type = deactivate which = 6210 }
+		command = { type = deactivate which = 6560 }
+		command = { type = deactivate which = 6570 }
+		command = { type = deactivate which = 6390 }
+	}
+	action = {  trigger = { country = JAP }
+		command = { type = deactivate which = 6210 }
+		command = { type = deactivate which = 6560 }
+		command = { type = deactivate which = 6570 }
+		command = { type = deactivate which = 6010 }
+	}
+	action = {  trigger = { or = { country = GER country = U08 }}
+		command = { type = deactivate which = 6010 }
+		command = { type = deactivate which = 6560 }
+		command = { type = deactivate which = 6570 }
+		command = { type = deactivate which = 6390 }
+	}
+	action = {  trigger = { or = { country = SOV country = RUS country = CHI country = CHC }}
+		command = { type = deactivate which = 6010 }
+		command = { type = deactivate which = 6560 }
+		command = { type = deactivate which = 6210 }
+		command = { type = deactivate which = 6390 }
+	}
+	action = {  trigger = { not = { or = { country = USA country = GER country = U08 country = SOV country = RUS country = CHI country = CHC country = JAP }}}
+		command = { type = deactivate which = 6210 }
+		command = { type = deactivate which = 6570 }
+		command = { type = deactivate which = 6010 }
+		command = { type = deactivate which = 6390 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231157] ALL | 1932 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 231157
+	random = no
+	persistent = yes
+	trigger = {
+		or = {
+			country = AST
+			country = BEL
+			country = CZE
+			country = GER
+ 			country = HOL
+			country = ITA
+			country = NOR
+			country = NZL
+			country = SWE
+		}
+		NOT = { local_flag = AAR_Interwar_AI_1933 }
+		NOT = { local_flag = AAR_Interwar_AI_1933_done }
+		ai = yes
+	}
+	date = { day = 1 month = 10 year = 1932 }
+	offset = 30
+	deathdate = { day = 15 month = 11 year = 1932 }
+	name = AI_EVENT
+	action = {
+		command = { type = local_setflag which = AAR_Interwar_AI_1933 }
+		command = { trigger = { not = { IC = 10 } } type = ai which = "Minors/MIN_Or_Default.ai" }
+		command = { trigger = { IC = 10 } type = ai which = "Generic/default.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231158] ALL | 1932 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 231158
+	random = no
+	persistent = yes
+	trigger = {
+		local_flag = AAR_Interwar_AI_1933
+		NOT = { local_flag = AAR_Interwar_AI_1933_done }
+		ai = yes
+	}
+	date = { day = 1 month = 10 year = 1932 }
+	offset = 5
+	deathdate = { day = 29 month = 11 year = 1932 }
+	name = AI_EVENT
+	action = {
+		command = { type = local_clrflag which = AAR_Interwar_AI_1933 }
+		command = { type = local_setflag which = AAR_Interwar_AI_1933_done }
+		command = { trigger = { country = AST	} type = ai which = "Minors/AST_1933.ai" }
+		command = { trigger = { country = BEL	} type = ai which = "Minors/BEL_1933.ai" }
+		command = { trigger = { country = CZE	} type = ai which = "Minors/CZE_1933.ai" }
+		command = { trigger = { country = GER	} type = ai which = "Majors/GER/GER_1933.ai" }
+		command = { trigger = { country = HOL	} type = ai which = "Minors/HOL_1933.ai" }
+		command = { trigger = { country = ITA	} type = ai which = "Majors/ITA/ITA_1933.ai" }
+		command = { trigger = { country = NOR	} type = ai which = "Minors/NOR_1933.ai" }
+		command = { trigger = { country = NZL	} type = ai which = "Minors/NZL_1933.ai" }
+		command = { trigger = { country = SWE	} type = ai which = "Minors/SWE_1933.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167039] ALL | 1933 | AI_EVENT
+# Triggered by event 329329 in events/AI/Minors_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167039
+	name = "AI_EVENT"
+	action = {
+		trigger = {
+			OR = {
+				NOT = { country = JAP }
+				AND = {
+					country = JAP
+					puppet = { country = U74 country = JAP }
+				}
+			}
+		}
+		command = { type = inherit which = U74 when = 3 value = 1 }
+	}
+	action = {
+		trigger = {
+			country = JAP
+			NOT = {	puppet = { country = U74 country = JAP } }
+		}
+		command = { type = inherit which = U74 when = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231152] ALL | 1935 | AI_EVENT
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Triggered by event 244019 in events/Minors/U09.txt
+# Triggered by event 243083 in events/Minors/U08_14-14.txt
+# Triggered by event 243091 in events/Minors/U08_14-14.txt
+# Triggered by event 223425 in events/SOV/SOV_14-33.txt
+# Triggered by event 223426 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 231152
+	random = no
+	persistent = yes
+	trigger = {
+		or = {
+			and = {
+				or = {
+					event = 147311
+					event = 243101
+					event = 243107
+					event = 243116
+				}
+				event = 244019
+			}
+			and = {
+				event = 243083
+				or = {
+					event = 243091
+					event = 223425
+					event = 223426
+				}
+			}
+		}
+		local_flag = AAR_Interwar_AI_init
+		NOT = { local_flag = AAR_Interwar_AI_1936 }
+		NOT = { local_flag = AAR_Interwar_AI_1936_done }
+		ai = yes
+	}
+	date = { day = 1 month = 10 year = 1935 }
+	offset = 30
+	deathdate = { day = 15 month = 11 year = 1935 }
+	name = AI_EVENT
+	action = {
+		command = { type = local_setflag which = AAR_Interwar_AI_1936 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231153] ALL | 1935 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 231153
+	random = no
+	persistent = yes
+	trigger = {
+		local_flag = AAR_Interwar_AI_1936
+		NOT = { local_flag = AAR_Interwar_AI_1936_done }
+		ai = yes
+	}
+	date = { day = 1 month = 10 year = 1935 }
+	offset = 5
+	deathdate = { day = 29 month = 11 year = 1935 }
+	name = AI_EVENT
+	action = {
+		command = { type = local_clrflag which = AAR_Interwar_AI_1936 }
+		command = { type = local_setflag which = AAR_Interwar_AI_1936_done }
+		command = { trigger = { country = afg	} type = ai which = "Minors/AFG_1936.ai" }
+		command = { trigger = { country = alb	} type = ai which = "Minors/ALB_1936.ai" }
+		command = { trigger = { country = arg	} type = ai which = "Minors/ARG_1936.ai" }
+		command = { trigger = { country = ast	} type = ai which = "Minors/AST_1936.ai" }
+		command = { trigger = { country = aus	} type = ai which = "Minors/AUS_1936.ai" }
+		command = { trigger = { country = bel	} type = ai which = "Minors/BEL_1936.ai" }
+		command = { trigger = { country = bhu	} type = ai which = "Minors/BHU_1936.ai" }
+		command = { trigger = { country = bol	} type = ai which = "Minors/BOL_1936.ai" }
+		command = { trigger = { country = bra	} type = ai which = "Minors/BRA_1936.ai" }
+		command = { trigger = { country = bul	} type = ai which = "Minors/BUL_1936.ai" }
+		command = { trigger = { country = can	} type = ai which = "Minors/CAN_1936.ai" }
+		command = { trigger = { country = cgx	} type = ai which = "Minors/CGX_1936.ai" }
+		command = { trigger = { country = chc	} type = ai which = "Majors/CHC/CHC_1936.ai" }
+		command = { trigger = { country = chi	} type = ai which = "Majors/CHI/CHI_1936.ai" }
+		command = { trigger = { country = chl	} type = ai which = "Minors/CHL_1936.ai" }
+		command = { trigger = { country = col	} type = ai which = "Minors/COL_1936.ai" }
+		command = { trigger = { country = cos	} type = ai which = "Minors/COS_1936.ai" }
+		command = { trigger = { country = cro	} type = ai which = "Minors/CRO_1936.ai" }
+		command = { trigger = { country = csx	} type = ai which = "Minors/CSX_1936.ai" }
+		command = { trigger = { country = cub	} type = ai which = "Minors/CUB_1936.ai" }
+		command = { trigger = { country = cxb	} type = ai which = "Minors/CXB_1936.ai" }
+		command = { trigger = { country = cyn	} type = ai which = "Minors/CYN_1936.ai" }
+		command = { trigger = { country = cze	} type = ai which = "Minors/CZE_1936.ai" }
+		command = { trigger = { country = den	} type = ai which = "Minors/DEN_1936.ai" }
+		command = { trigger = { country = dom	} type = ai which = "Minors/DOM_1936.ai" }
+		command = { trigger = { country = ecu	} type = ai which = "Minors/ECU_1936.ai" }
+		command = { trigger = { country = egy	} type = ai which = "Minors/EGY_1936.ai" }
+		command = { trigger = { country = eng	} type = ai which = "Majors/ENG/ENG_1936.ai" }
+		command = { trigger = { country = est	} type = ai which = "Minors/EST_1936.ai" }
+		command = { trigger = { country = eth	} type = ai which = "Minors/ETH_1936.ai" }
+		command = { trigger = { country = fin	} type = ai which = "Minors/FIN_1936.ai" }
+		command = { trigger = { country = fra	} type = ai which = "Majors/FRA/FRA_1936.ai" }
+		command = { trigger = { country = ger	} type = ai which = "Majors/GER/GER_1936.ai" }
+		command = { trigger = { country = gre	} type = ai which = "Minors/GRE_1936.ai" }
+		command = { trigger = { country = gua	} type = ai which = "Minors/GUA_1936.ai" }
+		command = { trigger = { country = hai	} type = ai which = "Minors/HAI_1936.ai" }
+		command = { trigger = { country = hol	} type = ai which = "Minors/HOL_1936.ai" }
+		command = { trigger = { country = hon	} type = ai which = "Minors/HON_1936.ai" }
+		command = { trigger = { country = hun	} type = ai which = "Minors/HUN_1936.ai" }
+		command = { trigger = { country = ire	} type = ai which = "Minors/IRE_1936.ai" }
+		command = { trigger = { country = irq	} type = ai which = "Minors/IRQ_1936.ai" }
+		command = { trigger = { country = ita	} type = ai which = "Majors/ITA/ITA_1936.ai" }
+		command = { trigger = { country = jap	} type = ai which = "Majors/JAP/JAP_1936.ai" }
+		command = { trigger = { country = lat	} type = ai which = "Minors/LAT_1936.ai" }
+		command = { trigger = { country = lib	} type = ai which = "Minors/LIB_1936.ai" }
+		command = { trigger = { country = lit	} type = ai which = "Minors/LIT_1936.ai" }
+		command = { trigger = { country = lux	} type = ai which = "Minors/LUX_1936.ai" }
+		command = { trigger = { country = man	} type = ai which = "Minors/MAN_1936.ai" }
+		command = { trigger = { country = men	} type = ai which = "Minors/MEN_1936.ai" }
+		command = { trigger = { country = mex	} type = ai which = "Minors/MEX_1936.ai" }
+		command = { trigger = { country = mon	} type = ai which = "Minors/MON_1936.ai" }
+		command = { trigger = { country = nep	} type = ai which = "Minors/NEP_1936.ai" }
+		command = { trigger = { country = nic	} type = ai which = "Minors/NIC_1936.ai" }
+		command = { trigger = { country = nor	} type = ai which = "Minors/NOR_1936.ai" }
+		command = { trigger = { country = nzl	} type = ai which = "Minors/NZL_1936.ai" }
+		command = { trigger = { country = omn	} type = ai which = "Minors/OMN_1936.ai" }
+		command = { trigger = { country = pan	} type = ai which = "Minors/PAN_1936.ai" }
+		command = { trigger = { country = par	} type = ai which = "Minors/PAR_1936.ai" }
+		command = { trigger = { country = per	} type = ai which = "Minors/PER_1936.ai" }
+		command = { trigger = { country = phi	} type = ai which = "Minors/PHI_1936.ai" }
+		command = { trigger = { country = pol	} type = ai which = "Minors/POL_1936.ai" }
+		command = { trigger = { country = por	} type = ai which = "Minors/POR_1936.ai" }
+		command = { trigger = { country = pru	} type = ai which = "Minors/PRU_1936.ai" }
+		command = { trigger = { country = rom	} type = ai which = "Minors/ROM_1936.ai" }
+		command = { trigger = { country = saf	} type = ai which = "Minors/SAF_1936.ai" }
+		command = { trigger = { country = sal	} type = ai which = "Minors/SAL_1936.ai" }
+		command = { trigger = { country = sau	} type = ai which = "Minors/SAU_1936.ai" }
+		command = { trigger = { country = sch	} type = ai which = "Minors/SCH_1936.ai" }
+		command = { trigger = { country = sia	} type = ai which = "Minors/SIA_1936.ai" }
+		command = { trigger = { country = sik	} type = ai which = "Minors/SIK_1936.ai" }
+		command = { trigger = { country = slo	} type = ai which = "Minors/SLO_1936.ai" }
+		command = { trigger = { country = sov	} type = ai which = "Majors/SOV/SOV_1936.ai" }
+		command = { trigger = { country = spa	} type = ai which = "Minors/SPA_1936.ai" }
+		command = { trigger = { country = spr	} type = ai which = "Minors/SPR_1936.ai" }
+		command = { trigger = { country = swe	} type = ai which = "Minors/SWE_1936.ai" }
+		command = { trigger = { country = tan	} type = ai which = "Minors/TAN_1936.ai" }
+		command = { trigger = { country = tib	} type = ai which = "Minors/TIB_1936.ai" }
+		command = { trigger = { country = tur	} type = ai which = "Minors/TUR_1936.ai" }
+		command = { trigger = { country = U02	} type = ai which = "Minors/U02_1936.ai" }
+		command = { trigger = { country = U03	} type = ai which = "Minors/U03_1936.ai" }
+		command = { trigger = { country = U04	} type = ai which = "Minors/U04_1936.ai" }
+		command = { trigger = { country = U05	} type = ai which = "Minors/U05_1936.ai" }
+		command = { trigger = { country = U06	} type = ai which = "Minors/U06_1936.ai" }
+		command = { trigger = { country = U67	} type = ai which = "Minors/U67_1936.ai" }
+		command = { trigger = { country = U87	} type = ai which = "Minors/U87_1936.ai" }
+		command = { trigger = { country = uru	} type = ai which = "Minors/URU_1936.ai" }
+		command = { trigger = { country = usa	} type = ai which = "Majors/USA/USA_1936.ai" }
+		command = { trigger = { country = ven	} type = ai which = "Minors/VEN_1936.ai" }
+		command = { trigger = { country = vic	} type = ai which = "Minors/VIC_1936.ai" }
+		command = { trigger = { country = yem	} type = ai which = "Minors/YEM_1936.ai" }
+		command = { trigger = { country = yug	} type = ai which = "Minors/YUG_1936.ai" }
+	}
+}

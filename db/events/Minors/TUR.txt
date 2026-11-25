@@ -1,0 +1,1504 @@
+# ============================================================================
+# File: events/Minors/TUR.txt (47 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [235045] TUR | 1922 | Treaty of Kars (Tratado de Kars)
+# Triggered by event 224039 in events/Minors/SPA.txt
+# Triggered by event 223425 in events/SOV/SOV_14-33.txt
+# Triggered by event 223426 in events/SOV/SOV_14-33.txt
+# Trigger event 223390 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235045
+	country = TUR
+	date = { day = 1 month = 1 year = 1922 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 30
+	trigger = {
+		exists = SOV
+		not = { event = 224039 }
+		OR = {
+			event = 223425
+			event = 223426
+		}
+		not = { participant = { country = GEO value = 4 } }
+		not = { participant = { country = AZB value = 4 } }
+	}
+	name = "EVT_TUR_235045_NAME"
+	Desc = "EVT_TUR_235045_DESC"
+	Picture = "soviet_law"
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 99
+		command = { type = trigger which = 223390 }
+	}
+	action = {
+		name = "EVT_TUR_235045_A"
+		ai_chance = 1
+		command = { type =	relation which =	SOV value = -125 }
+		command = { type =	relation which =	PER value = -125 }
+		command = { type =	relation which =	IRQ value = -125 }
+		command = { type =	relation which =	ENG value = -75 }
+		command = { type =	relation which =	FRA value = -75 }
+		command = { type =	relation which =	ITA value = -75 }
+		command = { type =	relation which =	USA value = -75 }
+		command = { trigger = { control = { province = 711 data = TUR } } type = secedeprovince which = SOV value = 711 }
+		command = { trigger = { control = { province = 714 data = TUR } } type = secedeprovince which = SOV value = 714 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235047] TUR | 1922 | Mosul Problem (El 'Problema de Mosul')
+# Trigger event 143424 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235047
+	random = no
+	country = TUR
+	trigger = {
+		atwar = no
+	}
+	name = "EVT_TUR_235047_NAME"
+	desc = "EVT_TUR_235047_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1922 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1930 }
+	action = {
+		ai_chance = 100
+		name = "EVT_TUR_235047_A"
+		command = { type = addcore	which = 1027	}
+		command = { type = addcore	which = 1029	}
+	}
+	action = {
+		ai_chance = 0
+		name = "EVT_TUR_235047_B"
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235046] TUR | 1923 | Sheikh Said Rebellion (Rebelión del Jeque Said)
+# Triggered by event 235048 in events/Minors/TUR.txt
+# Trigger event 171004 in events/Minors/KUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235046
+	random = no
+	country = TUR
+	trigger = {
+		event = { id = 235048 days = 360 }
+	}
+	name = "EVT_TUR_235046_NAME"
+	desc = "EVT_TUR_235046_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1923 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = province_keypoints which = 1062 value = 1 }
+		command = { type = province_keypoints which = 1060 value = 1 }
+		command = { type = independence which = KUR value = 1 when = 1 }
+		command = { type = war which = KUR }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235048] TUR | 1924 | Abolition of Caliphate (Abolición del Califato)
+# Trigger event 235046 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235048
+	random = no
+	country = TUR
+	save_date = yes
+	trigger = {
+		atwar = no
+		headofstate = 45001
+	}
+	name = "EVT_TUR_235048_NAME"
+	desc = "EVT_TUR_235048_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = march year = 1924 }
+	offset = 5
+	deathdate = { day = 29 month = january year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235049] TUR | 1924 | Revolt Suppressed (Revuelta reprimida)
+# Triggered by event 171004 in events/Minors/KUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235049
+	random = no
+	country = TUR
+	trigger = {
+		NOT = { exists = KUR }
+		event = 171004
+	}
+	name = "EVT_TUR_235049_NAME"
+	desc = "EVT_TUR_235049_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = march year = 1924 }
+	offset = 5
+	deathdate = { day = 29 month = january year = 1938 }
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -5 }
+		command = { type = removecore	which = 1027	}
+		command = { type = removecore	which = 1029	}
+		command = { type = province_keypoints which = 1062 value = -1 }
+		command = { type = province_keypoints which = 1060 value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235050] TUR | 1930 | Kurdistani Independence (Independencia kurda)
+# Triggered by event 171004 in events/Minors/KUR.txt
+# Trigger event 171006 in events/Minors/KUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235050
+	random = no
+	country = TUR
+	trigger = {
+		event = 171004
+		exists = KUR
+	}
+	name = "EVT_TUR_235050_NAME"
+	desc = "EVT_TUR_235050_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = march year = 1930 }
+	offset = 5
+	deathdate = { day = 29 month = january year = 1938 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = removecore which = 1027 }
+		command = { type = removecore which = 1029 }
+		command = { type = removecore which = 1060 }
+		command = { type = removecore which = 1062 }
+		command = { type = peace which = KUR value = 0 }
+		command = { type = trigger which = 171006 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235012] TUR | 1933 | Signing the Balkan Pact (Firma del Pacto Balcánico)
+# Triggered by event 329551 in events/Minors/YUG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235012
+	random = no
+	country = TUR
+	name = "EVT_SHARED_01179_NAME"
+	desc = "EVT_SHARED_01179_DESC"
+	style = 2
+	picture = "GLOBAL/balkan_pact"
+	action_a = {
+		name = "ACTION_NAME_SIGN"
+		ai_chance = 95
+                command = { type = relation which = ROM value = 25 }
+		command = { type = relation which = YUG value = 25 }
+		command = { type = relation which = GRE value = 25 }
+		command = { type = relation which = ALB value = -25 }
+		command = { type = relation which = ITA value = -25 }
+                command = { type = relation which = BUL value = -25 }
+                command = { type = relation which = HUN value = -25 }
+                command = { type = relation which = SOV value = -25 }
+                command = { type = dissent value = -2 }
+		command = { type = domestic which = defense_lobby value = -1 }
+        }
+        action_b = {
+		name = "ACTION_NAME_DONT_SIGN"
+		ai_chance = 5
+		command = { type = relation which = ROM value = -50 }
+		command = { type = relation which = YUG value = -50 }
+		command = { type = relation which = GRE value = -50 }
+		command = { type = relation which = ALB value = 25 }
+		command = { type = relation which = ITA value = 25 }
+                command = { type = relation which = BUL value = 25 }
+                command = { type = relation which = HUN value = 25 }
+                command = { type = relation which = SOV value = 25 }
+                command = { type = domestic which = defense_lobby value = 1 }
+                command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329069] TUR | 1933 | Communist Coup Attempt (Intento de golpe de Estado comunista)
+# Triggered by event 329058 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329069
+	random = no
+	country = TUR
+	one_action = yes
+	trigger = {
+		event = 329058
+		random = 5
+		atwar = no
+		not = { alliance = { country = DDR } }
+		not = { war = { country = DDR } }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_SHARED_00197_NAME"
+	desc = "EVT_SHARED_00197_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	action = {
+		ai_chance = 30
+		name = "EVT_SHARED_00197_A"
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = dissent value = -5 }
+		command = { type = country which = U34 }
+		command = { type = set_relation which = DDR value = 200 }
+		command = { type = set_relation which = SOV value = 200 }
+		command = { type = alliance which = SOV when = 1 }
+	}
+	action = {
+		ai_chance = 70
+		name = "EVT_SHARED_00197_B"
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235004] TUR | 1936 | Negotiations with Turkey (Negociaciones con Turquía)
+# Triggered by event 329128 in events/GER/GER_Decisions.txt
+# Trigger event 150072 in events/GER/GER_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235004
+	random = no
+	country = TUR
+	name = EVT_SHARED_00607_NAME
+	desc = EVT_SHARED_00607_DESC
+	style = 2
+	picture = "GLOBAL/hitler_turkey"
+	action = {
+		trigger = {
+			flag = Tur_Georgia
+			army = 15
+			NOT = { army = 40 }
+		}
+		ai_chance = 20
+		name = EVT_TUR_235004_A
+		command = { type = alliance which = GER }
+		command = { type = relation which = GER value = 60 }
+	}
+	action = {
+		trigger = {
+			flag = Tur_Georgia
+			OR = {
+				army = 40
+				ai = no
+			}
+		}
+		ai_chance = 40
+		name = EVT_TUR_235004_A
+		command = { type = alliance which = GER }
+		command = { type = relation which = GER value = 60 }
+	}
+	action = {
+		trigger = { flag = Tur_Georgia }
+		ai_chance = 80
+		name = ACTION_NAME_NEUTRAL
+		command = { type = clrflag which = Tur_Georgia }
+		command = { type = relation which = GER value = -20 }
+		command = { type = sleepevent which = 150072 }
+	}
+	action = {
+		trigger = {
+			flag = Tur_Armenia_Azer
+			army = 15
+			NOT = { army = 40 }
+		}
+		ai_chance = 40
+		name = EVT_TUR_235004_A
+		command = { type = alliance which = GER }
+		command = { type = relation which = GER value = 80 }
+	}
+	action = {
+		trigger = {
+			flag = Tur_Armenia_Azer
+			OR = {
+				army = 40
+				ai = no
+			}
+		}
+		ai_chance = 60
+		name = EVT_TUR_235004_A
+		command = { type = alliance which = GER }
+		command = { type = relation which = GER value = 80 }
+	}
+	action = {
+		trigger = { flag = Tur_Armenia_Azer }
+		ai_chance = 60
+		name = ACTION_NAME_NEUTRAL
+		command = { type = clrflag which = Tur_Armenia_Azer }
+		command = { type = relation which = GER value = -10 }
+		command = { type = sleepevent which = 150072 }
+	}
+	action = {
+		trigger = {
+			flag = Tur_Kaukasus
+			army = 15
+			NOT = { army = 40 }
+		}
+		ai_chance = 70
+		name = EVT_TUR_235004_A
+		command = { type = alliance which = GER }
+		command = { type = relation which = GER value = 100 }
+	}
+	action = {
+		trigger = {
+			flag = Tur_Kaukasus
+			OR = {
+				army = 40
+				ai = no
+			}
+		}
+		ai_chance = 90
+		name = EVT_TUR_235004_A
+		command = { type = alliance which = GER }
+		command = { type = relation which = GER value = 100 }
+	}
+	action = {
+		trigger = { flag = Tur_Kaukasus }
+		ai_chance = 30
+		name = ACTION_NAME_NEUTRAL
+		command = { type = clrflag which = Tur_Kaukasus }
+		command = { type = relation which = GER value = -5 }
+		command = { type = sleepevent which = 150072 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235011] TUR | 1936 | Fall of the Socialist Republic of Turkey (Caída de la República Socialista de Turquía)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235011
+	random = no
+	country = TUR
+	name = "EVT_TUR_235011_NAME"
+	desc = "EVT_TUR_235011_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U34 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235023] TUR | 1936 | People's Republic Founded (República Popular)
+# Trigger event 235024 in events/Minors/TUR.txt
+# Trigger event 269002 in events/Minors/U34.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 235023
+   country = TUR
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U34
+            NOT = { ai = TUR }
+            NOT = { ai = U34 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U34
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U34 } }
+      command = { type = country which = U34 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U34
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = TUR }
+               control = { province = 1075 data = -1 }
+            }
+         }
+         type = trigger which = 235024
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U34 }
+               NOT = { control = { province = 1075 data = -1 } }
+            }
+         }
+         type = trigger which = 269002
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U34
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [235024] TUR | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 235023 in events/Minors/TUR.txt
+# Triggered by event 269001 in events/Minors/U34.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 235024
+   country = TUR
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U34 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [235005] TUR | 1937 | Franco-Turkish Agreement on Alexandretta (Acuerdo franco-turco en Alejandreta)
+# Triggered by event 147046 in events/FRA/FRA_36-38.txt
+# Trigger event 239004 in events/Minors/U04.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235005
+	random = no
+	country = TUR
+	name = "EVT_SHARED_00635_NAME"
+	desc = "EVT_SHARED_00635_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+		command = { type = relation which = FRA value = 5 }
+		command = { type = relation which = U04 value = 5 }
+		command = { type = trigger which = 239004 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [235009] TUR | 1937 | Treaty of Saadabad (Tratado de Sa'dabad)
+# Triggered by event 201004 in events/Minors/PER.txt
+# Trigger event 164016 in events/Minors/IRQ.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 235009
+         random = no
+         country = tur
+         name = "EVT_SHARED_00783_NAME"
+         desc = "EVT_SHARED_00783_DESC"
+         style = 2
+	picture = "Minors/treaty_of_saadabad"
+           action_a = {
+                  name = "EVT_SHARED_00783_A"
+                  ai_chance = 95
+                  command = { type = dissent value = -1 }
+                  command = { type = domestic which = interventionism value = -1 }
+                  command = { type = non_aggression which = tur where = per }
+                  command = { type = non_aggression which = tur where = irq }
+                  command = { type = non_aggression which = tur where = afg }
+                  command = { type = relation which = per value = 50 }
+                  command = { type = relation which = irq value = 50 }
+                  command = { type = relation which = afg value = 50 }
+                  command = { type = trigger which = 164016 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00783_B"
+                  ai_chance = 5
+                  command = { type = dissent value = 1 }
+                  command = { type = end_non_aggression which = tur where = per }
+                  command = { type = end_non_aggression which = tur where = irq }
+                  command = { type = end_non_aggression which = tur where = afg }
+                  command = { type = relation which = per value = -10 }
+                  command = { type = relation which = irq value = -10 }
+                  command = { type = relation which = afg value = -10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [235006] TUR | 1937 | Beginning of the Alexandretta Crisis (Inicio de la crisis de Alejandreta)
+# Trigger event 147055 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235006
+	random = no
+	country = TUR
+	trigger = {
+			exists = TUR
+			}
+	date = { day = 06 month = december year = 1937 }
+	name = "EVT_SHARED_00639_NAME"
+	desc = "EVT_SHARED_00639_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = U04 value = -30 }
+		command = { type = relation which = FRA value = -30 }
+		command = { type = trigger which = 147055 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [235002] TUR | 1938 | Proclamation of the Hatay State (Proclamación del Estado de Hatay)
+# Triggered by event 239000 in events/Minors/U04.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235002
+	random = no
+	country = TUR
+	trigger = {
+		NOT = { ispuppet = TUR }
+		}
+	name = EVT_SHARED_00528_NAME
+	desc = EVT_SHARED_00528_DESC
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = make_puppet which = U39 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235007] TUR | 1938 | Franco-Turkish Agreement on Alexandretta (Acuerdo franco-turco en Alejandreta)
+# Triggered by event 147059 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235007
+	random = no
+	country = TUR
+	name = "EVT_SHARED_00640_NAME"
+	desc = "EVT_SHARED_00640_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = FRA value = 15 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329243] TUR | 1938 | Anglo-Turkish Agreement (Acuerdo anglo-turco)
+# Trigger event 143079 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329243
+	random = no
+	country = TUR
+	trigger = {
+			NOT = { war = { country = TUR country = ENG } }
+			}
+	date = { day = 16 month = may year = 1938 }
+	name = "EVT_SHARED_00732_NAME"
+	desc = "EVT_SHARED_00732_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = trigger which = 143079 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [235000] TUR | 1938 | Death of Kemal Atatürk (Muerte de Kemal Atatürk)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235000
+	random = no
+	country = TUR
+	style = 2
+	trigger = {
+		minister = 45001
+		}
+	date = { year = 1938 month = november day = 10 }
+	name = "EVT_TUR_235000_NAME"
+	desc = "EVT_TUR_235000_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 45011 }
+		command = { type = headofgovernment which = 45012 }
+		command = { type = foreignminister which = 45015 }
+		command = { type = armamentminister which = 45004 }
+		command = { type = ministerofsecurity which = 45005 }
+		command = { type = ministerofintelligence which = 45043 }
+		command = { type = chiefofstaff which = 45048 }
+		command = { type = chiefofarmy which = 45008 }
+		command = { type = chiefofnavy which = 45053 }
+		command = { type = chiefofair which = 45010 }
+		command = { type = sleepminister which = 45001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [235025] TUR | 1939 | Bitter Peace Negotiations with Turkey (Negociaciones de la Paz Amarga con Turquía)
+# Triggered by event 150504 in events/GER/GER_38-40.txt
+# Trigger event 150511 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235025
+	country = TUR
+	name = EVT_TUR_235025_NAME
+	desc = EVT_TUR_235025_DESC
+	picture = "nwo/turkish_gains_in_ussr"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329245] TUR | 1939 | Anglo-Turkish Mutual Aid Agreement (Acuerdo de ayuda mutua anglo-turca)
+# Trigger event 143088 in events/ENG/ENG_38-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329245
+	random = no
+	country = TUR
+	trigger = {
+		   NOT = { war = { country = TUR country = ENG } }
+		    }
+	date = { day = 11 month = may year = 1939 }
+	name = "EVT_SHARED_00733_NAME"
+	desc = "EVT_SHARED_00733_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { type = relation which = ENG value = 25 }
+		command = { type = supplies value = 400 }
+		command = { type = relation which = GER value = -5 }
+		command = { type = trigger which = 143088 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235008] TUR | 1939 | Franco-Turkish Mutual Aid Agreement (Acuerdo de ayuda mutua franco-turca)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235008
+	random = no
+	country = TUR
+	trigger = {
+		   exists = TUR
+		    }
+	date = { day = 22 month = june year = 1939 }
+	name = "EVT_SHARED_00650_NAME"
+	desc = "EVT_SHARED_00650_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+		command = { type = relation which = FRA value = 30 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235003] TUR | 1939 | Annexation of Hatay by Turkey (Anexión de Hatay por Turquía)
+# Trigger event 147032 in events/FRA/FRA_39-48.txt
+# Trigger event 239001 in events/Minors/U04.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235003
+	random = no
+	country = TUR
+	date = { day = 29 month = june year = 1939 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	name = EVT_SHARED_00529_NAME
+	desc = EVT_SHARED_00529_DESC
+	style = 2
+	picture = "GLOBAL/protestalexanderetta"
+	trigger = {
+		exists = U39
+		not = { ispuppet = TUR }
+	}
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = U39 value = 1 }
+		command = { type = trigger which = 147032 }
+		command = { type = trigger which = 239001 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329153] TUR | 1939 | Anglo-French-Turkish Pact of Mutual Assistance (Pacto anglo-franco-turco de asistencia mutua)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329153
+	random = no
+	country = TUR
+	trigger = {
+			war = { country = ENG country = GER }
+			}
+	date = { day = 18 month = october year = 1939 }
+	offset = 1
+	deathdate = { day = 20 month = october year = 1940 }
+	name = "EVT_SHARED_00651_NAME"
+	desc = "EVT_SHARED_00651_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_SIGN"
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = FRA value = 15 }
+		command = { type = relation which = GER value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235010] TUR | 1941 | Diplomatic Talks: Turkey (Negociaciones con Turquía)
+# Triggered by event 143172 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235010
+	random = no
+	country = TUR
+	name = EVT_SHARED_00412_NAME
+	desc = EVT_SHARED_00410_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = { trigger = { NOT = { army = 20 } }
+		ai_chance = 5
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 20 NOT = { army = 30 } alliance = { country = BUL country = GER } }
+		ai_chance = 20
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 20 NOT = { army = 30 } NOT = { alliance = { country = BUL country = GER } } }
+		ai_chance = 40
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 30 NOT = { army = 40 } alliance = { country = BUL country = GER } }
+		ai_chance = 40
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 30 NOT = { army = 40 } NOT = { alliance = { country = BUL country = GER } } }
+		ai_chance = 80
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 40 }
+		ai_chance = 900
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = {
+		ai_chance = 50
+		name = ACTION_NAME_NEUTRAL
+		command = { type = relation which = ENG value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329230] TUR | 1941 | Turco-German Non-Aggression Pact (Pacto turco-alemán de no agresión)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329230
+	random = no
+	country = TUR
+	trigger = {
+			NOT = { war = { country = GER country = TUR } }
+			}
+	date = { day = 15 month = june year = 1941 }
+	name = "EVT_SHARED_00717_NAME"
+	desc = "EVT_SHARED_00717_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = relation which = GER value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235026] TUR | 1946 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235026
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 45076 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235027] TUR | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235027
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 45077 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235028] TUR | 1949 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235028
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 45078 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235029] TUR | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235029
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 45075 }
+		command = { type = headofgovernment which = 45079 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235001] TUR | 1950 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235001
+	random = no
+	country = TUR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			government = democratic
+			ideology = paternal_autocrat
+			}
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = may year = 1950 }
+	action_a = {
+		ai_chance = 80
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 45075 }
+		command = { type = headofgovernment which = 45079 }
+		command = { type = foreignminister which = 45080 }
+		command = { type = armamentminister which = 45083 }
+		command = { type = ministerofsecurity which = 45085 }
+		command = { type = ministerofintelligence which = 45046 }
+		}
+	action_b = {
+		ai_chance = 20
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [235030] TUR | 1960 | The 1960 Turkish Coup d'État (El golpe militar de 1960 en Turquía)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235030
+	country = TUR
+	name = EVT_TUR_235030_NAME
+	desc = EVT_TUR_235030_DESC
+	picture = "nwo/cemal_guersel"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 45200 }
+		command = { type = headofgovernment which = 45201 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235031] TUR | 1961 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235031
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 45200 }
+		command = { type = headofgovernment which = 45002 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235032] TUR | 1965 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235032
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 45202 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235033] TUR | 1966 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235033
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1966 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 45203 }
+		command = { type = headofgovernment which = 45204 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235034] TUR | 1971 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235034
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 45205 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235035] TUR | 1972 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235035
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 45206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235036] TUR | 1973 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235036
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1973 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 45207 }
+		command = { type = headofgovernment which = 45208 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235022] TUR | 1974 | Turkish Intervention Crisis (Intervención turca en Chipre)
+# Triggered by event 135006 in events/Minors/CYP.txt
+# Trigger event 135007 in events/Minors/CYP.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 235022
+	country = TUR
+	name = EVT_TUR_235022_NAME
+	desc = EVT_TUR_235022_DESC
+	picture = "nwo/enosis"
+	style = 1
+	action = {
+		name = EVT_TUR_235022_A
+		ai_chance = 85
+		command = { type = relation which = GRE value = -150 }
+		command = { type = relation which = CYP value = -250 }
+		command = { type = domestic which = interventionism value = 3 }
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 135007 }
+	}
+	action = {
+		name = ACTION_NAME_OFFER_PEACE
+		ai_chance = 15
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235037] TUR | 1974 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235037
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1974 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 45209 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235038] TUR | 1975 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235038
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1975 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1976 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 45204 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235039] TUR | 1977 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235039
+	country = TUR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1977 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1977 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 45204 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 45209 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235040] TUR | 1978 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235040
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+		headofgovernment = 45204
+		random = 50
+	}
+	date = { day = 0 month = january year = 1978 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 45209 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235041] TUR | 1979 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235041
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+		headofgovernment = 45209
+		random = 50
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1979 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 45204 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235042] TUR | 1980 | Kenan Evren's 1980 Coup (Golpe militar de Kenan Evren)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235042
+	country = TUR
+	name = EVT_TUR_235042_NAME
+	desc = EVT_TUR_235042_DESC
+	picture = "nwo/kenan_evren"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 45210 }
+		command = { type = headofgovernment which = 45211 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235043] TUR | 1983 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235043
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1983 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 45212 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [235044] TUR | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 235044
+	country = TUR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 45213 }
+		command = { type = headofgovernment which = 45214 }
+	}
+}

@@ -1,0 +1,2059 @@
+# ============================================================================
+# File: events/GLOBAL/MULTI_44-48.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [324464] U25, DDR, U24, DFR | 1944 | Reunification of Berlin (Reunificación de Berlín)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324464
+	tag = { U25 DDR U24 DFR }
+	name = "EVT_SHARED_00943_NAME"
+	desc = "EVT_SHARED_00943_DESC"
+	picture = "nwo/berlin_wall"
+	style = 1
+	trigger = {
+		control = { province = 163 data = -1 }
+		OR = {
+			AND = {
+				OR = {
+					country = U25
+					country = DDR
+				}
+				NOT = { exists = U24 }
+				NOT = { exists = DFR }
+			}
+			AND = {
+				OR = {
+					country = U24
+					country = DFR
+				}
+				NOT = { exists = U25 }
+				NOT = { exists = DDR }
+			}
+		}
+		flag = divided_berlin
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = clrflag which = divided_berlin }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324465] U25, DDR, U24, DFR | 1944 | East Berlin as Capital (Berlín Este como capital)
+# Trigger event 324466 in events/GLOBAL/MULTI_44-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324465
+	tag = { U25 DDR U24 DFR }
+	name = "EVT_SHARED_00944_NAME"
+	desc = "EVT_SHARED_00944_DESC"
+	picture = "nwo/berlin_wall"
+	style = 1
+	trigger = {
+		control = { province = 163 data = -1 }
+		flag = divided_berlin
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 163 value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324466] U25, DDR, U24, DFR | 1944 | Reconstruction of Berlin (Reconstrucción de Berlín)
+# Triggered by event 324465 in events/GLOBAL/MULTI_44-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324466
+	tag = { U25 DDR U24 DFR }
+	name = "EVT_SHARED_00945_NAME"
+	desc = "EVT_SHARED_00945_DESC"
+	picture = "nwo/berlin_wall"
+	style = 1
+	trigger = {
+		control = { province = 163 data = -1 }
+		NOT = { flag = divided_berlin }
+		event = 324465
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 163 value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324467] MULTI (33 countries) | 1944 | Time of Peace (Tiempos de paz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324467
+	persistent = yes
+	tag = { AFG	ALG	BOL	CMB	COL	CON	CUB	ECU	ETH	GLD	GUA	HON	ICL	JOR	LBY	LUX	MOR	NIC	NIG	NZL	OMN	PAR	PHI	PRU	SAL	U72	U75	U83	U90	U91	U97	URU	VIE }
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = -10 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324468] MULTI (33 countries) | 1944 | Time of War (Estado de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324468
+	random = no
+	persistent = yes
+	tag = { AFG	ALG	BOL	CMB	COL	CON	CUB	ECU	ETH	GLD	GUA	HON	ICL	JOR	LBY	LUX	MOR	NIC	NIG	NZL	OMN	PAR	PHI	PRU	SAL	U72	U75	U83	U90	U91	U97	URU	VIE }
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 10 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324469] MULTI (16 countries) | 1944 | Time of Peace (Tiempos de paz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324469
+	random = no
+	persistent = yes
+	tag = { CHI	CHL	DEN	EGY	FIN	GRE	IRE	IRQ	ISR	MLY	NOR	POR	SAU	SCH	SIA	VEN }
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+		OR = {
+			NOT = { country = CHI }
+			AND = {
+				country = CHI
+				flag = CHC_won_civil_war
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = -15 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324470] MULTI (16 countries) | 1944 | Time of War (Estado de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324470
+	random = no
+	persistent = yes
+	tag = { CHI	CHL	DEN	EGY	FIN	GRE	IRE	IRQ	ISR	MLY	NOR	POR	SAU	SCH	SIA	VEN }
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+		OR = {
+			NOT = { country = CHI }
+			AND = {
+				country = CHI
+				flag = CHC_won_civil_war
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 15 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324471] MULTI (16 countries) | 1944 | Time of Peace (Tiempos de paz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324471
+	random = no
+	persistent = yes
+	tag = { U27	U29	ARG	AUS	BEL	BUL	INO	KOR	MEX	PAK	PER	PRK	SAF	SWE	TUR	YUG }
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = -20 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324472] MULTI (16 countries) | 1944 | Time of War (Estado de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324472
+	random = no
+	persistent = yes
+	tag = { U27	U29	ARG	AUS	BEL	BUL	INO	KOR	MEX	PAK	PER	PRK	SAF	SWE	TUR	YUG }
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 20 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324473] MULTI (10 countries) | 1944 | Time of Peace (Tiempos de paz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324473
+	random = no
+	persistent = yes
+	tag = { U24 U13	U30	U31	AST	CZE	DDR	HOL	HUN	ROM }
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = -25 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324474] MULTI (10 countries) | 1944 | Time of War (Estado de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324474
+	random = no
+	persistent = yes
+	tag = { U24 U13	U30	U31	AST	CZE	DDR	HOL	HUN	ROM }
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 25 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324475] U32, BRA, CAN, POL, SPA | 1944 | Time of Peace (Tiempos de paz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324475
+	random = no
+	persistent = yes
+	tag = { U32	BRA	CAN	POL	SPA }
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = -30 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324476] U32, BRA, CAN, POL, SPA | 1944 | Time of War (Estado de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324476
+	random = no
+	persistent = yes
+	tag = { U32	BRA	CAN	POL	SPA }
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 30 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324477] U02, IND | 1944 | Time of Peace (Tiempos de paz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324477
+	random = no
+	persistent = yes
+	tag = { U02	IND }
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = -40 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324478] U02, IND | 1944 | Time of War (Estado de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324478
+	random = no
+	persistent = yes
+	tag = { U02	IND }
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 40 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324479] ENG, FRA | 1944 | Time of Peace (Tiempos de paz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324479
+	random = no
+	persistent = yes
+	tag = { ENG	FRA }
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = -50 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324480] ENG, FRA | 1944 | Time of War (Estado de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324480
+	random = no
+	persistent = yes
+	tag = { ENG	FRA }
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 50 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324481] U25, DFR, SOV, USA | 1944 | Time of Peace (Tiempos de paz)
+# Triggered by event 207067 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324481
+	persistent = yes
+	tag = { U25 DFR	SOV	USA }
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { OR = {
+				country = USA
+				event = 207067
+			} }
+		}
+		command = { type = peacetime_ic_mod value = -55 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			country = USA
+			event = 207067
+		}
+		command = { type = peacetime_ic_mod value = -25 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324482] U25, DFR, SOV, USA | 1944 | Time of War (Estado de guerra)
+# Triggered by event 207067 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324482
+	persistent = yes
+	tag = { U25 DFR	SOV	USA }
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { OR = {
+				country = USA
+				event = 207067
+			} }
+		}
+		command = { type = peacetime_ic_mod value = 55 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			country = USA
+			event = 207067
+		}
+		command = { type = peacetime_ic_mod value = 25 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324484] CHC, CHI | 1944 | Time of War (Estado de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324484
+	random = no
+	persistent = yes
+	tag = { CHC CHI }
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+		OR = {
+			country = CHC
+			AND = {
+				country = CHI
+				flag = CHI_won_civil_war
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 50 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324485] MULTI (48 countries) | 1944 | Time of Peace (Tiempos de paz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324485
+	persistent = yes
+	tag = { U28	ALB	ANG	BEN	BHU	BRU	BUR	CAM	COS	CYP	DOM	GAB	GUI	GUY	HAI	LAO	LEB	LIB	MAD	MAL	MON	MOZ	NEP	PAN	RHO	SAR	SIE	SOM	SUD	SYR	TIB	TUN	U70	U81	U82	U84	U85	U86	U88	U89	U92	U93	U94	U95	U96	U98	U99	YEM	}
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324486] MULTI (48 countries) | 1944 | Time of War (Estado de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324486
+	persistent = yes
+	tag = { U28	ALB	ANG	BEN	BHU	BRU	BUR	CAM	COS	CYP	DOM	GAB	GUI	GUY	HAI	LAO	LEB	LIB	MAD	MAL	MON	MOZ	NEP	PAN	RHO	SAR	SIE	SOM	SUD	SYR	TIB	TUN	U70	U81	U82	U84	U85	U86	U88	U89	U92	U93	U94	U95	U96	U98	U99	YEM }
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324487] MULTI (277 countries) | 1944 | Postwar Economic Readjustment (Reajuste económico de posguerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324487
+	persistent = yes
+	tag = { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BHU BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR DOM EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HAI HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIB LIT LUX MAD MAL MAN MEN MEX MIN MLY MON MOR MOZ MTN NAM NEP NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TIB TRA TRK TUN TUR UKR URU USA UZB VEN VIC VIE WLL YEM YUG U00 U01 U02 U03 U04 U05 U06 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U23 U24 U25 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U36 U38 U39 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U60 U61 U62 U63 U64 U65 U66 U67 U68 U69 U70 U71 U72 U73 U74 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 UAP UAU UBO UCH UCS UER UES UGS UIC UIR UPE UPR UPS URO USN UTC UTL UTO }
+	name = "EVT_SHARED_00951_NAME"
+	desc = "EVT_SHARED_00951_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = event_8930099 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = event_8930099 }
+		command = { type = building_prod_mod which = ic value = -50 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324351] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324351
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00828_NAME
+	desc = EVT_SHARED_00828_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 60 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				NOT = { ic = 20 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 60 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 10 }
+		command = { type = dissent value = 6 }
+		command = { type = money value = -400 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324352] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324352
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00829_NAME
+	desc = EVT_SHARED_00829_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 100 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 20
+				NOT = { ic = 40 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				NOT = { ic = 20 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 100 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 14 }
+		command = { type = dissent value = 8 }
+		command = { type = money value = -600 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324353] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324353
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00830_NAME
+	desc = EVT_SHARED_00830_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 150 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 40
+				NOT = { ic = 60 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 20
+				NOT = { ic = 40 }
+			}
+			AND = {
+				atwar = yes
+				NOT = { ic = 20 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 150 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 20 }
+		command = { type = dissent value = 10 }
+		command = { type = money value = -900 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324354] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324354
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00831_NAME
+	desc = EVT_SHARED_00831_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 200 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 60
+				NOT = { ic = 80 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 40
+				NOT = { ic = 60 }
+			}
+			AND = {
+				atwar = yes
+				ic = 20
+				NOT = { ic = 40 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 200 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 30 }
+		command = { type = dissent value = 12 }
+		command = { type = money value = -1800 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324355] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324355
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00832_NAME
+	desc = EVT_SHARED_00832_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 240 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 80
+				NOT = { ic = 100 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 60
+				NOT = { ic = 80 }
+			}
+			AND = {
+				atwar = yes
+				ic = 40
+				NOT = { ic = 60 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 240 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 40 }
+		command = { type = dissent value = 14 }
+		command = { type = money value = -2400 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324356] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324356
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00833_NAME
+	desc = EVT_SHARED_00833_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 280 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 100
+				NOT = { ic = 125 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 80
+				NOT = { ic = 100 }
+			}
+			AND = {
+				atwar = yes
+				ic = 60
+				NOT = { ic = 80 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 280 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 50 }
+		command = { type = dissent value = 16 }
+		command = { type = money value = -2880 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324357] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324357
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00834_NAME
+	desc = EVT_SHARED_00834_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 300 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 125
+				NOT = { ic = 150 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 100
+				NOT = { ic = 125 }
+			}
+			AND = {
+				atwar = yes
+				ic = 80
+				NOT = { ic = 100 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 300 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 60 }
+		command = { type = dissent value = 18 }
+		command = { type = money value = -3400 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324358] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324358
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00835_NAME
+	desc = EVT_SHARED_00835_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 350 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 150
+				NOT = { ic = 175 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 125
+				NOT = { ic = 150 }
+			}
+			AND = {
+				atwar = yes
+				ic = 100
+				NOT = { ic = 125 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 350 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 70 }
+		command = { type = dissent value = 20 }
+		command = { type = money value = -4000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324359] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324359
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00836_NAME
+	desc = EVT_SHARED_00836_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 400 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 175
+				NOT = { ic = 200 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 150
+				NOT = { ic = 175 }
+			}
+			AND = {
+				atwar = yes
+				ic = 125
+				NOT = { ic = 150 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 400 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 80 }
+		command = { type = dissent value = 24 }
+		command = { type = money value = -4800 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324360] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324360
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00837_NAME
+	desc = EVT_SHARED_00837_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 500 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 200
+				NOT = { ic = 250 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 175
+				NOT = { ic = 200 }
+			}
+			AND = {
+				atwar = yes
+				ic = 150
+				NOT = { ic = 175 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 500 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 90 }
+		command = { type = dissent value = 28 }
+		command = { type = money value = -5600 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324361] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324361
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00838_NAME
+	desc = EVT_SHARED_00838_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 600 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 250
+				NOT = { ic = 300 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 200
+				NOT = { ic = 250 }
+			}
+			AND = {
+				atwar = yes
+				ic = 175
+				NOT = { ic = 200 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 600 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 100 }
+		command = { type = dissent value = 32 }
+		command = { type = money value = -6720 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324362] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324362
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00839_NAME
+	desc = EVT_SHARED_00839_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 720 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 300
+				NOT = { ic = 400 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 250
+				NOT = { ic = 300 }
+			}
+			AND = {
+				atwar = yes
+				ic = 200
+				NOT = { ic = 250 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 720 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 110 }
+		command = { type = dissent value = 36 }
+		command = { type = money value = -8200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324363] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324363
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00840_NAME
+	desc = EVT_SHARED_00840_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 920 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 400
+				NOT = { ic = 500 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 300
+				NOT = { ic = 400 }
+			}
+			AND = {
+				atwar = yes
+				ic = 250
+				NOT = { ic = 300 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 920 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 120 }
+		command = { type = dissent value = 40 }
+		command = { type = money value = -10000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324364] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324364
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00841_NAME
+	desc = EVT_SHARED_00841_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 1400 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 500
+				NOT = { ic = 750 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 400
+				NOT = { ic = 500 }
+			}
+			AND = {
+				atwar = yes
+				ic = 300
+				NOT = { ic = 400 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 1400 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 130 }
+		command = { type = dissent value = 44 }
+		command = { type = money value = -12000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324365] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324365
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00842_NAME
+	desc = EVT_SHARED_00842_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 1800 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 750
+				NOT = { ic = 1000 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 500
+				NOT = { ic = 750 }
+			}
+			AND = {
+				atwar = yes
+				ic = 400
+				NOT = { ic = 500 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 1800 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 140 }
+		command = { type = dissent value = 48 }
+		command = { type = money value = -14400 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324366] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324366
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00843_NAME
+	desc = EVT_SHARED_00843_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 2400 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 1000
+				NOT = { ic = 1250 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 750
+				NOT = { ic = 1000 }
+			}
+			AND = {
+				atwar = yes
+				ic = 500
+				NOT = { ic = 750 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 2400 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 150 }
+		command = { type = dissent value = 52 }
+		command = { type = money value = -18000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324367] MULTI (235 countries) | 1945 | Major Power Military Demobilization (Reestructuración de grandes potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324367
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00844_NAME
+	desc = EVT_SHARED_00844_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 2800 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 1250
+				NOT = { ic = 1500 }
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 1000
+				NOT = { ic = 1250 }
+			}
+			AND = {
+				atwar = yes
+				ic = 750
+				NOT = { ic = 1000 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 2800 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 160 }
+		command = { type = dissent value = 56 }
+		command = { type = money value = -22000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324368] MULTI (235 countries) | 1945 | Military Demobilization Directive (Reestructuración militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324368
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00845_NAME
+	desc = EVT_SHARED_00845_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 3200 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				ic = 1500
+			}
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 1250
+				NOT = { ic = 1500 }
+			}
+			AND = {
+				atwar = yes
+				ic = 1000
+				NOT = { ic = 1250 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 3200 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 170 }
+		command = { type = dissent value = 60 }
+		command = { type = money value = -30000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324369] MULTI (235 countries) | 1945 | Military Demobilization Directive (Reestructuración militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324369
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00846_NAME
+	desc = EVT_SHARED_00846_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 3600 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				not = { government = democratic }
+				ic = 1500
+			}
+			AND = {
+				atwar = yes
+				ic = 1250
+				NOT = { ic = 1500 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 3600 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 180 }
+		command = { type = dissent value = 64 }
+		command = { type = money value = -36000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324370] MULTI (235 countries) | 1945 | Military Demobilization Directive (Reestructuración militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324370
+	persistent = yes
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00847_NAME
+	desc = EVT_SHARED_00847_DESC
+	picture = "nwo/army_limits"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 4400 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = yes
+				ic = 1500
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_DEMOBILIZE
+		command = { type = demobilize which = land when = 0 where = 0 value = 4400 }
+	}
+	action = {
+		name = ACTION_NAME_MOBILIZE
+		command = { type = belligerence value = 200 }
+		command = { type = dissent value = 70 }
+		command = { type = money value = -48000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324371] MULTI (235 countries) | 1945 | Army Approaching Division Limits (Límite de divisiones próximo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324371
+	TAG =  { AFG ALB ALG ANG ARA ARG ARM AST AUS AZB BEL BEN BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TRA TRK TUN TUR UKR URU USA UZB VEN VIE WLL YEM YUG U01 U02 U03 U04 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U67 UTC UER UPE U70 U71 U72 U73 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 }
+	name = EVT_SHARED_00848_NAME
+	desc = EVT_SHARED_00848_DESC
+	picture = "nwo/army_limits_warning"
+	style = 1
+	trigger = {
+		ai = no
+		army = { size = 44 type = 0 when = 0 where = 0 which = 0 }
+		OR = {
+			AND = {
+				atwar = no
+				government = democratic
+				NOT = { ic = 20 }
+			}
+		} NOT = { flag = block_army_limiting } NOT = { local_flag = block_army_limiting }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324459] MULTI (8 countries) | 1945 | Partition of Austria (Partición de Austria)
+# Triggered by event 223286 in events/SOV/SOV_43-46.txt
+# Triggered by event 108048 in events/Minors/AUS_44-90.txt
+# Triggered by event 108026 in events/Minors/AUS_44-90.txt
+# Trigger event 108026 in events/Minors/AUS_44-90.txt
+# Trigger event 108027 in events/Minors/AUS_44-90.txt
+# Trigger event 108028 in events/Minors/AUS_44-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324459
+	tag = { USA ENG FRA CAN U01 U02 AST NZL }
+	persistent = yes
+	name = "EVT_SHARED_00938_NAME"
+	desc = "EVT_SHARED_00938_DESC"
+	picture = "nwo/allied_occupation_of_austria"
+	style = 1
+	trigger = {
+		OR = {
+			event = 223286
+			event = 108048
+		}
+		region = { region = "Austria" country = -1 data = 1 value = 0 }
+	}
+	date = { day = 19 month = october year = 1945 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = independence which = AUS value = 1 when = 0 }
+		command = { type = secederegion which = AUS value = "Austria" when = 1 }
+		command = { trigger = { NOT = { event = 108026 } } type = trigger which = 108026 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 25 }
+		command = { type = sleepevent which = 324459 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324420] MULTI (10 countries) | 1946 | Colonial Unrest (Disturbios coloniales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324420
+	tag = { ENG FRA ITA GER U08 SPR SPA BEL HOL U05 U02 }
+	name = EVT_SHARED_00889_NAME
+	desc = EVT_SHARED_00889_DESC
+	picture = "nwo/colonial_unrest"
+	style = 1
+	trigger = {
+		control = { province = 1001 data = -1 }
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 1080
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { type = province_revoltrisk which = 1001 value = 10 }
+		command = { type = province_revoltrisk which = 1002 value = 10 }
+		command = { type = province_revoltrisk which = 1003 value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324185] AST, JAP | 1946 | Australian Occupation Of Japan (Ocupación australiana de Japón)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324185
+	TAG =  { AST JAP }
+	style = 0
+	date = { day = 1 month = February year = 1946 }
+	name = "EVT_SHARED_00369_NAME"
+	desc = "EVT_SHARED_00369_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = access which = JAP }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324186] AST, JAP | 1946 | Japanese POWs Released (Liberación de prisioneros de guerra japoneses)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324186
+	TAG =  { AST JAP }
+	style = 0
+	date = { day = 19 month = February year = 1946 }
+	name = "EVT_SHARED_00370_NAME"
+	desc = "EVT_SHARED_00370_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = dissent value = -1 }
+	command = { type = relation which = JAP value = 15 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324026] ROM, U30 | 1947 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324026
+	random = no
+	TAG = { ROM U30 }
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = communist
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 29 month = december year = 1947 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 110117 }
+		command = { type = headofgovernment which = 110029 }
+		command = { type = foreignminister which = 110118 }
+		command = { type = armamentminister which = 110062 }
+		command = { type = ministerofsecurity which = 110076 }
+		command = { type = ministerofintelligence which = 110086 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [324439] HOL, U05 | 1948 | The Toll of the Colonial War (Desgaste en Indonesia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324439
+	tag = { HOL U05 }
+	persistent = yes
+	name = EVT_SHARED_00922_NAME
+	desc = EVT_SHARED_00922_DESC
+	picture = "nwo/indonesia_prolonged_fight"
+	style = 1
+	trigger = {
+		war = { country = INO country = U05 }
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { country = U05 } type = dissent value = 2 }
+		command = { trigger = { country = HOL } type = dissent value = 1 }
+		command = { trigger = { country = HOL } type = belligerence value = 3 }
+	}
+}

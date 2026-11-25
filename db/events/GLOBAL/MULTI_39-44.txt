@@ -1,0 +1,2067 @@
+# ============================================================================
+# File: events/GLOBAL/MULTI_39-44.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [324416] MULTI (15 countries) | 1939 | The Outbreak of World War III (Estallido de la Tercera Guerra Mundial)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324416
+	tag = { ENG FRA CAN ICL NOR DEN BEL HOL LUX ITA POR GRE TUR DFR AUS }
+	persistent = yes
+	name = EVT_SHARED_00884_NAME
+	desc = EVT_SHARED_00884_DESC
+	picture = "nwo/western_allies"
+	style = 1
+	trigger = {
+		war = { country = USA country = SOV }
+		flag = ww3
+		NOT = { alliance = { country = -1 country = USA } }
+		NOT = { local_flag = event_8215012 }
+	}
+    date = { day = 0 month = january year = 1939 }
+   	offset = 3
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = EVT_SHARED_00884_A
+		ai_chance = 99
+		command = { type = alliance which = USA }
+		command = { type = local_setflag which = event_8215012 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 1
+		command = { type = relation which = SOV value = 50 }
+		command = { type = relation which = USA value = -150 }
+		command = { type = domestic which = interventionism value = -3 }
+		command = { type = dissent value = 15 }
+		command = { type = local_setflag which = event_8215012 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324417] MULTI (23 countries) | 1939 | The Outbreak of World War III (Estallido de la Tercera Guerra Mundial)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324417
+	tag = { U10 U11 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 DDR }
+	persistent = yes
+	name = EVT_SHARED_00885_NAME
+	desc = EVT_SHARED_00885_DESC
+	picture = "nwo/eastern_allies"
+	style = 1
+	trigger = {
+		war = { country = USA country = SOV }
+		flag = ww3
+		NOT = { alliance = { country = -1 country = SOV } }
+		NOT = { local_flag = event_8215013 }
+	}
+    date = { day = 0 month = january year = 1939 }
+   	offset = 3
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = EVT_SHARED_00885_A
+		ai_chance = 50
+		command = { type = alliance which = SOV }
+		command = { type = local_setflag which = event_8215013 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 50
+		trigger = { NOT = { puppet = { country = -1 country = SOV } } }
+		command = { type = relation which = USA value = 50 }
+		command = { type = relation which = SOV value = -150 }
+		command = { type = domestic which = interventionism value = -3 }
+		command = { type = dissent value = 5 }
+		command = { type = local_setflag which = event_8215013 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324426] MULTI (22 countries) | 1939 | Neutrality Preserved (Preservación de la neutralidad)
+# Triggered by event 329787 in events/GER/GER_38-40.txt
+# Triggered by event 329788 in events/GLOBAL/ALL_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324426
+	tag = { ITA FRA TUR GRE ALB BUL ROM POR SPR SPA SCH HUN CZE NOR SWE DEN AUS BEL HOL LUX PER IRQ }
+	persistent = yes
+	name = EVT_SHARED_00897_NAME
+	desc = EVT_SHARED_00897_DESC
+	picture = "nwo/out_of_war"
+	style = 1
+	trigger = {
+		flag = der_untergang
+		NOT = { local_flag = event_8310020 }
+		OR = {
+			event = { id = 329787 days = 3 }
+			event = { id = 329788 days = 3 }
+		}
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = event_8310020 }
+		command = { trigger = { NOT = { alliance = { country = ENG } alliance = { country = USA } alliance = { country = SOV } } }
+			type = local_setflag which = out_of_war }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324427] MULTI (17 countries) | 1939 | Allied Military Administration in Europe (Administración militar aliada en Europa)
+# Triggered by event 207017 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324427
+	tag = { CAN AST NZL SAF POL HUN ROM BUL YUG CZE U01 FRA ITA ENG U27 U29 U30 }
+	persistent = yes
+	name = EVT_SHARED_00898_NAME
+	desc = EVT_SHARED_00898_DESC
+	picture = "nwo/allies_in_ww2"
+	style = 1
+	trigger = {
+		flag = der_untergang
+		event = { id = 207017 days = 3 }
+		OR = {
+			alliance = { country = ENG }
+			alliance = { country = USA }
+			alliance = { country = SOV }
+		}
+		NOT = { local_flag = event_8310101 }
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		trigger = {
+			OR = {
+				alliance = { country = ENG }
+				alliance = { country = USA }
+			}
+		}
+		command = { type = local_setflag which = event_8310101 }
+		command = { type = secederegion which = USA value = "Anatolia" when = 1 }
+		command = { type = secederegion which = USA value = "Austria" when = 1 }
+		command = { trigger = { NOT = { country = YUG country = ROM country = BUL country = U27 country = U29 country = U30 } } type = secederegion which = USA value = "Balkan" when = 1 }
+		command = { type = secederegion which = USA value = "Baltic States" when = 1 }
+		command = { type = secederegion which = USA value = "Benelux" when = 1 }
+		command = { type = secederegion which = USA value = "Belarus" when = 1 }
+		command = { trigger = { NOT = { country = CZE } } type = secederegion which = USA value = "Czechoslovakia" when = 1 }
+		command = { type = secederegion which = USA value = "Finland" when = 1 }
+		command = { trigger = { NOT = { country = FRA country = U01 } } type = secederegion which = USA value = "France" when = 1 }
+		command = { type = secederegion which = USA value = "Germany" when = 1 }
+		command = { trigger = { NOT = { country = HUN } } type = secederegion which = USA value = "Hungary" when = 1 }
+		command = { trigger = { NOT = { country = ITA } } type = secederegion which = USA value = "Italy" when = 1 }
+		command = { type = secederegion which = USA value = "Kaukasus" when = 1 }
+		command = { type = secederegion which = USA value = "Northern Russia" when = 1 }
+		command = { type = secederegion which = USA value = "Norway" when = 1 }
+		command = { type = secederegion which = USA value = "Persia" when = 1 }
+		command = { trigger = { NOT = { country = POL country = U32 } } type = secederegion which = USA value = "Poland" when = 1 }
+		command = { type = secederegion which = USA value = "Portugal" when = 1 }
+		command = { trigger = { NOT = { country = ROM country = U30 } } type = secederegion which = USA value = "Romania" when = 1 }
+		command = { type = secederegion which = USA value = "Russia" when = 1 }
+		command = { type = secederegion which = USA value = "Southern Russia" when = 1 }
+		command = { type = secederegion which = USA value = "Spain" when = 1 }
+		command = { type = secederegion which = USA value = "Sweden" when = 1 }
+		command = { type = secederegion which = USA value = "Switzerland" when = 1 }
+		command = { type = secederegion which = USA value = "Ukraine" when = 1 }
+		command = { type = secederegion which = USA value = "White Sea Tundra" when = 1 }
+		command = { type = secederegion which = USA value = "Western Russia" when = 1 }
+		command = { trigger = { exists = U01 } type = secederegion which = U01 value = "Morocco" when = 1 }
+		command = { trigger = { exists = U01 } type = secederegion which = U01 value = "Algeria" when = 1 }
+		command = { trigger = { exists = U01 } type = secederegion which = U01 value = "Tunisia" when = 1 }
+		command = { trigger = { NOT = { exists = U01 } } type = secederegion which = FRA value = "Morocco" when = 1 }
+		command = { trigger = { NOT = { exists = U01 } } type = secederegion which = FRA value = "Algeria" when = 1 }
+		command = { trigger = { NOT = { exists = U01 } } type = secederegion which = FRA value = "Tunisia" when = 1 }
+	}
+	action = {
+		name = EVT_SHARED_00898_A
+		trigger = {
+			alliance = { country = SOV }
+		}
+		command = { type = local_setflag which = event_8310101 }
+		command = { type = secederegion which = SOV value = "Anatolia" when = 1 }
+		command = { type = secederegion which = SOV value = "Austria" when = 1 }
+		command = { trigger = { NOT = { country = YUG country = ROM country = BUL country = U27 country = U29 country = U30 } } type = secederegion which = SOV value = "Balkan" when = 1 }
+		command = { type = secederegion which = SOV value = "Baltic States" when = 1 }
+		command = { type = secederegion which = SOV value = "Benelux" when = 1 }
+		command = { type = secederegion which = SOV value = "Belarus" when = 1 }
+		command = { trigger = { NOT = { country = CZE } } type = secederegion which = SOV value = "Czechoslovakia" when = 1 }
+		command = { type = secederegion which = SOV value = "Finland" when = 1 }
+		command = { trigger = { NOT = { country = FRA country = U01 } } type = secederegion which = SOV value = "France" when = 1 }
+		command = { type = secederegion which = SOV value = "Germany" when = 1 }
+		command = { trigger = { NOT = { country = HUN } } type = secederegion which = SOV value = "Hungary" when = 1 }
+		command = { trigger = { NOT = { country = ITA } } type = secederegion which = SOV value = "Italy" when = 1 }
+		command = { type = secederegion which = SOV value = "Kaukasus" when = 1 }
+		command = { type = secederegion which = SOV value = "Northern Russia" when = 1 }
+		command = { type = secederegion which = SOV value = "Norway" when = 1 }
+		command = { type = secederegion which = SOV value = "Persia" when = 1 }
+		command = { trigger = { NOT = { country = POL country = U32 } } type = secederegion which = SOV value = "Poland" when = 1 }
+		command = { type = secederegion which = SOV value = "Portugal" when = 1 }
+		command = { trigger = { NOT = { country = ROM country = U30 } } type = secederegion which = SOV value = "Romania" when = 1 }
+		command = { type = secederegion which = SOV value = "Russia" when = 1 }
+		command = { type = secederegion which = SOV value = "Southern Russia" when = 1 }
+		command = { type = secederegion which = SOV value = "Spain" when = 1 }
+		command = { type = secederegion which = SOV value = "Sweden" when = 1 }
+		command = { type = secederegion which = SOV value = "Switzerland" when = 1 }
+		command = { type = secederegion which = SOV value = "Ukraine" when = 1 }
+		command = { type = secederegion which = SOV value = "White Sea Tundra" when = 1 }
+		command = { type = secederegion which = SOV value = "Western Russia" when = 1 }
+		command = { trigger = { exists = U01 } type = secederegion which = U01 value = "Morocco" when = 1 }
+		command = { trigger = { exists = U01 } type = secederegion which = U01 value = "Algeria" when = 1 }
+		command = { trigger = { exists = U01 } type = secederegion which = U01 value = "Tunisia" when = 1 }
+		command = { trigger = { NOT = { exists = U01 } } type = secederegion which = FRA value = "Morocco" when = 1 }
+		command = { trigger = { NOT = { exists = U01 } } type = secederegion which = FRA value = "Algeria" when = 1 }
+		command = { trigger = { NOT = { exists = U01 } } type = secederegion which = FRA value = "Tunisia" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324428] FRA, U01 | 1939 | Soviet Occupation of Paris (Ocupación soviética de París)
+# Triggered by event 207017 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324428
+	tag = { FRA U01 }
+	name = EVT_SHARED_00899_NAME
+	desc = EVT_SHARED_00899_DESC
+	picture = "nwo/communists_march"
+	style = 1
+	trigger = {
+		flag = der_untergang
+		event = { id = 207017 days = 3 }
+		NOT = { region = { region = "France" country = -3 value = 25 } }
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_SHARED_00899_A
+		ai_chance = 90
+		command = { type = leave_alliance }
+		command = { type = peace which = JAP value = 0 }
+		command = { type = peace which = MAN value = 0 }
+		command = { type = peace which = MEN value = 0 }
+		command = { trigger = { exists = U01 NOT = { country = U01 } } type = inherit which = U01 }
+		command = { trigger = { exists = FRA NOT = { country = FRA } } type = inherit which = FRA }
+		command = { type = independence which = LEB value = 0 }
+		command = { type = independence which = SYR value = 0 }
+		command = { type = independence which = MOR value = 0 }
+		command = { type = independence which = TUN value = 0 }
+		command = { type = independence which = MAD value = 0 }
+		command = { type = independence which = U85 value = 0 }
+		command = { type = independence which = GAB value = 0 }
+		command = { type = independence which = U82 value = 0 }
+		command = { type = independence which = CAM value = 0 }
+		command = { type = independence which = U84 value = 0 }
+		command = { type = independence which = U94 value = 0 }
+		command = { type = independence which = U99 value = 0 }
+		command = { type = independence which = GUI value = 0 }
+		command = { type = independence which = U88 value = 0 }
+		command = { type = independence which = U81 value = 0 }
+		command = { type = independence which = BEN value = 0 }
+		command = { type = independence which = U96 value = 0 }
+		command = { type = independence which = U93 value = 0 }
+		command = { type = independence which = MAL value = 0 }
+		command = { type = independence which = LAO value = 0 }
+		command = { type = independence which = CMB value = 0 }
+		command = { type = independence which = VIE value = 0 }
+		command = { type = secedeprovince which = USA value = 875 }
+		command = { type = secedeprovince which = USA value = 899 }
+		command = { type = secedeprovince which = USA value = 898 }
+		command = { type = secedeprovince which = ENG value = 1037 }
+		command = { type = secedeprovince which = USA value = 1689 }
+		command = { type = secedeprovince which = USA value = 1690 }
+		command = { type = secedeprovince which = USA value = 1688 }
+		command = { type = secedeprovince which = USA value = 1687 }
+		command = { type = secedeprovince which = USA value = 1691 }
+		command = { type = secedeprovince which = USA value = 1692 }
+		command = { type = secedeprovince which = USA value = 1751 }
+		command = { type = secedeprovince which = USA value = 1135 }
+		command = { trigger = { NOT = { exists = ALG } } type = country which = ALG }
+	}
+	action = {
+		ai_chance = 10
+		name = EVT_SHARED_00899_B
+		command = { type = leave_alliance }
+		command = { type = peace which = JAP value = 0 }
+		command = { type = peace which = MAN value = 0 }
+		command = { type = peace which = MEN value = 0 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = set_domestic which = freedom value = 2 }
+		command = { type = set_domestic which = free_market value = 2 }
+		command = { type = set_domestic which = interventionism value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324429] U13, U31 | 1939 | The Status of Subcarpathian Rus (La cuestión de la Rutenia subcarpática)
+# Triggered by event 207019 in events/AI/REB_AI_14-52.txt
+# Trigger event 223238 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324429
+	tag = { U13 U31 }
+	name = EVT_SHARED_00900_NAME
+	desc = EVT_SHARED_00900_DESC
+	picture = "nwo/transcarpathia"
+	style = 1
+	trigger = {
+		flag = der_untergang
+		event = { id = 207019 days = 3 }
+		OR = {
+			control = { province = 213 data = -1 }
+			control = { province = 215 data = -1 }
+		}
+		NOT = { exists = UKR }
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = SOV value = 213 when = 1 }
+		command = { type = secedeprovince which = SOV value = 215 when = 1 }
+		command = { type = trigger which = 223238 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324430] MULTI (51 countries) | 1939 | Postwar Governance in Europe (Gobiernos de posguerra en Europa)
+# Triggered by event 207019 in events/AI/REB_AI_14-52.txt
+# Trigger event 207020 in events/AI/REB_AI_14-52.txt
+# Trigger event 147181 in events/FRA/FRA_39-48.txt
+# Trigger event 166165 in events/ITA/ITA_40-50.txt
+# Trigger event 146065 in events/Minors/FIN_14-51.txt
+# Trigger event 235026 in events/Minors/TUR.txt
+# Trigger event 152180 in events/GRE/GRE_38-49.txt
+# Trigger event 101029 in events/Minors/ALB.txt
+# Trigger event 118047 in events/Minors/BUL.txt
+# Trigger event 209108 in events/Minors/ROM_36-44.txt
+# Trigger event 204024 in events/Minors/POR.txt
+# Trigger event 216044 in events/Minors/SCH.txt
+# Trigger event 159057 in events/Minors/HUN_38-90.txt
+# Trigger event 323040 in events/Minors/YUG.txt
+# Trigger event 136036 in events/Minors/CZE_14-53.txt
+# Trigger event 203038 in events/Minors/POL_14-89.txt
+# Trigger event 193016 in events/Minors/NOR.txt
+# Trigger event 227033 in events/Minors/SWE_14-58.txt
+# Trigger event 138018 in events/Minors/DEN.txt
+# Trigger event 110033 in events/Minors/BEL.txt
+# Trigger event 157040 in events/Minors/HOL_14-86.txt
+# Trigger event 179016 in events/Minors/LUX.txt
+# Trigger event 178019 in events/Minors/LIT.txt
+# Trigger event 174042 in events/Minors/LAT.txt
+# Trigger event 144016 in events/Minors/EST.txt
+# Trigger event 113001 in events/Minors/BLR.txt
+# Trigger event 312000 in events/Minors/UKR.txt
+# Trigger event 149001 in events/Minors/GEO.txt
+# Trigger event 149002 in events/Minors/GEO.txt
+# Trigger event 106009 in events/Minors/ARM.txt
+# Trigger event 106010 in events/Minors/ARM.txt
+# Trigger event 109007 in events/Minors/AZB.txt
+# Trigger event 109008 in events/Minors/AZB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324430
+	save_date = yes
+	tag = { FRA ITA FIN TUR GRE ALB BUL ROM POR SPR SCH HUN YUG CZE POL NOR SWE DEN BEL HOL LUX LIT LAT EST BLR UKR GEO ARM AZB U10 U11 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 }
+	persistent = yes
+	name = EVT_SHARED_00901_NAME
+	desc = EVT_SHARED_00901_DESC
+	picture = "nwo/postwar_normalization"
+	style = 1
+	trigger = {
+		flag = der_untergang
+		NOT = { local_flag = event_8310400 }
+		event = { id = 207019 days = 7 }
+		NOT = { local_flag = out_of_war }
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { flag = cold_war } } type = setflag which = cold_war }
+		command = { type = local_setflag which = event_8310400 }
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = interventionism value = -4 }
+		command = { type = supplies value = 500 }
+		command = { type = oilpool value = 200 }
+		command = { type = metalpool value = 1000 }
+		command = { type = energypool value = 2000 }
+		command = { type = rarematerialspool value = 500 }
+		command = { type = money value = 100 }
+		command = { trigger = { NOT = { country = LUX country = U18 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = U18 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX country = U18 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = U18 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX country = U18 country = ALB country = U28 country = BUL country = U29 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = U18 country = ALB country = U28 country = BUL country = U29 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX country = U18 country = ALB country = U28 country = BUL country = U29 country = BEL country = U17 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = U18 country = ALB country = U28 country = BUL country = U29 country = BEL country = U17 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX country = U18 country = ALB country = U28 country = BUL country = U29 country = BEL country = U17 country = HOL country = U10 country = NOR country = U19 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = U18 country = ALB country = U28 country = BUL country = U29 country = BEL country = U17 country = HOL country = U10 country = NOR country = U19 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX country = U18 country = ALB country = U28 country = BUL country = U29 country = BEL country = U17 country = HOL country = U10 country = NOR country = U19 country = POR country = U15 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = U18 country = ALB country = U28 country = BUL country = U29 country = BEL country = U17 country = HOL country = U10 country = NOR country = U19 country = POR country = U15 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX country = U18 country = ALB country = U28 country = BUL country = U29 country = BEL country = U17 country = HOL country = U10 country = NOR country = U19 country = POR country = U15 country = HUN country = U13 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = U18 country = ALB country = U28 country = BUL country = U29 country = BEL country = U17 country = HOL country = U10 country = NOR country = U19 country = POR country = U15 country = HUN country = U13 } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = YUG country = U27 country = ROM country = U30 country = POL country = U32 country = FIN country = U20 country = FRA country = U11 country = ITA country = U14 country = SPR country = U35 country = SWE country = U21 country = TUR country = U34 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = YUG country = U27 country = ROM country = U30 country = POL country = U32 country = FIN country = U20 country = FRA country = U11 country = ITA country = U14 country = SPR country = U35 country = SWE country = U21 country = TUR country = U34 } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = ROM country = U30 country = POL country = U32 country = FRA country = U11 country = ITA country = U14 country = SPR country = U35 country = TUR country = U34 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = ROM country = U30 country = POL country = U32 country = FRA country = U11 country = ITA country = U14 country = SPR country = U35 country = TUR country = U34 } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = ROM country = U30 country = POL country = U32 country = ITA country = U14 country = SPR country = U35 country = TUR country = U34 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = ROM country = U30 country = POL country = U32 country = ITA country = U14 country = SPR country = U35 country = TUR country = U34 } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = POL country = U32 country = SPR country = U35 country = TUR country = U34 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = POL country = U32 country = SPR country = U35 country = TUR country = U34 } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = POL country = U32 country = SPR country = U35 country = TUR country = U34 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = POL country = U32 country = SPR country = U35 country = TUR country = U34 } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = POL country = U32 country = SPR country = U35 country = TUR country = U34 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = POL country = U32 country = SPR country = U35 country = TUR country = U34 } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = SPR country = U35 country = TUR country = U34 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = SPR country = U35 country = TUR country = U34 } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = TUR country = U34 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = TUR country = U34 } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = TUR country = U34 } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = TUR country = U34 } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = YUG country = U27 } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = BUL country = U29 } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = BUL country = U29 } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = POL country = U32 } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = POL country = U32 } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = POL country = U32 } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = TUR country = U34 } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = TUR country = U34 } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = TUR country = U34 } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = FRA country = U11 } } type = add_division value = armor when = 3 }
+		command = { trigger = { OR = { country = FRA country = U11 } } type = add_division value = armor when = 3 }
+		command = { trigger = { OR = { country = SPR country = U35 } } type = add_division value = armor when = 3 }
+		command = { trigger = { OR = { country = FRA country = U11 } } type = add_division value = bergsjaeger when = 12 }
+		command = { trigger = { OR = { country = TUR country = U34 } } type = add_division value = bergsjaeger when = 12 }
+		command = { trigger = { OR = { country = TUR country = U34 } } type = add_division value = mechanized when = 1 }
+		command = { trigger = { OR = { country = TUR country = U34 } } type = add_division value = mechanized when = 1 }
+		command = { trigger = { OR = { country = FRA country = U11 } } type = add_division value = hq when = 4 }
+		command = { trigger = { country = FRA } type = trigger which = 147181 }
+		command = { trigger = { country = ITA } type = trigger which = 166165 }
+		command = { trigger = { country = FIN } type = trigger which = 146065 }
+		command = { trigger = { country = TUR } type = trigger which = 235026 }
+		command = { trigger = { country = GRE } type = trigger which = 152180 }
+		command = { trigger = { country = ALB } type = trigger which = 101029 }
+		command = { trigger = { country = BUL } type = trigger which = 118047 }
+		command = { trigger = { country = ROM } type = trigger which = 209108 }
+		command = { trigger = { country = POR } type = trigger which = 204024 }
+		command = { trigger = { country = SCH } type = trigger which = 216044 }
+		command = { trigger = { country = HUN } type = trigger which = 159057 }
+		command = { trigger = { country = YUG } type = trigger which = 323040 }
+		command = { trigger = { country = CZE } type = trigger which = 136036 }
+		command = { trigger = { country = POL } type = trigger which = 203038 }
+		command = { trigger = { country = NOR } type = trigger which = 193016 }
+		command = { trigger = { country = SWE } type = trigger which = 227033 }
+		command = { trigger = { country = DEN } type = trigger which = 138018 }
+		command = { trigger = { country = BEL } type = trigger which = 110033 }
+		command = { trigger = { country = HOL } type = trigger which = 157040 }
+		command = { trigger = { country = LUX } type = trigger which = 179016 }
+		command = { trigger = { country = LIT } type = trigger which = 178019 }
+		command = { trigger = { country = LAT } type = trigger which = 174042 }
+		command = { trigger = { country = EST } type = trigger which = 144016 }
+		command = { trigger = { country = BLR } type = trigger which = 113001 }
+		command = { trigger = { country = UKR } type = trigger which = 312000 }
+		command = { trigger = { country = GEO } type = trigger which = 149001 }
+		command = { trigger = { country = GEO } type = trigger which = 149002 }
+		command = { trigger = { country = ARM } type = trigger which = 106009 }
+		command = { trigger = { country = ARM } type = trigger which = 106010 }
+		command = { trigger = { country = AZB } type = trigger which = 109007 }
+		command = { trigger = { country = AZB } type = trigger which = 109008 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324431] SAF, CAN, AST | 1939 | Dominion Disengagement from the War (Retirada de los dominios de la contienda)
+# Trigger event 150501 in events/GER/GER_38-40.txt
+# Trigger event 150502 in events/GER/GER_38-40.txt
+# Trigger event 150503 in events/GER/GER_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324431
+	tag = { SAF CAN AST }
+	persistent = yes
+	name = EVT_SHARED_00902_NAME
+	desc = EVT_SHARED_00902_DESC
+	picture = "nwo/british_dominions"
+	style = 1
+	trigger = {
+		NOT = { local_flag = event_8370010 }
+		NOT = { flag = cold_war }
+		NOT = { flag = cold_war_pacific }
+		NOT = { flag = ww3 }
+		OR = {
+			flag = isolation_of_uk
+			flag = dissolution_of_uk
+			flag = annexation_of_uk
+		}
+		war = { country = GER }
+	}
+    date = { day = 0 month = january year = 1939 }
+   	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OFFER_PEACE
+		ai_chance = 90
+		command = { type = local_setflag which = event_8370010  }
+		command = { type = leave_alliance }
+		command = { trigger = { country = SAF } type = trigger which = 150501 }
+		command = { trigger = { country = CAN } type = trigger which = 150502 }
+		command = { trigger = { country = AST } type = trigger which = 150503 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 10
+		command = { type = local_setflag which = event_8370010  }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324432] MULTI (25 countries) | 1939 | Relaxation of Soviet Oversight (Atenuación de la tutela soviética)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324432
+	tag = { U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U25 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 DDR }
+	persistent = yes
+	name = EVT_SHARED_00903_NAME
+	desc = EVT_SHARED_00903_DESC
+	picture = "nwo/masses_at_the_lenin_statue"
+	style = 1
+	trigger = {
+		flag = depuppetize_warsaw_pact
+		puppet = { country = -1 country = SOV }
+	}
+    date = { day = 0 month = january year = 1939 }
+    offset = 5
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324433] MULTI (25 countries) | 1939 | Fracture in the Warsaw Pact (Incertidumbre en el Pacto de Varsovia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324433
+	tag = { U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U25 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 DDR }
+	persistent = yes
+	name = EVT_SHARED_00904_NAME
+	desc = EVT_SHARED_00904_DESC
+	picture = "nwo/masses_at_the_lenin_statue"
+	style = 1
+	trigger = {
+		flag = dissolve_warsaw_pact
+		alliance = { country = -1 country = SOV }
+	}
+    date = { day = 0 month = january year = 1939 }
+    offset = 5
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324434] MULTI (25 countries) | 1939 | Sovereignty in Eastern Europe (Apertura soberana en Europa del Este)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324434
+	tag = { U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U25 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 DDR }
+	persistent = yes
+	name = EVT_SHARED_00905_NAME
+	desc = EVT_SHARED_00905_DESC
+	picture = "nwo/masses_at_the_lenin_statue"
+	style = 1
+	trigger = {
+		flag = democratize_warsaw_pact
+		government = communist
+	}
+    date = { day = 0 month = january year = 1939 }
+    offset = 5
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_SHARED_00905_A
+		ai_chance = 95
+		command = { type = domestic which = democratic value = 3 }
+		command = { type = domestic which = political_left value = -5 }
+		command = { type = domestic which = freedom value = 3 }
+		command = { type = domestic which = free_market value = 3 }
+		command = { type = leave_alliance }
+		command = { type = end_puppet }
+		command = { type = end_access which = SOV }
+		command = { type = local_clrflag which = block_ideology_change }
+	}
+	action = {
+		name = EVT_SHARED_00905_B
+		ai_chance = 5
+		command = { type = domestic which = democratic value = 2 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = leave_alliance }
+		command = { type = end_puppet }
+		command = { type = end_access which = SOV }
+		command = { type = local_clrflag which = block_ideology_change }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324488] MULTI (25 countries) | 1939 | Neutrality Preserved (Preservación de la neutralidad)
+# Triggered by event 329939 in events/GER/GER_38-40.txt
+# Triggered by event 329940 in events/GLOBAL/ALL_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324488
+	tag = { ITA FRA TUR GRE ALB BUL ROM POR SPR SPA SCH HUN CZE NOR SWE DEN AUS BEL HOL LUX PER IRQ FIN POL YUG }
+	persistent = yes
+	name = EVT_SHARED_00946_NAME
+	desc = EVT_SHARED_00946_DESC
+	picture = "nwo/out_of_war"
+	style = 1
+	trigger = {
+		flag = peace_in_our_time
+		NOT = { local_flag = event_8360020 }
+		OR = {
+			event = { id = 329939 days = 3 }
+			event = { id = 329940 days = 3 }
+		}
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = event_8360020 }
+		command = { trigger = { NOT = { alliance = { country = ENG } } }
+			type = local_setflag which = out_of_war }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324489] MULTI (14 countries) | 1939 | Allied Military Administration in Europe (Administración militar aliada en Europa)
+# Triggered by event 207038 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324489
+	tag = { CAN AST NZL SAF POL HUN ROM BUL YUG CZE U01 FRA ITA USA }
+	persistent = yes
+	name = EVT_SHARED_00947_NAME
+	desc = EVT_SHARED_00947_DESC
+	picture = "nwo/chamberlain_daladier"
+	style = 1
+	trigger = {
+		flag = peace_in_our_time
+		event = { id = 207038 days = 3 }
+		alliance = { country = ENG }
+		NOT = { local_flag = event_8360101 }
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			alliance = { country = ENG }
+		}
+		command = { type = local_setflag which = event_8360101 }
+		command = { type = secederegion which = ENG value = "Anatolia" when = 1 }
+		command = { type = secederegion which = ENG value = "Austria" when = 1 }
+		command = { trigger = { NOT = { country = YUG country = ROM country = BUL } } type = secederegion which = ENG value = "Balkan" when = 1 }
+		command = { type = secederegion which = ENG value = "Baltic States" when = 1 }
+		command = { type = secederegion which = ENG value = "Benelux" when = 1 }
+		command = { type = secederegion which = ENG value = "Belarus" when = 1 }
+		command = { trigger = { NOT = { country = CZE } } type = secederegion which = ENG value = "Czechoslovakia" when = 1 }
+		command = { type = secederegion which = ENG value = "Finland" when = 1 }
+		command = { trigger = { NOT = { country = FRA country = U01 } } type = secederegion which = ENG value = "France" when = 1 }
+		command = { type = secederegion which = ENG value = "Germany" when = 1 }
+		command = { trigger = { NOT = { country = HUN } } type = secederegion which = ENG value = "Hungary" when = 1 }
+		command = { trigger = { NOT = { country = ITA } } type = secederegion which = ENG value = "Italy" when = 1 }
+		command = { type = secederegion which = ENG value = "Kaukasus" when = 1 }
+		command = { type = secederegion which = ENG value = "Northern Russia" when = 1 }
+		command = { type = secederegion which = ENG value = "Norway" when = 1 }
+		command = { type = secederegion which = ENG value = "Persia" when = 1 }
+		command = { trigger = { NOT = { country = POL country = U32 } } type = secederegion which = ENG value = "Poland" when = 1 }
+		command = { type = secederegion which = ENG value = "Portugal" when = 1 }
+		command = { trigger = { NOT = { country = ROM country = U30 } } type = secederegion which = ENG value = "Romania" when = 1 }
+		command = { type = secederegion which = ENG value = "Russia" when = 1 }
+		command = { type = secederegion which = ENG value = "Southern Russia" when = 1 }
+		command = { type = secederegion which = ENG value = "Spain" when = 1 }
+		command = { type = secederegion which = ENG value = "Sweden" when = 1 }
+		command = { type = secederegion which = ENG value = "Switzerland" when = 1 }
+		command = { type = secederegion which = ENG value = "Ukraine" when = 1 }
+		command = { type = secederegion which = ENG value = "White Sea Tundra" when = 1 }
+		command = { type = secederegion which = ENG value = "Western Russia" when = 1 }
+		command = { trigger = { exists = U01 } type = secederegion which = U01 value = "Morocco" when = 1 }
+		command = { trigger = { exists = U01 } type = secederegion which = U01 value = "Algeria" when = 1 }
+		command = { trigger = { exists = U01 } type = secederegion which = U01 value = "Tunisia" when = 1 }
+		command = { trigger = { NOT = { exists = U01 } } type = secederegion which = FRA value = "Morocco" when = 1 }
+		command = { trigger = { NOT = { exists = U01 } } type = secederegion which = FRA value = "Algeria" when = 1 }
+		command = { trigger = { NOT = { exists = U01 } } type = secederegion which = FRA value = "Tunisia" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324490] MULTI (29 countries) | 1939 | Postwar Governance in Europe (Gobiernos de posguerra en Europa)
+# Trigger event 207039 in events/AI/REB_AI_14-52.txt
+# Trigger event 147181 in events/FRA/FRA_39-48.txt
+# Trigger event 166165 in events/ITA/ITA_40-50.txt
+# Trigger event 146065 in events/Minors/FIN_14-51.txt
+# Trigger event 235026 in events/Minors/TUR.txt
+# Trigger event 152180 in events/GRE/GRE_38-49.txt
+# Trigger event 101029 in events/Minors/ALB.txt
+# Trigger event 118047 in events/Minors/BUL.txt
+# Trigger event 209108 in events/Minors/ROM_36-44.txt
+# Trigger event 204024 in events/Minors/POR.txt
+# Trigger event 216044 in events/Minors/SCH.txt
+# Trigger event 159057 in events/Minors/HUN_38-90.txt
+# Trigger event 323040 in events/Minors/YUG.txt
+# Trigger event 136036 in events/Minors/CZE_14-53.txt
+# Trigger event 203038 in events/Minors/POL_14-89.txt
+# Trigger event 193016 in events/Minors/NOR.txt
+# Trigger event 227033 in events/Minors/SWE_14-58.txt
+# Trigger event 138018 in events/Minors/DEN.txt
+# Trigger event 110033 in events/Minors/BEL.txt
+# Trigger event 157040 in events/Minors/HOL_14-86.txt
+# Trigger event 179016 in events/Minors/LUX.txt
+# Trigger event 178019 in events/Minors/LIT.txt
+# Trigger event 174042 in events/Minors/LAT.txt
+# Trigger event 144016 in events/Minors/EST.txt
+# Trigger event 113001 in events/Minors/BLR.txt
+# Trigger event 312000 in events/Minors/UKR.txt
+# Trigger event 149001 in events/Minors/GEO.txt
+# Trigger event 149002 in events/Minors/GEO.txt
+# Trigger event 106009 in events/Minors/ARM.txt
+# Trigger event 106010 in events/Minors/ARM.txt
+# Trigger event 109007 in events/Minors/AZB.txt
+# Trigger event 109008 in events/Minors/AZB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324490
+	save_date = yes
+	tag = { FRA ITA FIN TUR GRE ALB BUL ROM POR SPR SCH HUN YUG CZE POL NOR SWE DEN BEL HOL LUX LIT LAT EST BLR UKR GEO ARM AZB }
+	persistent = yes
+	name = EVT_SHARED_00948_NAME
+	desc = EVT_SHARED_00948_DESC
+	picture = "nwo/postwar_normalization"
+	style = 1
+	trigger = {
+		flag = peace_in_our_time
+		NOT = { local_flag = event_8360400 }
+		NOT = { local_flag = out_of_war }
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { flag = cold_war } } type = setflag which = cold_war }
+		command = { type = local_setflag which = event_8360400 }
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = interventionism value = -4 }
+		command = { type = supplies value = 500 }
+		command = { type = oilpool value = 200 }
+		command = { type = metalpool value = 1000 }
+		command = { type = energypool value = 2000 }
+		command = { type = rarematerialspool value = 500 }
+		command = { type = money value = 100 }
+		command = { trigger = { NOT = { country = LUX } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX country = ALB country = BUL } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = ALB country = BUL } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX country = ALB country = BUL country = BEL } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = ALB country = BUL country = BEL } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX country = ALB country = BUL country = BEL country = HOL country = NOR } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = ALB country = BUL country = BEL country = HOL country = NOR } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX country = ALB country = BUL country = BEL country = HOL country = NOR country = POR } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = ALB country = BUL country = BEL country = HOL country = NOR country = POR } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { country = LUX country = ALB country = BUL country = BEL country = HOL country = NOR country = POR country = HUN } } type = add_division value = infantry when = 12 }
+		command = { trigger = { NOT = { country = LUX country = ALB country = BUL country = BEL country = HOL country = NOR country = POR country = HUN } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = YUG country = ROM country = POL country = FIN country = FRA country = ITA country = SPR country = SWE country = TUR } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = YUG country = ROM country = POL country = FIN country = FRA country = ITA country = SPR country = SWE country = TUR } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = ROM country = POL country = FRA country = ITA country = SPR country = TUR } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = ROM country = POL country = FRA country = ITA country = SPR country = TUR } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = ROM country = POL country = ITA country = SPR country = TUR } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = ROM country = POL country = ITA country = SPR country = TUR } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = POL country = SPR country = TUR } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = POL country = SPR country = TUR } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = POL country = SPR country = TUR } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = POL country = SPR country = TUR } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = POL country = SPR country = TUR } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = POL country = SPR country = TUR } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = SPR country = TUR } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = SPR country = TUR } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = TUR } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = TUR } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = TUR } } type = add_division value = infantry when = 12 }
+		command = { trigger = { OR = { country = TUR } } type = manpowerpool value = 20 }
+		command = { trigger = { OR = { country = YUG } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = BUL } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = BUL } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = POL } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = POL } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = POL } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = TUR } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = TUR } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = TUR } } type = add_division value = cavalry when = 12 }
+		command = { trigger = { OR = { country = FRA } } type = add_division value = armor when = 3 }
+		command = { trigger = { OR = { country = FRA } } type = add_division value = armor when = 3 }
+		command = { trigger = { OR = { country = SPR } } type = add_division value = armor when = 3 }
+		command = { trigger = { OR = { country = FRA } } type = add_division value = bergsjaeger when = 12 }
+		command = { trigger = { OR = { country = TUR } } type = add_division value = bergsjaeger when = 12 }
+		command = { trigger = { OR = { country = TUR } } type = add_division value = mechanized when = 1 }
+		command = { trigger = { OR = { country = TUR } } type = add_division value = mechanized when = 1 }
+		command = { trigger = { OR = { country = FRA } } type = add_division value = hq when = 4 }
+		command = { trigger = { country = FRA } type = trigger which = 147181 }
+		command = { trigger = { country = ITA } type = trigger which = 166165 }
+		command = { trigger = { country = FIN } type = trigger which = 146065 }
+		command = { trigger = { country = TUR } type = trigger which = 235026 }
+		command = { trigger = { country = GRE } type = trigger which = 152180 }
+		command = { trigger = { country = ALB } type = trigger which = 101029 }
+		command = { trigger = { country = BUL } type = trigger which = 118047 }
+		command = { trigger = { country = ROM } type = trigger which = 209108 }
+		command = { trigger = { country = POR } type = trigger which = 204024 }
+		command = { trigger = { country = SCH } type = trigger which = 216044 }
+		command = { trigger = { country = HUN } type = trigger which = 159057 }
+		command = { trigger = { country = YUG } type = trigger which = 323040 }
+		command = { trigger = { country = CZE } type = trigger which = 136036 }
+		command = { trigger = { country = POL } type = trigger which = 203038 }
+		command = { trigger = { country = NOR } type = trigger which = 193016 }
+		command = { trigger = { country = SWE } type = trigger which = 227033 }
+		command = { trigger = { country = DEN } type = trigger which = 138018 }
+		command = { trigger = { country = BEL } type = trigger which = 110033 }
+		command = { trigger = { country = HOL } type = trigger which = 157040 }
+		command = { trigger = { country = LUX } type = trigger which = 179016 }
+		command = { trigger = { country = LIT } type = trigger which = 178019 }
+		command = { trigger = { country = LAT } type = trigger which = 174042 }
+		command = { trigger = { country = EST } type = trigger which = 144016 }
+		command = { trigger = { country = BLR } type = trigger which = 113001 }
+		command = { trigger = { country = UKR } type = trigger which = 312000 }
+		command = { trigger = { country = GEO } type = trigger which = 149001 }
+		command = { trigger = { country = GEO } type = trigger which = 149002 }
+		command = { trigger = { country = ARM } type = trigger which = 106009 }
+		command = { trigger = { country = ARM } type = trigger which = 106010 }
+		command = { trigger = { country = AZB } type = trigger which = 109007 }
+		command = { trigger = { country = AZB } type = trigger which = 109008 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324494] MULTI (11 countries) | 1939 | Postwar Governance in Asia (Gobiernos de posguerra en Asia)
+# Triggered by event 207055 in events/AI/REB_AI_14-52.txt
+# Trigger event 170016 in events/Minors/KOR.txt
+# Trigger event 205001 in events/Minors/PRK.txt
+# Trigger event 320007 in events/Minors/VIE.txt
+# Trigger event 173003 in events/Minors/LAO.txt
+# Trigger event 218026 in events/Minors/SIA.txt
+# Trigger event 119002 in events/Minors/BUR.txt
+# Trigger event 162018 in events/Minors/INO.txt
+# Trigger event 184002 in events/Minors/MLY.txt
+# Trigger event 214003 in events/Minors/SAR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324494
+	tag = { KOR PRK VIE U72 LAO SIA BUR INO MLY SAR PHI }
+	persistent = yes
+	name = EVT_SHARED_00955_NAME
+	desc = EVT_SHARED_00955_DESC
+	picture = "nwo/postwar_normalization"
+	style = 1
+	trigger = {
+		flag = the_jewel_voice
+		NOT = { local_flag = event_8324001 }
+		event = { id = 207055 days = 7 }
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = event_8324001 }
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = interventionism value = -4 }
+		command = { type = supplies value = 500 }
+		command = { type = oilpool value = 200 }
+		command = { type = metalpool value = 1000 }
+		command = { type = energypool value = 2000 }
+		command = { type = rarematerialspool value = 500 }
+		command = { type = money value = 100 }
+		command = { trigger = { country = KOR } type = trigger which = 170016 }
+		command = { trigger = { country = PRK } type = trigger which = 205001 }
+		command = { trigger = { country = VIE } type = trigger which = 320007 }
+		command = { trigger = { country = LAO } type = trigger which = 173003 }
+		command = { trigger = { country = SIA } type = trigger which = 218026 }
+		command = { trigger = { country = BUR } type = trigger which = 119002 }
+		command = { trigger = { country = INO } type = trigger which = 162018 }
+		command = { trigger = { country = MLY } type = trigger which = 184002 }
+		command = { trigger = { country = SAR } type = trigger which = 214003 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324507] SIA, ROM | 1939 | Withdrawals 1939 (Retiros en 1939)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324507
+	tag = { SIA ROM }
+	trigger = { local_flag = league_of_nations }
+	name = "EVT_SHARED_01027_NAME"
+	desc = "EVT_SHARED_01027_DESC"
+	picture = "GLOBAL/aar_lon"
+	style = 2
+	date = { day = 0 month = January year = 1939 }
+		action = {
+		name = "EVT_SHARED_01027_A"
+		ai_chance = 75
+		command = { type = dissent value = -2 }
+		command = { type = belligerence value = 15 }
+		command = { type = 	relation which = ENG value = -50 }
+		command = { type = 	relation which = FRA value = -50 }
+		command = { type = 	relation which = ITA value = -50 }
+		command = { type = 	relation which = JAP value = -50 }
+		command = { type = 	relation which = USA value = -50 }
+		}
+			action = {
+		name = "EVT_SHARED_01027_B"
+		ai_chance = 25
+		command = { type = dissent value = 2 }
+		command = { type = belligerence value = -5 }
+		command = { type = 	relation which = ENG value = 50 }
+		command = { type = 	relation which = FRA value = 50 }
+		command = { type = 	relation which = ITA value = 50 }
+		command = { type = 	relation which = JAP value = 50 }
+		command = { type = 	relation which = USA value = 50 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [324493] ENG, AST, NZL, SAF, PHI | 1939 | Allied Military Administration in Asia (Administración militar aliada en Asia)
+# Triggered by event 167189 in events/JAP/JAP_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324493
+	tag = { ENG AST NZL SAF PHI }
+	save_date = yes
+	name = EVT_SHARED_00954_NAME
+	desc = EVT_SHARED_00954_DESC
+	picture = "nwo/anzac"
+	style = 1
+	trigger = {
+		flag = the_jewel_voice
+		event = { id = 167189 days = 3 }
+	}
+	date = { day = 1 month = june year = 1939 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = ENG value = "Pakistan" when = 1 }
+		command = { type = secedearea which = ENG value = "Rajastan" when = 1 }
+		command = { type = secedearea which = ENG value = "Eastern Ghat" when = 1 }
+		command = { type = secedearea which = ENG value = "Delhi" when = 1 }
+		command = { type = secedearea which = ENG value = "Himalayas" when = 1 }
+		command = { type = secedearea which = ENG value = "Nagpur" when = 1 }
+		command = { type = secedearea which = ENG value = "Orissa" when = 1 }
+		command = { type = secedearea which = ENG value = "Deccar" when = 1 }
+		command = { type = secedearea which = ENG value = "Bombay" when = 1 }
+		command = { type = secedearea which = ENG value = "Western Ghat" when = 1 }
+		command = { type = secedearea which = ENG value = "East Bengal" when = 1 }
+		command = { type = secedeprovince which = ENG value = 1446 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1447 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1448 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1444 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1445 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1449 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1450 when = 1 }
+		command = { type = secedearea which = ENG value = "Ceylon" when = 1 }
+		command = { type = secedearea which = ENG value = "North Burma" when = 1 }
+		command = { type = secedearea which = ENG value = "Burma" when = 1 }
+		command = { type = secedearea which = USA value = "Siam" when = 1 }
+		command = { type = secedearea which = USA value = "Kra Peninsula" when = 1 }
+		command = { type = secedeprovince which = USA value = 1433 when = 1 }
+		command = { type = secedeprovince which = USA value = 1434 when = 1 }
+		command = { type = secedeprovince which = USA value = 1398 when = 1 }
+		command = { type = secedeprovince which = USA value = 1400 when = 1 }
+		command = { type = secedeprovince which = USA value = 1401 when = 1 }
+		command = { type = secedeprovince which = USA value = 1402 when = 1 }
+		command = { type = secedeprovince which = USA value = 1391 when = 1 }
+		command = { type = secedeprovince which = USA value = 1394 when = 1 }
+		command = { type = secedeprovince which = USA value = 1404 when = 1 }
+		command = { type = secedeprovince which = USA value = 1405 when = 1 }
+		command = { type = secedeprovince which = USA value = 1392 when = 1 }
+		command = { type = secedeprovince which = USA value = 1393 when = 1 }
+		command = { type = secedeprovince which = USA value = 1395 when = 1 }
+		command = { type = secedeprovince which = USA value = 1396 when = 1 }
+		command = { type = secedeprovince which = USA value = 1397 when = 1 }
+		command = { type = secedeprovince which = USA value = 1399 when = 1 }
+		command = { type = secedeprovince which = USA value = 1403 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1435 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1436 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1437 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1438 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1635 when = 1 }
+		command = { type = secedearea which = USA value = "Sumatra" when = 1 }
+		command = { type = secedearea which = USA value = "West Java" when = 1 }
+		command = { type = secedearea which = USA value = "East Java" when = 1 }
+		command = { type = secedearea which = USA value = "Celebes" when = 1 }
+		command = { type = secedearea which = USA value = "Molucks" when = 1 }
+		command = { type = secedearea which = USA value = "Sunda Islands" when = 1 }
+		command = { type = secedearea which = USA value = "Flores_Timor" when = 1 }
+		command = { type = secedearea which = USA value = "South Borneo" when = 1 }
+		command = { type = secedearea which = USA value = "Babo" when = 1 }
+		command = { type = secedearea which = USA value = "Sarmi" when = 1 }
+		command = { type = secedearea which = USA value = "Agats" when = 1 }
+		command = { type = secedeprovince which = USA value = 1623 when = 1 }
+		command = { type = secedeprovince which = USA value = 1627 when = 1 }
+		command = { type = secedeprovince which = USA value = 1628 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1624 when = 1 }
+		command = { type = secedeprovince which = ENG value = 1626 when = 1 }
+		command = { type = secedeprovince which = USA value = 1625 when = 1 }
+		command = { type = secederegion which = USA value = "Philippines" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324325] GER, ITA | 1940 | The creation of resistance groups at Greece (EEAM,EDES,EAM,EKKA,ELAS...). (La creación de grupos de resistencia en Grecia (EEAM, EDES, EAM, EKKA, ELAS ...))
+# Triggered by event 329728 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324325
+	random = no
+	TAG =  { GER ITA }
+	name = "EVT_SHARED_00626_NAME"
+	desc = "EVT_SHARED_00626_DESC"
+	style = 2
+	picture = "GLOBAL/revolte_grece"
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 3 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [324437] SPR, SPA | 1940 | People's Republic Founded (República Popular)
+# Trigger event 324438 in events/GLOBAL/MULTI_39-44.txt
+# Trigger event 270001 in events/Minors/U35.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 324437
+   tag = { SPR SPA }
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U35
+            ai = no
+            NOT = { ai = U35 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U35
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1940 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U35 } }
+      command = { type = country which = U35 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U35
+      }
+      command = {
+         trigger = {
+            OR = {
+               ai = no
+               control = { province = 460 data = -1 }
+            }
+         }
+         type = trigger which = 324438
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U35 }
+               NOT = { control = { province = 460 data = -1 } }
+            }
+         }
+         type = trigger which = 270001
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U35
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [324438] SPR, SPA | 1940 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 270000 in events/Minors/U35.txt
+# Triggered by event 324437 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 324438
+   tag = { SPR SPA }
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U35 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [324455] MULTI (279 countries) | 1940 | Nuclear Authorization Granted (Autorización de empleo nuclear)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324455
+	persistent = yes
+	tag = { AFG ALB ALG ALI ALS ANG ARA ARG ARM AST AUS AXI AZB BEL BEN BHU BLR BOL BOS BRA BRU BUL BUR CAL CAM CAN CGX CHC CHI CHL CMB COL CON COS CRO CSA CSX CUB CXB CYN CYP CZE DDR DEN DFR DOM EAF ECU EGY ENG EQA EST ETH EUS FIN FLA FRA GAB GEO GER GLD GRE GUA GUI GUY HAI HOL HON HUN ICL IDC IND INO IRE IRQ ISR ITA JAP JOR KAZ KOR KUR KYG LAO LAT LBY LEB LIB LIT LUX MAD MAL MAN MEN MEX MLY MON MOR MOZ MTN NAM NEP NIC NIG NOR NZL OMN OTT PAK PAL PAN PAR PER PHI POL POR PRI PRK PRU QUE RHO ROM RSI RUS SAF SAL SAR SAU SCA SCH SCO SER SIA SIB SIE SIK SLO SLV SOM SOV SPA SPR SUD SWE SYR TAJ TAN TEX TIB TRA TRK TUN TUR UKR URU USA UZB VEN VIC VIE WLL YEM YUG U00 U01 U02 U03 U04 U05 U06 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U23 U24 U25 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 U36 U38 U39 U40 U41 U42 U43 U44 U45 U46 U47 U48 U49 U50 U51 U52 U53 U54 U55 U56 U57 U58 U59 U60 U61 U62 U63 U64 U65 U66 U67 U68 U69 U70 U71 U72 U73 U74 U75 U76 U77 U78 U79 U80 U81 U82 U83 U84 U85 U86 U87 U88 U89 U90 U91 U92 U93 U94 U95 U96 U97 U98 U99 UAP UAU UBO UCH UCS UER UES UGS UIC UIR UPE UPR UPS URO USN UTC UTL UTO }
+	name = EVT_SHARED_00936_NAME
+	desc = EVT_SHARED_00936_DESC
+	picture = "nwo/nukes_enabled"
+	style = 1
+	trigger = {
+		technology = 7170
+		OR = {
+			war = { country = SOV country = USA }
+			lost_national = { value = 30 }
+			flag = nukes_for_everyone
+		}
+		atwar = yes
+		NOT = { local_flag = nukes_enabled }
+	}
+	date = { day = 1 month = january year = 1940 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = enable_task which = nuke }
+		command = { type = local_setflag which = nukes_enabled }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324392] ALB, U28 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324392
+	tag = { ALB U28 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 359 } }
+		control = { province = 359 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 359 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324393] AUS, U16 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324393
+	tag = { AUS U16 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				NOT = { capital = { province = 195 } }
+				control = { province = 195 data = -1 }
+			}
+			AND = {
+				NOT = { capital = { province = 189 } }
+				control = { province = 189 data = -1 }
+				NOT = { control = { province = 195 data = -1 } }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { control = { province = 189 data = -1 } } type = capital which = 189 }
+		command = { trigger = { control = { province = 195 data = -1 } } type = capital which = 195 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324394] BEL, U17 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324394
+	tag = { BEL U17 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 116 } }
+		control = { province = 116 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 116 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324395] BUL, U29 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324395
+	tag = { BUL U29 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 321 } }
+		control = { province = 321 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 321 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324396] CZE, U31 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324396
+	tag = { CZE U31 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 207 } }
+		control = { province = 207 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 207 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324397] U24, U25, DDR, DFR | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324397
+	tag = { U24 U25 DDR DFR }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				NOT = { capital = { province = 163 } }
+				control = { province = 163 data = -1 }
+			}
+			AND = {
+				NOT = { capital = { province = 131 } }
+				control = { province = 131 data = -1 }
+				NOT = { control = { province = 163 data = -1 } }
+			}
+			AND = {
+				NOT = { capital = { province = 179 } }
+				control = { province = 179 data = -1 }
+				NOT = { control = { province = 163 data = -1 } }
+				NOT = { control = { province = 131 data = -1 } }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { control = { province = 179 data = -1 } } type = capital which = 179 }
+		command = { trigger = { control = { province = 131 data = -1 } } type = capital which = 131 }
+		command = { trigger = { control = { province = 163 data = -1 } } type = capital which = 163 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324398] DEN, U22 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324398
+	tag = { DEN U22 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 294 } }
+		control = { province = 294 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 294 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324399] FIN, U20 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324399
+	tag = { FIN U20 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 525 } }
+		control = { province = 525 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 525 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324400] FRA, U01, U11 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324400
+	tag = { FRA U01 U11 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				NOT = { capital = { province = 55 } }
+				control = { province = 55 data = -1 }
+			}
+			AND = {
+				NOT = { capital = { province = 89 } }
+				control = { province = 89 data = -1 }
+				NOT = { control = { province = 55 data = -1 } }
+			}
+			AND = {
+				NOT = { capital = { province = 58 } }
+				control = { province = 58 data = -1 }
+				NOT = { control = { province = 89 data = -1 } }
+				NOT = { control = { province = 55 data = -1 } }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { control = { province = 58 data = -1 } } type = capital which = 58 }
+		command = { trigger = { control = { province = 89 data = -1 } } type = capital which = 89 }
+		command = { trigger = { control = { province = 55 data = -1 } } type = capital which = 55 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324401] GRE, U33 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324401
+	tag = { GRE U33 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 377 } }
+		control = { province = 377 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 377 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324402] HOL, U10 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324402
+	tag = { HOL U10 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 122 } }
+		control = { province = 122 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 122 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324403] HUN, U13 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324403
+	tag = { HUN U13 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 284 } }
+		control = { province = 284 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 284 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324404] ITA, U14 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324404
+	tag = { ITA U14 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				NOT = { capital = { province = 419 } }
+				control = { province = 419 data = -1 }
+			}
+			AND = {
+				NOT = { capital = { province = 407 } }
+				control = { province = 407 data = -1 }
+				NOT = { control = { province = 419 data = -1 } }
+			}
+			AND = {
+				NOT = { capital = { province = 421 } }
+				control = { province = 421 data = -1 }
+				NOT = { control = { province = 407 data = -1 } }
+				NOT = { control = { province = 419 data = -1 } }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { control = { province = 421 data = -1 } } type = capital which = 421 }
+		command = { trigger = { control = { province = 407 data = -1 } } type = capital which = 407 }
+		command = { trigger = { control = { province = 419 data = -1 } } type = capital which = 419 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324405] NOR, U19 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324405
+	tag = { NOR U19 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 483 } }
+		control = { province = 483 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 483 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324406] POL, U32 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324406
+	tag = { POL U32 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				NOT = { capital = { province = 232 } }
+				control = { province = 232 data = -1 }
+			}
+			AND = {
+				NOT = { capital = { province = 235 } }
+				control = { province = 235 data = -1 }
+				NOT = { control = { province = 232 data = -1 } }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { control = { province = 235 data = -1 } } type = capital which = 235 }
+		command = { trigger = { control = { province = 232 data = -1 } } type = capital which = 232 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324407] POR, U15 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324407
+	tag = { POR U15 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				NOT = { capital = { province = 476 } }
+				control = { province = 476 data = -1 }
+			}
+			AND = {
+				NOT = { capital = { province = 481 } }
+				control = { province = 481 data = -1 }
+				NOT = { control = { province = 476 data = -1 } }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { control = { province = 481 data = -1 } } type = capital which = 481 }
+		command = { trigger = { control = { province = 476 data = -1 } } type = capital which = 476 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324408] ROM, U30 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324408
+	tag = { ROM U30 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 316 } }
+		control = { province = 316 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 316 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324409] SCH, U26 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324409
+	tag = { SCH U26 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 392 } }
+		control = { province = 392 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 392 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324410] SPA, SPR, U35 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324410
+	tag = { SPA SPR U35 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				NOT = { capital = { province = 460 } }
+				control = { province = 460 data = -1 }
+			}
+			AND = {
+				NOT = { capital = { province = 440 } }
+				control = { province = 440 data = -1 }
+				NOT = { control = { province = 460 data = -1 } }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { control = { province = 440 data = -1 } } type = capital which = 440 }
+		command = { trigger = { control = { province = 460 data = -1 } } type = capital which = 460 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324411] SWE, U21 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324411
+	tag = { SWE U21 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 2159 } }
+		control = { province = 2159 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 2159 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324412] TUR, U34 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324412
+	tag = { TUR U34 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				NOT = { capital = { province = 1075 } }
+				control = { province = 1075 data = -1 }
+			}
+			AND = {
+				NOT = { capital = { province = 409 } }
+				control = { province = 409 data = -1 }
+				NOT = { control = { province = 1075 data = -1 } }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { control = { province = 409 data = -1 } } type = capital which = 409 }
+		command = { trigger = { control = { province = 1075 data = -1 } } type = capital which = 1075 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324413] YUG, U27 | 1944 | Relocation of the Capital (Traslado de la capital)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324413
+	tag = { YUG U27 }
+	persistent = yes
+	name = EVT_SHARED_00872_NAME
+	desc = EVT_SHARED_00872_DESC
+	picture = "nwo/capital_city"
+	style = 1
+	trigger = {
+		NOT = { capital = { province = 338 } }
+		control = { province = 338 data = -1 }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 2099 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 338 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324424] U25, DDR | 1944 | Partition of Berlin (Partición de Berlín)
+# Trigger event 324425 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324424
+	tag = { U25 DDR }
+	name = EVT_SHARED_00894_NAME
+	desc = EVT_SHARED_00894_DESC
+	picture = "nwo/berlin_wall"
+	style = 1
+	trigger = {
+		flag = divided_berlin
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324425] U25, DDR | 1944 | Berlin Reunited (Berlín reunificada)
+# Triggered by event 324424 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324425
+	tag = { U25 DDR }
+	name = EVT_SHARED_00895_NAME
+	desc = EVT_SHARED_00895_DESC
+	picture = "nwo/berlin_wall"
+	style = 1
+	trigger = {
+		NOT = { flag = divided_berlin }
+		event = 324424
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324458] MULTI (8 countries) | 1944 | Occupation of Austria (Ocupación aliada de Austria)
+# Trigger event 108027 in events/Minors/AUS_44-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324458
+	tag = { USA ENG FRA CAN U01 U02 AST NZL }
+	name = "EVT_SHARED_00937_NAME"
+	desc = "EVT_SHARED_00937_DESC"
+	picture = "nwo/allied_occupation_of_austria"
+	style = 1
+	trigger = {
+		region = { region = "Austria" country = -1 data = 1 value = 100 }
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 100
+		command = { type = independence which = AUS value = 1 when = 0 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324460] MULTI (8 countries) | 1944 | Independence of Germany (Restauración soberana de Alemania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324460
+	tag = { USA ENG FRA CAN U01 U02 AST NZL }
+	name = "EVT_SHARED_00939_NAME"
+	desc = "EVT_SHARED_00939_DESC"
+	picture = "nwo/allied_occupation_of_germany"
+	style = 1
+	trigger = {
+		area = { area = "Westphalen" country = -1 data = 1 value = 100 }
+		area = { area = "Hannover_Magdeburg" country = -1 data = 1 value = 100 }
+		area = { area = "Holstein_Mecklemburg" country = -1 data = 1 value = 100 }
+		area = { area = "Hessen" country = -1 data = 1 value = 100 }
+		area = { area = "Baden_Wurttemberg" country = -1 data = 1 value = 100 }
+		area = { area = "Bavaria" country = -1 data = 1 value = 100 }
+		area = { area = "Sachsen" country = -1 data = 1 value = 100 }
+		area = { area = "Rhineland" country = -1 data = 1 value = 100 }
+		control = { province = 156 data = -1 }
+		control = { province = 157 data = -1 }
+		control = { province = 160 data = -1 }
+		control = { province = 162 data = -1 }
+		control = { province = 163 data = -1 }
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 100
+		command = { type = independence which = DFR value = 1 when = 0 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324461] MULTI (8 countries) | 1944 | Establishment of Occupation Zones (Establecimiento de zonas de ocupación)
+# Trigger event 316247 in events/USA/USA_43-48.txt
+# Trigger event 259005 in events/AI/Minors_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324461
+	tag = { USA ENG FRA CAN U01 U02 AST NZL }
+	name = "EVT_SHARED_00940_NAME"
+	desc = "EVT_SHARED_00940_DESC"
+	picture = "nwo/occupation_zones_in_germany"
+	style = 1
+	trigger = {
+		NOT = { exists = U24 }
+		OR = {
+			area = { area = "Westphalen" country = -1 data = 1 value = 0 }
+			area = { area = "Hannover_Magdeburg" country = -1 data = 1 value = 0 }
+			area = { area = "Holstein_Mecklemburg" country = -1 data = 1 value = 0 }
+			area = { area = "Hessen" country = -1 data = 1 value = 0 }
+			area = { area = "Baden_Wurttemberg" country = -1 data = 1 value = 0 }
+			area = { area = "Bavaria" country = -1 data = 1 value = 0 }
+			area = { area = "Sachsen" country = -1 data = 1 value = 0 }
+			area = { area = "Rhineland" country = -1 data = 1 value = 0 }
+			control = { province = 156 data = -1 }
+			control = { province = 157 data = -1 }
+			control = { province = 160 data = -1 }
+			control = { province = 162 data = -1 }
+			control = { province = 163 data = -1 }
+		}
+		NOT = {
+			AND = {
+				area = { area = "Westphalen" country = -1 data = 1 value = 100 }
+				area = { area = "Hannover_Magdeburg" country = -1 data = 1 value = 100 }
+				area = { area = "Holstein_Mecklemburg" country = -1 data = 1 value = 100 }
+				area = { area = "Hessen" country = -1 data = 1 value = 100 }
+				area = { area = "Baden_Wurttemberg" country = -1 data = 1 value = 100 }
+				area = { area = "Bavaria" country = -1 data = 1 value = 100 }
+				area = { area = "Sachsen" country = -1 data = 1 value = 100 }
+				area = { area = "Rhineland" country = -1 data = 1 value = 100 }
+				control = { province = 156 data = -1 }
+				control = { province = 157 data = -1 }
+				control = { province = 160 data = -1 }
+				control = { province = 162 data = -1 }
+				control = { province = 163 data = -1 }
+			}
+		}
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = U24 value = 1 when = 0 }
+		command = { trigger = { country = USA } type = make_puppet which = U24 }
+		command = { trigger = { NOT = { country = USA } } type = trigger which = 316247 }
+		command = { type = trigger which = 259005 }
+		command = { type = guarantee which = USA where = U24 }
+		command = { type = guarantee which = ENG where = U24 }
+		command = { type = guarantee which = FRA where = U24 }
+		command = { type = guarantee which = SOV where = U24 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324462] MULTI (8 countries) | 1944 | Creation of the Bizone (Integración de la zona aliada)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324462
+	tag = { USA ENG FRA CAN U01 U02 AST NZL }
+	persistent = yes
+	name = "EVT_SHARED_00941_NAME"
+	desc = "EVT_SHARED_00941_DESC"
+	picture = "nwo/occupation_zones_in_germany"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = U24
+		OR = {
+			area = { area = "Westphalen" country = -1 data = 1 value = 0 }
+			area = { area = "Hannover_Magdeburg" country = -1 data = 1 value = 0 }
+			area = { area = "Holstein_Mecklemburg" country = -1 data = 1 value = 0 }
+			area = { area = "Hessen" country = -1 data = 1 value = 0 }
+			area = { area = "Baden_Wurttemberg" country = -1 data = 1 value = 0 }
+			area = { area = "Bavaria" country = -1 data = 1 value = 0 }
+			area = { area = "Sachsen" country = -1 data = 1 value = 0 }
+			area = { area = "Rhineland" country = -1 data = 1 value = 0 }
+			control = { province = 156 data = -1 }
+			control = { province = 157 data = -1 }
+			control = { province = 160 data = -1 }
+			control = { province = 162 data = -1 }
+			control = { province = 163 data = -1 }
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = U24 value = "Westphalen" when = 1 }
+		command = { type = secedearea which = U24 value = "Hannover_Magdeburg" when = 1 }
+		command = { type = secedearea which = U24 value = "Holstein_Mecklemburg" when = 1 }
+		command = { type = secedearea which = U24 value = "Hessen" when = 1 }
+		command = { type = secedearea which = U24 value = "Baden_Wurttemberg" when = 1 }
+		command = { type = secedearea which = U24 value = "Bavaria" when = 1 }
+		command = { type = secedearea which = U24 value = "Sachsen" when = 1 }
+		command = { type = secedearea which = U24 value = "Rhineland" when = 1 }
+		command = { type = secedeprovince which = U24 value = 156 when = 1 }
+		command = { type = secedeprovince which = U24 value = 157 when = 1 }
+		command = { type = secedeprovince which = U24 value = 160 when = 1 }
+		command = { type = secedeprovince which = U24 value = 162 when = 1 }
+		command = { type = secedeprovince which = U24 value = 163 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324463] U25, DDR | 1944 | The Division of Berlin (La división de Berlín)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324463
+	tag = { U25 DDR }
+	name = "EVT_SHARED_00942_NAME"
+	desc = "EVT_SHARED_00942_DESC"
+	picture = "nwo/berlin_wall"
+	style = 1
+	trigger = {
+		control = { province = 163 data = -1 }
+		OR = {
+			region = { region = "Germany" country = U24 data = 1 value = 25 }
+			region = { region = "Germany" country = DFR data = 1 value = 25 }
+		}
+		NOT = { flag = divided_berlin }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = setflag which = divided_berlin }
+	}
+}

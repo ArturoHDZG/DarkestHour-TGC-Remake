@@ -1,0 +1,143 @@
+# ============================================================================
+# File: events/Minors/KUR.txt (5 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [171005] KUR | 1923 | British Material Support (Soporte material británico)
+# Triggered by event 143424 in events/ENG/ENG_Decisions.txt
+# Trigger event 171006 in events/Minors/KUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 171005
+	random = no
+	country = KUR
+	name = "EVT_KUR_171005_NAME"
+	desc = "EVT_KUR_171005_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = free_ic value = 2 }
+		command = { type = supplies value = 2000 }
+		command = { type = oilpool value = 500 }
+		command = { type = metalpool value = 1000 }
+		command = { type = energypool value = 1000 }
+		command = { type = rarematerialspool value = 500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [171004] KUR | 1924 | Declaration of Kurdistan (Declaración de Kurdistán)
+# Triggered by event 235046 in events/Minors/TUR.txt
+# Trigger event 143424 in events/ENG/ENG_Decisions.txt
+# Trigger event 235049 in events/Minors/TUR.txt
+# Trigger event 235050 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 171004
+	random = no
+	country = KUR
+	save_date = yes
+	trigger = {
+		event = 235046
+	}
+	name = "EVT_KUR_171004_NAME"
+	desc = "EVT_KUR_171004_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1924 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 680036 }
+		command = { type = headofgovernment which = 680037 }
+		command = { type = manpowerpool value = 60 }
+		command = { type = add_corps which = "1st Kurdish Army" value = land where = 1060 }
+		command = { type = add_division which = "1st Kurdish Rebels" value = infantry when = 6 }
+		command = { type = add_division which = "2nd Kurdish Rebels" value = militia when = 4 }
+		command = { type = add_division which = "5th Kurdish Rebels" value = militia when = 4 }
+		command = { type = add_corps which = "2nd Kurdish Army" value = land where = 1062 }
+		command = { type = add_division which = "3rd Kurdish Rebels" value = infantry when = 6 }
+		command = { type = add_division which = "4th Kurdish Rebels" value = militia when = 4 }
+		command = { type = war which = TUR }
+		command = { type = war which = OTT }
+		command = { type = dissent value = -15 }
+		command = { type = supplies value = 1000 }
+		command = { type = oilpool value = 500 }
+		command = { type = metalpool value = 200 }
+		command = { type = energypool value = 200 }
+		command = { type = rarematerialspool value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [171006] KUR | 1930 | Kurdistan Declared (Proclamación del Kurdistán)
+# Triggered by event 171005 in events/Minors/KUR.txt
+# Triggered by event 235050 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 171006
+	random = no
+	country = KUR
+	name = "EVT_KUR_171006_NAME"
+	desc = "EVT_KUR_171006_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { event = 171005 } type = free_ic value = -2 }
+		command = { type = construct which = ic where = 1060 value = 1 }
+		command = { type = construct which = ic where = 1062 value = 1 }
+		command = { type = province_keypoints which = 1062 value = -1 }
+		command = { type = province_keypoints which = 1060 value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [171002] KUR | 1945 | Kurdish Autonomy in Mahabad (Autonomía kurda en Mahabad)
+# Triggered by event 223271 in events/SOV/SOV_43-46.txt
+# Trigger event 223272 in events/SOV/SOV_43-46.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 171002
+	country = KUR
+	name = EVT_KUR_171002_NAME
+	desc = EVT_KUR_171002_DESC
+	picture = "nwo/republic_of_mahabad"
+	style = 1
+	trigger = {
+		event = 223271
+	}
+	date = { day = 0 month = december year = 1945 }
+	offset = 3
+	deathdate = { day = 29 month = april year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = access which = SOV }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [171003] KUR | 1946 | Withdrawal of Soviet Support from Mahabad (Retirada del apoyo soviético a Mahabad)
+# Triggered by event 223272 in events/SOV/SOV_43-46.txt
+# Triggered by event 223273 in events/SOV/SOV_43-46.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 171003
+	country = KUR
+	name = EVT_KUR_171003_NAME
+	desc = EVT_KUR_171003_DESC
+	picture = "nwo/iran_crisis_1946"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+		command = { type = leave_alliance }
+		command = { type = end_access which = SOV }
+		command = { type = remove_division which = -1 }
+	}
+}

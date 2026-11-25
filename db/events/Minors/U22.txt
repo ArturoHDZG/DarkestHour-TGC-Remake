@@ -1,0 +1,128 @@
+# ============================================================================
+# File: events/Minors/U22.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [257001] U22 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 257002 in events/Minors/U22.txt
+# Trigger event 138040 in events/Minors/DEN.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 257001
+   country = U22
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = DEN
+            NOT = { ai = DEN }
+            NOT = { ai = U22 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = DEN
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = DEN } }
+      command = { type = country which = DEN }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = DEN
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U22 }
+               control = { province = 294 data = -1 }
+            }
+         }
+         type = trigger which = 257002
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = DEN }
+               NOT = { control = { province = 294 data = -1 } }
+            }
+         }
+         type = trigger which = 138040
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = DEN
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [257002] U22 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 138039 in events/Minors/DEN.txt
+# Triggered by event 257001 in events/Minors/U22.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 257002
+   country = U22
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = DEN value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [257000] U22 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 257000
+	country = U22
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 925034 }
+		command = { type = headofgovernment which = 925028 }
+		command = { type = foreignminister which = 925001 }
+		command = { type = armamentminister which = 925002 }
+		command = { type = ministerofsecurity which = 925003 }
+		command = { type = ministerofintelligence which = 925004 }
+		command = { type = chiefofstaff which = 925005 }
+		command = { type = chiefofarmy which = 925006 }
+		command = { type = chiefofnavy which = 925040 }
+		command = { type = chiefofair which = 925025 }
+	}
+}

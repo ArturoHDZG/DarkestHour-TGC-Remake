@@ -1,0 +1,121 @@
+# ============================================================================
+# THE GRAND CAMPAIGN REMAKE: FRANCOIST IMPERIAL SPAIN & HABSBURG REVIVAL
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231945] SPA | 1939-1945 | Master Decision: The Destiny of Spain
+# ----------------------------------------------------------------------------
+event = {
+	id = 231945
+	country = SPA
+	decision = {
+		year = 1939
+	}
+	decision_trigger = {
+		year = 1939
+	}
+	trigger = {
+		ai = no
+		exists = SPA
+	}
+	name = "EVT_231945_NAME"
+	desc = "EVT_231945_DESC"
+	style = 2
+	picture = "archive/spanish_foreign_legion"
+	decision_picture = "GLOBAL/decision_wargames"
+	date = { day = 1 month = april year = 1939 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1945 }
+	action = {
+		name = "EVT_231945_A"
+		command = { }
+	}
+	action = {
+		name = "EVT_231945_B"
+		command = { type = setflag which = spain_path_axis }
+	}
+	action = {
+		name = "EVT_231945_C"
+		command = { type = setflag which = spain_path_habsburg }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231946] SPA | 1940 | Operation Felix: The Recapture of Gibraltar
+# ----------------------------------------------------------------------------
+event = {
+	id = 231946
+	country = SPA
+	trigger = {
+		flag = spain_path_axis
+		exists = SPA
+	}
+	name = "EVT_231946_NAME"
+	desc = "EVT_231946_DESC"
+	style = 2
+	picture = "archive/spaintervention"
+	date = { day = 23 month = october year = 1940 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1941 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { exists = GER } type = alliance which = GER }
+		command = { trigger = { exists = ENG } type = secedeprovince which = SPA value = 348 }
+		command = { type = addcore which = 348 }
+		command = { type = dissent value = -15 }
+		command = { type = setflag which = Gibraltar_Recaptured }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231947] SPA | 1941 | Hendaye Agreements: Expansion of Spanish West Africa
+# ----------------------------------------------------------------------------
+event = {
+	id = 231947
+	country = SPA
+	trigger = {
+		flag = spain_path_axis
+		flag = Gibraltar_Recaptured
+		exists = SPA
+	}
+	name = "EVT_231947_NAME"
+	desc = "EVT_231947_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 15 month = january year = 1941 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1942 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = supplies value = 2000 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { type = dissent value = -10 }
+		command = { type = setflag which = Spanish_Colonial_Empire_Enlarged }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231948] SPA | 1942-1945 | Traditionalist Monarchy: The Banner of the Habsburgs
+# ----------------------------------------------------------------------------
+event = {
+	id = 231948
+	country = SPA
+	trigger = {
+		flag = spain_path_habsburg
+		exists = SPA
+	}
+	name = "EVT_231948_NAME"
+	desc = "EVT_231948_DESC"
+	style = 2
+	picture = "archive/spanish_foreign_legion"
+	date = { day = 12 month = october year = 1942 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 35012 }
+		command = { type = dissent value = -20 }
+		command = { type = industrial_modifier which = total value = 15 }
+		command = { type = setflag which = Habsburg_Spain_Restored }
+	}
+}

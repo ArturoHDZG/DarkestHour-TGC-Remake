@@ -1,0 +1,962 @@
+# ============================================================================
+# File: events/Minors/VEN.txt (22 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [319005] VEN | 1935 | Death of the Head of State (Muerte del Jefe del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319005
+	random = no
+	country = VEN
+	style = 2
+	trigger = {
+		headofstate = 180106
+	}
+	date = { day = 16 month = december year = 1935 }
+	name = "EVT_SHARED_00501_NAME"
+	desc = "EVT_SHARED_00501_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 180001 }
+		command = { type = headofgovernment which = 180002 }
+		command = { type = foreignminister which = 180003 }
+		command = { type = sleepminister which = 180106 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329521] VEN | 1940 | Diplomatic Talks: Venezuela (Negociaciones con Venezuela)
+# Triggered by event 329517 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329521
+	random = no
+	country = VEN
+	trigger = {
+		random = 5
+		event = 329517
+		alliance = { country = BRA country = ENG }
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = VEN country = SOV } }
+		NOT = { alliance = { country = VEN country = ENG } }
+		NOT = { alliance = { country = VEN country = GER } }
+		NOT = { alliance = { country = VEN country = JAP } }
+		NOT = { war = { country = VEN country = ENG } }
+		NOT = { ispuppet = yes }
+	}
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_VEN_329521_NAME
+	desc = EVT_SHARED_00416_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = { trigger = { NOT = { army = 3 } }
+		ai_chance = 20
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } alliance = { country = ARG country = GER } }
+		ai_chance = 40
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 60
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } alliance = { country = ARG country = GER } }
+		ai_chance = 80
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 200
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 10 }
+		ai_chance = 900
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = {
+		ai_chance = 20
+		name = ACTION_NAME_NEUTRAL
+		command = { type = relation which = ENG value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319000] VEN | 1941 | Popular Revolution Victorious! (¡Triunfo de la revolución!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319000
+	random = no
+	country = VEN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 6
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 6
+					}
+				dissent = 3
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00496_NAME"
+	desc = "EVT_SHARED_00496_DESC"
+	date = { day = 1 month = january year = 1941 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 180011 }
+		command = { type = headofgovernment which = 180013 }
+		command = { type = foreignminister which = 180015 }
+		command = { type = armamentminister which = 180020 }
+		command = { type = ministerofsecurity which = 180029 }
+		command = { type = ministerofintelligence which = 180038 }
+		command = { type = chiefofstaff which = 180044 }
+		command = { type = chiefofarmy which = 180048 }
+		command = { type = chiefofnavy which = 180052 }
+		command = { type = chiefofair which = 180057 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [319001] VEN | 1945 | Left-Wing Coup d'État (Golpe de Estado de izquierdas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319001
+	random = no
+	country = VEN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 6
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 6
+					}
+				dissent = 3
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00499_NAME"
+	desc = "EVT_SHARED_00499_DESC"
+	date = { day = 1 month = january year = 1945 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 180012 }
+		command = { type = headofgovernment which = 180014 }
+		command = { type = foreignminister which = 180017 }
+		command = { type = armamentminister which = 180024 }
+		command = { type = ministerofsecurity which = 180031 }
+		command = { type = ministerofintelligence which = 180040 }
+		command = { type = chiefofstaff which = 180046 }
+		command = { type = chiefofarmy which = 180049 }
+		command = { type = chiefofnavy which = 180054 }
+		command = { type = chiefofair which = 180058 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [319017] VEN | 1945 | The October 1945 Coup (El golpe de octubre de 1945)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319017
+	country = VEN
+	name = EVT_VEN_319017_NAME
+	desc = EVT_VEN_319017_DESC
+	picture = "nwo/venezuela"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 180012 }
+		command = { type = headofgovernment which = 180014 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319018] VEN | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319018
+	country = VEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 180200 }
+		command = { type = headofgovernment which = 180201 }
+		command = { type = foreignminister which = 180017 }
+		command = { type = armamentminister which = 180025 }
+		command = { type = ministerofsecurity which = 180034 }
+		command = { type = ministerofintelligence which = 180042 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 180078 }
+		command = { type = headofgovernment which = 180202 }
+		command = { type = foreignminister which = 180018 }
+		command = { type = armamentminister which = 180024 }
+		command = { type = ministerofsecurity which = 180035 }
+		command = { type = ministerofintelligence which = 180041 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319006] VEN | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319006
+	random = no
+	country = VEN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = VEN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = february year = 1948 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 180012 }
+		command = { type = headofgovernment which = 180014 }
+		command = { type = foreignminister which = 180017 }
+		command = { type = armamentminister which = 180025 }
+		command = { type = ministerofsecurity which = 180034 }
+		command = { type = ministerofintelligence which = 180042 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 180011 }
+		command = { type = headofgovernment which = 180013 }
+		command = { type = foreignminister which = 180018 }
+		command = { type = armamentminister which = 180024 }
+		command = { type = ministerofsecurity which = 180035 }
+		command = { type = ministerofintelligence which = 180041 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [319002] VEN | 1948 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319002
+	random = no
+	country = VEN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = august year = 1948 }
+	offset = 20
+	deathdate = { day = 29 month = february year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 180079 }
+		command = { type = headofgovernment which = 180082 }
+		command = { type = foreignminister which = 180084 }
+		command = { type = armamentminister which = 180024 }
+		command = { type = ministerofsecurity which = 180035 }
+		command = { type = ministerofintelligence which = 180041 }
+		command = { type = chiefofstaff which = 180045 }
+		command = { type = chiefofarmy which = 180086 }
+		command = { type = chiefofnavy which = 180054 }
+		command = { type = chiefofair which = 180058 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [319019] VEN | 1948 | The 1948 Venezuelan Coup (Golpe militar de 1948 en Venezuela)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319019
+	country = VEN
+	name = EVT_VEN_319019_NAME
+	desc = EVT_VEN_319019_DESC
+	picture = "nwo/venezuela"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 27 month = november year = 1948 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 5 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 180079 }
+		command = { type = headofgovernment which = 180203 }
+		command = { type = foreignminister which = 180084 }
+		command = { type = armamentminister which = 180024 }
+		command = { type = ministerofsecurity which = 180035 }
+		command = { type = ministerofintelligence which = 180041 }
+		command = { type = chiefofstaff which = 180045 }
+		command = { type = chiefofarmy which = 180086 }
+		command = { type = chiefofnavy which = 180054 }
+		command = { type = chiefofair which = 180058 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319004] VEN | 1950 | Head of State Assassinated! (¡Jefe de Estado asesinado!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319004
+	random = no
+	country = VEN
+	style = 2
+	trigger = {
+		headofstate = 180079
+		}
+	date = { day = 8 month = march year = 1950 }
+	name = "EVT_SHARED_00506_NAME"
+	desc = "EVT_SHARED_00506_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 180080 }
+		command = { type = sleepminister which = 180079 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [319020] VEN | 1951 | Assassination of Delgado Chalbaud (Asesinato de Delgado Chalbaud)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319020
+	country = VEN
+	name = EVT_VEN_319020_NAME
+	desc = EVT_VEN_319020_DESC
+	picture = "nwo/assassination_of_chalbaud"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+		headofstate = 180079
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 5 }
+		command = { type = headofstate which = 180080 }
+		command = { type = headofgovernment which = 180204 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319021] VEN | 1952 | The Era of Pérez Jiménez (La dictadura de Pérez Jiménez)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319021
+	country = VEN
+	name = EVT_VEN_319021_NAME
+	desc = EVT_VEN_319021_DESC
+	picture = "nwo/marcos_jimenez"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = EVT_VEN_319021_A
+		ai_chance = 80
+		command = { type = headofstate which = 180080 }
+		command = { type = headofgovernment which = 180204 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		name = EVT_VEN_319021_B
+		ai_chance = 20
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = headofstate which = 180200 }
+		command = { type = headofgovernment which = 180201 }
+		command = { type = armamentminister which = 180019 }
+		command = { type = armamentminister which = 180024 }
+		command = { type = ministerofsecurity which = 180035 }
+		command = { type = ministerofintelligence which = 180041 }
+		command = { type = chiefofstaff which = 180045 }
+		command = { type = chiefofarmy which = 180087 }
+		command = { type = chiefofnavy which = 180054 }
+		command = { type = chiefofair which = 180058 }
+		command = { type = sleepevent which = 319022 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319003] VEN | 1952 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319003
+	random = no
+	country = VEN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = february year = 1952 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 180081 }
+		command = { type = headofgovernment which = 180083 }
+		command = { type = foreignminister which = 180085 }
+		command = { type = armamentminister which = 180024 }
+		command = { type = ministerofsecurity which = 180035 }
+		command = { type = ministerofintelligence which = 180041 }
+		command = { type = chiefofstaff which = 180045 }
+		command = { type = chiefofarmy which = 180087 }
+		command = { type = chiefofnavy which = 180054 }
+		command = { type = chiefofair which = 180058 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319022] VEN | 1953 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319022
+	country = VEN
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/marcos_jimenez"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+		headofstate = 180080
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 180081 }
+		command = { type = headofgovernment which = 180083 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319023] VEN | 1958 | The Puntofijo Pact (El Pacto de Puntofijo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319023
+	country = VEN
+	name = EVT_VEN_319023_NAME
+	desc = EVT_VEN_319023_DESC
+	picture = "nwo/punto_fijo_pact"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+		headofstate = 180081
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 90
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 180205 }
+		command = { type = headofgovernment which = 180206 }
+		command = { type = domestic which = freedom value = 2 }
+	}
+	action = {
+		name = EVT_VEN_319023_A
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 180081 }
+		command = { type = headofgovernment which = 180083 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319024] VEN | 1959 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319024
+	country = VEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 180205 }
+		command = { type = headofgovernment which = 180206 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 180012 }
+		command = { type = headofgovernment which = 180014 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319025] VEN | 1964 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319025
+	country = VEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1964 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1967 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 180207 }
+		command = { type = headofgovernment which = 180208 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 180200 }
+		command = { type = headofgovernment which = 180201 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319026] VEN | 1968 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319026
+	country = VEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1968 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 180200 }
+		command = { type = headofgovernment which = 180201 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 180209 }
+		command = { type = headofgovernment which = 180210 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319027] VEN | 1974 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319027
+	country = VEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1977 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 180213 }
+		command = { type = headofgovernment which = 180214 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 180211 }
+		command = { type = headofgovernment which = 180212 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319028] VEN | 1978 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319028
+	country = VEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1978 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1983 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 180215 }
+		command = { type = headofgovernment which = 180216 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 180217 }
+		command = { type = headofgovernment which = 180218 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319029] VEN | 1984 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319029
+	country = VEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1984 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 180219 }
+		command = { type = headofgovernment which = 180220 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 180200 }
+		command = { type = headofgovernment which = 180201 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [319030] VEN | 1988 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 319030
+	country = VEN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 180213 }
+		command = { type = headofgovernment which = 180214 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 180221 }
+		command = { type = headofgovernment which = 180222 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}

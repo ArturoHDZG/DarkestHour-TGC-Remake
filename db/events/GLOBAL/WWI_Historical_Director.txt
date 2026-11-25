@@ -1,0 +1,521 @@
+# ============================================================================
+# File: events/GLOBAL/WWI_Historical_Director.txt
+# Master Director for Historical World War I Scripting
+# Enforces exact historical timeline when triggered by event 231034
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231801] JAP | 1914 | Japan Enters the Great War (Japón entra en la Gran Guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231801
+	country = JAP
+	trigger = {
+		flag = force_historical_ww1
+		exists = JAP
+		exists = U08
+		war = { country = U08 country = ENG }
+		NOT = { war = { country = JAP country = U08 } }
+		NOT = { alliance = { country = JAP country = U08 } }
+	}
+	name = "EVT_JAP_167057_NAME"
+	desc = "EVT_JAP_167057_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 23 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1918 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = war which = U08 }
+		command = { trigger = { war = { country = ENG country = U09 } } type = war which = U09 }
+		command = { type = trigger which = 243122 }
+		command = { type = setflag which = JAP_Historical_WWI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231802] OTT | 1914 | Ottoman Empire Enters the Great War (El Imperio Otomano entra en la Gran Guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231802
+	country = OTT
+	trigger = {
+		flag = force_historical_ww1
+		exists = OTT
+		exists = U08
+		war = { country = U08 country = RUS }
+		NOT = { war = { country = OTT country = RUS } }
+		NOT = { alliance = { country = OTT country = U08 } }
+	}
+	name = "EVT_OTT_196029_NAME"
+	desc = "EVT_SHARED_00093_DESC"
+	style = 2
+	picture = "GLOBAL/mittelmeerdivision"
+	date = { day = 2 month = november year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1918 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = alliance which = U08 when = 1 }
+		command = { type = war which = RUS }
+		command = { type = war which = ENG }
+		command = { type = war which = FRA }
+		command = { trigger = { war = { country = U08 country = SER } } type = war which = SER }
+		command = { trigger = { war = { country = U08 country = BEL } } type = war which = BEL }
+		command = { trigger = { war = { country = U08 country = MTN } } type = war which = MTN }
+		command = { type = setflag which = OTT_Historical_WWI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231803] ITA | 1915 | Italy Enters the Great War (Italia entra en la Gran Guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231803
+	country = ITA
+	trigger = {
+		flag = force_historical_ww1
+		exists = ITA
+		exists = U09
+		war = { country = FRA country = U09 }
+		NOT = { war = { country = ITA country = U09 } }
+		NOT = { alliance = { country = ITA country = FRA } }
+	}
+	name = "EVT_ITA_166100_NAME"
+	desc = "EVT_ITA_166100_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 23 month = may year = 1915 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1918 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = leave_alliance }
+		command = { type = alliance which = FRA when = 1 }
+		command = { type = war which = U09 }
+		command = { trigger = { war = { country = FRA country = U08 } } type = war which = U08 }
+		command = { trigger = { war = { country = FRA country = OTT } } type = war which = OTT }
+		command = { trigger = { war = { country = FRA country = BUL } } type = war which = BUL }
+		command = { type = setflag which = ITAEntente }
+		command = { type = setflag which = ITA_Historical_WWI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231804] BUL | 1915 | Bulgaria Enters the Great War (Bulgaria entra en la Gran Guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231804
+	country = BUL
+	trigger = {
+		flag = force_historical_ww1
+		exists = BUL
+		exists = U08
+		war = { country = U08 country = FRA }
+		NOT = { war = { country = BUL country = SER } }
+		NOT = { alliance = { country = BUL country = U08 } }
+	}
+	name = "EVT_BUL_118022_NAME"
+	desc = "EVT_BUL_118023_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 14 month = october year = 1915 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1918 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = alliance which = U08 when = 1 }
+		command = { trigger = { exists = SER } type = war which = SER }
+		command = { trigger = { exists = RUS } type = war which = RUS }
+		command = { trigger = { exists = FRA } type = war which = FRA }
+		command = { trigger = { exists = ENG } type = war which = ENG }
+		command = { trigger = { exists = MTN } type = war which = MTN }
+		command = { trigger = { exists = ITA } type = war which = ITA }
+		command = { trigger = { exists = BEL } type = war which = BEL }
+		command = { type = setflag which = BUL_Historical_WWI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231805] POR | 1916 | Portugal Enters the Great War (Portugal entra en la Gran Guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231805
+	country = POR
+	trigger = {
+		flag = force_historical_ww1
+		exists = POR
+		exists = U08
+		war = { country = U08 country = ENG }
+		NOT = { war = { country = POR country = U08 } }
+		NOT = { alliance = { country = POR country = U08 } }
+	}
+	name = "EVT_POR_204004_NAME"
+	desc = "EVT_SHARED_00051_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 9 month = march year = 1916 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1918 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = war which = U08 }
+		command = { trigger = { war = { country = ENG country = U09 } } type = war which = U09 }
+		command = { trigger = { war = { country = ENG country = OTT } } type = war which = OTT }
+		command = { trigger = { war = { country = ENG country = BUL } } type = war which = BUL }
+		command = { type = setflag which = POR_Historical_WWI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231806] ROM | 1916 | Romania Enters the Great War (Rumanía entra en la Gran Guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231806
+	country = ROM
+	trigger = {
+		flag = force_historical_ww1
+		exists = ROM
+		exists = U09
+		war = { country = FRA country = U09 }
+		NOT = { war = { country = ROM country = U09 } }
+		NOT = { alliance = { country = ROM country = FRA } }
+	}
+	name = "EVT_ROM_209062_NAME"
+	desc = "EVT_ROM_209062_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 27 month = august year = 1916 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1918 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = alliance which = FRA when = 1 }
+		command = { type = war which = U09 }
+		command = { trigger = { war = { country = FRA country = U08 } } type = war which = U08 }
+		command = { trigger = { war = { country = FRA country = BUL } } type = war which = BUL }
+		command = { trigger = { war = { country = FRA country = OTT } } type = war which = OTT }
+		command = { type = setflag which = ROM_Historical_WWI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231807] GRE | 1917 | Greece Enters the Great War (Grecia entra en la Gran Guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231807
+	country = GRE
+	trigger = {
+		flag = force_historical_ww1
+		exists = GRE
+		exists = U08
+		war = { country = FRA country = U08 }
+		NOT = { war = { country = GRE country = U08 } }
+		NOT = { alliance = { country = GRE country = FRA } }
+	}
+	name = "EVT_GRE_152030_NAME"
+	desc = "EVT_GRE_152030_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 2 month = july year = 1917 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1918 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = alliance which = FRA when = 1 }
+		command = { type = war which = U08 }
+		command = { trigger = { war = { country = FRA country = U09 } } type = war which = U09 }
+		command = { trigger = { war = { country = FRA country = BUL } } type = war which = BUL }
+		command = { trigger = { war = { country = FRA country = OTT } } type = war which = OTT }
+		command = { type = setflag which = GRE_Historical_WWI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231808] CHI | 1917 | China Enters the Great War (China entra en la Gran Guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231808
+	country = CHI
+	trigger = {
+		flag = force_historical_ww1
+		exists = CHI
+		exists = U08
+		war = { country = FRA country = U08 }
+		NOT = { war = { country = CHI country = U08 } }
+	}
+	name = "EVT_CHI_124089_NAME"
+	desc = "EVT_CHI_124089_DESC"
+	style = 2
+	picture = "GLOBAL/ccip_npw"
+	date = { day = 14 month = august year = 1917 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1918 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = alliance which = FRA when = 1 }
+		command = { type = war which = U08 }
+		command = { trigger = { war = { country = FRA country = U09 } } type = war which = U09 }
+		command = { type = setflag which = CHI_Historical_WWI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231810] RUS | 1917 | The February Revolution (La Revolución de Febrero)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231810
+	country = RUS
+	trigger = {
+		flag = force_rus_rev
+		exists = RUS
+		atwar = yes
+		NOT = { event = 211025 }
+	}
+	name = "EVT_RUS_211025_NAME"
+	desc = "EVT_RUS_211025_DESC"
+	style = 2
+	picture = "GLOBAL/strikesruspetro"
+	date = { day = 8 month = march year = 1917 }
+	offset = 1
+	deathdate = { day = 30 month = june year = 1917 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 15 }
+		command = { type = trigger which = 211025 }
+		command = { type = trigger which = 211026 }
+		command = { type = setflag which = RUS_FebRev_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231811] RUS | 1917 | The October Revolution (La Revolución de Octubre)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231811
+	country = RUS
+	trigger = {
+		flag = force_rus_rev
+		exists = RUS
+		NOT = { event = 211035 }
+	}
+	name = "EVT_RUS_211035_NAME"
+	desc = "EVT_RUS_211035_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 7 month = november year = 1917 }
+	offset = 1
+	deathdate = { day = 28 month = february year = 1918 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 211035 }
+		command = { type = setflag which = RUS_OctRev_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231812] SOV | 1918 | The Treaty of Brest-Litovsk (El Tratado de Brest-Litovsk)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231812
+	country = SOV
+	trigger = {
+		flag = force_rus_rev
+		exists = SOV
+		exists = U08
+		war = { country = SOV country = U08 }
+		NOT = { event = 223425 }
+	}
+	name = "EVT_SOV_223425_NAME"
+	desc = "EVT_SOV_223425_DESC"
+	style = 1
+	picture = "GLOBAL/news_paper"
+	date = { day = 3 month = march year = 1918 }
+	offset = 1
+	deathdate = { day = 31 month = may year = 1918 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peace which = U08 value = 1 }
+		command = { trigger = { war = { country = SOV country = U09 } } type = peace which = U09 value = 1 }
+		command = { trigger = { war = { country = SOV country = OTT } } type = peace which = OTT value = 1 }
+		command = { trigger = { war = { country = SOV country = BUL } } type = peace which = BUL value = 1 }
+		command = { type = trigger which = 223425 }
+		command = { type = setflag which = SOV_Brest_Litovsk_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231815] U08 | 1918 | The Armistice of Compiègne (El Armisticio de Compiègne)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231815
+	country = U08
+	trigger = {
+		flag = force_fall_kai
+		exists = U08
+		OR = {
+			war = { country = U08 country = FRA }
+			war = { country = U08 country = ENG }
+			war = { country = U08 country = USA }
+		}
+		NOT = { event = 243107 }
+	}
+	name = "EVT_U08_243107_NAME"
+	desc = "EVT_U08_243107_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 11 month = november year = 1918 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1919 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { event = 243106 } } type = trigger which = 243106 }
+		command = { type = trigger which = 243107 }
+		command = { type = setflag which = Compiegne_Armistice_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231820] BUL | 1918 | Armistice of Salonica (El Armisticio de Salónica)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231820
+	country = BUL
+	trigger = {
+		flag = force_versailles_borders
+		exists = BUL
+		OR = {
+			war = { country = BUL country = FRA }
+			war = { country = BUL country = ENG }
+			war = { country = BUL country = SER }
+			war = { country = BUL country = GRE }
+		}
+		NOT = { event = 118024 }
+	}
+	name = "EVT_BUL_118024_NAME"
+	desc = "EVT_BUL_118024_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 29 month = september year = 1918 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1919 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { trigger = { war = { country = BUL country = FRA } } type = peace which = FRA value = 1 }
+		command = { trigger = { war = { country = BUL country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = BUL country = SER } } type = peace which = SER value = 1 }
+		command = { trigger = { war = { country = BUL country = GRE } } type = peace which = GRE value = 1 }
+		command = { trigger = { war = { country = BUL country = ROM } } type = peace which = ROM value = 1 }
+		command = { trigger = { war = { country = BUL country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = BUL country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = BUL country = RUS } } type = peace which = RUS value = 1 }
+		command = { type = trigger which = 118024 }
+		command = { type = trigger which = 118025 }
+		command = { type = setflag which = BUL_Armistice_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231821] OTT | 1918 | Armistice of Mudros (El Armisticio de Mudros)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231821
+	country = OTT
+	trigger = {
+		flag = force_versailles_borders
+		exists = OTT
+		OR = {
+			war = { country = OTT country = ENG }
+			war = { country = OTT country = FRA }
+		}
+		NOT = { event = 196004 }
+	}
+	name = "EVT_OTT_196004_NAME"
+	desc = "EVT_OTT_196004_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 30 month = october year = 1918 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1919 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { trigger = { war = { country = OTT country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = OTT country = FRA } } type = peace which = FRA value = 1 }
+		command = { trigger = { war = { country = OTT country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = OTT country = GRE } } type = peace which = GRE value = 1 }
+		command = { trigger = { war = { country = OTT country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = OTT country = RUS } } type = peace which = RUS value = 1 }
+		command = { type = trigger which = 196004 }
+		command = { type = setflag which = OTT_Armistice_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231822] U09 | 1918 | Dissolution of Austria-Hungary (Disolución del Imperio austrohúngaro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231822
+	country = U09
+	trigger = {
+		flag = force_versailles_borders
+		exists = U09
+		OR = {
+			war = { country = U09 country = ITA }
+			war = { country = U09 country = FRA }
+			war = { country = U09 country = ENG }
+			war = { country = U09 country = SER }
+		}
+		NOT = { event = 244018 }
+	}
+	name = "EVT_U09_244018_NAME"
+	desc = "EVT_U09_244018_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 3 month = november year = 1918 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1919 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { trigger = { war = { country = U09 country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = U09 country = FRA } } type = peace which = FRA value = 1 }
+		command = { trigger = { war = { country = U09 country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = U09 country = SER } } type = peace which = SER value = 1 }
+		command = { trigger = { war = { country = U09 country = ROM } } type = peace which = ROM value = 1 }
+		command = { trigger = { war = { country = U09 country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = U09 country = RUS } } type = peace which = RUS value = 1 }
+		command = { type = trigger which = 244018 }
+		command = { type = setflag which = U09_Dissolution_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231823] U08 | 1919 | The Treaty of Versailles (El Tratado de Versalles)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231823
+	country = U08
+	trigger = {
+		flag = force_versailles_borders
+		exists = U08
+		event = 243107
+		NOT = { event = 243086 }
+	}
+	name = "EVT_U08_243086_NAME"
+	desc = "EVT_U08_243086_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1919 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1920 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 243086 }
+		command = { type = setflag which = Versailles_Executed }
+	}
+}

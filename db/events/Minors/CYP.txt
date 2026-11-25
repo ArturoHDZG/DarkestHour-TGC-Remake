@@ -1,0 +1,406 @@
+# ============================================================================
+# File: events/Minors/CYP.txt (12 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [135009] CYP | 1933 | Formation of National Army (Creación del ejército)
+# ----------------------------------------------------------------------------
+event = {
+	id = 135009
+	country = CYP
+	name = EVT_SHARED_00916_NAME
+	desc = EVT_SHARED_00916_DESC
+	picture = "nwo/foundation_of_army"
+	style = 1
+	date = { day = 1 month = january year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_division value = infantry when = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [135008] CYP | 1955 | Colonial Military Bases (Bases militares coloniales)
+# Triggered by event 143288 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 135008
+	country = CYP
+	name = EVT_SHARED_00874_NAME
+	desc = EVT_SHARED_00874_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = access which = ENG }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [135000] CYP | 1960 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 135000
+	country = CYP
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1967 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 620011 }
+		command = { type = headofgovernment which = 620100 }
+		command = { type = foreignminister which = 620015 }
+		command = { type = armamentminister which = 620017 }
+		command = { type = ministerofintelligence which = 620021 }
+		command = { type = chiefofstaff which = 620023 }
+		command = { type = chiefofarmy which = 620025 }
+		command = { type = chiefofnavy which = 620027 }
+		command = { type = chiefofair which = 620029 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 620101 }
+		command = { type = headofgovernment which = 620102 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329808] CYP | 1960 | Full Sovereignty Achieved (Independencia total)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329808
+	country = CYP
+	name = EVT_SHARED_00908_NAME
+	desc = EVT_SHARED_00908_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		puppet = { country = CYP country = ENG }
+		flag = cold_war
+		NOT = { atwar = ENG }
+	}
+	date = { day = 1 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = end_puppet }
+		command = { type = end_access which = ENG }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [135001] CYP | 1968 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 135001
+	country = CYP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1968 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 620011 }
+		command = { type = headofgovernment which = 620100 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 620103 }
+		command = { type = headofgovernment which = 620104 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [135002] CYP | 1974 | Aftermath of the Coup (Consecuencias en Chipre)
+# Triggered by event 135007 in events/Minors/CYP.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 135002
+	country = CYP
+	name = EVT_CYP_135002_NAME
+	desc = EVT_CYP_135002_DESC
+	picture = "nwo/cyprus_coup"
+	style = 1
+	trigger = {
+		event = 135007
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1976 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 80
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 620011 }
+		command = { type = headofgovernment which = 620100 }
+	}
+	action = {
+		name = EVT_CYP_135002_A
+		ai_chance = 10
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 620105 }
+		command = { type = headofgovernment which = 620106 }
+	}
+	action = {
+		name = EVT_CYP_135002_B
+		ai_chance = 10
+		command = { type = dissent value = 20 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 620107 }
+		command = { type = headofgovernment which = 620108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [135007] CYP | 1974 | Turkish Invasion of Cyprus (Invasión turca de Chipre)
+# Triggered by event 235022 in events/Minors/TUR.txt
+# Trigger event 135002 in events/Minors/CYP.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 135007
+	country = CYP
+	one_action = yes
+	name = EVT_CYP_135007_NAME
+	desc = EVT_CYP_135007_DESC
+	picture = "nwo/turkish_cyprus"
+	style = 1
+	action = {
+		name = EVT_CYP_135007_A
+		ai_chance = 85
+		command = { type = relation which = GRE value = -150 }
+		command = { type = relation which = CYP value = -250 }
+		command = { type = secedeprovince which = TUR value = 387 }
+		command = { type = dissent value = 25 }
+		command = { type = sleepevent which = 329786 }
+	}
+	action = {
+		name = EVT_CYP_135007_B
+		ai_chance = 15
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = dissent value = -25 }
+		command = { type = sleepevent which = 135002 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [135006] CYP | 1974 | 1974 Cypriot Coup d'Etat (Golpe de Estado en Chipre)
+# Trigger event 235022 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 135006
+	country = CYP
+	name = EVT_CYP_135006_NAME
+	desc = EVT_CYP_135006_DESC
+	picture = "nwo/enosis"
+	style = 1
+	date = { day = 15 month = july year = 1974 }
+	offset = 7
+	deathdate = { day = 29 month = july year = 1974 }
+	action = {
+		name = EVT_CYP_135006_A
+		ai_chance = 85
+		command = { type = domestic which = democratic value = -3 }
+		command = { type = domestic which = political_left value = -2 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 235022 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 15
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = dissent value = 5 }
+		command = { type = sleepevent which = 329786 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329786] CYP | 1974 | The Question of Enosis (El dilema de la Énosis)
+# Trigger event 152177 in events/GRE/GRE_49-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329786
+	country = CYP
+	name = EVT_CYP_329786_NAME
+	desc = EVT_CYP_329786_DESC
+	picture = "nwo/enosis"
+	style = 1
+	trigger = {
+		exists = GRE
+		NOT = { war = { country = GRE country = CYP } }
+	}
+	date = { day = 1 month = august year = 1974 }
+	offset = 7
+	deathdate = { day = 29 month = august year = 1974 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 85
+		command = { type = relation which = GRE value = 150 }
+		command = { type = trigger which = 152177 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 15
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [135003] CYP | 1977 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 135003
+	country = CYP
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	date = { day = 0 month = january year = 1977 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = sleepminister which = 620011 }
+		command = { type = headofstate which = 620109 }
+		command = { type = headofgovernment which = 620110 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [135004] CYP | 1983 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 135004
+	country = CYP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1983 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 620109 }
+		command = { type = headofgovernment which = 620110 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 620105 }
+		command = { type = headofgovernment which = 620106 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [135005] CYP | 1988 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 135005
+	country = CYP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 620111 }
+		command = { type = headofgovernment which = 620112 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 620105 }
+		command = { type = headofgovernment which = 620106 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}

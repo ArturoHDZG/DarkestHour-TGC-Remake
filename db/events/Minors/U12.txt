@@ -1,0 +1,96 @@
+# ============================================================================
+# File: events/Minors/U12.txt (2 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [247000] U12 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 247001 in events/Minors/U12.txt
+# Trigger event 143318 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 247000
+   country = U12
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = ENG
+            NOT = { ai = ENG }
+            NOT = { ai = U12 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = ENG
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = ENG } }
+      command = { type = country which = ENG }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = ENG
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U12 }
+               control = { province = 29 data = -1 }
+            }
+         }
+         type = trigger which = 247001
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = ENG }
+               NOT = { control = { province = 29 data = -1 } }
+            }
+         }
+         type = trigger which = 143318
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = ENG
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [247001] U12 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 143317 in events/ENG/ENG_34-36.txt
+# Triggered by event 247000 in events/Minors/U12.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 247001
+   country = U12
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = ENG value = 1 }
+   }
+}

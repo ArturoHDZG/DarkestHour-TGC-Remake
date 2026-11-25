@@ -1,0 +1,128 @@
+# ============================================================================
+# File: events/Minors/U16.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [251001] U16 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 251002 in events/Minors/U16.txt
+# Trigger event 108047 in events/Minors/AUS_14-37.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 251001
+   country = U16
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = AUS
+            NOT = { ai = AUS }
+            NOT = { ai = U16 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = AUS
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = AUS } }
+      command = { type = country which = AUS }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = AUS
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U16 }
+               control = { province = 195 data = -1 }
+            }
+         }
+         type = trigger which = 251002
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = AUS }
+               NOT = { control = { province = 195 data = -1 } }
+            }
+         }
+         type = trigger which = 108047
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = AUS
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [251002] U16 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 108046 in events/Minors/AUS_14-37.txt
+# Triggered by event 251001 in events/Minors/U16.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 251002
+   country = U16
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = AUS value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [251000] U16 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 251000
+	country = U16
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 895002 }
+		command = { type = headofgovernment which = 895003 }
+		command = { type = foreignminister which = 895008 }
+		command = { type = armamentminister which = 895013 }
+		command = { type = ministerofsecurity which = 895018 }
+		command = { type = ministerofintelligence which = 895018 }
+		command = { type = chiefofstaff which = 895020 }
+		command = { type = chiefofarmy which = 895021 }
+		command = { type = chiefofnavy which = 895023 }
+		command = { type = chiefofair which = 895024 }
+	}
+}

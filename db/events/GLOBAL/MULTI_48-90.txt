@@ -1,0 +1,1205 @@
+# ============================================================================
+# File: events/GLOBAL/MULTI_48-90.txt (39 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [324445] EGY, JOR, LEB, SYR, IRQ | 1948 | Decisive Arab Victory in Palestine (Victoria total árabe en Palestina)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324445
+	tag = { EGY JOR LEB SYR IRQ }
+	trigger = {
+		NOT = { exists = ISR }
+		flag = arab_israeli_war_1948
+		control = { province = 1172 data = -1 }
+	}
+	name = EVT_SHARED_00930_NAME
+	desc = EVT_SHARED_00930_DESC
+	picture = "nwo/arab_israeli_war_1948"
+	style = 1
+	date = { day = 1 month = june year = 1948 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		command = { type = independence which = PAL value = 0 }
+		command = { type = clrflag which = arab_israeli_war_1948 }
+		command = { type = secedeprovince which = PAL value = 1172 when = 2 }
+		command = { type = secedeprovince which = PAL value = 1009 when = 2 }
+		command = { type = secedeprovince which = PAL value = 1013 when = 2 }
+		command = { type = secedeprovince which = PAL value = 1011 when = 2 }
+		command = { type = secedeprovince which = PAL value = 1008 when = 2 }
+		command = { type = secedeprovince which = PAL value = 1010 when = 2 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 20 }
+		command = { type = clrflag which = arab_israeli_war_1948 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324391] DFR, U24 | 1949 | Lifting of the Berlin Blockade (Levantamiento del Bloqueo de Berlín)
+# Triggered by event 223198 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324391
+	tag = { DFR U24 }
+	name = EVT_SHARED_00869_NAME
+	desc = EVT_SHARED_00870_DESC
+	picture = "nwo/end_of_berlin_airlift"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324449] MULTI (28 countries) | 1949 | The Marshall Plan (El Plan Marshall)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324449
+	tag = { AUS BEL LUX DEN FRA GRE ICL IRE ITA HOL NOR POR SWE SCH TUR ENG POL CZE HUN ROM BUL YUG LIT LAT EST BLR UKR SPR }
+	persistent = yes
+	name = EVT_SHARED_00933_NAME
+	desc = EVT_SHARED_00933_DESC
+	picture = "nwo/marshall_plan"
+	style = 1
+	trigger = {
+		flag = cold_war
+		OR = {
+			flag = marshall_plan_west_only
+			flag = marshall_plan_west_plus_two
+			flag = marshall_plan_for_all
+		}
+		NOT = { local_flag = marshall_plan }
+	}
+	date = { day = 1 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = relation which = USA value = 100 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = local_setflag which = marshall_plan }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324450] MULTI (22 countries) | 1949 | The Marshall Plan (El Plan Marshall)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324450
+	tag = { U16 U17 U18 U22 U11 U33 U14 U10 U19 U15 U21 U26 U34 U12 U32 U31 U13 U30 U29 U27 U20 U35 }
+	persistent = yes
+	name = EVT_SHARED_00933_NAME
+	desc = EVT_SHARED_00933_DESC
+	picture = "nwo/marshall_plan"
+	style = 1
+	trigger = {
+		flag = cold_war
+		OR = {
+			flag = marshall_plan_for_all
+			AND = {
+				flag = marshall_plan_west_plus_two
+				country = U31
+			}
+			AND = {
+				flag = marshall_plan_west_plus_two
+				country = U32
+			}
+		}
+		NOT = { local_flag = marshall_plan }
+	}
+	date = { day = 1 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = domestic which = free_market value = 3 }
+		command = { type = relation which = USA value = 200 }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = local_setflag which = marshall_plan }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324451] U24, DFR | 1949 | The Marshall Plan (El Plan Marshall)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324451
+	tag = { U24 DFR }
+	name = EVT_SHARED_00933_NAME
+	desc = EVT_SHARED_00933_DESC
+	picture = "nwo/marshall_plan"
+	style = 1
+	trigger = {
+		flag = cold_war
+		OR = {
+			flag = marshall_plan_west_only
+			flag = marshall_plan_west_plus_two
+			flag = marshall_plan_for_all
+		}
+	}
+	date = { day = 1 month = january year = 1949 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = relation which = USA value = 100 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = free_market value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324452] U25, DDR | 1949 | The Marshall Plan (El Plan Marshall)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324452
+	tag = { U25 DDR }
+	name = EVT_SHARED_00933_NAME
+	desc = EVT_SHARED_00933_DESC
+	picture = "nwo/marshall_plan"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = marshall_plan_for_all
+	}
+	date = { day = 1 month = january year = 1949 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = relation which = USA value = 100 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = domestic which = free_market value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324418] MULTI (13 countries) | 1949 | Accession to NATO (Adhesión a la OTAN)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324418
+	persistent = yes
+	tag = { ENG FRA CAN ICL NOR DEN BEL HOL LUX ITA POR GRE TUR }
+	name = EVT_SHARED_00886_NAME
+	desc = EVT_SHARED_00886_DESC
+	picture = "nwo/nato"
+	trigger = {
+		NOT = { local_flag = event_8215021 }
+		NOT = { flag = isolationist_usa }
+		NOT = { alliance = { country = -1 country = USA } }
+		OR = {
+			flag = cold_war
+			flag = ww3
+		}
+		OR = {
+			AND = {
+				NOT = { country = GRE }
+				NOT = { country = TUR }
+			}
+			AND = {
+				OR = {
+					country = GRE
+					country = TUR
+				}
+				year = 1952
+			}
+		}
+		relation = { which = USA value = -100 }
+		NOT = { relation = { which = SOV value = 150 } }
+	}
+    date = { day = 0 month = july year = 1949 }
+    offset = 14
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 98
+		command = { type = set_domestic which = interventionism value = 6 }
+		command = { type = alliance which = USA }
+		command = { type = local_setflag which = event_8215021  }
+	}
+	action = {
+		name = EVT_SHARED_00886_A
+		ai_chance = 2
+		command = { type = local_setflag which = event_8215021  }
+		command = { type = domestic which = interventionism value = -4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324191] AST, FRA, U01, U11 | 1949 | Ned Kelly Visit's France (Ned Kelly visita Francia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324191
+	TAG =  { AST FRA U01 U11 }
+	style = 0
+	date = { day = 4 month = August Year = 1949 }
+	name = "EVT_SHARED_00371_NAME"
+	desc = "EVT_SHARED_00371_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = dissent value = -2 }
+	command = { type = relation which = FRA value = 10 }
+	command = { type = relation which = AST value = 10 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324440] HOL, U05 | 1950 | The Toll of the Colonial War (Desgaste en Indonesia)
+# Triggered by event 162043 in events/Minors/INO.txt
+# Triggered by event 162042 in events/Minors/INO.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324440
+	tag = { HOL U05 }
+	persistent = yes
+	name = EVT_SHARED_00923_NAME
+	desc = EVT_SHARED_00923_DESC
+	picture = "nwo/indonesia_prolonged_fight"
+	style = 1
+	trigger = {
+		war = { country = INO country = U05 }
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { country = U05 OR = { event = 162043 event = 162042 } } type = dissent value = 3 }
+		command = { trigger = { country = U05 OR = { event = 162043 event = 162042 } } type = dissent value = 2 }
+		command = { trigger = { country = HOL } type = dissent value = 1 }
+		command = { trigger = { country = HOL } type = belligerence value = 4 }
+		command = { trigger = { country = HOL OR = { event = 162043 event = 162042 } } type = belligerence value = 8 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324483] CHC, CHI | 1950 | Time of Peace (Tiempos de paz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324483
+	random = no
+	persistent = yes
+	tag = { CHC CHI }
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+		OR = {
+			country = CHC
+			AND = {
+				country = CHI
+				flag = CHI_won_civil_war
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1950 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = -50 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324193] MULTI (46 countries) | 1951 | Peace Treaty Signed In San Francisco (Tratado de paz firmado en San Francisco)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324193
+	TAG =  { AST ARG BEL BOL BRA CMB CAN CHL COL CZE DOM ECU EGY SAL ETH FRA GRE GUA HON HAI INO PER IRQ JAP LAO LEB LIB LUX HOL NIC NOR POL PHI PAK PAN PRU SAU U83 SOV TUR USA ENG SYR URU VEN UIC }
+	style = 0
+	date = { day = 9 month = September Year = 1951 }
+	name = "EVT_SHARED_00372_NAME"
+	desc = "EVT_SHARED_00372_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = relation which = POR value = -10 }
+	command = { type = relation which = ITA value = -10 }
+	command = { type = relation which = AST value = 10 }
+	command = { type = relation which = ARG value = 10 }
+	command = { type = relation which = BEL value = 10 }
+	command = { type = relation which = BOL value = 10 }
+	command = { type = relation which = BRA value = 10 }
+	command = { type = relation which = CMB value = 10 }
+	command = { type = relation which = CAN value = 10 }
+	command = { type = relation which = CHL value = 10 }
+	command = { type = relation which = COL value = 10 }
+	command = { type = relation which = CZE value = 10 }
+	command = { type = relation which = DOM value = 10 }
+	command = { type = relation which = ECU value = 10 }
+	command = { type = relation which = EGY value = 10 }
+	command = { type = dissent value = -2 }
+	command = { type = relation which = SAL value = 10 }
+	command = { type = relation which = ETH value = 10 }
+	command = { type = relation which = FRA value = 10 }
+	command = { type = relation which = GRE value = 10 }
+	command = { type = relation which = GUA value = 10 }
+	command = { type = relation which = HON value = 10 }
+	command = { type = relation which = HAI value = 10 }
+	command = { type = relation which = INO value = 10 }
+	command = { type = relation which = PER value = 10 }
+	command = { type = relation which = IRQ value = 10 }
+	command = { type = relation which = JAP value = 10 }
+	command = { type = relation which = LAO value = 10 }
+	command = { type = relation which = LEB value = 10 }
+	command = { type = relation which = LIB value = 10 }
+	command = { type = relation which = LUX value = 10 }
+	command = { type = relation which = HOL value = 10 }
+	command = { type = relation which = NIC value = 10 }
+	command = { type = relation which = NOR value = 10 }
+	command = { type = relation which = POL value = 10 }
+	command = { type = relation which = PHI value = 10 }
+	command = { type = relation which = PAK value = 10 }
+	command = { type = relation which = PAN value = 10 }
+	command = { type = relation which = PRU value = 10 }
+	command = { type = relation which = SAU value = 10 }
+	command = { type = relation which = U83 value = 10 }
+	command = { type = relation which = SOV value = -10 }
+	command = { type = relation which = TUR value = 10 }
+	command = { type = relation which = USA value = 10 }
+	command = { type = relation which = ENG value = 10 }
+	command = { type = relation which = SYR value = 10 }
+	command = { type = relation which = URU value = 10 }
+	command = { type = relation which = VEN value = 10 }
+	command = { type = relation which = UIC value = 10 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324103] ITA, USA, ENG | 1951 | Fate of Libya (El destino de Libia)
+# Trigger event 175000 in events/Minors/LBY.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324103
+	random = no
+	TAG = { ITA USA ENG }
+	trigger = {
+		government = democratic
+		random = 8
+		control = { province = 750 data = -1 }
+		atwar = no
+		NOT = {
+			exists = LBY
+			exists = GER
+			government = fascist
+		}
+	}
+	name = "EVT_SHARED_00770_NAME"
+	desc = "EVT_SHARED_00770_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 24 month = december year = 1951 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 95
+		command = { type = independence which = LBY value = 1 }
+		command = { type = trigger which = 175000 }
+	}
+	action_b = {
+		name = "EVT_SHARED_00770_A"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324421] MULTI (10 countries) | 1952 | Colonial Unrest (Disturbios coloniales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324421
+	tag = { ENG FRA ITA GER U08 SPR SPA BEL HOL U05 U02 }
+	name = EVT_SHARED_00889_NAME
+	desc = EVT_SHARED_00889_DESC
+	picture = "nwo/colonial_unrest"
+	style = 1
+	trigger = {
+		OR = {
+			control = { province = 717 data = -1 }
+			control = { province = 718 data = -1 }
+		}
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 1080
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { type = province_revoltrisk which = 715 value = 10 }
+		command = { type = province_revoltrisk which = 716 value = 10 }
+		command = { type = province_revoltrisk which = 717 value = 10 }
+		command = { type = province_revoltrisk which = 718 value = 10 }
+		command = { type = province_revoltrisk which = 719 value = 10 }
+		command = { type = province_revoltrisk which = 715 value = 10 }
+		command = { type = province_revoltrisk which = 720 value = 10 }
+		command = { type = province_revoltrisk which = 721 value = 10 }
+		command = { type = province_revoltrisk which = 722 value = 10 }
+		command = { type = province_revoltrisk which = 723 value = 10 }
+		command = { type = province_revoltrisk which = 724 value = 10 }
+		command = { type = province_revoltrisk which = 725 value = 10 }
+		command = { type = province_revoltrisk which = 726 value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324435] ITA, ENG, FRA, USA, EGY, SOV | 1952 | UN Commission on Eritrea (Comisión de la ONU para Eritrea)
+# Trigger event 207059 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324435
+	tag = { ITA ENG FRA USA EGY SOV }
+	name = EVT_SHARED_00913_NAME
+	desc = EVT_SHARED_00913_DESC
+	picture = "nwo/eritrea"
+	style = 1
+	trigger = {
+		control = { province = 817 data = -1 }
+		exists = ETH
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1952 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 85
+		trigger = {
+			OR = {
+				AND = {
+					government = democratic
+					ai = yes
+				}
+				ai = no
+			}
+		}
+		command = { type = relation which = ETH value = 100 }
+	}
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 15
+		trigger = {
+			OR = {
+				NOT = {
+					country = ITA
+					country = ENG
+					country = FRA
+					country = USA
+				}
+				ai = no
+			}
+		}
+		command = { type = belligerence value = 5 }
+		command = { type = dissent value = 1 }
+		command = { type = relation which = ETH value = -100 }
+		command = { type = sleepevent which = 330006 }
+		command = { type = sleepevent which = 330007 }
+		command = { type = sleepevent which = 330008 }
+		command = { type = sleepevent which = 330009 }
+		command = { type = sleepevent which = 330011 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324436] ITA, ENG, FRA, USA, EGY, SOV | 1952 | Federation of Eritrea (Federación de Eritrea)
+# Triggered by event 145015 in events/Minors/ETH.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324436
+	tag = { ITA ENG FRA USA EGY SOV }
+	name = EVT_SHARED_00914_NAME
+	desc = EVT_SHARED_00914_DESC
+	picture = "nwo/eritrea"
+	style = 1
+	trigger = {
+		control = { province = 817 data = -1 }
+		event = 145015
+		exists = ETH
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1952 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = ETH value = 817 when = 2 }
+		command = { type = secedeprovince which = ETH value = 815 when = 2 }
+		command = { type = secedeprovince which = ETH value = 816 when = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324194] AST, ENG, USA | 1952 | Combined Development Agency (Agencia de Desarrollo Combinado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324194
+	TAG =  { AST ENG USA }
+	style = 0
+	date = { day = 2 month = April Year = 1952 }
+	name = "EVT_SHARED_00373_NAME"
+	desc = "EVT_SHARED_00373_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = research_mod value = 2.5 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324196] AST, ENG | 1952 | Nuclear Detonation (Detonación nuclear)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324196
+	TAG =  { AST ENG }
+	style = 0
+	date = { day = 3 month = October Year = 1952 }
+	name = "EVT_SHARED_00374_NAME"
+	desc = "EVT_SHARED_00374_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = dissent value = 1 }
+	command = { type = research_mod value = 2.5 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324025] POL, U32 | 1952 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324025
+	random = no
+	TAG = { POL U32 }
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = communist
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = november year = 1952 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 60013 }
+		command = { type = headofgovernment which = 60132 }
+		command = { type = foreignminister which = 60133 }
+		command = { type = armamentminister which = 60134 }
+		command = { type = ministerofsecurity which = 60074 }
+		command = { type = ministerofintelligence which = 60135 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [324197] AST, JAP | 1953 | Haruhiko Hishi Comes To Australia (Haruhiko Hishi viene a Australia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324197
+	TAG =  { AST JAP }
+	style = 0
+	date = { day = 7 month = January Year = 1953 }
+	name = "EVT_SHARED_00375_NAME"
+	desc = "EVT_SHARED_00375_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = dissent value = -2 }
+	command = { type = relation which = JAP value = 20 }
+	command = { type = relation which = AST value = 20 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324198] AST, ENG, USA | 1953 | Combined Development Agency (Agencia de Desarrollo Combinado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324198
+	TAG =  { AST ENG USA }
+	style = 0
+	date = { day = 8 month = January Year = 1953 }
+	name = "EVT_SHARED_00376_NAME"
+	desc = "EVT_SHARED_00376_DESC"
+	action = {
+		name = "ACTION_NAME_GOOD"
+	command = { type = dissent value = -2 }
+	command = { type = relation which = USA value = 10 }
+	command = { type = relation which = ENG value = 10 }
+	command = { type = relation which = AST value = 10 }
+	command = { type = industrial_modifier which = supplies value = 7 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324199] AST, FRA | 1953 | French Painting Today (Exposición 'French Painting Today')
+# ----------------------------------------------------------------------------
+event = {
+	id = 324199
+	TAG =  { AST FRA }
+	style = 0
+	date = { day = 20 month = January Year = 1953 }
+	name = "EVT_SHARED_00377_NAME"
+	desc = "EVT_SHARED_00377_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = dissent value = -2 }
+	command = { type = relation which = FRA value = 10 }
+	command = { type = relation which = AST value = 10 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324200] AST, ENG | 1953 | Australia-British Nuclear Research (Investigación nuclear Australiano-Británica)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324200
+	TAG =  { AST ENG }
+	style = 0
+	date = { day = 24 month = June Year = 1953 }
+	name = "EVT_SHARED_00378_NAME"
+	desc = "EVT_SHARED_00378_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = research_mod value = 2 }
+	command = { type = dissent value = 1 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324491] DFR, DDR | 1953 | Reunification of Germany (Reunificación de Alemania)
+# Triggered by event 139046 in events/Minors/DFR.txt
+# Triggered by event 137029 in events/Minors/DDR.txt
+# Triggered by event 316253 in events/USA/USA_48-61.txt
+# Triggered by event 143337 in events/ENG/ENG_43-54.txt
+# Triggered by event 147216 in events/FRA/FRA_48-59.txt
+# Trigger event 223310 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324491
+	tag = { DFR DDR }
+	name = EVT_SHARED_00952_NAME
+	desc = EVT_SHARED_00952_DESC
+	picture = "nwo/united_germany"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = DFR
+		exists = DDR
+		event = 139046
+		event = 137029
+		OR = { event = 316253 NOT = { exists = USA } }
+		OR = { event = 143337 NOT = { exists = ENG } }
+		OR = { event = 147216 NOT = { exists = FRA } }
+	}
+	date = { day = 1 month = october year = 1953 }
+	offset = 7
+	deathdate = { day = 29 month = april year = 1954 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { country = DDR } type = inherit which = DFR }
+		command = { trigger = { country = DFR } type = inherit which = DDR }
+		command = { trigger = { country = DDR } type = country which = DFR }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = set_domestic which = free_market value = 8 }
+		command = { type = set_domestic which = freedom value = 7 }
+		command = { type = leave_alliance }
+		command = { type = leave_alliance }
+		command = { type = end_puppet }
+		command = { type = end_access which = USA }
+		command = { type = end_access which = SOV }
+		command = { type = end_access which = ENG }
+		command = { type = end_access which = FRA }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324201] AST, USA | 1953 | Income Tax Act (Ley del impuesto sobre la renta)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324201
+	TAG =  { AST USA }
+	style = 0
+	date = { day = 11 month = December Year = 1953 }
+	name = "EVT_SHARED_00379_NAME"
+	desc = "EVT_SHARED_00379_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = relation which = AST value = 25 }
+	command = { type = relation which = USA value = 25 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324202] AST, ENG | 1955 | Maralinga Announced (Campo de pruebas 'Maralinga' es anunciado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324202
+	TAG =  { AST ENG }
+	style = 0
+	date = { day = 4 month = April Year = 1955 }
+	name = "EVT_SHARED_00382_NAME"
+	desc = "EVT_SHARED_00382_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = research_mod value = 2 }
+	command = { type = dissent value = 2 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324419] MULTI (22 countries) | 1955 | Accession to the Warsaw Pact (Adhesión al Pacto de Varsovia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324419
+	persistent = yes
+	tag = { U10 U11 U13 U14 U15 U16 U17 U18 U19 U20 U21 U22 U26 U27 U28 U29 U30 U31 U32 U33 U34 U35 }
+	name = EVT_SHARED_00887_NAME
+	desc = EVT_SHARED_00887_DESC
+	picture = "nwo/warsaw_pact"
+	style = 1
+	trigger = {
+		NOT = { local_flag = event_8215031 }
+		OR = {
+			flag = cold_war
+			flag = ww3
+		}
+		NOT = { flag = isolationist_ussr }
+		OR = {
+			NOT = { country = U27 }
+			AND = {
+				country = U27
+				NOT = { flag = tito_soviet_split }
+			}
+		}
+		NOT = { alliance = { country = -1 country = SOV } }
+		NOT = { country = U13 NOT = { puppet = { country = U13 country = SOV } } }
+		relation = { which = SOV value = -100 }
+		NOT = { relation = { which = USA value = 150 } }
+	}
+    date = { day = 0 month = july year = 1955 }
+    offset = 14
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_JOIN_COMINTERN
+		ai_chance = 100
+		command = { type = alliance which = SOV }
+		command = { type = local_setflag which = event_8215031  }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		trigger = { NOT = { ispuppet = yes } }
+		ai_chance = 0
+		command = { type = local_setflag which = event_8215031  }
+		command = { type = domestic which = interventionism value = -4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324203] AST, ENG, USA, FRA | 1955 | Summer Of The 17th Doll (Obra 'Summer Of The 17th Doll')
+# ----------------------------------------------------------------------------
+event = {
+	id = 324203
+	TAG =  { AST ENG USA FRA }
+	style = 0
+	date = { day = 28 month = November Year = 1955 }
+	name = "EVT_SHARED_00383_NAME"
+	desc = "EVT_SHARED_00383_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = dissent value = -2 }
+	command = { type = relation which = ENG value = 10 }
+	command = { type = relation which = USA value = 10 }
+	command = { type = relation which = AST value = 10 }
+	command = { type = relation which = FRA value = 10 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324453] SPA, SPR, U35 | 1956 | Reintegration of Tangier (Reintegración de Tánger)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324453
+	tag = { SPA SPR U35 }
+	name = EVT_SHARED_00934_NAME
+	desc = EVT_SHARED_00934_DESC
+	picture = "nwo/tanger_protocol"
+	style = 1
+	trigger = {
+		exists = MOR
+	}
+	date = { day = 1 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		command = { type = secedeprovince which = MOR value = 715 }
+		command = { type = secedeprovince which = MOR value = 716 }
+	}
+	action = {
+		name = EVT_SHARED_00934_A
+		ai_chance = 5
+		command = { type = dissent value = 8 }
+		command = { type = belligerence value = 20 }
+		command = { type = sleepevent which = 186017 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324205] AST, ENG | 1956 | First Commercial Uranium Deal (Primer acuerdo de uranio comercial)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324205
+	TAG =  { AST ENG }
+	style = 0
+	date = { day = 1 month = March Year = 1956 }
+	name = "EVT_SHARED_00384_NAME"
+	desc = "EVT_SHARED_00384_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = relation which = AST value = 10 }
+	command = { type = relation which = ENG value = 10 }
+	command = { type = industrial_modifier which = total value = 1 }
+	command = { type = industrial_modifier which = supplies value = 1 }
+	command = { type = double_nuke_prod }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324206] AST, ENG | 1956 | Sir E. Goossens Scandal (El escándalo de Sir E. Goossens)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324206
+	TAG =  { AST ENG }
+	style = 0
+	date = { day = 9 month = March Year = 1956 }
+	name = "EVT_SHARED_00385_NAME"
+	desc = "EVT_SHARED_00385_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = relation which = AST value = -5 }
+	command = { type = relation which = ENG value = -5 }
+	command = { type = dissent value = 5 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324207] AST, ENG | 1956 | Montebello Detonation (Detonación de Montebello)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324207
+	TAG =  { AST ENG }
+	style = 0
+	date = { day = 16 month = May Year = 1956 }
+	name = "EVT_SHARED_00387_NAME"
+	desc = "EVT_SHARED_00387_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = relation which = AST value = 10 }
+	command = { type = relation which = ENG value = 10 }
+	command = { type = nuke_damage value = 25 }
+	command = { type = research_mod value = 2 }
+	command = { type = dissent value = 2 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324208] AST, ENG | 1956 | First 'Thunderbolt' (El primer 'Thunderbolt')
+# ----------------------------------------------------------------------------
+event = {
+	id = 324208
+	TAG =  { AST ENG }
+	style = 0
+	date = { day = 27 month = September Year = 1956 }
+	name = "EVT_SHARED_00388_NAME"
+	desc = "EVT_SHARED_00388_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = relation which = AST value = 10 }
+	command = { type = relation which = ENG value = 10 }
+	command = { type = nuke_damage value = 25 }
+	command = { type = research_mod value = 2 }
+	command = { type = dissent value = 2 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324209] AST, JAP | 1957 | Most Favoured Nation (La Nación más favorecida)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324209
+	TAG =  { AST JAP }
+	style = 0
+	date = { day = 6 month = July Year = 1957 }
+	name = "EVT_SHARED_00389_NAME"
+	desc = "EVT_SHARED_00389_DESC"
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+	command = { type = dissent value = -2 }
+	command = { type = relation which = JAP value = 10 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+	command = { type = dissent value = 5 }
+	command = { type = relation which = JAP value = -20 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324210] AST, ENG | 1958 | British PM Visits (Visita del primer ministro británico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324210
+	TAG =  { AST ENG }
+	style = 0
+	date = { day = 5 month = February Year = 1958 }
+	name = "EVT_SHARED_00391_NAME"
+	desc = "EVT_SHARED_00390_DESC"
+	action = {
+		name = ACTION_NAME_OK
+	command = { type = dissent value = -2 }
+	command = { type = relation which = AST value = 10 }
+	command = { type = relation which = ENG value = 10 }
+	}
+		}
+
+# ----------------------------------------------------------------------------
+# [324446] EGY, SYR, JOR | 1967 | Arab Victory in 1967 (Victoria árabe en 1967)
+# Triggered by event 142048 in events/Minors/EGY_Decisions.txt
+# Trigger event 165037 in events/Minors/ISR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324446
+	tag = { EGY SYR JOR }
+	name = EVT_SHARED_00931_NAME
+	desc = EVT_SHARED_00931_DESC
+	picture = "nwo/six_day_war"
+	style = 1
+	trigger = {
+		event = 142048
+		OR = {
+			AND = {
+				control = { province = 1008 data = ISR }
+				country = EGY
+			}
+			AND = {
+				control = { province = 1008 data = EGY }
+				country = EGY
+			}
+			AND = {
+				control = { province = 1008 data = JOR }
+				country = JOR
+			}
+			AND = {
+				control = { province = 1008 data = SYR }
+				country = SYR
+			}
+		}
+		OR = {
+			war = { country = ISR country = EGY }
+			NOT = { exists = ISR }
+		}
+		NOT = {
+			control = { province = 1008 data = ISR }
+			control = { province = 1004 data = ISR }
+			control = { province = 1020 data = ISR }
+		}
+	}
+	date = { day = 1 month = june year = 1967 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -15 }
+		command = { type = peace which = ISR }
+		command = { trigger = { NOT = { exists = PAL } NOT = { exists = ISR } } type = independence which = PAL value = 0 }
+		command = { trigger = { exists = ISR } type = trigger which = 165037 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324447] EGY, SYR, JOR | 1973 | Decisive Arab Victory (Victoria total árabe)
+# Triggered by event 142051 in events/Minors/EGY_Decisions.txt
+# Trigger event 165041 in events/Minors/ISR.txt
+# Trigger event 329906 in events/Minors/ISR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324447
+	tag = { EGY SYR JOR }
+	name = EVT_SHARED_00932_NAME
+	desc = EVT_SHARED_00932_DESC
+	picture = "nwo/yom_kippur_war"
+	style = 1
+	trigger = {
+		event = 142051
+		OR = {
+			AND = {
+				control = { province = 1008 data = ISR }
+				country = EGY
+			}
+			AND = {
+				control = { province = 1008 data = EGY }
+				country = EGY
+			}
+			AND = {
+				control = { province = 1008 data = JOR }
+				country = JOR
+			}
+			AND = {
+				control = { province = 1008 data = SYR }
+				country = SYR
+			}
+		}
+		OR = {
+			war = { country = ISR country = EGY }
+			NOT = { exists = ISR }
+		}
+		NOT = {
+			control = { province = 1013 data = ISR }
+			control = { province = 1010 data = ISR }
+			control = { province = 1172 data = ISR }
+		}
+	}
+	date = { day = 1 month = november year = 1973 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -25 }
+		command = { trigger = { NOT = { exists = PAL } NOT = { exists = ISR } } type = independence which = PAL value = 0 }
+		command = { trigger = { exists = PAL } type = trigger which = 165041 }
+		command = { type = addcore which = 1004 }
+		command = { type = addcore which = 1005 }
+		command = { type = addcore which = 1006 }
+		command = { type = addcore which = 1007 }
+		command = { type = addcore which = 1009 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324454] SPA, SPR, U35 | 1975 | The Western Sahara Dispute (El conflicto del Sáhara Occidental)
+# Trigger event 186024 in events/Minors/MOR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324454
+	tag = { SPA SPR U35 }
+	name = EVT_SHARED_00935_NAME
+	desc = EVT_SHARED_00935_DESC
+	picture = "nwo/western_sahara"
+	style = 1
+	trigger = {
+		exists = MOR
+		control = { province = 989 data = -1 }
+		control = { province = 988 data = -1 }
+		control = { province = 987 data = -1 }
+	}
+	date = { day = 1 month = january year = 1975 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = EVT_SHARED_00935_A
+		ai_chance = 99
+		command = { type = secedeprovince which = MOR value = 987 when = 1 }
+		command = { type = secedeprovince which = MOR value = 988 when = 1 }
+		command = { type = secedeprovince which = MOR value = 989 when = 1 }
+		command = { type = dissent value = -5 }
+		command = { type = belligerence value = -10 }
+		command = { type = relation which = MOR value = 100 }
+		command = { type = trigger which = 186024 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 1
+		command = { type = dissent value = 8 }
+		command = { type = belligerence value = 20 }
+		command = { type = relation which = MOR value = -200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324422] CHC, UCH | 1990 | Reunification with Taiwan (Reunificación con Taiwán)
+# Triggered by event 124173 in events/CHI/CHI_78-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324422
+	tag = { CHC UCH }
+	name = EVT_SHARED_00890_NAME
+	desc = EVT_SHARED_00890_DESC
+	picture = "nwo/united_china"
+	trigger = {
+		atwar = no
+		event = 124173
+		exists = CHI
+	}
+	date = { day = 1 month = may year = 1990 }
+	offset = 30
+	deathdate = { day = 29 month = may year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = inherit which = CHI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324423] CHC, UCH | 1990 | Reunification with Taiwan (Reunificación con Taiwán)
+# Triggered by event 123079 in events/Minors/CHC_62-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324423
+	tag = { CHC UCH }
+	name = EVT_SHARED_00891_NAME
+	desc = EVT_SHARED_00891_DESC
+	picture = "nwo/united_china"
+	trigger = {
+		atwar = no
+		event = 123079
+		exists = CHI
+	}
+	date = { day = 1 month = may year = 1990 }
+	offset = 30
+	deathdate = { day = 29 month = may year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = inherit which = CHI }
+	}
+}

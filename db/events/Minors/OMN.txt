@@ -1,0 +1,136 @@
+# ============================================================================
+# File: events/Minors/OMN.txt (5 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [195001] OMN | 1910 | Recognize Burmese independence (Reconocer la independencia de Birmania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 195001
+	country = OMN
+	date = { day = 1 month = january year = 1910 }
+	offset = 30
+	deathdate = { day = 1 month = january year = 1936 }
+	trigger = {
+		NOT = { ispuppet = yes }
+		}
+	name = "EVT_SHARED_00057_NAME"
+	desc = "EVT_SHARED_00058_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = wakeminister which = 400039 }
+		command = { type = wakeminister which = 400040 }
+		command = { type = wakeminister which = 400041 }
+		command = { type = sleepminister which = 400030 }
+		command = { type = sleepminister which = 400035 }
+		command = { type = sleepminister which = 400036 }
+		command = { type = sleepminister which = 400037	}
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [195000] OMN | 1914 | Peace with the Central Powers (Paz con las Potencias Centrales)
+# Triggered by event 243004 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 195000
+	country = OMN
+	name = "EVT_SHARED_00055_NAME"
+	desc = "EVT_SHARED_00055_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = U08 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [195002] OMN | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 195002
+	country = OMN
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 400001 }
+		command = { type = headofgovernment which = 400002 }
+		command = { type = foreignminister which = 400012 }
+		command = { type = armamentminister which = 400015 }
+		command = { type = ministerofsecurity which = 400017 }
+		command = { type = ministerofintelligence which = 400018 }
+		command = { type = chiefofstaff which = 400021 }
+		command = { type = chiefofarmy which = 400024 }
+		command = { type = chiefofnavy which = 400025 }
+		command = { type = chiefofair which = 400028 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [195003] OMN | 1954 | The Jebel Akhdar War (Guerra de Jebel Akhdar)
+# Trigger event 195004 in events/Minors/OMN.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 195003
+	country = OMN
+	name = EVT_OMN_195003_NAME
+	desc = EVT_OMN_195003_DESC
+	picture = "nwo/oman"
+	style = 1
+	date = { day = 1 month = january year = 1954 }
+	offset = 300
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 80
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		name = EVT_OMN_195003_A
+		ai_chance = 20
+		command = { type = dissent value = 10 }
+		command = { type = sleepevent which = 195004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [195004] OMN | 1955 | Outcome in Oman (Resolución en Omán)
+# Triggered by event 195003 in events/Minors/OMN.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 195004
+	country = OMN
+	one_action = yes
+	name = EVT_OMN_195004_NAME
+	desc = EVT_OMN_195004_DESC
+	picture = "nwo/oman"
+	style = 1
+	trigger = { event = 195003 }
+	date = { day = 1 month = january year = 1955 }
+	offset = 300
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = EVT_OMN_195004_A
+		ai_chance = 80
+		command = { type = dissent value = -10 }
+	}
+	action = {
+		name = EVT_OMN_195004_B
+		ai_chance = 20
+		command = { type = dissent value = 25 }
+	}
+}

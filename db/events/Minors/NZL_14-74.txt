@@ -1,0 +1,1546 @@
+# ============================================================================
+# File: events/Minors/NZL_14-74.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [194024] NZL | 1914 | Peace with the Central Powers (Paz con las Potencias Centrales)
+# Triggered by event 243004 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 194024
+	country = NZL
+	name = "EVT_SHARED_00055_NAME"
+	desc = "EVT_SHARED_00055_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = U08 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194005] NZL | 1933 | British Commonwealth Air Training Plan (Plan de entrenamiento aéreo de la Commonwealth británica)
+# Triggered by event 329021 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 194005
+         random = no
+         country = nzl
+         trigger = {
+         }
+         name = "EVT_SHARED_00791_NAME"
+         desc = "EVT_SHARED_00791_DESC"
+         style = 2
+	picture = "Minors/british_commonwealth_air_training_plan_4"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = {  }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329449] NZL | 1933 | Join the Allies (Unirse a los Aliados)
+# Trigger event 329452 in events/Minors/NZL_14-74.txt
+# Trigger event 329453 in events/Minors/NZL_14-74.txt
+# Trigger event 329454 in events/Minors/NZL_14-74.txt
+# Trigger event 329455 in events/Minors/NZL_14-74.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329449
+         random = no
+         country = nzl
+         trigger = {
+		war = { country =eng  country = ger }
+		NOT = { war = { country = nzl country = eng }  }
+		NOT = { alliance = { country = nzl country = eng }  }
+         }
+         name = "ACTION_NAME_JOIN_ALLIES"
+         desc = "EVT_SHARED_00469_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1933 }
+         offset = 3
+         deathdate = { day = 29 month = december year = 1947 }
+	picture = "Minors/commonwealth"
+           action_a = {
+                  name = "EVT_SHARED_00469_A"
+                  ai_chance = 100
+                  command = { type = domestic which = freedom value = 1 }
+                  command = { type = domestic which = democratic value = 1 }
+                  command = { type = domestic which = defense_lobby value = 1 }
+                  command = { type = domestic which = interventionism value = 1 }
+                  command = { type = sleepevent which = 324000 }
+                  command = { type = set_relation which = ENG value = 200 }
+                  command = { type = alliance which = ENG }
+                  command = { type = dissent value = -50 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00469_B"
+                  command = { type = dissent value = 25 }
+                  command = { type = domestic which = interventionism value = -2 }
+                  command = { type = domestic which = defense_lobby value = -2 }
+                  command = { type = relation which = eng value = -150 }
+                  command = { type = relation which = ger value = 50 }
+                  ai_chance = 0
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329452] NZL | 1933 | 2nd New Zealand Expeditionary Force (Segunda Fuerza Expedicionaria de Nueva Zelanda)
+# Triggered by event 329449 in events/Minors/NZL_14-74.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329452
+         random = no
+         country = nzl
+         trigger = {
+                   alliance = { country = nzl country = eng }
+                   event = 329449
+         }
+         name = "EVT_NZL_329452_NAME"
+         desc = "EVT_NZL_329452_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1933 }
+         offset = 30
+         deathdate = { day = 29 month = december year = 1947 }
+	picture = "Minors/2nd_new_zealand_expeditionary_force"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = add_division which = "2nd New Zealand Div." value = infantry when = 0 }
+                  command = { type = manpowerpool value = -5 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194011] NZL | 1934 | First trans-Tasman airmail. (Primer correo aéreo trans-tasmano)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194011
+         random = no
+         country = nzl
+         trigger = {
+                   exists = ast
+         }
+         name = "EVT_NZL_194011_NAME"
+         desc = "EVT_NZL_194011_DESC"
+         style = 2
+         date = { day = 17 month = february year = 1934 }
+	picture = "Minors/first_trans_tasman_airmail"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = -1 }
+                  command = { type = industrial_modifier which = supplies value = 1.5 }
+                  command = { type = tc_mod value = 10 }
+                  command = { type = relation which = ast value = 10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194010] NZL | 1934 | Pahiatua earthquake (Terremoto de Pahiatua)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194010
+         random = no
+         country = nzl
+         trigger = {
+         }
+         name = "EVT_NZL_194010_NAME"
+         desc = "EVT_NZL_194010_DESC"
+         style = 2
+         date = { day = 5 month = march year = 1934 }
+	picture = "Minors/pahiatua_earthquake"
+           action_a = {
+                  name = "ACTION_NAME_UNFORTUNATE"
+                  command = { type = construct which = infrastructure where = 1721 value = -10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194009] NZL | 1934 | Reserve Bank of New Zealand (Banco de la Reserva de Nueva Zelanda)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194009
+         random = no
+         country = nzl
+         trigger = {
+                   government = democratic
+         }
+         name = "EVT_NZL_194009_NAME"
+         desc = "EVT_NZL_194009_DESC"
+         style = 2
+         date = { day = 1 month = august year = 1934 }
+	picture = "Minors/reserve_bank_of_new_zealand"
+           action_a = {
+                  name = "ACTION_NAME_SIGN"
+                  ai_chance = 90
+                  command = { type = dissent value = -1 }
+                  command = { type = peacetime_ic_mod value = 1 }
+                  command = { type = money value = 250 }
+                  command = { type = domestic which = free_market value = -1 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_REFUSE"
+                  ai_chance = 10
+                  command = { type = dissent value = 1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194012] NZL | 1935 | Union Airways of N.Z. (La 'Unión Airways de Nueva Zelanda')
+# ----------------------------------------------------------------------------
+event = {
+         id = 194012
+         random = no
+         country = nzl
+         trigger = {
+                   exists = nzl
+         }
+         name = "EVT_NZL_194012_NAME"
+         desc = "EVT_NZL_194012_DESC"
+         style = 2
+         date = { day = 10 month = february year = 1935 }
+	picture = "Minors/union_airways_of_n_z"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = -1 }
+                  command = { type = industrial_modifier which = supplies value = 2 }
+                  command = { type = tc_mod value = 10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194001] NZL | 1935 | Head of State Resigns (Dimisión del Jefe de Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194001
+	random = no
+	country = NZL
+	style = 2
+	trigger = {
+		OR = {
+			headofstate =  215111
+			headofstate =  215112
+		}
+	}
+	date = { day = 11 month = april year = 1935 }
+	name = "EVT_SHARED_00507_NAME"
+	desc = "EVT_SHARED_00507_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 215111 } type = headofstate which = 215001 }
+		command = { trigger = { headofstate = 215112 } type = headofstate which = 215011 }
+		command = { type = sleepminister which = 215111 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194007] NZL | 1935 | New Zealand general election, 1935 (Elecciones generales de Nueva Zelanda de 1935)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194007
+         random = no
+         country = nzl
+         trigger = {
+                   government = democratic
+         }
+         name = "EVT_NZL_194007_NAME"
+         desc = "EVT_NZL_194007_DESC"
+         style = 2
+         date = { day = 27 month = november year = 1935 }
+	picture = "Minors/new_zealand_general_election_1935"
+           action_a = {
+                  name = "ACTION_NAME_YES"
+                  ai_chance = 95
+                  command = { type = dissent value = -3 }
+                  command = { type = domestic which = political_left value = 7 }
+                  command = { type = headofgovernment which = 215002 }
+                  command = { type = foreignminister which = 215003 }
+                  command = { type = armamentminister which = 215004 }
+                  command = { type = ministerofsecurity which = 215005 }
+                  command = { type = ministerofintelligence which = 215006 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_KEEP_CURRENT"
+                  ai_chance = 5
+                  command = { type = dissent value = 3 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329450] NZL | 1936 | New Zealand National Party (Partido Nacional de Nueva Zelanda)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329450
+         random = no
+         country = NZL
+         trigger = {
+                   headofgovernment = 215002
+                   government = democratic
+         }
+         name = "EVT_NZL_329450_NAME"
+         desc = "EVT_NZL_329450_DESC"
+         style = 2
+         date = { day = 14 month = may year = 1936 }
+	picture = "Minors/new_zealand_national_party"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = -1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194013] NZL | 1936 | State housing programme (Programa estatal de vivienda)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194013
+         random = no
+         country = nzl
+         trigger = {
+                   headofgovernment = 215002
+         }
+         name = "EVT_NZL_194013_NAME"
+         desc = "EVT_NZL_194013_DESC"
+         style = 2
+         date = { day = 10 month = june year = 1936 }
+	picture = "Minors/state_housing_programme_2"
+           action_a = {
+                  name = "ACTION_NAME_ACCEPT"
+                  ai_chance = 95
+                  command = { type = money value = -150 }
+                  command = { type = supplies value = -400 }
+                  command = { type = manpowerpool value = -10 }
+                  command = { type = construct which = ic where = -4 value = -1 }
+                  command = { type = local_setflag which = stahou }
+           }
+           action_b = {
+                  name = "ACTION_NAME_REFUSE"
+                  ai_chance = 5
+                  command = { type = money value = 150 }
+                  command = { type = supplies value = 400 }
+                  command = { type = manpowerpool value = 10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329451] NZL | 1936 | Jean Batten's record flight from England. (Vuelo récord de Jean Batten desde Inglaterra)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329451
+         random = no
+         country = NZL
+         trigger = {
+                   government = democratic
+         }
+         name = "EVT_NZL_329451_NAME"
+         desc = "EVT_NZL_329451_DESC"
+         style = 2
+         date = { day = 26 month = october year = 1936 }
+	picture = "Minors/jean_batten_s_record_flight_from"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = -1 }
+                  command = { type = morale which = air value = 2 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194008] NZL | 1937 | The 40-hour work week (La semana laboral de 40 horas)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194008
+         random = no
+         country = nzl
+         trigger = {
+                   headofgovernment = 215002
+         }
+         name = "EVT_NZL_194008_NAME"
+         desc = "EVT_NZL_194008_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1937 }
+         offset = 12
+         deathdate = { day = 29 month = december year = 1938 }
+	picture = "GLOBAL/public_jobs"
+           action_a = {
+                  name = "EVT_NZL_194008_A"
+                  ai_chance = 90
+                  command = { type = dissent value = -1 }
+                  command = { type = money value = -10 }
+                  command = { type = manpowerpool value = 5 }
+                  command = { type = domestic which = free_market value = 1 }
+                  command = { type = industrial_modifier which = total value = -1 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 10
+                  command = { type = dissent value = 1 }
+                  command = { type = money value = 10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194014] NZL | 1937 | State housing programme (Programa estatal de vivienda)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194014
+         random = no
+         country = nzl
+         trigger = {
+                   local_flag = stahou
+         }
+         name = "EVT_NZL_194014_NAME"
+         desc = "EVT_NZL_194014_DESC"
+         style = 2
+         date = { day = 10 month = june year = 1937 }
+	picture = "Minors/state_housing_programme"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  ai_chance = 95
+                  command = { type = construct which = infrastructure where = 1721 value = 20 }
+                  command = { type = construct which = infrastructure where = 1722 value = 20 }
+                  command = { type = construct which = infrastructure where = 1719 value = 20 }
+                  command = { type = construct which = ic where = 1721 value = 2 }
+                  command = { type = local_clrflag which = stahou }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194023] NZL | 1938 | Destiny of the Commonwealth (El futuro del Imperio)
+# Triggered by event 143167 in events/ENG/ENG_38-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 194023
+	random = no
+	country = NZL
+	name = "EVT_SHARED_00407_NAME"
+	desc = "EVT_SHARED_00408_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_JOIN_ALLIANCE"
+		ai_chance = 70
+		command = { type = setflag which = NZLacc}
+	}
+	action = {
+		trigger = { flag = ASTcap}
+		name = "ACTION_NAME_JOIN_ALLIANCE"
+		ai_chance = 90
+		command = { type = setflag which = NZLacc}
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 30
+		command = {}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194056] NZL | 1938 | The Land Disposal Plan for Greater East Asia (El Plan de Ordenación Territorial de la Gran Asia Oriental)
+# Triggered by event 167299 in events/JAP/JAP_37-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 194056
+	random = no
+	country = NZL
+	name = "EVT_SHARED_01161_NAME"
+	desc = "EVT_SHARED_01161_DESC"
+	style = 2
+	picture = "GLOBAL/proclamation_of_japanese_neutrality"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = flag_ext where = NZL which = _jap }
+		command = { type = name where = NZL which = "NZL40" }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = set_domestic which = free_market value = 4 }
+		command = { type = set_domestic which = freedom value = 1 }
+		command = { type = headofstate which = 215218 }
+		command = { type = headofgovernment which = 215219 }
+		command = { type = relation which = JAP value = 100 }
+		command = { type = dissent value = -2 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [194015] NZL | 1938 | Free Milk in Schools Programme (Programa de leche gratis en las escuelas)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194015
+         random = no
+         country = nzl
+         trigger = {
+                   headofgovernment = 215002
+         }
+         name = "EVT_NZL_194015_NAME"
+         desc = "EVT_NZL_194015_DESC"
+         style = 2
+         date = { day = 10 month = march year = 1938 }
+	picture = "Minors/free_milk_in_schools_programme"
+           action_a = {
+                  name = "EVT_NZL_194015_A"
+                  ai_chance = 95
+                  command = { type = money value = -50 }
+                  command = { type = supplies value = -100 }
+                  command = { type = relative_manpower value = 5 }
+                  command = { type = province_manpower which = 1721 value = 1 }
+                  command = { type = province_manpower which = 1722 value = 1 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_REFUSE"
+                  ai_chance = 5
+                  command = { type = money value = 50 }
+                  command = { type = supplies value = 100 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194016] NZL | 1938 | Social Security Act 1938 (Ley de seguridad social de 1938)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194016
+         random = no
+         country = nzl
+         trigger = {
+                   headofgovernment = 215002
+         }
+         name = "EVT_NZL_194016_NAME"
+         desc = "EVT_NZL_194016_DESC"
+         style = 2
+         date = { day = 1 month = august year = 1938 }
+	picture = "Minors/social_security_act_1938"
+           action_a = {
+                  name = "ACTION_NAME_ACCEPT"
+                  ai_chance = 90
+                  command = { type = dissent value = -1 }
+                  command = { type = money value = -20 }
+                  command = { type = supplies value = -50 }
+                  command = { type = manpowerpool value = 10 }
+                  command = { type = relative_manpower value = 5 }
+                  command = { type = industrial_modifier which = total value = 1 }
+                  command = { type = peacetime_ic_mod value = 1 }
+                  command = { type = construct which = ic where = 1722 value = 1 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 10
+                  command = { type = dissent value = 1 }
+                  command = { type = money value = 20 }
+                  command = { type = supplies value = 50 }
+                  command = { type = manpowerpool value = -10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194017] NZL | 1938 | New Zealand general election, 1938 (Elecciones generales de Nueva Zelanda de 1938)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194017
+         random = no
+         country = nzl
+         trigger = {
+                   government = democratic
+                   headofgovernment = 215002
+         }
+         name = "EVT_NZL_194017_NAME"
+         desc = "EVT_NZL_194017_DESC"
+         style = 2
+         date = { day = 27 month = november year = 1938 }
+	picture = "Minors/new_zealand_general_election_1938"
+           action_a = {
+                  name = "ACTION_NAME_ELECT_LEFT"
+                  ai_chance = 95
+                  command = { type = dissent value = -3 }
+                  command = { type = domestic which = political_left value = 7 }
+                  command = { type = headofgovernment which = 215002 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00803_A"
+                  ai_chance = 5
+                  command = { type = dissent value = 3 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194006] NZL | 1940 | British Commonwealth Air Training Plan (Plan de entrenamiento aéreo de la Commonwealth británica)
+# Triggered by event 143006 in events/ENG/ENG_39-43.txt
+# Triggered by event 143007 in events/ENG/ENG_39-43.txt
+# Triggered by event 143008 in events/ENG/ENG_39-43.txt
+# Triggered by event 143009 in events/ENG/ENG_39-43.txt
+# Triggered by event 143010 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 194006
+         random = no
+         country = nzl
+         trigger = {
+         }
+         name = "EVT_SHARED_00791_NAME"
+         desc = "EVT_SHARED_00791_DESC"
+         style = 2
+          persistent = yes
+	picture = "Minors/british_commonwealth_air_training_plan_4"
+           action_a = {
+                  name = ACTION_NAME_OK
+                 command = { type = build_time which = air when = on_upgrade where = relative value = -5 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329454] NZL | 1940 | The 28th Maori Battalion (El Vigésimo Octavo Batallón Maorí)
+# Triggered by event 329449 in events/Minors/NZL_14-74.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329454
+         random = no
+         country = nzl
+         trigger = {
+                   alliance = { country = nzl country = eng }
+                   event = 329449
+         }
+         name = "EVT_NZL_329454_NAME"
+         desc = "EVT_NZL_329454_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1940 }
+         offset = 30
+         deathdate = { day = 29 month = december year = 1942 }
+	picture = "Minors/the_28th_maori_battalion"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = add_division which = "28th Maori Battalion" value = militia when = 0 }
+                  command = { type = manpowerpool value = -2 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194020] NZL | 1940 | The death of Michael Joseph Savage (La muerte de Michael Joseph Savage)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194020
+         random = no
+         country = nzl
+         trigger = {
+                   exists = nzl
+         }
+         name = "EVT_NZL_194020_NAME"
+         desc = "EVT_NZL_194020_DESC"
+         style = 2
+         date = { day = 27 month = march year = 1940 }
+	picture = "Minors/the_death_of_michael_joseph_savage"
+           action_a = {
+                  name = "ACTION_NAME_MOURN"
+                  command = { type = dissent value = 2 }
+                  command = { trigger = { headofgovernment = 215002 } type = domestic which = political_left value = 7 }
+                  command = { trigger = { headofgovernment = 215002 } type = headofgovernment which = 215017 }
+                  command = { type = sleepminister which = 215002 }
+                  command = { type = sleepminister which = 215003 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194021] NZL | 1941 | New Governor-General (Nuevo Gobernador General)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194021
+	random = no
+	country = NZL
+	style = 2
+	trigger = {
+		OR = {
+			headofstate =  215001
+			headofstate =  215011
+		}
+	}
+	date = { day = 11 month = February year = 1941 }
+	name = "EVT_SHARED_00804_NAME"
+	desc = "EVT_NZL_194021_DESC"
+	picture = "Minors/new_governor_general"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 215001 } type = headofstate which = 215012 }
+		command = { trigger = { headofstate = 215011 } type = headofstate which = 215013 }
+		command = { type = sleepminister which = 215001 }
+		command = { type = sleepminister which = 215011 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194002] NZL | 1941 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194002
+	random = no
+	country = NZL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = NZL }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = july year = 1941 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 215012 }
+		command = { type = headofgovernment which = 215017 }
+		command = { type = foreignminister which = 215019 }
+		command = { type = armamentminister which = 215028 }
+		command = { type = ministerofsecurity which = 215041 }
+		command = { type = ministerofintelligence which = 215048 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 215013 }
+		command = { type = headofgovernment which = 215016 }
+		command = { type = foreignminister which = 215024 }
+		command = { type = armamentminister which = 215033 }
+		command = { type = ministerofsecurity which = 215045 }
+		command = { type = ministerofintelligence which = 215051 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329455] NZL | 1941 | Establishment of the (RNZN) (Establecimiento de la 'RNZN')
+# Triggered by event 329449 in events/Minors/NZL_14-74.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329455
+         random = no
+         country = nzl
+         trigger = {
+                   alliance = { country = nzl country = eng }
+                   event = 329449
+         }
+         name = "EVT_NZL_329455_NAME"
+         desc = "EVT_NZL_329455_DESC"
+         style = 2
+         date = { day = 1 month = october year = 1941 }
+         offset = 1
+         deathdate = { day = 29 month = december year = 1942 }
+	picture = "Minors/establishment_of_the_rnzn"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = add_division which = "HMNZS Leander" value = light_cruiser when = 4 }
+                  command = { type = add_division which = "1st Destroyer Flotilla" value = destroyer when = 4 }
+                  command = { type = add_division which = "1st Transport Flotilla" value = transport when = 2 }
+                  command = { type = manpowerpool value = -10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329453] NZL | 1942 | 3nd New Zealand Division (Tercera División de Nueva Zelanda)
+# Triggered by event 329449 in events/Minors/NZL_14-74.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329453
+         random = no
+         country = nzl
+         trigger = {
+                   alliance = { country = nzl country = eng }
+                   event = 329449
+         }
+         name = "EVT_NZL_329453_NAME"
+         desc = "EVT_NZL_329453_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1942 }
+         offset = 30
+         deathdate = { day = 29 month = december year = 1944 }
+	picture = "Minors/3nd_new_zealand_division"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = add_division which = "3nd New Zealand Div." value = infantry when = 0 }
+                  command = { type = manpowerpool value = -5 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194018] NZL | 1943 | New Zealand general election, 1943 (Elecciones generales de Nueva Zelanda de 1943)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194018
+         random = no
+         country = nzl
+         trigger = {
+                   government = democratic
+         }
+         name = "EVT_NZL_194018_NAME"
+         desc = "EVT_NZL_194018_DESC"
+         style = 2
+         date = { day = 27 month = november year = 1943 }
+	picture = "Minors/new_zealand_general_election_1943"
+           action_a = {
+                  name = "ACTION_NAME_ELECT_LEFT"
+                  ai_chance = 95
+                  command = { type = dissent value = -3 }
+                  command = { type = domestic which = political_left value = 7 }
+                  command = { type = headofgovernment which = 215017 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00803_A"
+                  ai_chance = 5
+                  command = { type = dissent value = 3 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194029] NZL | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194029
+	country = NZL
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 215015 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194030] NZL | 1946 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194030
+	country = NZL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = dissent value = -9 }
+		command = { type = headofgovernment which = 215017 }
+		command = { type = foreignminister which = 215021 }
+		command = { type = armamentminister which = 215030 }
+		command = { type = ministerofsecurity which = 215041 }
+		command = { type = ministerofintelligence which = 215049 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = dissent value = -3 }
+		command = { type = headofgovernment which = 215018 }
+		command = { type = foreignminister which = 215026 }
+		command = { type = armamentminister which = 215039 }
+		command = { type = ministerofsecurity which = 215047 }
+		command = { type = ministerofintelligence which = 215053 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194022] NZL | 1946 | New Governor-General (Nuevo Gobernador General)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194022
+	random = no
+	country = NZL
+	style = 2
+	trigger = {
+		OR = {
+			headofstate =  215012
+			headofstate =  215013
+		}
+	}
+	date = { day = 3 month = may year = 1946 }
+	name = "EVT_SHARED_00804_NAME"
+	desc = "EVT_NZL_194022_DESC"
+	picture = "Minors/new_governor_general_2"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 215012 } type = headofstate which = 215014 }
+		command = { trigger = { headofstate = 215013 } type = headofstate which = 215015 }
+		command = { type = sleepminister which = 215012 }
+		command = { type = sleepminister which = 215013 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194003] NZL | 1946 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194003
+	random = no
+	country = NZL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = NZL }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = july year = 1946 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 215014 }
+		command = { type = headofgovernment which = 215017 }
+		command = { type = foreignminister which = 215021 }
+		command = { type = armamentminister which = 215030 }
+		command = { type = ministerofsecurity which = 215041 }
+		command = { type = ministerofintelligence which = 215049 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 215015 }
+		command = { type = headofgovernment which = 215018 }
+		command = { type = foreignminister which = 215026 }
+		command = { type = armamentminister which = 215039 }
+		command = { type = ministerofsecurity which = 215047 }
+		command = { type = ministerofintelligence which = 215053 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [194019] NZL | 1946 | New Zealand general election, 1946 (Elecciones generales de Nueva Zelanda de 1946)
+# ----------------------------------------------------------------------------
+event = {
+         id = 194019
+         random = no
+         country = nzl
+         trigger = {
+                   government = democratic
+         }
+         name = "EVT_NZL_194019_NAME"
+         desc = "EVT_NZL_194019_DESC"
+         style = 2
+         date = { day = 27 month = november year = 1946 }
+	picture = "Minors/new_zealand_general_election_1946"
+           action_a = {
+                  name = "ACTION_NAME_ELECT_LEFT"
+                  ai_chance = 95
+                  command = { type = dissent value = -3 }
+                  command = { type = domestic which = political_left value = 7 }
+                  command = { type = headofgovernment which = 215017 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00803_A"
+                  ai_chance = 5
+                  command = { type = dissent value = 3 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [194031] NZL | 1949 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194031
+	country = NZL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 215018 }
+		command = { type = foreignminister which = 215097 }
+		command = { type = armamentminister which = 215039 }
+		command = { type = ministerofsecurity which = 215047 }
+		command = { type = ministerofintelligence which = 215053 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 215096 }
+		command = { type = foreignminister which = 215021 }
+		command = { type = armamentminister which = 215030 }
+		command = { type = ministerofsecurity which = 215041 }
+		command = { type = ministerofintelligence which = 215049 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194004] NZL | 1949 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194004
+	random = no
+	country = NZL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = NZL }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = december year = 1949 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 215015 }
+		command = { type = headofgovernment which = 215018 }
+		command = { type = foreignminister which = 215097 }
+		command = { type = armamentminister which = 215039 }
+		command = { type = ministerofsecurity which = 215047 }
+		command = { type = ministerofintelligence which = 215053 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 215014 }
+		command = { type = headofgovernment which = 215096 }
+		command = { type = foreignminister which = 215021 }
+		command = { type = armamentminister which = 215030 }
+		command = { type = ministerofsecurity which = 215041 }
+		command = { type = ministerofintelligence which = 215049 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [194032] NZL | 1951 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194032
+	country = NZL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 215018 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 215096 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194033] NZL | 1952 | New Governor-General (Nuevo gobernador general)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194033
+	country = NZL
+	name = EVT_SHARED_00868_NAME
+	desc = EVT_SHARED_00868_DESC
+	picture = "nwo/governor_general"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 215094 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194000] NZL | 1952 | Minister Resigns (Dimisión de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194000
+	random = no
+	country = NZL
+	style = 2
+	trigger = {
+		OR = {
+			headofstate = 215014
+			headofstate = 215015
+		}
+	}
+	date = { day = 16 month = december year = 1952 }
+	name = "EVT_SHARED_00500_NAME"
+	desc = "EVT_SHARED_00500_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 215014 } type = headofstate which = 215095 }
+		command = { trigger = { headofstate = 215015 } type = headofstate which = 215094 }
+		command = { type = sleepminister which = 215014 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [194034] NZL | 1954 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194034
+	country = NZL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 215018 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 215096 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194035] NZL | 1957 | New Governor-General (Nuevo gobernador general)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194035
+	country = NZL
+	name = EVT_SHARED_00868_NAME
+	desc = EVT_SHARED_00868_DESC
+	picture = "nwo/governor_general"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 215200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194036] NZL | 1957 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194036
+	country = NZL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 215096 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 215201 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+			command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194037] NZL | 1960 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194037
+	country = NZL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 215201 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 215096 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194038] NZL | 1962 | New Governor-General (Nuevo gobernador general)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194038
+	country = NZL
+	name = EVT_SHARED_00868_NAME
+	desc = EVT_SHARED_00868_DESC
+	picture = "nwo/governor_general"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 215202 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194039] NZL | 1963 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194039
+	country = NZL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 215201 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 215203 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194040] NZL | 1966 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194040
+	country = NZL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1966 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1966 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 215201 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 215204 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194041] NZL | 1967 | New Governor-General (Nuevo gobernador general)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194041
+	country = NZL
+	name = EVT_SHARED_00868_NAME
+	desc = EVT_SHARED_00868_DESC
+	picture = "nwo/governor_general"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1967 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1968 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 215205 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194042] NZL | 1969 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194042
+	country = NZL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1969 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 215201 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 215204 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194043] NZL | 1971 | New Governor-General (Nuevo gobernador general)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194043
+	country = NZL
+	name = EVT_SHARED_00868_NAME
+	desc = EVT_SHARED_00868_DESC
+	picture = "nwo/governor_general"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 215206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194044] NZL | 1972 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194044
+	country = NZL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 215204 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 215207 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+			command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [194045] NZL | 1974 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 194045
+	country = NZL
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1974 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 215204 }
+		command = { type = headofgovernment which = 215208 }
+	}
+}

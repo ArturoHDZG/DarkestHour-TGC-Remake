@@ -1,0 +1,305 @@
+# ============================================================================
+# File: events/AI/KOR_AI.txt (9 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [170007] KOR | 1944 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 170007
+	country = KOR
+	name = "AI_EVENT"
+	trigger = {
+		ai = yes
+		flag = cold_war_pacific
+		NOT = { local_flag = block_demobilization }
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = block_demobilization }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [170006] KOR | 1945 | AI_EVENT
+# Triggered by event 170039 in events/Minors/KOR.txt
+# Triggered by event 205009 in events/Minors/PRK.txt
+# Triggered by event 170015 in events/Minors/KOR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 170006
+	country = KOR
+	persistent = yes
+	name = "AI_EVENT"
+	trigger = {
+		ai = yes
+		NOT = { exists = GER }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1945 }
+			year = 1945	NOT = { year = 1950 }
+			}
+		command = { type = ai which = Generic/default_1945.ai }
+		command = { type = ai which = Generic/default_asia_1945.ai }
+		command = { type = ai which = Minors/KOR_1945.ai }
+		command = { type = local_setflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1951 }
+		command = { type = local_clrflag which = ai_1952 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1950 }
+			year = 1950	NOT = { year = 1960 }
+			OR = {
+				AND = {
+					war = { country = KOR country = PRK }
+					NOT = {
+						event = 170039
+						alliance = { country = KOR country = USA }
+					}
+				}
+				NOT = { war = { country = KOR country = PRK } }
+			}
+		}
+		command = { type = ai which = Generic/default_1950.ai }
+		command = { type = ai which = Generic/default_asia_1950.ai }
+		command = { type = ai which = Minors/KOR_1950.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_setflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1951 }
+		command = { type = local_clrflag which = ai_1952 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1951 }
+			year = 1950	NOT = { year = 1960 }
+			war = { country = KOR country = PRK }
+			OR = {
+				event = 170039
+				alliance = { country = KOR country = USA }
+			}
+			}
+		command = { type = ai which = Generic/default_1950.ai }
+		command = { type = ai which = Generic/default_asia_1950.ai }
+		command = { type = ai which = Minors/KOR_1951.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_setflag which = ai_1951 }
+		command = { type = local_clrflag which = ai_1952 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1952 }
+			year = 1950	NOT = { year = 1960 }
+			war = { country = KOR country = PRK }
+			AND = { event = 205009 event = 170015 }
+			}
+		command = { type = ai which = Generic/default_1950.ai }
+		command = { type = ai which = Generic/default_asia_1950.ai }
+		command = { type = ai which = Minors/KOR_1950.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1951 }
+		command = { type = local_setflag which = ai_1952 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1960 }
+			year = 1960	NOT = { year = 1970 }
+			}
+		command = { type = ai which = Generic/default_1960.ai }
+		command = { type = ai which = Generic/default_asia_1960.ai }
+		command = { type = ai which = Minors/KOR_1960.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1951 }
+		command = { type = local_clrflag which = ai_1952 }
+		command = { type = local_setflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1970 }
+			year = 1970	NOT = { year = 1980 }
+			}
+		command = { type = ai which = Generic/default_1970.ai }
+		command = { type = ai which = Generic/default_asia_1970.ai }
+		command = { type = ai which = Minors/KOR_1970.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1951 }
+		command = { type = local_clrflag which = ai_1952 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_setflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1980 }
+			year = 1980	NOT = { year = 1990 }
+			}
+		command = { type = ai which = Generic/default_1980.ai }
+		command = { type = ai which = Generic/default_asia_1980.ai }
+		command = { type = ai which = Minors/KOR_1980.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1951 }
+		command = { type = local_clrflag which = ai_1952 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_setflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [170000] KOR | 1948 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 170000
+        random = no
+        country = KOR
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = august year = 1948 }
+	action_a = {
+		command = { type = headofstate which = 265001 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [170001] KOR | 1948 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 170001
+        random = no
+        country = KOR
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = august year = 1948 }
+	action_a = {
+		command = { type = headofgovernment which = 265024 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [170002] KOR | 1950 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 170002
+        random = no
+        country = KOR
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = august year = 1950 }
+	action_a = {
+		command = { type = headofgovernment which = 265025 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [170003] KOR | 1950 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 170003
+        random = no
+        country = KOR
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = november year = 1950 }
+	action_a = {
+		command = { type = headofgovernment which = 265026 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [170004] KOR | 1952 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 170004
+        random = no
+        country = KOR
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = may year = 1952 }
+	action_a = {
+		command = { type = headofgovernment which = 265027 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [170005] KOR | 1952 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 170005
+        random = no
+        country = KOR
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = october year = 1952 }
+	action_a = {
+		command = { type = headofgovernment which = 265028 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [170008] KOR | 1954 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 170008
+	country = KOR
+	name = "AI_EVENT"
+	trigger = {
+		ai = yes
+		flag = cold_war_pacific
+		local_flag = block_demobilization
+	}
+	date = { day = 1 month = january year = 1954 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_clrflag which = block_demobilization }
+	}
+}

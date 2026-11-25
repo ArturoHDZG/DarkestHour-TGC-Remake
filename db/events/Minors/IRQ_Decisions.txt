@@ -1,0 +1,197 @@
+# ============================================================================
+# File: events/Minors/IRQ_Decisions.txt (4 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329901] IRQ | 1948 | Transjordan Enters Arab-Israeli War (Transjordania declara la guerra a Israel)
+# Triggered by event 142047 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329901
+	country = IRQ
+	decision = {
+		event = 142047
+		war = { country = EGY country = ISR }
+	}
+	trigger = {
+		event = 142047
+		war = { country = EGY country = ISR }
+	}
+	name = EVT_SHARED_00928_NAME
+	desc = EVT_SHARED_00928_DESC
+	picture = "nwo/arab_israeli_war_1948"
+	style = 1
+	date = { day = 1 month = june year = 1948 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 92
+		command = { type = leave_alliance }
+		command = { type = alliance which = EGY }
+		command = { type = add_corps where = 1030 }
+		command = { type = add_division value = infantry when = 13 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		trigger = { ai = yes }
+		ai_chance = 8
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164051] IRQ | 1958 | Arab Federation of Iraq and Jordan (Federación Árabe de Irak y Jordania)
+# Triggered by event 142036 in events/Minors/EGY_61-86.txt
+# Trigger event 168019 in events/Minors/JOR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 164051
+	country = IRQ
+	name = EVT_IRQ_164051_NAME
+	desc = EVT_IRQ_164051_DESC
+	picture = "nwo/iraqi_arab_federation"
+	decision_picture = "nwo/d_iraqi_arab_federation"
+	style = 1
+	decision = {
+		event = 142036
+		exists = JOR
+		government = fascist
+	}
+	trigger = {
+		event = 142036
+		exists = JOR
+		government = fascist
+	}
+	date = { day = 14 month = february year = 1958 }
+	offset = 1
+	deathdate = { day = 29 month = february year = 1958 }
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 80
+		command = { type = trigger which = 168019 }
+	}
+	action_b = {
+		name = ACTION_NAME_NO_NEED
+		trigger = { ai = yes }
+		ai_chance = 20
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164056] IRQ | 1980 | Iran-Iraq War (Guerra Irán-Irak)
+# Trigger event 201030 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 164056
+	country = IRQ
+	name = EVT_IRQ_164056_NAME
+	desc = EVT_IRQ_164056_DESC
+	picture = "nwo/qadisiyyah"
+	decision_picture = "nwo/d_qadisiyyah"
+	style = 1
+	trigger = {
+		exists = PER
+		control = { province = 1089 data = PER }
+		atwar = no
+	}
+	decision = {
+		exists = PER
+		control = { province = 1089 data = PER }
+		atwar = no
+	}
+	date = { day = 0 month = september year = 1980 }
+	offset = 30
+	deathdate = { day = 29 month = august year = 1988 }
+	action = {
+		name = EVT_IRQ_164056_A
+		ai_chance = 99
+		command = { type = leave_alliance }
+		command = { type = trigger which = 201030 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = dissent value = -10 }
+		command = { type = belligerence value = 10 }
+		command = { type = addcore which = 1089 }
+		command = { type = construct which = land_fort where = 1027 value = 5 }
+		command = { type = construct which = land_fort where = 1036 value = 5 }
+		command = { type = construct which = land_fort where = 1034 value = 5 }
+		command = { type = construct which = land_fort where = 1035 value = 5 }
+		command = { type = construct which = land_fort where = 1028 value = 5 }
+		command = { type = construct which = land_fort where = 1037 value = 5 }
+		command = { type = add_corps where = 1027 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_corps where = 1036 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_corps where = 1035 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_corps where = 1028 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+	}
+	action = {
+		name = EVT_IRQ_164056_B
+		ai_chance = 1
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164059] IRQ | 1990 | Invasion of Kuwait (Invasión de Kuwait)
+# Triggered by event 329897 in events/Minors/PER.txt
+# Trigger event 164060 in events/Minors/IRQ.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 164059
+	country = IRQ
+	name = EVT_IRQ_164059_NAME
+	desc = EVT_IRQ_164059_DESC
+	picture = "nwo/invasion_of_kuwait"
+	decision_picture = "nwo/d_invasion_of_kuwait"
+	style = 1
+	decision = {
+		NOT = { event = 329897 }
+		exists = U91
+		NOT = { alliance = { country = U91 country = USA } }
+		NOT = { alliance = { country = U91 country = ENG } }
+		NOT = { alliance = { country = U91 country = SOV } }
+		control = { province = 1041 data = U91 }
+	}
+	trigger = {
+		NOT = { event = 329897 }
+		exists = U91
+		NOT = { alliance = { country = U91 country = USA } }
+		NOT = { alliance = { country = U91 country = ENG } }
+		NOT = { alliance = { country = U91 country = SOV } }
+		control = { province = 1041 data = U91 }
+	}
+	date = { day = 0 month = august year = 1990 }
+	offset = 3
+	deathdate = { day = 29 month = august year = 1990 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 95
+		command = { type = leave_alliance }
+		command = { type = belligerence value = 30 }
+		command = { type = war which = U91 }
+		command = { type = dissent value = -5 }
+		command = { type = addcore which = 1041 }
+		command = { type = money value = 10000 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		trigger = { ai = yes }
+		ai_chance = 5
+		command = { type = relation which = U91 value = 10 }
+	}
+}

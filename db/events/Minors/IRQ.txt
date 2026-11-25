@@ -1,0 +1,1584 @@
+# ============================================================================
+# File: events/Minors/IRQ.txt (48 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [164012] IRQ | 1933 | Death of the Head of State (Muerte del Jefe del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164012
+	random = no
+	country = IRQ
+	style = 2
+	trigger = {
+		OR = {
+			headofstate = 365160
+			headofstate = 365161
+		}
+	}
+	date = { day = 7 month = september year = 1933 }
+	name = "EVT_SHARED_00501_NAME"
+	desc = "EVT_SHARED_00501_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 365160 } type = headofstate which = 365001 }
+		command = { trigger = { headofstate = 365161 } type = headofstate which = 365013 }
+		command = { type = sleepminister which = 365160 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164015] IRQ | 1935 | Mosul-Haifa Oil Pipeline (Oleoducto Mosul-Haifa)
+# Triggered by event 329302 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 164015
+         random = no
+         country = irq
+         name = "EVT_SHARED_00782_NAME"
+         desc = "EVT_SHARED_00782_DESC"
+         style = 2
+	picture = "GLOBAL/mosul_haifa_oil_pipeline"
+           action_a = {
+                  name = "ACTION_NAME_GREAT"
+                  command = { type = add_prov_resource which = 1029 value = 15 where = oil }
+                  command = { type = construct which = infrastructure where = 1029 value = 10 }
+                  command = { type = relation which = ENG value = 10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [164013] IRQ | 1936 | Iraqi Coup d'État (Golpe de Estado en Irak)
+# Triggered by event 329125 in events/GER/GER_36-37.txt
+# Trigger event 239002 in events/Minors/U04.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 164013
+	random = no
+	country = IRQ
+	one_action = yes
+	name = EVT_SHARED_00605_NAME
+	desc = EVT_SHARED_00605_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		ai_chance = 80
+		name = EVT_IRQ_164013_A
+		command = { type = peace which = GER value = 1 }
+		command = { type = leave_alliance }
+		command = { type = end_access which = ENG }
+		command = { type = alliance which = GER }
+		command = { type = dissent value = 5 }
+		command = { type = relation which = ENG value = -75 }
+		command = { type = relation which = GER value = 40 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { trigger = { exists = U04 NOT = { war = { country = GER country = U04 } } } type = trigger which = 239002 }
+	}
+	action = {
+		ai_chance = 20
+		name = EVT_IRQ_164013_B
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164014] IRQ | 1936 | Proclamation of Israel (Proclamación del Estado de Israel)
+# Triggered by event 329280 in events/Minors/SYR.txt
+# Trigger event 228004 in events/Minors/SYR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 164014
+	random = no
+	country = IRQ
+	trigger = { }
+	name = "EVT_SHARED_00767_NAME"
+	desc = "EVT_SHARED_00771_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		ai_chance = 80
+		name = "ACTION_NAME_SEND_TROOPS"
+		command = { type = belligerence which = IRQ value = 5 }
+		command = { type = set_relation which = EGY value = 150 }
+ 		command = { type = set_relation which = JOR value = 150 }
+		command = { type = set_relation which = LEB value = 150 }
+		command = { type = set_relation which = SYR value = 100 }
+		command = { type = supplies value = -1000 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = trigger which = 228004 }
+		}
+	action_b = {
+		ai_chance = 20
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		command = { type = set_relation which = EGY value = -25 }
+ 		command = { type = set_relation which = JOR value = -25 }
+		command = { type = set_relation which = LEB value = -25 }
+		command = { type = set_relation which = SYR value = -25 }
+		command = { type = set_relation which = ISR value = 50 }
+		command = { type = set_relation which = ENG value = 50 }
+		command = { type = set_relation which = USA value = 50 }
+		command = { type = set_relation which = FRA value = 50 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164057] IRQ | 1936 | Stalemate in Iran-Iraq War (Punto muerto en la guerra Irán-Irak)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164057
+	country = IRQ
+	name = EVT_IRQ_164057_NAME
+	desc = EVT_IRQ_164057_DESC
+	picture = "nwo/qadisiyyah_stalemate"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peace which = PER }
+		command = { type = removecore which = 1089 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164016] IRQ | 1937 | Treaty of Saadabad (Tratado de Sa'dabad)
+# Triggered by event 235009 in events/Minors/TUR.txt
+# Trigger event 100001 in events/Minors/AFG.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 164016
+         random = no
+         country = irq
+         name = "EVT_SHARED_00783_NAME"
+         desc = "EVT_SHARED_00783_DESC"
+         style = 2
+	picture = "Minors/treaty_of_saadabad"
+           action_a = {
+                  name = "EVT_SHARED_00783_A"
+                  ai_chance = 95
+                  command = { type = dissent value = -1 }
+                  command = { type = domestic which = interventionism value = -1 }
+                  command = { type = non_aggression which = irq where = per }
+                  command = { type = non_aggression which = irq where = tur }
+                  command = { type = non_aggression which = irq where = afg }
+                  command = { type = relation which = per value = 50 }
+                  command = { type = relation which = tur value = 50 }
+                  command = { type = relation which = afg value = 50 }
+                  command = { type = trigger which = 100001 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00783_B"
+                  ai_chance = 5
+                  command = { type = dissent value = 1 }
+                  command = { type = end_non_aggression which = irq where = per }
+                  command = { type = end_non_aggression which = irq where = tur }
+                  command = { type = end_non_aggression which = irq where = afg }
+                  command = { type = relation which = per value = -10 }
+                  command = { type = relation which = tur value = -10 }
+                  command = { type = relation which = afg value = -10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [164011] IRQ | 1941 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164011
+	random = no
+	country = IRQ
+	style = 2
+	trigger = {
+		minister = 365001
+		}
+	date = { year = 1941 month = april day = 3 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 365001 }
+		command = { type = relation which = ENG value = -10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164030] IRQ | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164030
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365028 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365102 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164031] IRQ | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164031
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365147 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164053] IRQ | 1947 | Allied withdrawal from Iraq (Retirada aliada de Irak)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164053
+	country = IRQ
+	name = EVT_IRQ_164053_NAME
+	desc = EVT_IRQ_164053_DESC
+	picture = "nwo/iraq"
+	style = 1
+	trigger = {
+		flag = cold_war
+		ispuppet = yes
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164000] IRQ | 1947 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164000
+	random = no
+	country = IRQ
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = march year = 1947 }
+	offset = 20
+	deathdate = { day = 29 month = january year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365028 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365102 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164032] IRQ | 1948 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164032
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365148 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164001] IRQ | 1948 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164001
+	random = no
+	country = IRQ
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = february year = 1948 }
+	offset = 20
+	deathdate = { day = 29 month = may year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365147 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365102 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164002] IRQ | 1948 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164002
+	random = no
+	country = IRQ
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = june year = 1948 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365148 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365102 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164003] IRQ | 1949 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164003
+	random = no
+	country = IRQ
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = january year = 1949 }
+	offset = 20
+	deathdate = { day = 29 month = november year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365141 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164033] IRQ | 1949 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164033
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1949 }
+	offset = 180
+	deathdate = { day = 29 month = june year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365141 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164034] IRQ | 1949 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164034
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = july year = 1949 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365149 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164004] IRQ | 1949 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164004
+	random = no
+	country = IRQ
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = december year = 1949 }
+	offset = 20
+	deathdate = { day = 29 month = january year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365149 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164035] IRQ | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164035
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1950 }
+	offset = 180
+	deathdate = { day = 29 month = june year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365150 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164005] IRQ | 1950 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164005
+	random = no
+	country = IRQ
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = february year = 1950 }
+	offset = 20
+	deathdate = { day = 29 month = august year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365150 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164036] IRQ | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164036
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = july year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365142 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164006] IRQ | 1950 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164006
+	random = no
+	country = IRQ
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = september year = 1950 }
+	offset = 20
+	deathdate = { day = 29 month = june year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365142 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164037] IRQ | 1952 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164037
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1952 }
+	offset = 180
+	deathdate = { day = 29 month = june year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365155 }
+		command = { type = headofgovernment which = 365152 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164007] IRQ | 1952 | Democratic Restoration (Restauración democrática)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164007
+	random = no
+	country = IRQ
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00497_NAME"
+	desc = "EVT_SHARED_00497_DESC"
+	date = { day = 1 month = july year = 1952 }
+	offset = 20
+	deathdate = { day = 29 month = october year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 365155 }
+		command = { type = headofgovernment which = 365152 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164038] IRQ | 1952 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164038
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = july year = 1952 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365151 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164008] IRQ | 1952 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164008
+	random = no
+	country = IRQ
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = november year = 1952 }
+	offset = 20
+	deathdate = { day = 29 month = january year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365151 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164039] IRQ | 1953 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164039
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1953 }
+	offset = 180
+	deathdate = { day = 29 month = june year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365025 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164009] IRQ | 1953 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164009
+	random = no
+	country = IRQ
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = february year = 1953 }
+	offset = 20
+	deathdate = { day = 29 month = august year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365025 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164040] IRQ | 1953 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164040
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = july year = 1953 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365153 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164010] IRQ | 1953 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164010
+	random = no
+	country = IRQ
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = september year = 1953 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365153 }
+		command = { type = foreignminister which = 365051 }
+		command = { type = armamentminister which = 365072 }
+		command = { type = ministerofsecurity which = 365086 }
+		command = { type = ministerofintelligence which = 365154 }
+		command = { type = chiefofstaff which = 365113 }
+		command = { type = chiefofarmy which = 365121 }
+		command = { type = chiefofnavy which = 365126 }
+		command = { type = chiefofair which = 365133 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [164041] IRQ | 1954 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164041
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365142 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164042] IRQ | 1957 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164042
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365019 }
+		command = { type = headofgovernment which = 365149 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164052] IRQ | 1958 | Jordan joins Arab Federation (Jordania se une a la Federación Árabe)
+# Triggered by event 168019 in events/Minors/JOR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 164052
+	country = IRQ
+	name = EVT_IRQ_164052_NAME
+	desc = EVT_IRQ_164052_DESC
+	picture = "nwo/iraqi_arab_federation"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = JOR }
+		command = { type = add_corps when = 1022 }
+		command = { type = add_division value = infantry when = 14 }
+		command = { type = add_division value = infantry when = 14 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164062] IRQ | 1958 | Accession of Iraq to the UAR (Ingreso de Irak en la RAU)
+# Triggered by event 142061 in events/Minors/EGY_Decisions.txt
+# Trigger event 142062 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 164062
+	country = IRQ
+	name = EVT_IRQ_164062_NAME
+	desc = EVT_IRQ_164062_DESC
+	picture = "nwo/united_arab_republic"
+	style = 1
+	trigger = {
+		event = 142061
+		exists = EGY
+		flag = cold_war
+		atwar = no
+		}
+	date = { day = 1 month = february year = 1958 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_IRQ_164062_A
+		ai_chance = 85
+		command = { type = relation which = EGY value = -100 }
+		command = { type = dissent value = -2 }
+	}
+	action = {
+		name = ACTION_NAME_SURRENDER_GAMEOVER
+		ai_chance = 15
+		command = { type = relation which = EGY value = 200 }
+		command = { type = trigger which = 142062 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164043] IRQ | 1958 | 14th July Revolution (Revolución del 14 de julio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164043
+	country = IRQ
+	name = EVT_IRQ_164043_NAME
+	desc = EVT_IRQ_164043_DESC
+	picture = "nwo/14_july_revolution"
+	style = 1
+	date = { day = 14 month = july year = 1958 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = end_puppet }
+		command = { type = flag_ext which = _1958 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 365200 }
+		command = { type = headofgovernment which = 365201 }
+		command = { type = dissent value = 10 }
+		command = { type = independence which = JOR }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164054] IRQ | 1961 | First Kurdish War (Primera Guerra Kurda)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164054
+	country = IRQ
+	name = EVT_IRQ_164054_NAME
+	desc = EVT_IRQ_164054_DESC
+	picture = "nwo/iraqi_kurds"
+	style = 1
+	trigger = {
+		NOT = { exists = KUR }
+	}
+	date = { day = 0 month = september year = 1961 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 98
+		command = { type = dissent value = 25 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 2
+		command = { type = independence which = KUR value = 1 }
+		command = { type = non_aggression which = KUR where = IRQ }
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164044] IRQ | 1963 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164044
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1963 }
+	offset = 180
+	deathdate = { day = 29 month = june year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365202 }
+		command = { type = headofgovernment which = 365203 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164045] IRQ | 1963 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164045
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = july year = 1963 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = flag_ext where = IRQ which = _1963 }
+		command = { type = headofstate which = 365202 }
+		command = { type = headofgovernment which = 365204 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164046] IRQ | 1966 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164046
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1966 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1966 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 365202 }
+		command = { type = headofgovernment which = 365206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164047] IRQ | 1967 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164047
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1967 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1967 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 365204 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164048] IRQ | 1968 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164048
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1968 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 365207 }
+		command = { type = headofgovernment which = 365203 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164055] IRQ | 1974 | Second Kurdish War (Segunda Guerra Kurda)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164055
+	country = IRQ
+	name = EVT_IRQ_164055_NAME
+	desc = EVT_IRQ_164055_DESC
+	picture = "nwo/iraqi_kurds"
+	style = 1
+	trigger = {
+		NOT = { exists = KUR }
+	}
+	date = { day = 0 month = april year = 1974 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 99
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 1
+		command = { type = independence which = KUR value = 1 }
+		command = { type = non_aggression which = KUR where = IRQ }
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164049] IRQ | 1979 | Saddam Hussein comes to power (Saddam Hussein llega al poder)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164049
+	country = IRQ
+	name = EVT_IRQ_164049_NAME
+	desc = EVT_IRQ_164049_DESC
+	picture = "nwo/saddam_hussein"
+	style = 1
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 365209 }
+		command = { type = headofgovernment which = 365210 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164058] IRQ | 1981 | Iranian Victory in the Gulf (Victoria iraní en la guerra Irán-Irak)
+# Triggered by event 329897 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 164058
+	country = IRQ
+	name = EVT_IRQ_164058_NAME
+	desc = EVT_IRQ_164058_DESC
+	picture = "nwo/qadisiyyah_iranian_victory"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = removecore which = 1089 }
+		command = { type = dissent value = 25 }
+		command = { type = secedeprovince which = PER value = 1028 }
+		command = { type = secedeprovince which = PER value = 1035 }
+		command = { type = secedeprovince which = PER value = 1027 }
+		command = { type = secedeprovince which = PER value = 1036 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329896] IRQ | 1981 | Iraqi Victory in the Gulf (Victoria iraquí en la guerra Irán-Irak)
+# Triggered by event 201030 in events/Minors/PER.txt
+# Trigger event 201031 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329896
+	country = IRQ
+	name = EVT_IRQ_329896_NAME
+	desc = EVT_IRQ_329896_DESC
+	picture = "nwo/qadisiyyah_iraqi_victory"
+	style = 1
+	trigger = {
+		event = 201030
+		OR = {
+			war = { country = IRQ country = PER }
+			NOT = { exists = PER }
+		}
+		region = { region = "Persia" country = IRQ data = 1 value = 50 }
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 3
+	deathdate = { day = 29 month = august year = 1988 }
+	action = {
+		name = ACTION_NAME_VICTORY
+		command = { type = peace which = PER }
+		command = { trigger = { NOT = { exists = PER } } type = independence which = PER }
+		command = { type = dissent value = -30 }
+		command = { type = trigger which = 201031 }
+		command = { type = addclaim which = 1087 }
+		command = { type = addclaim which = 1084 }
+		command = { type = addclaim which = 1082 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164061] IRQ | 1990 | Defeat in the Gulf War (Derrota en la Guerra del Golfo)
+# Triggered by event 316228 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 164061
+	country = IRQ
+	name = EVT_IRQ_164061_NAME
+	desc = EVT_IRQ_164061_DESC
+	picture = "nwo/desert_storm"
+	style = 1
+	action = {
+		name = ACTION_NAME_DEFEAT
+		ai_chance = 100
+		command = { type = removecore which = 1041 }
+		command = { type = dissent value = 25 }
+		command = { type = independence which = U91 value = 0 }
+		command = { type = independence which = SAU value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164060] IRQ | 1990 | Conquest of Kuwait (Conquista de Kuwait)
+# Triggered by event 164059 in events/Minors/IRQ_Decisions.txt
+# Trigger event 207064 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 164060
+	country = IRQ
+	name = EVT_IRQ_164060_NAME
+	desc = EVT_IRQ_164060_DESC
+	picture = "nwo/invasion_of_kuwait_victory"
+	style = 1
+	trigger = {
+		event = 164059
+		control = { province = 1041 data = IRQ }
+	}
+	date = { day = 0 month = august year = 1990 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = ACTION_NAME_VICTORY
+		command = { type = inherit which = U91 }
+		command = { type = dissent value = -15 }
+		command = { type = relation which = USA value = -150 }
+		command = { type = relation which = ENG value = -100 }
+		command = { type = relation which = FRA value = -100 }
+		command = { type = relation which = ISR value = -100 }
+		command = { type = relation which = SAU value = -50 }
+		command = { type = relation which = EGY value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [164050] IRQ | 1991 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 164050
+	country = IRQ
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 365208 }
+	}
+}

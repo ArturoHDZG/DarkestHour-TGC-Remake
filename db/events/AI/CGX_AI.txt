@@ -1,0 +1,208 @@
+# ============================================================================
+# File: events/AI/CGX_AI.txt (8 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [122007] CGX | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 122007
+	random = no
+	country = CGX
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = no
+		NOT = { local_flag = UPGPeace }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = ai which = "switch/Minor_Upg_Peace.ai" }
+		command = { type = local_setflag which = UPGPeace }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [122008] CGX | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 122008
+	random = no
+	country = CGX
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = yes
+		local_flag = UPGPeace
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = ai which = "switch/Minor_Upg_War.ai" }
+		command = { type = local_clrflag which = UPGPeace }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [122009] CGX | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 122009
+	random = no
+	country = CGX
+	persistent = yes
+	trigger = {
+		ai = yes
+		NOT = { local_flag = CGXAttackJAP }
+		war = { country = JAP }
+		OR = {
+			lost_national = { country = CHI value = 50 }
+			lost_national = { country = CGX value = 1 }
+		}
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = ai which = "switch/CGX_Attack_JAP.ai" }
+		command = { type = local_setflag which = CGXAttackJAP }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329577] CGX | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329577
+	random = no
+	country = CGX
+	trigger = {
+		ai = yes
+		local_flag = CGXInvadeCHI
+		NOT = { war = { country = CHI country = CGX } }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/CGX_CHI_Ally.ai" }
+		command = { type = ai which = "Generic/air_ground.ai" }
+		command = { type = local_clrflag which = CGXInvadeCHI }
+		command = { type = relation which = CHI value = 100 }
+		command = { type = relation which = JAP value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329578] CGX | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329578
+	random = no
+	country = CGX
+	persistent = yes
+	trigger = {
+		ai = yes
+		local_flag = CGXAttackJAP
+		NOT = { war = { country = JAP } }
+		NOT = { lost_national = { country = CHI value = 50 } }
+		NOT = { lost_national = { country = CGX value = 1 } }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = ai which = "switch/CGX_Defend_JAP.ai" }
+		command = { type = local_clrflag which = CGXAttackJAP }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329579] CGX | 1933 | AI_EVENT
+# Triggered by event 329647 in events/AI/JAP_AI_10-34.txt
+# Triggered by event 167034 in events/JAP/JAP_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329579
+	random = no
+	country = CGX
+	trigger = {
+		ai = yes
+		war = { country = JAP }
+		NOT = { local_flag = CGXBoffJAP }
+		OR = {
+			event = 329647
+			event = 167034
+			lost_national = { country = CHI value = 35 }
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/WAR_Backoff.ai" }
+		command = { type = ai which = "Generic/air_ground.ai" }
+		command = { type = local_setflag which = CGXBoffJAP }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329580] CGX | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329580
+	random = no
+	country = CGX
+	trigger = {
+		ai = yes
+		war = { country = JAP }
+		alliance = { country = CHI }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ferocity_yes.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329593] CGX | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329593
+	random = no
+	country = CGX
+	trigger = {
+		ai = yes
+		NOT = { alliance = { country = CHI } }
+		OR = {
+			and = {
+				war = { country = CGX country = CHI }
+				attack = CHI
+				not = { ispuppet = CGX }
+			}
+			flag = CHI_Aggresion_Asia
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = setflag which = CHI_Aggresion_Asia }
+		command = { type = ai which = "switch/CHI_Aggression_Warlords.ai" }
+		command = { type = ai which = "Generic/air_ground.ai" }
+	}
+}

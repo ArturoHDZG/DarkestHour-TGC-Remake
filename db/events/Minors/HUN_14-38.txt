@@ -1,0 +1,1677 @@
+# ============================================================================
+# File: events/Minors/HUN_14-38.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [159066] HUN | 1914 | Outcome of the Great War (El fin de la Gran Guerra)
+# Triggered by event 244019 in events/Minors/U09.txt
+# Triggered by event 108086 in events/Minors/AUS_14-37.txt
+# Trigger event 159067 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159066
+	country = HUN
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		atwar = no
+		event = 244019
+		event = 108086
+	}
+	name = "EVT_HUN_159066_NAME"
+	desc = "EVT_HUN_159066_DESC"
+	picture = "GLOBAL/peace_conference"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = loser }
+ 		command = { type = dissent value = 10 }
+		command = { type = local_clrflag which = disarm_25 }
+		command = { type = local_clrflag which = disarm_50 }
+		command = { type = local_clrflag which = disarm_75 }
+		command = { type = local_setflag which = disarm_10 }
+		command = { type = secedearea which = ROM value = "Bessarabia" when = 1 }
+		command = { type = secedeprovince which = ROM value = 301 when = 1 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { type = headofstate which = 105155 }
+		command = { type = headofgovernment which = 105151 }
+		command = { type = foreignminister which = 105149 }
+		command = { type = strength which = land when = 0 where = 0 org = 0 value = 0 }
+		command = { trigger = { not = { flag = lon } } type = setflag which = lon }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159067] HUN | 1914 | Neighbours Invading (Invasión de las fronteras)
+# Triggered by event 159066 in events/Minors/HUN_14-38.txt
+# Triggered by event 136060 in events/Minors/CZE_14-53.txt
+# Triggered by event 217008 in events/Minors/SER.txt
+# Trigger event 159068 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159067
+	country = HUN
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		atwar = no
+		event = 159066
+		event = 136060
+		event = 217008
+	}
+	name = "EVT_HUN_159067_NAME"
+	desc = "EVT_HUN_159067_DESC"
+	picture = "GLOBAL/finnish_reinforcements"
+	style = 2
+	action = {
+		name = "ACTION_NAME_SUPPRESS_REVOLT"
+		ai_chance = 100
+		command = { type = dissent value = 30 }
+	}
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 0
+		command = { type = sleepevent which = 159068 }
+		command = { type = war which = CZE }
+		command = { type = war which = ROM }
+		command = { type = war which = SER }
+		command = { type = war which = FRA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159070] HUN | 1914 | Soviet Alliance Appeal (Pacto soviético fallido)
+# Trigger event 223391 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159070
+	country = HUN
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 7
+	trigger = {
+		government = communist
+		exists = SOV
+		NOT = {
+			alliance = { country = SOV country = HUN }
+			war = { country = SOV country = HUN }
+		}
+	}
+	name = "EVT_HUN_159070_NAME"
+	desc = "EVT_HUN_159070_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	action = {
+		name = "ACTION_NAME_JOIN_ALLIANCE"
+		ai_chance = 100
+		command = { type = trigger which = 223391 }
+	}
+	action = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 0
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159072] HUN | 1914 | Fall of Soviet Hungary (Caída del régimen soviético)
+# Trigger event 159093 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159072
+	country = HUN
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 1
+	trigger = {
+		OR = {
+			war = { country = CZE }
+			war = { country = ROM }
+		}
+		OR = {
+			not = { control = { province = 284 data = HUN } }
+			lost_national = { country = HUN value = 50 }
+		}
+	}
+	name = "EVT_HUN_159072_NAME"
+	desc = "EVT_HUN_159072_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = dissent value = 5 }
+		command = { type = name where = HUN which = "" }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = freedom value = 8 }
+		command = { type = headofstate which = 105160 }
+		command = { type = headofgovernment which = 105165 }
+		command = { type = foreignminister which = 105173 }
+		command = { type = armamentminister which = 105195 }
+		command = { type = leave_alliance }
+		command = { type = peace which = ROM }
+		command = { type = peace which = CZE }
+		command = { type = access which = ROM }
+		command = { type = strength which = land when = 0 where = 0 org = 0 value = 0 }
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { type = morale which = naval value = -10 }
+		command = { type = morale which = air value = -10 }
+		command = { type = counterattack value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = encirclement value = -2 }
+		command = { type = hq_supply_eff value = -2 }
+		command = { type = sce_frequency value = -0.3 }
+		command = { type = attrition_mod value = -2 }
+		command = { type = trickleback_mod value = -5 }
+		command = { type = secedearea which = CZE value = "Slovakia" when = 2 }
+		command = { type = ai which = "AAR/wars/surrender.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159073] HUN | 1914 | Slovak Soviet Republic (República Soviética Eslovaca)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159073
+	country = HUN
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 14
+	trigger = {
+		government = communist
+		war = { country = HUN country = CZE }
+		control = { province = 208 data = HUN }
+		control = { province = 211 data = HUN }
+		control = { province = 212 data = HUN }
+		control = { province = 214 data = HUN }
+	}
+	name = "EVT_HUN_159073_NAME"
+	desc = "EVT_HUN_159073_DESC"
+	picture = "GLOBAL/spread_revolution"
+	style = 2
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -3 }
+		command = { type = independence which = U31 value = 1 when = 0 }
+		command = { type = name where = U31 which = "Slovak Soviet Republic" }
+		command = { type = alliance which = U31 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159074] HUN | 1914 | Friedrich Government (Gobierno de Friedrich)
+# Trigger event 159075 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159074
+	country = HUN
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 7
+	trigger = {
+		atwar = no
+		government = democratic
+		access = { country = HUN country = ROM }
+	}
+	name = "EVT_HUN_159074_NAME"
+	desc = "EVT_HUN_159074_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = event which = 159075 when = 4 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = set_domestic which = free_market value = 8 }
+		command = { type = headofstate which = 105158 }
+		command = { type = headofgovernment which = 105153 }
+		command = { type = foreignminister which = 105174 }
+		command = { type = armamentminister which = 105196 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159075] HUN | 1914 | Archduke Joseph Resigns (Dimisión del archiduque)
+# Triggered by event 159074 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159075
+	country = HUN
+	name = "EVT_HUN_159075_NAME"
+	desc = "EVT_HUN_159075_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = FRA value = -30 }
+		command = { type = headofstate which = 105161 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159087] HUN | 1914 | Bethlen Resigns (Bethlen dimite)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159087
+	country = HUN
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		local_flag = depression
+		incabinet = 105166
+	}
+	name = "EVT_HUN_159087_NAME"
+	desc = "EVT_HUN_159087_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 105167 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159088] HUN | 1914 | Biatorbagy Viaduct Bombing (Atentado de Biatorbágy)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159088
+	country = HUN
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 60
+	trigger = {
+		year = 1931
+		exists = HUN
+	}
+	name = "EVT_HUN_159088_NAME"
+	desc = "EVT_HUN_159088_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "EVT_HUN_159088_A"
+		ai_chance = 99
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = dissent value = -1 }
+	}
+	action = {
+		name = "EVT_HUN_159088_B"
+		ai_chance = 1
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159091] HUN | 1914 | Military Reorganization (Reforma militar soviética)
+# Triggered by event 159069 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159091
+	country = HUN
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 7
+	trigger = {
+		event = 159069
+	}
+	name = "EVT_HUN_159091_NAME"
+	desc = "EVT_HUN_159091_DESC"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_division which = "I Vörös Orség" value = infantry when = 5 }
+		command = { type = add_division which = "II Vörös Orség" value = infantry when = 5 }
+		command = { type = add_division which = "III Vörös Orség" value = infantry when = 5 }
+		command = { type = add_division which = "IV Vörös Orség" value = infantry when = 5 }
+		command = { type = add_division which = "V Vörös Orség" value = infantry when = 5 }
+		command = { type = add_division which = "Lenin fiúk" value = militia when = 3 }
+		command = { type = max_organization which = land value = -10 }
+		command = { type = morale which = land value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159092] HUN | 1914 | War against Czechoslovakia (Guerra con Checoslovaquia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159092
+	country = HUN
+	save_date = yes
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 3
+	trigger = {
+		war = { country = HUN country = ROM }
+		NOT = { war = { country = HUN country = CZE } }
+		ai = no
+	}
+	name = "EVT_HUN_159092_NAME"
+	desc = "EVT_HUN_159092_DESC"
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 100
+		command = { type = war which = CZE }
+	}
+	action = {
+		name = "EVT_HUN_159092_A"
+		ai_chance = 0
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159093] HUN | 1914 | The Treaty of Trianon (El Tratado de Trianon)
+# Triggered by event 108081 in events/Minors/AUS_14-37.txt
+# Triggered by event 324519 in events/GLOBAL/MULTI_14-32.txt
+# Triggered by event 244018 in events/Minors/U09.txt
+# Triggered by event 159072 in events/Minors/HUN_14-38.txt
+# Trigger event 159086 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159093
+	country = HUN
+	trigger = { event = 108081
+		OR= {
+			event = 324519
+			event = 244018
+		}
+			event = 159072
+		random = 25
+	}
+	name = "EVT_HUN_159093_NAME"
+	desc = "EVT_HUN_159093_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = access which = FRA }
+		command = { trigger = { alliance = { country = FRA country = ITA } } type = access which = ITA }
+		command = { trigger = { alliance = { country = FRA country = ENG } } type = access which = ENG }
+		command = { trigger = { exists = ROM } type = secederegion which = ROM value = "Romania" }
+		command = { trigger = { NOT = { exists = ROM } } type = independence which = ROM value = 1 when = 1 }
+		command = { type = strength which = land when = 0 where = 0 org = 0 value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159068] HUN | 1919 | The Vix Note (La Nota Vix)
+# Triggered by event 159067 in events/Minors/HUN_14-38.txt
+# Trigger event 159069 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159068
+	country = HUN
+	date = { day = 1 month = january year = 1919 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 90
+	trigger = {
+		event = 159067
+		exists = ROM
+	}
+	name = "EVT_HUN_159068_NAME"
+	desc = "EVT_HUN_159068_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	action = {
+		name = "ACTION_NAME_DONT_SIGN"
+		ai_chance = 100
+		command = { type = relation which = FRA value = -50 }
+		command = { type = relation which = SER value = -100 }
+		command = { type = relation which = ROM value = -100 }
+		command = { type = relation which = CZE value = -100 }
+		command = { type = trigger which = 159069 }
+	}
+	action = {
+		name = "ACTION_NAME_OFFER_PEACE"
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = secedeprovince which = ROM value = 281 }
+		command = { type = secedeprovince which = ROM value = 283 }
+		command = { type = secederegion which = ROM value = "Romania" }
+		command = { type = secedearea which = ROM value = "Transylvania" }
+		command = { type = sleepevent which = 159093 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159069] HUN | 1919 | Hungarian Soviet Republic (República Soviética Húngara)
+# Triggered by event 159068 in events/Minors/HUN_14-38.txt
+# Trigger event 209111 in events/Minors/ROM_14-36.txt
+# Trigger event 159091 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159069
+	country = HUN
+	name = "EVT_HUN_159069_NAME"
+	desc = "EVT_HUN_159069_DESC"
+	picture = "GLOBAL/spread_revolution"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = name where = HUN which = "HUN_EVT" }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = set_domestic which = freedom value = 5 }
+		command = { type = set_domestic which = free_market value = 4 }
+		command = { type = set_domestic which = defense_lobby value = 8 }
+		command = { type = set_domestic which = interventionism value = 8 }
+		command = { type = dissent value = -5 }
+		command = { type = event which = 209111 where = ROM when = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159071] HUN | 1919 | Romania declared war (Rumania declaró la guerra)
+# Triggered by event 209111 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159071
+	country = HUN
+	save_date = yes
+	name = "EVT_HUN_159071_NAME"
+	desc = "EVT_HUN_159071_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { type = morale which = naval value = 10 }
+		command = { type = morale which = air value = 10 }
+		command = { type = counterattack value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = encirclement value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = sce_frequency value = 0.3 }
+		command = { type = attrition_mod value = 2 }
+		command = { type = trickleback_mod value = 5 }
+		command = { type = ai which = "AAR/wars/nosurrender.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159077] HUN | 1919 | Horthy Enters Budapest (Horthy marcha a Budapest)
+# Triggered by event 159076 in events/Minors/HUN_14-38.txt
+# Trigger event 159078 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159077
+	country = HUN
+	name = "EVT_HUN_159077_NAME"
+	desc = "EVT_HUN_159077_DESC"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic	which = democratic value = 3 }
+		command = { type = set_domestic	which = political_left value = 2 }
+		command = { type = set_domestic	which = freedom value = 4 }
+		command = { type = headofstate which = 105156 }
+		command = { type = headofgovernment which = 105154 }
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159076] HUN | 1919 | Friedrich Resigns (Friedrich dimite)
+# Trigger event 159077 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159076
+	country = HUN
+	date = { day = 24 month = november year = 1919 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		incabinet = 105153
+	}
+	name = "EVT_HUN_159076_NAME"
+	desc = "EVT_HUN_159076_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = event which = 159077 when = 2 }
+		command = { type = headofstate which = 105162 }
+		command = { type = headofgovernment which = 105164 }
+		command = { trigger = { ai = yes } type = foreignminister which = 105176 }
+		command = { trigger = { ai = yes } type = armamentminister which = 105197 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159078] HUN | 1920 | Horthy Elected Regent (Horthy nombrado regente)
+# Triggered by event 159077 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159078
+	country = HUN
+	date = { day = 1 month = march year = 1920 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		event = 159077
+		incabinet = 105156
+	}
+	name = "EVT_HUN_159078_NAME"
+	desc = "EVT_HUN_159078_DESC"
+	style = 2
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159079] HUN | 1920 | Simonyi-Semadam Resigns (Dimite Simonyi-Semadam)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159079
+	country = HUN
+	date = { day = 19 month = july year = 1920 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 7
+	trigger = {
+		NOT = { incabinet = 105024 }
+		minister = 105024
+		headofstate = 105156
+	}
+	name = "EVT_HUN_159079_NAME"
+	desc = "EVT_HUN_159079_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 105024 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159081] HUN | 1921 | Pal Teleki Resigns (Teleki dimite)
+# Triggered by event 159080 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159081
+	country = HUN
+	name = "EVT_HUN_159081_NAME"
+	desc = "EVT_HUN_159081_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 105166 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159080] HUN | 1921 | The Easter Crisis (La Crisis de Pascua)
+# Trigger event 159081 in events/Minors/HUN_14-38.txt
+# Trigger event 215010 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159080
+	country = HUN
+	date = { day = 0 month = march year = 1921 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 10
+	trigger = {
+		incabinet = 105156
+		minister = 105159
+		local_flag = loser
+		NOT = { exists = U09 }
+	}
+	name = "EVT_HUN_159080_NAME"
+	desc = "EVT_HUN_159080_DESC"
+	picture = "GLOBAL/minister_resign"
+	action = {
+		name = "EVT_HUN_159080_A"
+		ai_chance = 100
+		command = { type = trigger which = 159081 }
+	}
+	action = {
+		name = "EVT_HUN_159080_B"
+		ai_chance = 0
+		command = { type = headofstate which = 105159 }
+		command = { type = sleepevent which = 159081 }
+		command = { type = trigger which = 215010 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159082] HUN | 1921 | The March on Budapest (La Marcha sobre Budapest)
+# Trigger event 322008 in events/Minors/YEM.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159082
+	country = HUN
+	date = { day = 0 month = october year = 1921 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 10
+	name = "EVT_HUN_159082_NAME"
+	desc = "EVT_HUN_159082_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	trigger = {
+		NOT = {
+			exists = U09
+			headofstate = 105159
+		}
+	}
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 322008 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159065] HUN | 1922 | Joining the League of Nations (Entrar en la Sociedad)
+# Triggered by event 324498 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 231025 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159065
+	persistent = no
+	country = HUN
+trigger = {
+		AND = { NOT = {
+		atwar = yes
+		OR = { event = 324498
+				local_flag = { which = league_of_nations when = 1 value = 1 }
+						}
+					}
+				}
+			}
+	name = "EVT_SHARED_01023_NAME"
+	desc = "EVT_SHARED_01023_DESC"
+	picture = "GLOBAL/aar_lon"
+	style = 2
+	date = { day = 1 month = january year = 1922 }
+	deathdate = { day = 1 month = january year = 1945 }
+	offset = 10
+	action = {
+		name = "EVT_SHARED_01023_A"
+		ai_chance = 100
+		command = { type = local_setflag which = league_of_nations }
+		command = { type = dissent value = -10 }
+		command = { type = 	relation which = ENG value = 50 }
+		command = { type = 	relation which = FRA value = 50 }
+		command = { type = 	relation which = ITA value = 50 }
+		command = { type = 	relation which = JAP value = 50 }
+		command = { type = 	relation which = USA value = 50 }
+		command = { trigger = { local_flag = disarm_army_10 } type = demobilize which = land when = 0 where = 0 value = 10 }
+		command = { trigger = { local_flag = disarm_army_25 } type = demobilize which = land when = 0 where = 0 value = 25 }
+		command = { trigger = { local_flag = disarm_army_50 } type = demobilize which = land when = 0 where = 0 value = 50 }
+		command = { trigger = { local_flag = disarm_army_75 } type = demobilize which = land when = 0 where = 0 value = 75 }
+		command = { type = event which = 231025 where = -1 when = 0 }
+	}
+	action ={
+		name = "EVT_SHARED_01023_B"
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = 	relation which = ENG value = -50 }
+		command = { type = 	relation which = FRA value = -50 }
+		command = { type = 	relation which = ITA value = -50 }
+		command = { type = 	relation which = JAP value = -50 }
+		command = { type = 	relation which = USA value = -50 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [159086] HUN | 1925 | Trianon Revisionism (Revisión de Trianón)
+# Triggered by event 159093 in events/Minors/HUN_14-38.txt
+# Trigger event 147238 in events/FRA/FRA_14-31.txt
+# Trigger event 147246 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159086
+	country = HUN
+	date = { day = 1 month = january year = 1925 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 365
+	trigger = {
+		event = 159093
+	}
+	name = "EVT_HUN_159086_NAME"
+	desc = "EVT_HUN_159086_DESC"
+	picture = "GLOBAL/congress"
+	style = 2
+	action = {
+		name = "EVT_HUN_159086_A"
+		ai_chance = 90
+		command = { type = trigger which = 147238 }
+		command = { type = trigger which = 147246 }
+		command = { type = addcore which = 209 }
+		command = { type = addcore which = 210 }
+		command = { type = addcore which = 215 }
+		command = { type = addcore which = 293 }
+		command = { type = addcore which = 341 }
+		command = { type = addcore which = 296 }
+		command = { type = addclaim which = 188 }
+		command = { type = addclaim which = 208 }
+		command = { type = addclaim which = 211 }
+		command = { type = addclaim which = 212 }
+		command = { type = addclaim which = 213 }
+		command = { type = addclaim which = 214 }
+		command = { type = addclaim which = 285 }
+		command = { type = addclaim which = 286 }
+		command = { type = addclaim which = 287 }
+		command = { type = addclaim which = 288 }
+		command = { type = addclaim which = 289 }
+		command = { type = addclaim which = 291 }
+		command = { type = addclaim which = 292 }
+		command = { type = addclaim which = 295 }
+	}
+	action = {
+		name = "EVT_HUN_159086_B"
+		ai_chance = 10
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159090] HUN | 1927 | Fascist friendship (Amistad fascista)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159090
+	country = HUN
+	date = { day = 1 month = january year = 1927 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 90
+	trigger = {
+		not = { government = communist }
+		NOT = {
+			guarantee = { country = ITA country = HUN }
+		}
+	}
+	name = "EVT_HUN_159090_NAME"
+	desc = "EVT_HUN_159090_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	action = {
+		name = "EVT_HUN_159090_A"
+		ai_chance = 100
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = domestic which = political_left value = -3 }
+		command = { type = 	end_access which = FRA }
+		command = { type = 	end_access which = ENG }
+		command = { type = 	end_access which = ITA }
+		command = { type = relation which =	ITA value = 150 }
+		command = { type = relation which =	AUS value = 75 }
+		command = { trigger = { exists = U08 } type = relation which =	U08 value = 50 }
+		command = { trigger = { exists = GER } type = relation which =	GER value = 50 }
+		command = { type = domestic which = interventionism value = 3 }
+		command = { type = domestic which = defense_lobby value = 3 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { type = construct which = ic where = -4 value = 1 }
+		command = { type = construct which = ic where = -4 value = 1 }
+		command = { type = construct which = ic where = -4 value = 1 }
+		command = { type = construct which = ic where = -4 value = 1 }
+		command = { type = construct which = ic where = -4 value = 1 }
+	}
+	action = {
+		name = "EVT_HUN_159090_B"
+		ai_chance = 0
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159089] HUN | 1932 | Gyula Karolyi Resigns (Károlyi dimite)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159089
+	country = HUN
+	date = { day = 1 month = january year = 1932 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 30
+	trigger = {
+		incabinet = 105167
+	}
+	name = "EVT_HUN_159089_NAME"
+	desc = "EVT_HUN_159089_DESC"
+	picture = "GLOBAL/minister_resign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 105002 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329060] HUN | 1933 | Communist Coup Attempt (Intento de golpe de Estado comunista)
+# Triggered by event 329058 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329060
+	random = no
+	country = HUN
+	one_action = yes
+	trigger = {
+		event = 329058
+		random = 5
+		atwar = no
+		not = { alliance = { country = DDR } }
+		not = { war = { country = DDR } }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_SHARED_00197_NAME"
+	desc = "EVT_SHARED_00197_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	action = {
+		ai_chance = 80
+		name = "EVT_SHARED_00197_A"
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = dissent value = -5 }
+		command = { type = country which = U13 }
+		command = { type = set_relation which = DDR value = 200 }
+		command = { type = set_relation which = SOV value = 200 }
+		command = { type = alliance which = SOV when = 1 }
+	}
+	action = {
+		ai_chance = 20
+		name = "EVT_SHARED_00197_B"
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159013] HUN | 1933 | Hungarian State Visit to Berlin (Visita de Estado Húngara a Berlín)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159013
+	random = no
+	country = HUN
+	trigger = {
+			exists = GER
+			}
+	date = { day = 04 month = june year = 1933 }
+	name = "EVT_SHARED_00699_NAME"
+	desc = "EVT_SHARED_00699_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159009] HUN | 1933 | Hungarian State Visit to Rome (Visita de Estado Húngaro a Roma)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159009
+	random = no
+	country = HUN
+	trigger = {
+			exists = ITA
+			}
+	date = { day = 01 month = july year = 1933 }
+	name = "EVT_SHARED_00670_NAME"
+	desc = "EVT_SHARED_00670_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ITA value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159007] HUN | 1936 | German Diplomatic Approach (Propuesta diplomática alemana)
+# Triggered by event 329134 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159007
+	random = no
+	country = HUN
+	name = EVT_HUN_159007_NAME
+	desc = EVT_SHARED_00617_DESC
+  	style = 2
+	picture = "GLOBAL/hungary_axis"
+	action_a = {
+		name = ACTION_NAME_JOIN_AXIS
+		ai_chance = 100
+		command = { type = alliance which = GER }
+		command = { type = relation which = GER value = 100 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 0
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159015] HUN | 1936 | Partition of Yugoslavia (Partición de Yugoslavia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159015
+	random = no
+	country = HUN
+	name = "EVT_SHARED_00780_NAME"
+	desc = "EVT_SHARED_00780_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = { exists = YUG }
+		control = { province = 338 data = -3 }
+		participant = { country = HUN value = 2 }
+		OR = {
+			alliance = { country = HUN country = GER }
+			alliance = { country = HUN country = ITA }
+			alliance = { country = HUN country = BUL }
+		}
+	}
+    date = { day = 0 month = january year = 1936 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 100
+		name = "EVT_SHARED_00780_A"
+		command = { type = dissent value = -1 }
+		command = { trigger = { alliance = { country = HUN country = ITA } } type = secedeprovince which = ITA value = 329 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = ITA } } type = secedeprovince which = ITA value = 332 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = ITA } } type = secedeprovince which = ITA value = 334 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = ITA } } type = secedeprovince which = ITA value = 335 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = ITA } } type = secedeprovince which = ITA value = 343 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = ITA } } type = secedeprovince which = ITA value = 349 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = ITA } } type = secedeprovince which = ITA value = 350 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 327 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 330 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 336 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 337 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 338 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 339 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 340 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 342 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 344 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 345 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 346 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 347 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 351 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 352 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 353 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 354 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 355 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 356 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 357 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = secedeprovince which = GER value = 358 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = BUL } } type = secedeprovince which = BUL value = 331 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = BUL } } type = secedeprovince which = BUL value = 328 when = 1 }
+		command = { trigger = { alliance = { country = HUN country = BUL } } type = secedeprovince which = BUL value = 333 when = 1 }
+	}
+	action_b = {
+		ai_chance = 0
+		name = "EVT_SHARED_00780_B"
+		command = { type = dissent value = 5 }
+		command = { trigger = { alliance = { country = HUN country = ITA } } type = relation which = ITA value = -25 }
+		command = { trigger = { alliance = { country = HUN country = GER } } type = relation which = GER value = -25 }
+		command = { trigger = { alliance = { country = HUN country = BUL } } type = relation which = BUL value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159016] HUN | 1936 | End of Czechoslovakia: Ruthenia to Hungary (Fin de Checoslovaquia: Rutenia para Hungría)
+# Triggered by event 221001 in events/Minors/SLO.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159016
+	random = no
+	country = HUN
+	name = "EVT_HUN_159016_NAME"
+	desc = "EVT_HUN_159016_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = relation which = SLO value = 5 }
+		command = { type = relation which = GER value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159017] HUN | 1936 | End of Czechoslovakia: Slovakia to Hungary (Fin de Checoslovaquia: Eslovaquia para Hungría)
+# Triggered by event 150038 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159017
+	random = no
+	country = HUN
+	name = "EVT_HUN_159017_NAME"
+	desc = "EVT_HUN_159017_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -20 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = addcore which = 208 }
+		command = { type = addcore which = 211 }
+		command = { type = addcore which = 212 }
+		command = { type = addcore which = 209 }
+		command = { type = addcore which = 213 }
+		command = { type = addcore which = 210 }
+		command = { type = addcore which = 209 }
+		command = { type = addcore which = 215 }
+		command = { type = addcore which = 214 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159018] HUN | 1936 | End of Czechoslovakia: Prague Resists! (Fin de Checoslovaquia: ¡Resistencia armada!)
+# Triggered by event 136008 in events/Minors/CZE_14-53.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159018
+	random = no
+	country = HUN
+	name = "EVT_HUN_159018_NAME"
+	desc = "EVT_HUN_159018_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = relation which = CZE value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159023] HUN | 1936 | Molotov-Ribbentrop: Eastern Poland to USSR (Pacto M-R: Polonia oriental para la URSS)
+# Triggered by event 150053 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159023
+	random = no
+	country = HUN
+	name = "EVT_SHARED_00393_NAME"
+	desc = "EVT_SHARED_00393_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = SOV value = 239 }
+		command = { type = secedeprovince which = SOV value = 254 }
+		command = { type = secedeprovince which = SOV value = 250 }
+		command = { type = secedeprovince which = SOV value = 241 }
+		command = { type = secedeprovince which = SOV value = 242 }
+		command = { type = secedeprovince which = SOV value = 244 }
+		command = { type = secedeprovince which = SOV value = 247 }
+		command = { type = secedeprovince which = SOV value = 245 }
+		command = { type = secedeprovince which = SOV value = 238 }
+		command = { type = secedeprovince which = SOV value = 248 }
+		command = { type = secedeprovince which = SOV value = 240 }
+		command = { type = secedeprovince which = SOV value = 251 }
+		command = { type = secedeprovince which = SOV value = 255 }
+		command = { type = secedeprovince which = SOV value = 257 }
+		command = { type = secedeprovince which = SOV value = 258 }
+        command = { type = secedeprovince which = SOV value = 249 }
+        command = { type = secedeprovince which = SOV value = 256 }
+        command = { type = secedeprovince which = SOV value = 253 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159024] HUN | 1936 | Romanian Capitulation to Bulgaria (Rendición de Rumanía ante Bulgaria)
+# Triggered by event 209020 in events/Minors/ROM_36-44.txt
+# Triggered by event 209024 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159024
+	random = no
+	country = HUN
+	name = "EVT_SHARED_00477_NAME"
+	desc = "EVT_HUN_159024_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_HURRAH"
+		command = { type = addcore which = 285 }
+		command = { type = addcore which = 286 }
+		command = { type = addcore which = 287 }
+		command = { type = addcore which = 288 }
+		command = { type = addcore which = 289 }
+		command = { type = addcore which = 291 }
+		command = { type = addcore which = 292 }
+		command = { type = addcore which = 293 }
+		command = { type = addcore which = 295 }
+		command = { type = addcore which = 296 }
+		command = { type = addcore which = 336 }
+		command = { type = dissent value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159027] HUN | 1936 | Fall of the Hungarian Socialist Republic (Caída de la República Socialista Húngara)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159027
+	random = no
+	country = HUN
+	name = "EVT_HUN_159027_NAME"
+	desc = "EVT_HUN_159027_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U13 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159063] HUN | 1936 | People's Republic Founded (República Popular)
+# Trigger event 159064 in events/Minors/HUN_14-38.txt
+# Trigger event 248034 in events/Minors/U13.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 159063
+   country = HUN
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U13
+            NOT = { ai = HUN }
+            NOT = { ai = U13 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U13
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U13 } }
+      command = { type = country which = U13 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U13
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = HUN }
+               control = { province = 284 data = -1 }
+            }
+         }
+         type = trigger which = 159064
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U13 }
+               NOT = { control = { province = 284 data = -1 } }
+            }
+         }
+         type = trigger which = 248034
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U13
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [159064] HUN | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 159063 in events/Minors/HUN_14-38.txt
+# Triggered by event 248033 in events/Minors/U13.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 159064
+   country = HUN
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U13 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [159083] HUN | 1936 | Little Entente Ultimatum (Ultimátum de la Entente)
+# Triggered by event 136042 in events/Minors/CZE_14-53.txt
+# Trigger event 159084 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159083
+	country = HUN
+	save_date = yes
+	name = "EVT_HUN_159083_NAME"
+	desc = "EVT_HUN_159083_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 100
+		command = { type = event which = 159084 where = HUN when = 3 }
+	}
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 0
+		command = { type = headofstate which = 105159 }
+		command = { type = war which = CZE }
+		command = { type = sleepevent which = 159084 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159084] HUN | 1936 | Royalist Advance Defeated (Fracaso del golpe monárquico)
+# Triggered by event 159083 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159084
+	country = HUN
+	name = "EVT_HUN_159084_NAME"
+	desc = "EVT_HUN_159084_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = sleepminister which = 105159 }
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159085] HUN | 1936 | Hungarian Reconstruction (Reconstrucción de Hungría)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159085
+	country = HUN
+	name = "EVT_HUN_159085_NAME"
+	desc = "EVT_HUN_159085_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { guarantee = { country = ENG country = HUN } } type = relation which = ENG value = 70 }
+		command = { trigger = { guarantee = { country = FRA country = HUN } } type = relation which = FRA value = 70 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159025] HUN | 1936 | Defeat of Hungary (Derrota de Hungría)
+# Triggered by event 329301 in events/Minors/HUN_14-38.txt
+# Trigger event 209023 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159025
+	random = no
+	country = HUN
+	name = "EVT_SHARED_00781_NAME"
+	desc = "EVT_HUN_159025_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		event = 329301
+		control = { province = 284 data = ROM }
+		war = { country = HUN country = ROM }
+		NOT = {
+			alliance = { country = BUL country = GER }
+			alliance = { country = ROM country = GER }
+			alliance = { country = HUN country = GER }
+		}
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = peace which = ROM value = 1 }
+		command = { type = secedeprovince which = ROM value = 292 }
+		command = { type = secedeprovince which = ROM value = 288 }
+		command = { type = secedeprovince which = ROM value = 293 }
+		command = { type = secedeprovince which = ROM value = 296 }
+		command = { type = removecore which = 288 }
+		command = { type = removecore which = 293 }
+		command = { type = removecore which = 296 }
+		command = { type = removecore which = 292 }
+		command = { type = dissent value = 20 }
+		command = { type = trigger which = 209023 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329301] HUN | 1936 | Strategic Window: Transylvania (Oportunidad en Transilvania)
+# Triggered by event 118001 in events/Minors/BUL.txt
+# Trigger event 118005 in events/Minors/BUL.txt
+# Trigger event 118006 in events/Minors/BUL.txt
+# Trigger event 159025 in events/Minors/HUN_14-38.txt
+# Trigger event 209019 in events/Minors/ROM_36-44.txt
+# Trigger event 209020 in events/Minors/ROM_36-44.txt
+# Trigger event 329013 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329301
+	random = no
+	country = HUN
+	name = "EVT_HUN_329301_NAME"
+	desc = "EVT_HUN_329301_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		event = 118001
+		war = { country = BUL country = ROM }
+		random = 40
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 75
+		command = { type = leave_alliance }
+		command = { type = peace which = ENG value = 1 }
+		command = { type = peace which = USA value = 1 }
+		command = { type = peace which = CAN value = 1 }
+		command = { type = peace which = MEX value = 1 }
+		command = { type = peace which = VEN value = 1 }
+		command = { type = peace which = PAN value = 1 }
+		command = { type = peace which = LIB value = 1 }
+		command = { type = peace which = PHI value = 1 }
+		command = { type = peace which = JAP value = 1 }
+		command = { type = peace which = SAF value = 1 }
+		command = { type = peace which = SOV value = 1 }
+		command = { type = peace which = CHI value = 1 }
+		command = { type = peace which = CHC value = 1 }
+		command = { type = peace which = CSX value = 1 }
+		command = { type = peace which = CGX value = 1 }
+		command = { type = peace which = CXB value = 1 }
+		command = { type = peace which = SIK value = 1 }
+		command = { type = peace which = CYN value = 1 }
+		command = { type = end_guarantee which = SOV where = HUN }
+		command = { type = end_guarantee which = GER where = HUN }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = war which = ROM }
+		command = { type = dissent value = -10 }
+		command = { type = sleepevent which = 209019 }
+		command = { type = sleepevent which = 118003 }
+		command = { type = sleepevent which = 118005 }
+		command = { type = sleepevent which = 209021 }
+		command = { type = trigger which = 329013 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NEUTRAL"
+		ai_chance = 25
+		command = { type = non_aggression which = HUN where = ROM }
+		command = { type = sleepevent which = 329013 }
+		command = { type = sleepevent which = 209018 }
+		command = { type = sleepevent which = 209020 }
+		command = { type = sleepevent which = 118004 }
+		command = { type = sleepevent which = 159024 }
+		command = { type = sleepevent which = 118006 }
+		command = { type = sleepevent which = 209022 }
+		command = { type = sleepevent which = 159025 }
+		command = { type = sleepevent which = 209024 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159008] HUN | 1936 | Vienna Conference (Conferencia de Viena)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159008
+	random = no
+	country = HUN
+	trigger = {
+			exists = ITA
+			}
+	date = { day = 08 month = november year = 1936 }
+	name = "EVT_SHARED_00663_NAME"
+	desc = "EVT_SHARED_00663_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ITA value = 10 }
+		command = { type = relation which = AUS value = 10 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [159002] HUN | 1938 | First Vienna Award: Hungarian Claims (Primer Arbitraje: Demandas húngaras)
+# Triggered by event 150073 in events/GER/GER_37-38.txt
+# Trigger event 136009 in events/Minors/CZE_14-53.txt
+# Trigger event 150074 in events/GER/GER_37-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159002
+	random = no
+	country = HUN
+	name = "EVT_HUN_159002_NAME"
+	desc = "EVT_HUN_159002_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "EVT_HUN_159002_A"
+		ai_chance = 100
+		command = { type = relation which = CZE value = -10 }
+		command = { type = trigger which = 136009 }
+	}
+	action = {
+		name = "EVT_HUN_159002_B"
+		ai_chance = 0
+		command = { type = relation which = GER value = -20 }
+		command = { type = relation which = ITA value = -10 }
+		command = { type = relation which = CZE value = 20 }
+		command = { type = guarantee which = HUN where = CZE }
+		command = { type = trigger which = 150074 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159004] HUN | 1938 | Commence operations (Iniciar las operaciones)
+# Triggered by event 136012 in events/Minors/CZE_14-53.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159004
+	random = no
+	country = HUN
+	name = "ACTION_NAME_PRELUDE"
+	desc = "EVT_SHARED_00608_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = relation which = CZE value = -10 }
+		command = { type = relation which = POL value = 10 }
+		command = { type = relation which = ROM value = -15 }
+		command = { type = addcore which = 213 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159005] HUN | 1938 | Commence operations (Iniciar las operaciones)
+# Triggered by event 136013 in events/Minors/CZE_14-53.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159005
+	random = no
+	country = HUN
+	name = "ACTION_NAME_PRELUDE"
+	desc = "EVT_SHARED_00609_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ITA value = 10 }
+		command = { type = relation which = GER value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159014] HUN | 1938 | Changing Allegiances (Cambio de bando)
+# Trigger event 223030 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159014
+	random = no
+	country = HUN
+	name = EVT_HUN_159014_NAME
+	desc = EVT_HUN_159014_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = { exists = U13 }
+		war = { country = GER country = SOV }
+		war = { country = HUN country = SOV }
+		OR = {
+			control = { province = 284 data = SOV }
+			control = { province = 282 data = SOV }
+			control = { province = 280 data = SOV }
+			control = { province = 278 data = SOV }
+		}
+	}
+    date = { day = 0 month = january year = 1938 }
+    offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 97
+		name = ACTION_NAME_JOIN_COMINTERN
+		command = { type = end_puppet }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = removeclaim which = 341 }
+		command = { type = removeclaim which = 188 }
+		command = { type = removeclaim which = 208 }
+		command = { type = removeclaim which = 211 }
+		command = { type = removeclaim which = 212 }
+		command = { type = removeclaim which = 213 }
+		command = { type = removeclaim which = 214 }
+		command = { type = removeclaim which = 285 }
+		command = { type = removeclaim which = 286 }
+		command = { type = removeclaim which = 287 }
+		command = { type = removeclaim which = 288 }
+		command = { type = removeclaim which = 289 }
+		command = { type = removeclaim which = 291 }
+		command = { type = removeclaim which = 292 }
+		command = { type = removeclaim which = 295 }
+		command = { type = trigger which = 223030 }
+		command = { type = secedeprovince which = ROM value = 296 }
+		command = { type = secedeprovince which = ROM value = 288 }
+		command = { type = secedeprovince which = ROM value = 292 }
+		command = { type = secedeprovince which = ROM value = 293 }
+		command = { type = secedeprovince which = SOV value = 296 }
+		command = { type = secedeprovince which = SOV value = 288 }
+		command = { type = secedeprovince which = SOV value = 292 }
+		command = { type = secedeprovince which = SOV value = 293 }
+		command = { type = secedeprovince which = CZE value = 213 }
+		command = { type = secedeprovince which = CZE value = 215 }
+		command = { type = secedeprovince which = CZE value = 214 }
+		command = { type = secedeprovince which = CZE value = 209 }
+		command = { type = secedeprovince which = CZE value = 212 }
+		command = { type = secedeprovince which = CZE value = 211 }
+		command = { type = secedeprovince which = CZE value = 208 }
+		command = { type = secedeprovince which = CZE value = 210 }
+		command = { type = secedeprovince which = SOV value = 213 }
+		command = { type = secedeprovince which = SOV value = 215 }
+		command = { type = secedeprovince which = SOV value = 214 }
+		command = { type = secedeprovince which = SOV value = 209 }
+		command = { type = secedeprovince which = SOV value = 212 }
+		command = { type = secedeprovince which = SOV value = 211 }
+		command = { type = secedeprovince which = SOV value = 208 }
+		command = { type = secedeprovince which = SOV value = 210 }
+		command = { type = secedeprovince which = GER value = 213 }
+		command = { type = secedeprovince which = GER value = 215 }
+		command = { type = secedeprovince which = GER value = 214 }
+		command = { type = secedeprovince which = GER value = 209 }
+		command = { type = secedeprovince which = GER value = 212 }
+		command = { type = secedeprovince which = GER value = 211 }
+		command = { type = secedeprovince which = GER value = 208 }
+		command = { type = secedeprovince which = GER value = 210 }
+		command = { type = secedeprovince which = YUG value = 341 }
+		command = { type = secedeprovince which = GER value = 341 }
+		command = { type = set_relation which = SOV value = 50 }
+		command = { type = set_relation which = GER value = -50 }
+		command = { type = domestic which = defense_lobby value = -1 }
+		command = { type = headofstate which = 105015 }
+		command = { type = headofgovernment which = 105031 }
+		command = { type = foreignminister which = 105046 }
+		command = { type = armamentminister which = 105059 }
+		command = { type = ministerofsecurity which = 105074 }
+		command = { type = ministerofintelligence which = 105090 }
+		command = { type = chiefofstaff which = 105099 }
+		command = { type = chiefofarmy which = 105110 }
+		command = { type = chiefofnavy which = 105116 }
+		command = { type = chiefofair which = 105125 }
+	}
+	action_b = {
+		ai_chance = 3
+		name = ACTION_NAME_JOIN_AXIS
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = defense_lobby value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159010] HUN | 1938 | Hungarian Arrest of National Socialists (Arresto húngaro de nacionalsocialistas)
+# Trigger event 150097 in events/GER/GER_37-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159010
+	random = no
+	country = HUN
+	trigger = {
+			exists = GER
+			}
+	date = { day = 01 month = february year = 1938 }
+	name = "EVT_SHARED_00687_NAME"
+	desc = "EVT_SHARED_00687_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+		command = { type = relation which = GER value = -10 }
+		command = { type = dissent value = 1 }
+		command = { type = trigger which = 150097 }
+		}
+}

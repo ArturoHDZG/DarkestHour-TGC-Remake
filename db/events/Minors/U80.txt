@@ -1,0 +1,74 @@
+# ============================================================================
+# File: events/Minors/U80.txt (2 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [288000] U80 | 1947 | The Kashmir Dispute (El conflicto de Cachemira)
+# Triggered by event 237039 in events/Minors/U02.txt
+# Trigger event 288001 in events/Minors/U80.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 288000
+	country = U80
+	name = EVT_U80_288000_NAME
+	desc = EVT_U80_288000_DESC
+	picture = "nwo/kashmir"
+	style = 1
+	trigger = {
+		event = 237039
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_division value = bergsjaeger when = 12 }
+		command = { type = add_division value = bergsjaeger when = 12 }
+		command = { type = add_division value = bergsjaeger when = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [288001] U80 | 1947 | The Fate of Kashmir (El destino de Cachemira)
+# Triggered by event 288000 in events/Minors/U80.txt
+# Triggered by event 161037 in events/Minors/IND_36-65.txt
+# Triggered by event 197043 in events/Minors/PAK.txt
+# Trigger event 161039 in events/Minors/IND_36-65.txt
+# Trigger event 197012 in events/Minors/PAK.txt
+# Trigger event 161041 in events/Minors/IND_36-65.txt
+# Trigger event 197013 in events/Minors/PAK.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 288001
+	country = U80
+	name = EVT_U80_288001_NAME
+	desc = EVT_U80_288001_DESC
+	picture = "nwo/kashmir"
+	style = 1
+	trigger = {
+		event = 288000
+		event = { id = 161037 days = 60 }
+		event = { id = 197043 days = 60 }
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_U80_288001_A
+		trigger = { NOT = { flag = princely_states } }
+		ai_chance = 70
+		command = { type = trigger which = 161039 }
+	}
+	action = {
+		name = EVT_U80_288001_B
+		ai_chance = 25
+		command = { type = trigger which = 197012 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 5
+		command = { type = trigger which = 161041 }
+		command = { type = trigger which = 197013 }
+	}
+}

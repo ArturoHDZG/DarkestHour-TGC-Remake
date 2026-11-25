@@ -1,0 +1,139 @@
+# ============================================================================
+# File: events/Minors/POL_Decisions.txt (2 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [203065] POL | 1917 | The Polish-Soviet War (La Guerra Polaco-Soviética)
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Triggered by event 108081 in events/Minors/AUS_14-37.txt
+# Triggered by event 223425 in events/SOV/SOV_14-33.txt
+# Triggered by event 223426 in events/SOV/SOV_14-33.txt
+# Trigger event 136051 in events/Minors/CZE_14-53.txt
+# Trigger event 203066 in events/Minors/POL_14-89.txt
+# Trigger event 223393 in events/SOV/SOV_14-33.txt
+# Trigger event 324516 in events/GLOBAL/MULTI_00-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 203065
+	country = POL
+	decision = {
+		event = 147311
+		event = 108081
+		OR = {
+			event = 223425
+			event = 223426
+		}
+		owned = { province = 232 data = POL }
+		owned = { province = 239 data = POL }
+		owned = { province = 254 data = POL }
+	}
+	decision_trigger = {
+		NOT = { atwar = POL }
+		NOT = { ispuppet = POL }
+		army = 5
+	}
+	trigger = {
+		NOT = { atwar = POL }
+		NOT = { ispuppet = POL }
+		event = 147311
+		event = 108081
+		OR = {
+			event = 223425
+			event = 223426
+		}
+		owned = { province = 232 data = POL }
+		owned = { province = 239 data = POL }
+		owned = { province = 254 data = POL }
+		army = 5
+	}
+	name = "EVT_POL_203065_NAME"
+	desc = "EVT_POL_203065_DESC"
+	picture = "Minors/austrohunarmy_march"
+	decision_picture = "GLOBAL/decision_cze_end"
+	style = 2
+	date = { day = 1 month = january year = 1917 }
+	deathdate = { day = 1 month = january year = 1930 }
+	offset = 90
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		ai_chance = 99
+		command = { type = addclaim which = 592 }
+		command = { type = addclaim which = 593 }
+		command = { type = addclaim which = 595 }
+		command = { type = addclaim which = 596 }
+		command = { type = addclaim which = 596 }
+		command = { type = addclaim which = 597 }
+		command = { type = addclaim which = 599 }
+		command = { type = addclaim which = 609 }
+		command = { type = addclaim which = 611 }
+		command = { type = addclaim which = 612 }
+		command = { type = addclaim which = 614 }
+		command = { type = addclaim which = 616 }
+		command = { type = addclaim which = 618 }
+		command = { type = addclaim which = 619 }
+		command = { type = remove_division value = infantry when = 1 }
+		command = { type = remove_division value = infantry when = 1 }
+		command = { type = remove_division value = infantry when = 1 }
+		command = { type = remove_division value = militia when = 1 }
+		command = { type = remove_division value = militia when = 1 }
+		command = { type = relation which = EST value = -50 }
+		command = { type = relation which = CZE value = 50 }
+		command = { type = relation which = LAT value = 50 }
+		command = { type = war which = SOV }
+		command = { type = ai which = "AAR/wars/nosurrender.ai" }
+		command = { type = local_setflag which = 211048 }
+		command = { type = setflag which = treaty_of_warsaw }
+		command = { type = dissent value = -10 }
+	}
+	action = {
+		name = "ACTION_NAME_NO"
+		ai_chance = 1
+		command = { type =  dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [203007] POL | 1937 | The Polish Four-Year Plan (El Plan Cuatrienal polaco)
+# Trigger event 203008 in events/Minors/POL_14-89.txt
+# Trigger event 203009 in events/Minors/POL_14-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 203007
+	random = no
+	country = POL
+	decision = {
+		year = 1937
+		atwar = no
+	}
+	decision_trigger = {
+		supplies = 1000
+		energy = 5000
+		metal = 2500
+	}
+	trigger = {
+		year = 1937
+		atwar = no
+		random = 10
+	}
+	name = EVT_POL_203007_NAME
+	desc = EVT_POL_203007_DESC
+	style = 2
+	picture = "GLOBAL/abadan_oil"
+	decision_picture = "GLOBAL/decision_abadan_oil"
+	date = { day = 1 month = may year = 1937 }
+	offset = 30
+	deathdate = { day = 29 month = august year = 1939 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = construct which = ic where = 237 value = 1 }
+		command = { type = construct which = ic where = 243 value = 1 }
+		command = { type = construct which = ic where = 226 value = 1 }
+		command = { type = construct which = ic where = 232 value = 2 }
+		command = { type = construct which = infrastructure where = 235 value = 10 }
+		command = { type = construct which = infrastructure where = 237 value = 10 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { trigger = { ai = no } type = metalpool value = -2500 }
+		command = { trigger = { ai = no } type = energypool value = -5000 }
+	}
+}

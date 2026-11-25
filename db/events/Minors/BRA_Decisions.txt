@@ -1,0 +1,93 @@
+# ============================================================================
+# File: events/Minors/BRA_Decisions.txt (2 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [143220] BRA | 1917 | Brazil Enters the War (Brasil entra en la guerra)
+# Triggered by event 243125 in events/Minors/U08_Decisions.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 143220
+   country = BRA
+	decision = {
+		exists = BRA
+		war = { country = U08 country = ENG }
+		NOT = {
+			war = { country = BRA country = ENG }
+			alliance = { country = BRA country = ENG }
+			alliance = { country = BRA country = U08 }
+		}
+		event = 243125
+	}
+	decision_trigger = {
+		control = { province = 55 data = -3 }
+	}
+	trigger = {
+		exists = BRA
+		war = { country = U08 country = ENG }
+		NOT = {
+			war = { country = BRA country = ENG }
+			alliance = { country = BRA country = ENG }
+			alliance = { country = BRA country = U08 }
+		}
+		event = 243125
+		control = { province = 55 data = -3 }
+		random = 10
+	}
+	name = "EVT_BRA_143220_NAME"
+	desc = "EVT_BRA_143220_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	date = { day = 1 month = january year = 1917 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = alliance which = ENG when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [116038] BRA | 1945 | Axis Evacuation Routes (Acogida de exiliados del Eje)
+# Trigger event 116039 in events/Minors/BRA.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 116038
+	country = BRA
+	name = EVT_BRA_116038_NAME
+	desc = EVT_BRA_116038_DESC
+	picture = "nwo/german_refugees"
+	decision_picture = "nwo/d_german_refugees"
+	style = 1
+	trigger = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	decision = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	decision_trigger = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 98
+		command = { type = belligerence value = 5 }
+		command = { type = domestic which = political_left value = -1 }
+	}
+	action = {
+		name = EVT_BRA_116038_A
+		ai_chance = 2
+		trigger = { ai = yes }
+		command = { type = sleepevent which = 116039 }
+	}
+}

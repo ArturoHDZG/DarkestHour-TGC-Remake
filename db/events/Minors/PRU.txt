@@ -1,0 +1,575 @@
+# ============================================================================
+# File: events/Minors/PRU.txt (17 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [206004] PRU | 1933 | Death of the Head of State (Muerte del Jefe del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206004
+	random = no
+	country = PRU
+	style = 2
+	trigger = {
+		headofstate = 185157
+	}
+	date = { day = 29 month = april year = 1933 }
+	name = "EVT_SHARED_00501_NAME"
+	desc = "EVT_SHARED_00501_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 185001 }
+		command = { type = sleepminister which = 185157 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206000] PRU | 1936 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206000
+	random = no
+	country = PRU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 6
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 6
+					}
+				dissent = 3
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = january year = 1936 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1938 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 185011 }
+		command = { type = headofgovernment which = 185017 }
+		command = { type = foreignminister which = 185027 }
+		command = { type = armamentminister which = 185038 }
+		command = { type = ministerofsecurity which = 185055 }
+		command = { type = ministerofintelligence which = 185067 }
+		command = { type = chiefofstaff which = 185007 }
+		command = { type = chiefofarmy which = 185008 }
+		command = { type = chiefofnavy which = 185009 }
+		command = { type = chiefofair which = 185010 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [206001] PRU | 1939 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206001
+	random = no
+	country = PRU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 6
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 6
+					}
+				dissent = 3
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = january year = 1939 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 185012 }
+		command = { type = headofgovernment which = 185019 }
+		command = { type = foreignminister which = 185029 }
+		command = { type = armamentminister which = 185041 }
+		command = { type = ministerofsecurity which = 185005 }
+		command = { type = ministerofintelligence which = 185069 }
+		command = { type = chiefofstaff which = 185079 }
+		command = { type = chiefofarmy which = 185086 }
+		command = { type = chiefofnavy which = 185091 }
+		command = { type = chiefofair which = 185098 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [206005] PRU | 1941 | War with Ecuador (Guerra con Ecuador)
+# Trigger event 141010 in events/Minors/ECU.txt
+# Trigger event 127006 in events/Minors/COL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 206005
+	random = no
+	country = PRU
+	name = EVT_PRU_206005_NAME
+	desc = EVT_PRU_206005_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		exists = ECU
+		control = { province = 2008 data = ECU }
+		NOT = {
+			war = { country = ECU country = PRU }
+		}
+		random = 25
+	}
+	date = { day = 0 month = july year = 1941 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1943 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_ULTIMATUM
+		command = { type = domestic which = defense_lobby value = 2 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = money value = 5 }
+		command = { type = trigger which = 141010 }
+	}
+	action_b = {
+		ai_chance = 10
+		name = ACTION_NAME_WAR
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = domestic which = defense_lobby value = -2 }
+		command = { type = war which = ECU }
+		command = { type = trigger which = 127006 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206002] PRU | 1945 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206002
+	random = no
+	country = PRU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 6
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 6
+					}
+				dissent = 3
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = january year = 1945 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 185013 }
+		command = { type = headofgovernment which = 185023 }
+		command = { type = foreignminister which = 185034 }
+		command = { type = armamentminister which = 185050 }
+		command = { type = ministerofsecurity which = 185063 }
+		command = { type = ministerofintelligence which = 185075 }
+		command = { type = chiefofstaff which = 185082 }
+		command = { type = chiefofarmy which = 185089 }
+		command = { type = chiefofnavy which = 185095 }
+		command = { type = chiefofair which = 185102 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [206035] PRU | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206035
+	country = PRU
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 185013 }
+		command = { type = headofgovernment which = 185025 }
+		command = { type = foreignminister which = 185034 }
+		command = { type = armamentminister which = 185050 }
+		command = { type = ministerofsecurity which = 185063 }
+		command = { type = ministerofintelligence which = 185075 }
+		command = { type = chiefofstaff which = 185082 }
+		command = { type = chiefofarmy which = 185089 }
+		command = { type = chiefofnavy which = 185095 }
+		command = { type = chiefofair which = 185102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206036] PRU | 1946 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206036
+	country = PRU
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 185013 }
+		command = { type = headofgovernment which = 185026 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206037] PRU | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206037
+	country = PRU
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 185013 }
+		command = { type = headofgovernment which = 185206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206038] PRU | 1948 | Odría's Coup (Golpe de Estado de Odría)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206038
+	country = PRU
+	name = EVT_PRU_206038_NAME
+	desc = EVT_PRU_206038_DESC
+	picture = "nwo/manuel_odria"
+	style = 1
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 185114 }
+		command = { type = headofgovernment which = 185116 }
+		command = { type = foreignminister which = 185032 }
+		command = { type = armamentminister which = 185046 }
+		command = { type = ministerofsecurity which = 185060 }
+		command = { type = ministerofintelligence which = 185071 }
+		command = { type = chiefofstaff which = 185118 }
+		command = { type = chiefofarmy which = 185120 }
+		command = { type = chiefofnavy which = 185095 }
+		command = { type = chiefofair which = 185102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206003] PRU | 1948 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206003
+	random = no
+	country = PRU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = october year = 1948 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 185114 }
+		command = { type = headofgovernment which = 185117 }
+		command = { type = foreignminister which = 185032 }
+		command = { type = armamentminister which = 185046 }
+		command = { type = ministerofsecurity which = 185060 }
+		command = { type = ministerofintelligence which = 185071 }
+		command = { type = chiefofstaff which = 185118 }
+		command = { type = chiefofarmy which = 185120 }
+		command = { type = chiefofnavy which = 185095 }
+		command = { type = chiefofair which = 185102 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [206039] PRU | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206039
+	country = PRU
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 185114 }
+		command = { type = headofgovernment which = 185117 }
+		command = { type = chiefofstaff which = 185119 }
+		command = { type = chiefofarmy which = 185121 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206040] PRU | 1954 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206040
+	country = PRU
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 185114 }
+		command = { type = headofgovernment which = 185115 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206041] PRU | 1956 | Odría Steps Down (Odría entrega el poder)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206041
+	country = PRU
+	name = EVT_PRU_206041_NAME
+	desc = EVT_PRU_206041_DESC
+	picture = "nwo/manuel_odria"
+	style = 1
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 185012 }
+		command = { type = headofgovernment which = 185021 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206042] PRU | 1958 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206042
+	country = PRU
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 185012 }
+		command = { type = headofgovernment which = 185200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206043] PRU | 1959 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206043
+	country = PRU
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 185012 }
+		command = { type = headofgovernment which = 185201 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206044] PRU | 1962 | Military Junta of 1962 (Golpe militar de 1962 en Perú)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206044
+	country = PRU
+	name = EVT_PRU_206044_NAME
+	desc = EVT_PRU_206044_DESC
+	picture = "nwo/riccardo_godoy"
+	style = 1
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 185202 }
+		command = { type = headofgovernment which = 185203 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [206045] PRU | 1963 | Deposition of Pérez Godoy (Caída de Pérez Godoy)
+# ----------------------------------------------------------------------------
+event = {
+	id = 206045
+	country = PRU
+	name = EVT_PRU_206045_NAME
+	desc = EVT_PRU_206045_DESC
+	picture = "nwo/riccardo_godoy"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 185204 }
+		command = { type = headofgovernment which = 185205 }
+	}
+}

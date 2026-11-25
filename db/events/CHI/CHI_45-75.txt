@@ -1,0 +1,1818 @@
+# ============================================================================
+# File: events/CHI/CHI_45-75.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [124204] CHI | 1945 | Status of Vietnam (Estatus de Vietnam)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124204
+	country = CHI
+	name = EVT_CHI_124204_NAME
+	desc = EVT_CHI_124204_DESC
+	picture = "nwo/chinese_vietnam"
+	style = 1
+	trigger = {
+		OR = {
+			owned = { province = 1395 data = CHI }
+			owned = { province = 1399 data = CHI }
+		}
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 99
+		command = { type = independence which = VIE value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 1
+		command = { type = belligerence value = 25 }
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124238] CHI | 1945 | Nationalist Chinese Incursion into Vietnam (Despliegue del Kuomintang en Vietnam)
+# Triggered by event 316323 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124238
+	country = CHI
+	name = EVT_CHI_124238_NAME
+	desc = EVT_CHI_124238_DESC
+	picture = "nwo/chinese_vietnam"
+	style = 1
+	action = {
+		name = EVT_CHI_124238_A
+		ai_chance = 75
+		command = { type = domestic which = interventionism value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 25
+		command = { type = war which = U72 }
+		command = { type = war which = VIE }
+		command = { type = dissent value = 20 }
+		command = { type = belligerence value = 50 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = FRA value = -150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329755] CHI | 1945 | Momentum Shifts to Victory (La victoria está próxima)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 123033 in events/Minors/CHC_30-45.txt
+# Trigger event 123034 in events/Minors/CHC_30-45.txt
+# Trigger event 123035 in events/Minors/CHC_30-45.txt
+# Trigger event 123036 in events/Minors/CHC_30-45.txt
+# Trigger event 123037 in events/Minors/CHC_30-45.txt
+# Trigger event 123038 in events/Minors/CHC_30-45.txt
+# Trigger event 123039 in events/Minors/CHC_30-45.txt
+# Trigger event 123040 in events/Minors/CHC_45-62.txt
+# Trigger event 124171 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329755
+	country = CHI
+	name = EVT_SHARED_00876_NAME
+	desc = EVT_SHARED_00876_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 30 }
+				country = CHC
+			}
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 70 }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_VICTORY
+		command = { type = max_organization which = infantry value = 20 }
+		command = { type = max_organization which = militia value = 20 }
+		command = { type = max_organization which = bergsjaeger value = 20 }
+		command = { type = morale which = infantry value = 20 }
+		command = { type = morale which = militia value = 20 }
+		command = { type = morale which = bergsjaeger value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329757] CHI | 1945 | Strategic Exhaustion (Agotamiento en el frente)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 123033 in events/Minors/CHC_30-45.txt
+# Trigger event 123034 in events/Minors/CHC_30-45.txt
+# Trigger event 123035 in events/Minors/CHC_30-45.txt
+# Trigger event 123036 in events/Minors/CHC_30-45.txt
+# Trigger event 123037 in events/Minors/CHC_30-45.txt
+# Trigger event 123038 in events/Minors/CHC_30-45.txt
+# Trigger event 123039 in events/Minors/CHC_30-45.txt
+# Trigger event 123040 in events/Minors/CHC_45-62.txt
+# Trigger event 124171 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329757
+	country = CHI
+	name = EVT_SHARED_00877_NAME
+	desc = EVT_SHARED_00877_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 30 } }
+				country = CHC
+			}
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 70 } }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = infantry value = -20 }
+		command = { type = max_organization which = militia value = -20 }
+		command = { type = max_organization which = bergsjaeger value = -20 }
+		command = { type = morale which = infantry value = -20 }
+		command = { type = morale which = militia value = -20 }
+		command = { type = morale which = bergsjaeger value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329759] CHI | 1945 | Momentum Shifts to Victory (La victoria está próxima)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 124171 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329759
+	country = CHI
+	name = EVT_SHARED_00878_NAME
+	desc = EVT_SHARED_00878_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 30 }
+				country = CHC
+			}
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 70 }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_VICTORY
+		command = { type = max_organization which = infantry value = 20 }
+		command = { type = max_organization which = militia value = 20 }
+		command = { type = max_organization which = bergsjaeger value = 20 }
+		command = { type = morale which = infantry value = 20 }
+		command = { type = morale which = militia value = 20 }
+		command = { type = morale which = bergsjaeger value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329761] CHI | 1945 | Strategic Exhaustion (Agotamiento en el frente)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 124171 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329761
+	country = CHI
+	name = EVT_SHARED_00879_NAME
+	desc = EVT_SHARED_00879_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 30 } }
+				country = CHC
+			}
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 70 } }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = infantry value = -20 }
+		command = { type = max_organization which = militia value = -20 }
+		command = { type = max_organization which = bergsjaeger value = -20 }
+		command = { type = morale which = infantry value = -20 }
+		command = { type = morale which = militia value = -20 }
+		command = { type = morale which = bergsjaeger value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329763] CHI | 1945 | Momentum Shifts to Victory (La victoria está próxima)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 124171 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329763
+	country = CHI
+	name = EVT_SHARED_00880_NAME
+	desc = EVT_SHARED_00880_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 30 }
+				country = CHC
+			}
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 70 }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_VICTORY
+		command = { type = max_organization which = infantry value = 20 }
+		command = { type = max_organization which = militia value = 20 }
+		command = { type = max_organization which = bergsjaeger value = 20 }
+		command = { type = morale which = infantry value = 20 }
+		command = { type = morale which = militia value = 20 }
+		command = { type = morale which = bergsjaeger value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329765] CHI | 1945 | Strategic Exhaustion (Agotamiento en el frente)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 124171 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329765
+	country = CHI
+	name = EVT_SHARED_00881_NAME
+	desc = EVT_SHARED_00881_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 30 } }
+				country = CHC
+			}
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 70 } }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = infantry value = -20 }
+		command = { type = max_organization which = militia value = -20 }
+		command = { type = max_organization which = bergsjaeger value = -20 }
+		command = { type = morale which = infantry value = -20 }
+		command = { type = morale which = militia value = -20 }
+		command = { type = morale which = bergsjaeger value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329927] CHI | 1945 | Settlement of US War Debts (Liquidación de deudas de guerra)
+# Trigger event 316236 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329927
+	country = CHI
+	name = EVT_CHI_329927_NAME
+	desc = EVT_CHI_329927_DESC
+	picture = "nwo/new_chinese_dollar"
+	style = 1
+	trigger = {
+		NOT = { alliance = { country = CHI country = SOV } }
+		flag = CHI_won_civil_war
+		NOT = { local_flag = loans_repaid }
+		exists = USA
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_CHI_329927_A
+		ai_chance = 50
+		command = { type = money value = -25000 }
+		command = { type = dissent value = 5 }
+		command = { type = local_setflag which = loans_repaid }
+		command = { type = trigger which = 316236 }
+	}
+	action = {
+		name = ACTION_NOT_NOW
+		ai_chance = 50
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124156] CHI | 1946 | Ceasefire Proposal in China (Propuesta de alto el fuego de 1946)
+# Triggered by event 316196 in events/USA/USA_43-48.txt
+# Trigger event 124157 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124156
+	country = CHI
+	name = "EVT_CHI_124156_NAME"
+	desc = "EVT_CHI_124156_DESC"
+	picture = "nwo/marshall_mission"
+	style = 1
+	trigger = {
+		event = 316196
+		exists = CHC
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = "ACTION_NAME_CEASEFIRE"
+		command = { type = dissent value = -1 }
+		command = { type = local_setflag which = block_army_limiting }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		command = { type = dissent value = 30 }
+		command = { type = belligerence value = 30 }
+		command = { type = sleepevent which = 123029 }
+		command = { type = sleepevent which = 124157 }
+		command = { type = sleepevent which = 329750 }
+		command = { type = local_setflag which = block_army_limiting }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124157] CHI | 1946 | The Truce of 1946 (La Tregua de 1946)
+# Triggered by event 123029 in events/Minors/CHC_45-62.txt
+# Triggered by event 124156 in events/CHI/CHI_45-75.txt
+# Trigger event 124158 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124157
+	country = CHI
+	save_date = yes
+	name = "EVT_CHI_124157_NAME"
+	desc = "EVT_CHI_124157_DESC"
+	picture = "nwo/marshall_mission"
+	style = 1
+	trigger = {
+		event = 123029
+		event = 124156
+		exists = CHC
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { war = { country = CHC } } type = peace which = CHC value = 0 }
+		command = { type = non_aggression which = CHC where = CHI }
+		command = { type = secedearea which = -1 value = "Anhui" when = 2 }
+		command = { type = secedearea which = -1 value = "Chahar" when = 2 }
+		command = { type = secedearea which = -1 value = "Gansu" when = 2 }
+		command = { type = secedearea which = -1 value = "Guangdong" when = 2 }
+		command = { type = secedearea which = -1 value = "Guangxi" when = 2 }
+		command = { type = secedearea which = -1 value = "Guizhou" when = 2 }
+		command = { type = secedearea which = -1 value = "Heilongjiang" when = 2 }
+		command = { type = secedearea which = -1 value = "Hebei" when = 2 }
+		command = { type = secedearea which = -1 value = "Henan" when = 2 }
+		command = { type = secedearea which = -1 value = "Hubei" when = 2 }
+		command = { type = secedearea which = -1 value = "Hunan" when = 2 }
+		command = { type = secedearea which = -1 value = "Jiangsu" when = 2 }
+		command = { type = secedearea which = -1 value = "Jiangxi" when = 2 }
+		command = { type = secedearea which = -1 value = "Jilin" when = 2 }
+		command = { type = secedearea which = -1 value = "Liaoning" when = 2 }
+		command = { type = secedearea which = -1 value = "Qinghai" when = 2 }
+		command = { type = secedearea which = -1 value = "Rehe" when = 2 }
+		command = { type = secedearea which = -1 value = "Shaanxi" when = 2 }
+		command = { type = secedearea which = -1 value = "Shandong" when = 2 }
+		command = { type = secedearea which = -1 value = "Shanxi" when = 2 }
+		command = { type = secedearea which = -1 value = "Suiyuan_Ningxia" when = 2 }
+		command = { type = secedearea which = -1 value = "Xinjiang" when = 2 }
+		command = { type = secedearea which = -1 value = "Xikang" when = 2 }
+		command = { type = secedearea which = -1 value = "Zhejiang" when = 2 }
+		command = { type = secedearea which = -1 value = "Fujian" when = 2 }
+		command = { type = secedearea which = -1 value = "Sichuan" when = 2 }
+		command = { type = secedearea which = -1 value = "Yunnan" when = 2 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = delete_unit which = -1 }
+		command = { type = money value = -1000 }
+		command = { type = industrial_modifier which = total value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124158] CHI | 1946 | Failure of the Marshall Mission (Fracaso de la Misión Marshall)
+# Triggered by event 124157 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124158
+	random = no
+	country = CHI
+	name = "EVT_CHI_124158_NAME"
+	desc = "EVT_CHI_124158_DESC"
+	picture = "nwo/marshall_mission_ends"
+	style = 1
+	trigger = {
+		event = { id = 124157 days = 360 }
+		non_aggression = { country = CHC country = CHI }
+		NOT = { flag = chinese_unity_govt }
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_non_aggression which = CHC where = CHI }
+		command = { type = industrial_modifier which = total value = 20 }
+		command = { type = dissent value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124160] CHI | 1946 | Communists Exit Coalition (Los comunistas abandonan el gobierno)
+# Triggered by event 329744 in events/Minors/CHC_45-62.txt
+# Triggered by event 329745 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124160
+	country = CHI
+	name = "EVT_CHI_124160_NAME"
+	desc = "EVT_CHI_124160_DESC"
+	picture = "nwo/chiang_thinking"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = domestic which = political_left value = -3 }
+		command = { type = headofstate which = 55011 }
+		command = { type = headofgovernment which = 55002 }
+		command = { type = foreignminister which = 55030 }
+		command = { type = armamentminister which = 55041 }
+		command = { type = ministerofsecurity which = 55058 }
+		command = { type = ministerofintelligence which = 55068 }
+		command = { type = chiefofstaff which = 55076 }
+		command = { type = chiefofarmy which = 55082 }
+		command = { type = chiefofnavy which = 55089 }
+		command = { type = chiefofair which = 55094 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124228] CHI | 1946 | United Nations Intervenes in China (La ONU interviene en la Guerra Civil China)
+# Triggered by event 316288 in events/USA/USA_43-48.txt
+# Triggered by event 143369 in events/ENG/ENG_43-54.txt
+# Triggered by event 147218 in events/FRA/FRA_39-48.txt
+# Triggered by event 123104 in events/Minors/CHC_45-62.txt
+# Triggered by event 329996 in events/SOV/SOV_43-46.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124228
+	country = CHI
+	name = EVT_CHI_124228_NAME
+	desc = EVT_CHI_124228_DESC
+	picture = "nwo/united_nations_intervention"
+	style = 1
+	trigger = {
+		OR = {
+			NOT = { exists = USA }
+			event = 316288
+		}
+		OR = {
+			NOT = { exists = ENG }
+			event = 143369
+		}
+		OR = {
+			NOT = { exists = FRA }
+			event = 147218
+		}
+		OR = {
+			NOT = { exists = CHC }
+			NOT = { flag = CHC_in_UNSC }
+			event = 123104
+		}
+		OR = {
+			NOT = { exists = SOV }
+			event = 329996
+			flag = un_soviet_boycott
+		}
+		NOT = { flag = un_ccw_totalveto }
+		NOT = { flag = un_ccw_interventionveto }
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = 2500 }
+		command = { type = supplies value = 10000 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124229] CHI | 1946 | United Nations Supplies Nationalist China (La ONU suministra ayuda a China Nacionalista)
+# Triggered by event 316288 in events/USA/USA_43-48.txt
+# Triggered by event 143369 in events/ENG/ENG_43-54.txt
+# Triggered by event 147218 in events/FRA/FRA_39-48.txt
+# Triggered by event 123104 in events/Minors/CHC_45-62.txt
+# Triggered by event 329996 in events/SOV/SOV_43-46.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124229
+	country = CHI
+	name = EVT_CHI_124229_NAME
+	desc = EVT_CHI_124229_DESC
+	picture = "nwo/united_nations"
+	style = 1
+	trigger = {
+		OR = {
+			NOT = { exists = USA }
+			event = 316288
+		}
+		OR = {
+			NOT = { exists = ENG }
+			event = 143369
+		}
+		OR = {
+			NOT = { exists = FRA }
+			event = 147218
+		}
+		OR = {
+			NOT = { exists = CHC }
+			NOT = { flag = CHC_in_UNSC }
+			event = 123104
+		}
+		OR = {
+			NOT = { exists = SOV }
+			event = 329996
+			flag = un_soviet_boycott
+		}
+		NOT = { flag = un_ccw_totalveto }
+		flag = un_ccw_interventionveto
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = 2500 }
+		command = { type = supplies value = 10000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329740] CHI | 1946 | All-China Coalition Proposal (Propuesta de gobierno de coalición)
+# Triggered by event 329739 in events/USA/USA_43-48.txt
+# Trigger event 329742 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329740
+	random = no
+	country = CHI
+	name = "EVT_CHI_329740_NAME"
+	desc = "EVT_CHI_329740_DESC"
+	picture = "nwo/mao_with_chiang"
+	style = 1
+	trigger = {
+		event = 329739
+		NOT = {
+			war = { country = CHI country = CHC }
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = july year = 1946 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		ai_chance = 60
+		command = { type = relation which = CHC value = -50 }
+		command = { type = sleepevent which = 329741 }
+		command = { type = sleepevent which = 329742 }
+		command = { type = sleepevent which = 329743 }
+	}
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 40
+		command = { type = relation which = CHC value = 20 }
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124159] CHI | 1946 | Peaceful Unification Achieved (Consolidación de la paz en China)
+# Triggered by event 329744 in events/Minors/CHC_45-62.txt
+# Triggered by event 329745 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124159
+	country = CHI
+	name = "EVT_CHI_124159_NAME"
+	desc = "EVT_CHI_124159_DESC"
+	picture = "nwo/chiang_smiling"
+	style = 1
+	trigger = {
+		flag = chinese_unity_govt
+		OR = {
+			event = 329744
+			event = 329745
+		}
+		NOT = {
+			war = { country = CHI country = CHC }
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = september year = 1946 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = CHC value = 0 }
+		command = { type = capital which = 1247 }
+		command = { type = dissent value = 30 }
+		command = { type = country which = UCH }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329742] CHI | 1946 | The Chinese Unity Government (Gobierno de Unidad Nacional en China)
+# Triggered by event 329740 in events/CHI/CHI_45-75.txt
+# Triggered by event 329741 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329742
+	random = no
+	country = CHI
+	name = "EVT_CHI_329742_NAME"
+	desc = "EVT_CHI_329742_DESC"
+	picture = "nwo/mao_with_chiang_toast"
+	style = 1
+	trigger = {
+		event = 329740
+		event = 329741
+		NOT = {
+			war = { country = CHI country = CHC }
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = september year = 1946 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = setflag which = chinese_unity_govt }
+		command = { type = guarantee which = CHI where = CHC }
+		command = { type = relation which = CHC value = 100 }
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = democratic value = 2 }
+		command = { type = domestic which = political_left value = 3 }
+		command = { type = headofstate which = 55011 }
+		command = { type = headofgovernment which = 55301 }
+		command = { type = foreignminister which = 55312 }
+		command = { type = armamentminister which = 55041 }
+		command = { type = ministerofsecurity which = 55058 }
+		command = { type = ministerofintelligence which = 55068 }
+		command = { type = chiefofstaff which = 55076 }
+		command = { type = chiefofarmy which = 55082 }
+		command = { type = chiefofnavy which = 55089 }
+		command = { type = chiefofair which = 55094 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329743] CHI | 1946 | The Disarmament Crisis (El dilema del desarme partidista)
+# Trigger event 329744 in events/Minors/CHC_45-62.txt
+# Trigger event 329745 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329743
+	random = no
+	country = CHI
+	name = "EVT_CHI_329743_NAME"
+	desc = "EVT_CHI_329743_DESC"
+	picture = "nwo/chiang_address"
+	style = 1
+	trigger = {
+		flag = chinese_unity_govt
+		NOT = {
+			war = { country = CHI country = CHC }
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = september year = 1946 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = "ACTION_NAME_ULTIMATUM"
+		ai_chance = 70
+		command = { type = relation which = CHC value = -100 }
+	}
+	action = {
+		name = "EVT_CHI_329743_A"
+		ai_chance = 30
+		command = { type = relation which = CHC value = 20 }
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124176] CHI | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124176
+	country = CHI
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 55204 }
+		command = { type = headofgovernment which = 55205 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329749] CHI | 1947 | Institutional Weaknesses of the KMT (Debilidades del Kuomintang)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329749
+	random = no
+	country = CHI
+	persistent = yes
+	name = "EVT_CHI_329749_NAME"
+	desc = "EVT_CHI_329749_DESC"
+	picture = "nwo/kmt_white_terror"
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		NOT = { vp = 18 }
+	}
+	date = { day = 1 month = january year = 1947 }
+	offset = 180
+	deathdate = { day = 29 month = june year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { year = 1947 NOT = { year = 1948 } } type = dissent value = 4 }
+		command = { trigger = { year = 1948 NOT = { year = 1949 } } type = dissent value = 8 }
+		command = { trigger = { year = 1948 NOT = { year = 1949 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1948 NOT = { year = 1949 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1947 NOT = { year = 1948 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1949 NOT = { year = 1950 } } type = dissent value = 12 }
+		command = { trigger = { year = 1949 NOT = { year = 1950 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1949 NOT = { year = 1950 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1949 NOT = { year = 1950 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1947 NOT = { year = 1948 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1950 NOT = { year = 1951 } } type = dissent value = 16 }
+		command = { trigger = { year = 1950 NOT = { year = 1951 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1950 NOT = { year = 1951 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1950 NOT = { year = 1951 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1950 NOT = { year = 1951 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1951 NOT = { year = 1952 } } type = dissent value = 20 }
+		command = { trigger = { year = 1951 NOT = { year = 1952 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1951 NOT = { year = 1952 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1951 NOT = { year = 1952 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1951 NOT = { year = 1952 } } type = remove_division which = -1 }
+		command = { trigger = { year = 1951 NOT = { year = 1952 } } type = remove_division which = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124177] CHI | 1948 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124177
+	country = CHI
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 55200 }
+		command = { type = headofgovernment which = 55201 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124233] CHI | 1948 | UN Resolution on the Greek Civil War (Resolución de la ONU sobre la Guerra Civil Griega)
+# Triggered by event 330003 in events/AI/REB_AI_14-52.txt
+# Trigger event 152211 in events/GRE/GRE_38-49.txt
+# Trigger event 152212 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124233
+	country = CHI
+	name = EVT_SHARED_00961_NAME
+	desc = EVT_SHARED_00961_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 90
+		trigger = {
+			NOT = { flag = un_gcw_interventionveto }
+			NOT = { war = { country = GRE } }
+			NOT = { alliance = { country = U33 } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 5
+		trigger = {
+			NOT = { war = { country = GRE } }
+			NOT = { alliance = { country = U33 } }
+		}
+		command = { type = setflag which = un_gcw_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 5
+		trigger = {
+			NOT = { alliance = { country = U33 } }
+		}
+		command = { type = setflag which = un_gcw_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124178] CHI | 1949 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124178
+	country = CHI
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 55200 }
+		command = { type = headofgovernment which = 55097 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124208] CHI | 1949 | Nationalist Reclamation of Sinkiang (Reclamación nacionalista de Sinkiang)
+# Trigger event 220005 in events/Minors/SIK.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124208
+	country = CHI
+	name = EVT_CHI_124208_NAME
+	desc = EVT_CHI_124208_DESC
+	picture = "nwo/east_turkestan"
+	style = 1
+	trigger = {
+		exists = SIK
+		flag = CHI_won_civil_war
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 100
+		command = { type = trigger which = 220005 }
+	}
+	action = {
+		name = EVT_CHI_124208_A
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124209] CHI | 1949 | Turkestan Yields to Nanking (Sumisión de Sinkiang al Kuomintang)
+# Triggered by event 220005 in events/Minors/SIK.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124209
+	country = CHI
+	name = EVT_CHI_124209_NAME
+	desc = EVT_CHI_124209_DESC
+	picture = "nwo/east_turkestan"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = inherit which = SIK value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330016] CHI | 1949 | UN Resolution on the Indonesian Revolution (Resolución de la ONU sobre la Revolución Indonesia)
+# Triggered by event 330012 in events/AI/REB_AI_14-52.txt
+# Trigger event 162042 in events/Minors/INO.txt
+# Trigger event 162043 in events/Minors/INO.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 330016
+	country = CHI
+	name = EVT_SHARED_00963_NAME
+	desc = EVT_SHARED_00963_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = EVT_SHARED_00963_A
+		ai_chance = 85
+		trigger = {
+			NOT = { war = { country = INO } }
+		}
+		command = { type = setflag which = un_indonesia_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 1
+		trigger = {
+			NOT = { alliance = { country = INO } }
+		}
+		command = { type = setflag which = un_indonesia_totalveto }
+	}
+	action = {
+		name = EVT_SHARED_00963_B
+		ai_chance = 14
+		trigger = {
+			NOT = { flag = un_indonesia_interventionveto }
+			NOT = { war = { country = INO } }
+			NOT = { alliance = { country = U05 } }
+			NOT = { alliance = { country = HOL } }
+		}
+		command = { type = money value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124179] CHI | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124179
+	country = CHI
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 55204 }
+		command = { type = sleepminister which = 55202 }
+		command = { type = sleepminister which = 55211 }
+		command = { type = headofgovernment which = 55098 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124234] CHI | 1950 | UN Resolution on the Korean War (Resolución de la ONU sobre la Guerra de Corea)
+# Triggered by event 330017 in events/AI/REB_AI_14-52.txt
+# Trigger event 170039 in events/Minors/KOR.txt
+# Trigger event 170040 in events/Minors/KOR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124234
+	country = CHI
+	name = EVT_SHARED_00964_NAME
+	desc = EVT_SHARED_00964_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 100
+		trigger = {
+			NOT = { flag = un_korea_interventionveto }
+			NOT = { war = { country = KOR } }
+			NOT = { alliance = { country = PRK } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 0
+		trigger = {
+			NOT = { war = { country = KOR } }
+			NOT = { alliance = { country = PRK } }
+		}
+		command = { type = setflag which = un_korea_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 0
+		command = { type = setflag which = un_korea_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330009] CHI | 1952 | UN Resolution on Eritrea (Resolución de la ONU sobre Eritrea)
+# Triggered by event 207059 in events/AI/REB_AI_14-52.txt
+# Trigger event 145015 in events/Minors/ETH.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 330009
+	country = CHI
+	name = EVT_SHARED_00962_NAME
+	desc = EVT_SHARED_00962_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 99
+		trigger = { NOT = { war = { country = ETH } } }
+		command = { type = money value = -1 }
+		command = { type = relation which = ETH value = 50 }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 1
+		trigger = { NOT = { alliance = { country = ETH } } }
+		command = { type = setflag which = un_eritrea_veto }
+		command = { type = relation which = ETH value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124180] CHI | 1954 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124180
+	country = CHI
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 55204 }
+		command = { type = headofgovernment which = 55202 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124219] CHI | 1954 | The Sino-American Mutual Defense Treaty (Tratado de Defensa Mutua Sino-Estadounidense)
+# Triggered by event 316263 in events/USA/USA_48-61.txt
+# Trigger event 329971 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124219
+	country = CHI
+	name = EVT_CHI_124219_NAME
+	desc = EVT_CHI_124219_DESC
+	picture = "nwo/usa_taiwan_alliance"
+	style = 1
+	trigger = {
+		event = 316263
+		exists = CHC
+	}
+	date = { day = 2 month = december year = 1954 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 100
+		command = { type = guarantee which = USA where = CHI }
+		command = { type = end_non_aggression which = CHC where = CHI }
+		command = { type = relation which = USA value = 100 }
+		command = { type = sleepevent which = 329970 }
+	}
+	action = {
+		name = ACTION_NAME_DONT_SIGN
+		ai_chance = 0
+		command = { type = dissent value = 5 }
+		command = { type = end_non_aggression which = CHC where = CHI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124221] CHI | 1955 | Termination of US Defense Guarantees (Fin de la garantía de defensa de EE. UU.)
+# Triggered by event 329974 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124221
+	country = CHI
+	name = EVT_CHI_124221_NAME
+	desc = EVT_CHI_124221_DESC
+	picture = "nwo/taiwan_strait"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = dissent value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124227] CHI | 1955 | Incorporation of Tibet (Anexión del Tíbet)
+# Triggered by event 232010 in events/Minors/TIB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124227
+	country = CHI
+	name = EVT_CHI_124227_NAME
+	desc = EVT_CHI_124227_DESC
+	picture = "nwo/tibet"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = TIB value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124231] CHI | 1955 | United Nations Intervenes in Taiwan (La ONU interviene en el Estrecho de Taiwán)
+# Triggered by event 316289 in events/USA/USA_48-61.txt
+# Triggered by event 143370 in events/ENG/ENG_55-82.txt
+# Triggered by event 147219 in events/FRA/FRA_48-59.txt
+# Triggered by event 123106 in events/Minors/CHC_45-62.txt
+# Triggered by event 330002 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124231
+	country = CHI
+	name = EVT_CHI_124231_NAME
+	desc = EVT_CHI_124231_DESC
+	picture = "nwo/united_nations_intervention"
+	style = 1
+	trigger = {
+		OR = {
+			NOT = { exists = USA }
+			event = 316289
+		}
+		OR = {
+			NOT = { exists = ENG }
+			event = 143370
+		}
+		OR = {
+			NOT = { exists = FRA }
+			event = 147219
+		}
+		OR = {
+			NOT = { exists = CHC }
+			NOT = { flag = CHC_in_UNSC }
+			event = 123106
+		}
+		OR = {
+			NOT = { exists = SOV }
+			event = 330002
+			flag = un_soviet_boycott
+		}
+		NOT = { flag = un_taiwan_totalveto }
+		NOT = { flag = un_taiwan_interventionveto }
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = 2500 }
+		command = { type = supplies value = 10000 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124232] CHI | 1955 | United Nations Supplies Taiwan (La ONU suministra pertrechos a Taiwán)
+# Triggered by event 316289 in events/USA/USA_48-61.txt
+# Triggered by event 143370 in events/ENG/ENG_55-82.txt
+# Triggered by event 147219 in events/FRA/FRA_48-59.txt
+# Triggered by event 123106 in events/Minors/CHC_45-62.txt
+# Triggered by event 330002 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124232
+	country = CHI
+	name = EVT_CHI_124232_NAME
+	desc = EVT_CHI_124232_DESC
+	picture = "nwo/united_nations"
+	style = 1
+	trigger = {
+		OR = {
+			NOT = { exists = USA }
+			event = 316289
+		}
+		OR = {
+			NOT = { exists = ENG }
+			event = 143370
+		}
+		OR = {
+			NOT = { exists = FRA }
+			event = 147219
+		}
+		OR = {
+			NOT = { exists = CHC }
+			NOT = { flag = CHC_in_UNSC }
+			event = 123106
+		}
+		OR = {
+			NOT = { exists = SOV }
+			event = 330002
+			flag = un_soviet_boycott
+		}
+		NOT = { flag = un_taiwan_totalveto }
+		flag = un_taiwan_interventionveto
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = 2500 }
+		command = { type = supplies value = 10000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124226] CHI | 1955 | Nationalist Reclamation of Tibet (Reclamación nacionalista sobre el Tíbet)
+# Trigger event 232010 in events/Minors/TIB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124226
+	country = CHI
+	name = EVT_CHI_124226_NAME
+	desc = EVT_CHI_124226_DESC
+	picture = "nwo/tibet"
+	style = 1
+	trigger = {
+		exists = TIB
+		flag = CHI_won_civil_war
+	}
+	date = { day = 1 month = march year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 80
+		command = { type = trigger which = 232010 }
+	}
+	action = {
+		name = EVT_CHI_124226_A
+		ai_chance = 20
+		command = { type = dissent value = 8 }
+		command = { type = removecore which = 1278 }
+		command = { type = removecore which = 1286 }
+		command = { type = removecore which = 1287 }
+		command = { type = removecore which = 1288 }
+		command = { type = removecore which = 1289 }
+		command = { type = removecore which = 1290 }
+		command = { type = removecore which = 1294 }
+		command = { type = removecore which = 1295 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124230] CHI | 1956 | UN Resolution on the Suez Crisis (Resolución de la ONU sobre la Guerra de Suez)
+# Triggered by event 329997 in events/AI/REB_AI_55-00.txt
+# Trigger event 142067 in events/Minors/EGY_33-58.txt
+# Trigger event 142068 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124230
+	country = CHI
+	name = EVT_SHARED_00959_NAME
+	desc = EVT_SHARED_00959_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 50
+		trigger = {
+			NOT = { flag = un_suez_interventionveto }
+			NOT = { war = { country = EGY } }
+			NOT = { alliance = { country = ISR } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 10
+		trigger = {
+			NOT = { war = { country = EGY } }
+			NOT = { alliance = { country = ISR } }
+		}
+		command = { type = setflag which = un_suez_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 40
+		trigger = {
+			NOT = { alliance = { country = EGY } }
+		}
+		command = { type = setflag which = un_suez_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124235] CHI | 1956 | UN Resolution on the Hungarian Uprising (Resolución de la ONU sobre el Levantamiento Húngaro)
+# Triggered by event 207060 in events/AI/REB_AI_55-00.txt
+# Trigger event 207061 in events/AI/REB_AI_55-00.txt
+# Trigger event 248035 in events/Minors/U13.txt
+# Trigger event 329872 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124235
+	country = CHI
+	name = EVT_SHARED_00965_NAME
+	desc = EVT_SHARED_00965_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 95
+		trigger = {
+			NOT = { flag = un_hungary_interventionveto }
+			NOT = { war = { country = U13 } }
+			NOT = { alliance = { country = SOV } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 5
+		trigger = {
+			NOT = { war = { country = U13 } }
+			NOT = { alliance = { country = SOV } }
+		}
+		command = { type = setflag which = un_hungary_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 0
+		command = { type = setflag which = un_hungary_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124181] CHI | 1958 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124181
+	country = CHI
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 55206 }
+		command = { type = headofgovernment which = 55098 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124220] CHI | 1958 | The Legacy of the Kinmen Shelling (El legado de los proyectiles de Kinmen)
+# Triggered by event 123099 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124220
+	country = CHI
+	name = EVT_CHI_124220_NAME
+	desc = EVT_CHI_124220_DESC
+	picture = "nwo/taiwan_strait"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_prov_resource which = 1363 value = 1 where = metal }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124211] CHI | 1962 | Chinese Tactical Defeat in the Himalayas (Derrota táctica china en el Himalaya)
+# Triggered by event 329959 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124211
+	country = CHI
+	name = EVT_CHI_124211_NAME
+	desc = EVT_CHI_124211_DESC
+	picture = "nwo/sino_indian_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 90
+		command = { type = dissent value = 5 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = secedeprovince which = IND value = 1455 when = 1 }
+		command = { type = secedeprovince which = IND value = 1458 when = 1 }
+		command = { type = removecore which = 1278 }
+		command = { type = removecore which = 1455 }
+		command = { type = removecore which = 1458 }
+	}
+	action = {
+		name = EVT_CHI_124211_A
+		ai_chance = 10
+		command = { type = dissent value = 8 }
+		command = { type = belligerence value = 15 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = secedeprovince which = IND value = 1455 when = 1 }
+		command = { type = secedeprovince which = IND value = 1458 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124212] CHI | 1962 | Chinese Expulsion from Western Tibet (Retirada china del Tíbet occidental)
+# Triggered by event 329961 in events/Minors/IND_36-65.txt
+# Trigger event 161062 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124212
+	country = CHI
+	name = EVT_CHI_124212_NAME
+	desc = EVT_CHI_124212_DESC
+	picture = "nwo/sino_indian_war"
+	style = 1
+	action = {
+		name = EVT_CHI_124212_A
+		ai_chance = 90
+		command = { type = dissent value = 5 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = secedeprovince which = IND value = 1455 when = 1 }
+		command = { type = secedeprovince which = IND value = 1458 when = 1 }
+		command = { type = secedeprovince which = IND value = 1286 when = 1 }
+		command = { type = secedeprovince which = IND value = 1287 when = 1 }
+		command = { type = secedeprovince which = IND value = 1288 when = 1 }
+		command = { type = secedeprovince which = IND value = 1289 when = 1 }
+		command = { type = secedeprovince which = IND value = 1290 when = 1 }
+		command = { type = secedeprovince which = IND value = 1295 when = 1 }
+		command = { type = secedeprovince which = IND value = 1294 when = 1 }
+		command = { type = secedeprovince which = IND value = 1285 when = 1 }
+		command = { type = removecore which = 1278 }
+		command = { type = removecore which = 1455 }
+		command = { type = removecore which = 1458 }
+		command = { type = removecore which = 1286 }
+		command = { type = removecore which = 1287 }
+		command = { type = removecore which = 1288 }
+		command = { type = removecore which = 1289 }
+		command = { type = removecore which = 1290 }
+		command = { type = removecore which = 1295 }
+		command = { type = removecore which = 1294 }
+		command = { type = removecore which = 1285 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 10
+		command = { type = dissent value = 8 }
+		command = { type = belligerence value = 15 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = secedeprovince which = IND value = 1455 when = 1 }
+		command = { type = secedeprovince which = IND value = 1458 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329955] CHI | 1962 | Standoff at Thag La Ridge (Enfrentamiento en la cordillera de Thag La)
+# Triggered by event 329954 in events/Minors/IND_36-65.txt
+# Trigger event 329956 in events/CHI/CHI_Decisions.txt
+# Trigger event 329958 in events/CHI/CHI_45-75.txt
+# Trigger event 329959 in events/Minors/IND_36-65.txt
+# Trigger event 329960 in events/CHI/CHI_45-75.txt
+# Trigger event 329961 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329955
+	country = CHI
+	name = EVT_CHI_329955_NAME
+	desc = EVT_CHI_329955_DESC
+	picture = "nwo/thag_la"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 329954
+		exists = IND
+		NOT = { war = { country = IND country = CHI } }
+	}
+	date = { day = 0 month = august year = 1962 }
+	offset = 30
+	deathdate = { day = 29 month = august year = 1962 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 95
+		command = { type = war which = IND }
+	}
+	action = {
+		name = ACTION_NAME_WITHDRAW
+		ai_chance = 5
+		command = { type = dissent value = 8 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = secedeprovince which = IND value = 1455 when = 1 }
+		command = { type = secedeprovince which = IND value = 1458 when = 1 }
+		command = { type = removecore which = 1278 }
+		command = { type = removecore which = 1455 }
+		command = { type = removecore which = 1458 }
+		command = { type = sleepevent which = 329956 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329958] CHI | 1962 | Chinese Tactical Victory in the Himalayas (Victoria táctica china en el Himalaya)
+# Triggered by event 329955 in events/CHI/CHI_45-75.txt
+# Trigger event 197020 in events/Minors/PAK_Decisions.txt
+# Trigger event 161060 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329958
+	country = CHI
+	name = EVT_CHI_329958_NAME
+	desc = EVT_CHI_329958_DESC
+	picture = "nwo/sino_indian_war"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 329955
+		war = { country = IND country = CHI }
+		OR = {
+			control = { province = 1540 data = -1 }
+			control = { province = 1453 data = -1 }
+			control = { province = 1454 data = -1 }
+			control = { province = 1451 data = -1 }
+			control = { province = 1452 data = -1 }
+		}
+	}
+	date = { day = 0 month = november year = 1962 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_CHI_329958_A
+		ai_chance = 98
+		command = { type = peace which = IND }
+		command = { type = trigger which = 161060 }
+		command = { type = sleepevent which = 329956 }
+		command = { type = sleepevent which = 329958 }
+		command = { type = sleepevent which = 329959 }
+		command = { type = sleepevent which = 329960 }
+		command = { type = sleepevent which = 329961 }
+	}
+	action = {
+		name = EVT_CHI_329958_B
+		ai_chance = 2
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329960] CHI | 1962 | Decisive Chinese Breakthrough in India (Ruptura china en el frente indio)
+# Triggered by event 329955 in events/CHI/CHI_45-75.txt
+# Trigger event 197020 in events/Minors/PAK_Decisions.txt
+# Trigger event 161061 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329960
+	country = CHI
+	name = EVT_CHI_329960_NAME
+	desc = EVT_CHI_329960_DESC
+	picture = "nwo/sino_indian_war"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 329955
+		war = { country = IND country = CHI }
+		OR = {
+			control = { province = 1535 data = -1 }
+			control = { province = 1531 data = -1 }
+			control = { province = 1463 data = -1 }
+			control = { province = 1460 data = -1 }
+			control = { province = 1464 data = -1 }
+			control = { province = 1446 data = -1 }
+			control = { province = 1442 data = -1 }
+		}
+	}
+	date = { day = 0 month = november year = 1962 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_CHI_329960_A
+		ai_chance = 98
+		command = { type = peace which = IND }
+		command = { type = trigger which = 161061 }
+		command = { type = sleepevent which = 329956 }
+		command = { type = sleepevent which = 329958 }
+		command = { type = sleepevent which = 329959 }
+		command = { type = sleepevent which = 329960 }
+		command = { type = sleepevent which = 329961 }
+	}
+	action = {
+		name = EVT_CHI_329960_B
+		ai_chance = 2
+		command = { type = dissent value = 25 }
+		command = { type = belligerence value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124182] CHI | 1963 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124182
+	country = CHI
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 55206 }
+		command = { type = headofgovernment which = 55203 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124174] CHI | 1971 | Loss of United Nations Seat (Expulsión de las Naciones Unidas)
+# Triggered by event 329779 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124174
+	country = CHI
+	name = EVT_CHI_124174_NAME
+	desc = EVT_CHI_124174_DESC
+	picture = "nwo/communist_china_in_unsc"
+	action = {
+		name = ACTION_NAME_DEFEAT
+		command = { type = dissent value = 10 }
+		command = { type = relation which = USA value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124183] CHI | 1972 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124183
+	country = CHI
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1974 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 55507 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124184] CHI | 1975 | Death of Chiang Kai-shek (Muerte de Chiang Kai-shek)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124184
+	country = CHI
+	name = EVT_CHI_124184_NAME
+	desc = EVT_CHI_124184_DESC
+	picture = "nwo/death_chiang_kai_shek"
+	style = 1
+	date = { day = 0 month = january year = 1975 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1977 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 55002 }
+		command = { type = sleepminister which = 55007 }
+		command = { type = sleepminister which = 55011 }
+		command = { type = sleepminister which = 55204 }
+		command = { type = sleepminister which = 55205 }
+		command = { type = sleepminister which = 55206 }
+		command = { type = sleepminister which = 55207 }
+		command = { trigger = {	OR = { government = democratic government = fascist	} } type = headofstate which = 55500 }
+	}
+}

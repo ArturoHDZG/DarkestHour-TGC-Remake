@@ -1,0 +1,496 @@
+# ============================================================================
+# File: events/Minors/SAL.txt (11 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [213005] SAL | 1934 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 213005
+	random = no
+	country = SAL
+	style = 2
+	trigger = {
+		headofstate = 345001
+	}
+	date = { day = 28 month = august year = 1934 }
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 345011 }
+		command = { type = headofgovernment which = 345014 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [213006] SAL | 1935 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 213006
+	random = no
+	country = SAL
+	style = 2
+	trigger = {
+		headofstate = 345011
+	}
+	date = { day = 0 month = march year = 1935 }
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 345001 }
+		command = { type = headofgovernment which = 345002 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329525] SAL | 1940 | Diplomatic Talks: El Salvador (Negociaciones con El Salvador)
+# Triggered by event 329517 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329525
+	random = no
+	country = SAL
+	trigger = {
+		random = 5
+		event = 329517
+		alliance = { country = BRA country = ENG }
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = SAL country = SOV } }
+		NOT = { alliance = { country = SAL country = ENG } }
+		NOT = { alliance = { country = SAL country = GER } }
+		NOT = { alliance = { country = SAL country = JAP } }
+		NOT = { war = { country = SAL country = ENG } }
+		NOT = { ispuppet = yes }
+	}
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_SAL_329525_NAME
+	desc = EVT_SHARED_00416_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = { trigger = { NOT = { army = 3 } }
+		ai_chance = 20
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } alliance = { country = ARG country = GER } }
+		ai_chance = 40
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 60
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } alliance = { country = ARG country = GER } }
+		ai_chance = 80
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 200
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 10 }
+		ai_chance = 900
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = {
+		ai_chance = 10
+		name = ACTION_NAME_NEUTRAL
+		command = { type = relation which = ENG value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [213000] SAL | 1944 | Popular Revolution Victorious! (¡Triunfo de la revolución!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 213000
+	random = no
+	country = SAL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 6
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 6
+					}
+				dissent = 3
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00496_NAME"
+	desc = "EVT_SHARED_00496_DESC"
+	date = { day = 1 month = january year = 1944 }
+	offset = 20
+	deathdate = { day = 29 month = july year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 345011 }
+		command = { type = headofgovernment which = 345014 }
+		command = { type = foreignminister which = 345018 }
+		command = { type = armamentminister which = 345025 }
+		command = { type = ministerofsecurity which = 345026 }
+		command = { type = ministerofintelligence which = 345031 }
+		command = { type = chiefofstaff which = 345032 }
+		command = { type = chiefofarmy which = 345034 }
+		command = { type = chiefofnavy which = 345035 }
+		command = { type = chiefofair which = 345037 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [213001] SAL | 1944 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 213001
+	random = no
+	country = SAL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = august year = 1944 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 345012 }
+		command = { type = headofgovernment which = 345015 }
+		command = { type = foreignminister which = 345019 }
+		command = { type = armamentminister which = 345040 }
+		command = { type = ministerofsecurity which = 345027 }
+		command = { type = ministerofintelligence which = 345029 }
+		command = { type = chiefofstaff which = 345038 }
+		command = { type = chiefofarmy which = 345039 }
+		command = { type = chiefofnavy which = 345035 }
+		command = { type = chiefofair which = 345036 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [213002] SAL | 1945 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 213002
+	random = no
+	country = SAL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = january year = 1945 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 345013 }
+		command = { type = headofgovernment which = 345016 }
+		command = { type = foreignminister which = 345020 }
+		command = { type = armamentminister which = 345024 }
+		command = { type = ministerofsecurity which = 345028 }
+		command = { type = ministerofintelligence which = 345029 }
+		command = { type = chiefofstaff which = 345041 }
+		command = { type = chiefofarmy which = 345042 }
+		command = { type = chiefofnavy which = 345035 }
+		command = { type = chiefofair which = 345036 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [213003] SAL | 1948 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 213003
+	random = no
+	country = SAL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = november year = 1948 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 345048 }
+		command = { type = headofgovernment which = 345049 }
+		command = { type = foreignminister which = 345050 }
+		command = { type = armamentminister which = 345051 }
+		command = { type = ministerofsecurity which = 345052 }
+		command = { type = ministerofintelligence which = 345053 }
+		command = { type = chiefofstaff which = 345054 }
+		command = { type = chiefofarmy which = 345055 }
+		command = { type = chiefofnavy which = 345056 }
+		command = { type = chiefofair which = 345057 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [213019] SAL | 1950 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 213019
+	country = SAL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 345048 }
+		command = { type = headofgovernment which = 345049 }
+		command = { type = foreignminister which = 345050 }
+		command = { type = armamentminister which = 345051 }
+		command = { type = ministerofsecurity which = 345052 }
+		command = { type = ministerofintelligence which = 345053 }
+		command = { type = chiefofstaff which = 345060 }
+		command = { type = chiefofarmy which = 345059 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 345100 }
+		command = { type = headofgovernment which = 345101 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [213004] SAL | 1951 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 213004
+	random = no
+	country = SAL
+	style = 2
+	trigger = {
+		minister = 345054
+		}
+	date = { day = 25 month = april year = 1951 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = chiefofstaff which = 345060 }
+		command = { type = sleepminister which = 345006 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [213020] SAL | 1956 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 213020
+	country = SAL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 345104 }
+		command = { type = headofgovernment which = 345105 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 345102 }
+		command = { type = headofgovernment which = 345103 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [213021] SAL | 1962 | Presidency of Julio Rivera (Presidencia de Julio Rivera)
+# ----------------------------------------------------------------------------
+event = {
+	id = 213021
+	country = SAL
+	name = EVT_SAL_213021_NAME
+	desc = EVT_SAL_213021_DESC
+	picture = "nwo/empty"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 345106 }
+		command = { type = headofgovernment which = 345107 }
+	}
+}

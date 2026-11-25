@@ -1,0 +1,343 @@
+# ============================================================================
+# File: events/AI/OTT_AI.txt (14 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [196050] OTT | 1913 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 196050
+        random = no
+        country = OTT
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = january year = 1913 }
+	action_a = {
+		command = { type = headofgovernment which = 720061 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [196051] OTT | 1913 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 196051
+        random = no
+        country = OTT
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = june year = 1913 }
+	action_a = {
+		command = { type = headofgovernment which = 720062 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329564] OTT | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329564
+	random = no
+	country = OTT
+	persistent = yes
+	trigger = {
+					ai = yes
+					war = { country = OTT country = RUS }
+					NOT = { flag = OTT_1914_startupDone }
+				}
+	name = "AI_EVENT"
+	date = { day = 29 month = 5 year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+			ai_chance = 70
+			command = { type = setflag which = OTT_1914_Baku }
+			command = { type = setflag which = OTT_1914_startupDone }
+			command = { type = ai which = "switch/OTT_1914_Baku.ai" }
+	}
+	action_b =
+		{
+			ai_chance = 20
+			command = { type = setflag which = OTT_1914_Egypt }
+			command = { type = ai which = "switch/OTT_1914_Egypt.ai" }
+			command = { type = setflag which = OTT_1914_startupDone }
+		}
+	action_c =
+		{
+			ai_chance = 15
+			command = { type = setflag which = OTT_1914_Persia }
+			command = { type = ai which = "switch/OTT_1914_Persia.ai" }
+			command = { type = setflag which = OTT_1914_startupDone }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329565] OTT | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329565
+	random = no
+	country = OTT
+	trigger = {
+	OR = {
+			war = { country = OTT country = RUS }
+			war = { country = OTT country = ENG }
+			war = { country = OTT country = U02 }
+		 }
+	}
+	name = "AI_EVENT"
+	date = { day = 29 month = 5 year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		command = { type = strength which = land when = 1.0 where = 1.0 org = 1.0 value = 1.0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [196044] OTT | 1914 | Entry of the Ottoman Empire into the War? (¿Entrada del Imperio otomano en la guerra?)
+# Triggered by event 196020 in events/Minors/OTT.txt
+# Triggered by event 196003 in events/Minors/OTT.txt
+# Triggered by event 196004 in events/Minors/OTT.txt
+# Triggered by event 196005 in events/Minors/OTT.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Trigger event 236016 in events/GLOBAL/ALL_26-36.txt
+# Trigger event 196046 in events/Minors/OTT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 196044
+	country = OTT
+	persistent = yes
+	trigger = {
+		ai = yes
+		event = 196020
+		flag = U08_OTT_Secret_Treaty
+		NOT = { war = { country = OTT country = U08 } }
+		NOT = { alliance = { country = OTT country = U08 } }
+		NOT = { event = 196003 }
+		NOT = { event = 196004 }
+		NOT = { event = 196005 }
+		NOT = { event = 243116 }
+		NOT = { event = 243101 }
+		NOT = { event = 243107 }
+		atwar = U08
+		OR = {
+			under_attack = U08
+			AND = {
+				NOT = { under_attack = U08 }
+				random = 20
+			}
+		}
+	}
+	name = "EVT_SHARED_00091_NAME"
+	date = { day = 28 month = july year = 1914 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1917 }
+	action = {
+		trigger = { NOT = { under_attack = U08 } }
+		name = "ACTION_NAME_JOIN_CENTRAL"
+		ai_chance = 5
+		command = { type = relation which = U08 value = 20 }
+		command = { type = alliance which = U08 when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 236016 }
+		command = { type = sleepevent which = 196044 }
+                command = { type = trigger which = 196046 }
+				command = { type = manpowerpool value = 500 }
+	}
+	action = {
+		trigger = { NOT = { under_attack = U08 } }
+		name = "ACTION_NAME_NEUTRAL"
+		ai_chance = 95
+		command = { type = relation which = U08 value = -10 }
+	}
+	action = {
+		trigger = { under_attack = U08 }
+		name = "ACTION_NAME_JOIN_CENTRAL"
+		ai_chance = 95
+		command = { type = relation which = U08 value = 20 }
+		command = { type = alliance which = U08 when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 236016 }
+		command = { type = sleepevent which = 196044 }
+                command = { type = trigger which = 196046 }
+				command = { type = manpowerpool value = 500 }
+	}
+	action = {
+		trigger = { under_attack = U08 }
+		name = "ACTION_NAME_NEUTRAL"
+		ai_chance = 5
+		command = { type = relation which = U08 value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [196045] OTT | 1915 | Creation of the fifth and sixth army (Creación del quinto y sexto ejército)
+# ----------------------------------------------------------------------------
+event = {
+	id = 196045
+	country = OTT
+	trigger = {
+		ai = yes
+		not = { local_flag = 5th_6th_otto_army }
+	}
+	date = { day = 1 month = january year = 1915 }
+	offset = 60
+	deathdate = { day = 1 month = september year = 1916 }
+	name = "EVT_OTT_196045_NAME"
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 97
+		command = { type = local_setflag which = 5th_6th_otto_army }
+		command = { type = add_corps which = "III Corps" value = land where = 384 }
+		command = { type = add_division which = "7th Division" value = infantry when = 2 }
+		command = { type = add_division which = "9th Division" value = infantry when = 2 }
+		command = { type = add_division which = "19th Division" value = infantry when = 2 }
+		command = { type = add_corps which = "XV Corps" value = land where = 1078 }
+		command = { type = add_division which = "3th Division" value = infantry when = 2 }
+		command = { type = add_division which = "11th Division" value = infantry when = 2 }
+		command = { type = add_corps which = "Dardanelles Fortified Area Command" value = land where = 384 }
+		command = { type = add_division which = "3, 4 and 5th artillery regiment" value = garrison when = 1 where = super_heavy_artillery }
+		command = { type = add_corps which = "III Corps" value = land where = 384 }
+		command = { type = add_division which = "7th Division" value = infantry when = 2 }
+		command = { type = add_division which = "9th Division" value = infantry when = 2 }
+		command = { type = add_division which = "19th Division" value = infantry when = 2 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 3
+		command = { type = dissent value = 5 }
+		command = { type = local_setflag which = 5th_6th_otto_army }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [196052] OTT | 1917 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 196052
+        random = no
+        country = OTT
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = february year = 1917 }
+	action_a = {
+		command = { type = headofgovernment which = 720063 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [196049] OTT | 1918 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 196049
+        random = no
+        country = OTT
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = july year = 1918 }
+	action_a = {
+		command = { type = headofstate which = 720052 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [196053] OTT | 1918 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 196053
+        random = no
+        country = OTT
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = october year = 1918 }
+	action_a = {
+		command = { type = headofgovernment which = 720064 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [196054] OTT | 1918 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 196054
+        random = no
+        country = OTT
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = november year = 1918 }
+	action_a = {
+		command = { type = headofgovernment which = 720057 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [196055] OTT | 1919 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 196055
+        random = no
+        country = OTT
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = march year = 1919 }
+	action_a = {
+		command = { type = headofgovernment which = 720065 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [196057] OTT | 1919 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 196057
+        random = no
+        country = OTT
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = october year = 1919 }
+	action_a = {
+		command = { type = headofgovernment which = 720066 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [196056] OTT | 1920 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 196056
+        random = no
+        country = OTT
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = april year = 1920 }
+	action_a = {
+		command = { type = headofgovernment which = 720065 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [196058] OTT | 1920 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 196058
+        random = no
+        country = OTT
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = october year = 1920 }
+	action_a = {
+		command = { type = headofgovernment which = 720057 }
+		command = { type = dissent value = -1 }
+		}
+}

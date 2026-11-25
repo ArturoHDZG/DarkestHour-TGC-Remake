@@ -1,0 +1,271 @@
+# ============================================================================
+# File: events/Minors/U24.txt (10 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [259000] U24 | 1939 | Fate of Defeated Germany (El destino de la Alemania vencida)
+# Trigger event 139005 in events/Minors/DFR.txt
+# Trigger event 147092 in events/FRA/FRA_Decisions.txt
+# Trigger event 236006 in events/Minors/U01_Decisions.txt
+# Trigger event 324104 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 324105 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 259000
+	random = no
+	country = U24
+	name = EVT_SHARED_00773_NAME
+	desc = EVT_SHARED_00773_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	save_date = yes
+	trigger = {
+		exists = U24
+	}
+	date = { day = 0 month = january year = 1939 }
+  	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = {}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [259001] U24 | 1939 | Proclamation of the FRG (Proclamación de la RFA)
+# Triggered by event 324104 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 259001
+	random = no
+	country = U24
+	name = EVT_SHARED_00776_NAME
+	desc = EVT_SHARED_00776_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = DFR value = 1 when = 1 }
+		command = { type = secederegion which = DFR value = Germany }
+		command = { type = alliance which = DFR when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [259002] U24 | 1939 | Austrian Independence Restored (Restauración de la independencia austríaca)
+# Triggered by event 324105 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 259002
+	random = no
+	country = U24
+	name = EVT_SHARED_00777_NAME
+	desc = EVT_SHARED_00777_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 95
+		command = { type = independence which = AUS value = 1 when = 1 }
+		command = { type = secederegion which = AUS value = Austria }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [259006] U24 | 1944 | Allied Reparations Directives (Directrices de reparaciones aliadas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 259006
+	country = U24
+	name = EVT_U24_259006_NAME
+	desc = EVT_U24_259006_DESC
+	picture = "nwo/allied_occupation_of_germany"
+	style = 1
+	trigger = {
+		flag = cold_war
+		OR = {
+			flag = allied_occupation_of_germany_light
+			flag = allied_occupation_of_germany_medium
+			flag = allied_occupation_of_germany_hard
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "EVT_U24_259006_A"
+		trigger = { flag = allied_occupation_of_germany_hard }
+		command = { type = industrial_modifier which = total value = -14 }
+		command = { type = dissent value = 10 }
+	}
+	action = {
+		name = "EVT_U24_259006_B"
+		trigger = { flag = allied_occupation_of_germany_medium }
+		command = { type = industrial_modifier which = total value = -8 }
+		command = { type = dissent value = 4 }
+	}
+	action = {
+		name = "EVT_U24_259006_C"
+		trigger = { flag = allied_occupation_of_germany_light }
+		command = { type = money value = 400 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [259007] U24 | 1944 | The Oder-Neisse Demarcation (La frontera del Óder-Neisse)
+# ----------------------------------------------------------------------------
+event = {
+	id = 259007
+	country = U24
+	name = "EVT_U24_259007_NAME"
+	desc = "EVT_U24_259007_DESC"
+	picture = "nwo/occupation_zones_in_germany"
+	style = 1
+	date = { day = 1 month = january year = 1944 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = addclaim which = 185 }
+		command = { type = addclaim which = 183 }
+		command = { type = addclaim which = 181 }
+		command = { type = addclaim which = 155 }
+		command = { type = addclaim which = 161 }
+		command = { type = addclaim which = 158 }
+		command = { type = addclaim which = 159 }
+		command = { type = addclaim which = 165 }
+		command = { type = addclaim which = 164 }
+		command = { type = addclaim which = 167 }
+		command = { type = addclaim which = 166 }
+		command = { type = addclaim which = 168 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [259008] U24 | 1946 | The Saar Protectorate Established (Creación del Protectorado del Sarre)
+# ----------------------------------------------------------------------------
+event = {
+	id = 259008
+	country = U24
+	name = "EVT_U24_259008_NAME"
+	desc = "EVT_U24_259008_DESC"
+	picture = "nwo/saar_protectorate"
+	style = 1
+	trigger = {
+		NOT = { exists = U23 }
+		owned = { province = 127 data = -1 }
+	}
+	date = { day = 16 month = february year = 1946 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = U23 value = 0 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [259004] U24 | 1947 | Independence of Germany (Independencia de Alemania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 259004
+	country = U24
+	name = "EVT_U24_259004_NAME"
+	desc = "EVT_U24_259004_DESC"
+	picture = "nwo/occupation_zones_in_germany"
+	style = 1
+	trigger = {
+		NOT = { exists = U25 }
+		area = { area = "Westphalen" country = -1 data = 1 value = 100 }
+		area = { area = "Hannover_Magdeburg" country = -1 data = 1 value = 100 }
+		area = { area = "Holstein_Mecklemburg" country = -1 data = 1 value = 100 }
+		area = { area = "Hessen" country = -1 data = 1 value = 100 }
+		area = { area = "Baden_Wurttemberg" country = -1 data = 1 value = 100 }
+		area = { area = "Bavaria" country = -1 data = 1 value = 100 }
+		area = { area = "Sachsen" country = -1 data = 1 value = 100 }
+		area = { area = "Rhineland" country = -1 data = 1 value = 100 }
+		control = { province = 156 data = -1 }
+		control = { province = 157 data = -1 }
+		control = { province = 160 data = -1 }
+		control = { province = 162 data = -1 }
+		control = { province = 163 data = -1 }
+	}
+	date = { day = 1 month = january year = 1947 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = country which = DFR }
+		command = { type = end_puppet }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [259009] U24 | 1948 | West German Currency Reform (Reforma monetaria en Alemania Occidental)
+# Triggered by event 316248 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 259009
+	country = U24
+	name = EVT_U24_259009_NAME
+	desc = EVT_U24_259009_DESC
+	picture = "nwo/deutsche_mark"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = 2500 }
+		command = { type = industrial_modifier which = total value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [259010] U24 | 1949 | Proclamation of a Unified Germany (Proclamación de la Alemania unificada)
+# Triggered by event 223293 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 259010
+	random = no
+	country = U24
+	name = EVT_U24_259010_NAME
+	desc = EVT_U24_259010_DESC
+	picture = "nwo/united_germany"
+	style = 1
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = end_puppet }
+		command = { type = leave_alliance }
+		command = { type = country which = DFR }
+		command = { type = inherit which = U25 value = 1 }
+		command = { type = setflag which = neutral_germany }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { type = set_relation which = USA value = 0 }
+		command = { type = set_relation which = ENG value = 0 }
+		command = { type = set_relation which = FRA value = 0 }
+		command = { type = set_relation which = SOV value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [259011] U24 | 1949 | Partition of Germany (Partición de Alemania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 259011
+	country = U24
+	name = EVT_U24_259011_NAME
+	desc = EVT_U24_259011_DESC
+	picture = "nwo/bonn_rathaus"
+	style = 1
+	trigger = {
+		flag = cold_war
+		NOT = { exists = DFR }
+	}
+	date = { day = 1 month = september year = 1949 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+		command = { type = country which = DFR }
+	}
+}

@@ -1,0 +1,1804 @@
+# ============================================================================
+# File: events/SOV/SOV_43-46.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [223382] SOV | 1943 | The Warsaw Uprising and the Red Army (El Ejército Rojo ante el alzamiento polaco)
+# Triggered by event 330057 in events/GER/GER_41-44.txt
+# Trigger event 203059 in events/Minors/POL_14-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223382
+	country = SOV
+	name = EVT_SOV_223382_NAME
+	desc = EVT_SOV_223382_DESC
+	picture = "nwo/warsaw_uprising"
+	style = 1
+	trigger = {
+		exists = POL
+		event = 330057
+	}
+    date = { day = 0 month = january year = 1943 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 98
+		command = { type = sleepevent which = 203059 }
+	}
+	action = {
+		name = EVT_SOV_223382_A
+		ai_chance = 2
+		command = { type = secedeprovince which = POL value = 228 }
+		command = { type = secedeprovince which = POL value = 229 }
+		command = { type = money value = -400 }
+		command = { type = supplies value = -3000 }
+		command = { type = oilpool value = -1000 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329085] SOV | 1943 | Relations with the USSR (Relaciones con la URSS)
+# Triggered by event 329084 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329085
+         random = no
+         country = sov
+         trigger = {
+                   war = { country = ger country = sov }
+                   war = { country = ger country = egy }
+                   NOT = {
+                            war = { country = sov country = egy }
+                   }
+         }
+         name = "EVT_SHARED_00509_NAME"
+         desc = "EVT_SHARED_00509_DESC"
+         style = 2
+	picture = "SOV/relations_with_the_ussr"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = relation which = egy value = 10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329272] SOV | 1943 | The Warsaw Uprising (El levantamiento de Varsovia)
+# Trigger event 143105 in events/ENG/ENG_39-43.txt
+# Trigger event 223034 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329272
+	random = no
+	country = SOV
+	name = EVT_SOV_329272_NAME
+	desc = EVT_SOV_329272_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		war = { country = SOV country = GER }
+		control = { province = 242 data = SOV }
+		control = { province = 247 data = SOV }
+		control = { province = 258 data = SOV }
+		control = { province = 232 data = GER }
+		control = { province = 235 data = GER }
+		control = { province = 224 data = GER }
+		OR ={
+		control = { province = 246 data = SOV }
+		control = { province = 254 data = SOV }
+		control = { province = 182 data = SOV }
+		}
+		NOT = {
+			exists = POL
+		}
+		random = 20
+	}
+	date = { day = 0 month = january year = 1943 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1950 }
+	action_a = {
+		ai_chance = 90
+		name = EVT_SOV_329272_A
+		command = { type = add_corps which = "Okreg Warszawki AK" value = land when = 60003 where = 232 }
+		command = { type = add_division which = "Kedyw AK" value = infantry when = 10 }
+		command = { type = add_division which = "1 Odzial mieszany" value = militia when = 5 }
+		command = { type = add_division which = "2 Odzial mieszany" value = militia when = 5 }
+		command = { type = supplies value = 500 where = 232 }
+		command = { type = oilpool value = 200 where = 232 }
+	}
+	action_b = {
+		ai_chance = 10
+		name = ACTION_NAME_REFUSE
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = sleepevent which = 143105 }
+		command = { type = sleepevent which = 223034 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329549] SOV | 1943 | Reassert National Claims! (¡Restablecer las reivindicaciones territoriales!)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329549
+	random = no
+	country = SOV
+	trigger = {
+		event  = 223096
+		war = { country = GER country = SOV }
+		NOT = { ispuppet = SOV }
+	}
+	name = "EVT_SOV_329549_NAME"
+	desc = "EVT_SOV_329549_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	date = { day = 0 month = january year = 1943 }
+	offset = 120
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+        command = { type = addcore which = 272 }
+        command = { type = addcore which = 275 }
+        command = { type = addcore which = 274 }
+        command = { type = addcore which = 273 }
+        command = { type = addcore which = 271 }
+        command = { type = addcore which = 270 }
+        command = { type = addcore which = 268 }
+        command = { type = addcore which = 269 }
+        command = { type = addcore which = 267 }
+        command = { type = addcore which = 266 }
+        command = { type = addcore which = 264 }
+        command = { type = addcore which = 265 }
+        command = { type = addcore which = 260 }
+        command = { type = addcore which = 261 }
+        command = { type = addcore which = 263 }
+        command = { type = addcore which = 259 }
+        command = { type = addcore which = 262 }
+        command = { type = addcore which = 304 }
+        command = { type = addcore which = 306 }
+        command = { type = addcore which = 302 }
+        command = { type = addcore which = 303 }
+        command = { type = addcore which = 305 }
+		command = { type = addcore which = 300 }
+		command = { type = addcore which = 619 }
+		command = { type = addcore which = 620 }
+		command = { type = addcore which = 626 }
+        command = { type = addcore which = 517 }
+        command = { type = addcore which = 531 }
+        command = { type = addcore which = 530 }
+        command = { type = addcore which = 532 }
+		command = { type = addcore which = 519 }
+		command = { type = addclaim which = 256 }
+		command = { type = addclaim which = 253 }
+		command = { type = addclaim which = 255 }
+		command = { type = addclaim which = 251 }
+		command = { type = addclaim which = 257 }
+		command = { type = addclaim which = 258 }
+		command = { type = addclaim which = 240 }
+		command = { type = addclaim which = 241 }
+		command = { type = addclaim which = 242 }
+		command = { type = addclaim which = 244 }
+		command = { type = addclaim which = 247 }
+		command = { type = addclaim which = 254 }
+		command = { type = addclaim which = 245 }
+		command = { type = addclaim which = 238 }
+		command = { type = addclaim which = 248 }
+		command = { type = addclaim which = 250 }
+		command = { type = addclaim which = 239 }
+		command = { type = addclaim which = 249 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329770] SOV | 1943 | The Dissolution of the Comintern (Disolución de la Komintern)
+# Triggered by event 329769 in events/USA/USA_39-43.txt
+# Trigger event 329769 in events/USA/USA_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329770
+	country = SOV
+	name = EVT_SOV_329770_NAME
+	desc = EVT_SOV_329770_DESC
+	picture = "nwo/allies_in_ww2"
+	style = 1
+	trigger = {
+		OR = {
+			war = { country = GER country = SOV }
+			NOT = { exists = GER }
+		}
+	}
+    date = { day = 0 month = january year = 1943 }
+    offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = alliance_name which = "EASTERNBLOC_1945" where = 3 }
+		command = { trigger = { NOT = { event = 329769 } } type = trigger which = 329769 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223129] SOV | 1943 | Soviet Guards Formations (Gvardiya) (Divisiones y Ejércitos de la Guardia Soviética (Gvardiya))
+# ----------------------------------------------------------------------------
+event = {
+	id = 223129
+	random = no
+	country = SOV
+	trigger = {
+		   control = { province = 572 data = SOV }
+		   control = { province = 553 data = SOV }
+		   control = { province = 663 data = SOV }
+		   atwar = yes
+}
+	name = "EVT_SHARED_00452_NAME"
+	desc = "EVT_SHARED_00452_DESC"
+	style = 2
+	picture = "GLOBAL/soviet_guards_formations_gvardiya"
+	date = { day = 21 month = january year = 1943 }
+	offset = 2
+	deathdate = { day = 29 month = august year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "2nd Guards Tank Army" value = armor when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -400 }
+		command = { type = manpowerpool value = -8 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223121] SOV | 1943 | Soviet Guards Formations (Gvardiya) (Divisiones y Ejércitos de la Guardia Soviética (Gvardiya))
+# ----------------------------------------------------------------------------
+event = {
+	id = 223121
+	random = no
+	country = SOV
+	trigger = {
+		   control = { province = 572 data = SOV }
+		   control = { province = 553 data = SOV }
+		   control = { province = 663 data = SOV }
+		   atwar = yes
+}
+	name = "EVT_SHARED_00452_NAME"
+	desc = "EVT_SHARED_00452_DESC"
+	style = 2
+	picture = "SOV/soviet_guards_formations_gvardiya"
+	date = { day = 1 month = february year = 1943 }
+	offset = 2
+	deathdate = { day = 29 month = august year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "5th Guards Army" value = motorized when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+		command = { type = manpowerpool value = -13 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223424] SOV | 1943 | Soviet production 1943 (Producción soviética en 1943)
+# ----------------------------------------------------------------------------
+event = {
+        id = 223424
+        random = no
+        country = SOV
+	trigger = { atwar = yes }
+        name = "EVT_SOV_223424_NAME"
+        desc = "EVT_SOV_223424_DESC"
+        style = 2
+	picture = "SOV/sovietarmy_1943"
+	date = { day = 1 month = march year = 1943 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1943 }
+	action_a = {
+		name = "EVT_SOV_223424_A"
+		ai_chance = 100
+		command = { type = build_division which = transport_plane }
+		command = { type = build_division which = paratrooper value = artillery }
+		command = { type = build_division which = tactical_bomber value = escort }
+		command = { type = build_division which = tactical_bomber value = escort }
+		command = { type = build_division which = tactical_bomber value = escort }
+		command = { type = build_division which = tactical_bomber value = escort }
+		command = { type = build_division which = cas }
+		command = { type = build_division which = cas }
+		command = { type = build_division which = cas }
+		command = { type = build_division which = cas }
+		command = { type = build_division which = interceptor }
+		command = { type = build_division which = interceptor }
+		command = { type = build_division which = interceptor }
+		command = { type = build_division which = interceptor }
+		command = { type = build_division which = hq }
+		command = { type = build_division which = infantry value = artillery  }
+		command = { type = build_division which = infantry value = artillery  }
+		command = { type = build_division which = infantry value = artillery  }
+		command = { type = build_division which = infantry value = artillery  }
+		command = { type = build_division which = infantry value = artillery  }
+		command = { type = build_division which = infantry value = artillery  }
+		command = { type = build_division which = motorized value = sp_artillery  }
+		command = { type = build_division which = motorized value = sp_artillery  }
+		command = { type = build_division which = motorized value = sp_artillery  }
+		command = { type = build_division which = armor value = tank_destroyer  }
+		command = { type = build_division which = armor value = tank_destroyer  }
+		command = { type = build_division which = armor value = tank_destroyer  }
+		command = { type = build_division which = armor value = tank_destroyer  }
+		command = { type = build_division which = armor value = tank_destroyer  }
+		command = { type = build_division which = armor value = tank_destroyer  }
+		command = { type = tc_mod value = 5 }
+		command = { type = industrial_modifier which = supplies value = 1 }
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = professional_army value = 1 }
+	}
+	action_b = {
+		ai_chance = 0
+		name = "ACTION_NAME_NO_NEED"
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329289] SOV | 1943 | Atomic Strike: Capital Devastated (Ataque nuclear sobre la capital)
+# Trigger event 329290 in events/SOV/SOV_43-46.txt
+# ----------------------------------------------------------------------------
+event = {
+       id = 329289
+       random = no
+       name = "EVT_SHARED_00772_NAME"
+       desc = "EVT_SHARED_00772_DESC"
+       style = 2
+	picture = "GLOBAL/nuke"
+       country = SOV
+       trigger = {
+          nuked = { country = SOV data = -1 where = 572 }
+          }
+       date = { day = 5 month = march year = 1943 }
+       offset = 9
+       deathdate = { day = 29 month = december year = 1963 }
+       action
+       = {
+       name = ACTION_NAME_OK
+       command = { type =   capital which = 663 }
+       command = { type =    dissent value = -1}
+          }
+    }
+
+# ----------------------------------------------------------------------------
+# [329290] SOV | 1943 | Atomic Strike: Capital Devastated (Ataque nuclear sobre la capital)
+# Triggered by event 329289 in events/SOV/SOV_43-46.txt
+# ----------------------------------------------------------------------------
+event = {
+       id = 329290
+       random = no
+       name = "EVT_SHARED_00772_NAME"
+       desc = "EVT_SHARED_00772_DESC"
+       style = 2
+	picture = "GLOBAL/nuke"
+       country = SOV
+       trigger = {
+          event = 329289
+          nuked = { country = SOV data = -1 where = 663 }
+          }
+       date = { day = 5 month = march year = 1943 }
+       offset = 9
+       deathdate = { day = 29 month = december year = 1963 }
+       action
+       = {
+       name = ACTION_NAME_OK
+       command = { type =   capital which = 668 }
+       command = { type =    dissent value = -1}
+          }
+    }
+
+# ----------------------------------------------------------------------------
+# [223122] SOV | 1943 | Soviet Guards Formations (Gvardiya) (Divisiones y Ejércitos de la Guardia Soviética (Gvardiya))
+# ----------------------------------------------------------------------------
+event = {
+	id = 223122
+	random = no
+	country = SOV
+	trigger = {
+		   control = { province = 572 data = SOV }
+		   control = { province = 553 data = SOV }
+		   control = { province = 663 data = SOV }
+		   atwar = yes
+}
+	name = "EVT_SHARED_00452_NAME"
+	desc = "EVT_SHARED_00452_DESC"
+	style = 2
+	picture = "SOV/soviet_guards_formations_gvardiya"
+	date = { day = 16 month = april year = 1943 }
+	offset = 2
+	deathdate = { day = 29 month = august year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "6th Guards Army" value = motorized when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+		command = { type = manpowerpool value = -13 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223123] SOV | 1943 | Soviet Guards Formations (Gvardiya) (Divisiones y Ejércitos de la Guardia Soviética (Gvardiya))
+# ----------------------------------------------------------------------------
+event = {
+	id = 223123
+	random = no
+	country = SOV
+	trigger = {
+		   control = { province = 572 data = SOV }
+		   control = { province = 553 data = SOV }
+		   control = { province = 663 data = SOV }
+		   atwar = yes
+}
+	name = "EVT_SHARED_00452_NAME"
+	desc = "EVT_SHARED_00452_DESC"
+	style = 2
+	picture = "SOV/soviet_guards_formations_gvardiya"
+	date = { day = 16 month = april year = 1943 }
+	offset = 2
+	deathdate = { day = 29 month = august year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "7th Guards Army" value = motorized when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+		command = { type = manpowerpool value = -13 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223120] SOV | 1943 | Soviet Guards Formations (Gvardiya) (Divisiones y Ejércitos de la Guardia Soviética (Gvardiya))
+# ----------------------------------------------------------------------------
+event = {
+	id = 223120
+	random = no
+	country = SOV
+	trigger = {
+		   control = { province = 572 data = SOV }
+		   control = { province = 553 data = SOV }
+		   control = { province = 663 data = SOV }
+		   atwar = yes
+}
+	name = "EVT_SHARED_00452_NAME"
+	desc = "EVT_SHARED_00452_DESC"
+	style = 2
+	picture = "SOV/soviet_guards_formations_gvardiya"
+	date = { day = 5 month = may year = 1943 }
+	offset = 2
+	deathdate = { day = 29 month = august year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "4th Guards Army" value = motorized when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+		command = { type = manpowerpool value = -13 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223244] SOV | 1943 | Ending the Continuation War (Fin de la Guerra de Continuación)
+# Trigger event 146089 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223244
+	country = SOV
+	name = EVT_SOV_223244_NAME
+	desc = EVT_SOV_223244_DESC
+	picture = "nwo/finnish_continuation_war"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				control = { province = 531 data = SOV }
+				control = { province = 521 data = SOV }
+				control = { province = 524 data = SOV }
+				}
+			control = { province = 525 data = SOV }
+			lost_national = { country = FIN value = 25 }
+			}
+		war = { country = FIN country = SOV }
+		NOT = {
+			flag = cold_war
+			flag = ww3
+		}
+	}
+	date = { day = 1 month = september year = 1943 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OFFER_PEACE
+		ai_chance = 97
+		command = { type = trigger which = 146089 }
+		}
+	action = {
+		name = EVT_SOV_223244_A
+		ai_chance = 3
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 35 }
+		command = { type = money value = -500 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [223127] SOV | 1943 | Soviet Guards Formations (Gvardiya) (Divisiones y Ejércitos de la Guardia Soviética (Gvardiya))
+# ----------------------------------------------------------------------------
+event = {
+	id = 223127
+	random = no
+	country = SOV
+	trigger = {
+		   control = { province = 572 data = SOV }
+		   control = { province = 553 data = SOV }
+		   control = { province = 663 data = SOV }
+		   atwar = yes
+}
+	name = "EVT_SHARED_00452_NAME"
+	desc = "EVT_SHARED_00452_DESC"
+	style = 2
+	picture = "SOV/soviet_guards_formations_gvardiya"
+	date = { day = 3 month = december year = 1943 }
+	offset = 2
+	deathdate = { day = 29 month = august year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "11th Guards Army" value = motorized when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+		command = { type = manpowerpool value = -13 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223074] SOV | 1944 | 1944 Allied Lend-Lease Convoys (Envíos de la Ley de Préstamo y Arriendo de 1944)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223074
+	random = no
+	country = SOV
+	trigger = {
+		OR = { flag = Lend_Lease_to_SOV2 flag = Lend_Lease_to_SOV3 }
+	}
+	name = EVT_SOV_223074_NAME
+	desc = EVT_SHARED_00249_DESC
+	style = 2
+	picture = "SOV/lend_lease1944"
+	date = { day = 1 month = january year = 1944 }
+	action = {
+		ai_chance = 40
+		name = EVT_SHARED_00350_A
+      	command = { type = add_division value = armor name = "2nd Armored Div" when = 1 }
+      	command = { type = add_division value = armor name = "3rd Armored Div" when = 1 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { trigger = { ai = no } type = money value = -200 }
+	}
+	action = {
+		ai_chance = 30
+		name = EVT_SHARED_00349_A
+      	command = { type = add_division value = motorized name = "3rd Motorized Div" when = 2 }
+      	command = { type = add_division value = mechanized name = "1st Mechanized Div" when = 2 }
+      	command = { type = add_division value = mechanized name = "2nd Mechanized Div" when = 1 }
+		command = { type = extra_tc value = 50 }
+		command = { trigger = { ai = no } type = supplies value = -250 }
+		command = { trigger = { ai = no } type = money value = -100 }
+	}
+	action = {
+		ai_chance = 30
+		name = EVT_SHARED_00350_B
+      	command = { type = add_division value = interceptor name = "2nd Interceptor Wing" when = 10 }
+      	command = { type = add_division value = interceptor name = "3rd Interceptor Wing" when = 10 }
+      	command = { type = add_division value = tactical_bomber name = "2nd Bomber Wing" when = 8 }
+		command = { trigger = { ai = no } type = supplies value = -500 }
+		command = { trigger = { ai = no } type = money value = -150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223112] SOV | 1944 | Tannu Tuva Joins the USSR (Integración de Tannu Tuvá en la URSS)
+# Triggered by event 329548 in events/Minors/TAN_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223112
+	random = no
+	country = SOV
+	name = EVT_SOV_223112_NAME
+	desc = EVT_SOV_223112_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 100
+		command = { type = inherit which = TAN value = 1 }
+		command = { type = addcore which = 1119 }
+		command = { type = dissent value = -1 }
+		command = { type = money value = 100 }
+		command = { type = relation which = CHI value = -10 }
+	}
+	action_b = {
+		ai_chance = 0
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = dissent value = -1 }
+		command = { type = money value = -200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223277] SOV | 1944 | Soviet Ultimatum Over Italy (Ultimátum soviético por Italia)
+# Triggered by event 316229 in events/USA/USA_43-48.txt
+# Trigger event 316230 in events/USA/USA_43-48.txt
+# Trigger event 166208 in events/ITA/ITA_40-50.txt
+# Trigger event 166209 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223277
+	country = SOV
+	name = EVT_SOV_223277_NAME
+	desc = EVT_SOV_223277_DESC
+	picture = "nwo/italian_communist_party"
+	style = 1
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 90
+		command = { type = trigger which = 316230 }
+		command = { type = trigger which = 166208 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_DEMANDS
+		ai_chance = 10
+		command = { type = dissent value = 7 }
+		command = { type = trigger which = 166209 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223285] SOV | 1944 | Occupation of Austria (Ocupación aliada de Austria)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223285
+	country = SOV
+	name = "EVT_SOV_223285_NAME"
+	desc = "EVT_SOV_223285_DESC"
+	picture = "nwo/soviet_occupation_of_austria"
+	style = 1
+	trigger = {
+		region = { region = "Austria" country = -1 data = 1 value = 100 }
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 100
+		command = { type = independence which = U16 value = 1 when = 0 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223286] SOV | 1944 | The Renner Provisional Government (El gobierno provisional de Renner)
+# Trigger event 108026 in events/Minors/AUS_44-90.txt
+# Trigger event 316245 in events/USA/USA_43-48.txt
+# Trigger event 324459 in events/GLOBAL/MULTI_44-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223286
+	country = SOV
+	name = "EVT_SOV_223286_NAME"
+	desc = "EVT_SOV_223286_DESC"
+	picture = "nwo/karl_renner"
+	style = 1
+	trigger = {
+		region = { region = "Austria" country = -1 data = 1 value = 0 }
+		NOT = { region = { region = "Austria" country = -1 data = 1 value = 100 } }
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 98
+		command = { type = independence which = AUS value = 1 when = 1 }
+		command = { type = sleepevent which = 324459 }
+		command = { type = trigger which = 108026 }
+		command = { type = trigger which = 316245 }
+	}
+	action = {
+		name = "EVT_SOV_223286_A"
+		ai_chance = 2
+		command = { type = independence which = U16 value = 1 when = 0 }
+		command = { type = make_puppet which = U16 }
+		command = { type = alliance which = U16 }
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 25 }
+		command = { type = sleepevent which = 316245 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223289] SOV | 1944 | Independence of Germany (Restauración soberana de Alemania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223289
+	country = SOV
+	name = "EVT_SOV_223289_NAME"
+	desc = "EVT_SOV_223289_DESC"
+	picture = "nwo/soviet_occupation_of_germany"
+	style = 1
+	trigger = {
+		area = { area = "Westphalen" country = -1 data = 1 value = 100 }
+		area = { area = "Hannover_Magdeburg" country = -1 data = 1 value = 100 }
+		area = { area = "Holstein_Mecklemburg" country = -1 data = 1 value = 100 }
+		area = { area = "Hessen" country = -1 data = 1 value = 100 }
+		area = { area = "Baden_Wurttemberg" country = -1 data = 1 value = 100 }
+		area = { area = "Bavaria" country = -1 data = 1 value = 100 }
+		area = { area = "Sachsen" country = -1 data = 1 value = 100 }
+		area = { area = "Rhineland" country = -1 data = 1 value = 100 }
+		control = { province = 156 data = -1 }
+		control = { province = 157 data = -1 }
+		control = { province = 160 data = -1 }
+		control = { province = 162 data = -1 }
+		control = { province = 163 data = -1 }
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 100
+		command = { type = independence which = DDR value = 1 when = 0 }
+		command = { type = make_puppet which = DDR }
+		command = { type = secedearea which = DDR value = "Silesia" when = 1 }
+		command = { type = secedeprovince which = DDR value = 155 when = 1 }
+		command = { type = secedeprovince which = DDR value = 161 when = 1 }
+		command = { type = secedeprovince which = DDR value = 158 when = 1 }
+		command = { type = secedeprovince which = DDR value = 159 when = 1 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223290] SOV | 1944 | Establishment of Occupation Zones (Establecimiento de zonas de ocupación)
+# Trigger event 260006 in events/AI/Minors_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223290
+	country = SOV
+	name = "EVT_SOV_223290_NAME"
+	desc = "EVT_SOV_223290_DESC"
+	picture = "nwo/occupation_zones_in_germany"
+	style = 1
+	trigger = {
+		NOT = { exists = U25 }
+		OR = {
+			area = { area = "Westphalen" country = -1 data = 1 value = 0 }
+			area = { area = "Hannover_Magdeburg" country = -1 data = 1 value = 0 }
+			area = { area = "Holstein_Mecklemburg" country = -1 data = 1 value = 0 }
+			area = { area = "Hessen" country = -1 data = 1 value = 0 }
+			area = { area = "Baden_Wurttemberg" country = -1 data = 1 value = 0 }
+			area = { area = "Bavaria" country = -1 data = 1 value = 0 }
+			area = { area = "Sachsen" country = -1 data = 1 value = 0 }
+			area = { area = "Rhineland" country = -1 data = 1 value = 0 }
+			control = { province = 156 data = -1 }
+			control = { province = 157 data = -1 }
+			control = { province = 160 data = -1 }
+			control = { province = 162 data = -1 }
+			control = { province = 163 data = -1 }
+		}
+		NOT = {
+			AND = {
+				area = { area = "Westphalen" country = -1 data = 1 value = 100 }
+				area = { area = "Hannover_Magdeburg" country = -1 data = 1 value = 100 }
+				area = { area = "Holstein_Mecklemburg" country = -1 data = 1 value = 100 }
+				area = { area = "Hessen" country = -1 data = 1 value = 100 }
+				area = { area = "Baden_Wurttemberg" country = -1 data = 1 value = 100 }
+				area = { area = "Bavaria" country = -1 data = 1 value = 100 }
+				area = { area = "Sachsen" country = -1 data = 1 value = 100 }
+				area = { area = "Rhineland" country = -1 data = 1 value = 100 }
+				control = { province = 156 data = -1 }
+				control = { province = 157 data = -1 }
+				control = { province = 160 data = -1 }
+				control = { province = 162 data = -1 }
+				control = { province = 163 data = -1 }
+			}
+		}
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = U25 value = 1 when = 0 }
+		command = { type = make_puppet which = U25 }
+		command = { type = trigger which = 260006 }
+		command = { type = secedearea which = U25 value = "Silesia" when = 1 }
+		command = { type = secedeprovince which = U25 value = 155 when = 1 }
+		command = { type = secedeprovince which = U25 value = 161 when = 1 }
+		command = { type = secedeprovince which = U25 value = 158 when = 1 }
+		command = { type = secedeprovince which = U25 value = 159 when = 1 }
+		command = { type = guarantee which = USA where = U25 }
+		command = { type = guarantee which = ENG where = U25 }
+		command = { type = guarantee which = FRA where = U25 }
+		command = { type = guarantee which = SOV where = U25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223299] SOV | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223299
+	country = SOV
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 30011 }
+		command = { type = headofgovernment which = 30002 }
+		command = { type = chiefofstaff which = 30320 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223347] SOV | 1944 | Sergei Korolev and the Soviet Rocket Program (Serguéi Koroliov y el programa espacial)
+# Triggered by event 207040 in events/AI/REB_AI_14-52.txt
+# Triggered by event 207041 in events/AI/REB_AI_14-52.txt
+# Triggered by event 207042 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+      id = 223347
+      country = SOV
+	picture = "nwo/v2_launch"
+      trigger = {
+             flag = cold_war
+      }
+      name = EVT_SOV_223347_NAME
+      desc = EVT_SOV_223347_DESC
+      style = 1
+      action = {
+            name = ACTION_NAME_OK
+            command = { type = setflag which = SOV_rocket_engineers }
+      }
+}
+
+# ----------------------------------------------------------------------------
+# [223133] SOV | 1944 | Soviet Guards Formations (Gvardiya) (Divisiones y Ejércitos de la Guardia Soviética (Gvardiya))
+# ----------------------------------------------------------------------------
+event = {
+	id = 223133
+	random = no
+	country = SOV
+	trigger = {
+		   control = { province = 572 data = SOV }
+		   control = { province = 553 data = SOV }
+		   control = { province = 663 data = SOV }
+		   atwar = yes
+}
+	name = "EVT_SHARED_00452_NAME"
+	desc = "EVT_SHARED_00452_DESC"
+	style = 2
+	picture = "GLOBAL/soviet_guards_formations_gvardiya"
+	date = { day = 2 month = january year = 1944 }
+	offset = 2
+	deathdate = { day = 29 month = august year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "6th Guards Tank Army" value = armor when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -400 }
+		command = { type = manpowerpool value = -8 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223125] SOV | 1944 | Soviet Guards Formations (Gvardiya) (Divisiones y Ejércitos de la Guardia Soviética (Gvardiya))
+# ----------------------------------------------------------------------------
+event = {
+	id = 223125
+	random = no
+	country = SOV
+	trigger = {
+		   control = { province = 572 data = SOV }
+		   control = { province = 553 data = SOV }
+		   control = { province = 663 data = SOV }
+		   atwar = yes
+}
+	name = "EVT_SHARED_00452_NAME"
+	desc = "EVT_SHARED_00452_DESC"
+	style = 2
+	picture = "SOV/soviet_guards_formations_gvardiya"
+	date = { day = 12 month = january year = 1944 }
+	offset = 2
+	deathdate = { day = 29 month = august year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "9th Guards Army" value = motorized when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+		command = { type = manpowerpool value = -13 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223126] SOV | 1944 | Soviet Guards Formations (Gvardiya) (Divisiones y Ejércitos de la Guardia Soviética (Gvardiya))
+# ----------------------------------------------------------------------------
+event = {
+	id = 223126
+	random = no
+	country = SOV
+	trigger = {
+		   control = { province = 572 data = SOV }
+		   control = { province = 553 data = SOV }
+		   control = { province = 663 data = SOV }
+		   atwar = yes
+}
+	name = "EVT_SHARED_00452_NAME"
+	desc = "EVT_SHARED_00452_DESC"
+	style = 2
+	picture = "SOV/soviet_guards_formations_gvardiya"
+	date = { day = 3 month = march year = 1944 }
+	offset = 2
+	deathdate = { day = 29 month = august year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_division which = "10th Guards Army" value = motorized when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+		command = { type = manpowerpool value = -13 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223115] SOV | 1945 | Integration of Eastern Polish Territories (Integración de provincias polacas en la URSS)
+# Triggered by event 150048 in events/GER/GER_33-36.txt
+# Triggered by event 150051 in events/GER/GER_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223115
+	random = no
+	country = SOV
+	trigger = {
+		OR = {
+			event = { id = 150048 days = 2160 }
+			event = { id = 150051 days = 2160 }
+		}
+		control = { province = 256 data = -1 }
+		control = { province = 253 data = -1 }
+		control = { province = 255 data = -1 }
+		control = { province = 251 data = -1 }
+		control = { province = 257 data = -1 }
+		control = { province = 258 data = -1 }
+		control = { province = 240 data = -1 }
+		control = { province = 241 data = -1 }
+		control = { province = 242 data = -1 }
+		control = { province = 244 data = -1 }
+		control = { province = 247 data = -1 }
+		control = { province = 245 data = -1 }
+		control = { province = 238 data = -1 }
+		control = { province = 248 data = -1 }
+		control = { province = 249 data = -1 }
+	}
+	name = "EVT_SOV_223115_NAME"
+	desc = "EVT_SOV_223115_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	date = { day = 0 month = january year = 1945 }
+	offset = 151
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		trigger = {
+			exists = U32
+			puppet = { country = U32 country = SOV }
+			OR = {
+				control = { province = 254 data = -1 }
+				control = { province = 250 data = -1 }
+				control = { province = 239 data = -1 }
+			}
+		}
+		ai_chance = 99
+		name = "EVT_SOV_223115_A"
+		command = { type = addcore which = 256 }
+		command = { type = addcore which = 253 }
+		command = { type = addcore which = 255 }
+		command = { type = addcore which = 251 }
+		command = { type = addcore which = 257 }
+		command = { type = addcore which = 258 }
+		command = { type = addcore which = 240 }
+		command = { type = addcore which = 241 }
+		command = { type = addcore which = 242 }
+		command = { type = addcore which = 244 }
+		command = { type = addcore which = 247 }
+		command = { type = addcore which = 245 }
+		command = { type = addcore which = 238 }
+		command = { type = addcore which = 248 }
+		command = { type = addcore which = 249 }
+		command = { trigger = { OR = { control = { province = 182 data = -1 } owned = { province = 182 data = -1 } } } type = addcore which = 182 }
+		command = { trigger = { OR = { control = { province = 184 data = -1 } owned = { province = 184 data = -1 } } } type = addcore which = 184 }
+		command = { trigger = { OR = { control = { province = 261 data = -1 } owned = { province = 261 data = -1 } } } type = addcore which = 261 }
+		command = { trigger = { OR = { control = { province = 213 data = -1 } owned = { province = 213 data = -1 } } } type = addcore which = 213 }
+		command = { trigger = { OR = { control = { province = 215 data = -1 } owned = { province = 215 data = -1 } } } type = addcore which = 215 }
+		command = { trigger = { control = { province = 254 data = -1 } } type = removeclaim which = 254 }
+		command = { trigger = { control = { province = 239 data = -1 } } type = removeclaim which = 250 }
+		command = { trigger = { control = { province = 250 data = -1 } } type = removeclaim which = 239 }
+		command = { trigger = { control = { province = 254 data = -1 } } type = secedeprovince which = U32 value = 254 when = 1 }
+		command = { trigger = { control = { province = 250 data = -1 } } type = secedeprovince which = U32 value = 250 when = 1 }
+		command = { trigger = { control = { province = 239 data = -1 } } type = secedeprovince which = U32 value = 239 when = 1 }
+	}
+	action = {
+		trigger = {
+			NOT = { exists = U32 }
+			control = { province = 232 data = -1 }
+			OR = {
+				control = { province = 254 data = -1 }
+				control = { province = 250 data = -1 }
+				control = { province = 239 data = -1 }
+			}
+		}
+		ai_chance = 99
+		name = "EVT_SOV_223115_A"
+		command = { type = addcore which = 256 }
+		command = { type = addcore which = 253 }
+		command = { type = addcore which = 255 }
+		command = { type = addcore which = 251 }
+		command = { type = addcore which = 257 }
+		command = { type = addcore which = 258 }
+		command = { type = addcore which = 240 }
+		command = { type = addcore which = 241 }
+		command = { type = addcore which = 242 }
+		command = { type = addcore which = 244 }
+		command = { type = addcore which = 247 }
+		command = { type = addcore which = 245 }
+		command = { type = addcore which = 238 }
+		command = { type = addcore which = 248 }
+		command = { type = addcore which = 249 }
+		command = { trigger = { OR = { control = { province = 182 data = -1 } owned = { province = 182 data = -1 } } } type = addcore which = 182 }
+		command = { trigger = { OR = { control = { province = 184 data = -1 } owned = { province = 184 data = -1 } } } type = addcore which = 184 }
+		command = { trigger = { OR = { control = { province = 261 data = -1 } owned = { province = 261 data = -1 } } } type = addcore which = 261 }
+		command = { trigger = { OR = { control = { province = 213 data = -1 } owned = { province = 213 data = -1 } } } type = addcore which = 213 }
+		command = { trigger = { OR = { control = { province = 215 data = -1 } owned = { province = 215 data = -1 } } } type = addcore which = 215 }
+		command = { trigger = { control = { province = 254 data = -1 } } type = removeclaim which = 254 }
+		command = { trigger = { control = { province = 239 data = -1 } } type = removeclaim which = 250 }
+		command = { trigger = { control = { province = 250 data = -1 } } type = removeclaim which = 239 }
+		command = { type = independence which = U32 value = 1}
+		command = { type = make_puppet which = U32 }
+		command = { trigger = { control = { province = 254 data = -1 } } type = secedeprovince which = U32 value = 254 when = 1 }
+		command = { trigger = { control = { province = 250 data = -1 } } type = secedeprovince which = U32 value = 250 when = 1 }
+		command = { trigger = { control = { province = 239 data = -1 } } type = secedeprovince which = U32 value = 239 when = 1 }
+	}
+	action = {
+		name = "EVT_SOV_223115_B"
+		ai_chance = 1
+		command = { type = addcore which = 256 }
+		command = { type = addcore which = 253 }
+		command = { type = addcore which = 255 }
+		command = { type = addcore which = 251 }
+		command = { type = addcore which = 257 }
+		command = { type = addcore which = 258 }
+		command = { type = addcore which = 240 }
+		command = { type = addcore which = 241 }
+		command = { type = addcore which = 242 }
+		command = { type = addcore which = 244 }
+		command = { type = addcore which = 247 }
+		command = { type = addcore which = 245 }
+		command = { type = addcore which = 238 }
+		command = { type = addcore which = 248 }
+		command = { type = addcore which = 249 }
+		command = { trigger = { OR = { control = { province = 182 data = -1 } owned = { province = 182 data = -1 } } } type = addcore which = 182 }
+		command = { trigger = { OR = { control = { province = 184 data = -1 } owned = { province = 184 data = -1 } } } type = addcore which = 184 }
+		command = { trigger = { OR = { control = { province = 261 data = -1 } owned = { province = 261 data = -1 } } } type = addcore which = 261 }
+		command = { trigger = { OR = { control = { province = 213 data = -1 } owned = { province = 213 data = -1 } } } type = addcore which = 213 }
+		command = { trigger = { OR = { control = { province = 215 data = -1 } owned = { province = 215 data = -1 } } } type = addcore which = 215 }
+		command = { trigger = { OR = { control = { province = 254 data = -1 } owned = { province = 254 data = -1 } } } type = addcore which = 254 }
+		command = { trigger = { OR = { control = { province = 250 data = -1 } owned = { province = 250 data = -1 } } } type = addcore which = 250 }
+		command = { trigger = { OR = { control = { province = 239 data = -1 } owned = { province = 239 data = -1 } } } type = addcore which = 239 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223207] SOV | 1945 | Support for Delaying Japanese Withdrawal (Apoyo a retrasar la retirada japonesa)
+# Triggered by event 124162 in events/CHI/CHI_37-45.txt
+# Triggered by event 124163 in events/CHI/CHI_37-45.txt
+# Trigger event 124163 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223207
+	country = SOV
+	name = EVT_SOV_223207_NAME
+	desc = EVT_SOV_223207_DESC
+	picture = "nwo/ija_withdrawal"
+	style = 1
+	trigger = {
+		event = 124162
+		NOT = { event = 124163 }
+		NOT = { war = { country = CHI country = CHC } }
+		exists = CHI
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = "EVT_SOV_223207_A"
+		ai_chance = 80
+		command = { type = trigger which = 124163 }
+	}
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 20
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223209] SOV | 1945 | US Alliance with Nationalist China (Alianza de EE. UU. con la China Nacionalista)
+# Triggered by event 124167 in events/CHI/CHI_37-45.txt
+# Trigger event 124172 in events/CHI/CHI_37-45.txt
+# Trigger event 316200 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223209
+	country = SOV
+	name = EVT_SOV_223209_NAME
+	desc = EVT_SOV_223209_DESC
+	picture = "nwo/kmt_troops_in_shermans"
+	style = 1
+	trigger = {
+		flag = cold_war_pacific
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 55
+		command = { type = relation which = USA value = 50 }
+		command = { type = relation which = CHI value = 50 }
+		command = { type = relation which = CHC value = -200 }
+		command = { type = setflag which = ccw_soviet_nonintervention }
+		command = { type = end_guarantee which = CHC }
+		command = { type = trigger which = 124172 }
+	}
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 45
+		command = { type = relation which = USA value = -100 }
+		command = { type = relation which = CHI value = -100 }
+		command = { type = relation which = CHC value = 50 }
+		command = { type = trigger which = 316200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223210] SOV | 1945 | American Defiance of the Ultimatum (Washington desafía el ultimátum)
+# Triggered by event 316200 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223210
+	country = SOV
+	name = EVT_SOV_223210_NAME
+	desc = EVT_SOV_223210_DESC
+	picture = "nwo/kmt_troops_in_shermans"
+	style = 1
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 60
+		command = { type = war which = USA }
+		command = { type = alliance which = CHC }
+	}
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 40
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = dissent value = 25 }
+		command = { type = setflag which = ccw_soviet_nonintervention }
+		command = { type = end_guarantee which = CHC }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223245] SOV | 1945 | Operation Osoaviakhim (Operación Osoaviajim)
+# Triggered by event 207040 in events/AI/REB_AI_14-52.txt
+# Triggered by event 207041 in events/AI/REB_AI_14-52.txt
+# Triggered by event 207042 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223245
+	country = SOV
+	name = EVT_SOV_223245_NAME
+	desc = EVT_SOV_223245_DESC
+	picture = "nwo/operation_ossovioakhim"
+	style = 1
+	trigger = {
+		flag = cold_war
+		OR = {
+			event = 207040
+			event = 207041
+			event = 207042
+		}
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_SOV_223245_A
+		trigger = { event = 207040 }
+		command = { type = research_mod value = 10 }
+	}
+	action = {
+		name = EVT_SOV_223245_B
+		trigger = { event = 207042 }
+		command = { type = research_mod value = 5 }
+	}
+	action = {
+		name = EVT_SOV_223245_C
+		trigger = { event = 207041 }
+		command = { type = research_mod value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223280] SOV | 1945 | Nationalist China Approaches Moscow (Propuesta china a Moscú)
+# Triggered by event 124191 in events/CHI/CHI_37-45.txt
+# Trigger event 124192 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223280
+	country = SOV
+	name = EVT_SOV_223280_NAME
+	desc = EVT_SOV_223280_DESC
+	picture = "nwo/chiang_smiling"
+	style = 1
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 75
+		command = { type = dissent value = 10 }
+		command = { type = alliance which = CHI }
+		command = { type = relation which = CHI value = 250 }
+		command = { type = trigger which = 124192 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_DEMANDS
+		ai_chance = 25
+		command = { type = relation which = CHI value = -150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223281] SOV | 1945 | China Breaks Soviet Pact (China rompe el pacto soviético)
+# Triggered by event 124194 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223281
+	country = SOV
+	name = EVT_SOV_223281_NAME
+	desc = EVT_SOV_223281_DESC
+	picture = "nwo/kmt_unitedstates"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 80
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 15 }
+		command = { type = relation which = CHI value = -200 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 20
+		command = { type = dissent value = 20 }
+		command = { type = war which = CHI }
+		command = { type = relation which = CHI value = -200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223297] SOV | 1945 | Soviet Acquisition of Sinkiang (Anexión soviética de Sinkiang)
+# Triggered by event 329943 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223297
+	country = SOV
+	name = EVT_SOV_223297_NAME
+	desc = EVT_SOV_223297_DESC
+	picture = "nwo/sinkiang"
+	style = 1
+	trigger = {
+		exists = SIK
+		event = 329943
+	}
+	date = { day = 0 month = august year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 60
+		command = { type = inherit which = SIK value = 0 }
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 25 }
+	}
+	action = {
+		name = EVT_SOV_223297_A
+		ai_chance = 40
+		command = { type = relation which = CHI value = 100 }
+		command = { type = relation which = CHC value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223271] SOV | 1945 | Proclamation of the Republic of Mahabad (Proclamación de la República de Mahabad)
+# Trigger event 171002 in events/Minors/KUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223271
+	country = SOV
+	name = EVT_SOV_223271_NAME
+	desc = EVT_SOV_223271_DESC
+	picture = "nwo/republic_of_mahabad"
+	style = 1
+	trigger = {
+		flag = cold_war
+		control = { province = 1083 data = -1 }
+	}
+	date = { day = 0 month = december year = 1945 }
+	offset = 30
+	deathdate = { day = 29 month = march year = 1946 }
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 70
+		command = { type = independence which = KUR value = 1 }
+		command = { type = make_puppet which = KUR }
+		command = { type = relation which = PER value = -100 }
+	}
+	action = {
+		name = EVT_SOV_223271_A
+		ai_chance = 30
+		command = { type = dissent value = 2 }
+		command = { type = relation which = PER value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223247] SOV | 1946 | American Deterrence in Greece (Disuasión estadounidense en Grecia)
+# Triggered by event 316219 in events/USA/USA_43-48.txt
+# Trigger event 316220 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223247
+	country = SOV
+	name = EVT_SOV_223247_NAME
+	desc = EVT_SOV_223247_DESC
+	picture = "nwo/greek_civil_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 65
+		command = { type = dissent value = 2 }
+		command = { type = sleepevent which = 268008 }
+	}
+	action = {
+		name = EVT_SOV_223247_A
+		ai_chance = 35
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 316220 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223248] SOV | 1946 | Western Ultimatum on Greece (Ultimátum occidental sobre Grecia)
+# Triggered by event 329854 in events/USA/USA_43-48.txt
+# Trigger event 316221 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223248
+	country = SOV
+	name = EVT_SOV_223248_NAME
+	desc = EVT_SOV_223248_DESC
+	picture = "nwo/greek_civil_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 98
+		command = { type = dissent value = 2 }
+		command = { type = peace which = GRE value = 0 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_DEMANDS
+		ai_chance = 2
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 316221 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223249] SOV | 1946 | US Rejection of the Soviet Ultimatum (Washington ignora el ultimátum de Grecia)
+# Triggered by event 316222 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223249
+	country = SOV
+	name = EVT_SOV_223249_NAME
+	desc = EVT_SOV_223249_DESC
+	picture = "nwo/greek_civil_war"
+	style = 1
+	action = {
+		name = EVT_SOV_223249_A
+		ai_chance = 80
+		command = { type = dissent value = 4 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 20
+		command = { type = alliance which = U33 }
+		command = { type = war which = USA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223273] SOV | 1946 | US Ultimatum on the Iran Crisis (Ultimátum estadounidense sobre la Crisis de Irán)
+# Triggered by event 316225 in events/USA/USA_43-48.txt
+# Trigger event 171003 in events/Minors/KUR.txt
+# Trigger event 316226 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223273
+	country = SOV
+	name = EVT_SOV_223273_NAME
+	desc = EVT_SOV_223273_DESC
+	picture = "nwo/iran_crisis_1946"
+	style = 1
+	action = {
+		name = EVT_SOV_223273_A
+		ai_chance = 80
+		command = { type = dissent value = 3 }
+		command = { type = trigger which = 171003 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_DEMANDS
+		ai_chance = 20
+		command = { type = relation which = PER value = -100 }
+		command = { type = relation which = KUR value = 200 }
+		command = { type = trigger which = 316226 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223274] SOV | 1946 | Consolidation of Soviet Influence in Kurdistan (Afianzamiento soviético en el Kurdistán)
+# Triggered by event 316225 in events/USA/USA_43-48.txt
+# Triggered by event 316226 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223274
+	country = SOV
+	name = EVT_SOV_223274_NAME
+	desc = EVT_SOV_223274_DESC
+	picture = "nwo/iran_crisis_1946"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = alliance which = KUR }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223300] SOV | 1946 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223300
+	country = SOV
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = ministerofintelligence which = 30081 }
+		command = { type = chiefofstaff which = 30041 }
+		command = { type = chiefofarmy which = 30320 }
+		command = { type = chiefofnavy which = 30214 }
+		command = { type = chiefofair which = 30056 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329855] SOV | 1946 | Soviet Response to US Action in Greece (Respuesta soviética a la intervención de EE. UU. en Grecia)
+# Trigger event 316222 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329855
+	country = SOV
+	name = EVT_SOV_329855_NAME
+	desc = EVT_SOV_329855_DESC
+	picture = "nwo/greek_civil_war"
+	style = 1
+	trigger = {
+		war = { country = GRE country = U33 }
+		war = { country = USA country = U33 }
+		NOT = {
+			alliance = { country = U33 country = SOV }
+			war = { country = SOV country = GRE }
+		}
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 60
+		command = { type = trigger which = 316222 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 40
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329933] SOV | 1946 | Soviet Reparations in East Germany (Explotación económica soviética en Alemania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329933
+	country = SOV
+	name = EVT_SOV_329933_NAME
+	desc = EVT_SOV_329933_DESC
+	picture = "nwo/soviet_occupation_of_germany"
+	style = 1
+	trigger = {
+		exists = U25
+		region = { region = "Germany" country = U25 data = 1 value = 20 }
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_SOV_329933_A
+		ai_chance = 60
+		command = { type = industrial_modifier which = total value = 8 }
+		command = { type = setflag which = soviet_occupation_of_germany_hard }
+		command = { type = dissent value = 10 }
+	}
+	action = {
+		name = EVT_SOV_329933_B
+		ai_chance = 30
+		command = { type = industrial_modifier which = total value = 4 }
+		command = { type = setflag which = soviet_occupation_of_germany_medium }
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		name = EVT_SOV_329933_C
+		ai_chance = 10
+		command = { type = setflag which = soviet_occupation_of_germany_light }
+		command = { type = money value = 1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329996] SOV | 1946 | UN Resolution on the Chinese Civil War (Resolución de la ONU sobre la Guerra Civil China)
+# Triggered by event 329995 in events/AI/REB_AI_14-52.txt
+# Trigger event 124228 in events/CHI/CHI_45-75.txt
+# Trigger event 124229 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329996
+	country = SOV
+	name = EVT_SHARED_00958_NAME
+	desc = EVT_SHARED_00958_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_VETO
+		trigger = {
+			NOT = { alliance = { country = CHI } }
+		}
+		ai_chance = 97
+		command = { type = setflag which = un_ccw_totalveto }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		trigger = {
+			NOT = { war = { country = CHI } }
+			NOT = { alliance = { country = CHC } }
+		}
+		ai_chance = 3
+		command = { type = setflag which = un_ccw_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_INTERVENE
+		trigger = {
+			NOT = { flag = un_ccw_interventionveto }
+			NOT = { war = { country = CHI } }
+			NOT = { alliance = { country = CHC } }
+		}
+		ai_chance = 0
+		command = { type = money value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223272] SOV | 1946 | Soviet Presence in Northern Iran (Presencia soviética en el norte de Irán)
+# Triggered by event 171002 in events/Minors/KUR.txt
+# Trigger event 201027 in events/Minors/PER.txt
+# Trigger event 171003 in events/Minors/KUR.txt
+# Trigger event 316225 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223272
+	country = SOV
+	name = EVT_SOV_223272_NAME
+	desc = EVT_SOV_223272_DESC
+	picture = "nwo/republic_of_mahabad"
+	style = 1
+	trigger = {
+		event = 171002
+		exists = KUR
+		exists = PER
+	}
+	date = { day = 0 month = march year = 1946 }
+	offset = 30
+	deathdate = { day = 29 month = june year = 1946 }
+	action = {
+		name = EVT_SOV_223272_A
+		ai_chance = 89
+		command = { type = relation which = PER value = 50 }
+		command = { type = relation which = KUR value = -200 }
+		command = { type = trigger which = 171003 }
+		command = { type = sleepevent which = 223276 }
+	}
+	action = {
+		name = EVT_SOV_223272_B
+		ai_chance = 11
+		command = { type = relation which = PER value = -100 }
+		command = { type = relation which = KUR value = 200 }
+		command = { type = trigger which = 316225 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223006] SOV | 1946 | Retirement of Mikhail Kalinin (Retiro de Mijaíl Kalinin)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223006
+	random = no
+	country = SOV
+	style = 2
+	trigger = {
+		headofstate = 30001
+		}
+	date = { year = 1946 month = may day = 1 }
+	name = "EVT_SOV_223006_NAME"
+	desc = "EVT_SOV_223006_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 30013 }
+		command = { type = sleepminister which = 30001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [223287] SOV | 1946 | Soviet Reparations Policy in Austria (Explotación económica soviética en Austria)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223287
+	country = SOV
+	name = "EVT_SOV_223287_NAME"
+	desc = "EVT_SOV_223287_DESC"
+	picture = "nwo/usia"
+	style = 1
+	trigger = {
+		flag = neutral_austria
+	}
+	date = { day = 1 month = june year = 1946 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "EVT_SOV_223287_A"
+		command = { type = dissent value = -3 }
+		command = { type = belligerence value = 10 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = relation which = AUS value = -100 }
+	}
+	action = {
+		name = "EVT_SOV_223287_B"
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 20 }
+		command = { type = industrial_modifier which = total value = 4 }
+		command = { type = relation which = AUS value = -250 }
+	}
+	action = {
+		name = "EVT_SOV_223287_C"
+		command = { type = belligerence value = -10 }
+		command = { type = relation which = AUS value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223275] SOV | 1946 | Evacuation of the Persian Corridor (Evacuación del Corredor Persa)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223275
+	country = SOV
+	name = EVT_SOV_223275_NAME
+	desc = EVT_SOV_223275_DESC
+	picture = "nwo/persian_corridor"
+	style = 1
+	trigger = {
+		flag = cold_war
+		NOT = { exists = KUR }
+		exists = PER
+		OR = {
+			control = { province = 1082 data = -1 }
+			control = { province = 1083 data = -1 }
+			control = { province = 1081 data = -1 }
+			control = { province = 1080 data = -1 }
+			control = { province = 1092 data = -1 }
+		}
+		NOT = { war = { country = KUR country = PER } }
+	}
+	date = { day = 0 month = july year = 1946 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = PER value = 1082 when = 1 }
+		command = { type = secedeprovince which = PER value = 1083 when = 1 }
+		command = { type = secedeprovince which = PER value = 1081 when = 1 }
+		command = { type = secedeprovince which = PER value = 1080 when = 1 }
+		command = { type = secedeprovince which = PER value = 1092 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223276] SOV | 1946 | Soviet Consolidation in Northern Iran (Consolidación soviética en el norte de Irán)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223276
+	country = SOV
+	name = EVT_SOV_223276_NAME
+	desc = EVT_SOV_223276_DESC
+	picture = "nwo/persian_corridor"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = KUR
+		exists = PER
+		OR = {
+			control = { province = 1082 data = -1 }
+			control = { province = 1083 data = -1 }
+			control = { province = 1081 data = -1 }
+		}
+		NOT = { war = { country = KUR country = PER } }
+	}
+	date = { day = 0 month = july year = 1946 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = KUR value = 1082 when = 1 }
+		command = { type = secedeprovince which = KUR value = 1083 when = 1 }
+		command = { type = secedeprovince which = KUR value = 1081 when = 1 }
+	}
+}

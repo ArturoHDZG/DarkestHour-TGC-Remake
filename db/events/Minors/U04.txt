@@ -1,0 +1,182 @@
+# ============================================================================
+# File: events/Minors/U04.txt (7 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [239006] U04 | 1933 | Franco-Syrian Treaty (Tratado franco-sirio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 239006
+	random = no
+	country = U04
+	trigger = {
+			exists = U04
+			}
+	date = { day = 15 month = november year = 1933 }
+	name = "EVT_SHARED_00653_NAME"
+	desc = "EVT_SHARED_00653_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { type = relation which = FRA value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [239002] U04 | 1936 | Iraqi Coup d'État (Golpe de Estado en Irak)
+# Triggered by event 164013 in events/Minors/IRQ.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 239002
+	random = no
+	country = U04
+	name = EVT_SHARED_00605_NAME
+	desc = EVT_SHARED_00605_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		ai_chance = 10
+		name = ACTION_NAME_JOIN_AXIS
+		command = { type = end_puppet }
+		command = { type = leave_alliance }
+		command = { type = relation which = ENG value = -40 }
+		command = { type = relation which = IRQ value = 40 }
+		command = { type = relation which = GER value = 40 }
+		command = { type = domestic which = interventionism value = 2 }
+		command = { type = alliance which = IRQ }
+		command = { type = country which = SYR }
+	}
+	action = {
+		ai_chance = 80
+		name = ACTION_NAME_SEND_AID
+		command = { type = relation which = ENG value = -30 }
+		command = { type = relation which = IRQ value = 30 }
+		command = { type = relation which = GER value = 30 }
+		command = { type = access which = GER }
+		command = { type = access which = IRQ }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		ai_chance = 10
+		name = ACTION_NAME_NEUTRAL
+		command = { type = relation which = IRQ value = -25 }
+		command = { type = relation which = GER value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [239003] U04 | 1936 | Dissolution of Nationalist Party in Syria (Disolución del Partido Nacionalista en Siria)
+# Trigger event 147040 in events/FRA/FRA_31-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 239003
+	random = no
+	country = U04
+	trigger = {
+			exists = U04
+			}
+	date = { day = 9 month = february year = 1936 }
+	name = "EVT_SHARED_00632_NAME"
+	desc = "EVT_SHARED_00632_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 2 }
+		command = { type = relation which = FRA value = -10 }
+		command = { type = trigger which = 147040 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [239004] U04 | 1937 | Franco-Turkish Agreement on Alexandretta (Acuerdo franco-turco en Alejandreta)
+# Triggered by event 235005 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 239004
+	random = no
+	country = U04
+	name = "EVT_SHARED_00635_NAME"
+	desc = "EVT_SHARED_00635_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+		command = { type = relation which = TUR value = 5 }
+		command = { type = dissent value = -2 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [239005] U04 | 1937 | Kurdish Insurrection in Syria (La insurrección kurda en Siria)
+# Triggered by event 147050 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 239005
+	random = no
+	country = U04
+	name = "EVT_SHARED_00637_NAME"
+	desc = "EVT_SHARED_00637_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [239000] U04 | 1938 | Proclamation of the Hatay State (Proclamación del Estado de Hatay)
+# Trigger event 147031 in events/FRA/FRA_36-38.txt
+# Trigger event 235002 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 239000
+	random = no
+	country = U04
+	trigger = {
+		NOT = { exists = U39 }
+		OR ={
+			control = { province = 1054 data = U04 }
+		}
+	}
+	name = EVT_SHARED_00528_NAME
+	desc = EVT_SHARED_00528_DESC
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 7 month = september year = 1938 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = U39 value = 1 when = 1 }
+		command = { type = guarantee which = TUR where = U39 }
+		command = { type = trigger which = 147031 }
+		command = { type = trigger which = 235002 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [239001] U04 | 1939 | Annexation of Hatay by Turkey (Anexión de Hatay por Turquía)
+# Triggered by event 235003 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 239001
+	random = no
+	country = U04
+	name = EVT_SHARED_00529_NAME
+	desc = EVT_SHARED_00529_DESC
+	style = 2
+	picture = "GLOBAL/protestalexanderetta"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {  }
+	}
+}

@@ -1,0 +1,128 @@
+# ============================================================================
+# File: events/Minors/U17.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [252001] U17 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 252002 in events/Minors/U17.txt
+# Trigger event 110063 in events/Minors/BEL.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 252001
+   country = U17
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = BEL
+            NOT = { ai = BEL }
+            NOT = { ai = U17 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = BEL
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = BEL } }
+      command = { type = country which = BEL }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = BEL
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U17 }
+               control = { province = 116 data = -1 }
+            }
+         }
+         type = trigger which = 252002
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = BEL }
+               NOT = { control = { province = 116 data = -1 } }
+            }
+         }
+         type = trigger which = 110063
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = BEL
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [252002] U17 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 110062 in events/Minors/BEL.txt
+# Triggered by event 252001 in events/Minors/U17.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 252002
+   country = U17
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = BEL value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [252000] U17 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 252000
+	country = U17
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 900002 }
+		command = { type = headofgovernment which = 900017 }
+		command = { type = foreignminister which = 900018 }
+		command = { type = armamentminister which = 900027 }
+		command = { type = ministerofsecurity which = 900031 }
+		command = { type = ministerofintelligence which = 900033 }
+		command = { type = chiefofstaff which = 900008 }
+		command = { type = chiefofarmy which = 900037 }
+		command = { type = chiefofnavy which = 900010 }
+		command = { type = chiefofair which = 900011 }
+	}
+}

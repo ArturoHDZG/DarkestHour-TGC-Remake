@@ -1,0 +1,140 @@
+# ============================================================================
+# File: events/Minors/U35.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [270000] U35 | 1940 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 270001 in events/Minors/U35.txt
+# Trigger event 270002 in events/Minors/U35.txt
+# Trigger event 324438 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 270000
+   country = U35
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+			OR = {
+				exists = SPR
+				exists = SPA
+			}
+			OR = {
+				NOT = { ai = SPR }
+				NOT = { ai = SPA }
+			}
+            NOT = { ai = U35 }
+         }
+      }
+	  NOT = {
+         AND = {
+            OR = {
+				exists = SPR
+				exists = SPA
+			}
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1940 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = SPR exists = SPA } }
+      command = { type = country which = SPR }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+			OR = {
+				exists = SPR
+				exists = SPA
+			}
+      }
+      command = {
+         trigger = {
+            OR = {
+				exists = SPR
+               NOT = { ai = U35 }
+               control = { province = 460 data = -1 }
+            }
+         }
+         type = trigger which = 270001
+      }
+	  command = {
+         trigger = {
+            OR = {
+				AND = {
+					NOT = { exists = SPR }
+					exists = SPA
+				}
+               NOT = { ai = U35 }
+               control = { province = 460 data = -1 }
+            }
+         }
+         type = trigger which = 270002
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = SPR }
+               NOT = { control = { province = 460 data = -1 } }
+            }
+         }
+         type = trigger which = 324438
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = SPR
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [270001] U35 | 1940 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 270000 in events/Minors/U35.txt
+# Triggered by event 324437 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 270001
+   country = U35
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = SPR value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [270002] U35 | 1940 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 270000 in events/Minors/U35.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 270002
+   country = U35
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = SPA value = 1 }
+   }
+}

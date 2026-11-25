@@ -1,0 +1,1631 @@
+# ============================================================================
+# File: events/ENG/ENG_25-34.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [143401] ENG | 1925 | Lausanne Conference (Conferencia de Lausana)
+# Triggered by event 147238 in events/FRA/FRA_14-31.txt
+# Trigger event 316350 in events/USA/USA_16-28.txt
+# Trigger event 243042 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143401
+	country = ENG
+	name = "EVT_SHARED_01048_NAME"
+	desc = "EVT_ENG_143401_DESC"
+	style = 2
+	picture = "GLOBAL/aar_lausanne"
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 99
+		command = { type = trigger which = 316350 }
+		command = { type = relation which = U08 value = 20 }
+		command = { type = relation which = FRA value = 20 }
+		command = { type = relation which = GER value = 20 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 1
+		command = { type = relation which = U08 value = -50 }
+		command = { type = relation which = GER value = -50 }
+		command = { type = relation which = FRA value = -25 }
+		command = { type = trigger which = 243042 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143393] ENG | 1926 | British Commonwealth of Nations (La Mancomunidad Británica)
+# Triggered by event 143391 in events/ENG/ENG_14-14.txt
+# Trigger event 231159 in events/AI/ALL_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143393
+	country = ENG
+	date = { day = 0 month = 0 year = 1926 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 365
+	trigger = {
+		event = 143391
+		Not = { local_flag = AAR_Interwar_AI_1933 }
+	}
+	name = "EVT_ENG_143393_NAME"
+	desc = "EVT_ENG_143393_DESC"
+	picture = "ENG/aar_commonwealthf"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = yes } type = event which = 231159 where = ENG when = 1 }
+		command = { trigger = { ai = CAN } type = event which = 231159 where = CAN when = 1 }
+		command = { trigger = { ai = SAF } type = event which = 231159 where = SAF when = 1 }
+		command = { trigger = { ai = AST } type = event which = 231159 where = AST when = 1 }
+		command = { type = end_mastery which = CAN }
+		command = { type = end_mastery which = SAF }
+		command = { type = end_mastery which = AST }
+		command = { type = alliance which = CAN }
+		command = { type = alliance which = SAF }
+		command = { type = alliance which = AST }
+		command = { trigger = { not = { owned = { province = 900 data = ENG } } } type = secedeprovince which = ENG value = 900 when = 2 }
+		command = { type = independence which = EGY value = 1 when = 0 }
+		command = { type = independence which = YEM value = 1 when = 0 }
+		command = { type = make_puppet which = EGY }
+		command = { type = make_puppet which = YEM }
+		command = { trigger = { ai = EGY } type = event which = 231159 where = EGY when = 1 }
+		command = { trigger = { ai = YEM } type = event which = 231159 where = YEM when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143443] ENG | 1926 | Frederick Lambart Retired (Frederick Lambart se retira)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143443
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_ENG_143443_NAME"
+	desc = "EVT_ENG_143443_DESC"
+	offset = 2
+	date = { day = 20 month = February year = 1926 }
+	deathdate = { day = 25 month = February year = 1926 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 10426 }
+		command = { type = chiefofarmy which = 10427 }
+		command = { type = sleepminister which = 10249 }
+		command = { type = sleepminister which = 10227 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143445] ENG | 1927 | David Beatty Retired (David Beatty se retira)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143445
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_ENG_143445_NAME"
+	desc = "EVT_ENG_143445_DESC"
+	offset = 2
+	date = { day = 5 month = July year = 1927 }
+	deathdate = { day = 5 month = July year = 1928 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofnavy which = 10428 }
+		command = { type = sleepminister which = 10233 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143434] ENG | 1929 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143434
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ENG_143434_DESC"
+	date = { day = 29 month = May year = 1929 }
+	deathdate = { day = 29 month = May year = 1930 }
+	action_a = {
+		ai_chance = 97
+		name = "ACTION_NAME_ELECT_LEFT"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10217 }
+		command = { type = foreignminister which = 10324 }
+		command = { type = armamentminister which = 10231 }
+		command = { type = ministerofsecurity which = 10330 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_b = {
+		ai_chance = 1
+		name = "EVT_SHARED_01083_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10002 }
+		command = { type = foreignminister which = 10126 }
+		command = { type = armamentminister which = 10305 }
+		command = { type = ministerofsecurity which = 10335 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_c = {
+		ai_chance = 1
+		name = "EVT_SHARED_01084_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10265 }
+		command = { type = foreignminister which = 10034 }
+		command = { type = armamentminister which = 10342 }
+		command = { type = ministerofsecurity which = 10315 }
+		command = { type = ministerofintelligence which = 10088 }
+		command = { type = local_setflag which = ENGC2}
+		command = { type = local_setflag which = ENGC7}
+	}
+	action_d = {
+		ai_chance = 1
+		name = "EVT_ENG_143434_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10421 }
+		command = { type = foreignminister which = 10031 }
+		command = { type = armamentminister which = 10047 }
+		command = { type = ministerofsecurity which = 10066 }
+		command = { type = ministerofintelligence which = 10083 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143438] ENG | 1929 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143438
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = communist
+		NOT = {local_flag = ENGC7}
+	}
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ENG_143438_DESC"
+	date = { day = 29 month = May year = 1929 }
+	deathdate = { day = 29 month = May year = 1930 }
+	action_a = {
+		ai_chance = 10
+		name = "ACTION_NAME_ELECT_LEFT"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10334 }
+		command = { type = foreignminister which = 10418 }
+		command = { type = armamentminister which = 10306 }
+		command = { type = ministerofsecurity which = 10419 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_b = {
+		ai_chance = 5
+		name = "EVT_ENG_143438_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10128}
+		command = { type = foreignminister which = 10250 }
+		command = { type = armamentminister which = 10302 }
+		command = { type = ministerofsecurity which = 10312 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_c = {
+		ai_chance = 85
+		name = "EVT_SHARED_01085_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10021 }
+		command = { type = foreignminister which = 10034 }
+		command = { type = armamentminister which = 10342 }
+		command = { type = ministerofsecurity which = 10315 }
+		command = { type = ministerofintelligence which = 10088 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143448] ENG | 1930 | Hugh Trenchard has retired (Hugh Trenchard se ha retirado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143448
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_ENG_143448_NAME"
+	desc = "EVT_ENG_143448_DESC"
+	offset = 2
+	date = { day = 1 month = January year = 1930 }
+	deathdate = { day = 1 month = January year = 1931 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofair which = 10337 }
+		command = { type = sleepminister which = 10212 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143446] ENG | 1930 | Charles Madden Retired (Charles Madden se retira)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143446
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_ENG_143446_NAME"
+	desc = "EVT_ENG_143446_DESC"
+	offset = 2
+	date = { day = 1 month = March year = 1930 }
+	deathdate = { day = 1 month = March year = 1931 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofnavy which = 10429 }
+		command = { type = sleepminister which = 10428 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143435] ENG | 1931 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143435
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ENG_143435_DESC"
+	date = { day = 27 month = October year = 1931 }
+	deathdate = { day = 27 month = October year = 1932 }
+	action_a = {
+		ai_chance = 99
+		name = "ACTION_NAME_ELECT_LEFT"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10217 }
+		command = { type = foreignminister which = 10323 }
+		command = { type = armamentminister which = 10230 }
+		command = { type = ministerofsecurity which = 10256 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_b = {
+		ai_chance = 1
+		name = "EVT_SHARED_01083_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10002 }
+		command = { type = foreignminister which = 10126 }
+		command = { type = armamentminister which = 10305 }
+		command = { type = ministerofsecurity which = 10335 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_c = {
+		ai_chance = 1
+		name = "EVT_SHARED_01084_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10265 }
+		command = { type = foreignminister which = 10033 }
+		command = { type = armamentminister which = 10342 }
+		command = { type = ministerofsecurity which = 10315 }
+		command = { type = ministerofintelligence which = 10089 }
+		command = { type = local_setflag which = ENGC3}
+		command = { type = local_setflag which = ENGC8}
+	}
+	action_d = {
+		ai_chance = 1
+		name = "EVT_ENG_143435_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10020 }
+		command = { type = foreignminister which = 10031 }
+		command = { type = armamentminister which = 10049 }
+		command = { type = ministerofsecurity which = 10423 }
+		command = { type = ministerofintelligence which = 10083 }
+		command = { type = local_setflag which = ENGF}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143439] ENG | 1931 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143439
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = communist
+		NOT = {local_flag = ENGC8}
+	}
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ENG_143439_DESC"
+	date = { day = 27 month = October year = 1931 }
+	deathdate = { day = 27 month = October year = 1932 }
+	action_a = {
+		ai_chance = 25
+		name = "EVT_ENG_143439_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10334 }
+		command = { type = foreignminister which = 10418 }
+		command = { type = armamentminister which = 10042 }
+		command = { type = ministerofsecurity which = 10302 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_b = {
+		ai_chance = 75
+		name = "EVT_ENG_143439_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10021 }
+		command = { type = foreignminister which = 10033 }
+		command = { type = armamentminister which = 10342 }
+		command = { type = ministerofsecurity which = 10315 }
+		command = { type = ministerofintelligence which = 10089 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143440] ENG | 1931 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143440
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = fascist
+		NOT = {local_flag = ENGF}
+	}
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ENG_143440_DESC"
+	date = { day = 27 month = October year = 1931 }
+	deathdate = { day = 27 month = October year = 1932 }
+	action_a = {
+		ai_chance = 5
+		name = "ACTION_NAME_ELECT_CENTER"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10002 }
+		command = { type = foreignminister which = 10126 }
+		command = { type = armamentminister which = 10305 }
+		command = { type = ministerofsecurity which = 10335 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "EVT_ENG_143440_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10316 }
+		command = { type = foreignminister which = 10031 }
+		command = { type = armamentminister which = 10047 }
+		command = { type = ministerofsecurity which = 10425 }
+		command = { type = ministerofintelligence which = 10083 }
+	}
+	action_c = {
+		ai_chance = 55
+		name = "EVT_ENG_143440_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 0 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10020 }
+		command = { type = foreignminister which = 10031 }
+		command = { type = armamentminister which = 10049 }
+		command = { type = ministerofsecurity which = 10423 }
+		command = { type = ministerofintelligence which = 10083 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143384] ENG | 1932 | Host London Naval Talks? (¿Convocar Segunda Conferencia?)
+# Triggered by event 231028 in events/GLOBAL/ALL_26-36.txt
+# Triggered by event 324510 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 324511 in events/GLOBAL/MULTI_14-32.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143384
+	country = ENG
+	name = "EVT_ENG_143384_NAME"
+	Desc = "EVT_ENG_143384_DESC"
+	Picture = "american_naval_reinforcments2"
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				atwar = no
+			}
+		}
+		name = "EVT_ENG_143384_A"
+		ai_chance = 100
+		command = { type = setflag which = london_naval_conference2 }
+		command = { trigger = { exists = USA not = { atwar = USA } } type = event which = 324511 where = USA when = 30 }
+		command = { trigger = { exists = ENG not = { atwar = ENG } } type = event which = 324511 where = ENG when = 30 }
+		command = { trigger = { exists = FRA not = { atwar = FRA } } type = event which = 324511 where = FRA when = 30 }
+		command = { trigger = { exists = ITA not = { atwar = ITA } } type = event which = 324511 where = ITA when = 30 }
+		command = { trigger = { exists = JAP not = { atwar = JAP } } type = event which = 324511 where = JAP when = 30 }
+	}
+	action = {
+		name = "ACTION_NAME_MOBILIZE"
+		ai_chance = 0
+		command = { type = 	belligerence value = 30 }
+		command = { type =	dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143385] ENG | 1932 | Naval Re-armament Talks (Debate de armamento naval)
+# Triggered by event 324512 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 150527 in events/GER/GER_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143385
+	country = ENG
+	name = "EVT_ENG_143385_NAME"
+	Desc = "EVT_ENG_143385_DESC"
+	Picture = "american_naval_reinforcments2"
+	action = {
+		name = "EVT_ENG_143385_A"
+		ai_chance = 100
+		command = { type = event which = 150527 where = GER when = 7 }
+		command = { type = relation which = GER value = 100 }
+	}
+	action = {
+		name = "EVT_ENG_143385_B"
+		ai_chance = 0
+		command = { type = belligerence value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143011] ENG | 1933 | 1931 Statute of Westminster. (Estatuto de Westminster de 1931)
+# Triggered by event 324000 in events/GLOBAL/ALL_26-36.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 143011
+         random = no
+         persistent = yes
+         country = ENG
+         name = "EVT_SHARED_00488_NAME"
+         desc = "EVT_SHARED_00488_DESC"
+         style = 2
+	picture = "GLOBAL/1931_statute_of_westminster"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = relation which = ast value = -2 }
+                  command = { type = relation which = can value = -2 }
+                  command = { type = relation which = saf value = -2 }
+                  command = { type = relation which = nzl value = -2 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [143012] ENG | 1933 | Vote on League Sanctions Resolution (Votación sobre las sanciones a Italia)
+# Triggered by event 329071 in events/ENG/ENG_Decisions.txt
+# Trigger event 166008 in events/ITA/ITA_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143012
+	random = no
+	country = ENG
+	one_action = yes
+	name = "EVT_ENG_143012_NAME"
+	desc = "EVT_SHARED_00201_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		ai_chance = 30
+		name = "EVT_ENG_143012_A"
+		command = { type = dissent value = 2 }
+		command = { type = relation which = ITA value = -30 }
+		command = { type = embargo which = ENG where = ITA value = 1 }
+	}
+	action = {
+		ai_chance = 20
+		name = "EVT_ENG_143012_B"
+		command = { type = relation which = ITA value = -50 }
+		command = { type = embargo which = ENG where = ITA value = 1 }
+		command = { type = embargo which = FRA where = ITA value = 1 }
+		command = { type = embargo which = CZE where = ITA value = 1 }
+		command = { type = embargo which = BUL where = ITA value = 1 }
+		command = { type = embargo which = FIN where = ITA value = 1 }
+		command = { type = embargo which = BEL where = ITA value = 1 }
+		command = { type = embargo which = HUN where = ITA value = 1 }
+	}
+	action = {
+		ai_chance = 20
+		name = "EVT_ENG_143012_C"
+		command = { type = relation which = ITA value = -50 }
+		command = { type = embargo which = ENG where = ITA value = 1 }
+		command = { type = embargo which = GRE where = ITA value = 1 }
+		command = { type = embargo which = ARG where = ITA value = 1 }
+		command = { type = embargo which = HOL where = ITA value = 1 }
+		command = { type = embargo which = POR where = ITA value = 1 }
+		command = { type = embargo which = ROM where = ITA value = 1 }
+		command = { type = embargo which = SPR where = ITA value = 1 }
+		command = { type = embargo which = YUG where = ITA value = 1 }
+	}
+	action = {
+		ai_chance = 20
+		name = "EVT_ENG_143012_D"
+		command = { type = relation which = ITA value = -75 }
+		command = { type = embargo which = ENG where = ITA value = 1 }
+		command = { type = embargo which = FRA where = ITA value = 1 }
+		command = { type = embargo which = CZE where = ITA value = 1 }
+		command = { type = embargo which = BUL where = ITA value = 1 }
+		command = { type = embargo which = FIN where = ITA value = 1 }
+		command = { type = embargo which = BEL where = ITA value = 1 }
+		command = { type = embargo which = HUN where = ITA value = 1 }
+		command = { type = embargo which = GRE where = ITA value = 1 }
+		command = { type = embargo which = ARG where = ITA value = 1 }
+		command = { type = embargo which = HOL where = ITA value = 1 }
+		command = { type = embargo which = POR where = ITA value = 1 }
+		command = { type = embargo which = ROM where = ITA value = 1 }
+		command = { type = embargo which = SPR where = ITA value = 1 }
+		command = { type = embargo which = YUG where = ITA value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143014] ENG | 1933 | Unemployment Drops to 10 Percent (El desempleo desciende al 10 por ciento)
+# Triggered by event 143013 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143014
+	random = no
+	country = ENG
+	trigger = {
+		event = 143013
+		OR = {
+			random = 2
+			AND = {
+				year = 1935
+				random = 50
+			}
+			AND = {
+				year = 1936
+				random = 80
+			}
+			year = 1937
+		}
+	}
+	name = "EVT_SHARED_00198_NAME"
+	desc = "EVT_SHARED_00184_DESC"
+	style = 2
+	picture = "GLOBAL/unemployment_rate"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = dissent value = -3 }
+		command = { type = industrial_modifier which = total value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143015] ENG | 1933 | The Communist Threat Emerges (Surge la amenaza comunista)
+# Triggered by event 329058 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143015
+	random = no
+	country = ENG
+	name = EVT_SHARED_00199_NAME
+	desc = EVT_SHARED_00199_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = defense_lobby value = 2 }
+		command = { type = peacetime_ic_mod value = 10 }
+		command = { type = manpowerpool value = 10 }
+		command = { trigger = { ai = yes } type = ai which = "switch/low_construction_factor.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143131] ENG | 1933 | Anti-War Demonstrations (Manifestaciones pacifistas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143131
+	random = no
+	country = ENG
+	persistent = yes
+	trigger = {
+			OR = {
+ 				garrison = { country = -1 province = 55 type = land size = 1 area = 2 }
+				garrison = { country = -1 province = 55 type = air size = 1 area = 2 }
+			}
+			  ai = no atwar = no NOT = { policy = { type = interventionism value = 8 } }
+ 	}
+	name = "EVT_ENG_143131_NAME"
+	desc = "EVT_ENG_143131_DESC"
+	style = 2
+	picture = "GLOBAL/strike"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143132] ENG | 1933 | U-Boat Raid on Scapa Flow (Ataque submarino a Scapa Flow)
+# Triggered by event 329374 in events/GER/GER_Decisions.txt
+# Trigger event 150197 in events/GER/GER_14-33.txt
+# Trigger event 150198 in events/GER/GER_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143132
+	random = no
+	country = ENG
+        one_action = yes
+	name = EVT_SHARED_00294_NAME
+	desc = EVT_SHARED_00294_DESC
+	style = 2
+	picture = "GLOBAL/scapa_flow"
+	action = {
+		name = "EVT_ENG_143132_A"
+        	ai_chance = 15
+		command = { type = remove_division which = 12700 value = 88 }
+		command = { type = remove_division which = 12700 value = 148 }
+		command = { type = remove_division which = 12700 value = 153 }
+		command = { type = remove_division which = 12700 value = 151 }
+		command = { type = dissent value = 5 }
+		command = { type = manpowerpool value = -4 }
+		command = { type = trigger which = 150197 }
+   	}
+	action = {
+		name = "EVT_ENG_143132_B"
+		ai_chance = 70
+		command = { type = remove_division which = 12700 value = 88 }
+		command = { type = dissent value = 2 }
+		command = { type = manpowerpool value = -1 }
+		command = { type = trigger which = 150197 }
+	}
+	action = {
+		name = "EVT_ENG_143132_C"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = trigger which = 150198 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143133] ENG | 1933 | The RAF Eagle Squadrons (Los Escuadrones Águila de la RAF)
+# Triggered by event 329395 in events/USA/USA_28-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143133
+	random = no
+	country = ENG
+	name = EVT_SHARED_00300_NAME
+	desc = EVT_SHARED_00300_DESC
+	style = 2
+	picture = "GLOBAL/eagle_squadrons"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = manpowerpool value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143135] ENG | 1933 | The Blitz (El «Blitz» sobre Gran Bretaña)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143135
+	random = no
+	country = ENG
+	trigger = {
+		NOT = {
+			building = { province = 24 type = infrastructure value = 0.7 when = now }
+			building = { province = 29 type = infrastructure value = 0.8 when = now }
+		}
+		war = { country = ENG country = GER }
+		NOT = { alliance = { country = ENG country = FRA } }
+		control = { province = 55 data = -2 }
+	}
+	name = EVT_ENG_143135_NAME
+	desc = EVT_ENG_143135_DESC
+	style = 2
+	picture = "ENG/blitz"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = august year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { type = manpowerpool value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143136] ENG | 1933 | Liddell Hart's 'Study in Strategy' («Estudio de estrategia» de Basil Liddell Hart)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143136
+	random = no
+	country = ENG
+	trigger = {
+		atwar = no
+		OR = { random = 10 year = 1936 }
+	}
+	name = "EVT_ENG_143136_NAME"
+	desc = "EVT_ENG_143136_DESC"
+	style = 2
+	picture = "ENG/liddell_hart"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		ai_chance = 80
+		name = ACTION_NAME_KEEP_CURRENT
+		command = { type = dissent value = -1 }
+	   	command = { trigger = { NOT = { technology = 6030 } } type = gain_tech which = 6030 }
+	   	command = { trigger = { NOT = { technology = 6120 } } type = gain_tech which = 6120 }
+	}
+	action = {
+		ai_chance = 20
+		name = ACTION_NAME_ACCEPT
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { type = chiefofarmy which = 10107 }
+	   	command = { trigger = { NOT = { technology = 6900 } } type = gain_tech which = 6900 }
+	   	command = { trigger = { NOT = { technology = 2650 } } type = gain_tech which = 2650 }
+	   	command = { trigger = { NOT = { technology = 2030 } } type = gain_tech which = 2030 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143138] ENG | 1933 | Major General Percy Hobart Dismissed (Destitución del general de división Percy Hobart)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143138
+	random = no
+	country = ENG
+	trigger = {
+		year = 1940
+		NOT = { year = 1941 }
+		war = { country = GER country = ENG }
+		control = { province = 29 data = -3 }
+		control = { province = 163 data = -2 }
+		random = 30
+	}
+	name = EVT_ENG_143138_NAME
+	desc = EVT_ENG_143138_DESC
+	style = 2
+	picture = "GLOBAL/events_empty"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = sleepleader which = 1176 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143139] ENG | 1933 | Major General Percy Hobart Reinstated (Reincorporación del general Percy Hobart)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143139
+	random = no
+	country = ENG
+	trigger = {
+		year = 1940
+		NOT = { year = 1941 }
+		war = { country = GER country = ENG }
+		control = { province = 29 data = -3 }
+		control = { province = 163 data = -2 }
+		random = 30
+	}
+	name = EVT_ENG_143139_NAME
+	desc = EVT_ENG_143139_DESC
+	style = 2
+	picture = "GLOBAL/events_empty"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = wakeleader which = 1176 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143141] ENG | 1933 | Nazi Book Burnings (Bücherverbrennung) (La quema de libros en Alemania (Bücherverbrennung))
+# Triggered by event 150212 in events/GER/GER_14-33.txt
+# Trigger event 316088 in events/USA/USA_28-33.txt
+# Trigger event 147103 in events/FRA/FRA_31-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143141
+	random = no
+	country = ENG
+	trigger = {
+		event = 150212
+		random = 30
+	}
+   	name = EVT_SHARED_00333_NAME
+	desc = EVT_SHARED_00333_DESC
+	style = 2
+	picture = "GLOBAL/nazi_book_burnings"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = GER value = -20 }
+		command = { type = trigger which = 316088 }
+		command = { type = trigger which = 147103 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143143] ENG | 1933 | Haile Selassie's Address to the League of Nations (Discurso de Haile Selassie ante la Sociedad de Naciones)
+# Triggered by event 166070 in events/ITA/ITA_20-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143143
+	random = no
+	country = ENG
+   	name = EVT_SHARED_00337_NAME
+	desc = EVT_SHARED_00337_DESC
+	style = 2
+	picture = "GLOBAL/selassie"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ITA value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143144] ENG | 1933 | Haile Selassie's Diplomatic Exile in Great Britain (El exilio diplomático de Haile Selassie en Gran Bretaña)
+# Triggered by event 166063 in events/ITA/ITA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143144
+	random = no
+	country = ENG
+	trigger = {
+		event = 166063
+		random = 60
+	}
+	date = { year = 1933 month = january day = 1 }
+	offset = 15
+	deathdate = { year = 1999 month = december day = 29 }
+   	name = EVT_ENG_143144_NAME
+	desc = EVT_ENG_143144_DESC
+	style = 2
+	picture = "ENG/selassieb"
+	action = {
+		ai_chance = 80
+		name = ACTION_NAME_ACCEPT
+		command = { trigger = { ai = no } type = dissent value = -1 }
+		command = { type = relation which = ITA value = -20 }
+	}
+	action = {
+		ai_chance = 20
+		name = EVT_ENG_143144_A
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { type = relation which = ITA value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143145] ENG | 1933 | German Counterfeit Currency Floods the Economy (Moneda falsa alemana detectada en la economía)
+# Triggered by event 329437 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143145
+	random = no
+	country = ENG
+	name = EVT_ENG_143145_NAME
+	desc = EVT_SHARED_00340_DESC
+	style = 2
+	picture = "GLOBAL/operation_bernhard"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { trigger = { ai = yes } type = money value = -200 }
+		command = { trigger = { ai = no } type = money value = -500 }
+      		command = { trigger = { ai = no } type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143146] ENG | 1933 | Transfer of Northern Ireland to the Republic of Ireland (Cesión del Ulster a Irlanda)
+# Triggered by event 163025 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143146
+	random = no
+	country = ENG
+   	name = EVT_ENG_143146_NAME
+	desc = EVT_SHARED_00341_DESC
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = IRE value = 35 }
+		command = { type = secedeprovince which = IRE value = 36 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143147] ENG | 1933 | Supermarine Spitfire Fighter (Caza monoplaza Supermarine Spitfire)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143147
+	random = no
+	country = ENG
+	trigger = {
+		technology = 4040
+		random = 20
+	}
+	name = EVT_ENG_143147_NAME
+	desc = EVT_ENG_143147_DESC
+	style = 2
+	picture = "ENG/spitfire"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = air_defense which = multi_role value = -2 }
+		command = { type = build_time which = multi_role when = on_upgrade where = relative value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143148] ENG | 1933 | Illustrious-Class Fleet Aircraft Carriers (Portaaviones de flota de la clase Illustrious)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143148
+	random = no
+	country = ENG
+	trigger = {
+		technology = 3540
+		random = 20
+	}
+	name = EVT_ENG_143148_NAME
+	desc = EVT_ENG_143148_DESC
+	style = 2
+	picture = "ENG/illustrious_class"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = naval_defense which = carrier value = -2 }
+		command = { type = air_defense which = carrier value = -1 }
+		command = { type = air_attack which = carrier value = -1 }
+		command = { type = naval_attack which = carrier value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143149] ENG | 1933 | Churchill 'Crocodile' Heavy Flame-Throwing Tank (Carro pesado lanzallamas Churchill «Crocodile»)
+# Triggered by event 329443 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143149
+	random = no
+	country = ENG
+	trigger = {
+		event = 329443
+		technology = 2120
+		random = 10
+	}
+	name = EVT_ENG_143149_NAME
+	desc = EVT_ENG_143149_DESC
+	style = 2
+	picture = "ENG/churchill_crocodile"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+	  	command = { type = soft_attack which = heavy_armor value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143155] ENG | 1933 | Capitulation of the Netherlands (Capitulación de los Países Bajos)
+# Triggered by event 150344 in events/GER/GER_33-33_2.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143155
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00280_NAME"
+	desc = "EVT_ENG_143155_DESC"
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { technology = 3810 NOT = { technology = 3820 } } type = add_division which = "Dutch Transports Fleet" value = transport when = 0 }
+		command = { trigger = { technology = 3820 NOT = { technology = 3830 } } type = add_division which = "Dutch Transports Fleet" value = transport when = 1 }
+		command = { trigger = { technology = 3830 NOT = { technology = 3840 } } type = add_division which = "Dutch Transports Fleet" value = transport when = 2 }
+		command = { trigger = { technology = 3840 NOT = { technology = 3850 } } type = add_division which = "Dutch Transports Fleet" value = transport when = 3 }
+		command = { trigger = { technology = 3850 NOT = { technology = 3860 } } type = add_division which = "Dutch Transports Fleet" value = transport when = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143398] ENG | 1933 | Constitution of Ireland (Constitución de Irlanda)
+# Triggered by event 143394 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143398
+	country = ENG
+	date = { day = 1 month = 1 year = 1933 }
+	offset = 365
+	deathdate = { day = 1 month = january year = 1945 }
+	trigger = {
+		event = 143394
+		ispuppet = IRE
+	}
+	name = "EVT_ENG_143398_NAME"
+	Desc = "EVT_ENG_143398_DESC"
+	Picture = "parliamentary_scandal"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = end_mastery which = IRE }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329357] ENG | 1933 | Breaking the Enigma Ciphers (Descifrado del código Enigma)
+# Trigger event 203004 in events/Minors/POL_14-89.txt
+# Trigger event 147097 in events/FRA/FRA_31-36.txt
+# Trigger event 329394 in events/SOV/SOV_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329357
+	random = no
+	country = ENG
+	trigger = { war = { country = ENG country = GER } technology = 5370 random = 40 }
+	name = EVT_SHARED_00282_NAME
+	desc = EVT_SHARED_00281_DESC
+	style = 2
+	picture = "GLOBAL/enigma"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = intelligence which = us value = 30 }
+		command = { type = surprise which = naval value = 10 }
+		command = { type = surprise which = land value = 10 }
+		command = { type = surprise which = air value = 10 }
+		command = { type = army_detection which = us value = 20 }
+		command = { trigger = { war = { country = POL country = GER } } type = trigger which = 203004 }
+		command = { trigger = { war = { country = FRA country = GER } } type = trigger which = 147097 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329363] ENG | 1933 | Operation Freshman: Sabotage at Vemork (Operación Freshman: Sabotaje en Vemork)
+# Triggered by event 329361 in events/ENG/ENG_Decisions.txt
+# Trigger event 150169 in events/GER/GER_14-33.txt
+# Trigger event 150170 in events/GER/GER_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329363
+	random = no
+	one_action = yes
+	country = ENG
+	name = "EVT_SHARED_00286_NAME"
+	desc = "EVT_SHARED_00286_DESC"
+	style = 2
+	picture = "GLOBAL/heavy_water"
+	action = {
+		trigger = { NOT = { garrison = { country = GER province = 486 type = land size = 1 area = no } } }
+		ai_chance = 20
+		name = EVT_SHARED_00288_A
+		command = { type = trigger which = 150169 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		trigger = { NOT = { garrison = { country = GER province = 486 type = land size = 1 area = no } } }
+		ai_chance = 80
+		name = EVT_SHARED_00288_B
+		command = { type = trigger which = 150170 }
+		command = { type = dissent value = 2 }
+	}
+	action = {
+		trigger = { garrison = { country = GER province = 486 type = land size = 1 area = no } NOT = { garrison = { country = GER province = 486 type = land size = 3 area = no } } }
+		ai_chance = 10
+		name = EVT_SHARED_00288_A
+		command = { type = trigger which = 150169 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		trigger = { garrison = { country = GER province = 486 type = land size = 1 area = no } NOT = { garrison = { country = GER province = 486 type = land size = 3 area = no } } }
+		ai_chance = 90
+		name = EVT_SHARED_00288_B
+		command = { type = trigger which = 150170 }
+		command = { type = dissent value = 2 }
+	}
+	action = {
+		trigger = { garrison = { country = GER province = 486 type = land size = 3 area = no } }
+		ai_chance = 1
+		name = EVT_SHARED_00288_A
+		command = { type = trigger which = 150169 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		trigger = { garrison = { country = GER province = 486 type = land size = 3 area = no } }
+		ai_chance = 99
+		name = EVT_SHARED_00288_B
+		command = { type = trigger which = 150170 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329364] ENG | 1933 | Operation Freshman: Sabotage at Vemork (Operación Freshman: Sabotaje en Vemork)
+# Triggered by event 329362 in events/ENG/ENG_Decisions.txt
+# Trigger event 150169 in events/GER/GER_14-33.txt
+# Trigger event 150170 in events/GER/GER_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329364
+	random = no
+	one_action = yes
+	country = ENG
+	name = "EVT_SHARED_00286_NAME"
+	desc = "EVT_SHARED_00287_DESC"
+	style = 2
+	picture = "GLOBAL/heavy_water"
+	action = {
+		trigger = { NOT = { garrison = { country = GER province = 486 type = land size = 1 area = no } } }
+		ai_chance = 70
+		name = EVT_SHARED_00288_A
+		command = { type = trigger which = 150169 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		trigger = { NOT = { garrison = { country = GER province = 486 type = land size = 1 area = no } } }
+		ai_chance = 30
+		name = EVT_SHARED_00288_B
+		command = { type = trigger which = 150170 }
+		command = { type = dissent value = 2 }
+	}
+	action = {
+		trigger = { garrison = { country = GER province = 486 type = land size = 1 area = no } NOT = { garrison = { country = GER province = 486 type = land size = 2 area = no } } }
+		ai_chance = 50
+		name = EVT_SHARED_00288_A
+		command = { type = trigger which = 150169 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		trigger = { garrison = { country = GER province = 486 type = land size = 1 area = no } NOT = { garrison = { country = GER province = 486 type = land size = 2 area = no } } }
+		ai_chance = 50
+		name = EVT_SHARED_00288_B
+		command = { type = trigger which = 150170 }
+		command = { type = dissent value = 2 }
+	}
+	action = {
+		trigger = { garrison = { country = GER province = 486 type = land size = 2 area = no } NOT = { garrison = { country = GER province = 486 type = land size = 3 area = no } } }
+		ai_chance = 40
+		name = EVT_SHARED_00288_A
+		command = { type = trigger which = 150169 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		trigger = { garrison = { country = GER province = 486 type = land size = 2 area = no } NOT = { garrison = { country = GER province = 486 type = land size = 3 area = no } } }
+		ai_chance = 60
+		name = EVT_SHARED_00288_B
+		command = { type = trigger which = 150170 }
+		command = { type = dissent value = 2 }
+	}
+	action = {
+		trigger = { garrison = { country = GER province = 486 type = land size = 3 area = no } }
+		ai_chance = 30
+		name = EVT_SHARED_00288_A
+		command = { type = trigger which = 150169 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		trigger = { garrison = { country = GER province = 486 type = land size = 3 area = no } }
+		ai_chance = 70
+		name = EVT_SHARED_00288_B
+		command = { type = trigger which = 150170 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329396] ENG | 1933 | Foreign Volunteers in the Royal Air Force (Voluntarios extranjeros en la Royal Air Force)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329396
+	random = no
+	country = ENG
+	name = EVT_ENG_329396_NAME
+	desc = EVT_ENG_329396_DESC
+	style = 2
+	picture = "ENG/volunteers_raf"
+	trigger = {
+		war = { country = ENG country = GER }
+		random = 25
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = manpowerpool value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143093] ENG | 1933 | British Disarmament Plan (Plan de desarme británico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143093
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 15 month = march year = 1933 }
+	name = "EVT_ENG_143093_NAME"
+	desc = "EVT_ENG_143093_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { type = manpowerpool value = -4 }
+		command = { type = belligerence value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143094] ENG | 1933 | British Trade Embargo on Soviet Union (Embargo comercial británico sobre la Unión Soviética)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143094
+	random = no
+	country = ENG
+	trigger = {
+			exists = SOV
+			}
+	date = { day = 15 month = april year = 1933 }
+	name = "EVT_SHARED_00745_NAME"
+	desc = "EVT_SHARED_00745_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = SOV value = -15 }
+		command = { type = money value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143095] ENG | 1933 | New Anglo-Persian Oil Company Concession (Nueva concesión a la 'Anglo-Persian Oil Company')
+# ----------------------------------------------------------------------------
+event = {
+	id = 143095
+	random = no
+	country = ENG
+	trigger = {
+			exists = PER
+			}
+	date = { day = 28 month = may year = 1933 }
+	name = "EVT_SHARED_00746_NAME"
+	desc = "EVT_SHARED_00746_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = oilpool value = 500 }
+		command = { type = relation which = PER value = 10 }
+		command = { type = money value = 300 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143097] ENG | 1933 | London Convention (Convención de Londres)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143097
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 02 month = july year = 1933 }
+	name = "EVT_ENG_143097_NAME"
+	desc = "EVT_ENG_143097_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 100
+		command = { type = relation which = EST value = 20 }
+		command = { type = relation which = LAT value = 20 }
+		command = { type = relation which = PER value = 20 }
+		command = { type = relation which = POL value = 20 }
+		command = { type = relation which = AFG value = 20 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = relation which = ROM value = 20 }
+		command = { type = relation which = TUR value = 20 }
+		command = { type = relation which = YUG value = 20 }
+		command = { type = relation which = CZE value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143096] ENG | 1933 | 'Buy British' campaign (Campaña 'Buy British')
+# ----------------------------------------------------------------------------
+event = {
+	id = 143096
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 12 month = july year = 1933 }
+	name = "EVT_ENG_143096_NAME"
+	desc = "EVT_ENG_143096_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 100
+		command = { type = dissent value = -2 }
+		command = { type = money value = 300 }
+		command = { type = supplies value = 2000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143098] ENG | 1933 | Indian Civil Disobedience Campaign (Campaña india de desobediencia civil)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143098
+	random = no
+	country = ENG
+	trigger = {
+			exists = U02
+			}
+	date = { day = 02 month = august year = 1933 }
+	name = "EVT_SHARED_00747_NAME"
+	desc = "EVT_SHARED_00747_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		ai_chance = 100
+		command = { type = relation which = U02 value = -5 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329021] ENG | 1933 | British Commonwealth Air Training Plan (Plan de entrenamiento aéreo de la Commonwealth Británica)
+# Trigger event 121014 in events/Minors/CAN_14-52.txt
+# Trigger event 194005 in events/Minors/NZL_14-74.txt
+# Trigger event 212014 in events/Minors/SAF.txt
+# Trigger event 329308 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329021
+         random = no
+         country = eng
+         trigger = {
+                   war = { country =eng  country = ger }
+                   alliance = { country = eng country = can }
+                   alliance = { country = eng country = saf }
+                   alliance = { country = eng country = ast }
+                   alliance = { country = eng country = nzl }
+                   random = 25
+         }
+         name = "EVT_SHARED_00486_NAME"
+         desc = "EVT_SHARED_00486_DESC"
+         style = 2
+         date = { day = 1 month = december year = 1933 }
+         offset = 7
+         deathdate = { day = 29 month = december year = 1942 }
+	picture = "ENG/british_commonwealth_air_training_plan"
+           action_a = {
+                  name = "ACTION_NAME_AGREE"
+                  ai_chance = 95
+                  command = { type = manpowerpool value = -40 }
+                  command = { type = money value = -120 }
+                  command = { type = industrial_modifier which = total value = -7 }
+                  command = { type = local_setflag which = entreaereo }
+                  command = { type = trigger which = 121014 }
+                  command = { type = trigger which = 194005 }
+                  command = { type = trigger which = 212014 }
+                  command = { type = trigger which = 329308 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 5
+                  command = { }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [143099] ENG | 1933 | Jewish Riots in Palestine against Immigration Restrictions (Disturbios judíos en Palestina contra las restricciones de inmigración)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143099
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 02 month = december year = 1933 }
+	name = "EVT_ENG_143099_NAME"
+	desc = "EVT_ENG_143099_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143017] ENG | 1934 | The Arab Revolt in Palestine (La Revuelta Árabe en Palestina)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143017
+	random = no
+	country = ENG
+	trigger = { ai = no random = 10 }
+	name = "EVT_ENG_143017_NAME"
+	desc = "EVT_ENG_143017_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1934 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1939 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no OR = { control = { province = 1172 } control = { province = 1008 } control = { province = 1009 } } } type = dissent value = 3 }
+		command = { trigger = { control = { province = 1172 } ai = no } type = revolt which = 1172 }
+		command = { trigger = { control = { province = 1172 } } type = revolt which = 1172 }
+		command = { trigger = { control = { province = 1008 } ai = no } type = revolt which = 1008 }
+		command = { trigger = { control = { province = 1009 } ai = no } type = revolt which = 1009 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143383] ENG | 1934 | Togo Heihachiro state funeral (Funeral de Estado de Togo Heihachiro)
+# Triggered by event 167368 in events/JAP/JAP_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143383
+	random = no
+	country = ENG
+	name = "EVT_SHARED_01177_NAME"
+	desc = "EVT_SHARED_01177_DESC"
+	style = 2
+	picture = "GLOBAL/jap_69"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = dissent value = 1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [143418] ENG | 1934 | Stresa Conference (Conferencia de Stresa)
+# Triggered by event 166269 in events/ITA/ITA_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143418
+	random = no
+	country = ENG
+	name = "EVT_SHARED_01061_NAME"
+	desc = "EVT_SHARED_01061_DESC"
+	action = {
+		name = "EVT_SHARED_01061_A"
+		ai_chance = 99
+		command = { type = guarantee which = ENG where = AUS }
+		command = { type = guarantee which = ENG where = ITA }
+		command = { type = guarantee which = ENG where = FRA }
+	}
+	action = {
+		name = "EVT_ENG_143418_A"
+		ai_chance = 1
+			command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143004] ENG | 1934 | Control of Newfoundland (Control de Terranova)
+# Trigger event 280000 in events/Minors/U60.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 143004
+         random = no
+         country = eng
+         trigger = {
+         }
+         name = "EVT_SHARED_00485_NAME"
+         desc = "EVT_SHARED_00485_DESC"
+         style = 2
+         date = { day = 16 month = february year = 1934 }
+	picture = "GLOBAL/control_of_newfoundland"
+           action_a = {
+                  name = "ACTION_NAME_PERFECT"
+                  command = { type = make_puppet which = U60 }
+                  command = { type = relation which = U60 value = 200 }
+                  command = { type = trigger which = 280000 }
+           }
+}

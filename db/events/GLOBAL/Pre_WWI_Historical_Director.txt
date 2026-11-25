@@ -1,0 +1,221 @@
+# ============================================================================
+# File: events/GLOBAL/Pre_WWI_Historical_Director.txt
+# Master Director for Pre-WWI & Belle Epoque Historical Scripting (1900-1914)
+# Enforces exact historical timeline or sandbox freedom when triggered
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231700] ALL (Human Player) | 1900 | Master Decision: The Road to Sarajevo
+# ----------------------------------------------------------------------------
+event = {
+	id = 231700
+	random = no
+	decision = {
+		year = 1900
+	}
+	decision_trigger = {
+		year = 1900
+	}
+	trigger = {
+		ai = no
+	}
+	name = "EVT_231700_NAME"
+	desc = "EVT_231700_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	decision_picture = "GLOBAL/decision_wargames"
+	date = { day = 2 month = january year = 1900 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1914 }
+	action = {
+		name = "EVT_231700_A"
+		command = { }
+	}
+	action = {
+		name = "EVT_231700_B"
+		command = { type = setflag which = force_early_conflicts }
+	}
+	action = {
+		name = "EVT_231700_C"
+		command = { type = setflag which = force_early_conflicts }
+		command = { type = setflag which = force_pre_ww1_crises }
+	}
+	action = {
+		name = "EVT_231700_D"
+		command = { type = setflag which = force_early_conflicts }
+		command = { type = setflag which = force_pre_ww1_crises }
+		command = { type = setflag which = force_sarajevo_crisis }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231761] ENG | 1902 | Director: Force Peace of Vereeniging in Boer War
+# ----------------------------------------------------------------------------
+event = {
+	id = 231761
+	country = ENG
+	trigger = {
+		flag = force_early_conflicts
+		exists = ENG
+		exists = SAF
+		war = { country = ENG country = SAF }
+	}
+	name = "EVT_231761_NAME"
+	desc = "EVT_231761_DESC"
+	style = 2
+	picture = "nwo/peace_in_our_time"
+	date = { day = 31 month = may year = 1902 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1903 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peace which = SAF value = 1 }
+		command = { type = inherit which = SAF }
+		command = { type = setflag which = BoerWar_Historical_End }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231762] USA | 1903 | Director: Force Panama Separation & Canal Zone Treaty
+# ----------------------------------------------------------------------------
+event = {
+	id = 231762
+	country = USA
+	trigger = {
+		flag = force_early_conflicts
+		exists = USA
+		exists = COL
+		NOT = { exists = PAN }
+	}
+	name = "EVT_231762_NAME"
+	desc = "EVT_231762_DESC"
+	style = 2
+	picture = "GLOBAL/additionaltreaty"
+	date = { day = 3 month = november year = 1903 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1904 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = PAN value = 1 when = 1 }
+		command = { type = secedeprovince which = USA value = 889 }
+		command = { type = control which = USA value = 889 }
+		command = { type = setflag which = Panama_Canal_Secured }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231763] JAP | 1905 | Director: Force Peace of Portsmouth (Russo-Japanese War)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231763
+	country = JAP
+	trigger = {
+		flag = force_early_conflicts
+		exists = JAP
+		exists = RUS
+		war = { country = JAP country = RUS }
+	}
+	name = "EVT_231763_NAME"
+	desc = "EVT_231763_DESC"
+	style = 2
+	picture = "GLOBAL/aar_versailles"
+	date = { day = 5 month = september year = 1905 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1906 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peace which = RUS value = 1 }
+		command = { type = secedeprovince which = JAP value = 1219 }
+		command = { type = secedeprovince which = JAP value = 1542 }
+		command = { type = setflag which = Portsmouth_Peace_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231764] ENG | 1907 | Director: Force Anglo-Russian Entente (Triple Entente Formed)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231764
+	country = ENG
+	trigger = {
+		flag = force_pre_ww1_crises
+		exists = ENG
+		exists = RUS
+		NOT = { war = { country = ENG country = RUS } }
+		NOT = { non_aggression = { country = ENG country = RUS } }
+	}
+	name = "EVT_231764_NAME"
+	desc = "EVT_231764_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 31 month = august year = 1907 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1908 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = RUS value = 50 }
+		command = { type = relation which = FRA value = 30 }
+		command = { type = non_aggression which = RUS where = ENG }
+		command = { type = setflag which = Triple_Entente_Formed }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231765] BUL | 1913 | Director: Force Peace of Bucharest (Balkan Wars Outcome)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231765
+	country = BUL
+	trigger = {
+		flag = force_pre_ww1_crises
+		exists = BUL
+		exists = SER
+		OR = {
+			war = { country = BUL country = SER }
+			war = { country = BUL country = GRE }
+			war = { country = BUL country = OTT }
+		}
+	}
+	name = "EVT_231765_NAME"
+	desc = "EVT_231765_DESC"
+	style = 2
+	picture = "nwo/peace_in_our_time"
+	date = { day = 10 month = august year = 1913 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1913 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { war = { country = BUL country = SER } } type = peace which = SER value = 1 }
+		command = { trigger = { war = { country = BUL country = GRE } } type = peace which = GRE value = 1 }
+		command = { trigger = { war = { country = BUL country = ROM } } type = peace which = ROM value = 1 }
+		command = { trigger = { war = { country = BUL country = OTT } } type = peace which = OTT value = 1 }
+		command = { type = setflag which = Balkan_Wars_Settled }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231766] U09 | 1914 | Director: Sarajevo Assassination & July Crisis Connection
+# ----------------------------------------------------------------------------
+event = {
+	id = 231766
+	country = U09
+	trigger = {
+		flag = force_sarajevo_crisis
+		exists = U09
+		exists = SER
+		NOT = { war = { country = U09 country = SER } }
+	}
+	name = "EVT_231766_NAME"
+	desc = "EVT_231766_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 1
+	deathdate = { day = 30 month = june year = 1914 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 231034 }
+		command = { type = setflag which = Sarajevo_Crisis_Ignited }
+	}
+}

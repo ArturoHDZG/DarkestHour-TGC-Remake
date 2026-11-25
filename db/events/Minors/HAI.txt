@@ -1,0 +1,522 @@
+# ============================================================================
+# File: events/Minors/HAI.txt (15 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329527] HAI | 1940 | Diplomatic Talks: Haiti (Negociaciones con Haití)
+# Triggered by event 329517 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329527
+	random = no
+	country = HAI
+	trigger = {
+		random = 5
+		event = 329517
+		alliance = { country = BRA country = ENG }
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = HAI country = SOV } }
+		NOT = { alliance = { country = HAI country = ENG } }
+		NOT = { alliance = { country = HAI country = GER } }
+		NOT = { alliance = { country = HAI country = JAP } }
+		NOT = { war = { country = HAI country = ENG } }
+		NOT = { ispuppet = yes }
+	}
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_HAI_329527_NAME
+	desc = EVT_SHARED_00416_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = { trigger = { NOT = { army = 3 } }
+		ai_chance = 20
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } alliance = { country = ARG country = GER } }
+		ai_chance = 40
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 60
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } alliance = { country = ARG country = GER } }
+		ai_chance = 80
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 200
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 10 }
+		ai_chance = 900
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = {
+		ai_chance = 10
+		name = ACTION_NAME_NEUTRAL
+		command = { type = relation which = ENG value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [156000] HAI | 1946 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156000
+	random = no
+	country = HAI
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = january year = 1946 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 350014 }
+		command = { type = headofgovernment which = 350021 }
+		command = { type = foreignminister which = 350032 }
+		command = { type = armamentminister which = 350043 }
+		command = { type = ministerofsecurity which = 350053 }
+		command = { type = ministerofintelligence which = 350063 }
+		command = { type = chiefofstaff which = 350068 }
+		command = { type = chiefofarmy which = 350073 }
+		command = { type = chiefofnavy which = 350080 }
+		command = { type = chiefofair which = 350084 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [156011] HAI | 1950 | Coup of Paul Magloire (Golpe de Paul Magloire)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156011
+	country = HAI
+	name = EVT_HAI_156011_NAME
+	desc = EVT_HAI_156011_DESC
+	picture = "nwo/paul_magloire"
+	style = 1
+	date = { day = 0 month = january year = 1950 }
+	offset = 180
+	deathdate = { day = 29 month = june year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 350088 }
+		command = { type = headofgovernment which = 350021 }
+		command = { type = foreignminister which = 350027 }
+		command = { type = armamentminister which = 350038 }
+		command = { type = ministerofsecurity which = 350049 }
+		command = { type = ministerofintelligence which = 350059 }
+		command = { type = chiefofstaff which = 350069 }
+		command = { type = chiefofarmy which = 350074 }
+		command = { type = chiefofnavy which = 350079 }
+		command = { type = chiefofair which = 350084 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [156001] HAI | 1950 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156001
+	random = no
+	country = HAI
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = may year = 1950 }
+	offset = 20
+	deathdate = { day = 29 month = september year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 350014 }
+		command = { type = headofgovernment which = 350021 }
+		command = { type = foreignminister which = 350027 }
+		command = { type = armamentminister which = 350039 }
+		command = { type = ministerofsecurity which = 350053 }
+		command = { type = ministerofintelligence which = 350014 }
+		command = { type = chiefofstaff which = 350069 }
+		command = { type = chiefofarmy which = 350074 }
+		command = { type = chiefofnavy which = 350079 }
+		command = { type = chiefofair which = 350084 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [156012] HAI | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156012
+	country = HAI
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = july year = 1950 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 350014 }
+		command = { type = headofgovernment which = 350021 }
+		command = { type = foreignminister which = 350027 }
+		command = { type = armamentminister which = 350039 }
+		command = { type = ministerofsecurity which = 350053 }
+		command = { type = ministerofintelligence which = 350059 }
+		command = { type = chiefofstaff which = 350069 }
+		command = { type = chiefofarmy which = 350074 }
+		command = { type = chiefofnavy which = 350079 }
+		command = { type = chiefofair which = 350084 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [156002] HAI | 1950 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156002
+	random = no
+	country = HAI
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = december year = 1950 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 350088 }
+		command = { type = headofgovernment which = 350021 }
+		command = { type = foreignminister which = 350027 }
+		command = { type = armamentminister which = 350038 }
+		command = { type = ministerofsecurity which = 350049 }
+		command = { type = ministerofintelligence which = 350059 }
+		command = { type = chiefofstaff which = 350069 }
+		command = { type = chiefofarmy which = 350074 }
+		command = { type = chiefofnavy which = 350079 }
+		command = { type = chiefofair which = 350084 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [156019] HAI | 1954 | Hurricane Hazel in Haiti (El huracán Hazel en Haití)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156019
+	country = HAI
+	name = EVT_HAI_156019_NAME
+	desc = EVT_HAI_156019_DESC
+	picture = "nwo/hurricane"
+	style = 1
+	date = { day = 0 month = october year = 1954 }
+	offset = 20
+	deathdate = { day = 29 month = october year = 1954 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [156013] HAI | 1957 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156013
+	country = HAI
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 350200 }
+		command = { type = headofgovernment which = 350201 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 350012 }
+		command = { type = headofgovernment which = 350202 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [156020] HAI | 1960 | The Duvalier Regime (El régimen de Papa Doc)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156020
+	country = HAI
+	name = EVT_HAI_156020_NAME
+	desc = EVT_HAI_156020_DESC
+	picture = "nwo/francois_duvalier"
+	style = 1
+	date = { day = 1 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = freedom value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [156014] HAI | 1971 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156014
+	country = HAI
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = sleepminister which = 350200 }
+		command = { type = sleepminister which = 350201 }
+		command = { type = headofstate which = 350203 }
+		command = { type = headofgovernment which = 350204 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [156021] HAI | 1980 | Rule of Baby Doc (Régimen de Baby Doc)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156021
+	country = HAI
+	name = EVT_HAI_156021_NAME
+	desc = EVT_HAI_156021_DESC
+	picture = "nwo/francois_duvalier"
+	style = 1
+	date = { day = 1 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1983 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = freedom value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [156015] HAI | 1986 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156015
+	country = HAI
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 350205 }
+		command = { type = headofgovernment which = 350206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [156016] HAI | 1988 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156016
+	country = HAI
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 350207 }
+		command = { type = headofgovernment which = 350208 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [156017] HAI | 1990 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156017
+	country = HAI
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 350209 }
+		command = { type = headofgovernment which = 350210 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [156018] HAI | 1991 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 156018
+	country = HAI
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 350211 }
+		command = { type = headofgovernment which = 350212 }
+	}
+}

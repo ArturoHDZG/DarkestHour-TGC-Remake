@@ -1,0 +1,713 @@
+# ============================================================================
+# File: events/Minors/U05.txt (24 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [240020] U05 | 1919 | SetteGiugno ('Sette Giugno')
+# ----------------------------------------------------------------------------
+event = {
+	id = 240020
+	country = U05
+	random = no
+	trigger = {
+		exists = U05
+	}
+	name = "EVT_SHARED_01056_NAME"
+	desc = "EVT_U05_240020_DESC"
+	style = 2
+	picture = "GLOBAL/settegiugno"
+	date = { day = 18 month = may year = 1919 }
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+		command = { type = manpowerpool value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240002] U05 | 1936 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 240002
+	country = U05
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1941 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 840100 }
+		command = { type = headofgovernment which = 840002 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240003] U05 | 1942 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 240003
+	country = U05
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1942 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 840101 }
+		command = { type = headofgovernment which = 840102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240013] U05 | 1944 | Allied Deployment in the East Indies (Despliegue aliado en las Indias Orientales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 240013
+	country = U05
+	name = EVT_U05_240013_NAME
+	desc = EVT_U05_240013_DESC
+	picture = "nwo/dutch_east_india"
+	style = 1
+	trigger = {
+		flag = cold_war_pacific
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_corps where = 1647 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_corps where = 1649 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_corps where = 1636 }
+		command = { type = add_division value = militia when = 6 }
+		command = { type = add_division value = militia when = 6 }
+		command = { type = add_corps where = 1647 }
+		command = { type = add_division value = transport when = 3 }
+		command = { type = add_division value = transport when = 3 }
+		command = { type = add_division value = transport when = 3 }
+		command = { type = add_division value = transport when = 3 }
+		command = { type = add_division value = transport when = 3 }
+		command = { type = add_division value = transport when = 3 }
+		command = { type = add_division value = transport when = 3 }
+		command = { type = add_division value = transport when = 3 }
+		command = { type = add_corps where = 1647 }
+		command = { type = add_division value = garrison when = 5 }
+		command = { type = add_corps where = 1569 }
+		command = { type = add_division value = garrison when = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329840] U05 | 1944 | Bulwark Against Enemies (Baluarte defensivo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329840
+	country = U05
+	name = EVT_SHARED_00915_NAME
+	desc = EVT_SHARED_00915_DESC
+	picture = "nwo/fortifications"
+	style = 1
+	trigger = {
+		flag = cold_war_pacific
+		war = { country = INO country = U05 }
+		control = { province = 1647 data = -1 }
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = land_fort where = 1647 value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240012] U05 | 1945 | Independence of Indonesia (Independencia de Indonesia)
+# Trigger event 157032 in events/Minors/HOL_14-86.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 240012
+	country = U05
+	persistent = yes
+	name = EVT_SHARED_00910_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = INO }
+		control = { province = 1647 data = -1 }
+		flag = cold_war_pacific
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 80
+		command = { type = dissent value = 2 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 20
+		command = { type = independence which = INO value = 1 }
+		command = { type = trigger which = 157032 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240014] U05 | 1945 | Collapse of Republican Resistance (Colapso de la insurgencia indonesia)
+# Triggered by event 329874 in events/Minors/INO.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 240014
+	country = U05
+	name = EVT_U05_240014_NAME
+	desc = EVT_U05_240014_DESC
+	picture = "nwo/dutch_east_india"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = INO value = 0 }
+		command = { type = province_revoltrisk which = 1648 value = 30 }
+		command = { type = province_revoltrisk which = 1650 value = 30 }
+		command = { type = province_revoltrisk which = 1652 value = 30 }
+		command = { type = province_revoltrisk which = 1653 value = 30 }
+		command = { type = province_revoltrisk which = 1654 value = 30 }
+		command = { type = province_revoltrisk which = 1655 value = 30 }
+		command = { type = province_revoltrisk which = 1656 value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240018] U05 | 1945 | The Round Table Conference (Conferencia de la Mesa Redonda)
+# Triggered by event 324441 in events/GLOBAL/MULTI_Decisions.txt
+# Triggered by event 324442 in events/GLOBAL/MULTI_Decisions.txt
+# Triggered by event 324443 in events/GLOBAL/MULTI_Decisions.txt
+# Triggered by event 324444 in events/GLOBAL/MULTI_Decisions.txt
+# Triggered by event 329878 in events/Minors/HOL_14-86.txt
+# Triggered by event 329883 in events/Minors/HOL_14-86.txt
+# Triggered by event 329885 in events/Minors/U05_Decisions.txt
+# Trigger event 157039 in events/Minors/HOL_14-86.txt
+# Trigger event 240011 in events/Minors/U05.txt
+# Trigger event 329886 in events/Minors/INO.txt
+# Trigger event 329888 in events/Minors/U05.txt
+# Trigger event 329889 in events/Minors/HOL_14-86.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 240018
+	country = U05
+	name = EVT_U05_240018_NAME
+	desc = EVT_U05_240018_DESC
+	picture = "nwo/end_of_indonesian_national_revolution"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secederegion which = -2 value = "Indonesia" when = 2 }
+		command = { type = secederegion which = INO value = "Indonesia" when = 1 }
+	    command = { type = peace which = INO value = 0 }
+		command = { type = name where = U05 which = "U0549" }
+		command = { type = capital which = 1596 }
+		command = { type = strength which = all when = 0 where = 1 value = 0 }
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = dissent value = -10 }
+		command = { type = removecore which = 1615 }
+		command = { type = removecore which = 1616 }
+		command = { type = removecore which = 1618 }
+		command = { type = removecore which = 1619 }
+		command = { type = removecore which = 1620 }
+		command = { type = removecore which = 1621 }
+		command = { type = removecore which = 1622 }
+		command = { type = removecore which = 1623 }
+		command = { type = removecore which = 1627 }
+		command = { type = removecore which = 1628 }
+		command = { type = removecore which = 1629 }
+		command = { type = removecore which = 1630 }
+		command = { type = removecore which = 1631 }
+		command = { type = removecore which = 1632 }
+		command = { type = removecore which = 1633 }
+		command = { type = removecore which = 1634 }
+		command = { type = removecore which = 1635 }
+		command = { type = removecore which = 1636 }
+		command = { type = removecore which = 1637 }
+		command = { type = removecore which = 1638 }
+		command = { type = removecore which = 1639 }
+		command = { type = removecore which = 1640 }
+		command = { type = removecore which = 1641 }
+		command = { type = removecore which = 1642 }
+		command = { type = removecore which = 1643 }
+		command = { type = removecore which = 1644 }
+		command = { type = removecore which = 1645 }
+		command = { type = removecore which = 1646 }
+		command = { type = removecore which = 1647 }
+		command = { type = removecore which = 1648 }
+		command = { type = removecore which = 1649 }
+		command = { type = removecore which = 1650 }
+		command = { type = removecore which = 1651 }
+		command = { type = removecore which = 1652 }
+		command = { type = removecore which = 1653 }
+		command = { type = removecore which = 1654 }
+		command = { type = removecore which = 1655 }
+		command = { type = removecore which = 1656 }
+		command = { type = removecore which = 1657 }
+		command = { type = removecore which = 1658 }
+		command = { type = removecore which = 1659 }
+		command = { type = removecore which = 1660 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240019] U05 | 1945 | The United States of Indonesia (Los Estados Unidos de Indonesia)
+# Triggered by event 329886 in events/Minors/INO.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 240019
+	date = { day = 0 month = january year = 1945 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	country = U05
+	name = EVT_U05_240019_NAME
+	desc = EVT_U05_240019_DESC
+	picture = "nwo/federated_indonesia"
+	style = 1
+	trigger = {
+		event = 329886
+		flag = federated_indonesia
+	}
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = make_puppet which = INO }
+		command = { type = secedearea which = INO value = "Sumatra" when = 2 }
+		command = { type = secedearea which = INO value = "West Java" when = 2 }
+		command = { type = secedearea which = INO value = "East Java" when = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329888] U05 | 1945 | Defense of the Dutch East Indies (Defensa de las Indias Orientales)
+# Triggered by event 240018 in events/Minors/U05.txt
+# Trigger event 329874 in events/Minors/INO.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329888
+	country = U05
+	name = EVT_U05_329888_NAME
+	desc = EVT_U05_329888_DESC
+	picture = "nwo/dutch_east_india"
+	style = 1
+	trigger = {
+		puppet = { country = U05 country = HOL }
+		exists = INO
+		flag = cold_war_pacific
+		NOT = { event = 240018 }
+	}
+	date = { day = 0 month = september year = 1945 }
+	offset = 7
+	deathdate = { day = 29 month = september year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329876] U05 | 1945 | Outcome of the 1945 Ceasefire (Desenlace del alto el fuego)
+# Triggered by event 329875 in events/Minors/HOL_14-86.txt
+# Trigger event 329877 in events/Minors/INO.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329876
+	country = U05
+	one_action = yes
+	name = EVT_U05_329876_NAME
+	desc = EVT_U05_329876_DESC
+	picture = "nwo/indonesian_national_revolution"
+	style = 1
+	trigger = {
+		event = 329875
+		war = { country = INO country = U05 }
+	}
+	date = { day = 25 month = october year = 1945 }
+	offset = 10
+	deathdate = { day = 29 month = november year = 1945 }
+	action = {
+		name = EVT_U05_329876_A
+		ai_chance = 95
+		command = { type = dissent value = -3 }
+		command = { type = sleepevent which = 329877 }
+		command = { type = sleepevent which = 329878 }
+		command = { type = sleepevent which = 240015 }
+	}
+	action = {
+		name = EVT_U05_329876_B
+		ai_chance = 5
+		command = { type = dissent value = -10 }
+		command = { type = peace which = INO value = 0 }
+		command = { type = secedearea which = -1 value = "Sumatra" when = 2 }
+		command = { type = secedearea which = -1 value = "West Java" when = 2 }
+		command = { type = secedearea which = -1 value = "East Java" when = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240015] U05 | 1946 | Resumption of Hostilities (Reanudación de la guerra)
+# Triggered by event 329878 in events/Minors/HOL_14-86.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 240015
+	country = U05
+	name = EVT_U05_240015_NAME
+	desc = EVT_U05_240015_DESC
+	picture = "nwo/indonesian_national_revolution"
+	style = 1
+	action = {
+		name = ACTION_NAME_FIGHT
+		command = { type = war which = INO }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240016] U05 | 1946 | Operation Product (Operatie Product)
+# Triggered by event 329881 in events/Minors/HOL_14-86.txt
+# Triggered by event 329882 in events/Minors/INO.txt
+# Triggered by event 329883 in events/Minors/HOL_14-86.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 240016
+	country = U05
+	name = EVT_U05_240016_NAME
+	desc = EVT_U05_240016_DESC
+	picture = "nwo/indonesian_police_actions"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_corps where = 1596 }
+		command = { type = add_division value = marine when = 6 }
+		command = { type = add_division value = marine when = 6 }
+		command = { type = add_division value = marine when = 6 }
+		command = { type = manpowerpool value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329879] U05 | 1946 | Battle of Surabaya (Batalla de Surabaya)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329879
+	country = U05
+	name = EVT_U05_329879_NAME
+	desc = EVT_U05_329879_DESC
+	picture = "nwo/battle_of_surabaya"
+	style = 1
+	trigger = {
+		war = { country = INO country = U05 }
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 90
+	deathdate = { day = 29 month = june year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -6 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_corps which = "Sumatran defence force" value = land where = 1636 }
+		command = { type = add_division value = militia when = 6 }
+		command = { type = add_division value = militia when = 6 }
+		command = { type = manpowerpool value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240004] U05 | 1948 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 240004
+	country = U05
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 840103 }
+		command = { type = headofgovernment which = 840104 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240017] U05 | 1948 | Operation Crow (Operatie Kraai)
+# Triggered by event 329884 in events/Minors/HOL_14-86.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 240017
+	country = U05
+	name = EVT_U05_240017_NAME
+	desc = EVT_U05_240017_DESC
+	picture = "nwo/indonesian_police_actions"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_corps where = 1596 }
+		command = { type = add_division value = marine when = 6 }
+		command = { type = add_division value = marine when = 6 }
+		command = { type = add_division value = marine when = 6 }
+		command = { type = manpowerpool value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240005] U05 | 1949 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 240005
+	country = U05
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 840105 }
+		command = { type = headofgovernment which = 840106 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240006] U05 | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 240006
+	country = U05
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 840107 }
+		command = { type = headofgovernment which = 840108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240007] U05 | 1953 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 240007
+	country = U05
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 840109 }
+		command = { type = headofgovernment which = 840110 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240008] U05 | 1958 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 240008
+	country = U05
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 840111 }
+		command = { type = headofgovernment which = 840112 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240009] U05 | 1961 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 240009
+	country = U05
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 840111 }
+		command = { type = headofgovernment which = 840113 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329890] U05 | 1961 | New Guinea and the Netherlands (Nueva Guinea y los Países Bajos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329890
+	country = U05
+	name = EVT_U05_329890_NAME
+	desc = EVT_U05_329890_DESC
+	picture = "nwo/dutch_west_guinea"
+	style = 1
+	trigger = {
+		puppet = { country = U05 country = HOL }
+		exists = INO
+		flag = cold_war_pacific
+		NOT = { flag = federated_indonesia }
+	}
+	date = { day = 0 month = september year = 1961 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240010] U05 | 1962 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 240010
+	country = U05
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 840111 }
+		command = { type = headofgovernment which = 840114 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [240011] U05 | 1962 | The Morning Star Flag (La bandera Morning Star)
+# Triggered by event 240018 in events/Minors/U05.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 240011
+	country = U05
+	name = EVT_U05_240011_NAME
+	desc = EVT_U05_240011_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		event = 240018
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 100
+		command = { type = flag_ext where = U05 which = _1962 }
+	}
+	action = {
+		name = EVT_U05_240011_A
+		ai_chance = 100
+		command = { type = money value = 5 }
+	}
+}

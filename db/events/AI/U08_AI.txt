@@ -1,0 +1,472 @@
+# ============================================================================
+# File: events/AI/U08_AI.txt (19 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329571] U08 | 14 | AI_EVENT
+# Trigger event 329572 in events/AI/BEL_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329571
+	random = no
+	country = U08
+	name = "AI_EVENT"
+	trigger = {
+		ai = yes
+		war = { country = BEL country = U08 }
+	}
+	date = { day = 1 month = january year = 14 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+		command = { type = add_corps value = land where = 110 }
+		command = { type = add_division value = infantry when = 1 }
+		command = { type = add_corps value = land where = 128 }
+		command = { type = add_division value = infantry when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243025] U08 | 1914 | AI_EVENT
+# Triggered by event 211046 in events/Minors/RUS_Decisions.txt
+# Triggered by event 147253 in events/FRA/FRA_14-14.txt
+# Triggered by event 243121 in events/Minors/U08_Decisions.txt
+# Trigger event 236016 in events/GLOBAL/ALL_26-36.txt
+# Trigger event 147301 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243025
+	random = no
+	country = U08
+	persistent = no
+	trigger = {
+		ai = U08
+		OR = {
+				event = 147253
+				AND = {
+					flag = 1915_WWI
+					atwar = FRA
+					}
+				}
+			}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1925 }
+	action = { trigger = { local_flag = Kronprinz }
+		name = "EVT_SHARED_00137_A"
+		command = { type = belligerence value = 5 }
+		command = { type = war which = FRA }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 236016 }
+		command = { trigger = { NOT = { flag = 1915_WWI } } type = trigger which = 147301 }
+		command = { type = clrflag which = 1915_WWI }
+		command = { type = local_clrflag which = Kronprinz }
+	}
+	action = { trigger = { local_flag = Schlieffen }
+		name = "EVT_SHARED_00137_B"
+		command = { type = belligerence value = 10 }
+		command = { type = war which = FRA }
+		command = { type = war which = BEL }
+		command = { type = war which = LUX }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 236016 }
+		command = { trigger = { NOT = { flag = 1915_WWI } } type = trigger which = 147301 }
+		command = { type = clrflag which = 1915_WWI }
+		command = { type = local_clrflag which = Schlieffen }
+	}
+	action = { trigger = { local_flag = SchlieffenExp }
+		name = "EVT_SHARED_00137_C"
+		command = { type = belligerence value = 15 }
+		command = { type = war which = FRA }
+		command = { type = war which = BEL }
+		command = { type = war which = LUX }
+		command = { type = war which = HOL }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 236016 }
+		command = { trigger = { NOT = { flag = 1915_WWI } } type = trigger which = 147301 }
+		command = { type = clrflag which = 1915_WWI }
+		command = { type = local_clrflag which = SchlieffenExp }
+	}
+	action = { trigger = { local_flag = Rupprecht }
+		name = "EVT_SHARED_00137_D"
+		command = { type = belligerence value = 5 }
+		command = { type = war which = FRA }
+		command = { trigger = { NOT = { war = { country = FRA country = SCH } } } type = war which = SCH }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 236016 }
+		command = { trigger = { NOT = { flag = 1915_WWI } } type = trigger which = 147301 }
+		command = { type = clrflag which = 1915_WWI }
+		command = { type = local_clrflag which = Rupprecht }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243026] U08 | 1914 | AI_EVENT
+# Trigger event 236016 in events/GLOBAL/ALL_26-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243026
+	random = no
+	country = U08
+	persistent = no
+	trigger = {
+		ai = U08
+		flag = 1915_WWI
+		atwar = RUS
+			}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 236016 }
+		command = { type = ai which = "switch/U08_1914_Kronprinz.ai" }
+		command = { type = clrflag which = 1915_WWI }
+		command = { type = local_clrflag which = Kronprinz }
+		command = { type = local_clrflag which = Schlieffen }
+		command = { type = local_clrflag which = SchlieffenExp }
+		command = { type = local_clrflag which = Rupprecht }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329566] U08 | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329566
+	random = no
+	country = U08
+	persistent = no
+	trigger = {
+		ai = U08
+		year = 1914
+		NOT = { war = { country = U09 country = U08 } }
+		}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		ai_chance = 2
+		command = { type = local_setflag which = Kronprinz }
+		command = { type = ai which = "switch/U08_1914_Kronprinz.ai" }
+		}
+	action = {
+		ai_chance = 95
+		command = { type = local_setflag which = Schlieffen }
+		command = { type = ai which = "switch/U08_1914_Schlieffen.ai" }
+		}
+	action = {
+		ai_chance =  2
+		command = { type = local_setflag which = SchlieffenExp }
+		command = { type = ai which = "switch/U08_1914_SchlieffenExp.ai" }
+		}
+	action = {
+		ai_chance =  1
+		command = { type = local_setflag which = Rupprecht }
+		command = { type = ai which = "switch/U08_1914_Rupprecht.ai" }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243027] U08 | 1916 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 243027
+	random = no
+	country = U08
+	trigger = {
+		ai = yes
+		atwar = yes
+		technology = 2620
+	}
+	name = "AI_EVENT"
+	date = { day = 0 month = january year = 1916 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+		command = { type = build_division which = infantry value = super_heavy_armor cost = -0.1 where = 45 }
+		command = { type = build_division which = infantry value = super_heavy_armor cost = -0.1 where = 45 }
+		command = { type = build_division which = infantry value = super_heavy_armor cost = -0.1 where = 45 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243028] U08 | 1916 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 243028
+	random = no
+	country = U08
+	trigger = {
+		ai = yes
+		atwar = yes
+		technology = 2620
+	}
+	name = "AI_EVENT"
+	date = { day = 0 month = january year = 1916 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+		command = { type = build_division which = infantry value = heavy_armor cost = -0.1 where = 45 }
+		command = { type = build_division which = infantry value = heavy_armor cost = -0.1 where = 45 }
+		command = { type = build_division which = infantry value = heavy_armor cost = -0.1 where = 45 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243029] U08 | 1917 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243029
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			NOT = { event = 243106 }
+				}
+        name = "AI_EVENT"
+        date = { day = 15 month = july year = 1917 }
+	action_a = {
+		command = { type = headofgovernment which = 855005 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243030] U08 | 1917 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243030
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			NOT = { event = 243106 }
+				}
+        name = "AI_EVENT"
+        date = { day = 1 month = november year = 1917 }
+	action_a = {
+		command = { type = headofgovernment which = 855006 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243032] U08 | 1919 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243032
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			event = 243106
+				}
+        name = "AI_EVENT"
+        date = { day = 1 month = february year = 1919 }
+	action_a = {
+		command = { type = headofgovernment which = 855204 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243033] U08 | 1919 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243033
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			event = 243106
+				}
+        name = "AI_EVENT"
+        date = { day = 1 month = june year = 1919 }
+	action_a = {
+		command = { type = headofgovernment which = 855205 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243034] U08 | 1920 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243034
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			event = 243106
+				}
+        name = "AI_EVENT"
+        date = { day = 1 month = march year = 1920 }
+	action_a = {
+		command = { type = headofgovernment which = 855206 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243035] U08 | 1920 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243035
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			event = 243106
+				}
+        name = "AI_EVENT"
+        date = { day = 1 month = june year = 1920 }
+	action_a = {
+		command = { type = headofgovernment which = 855207 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243050] U08 | 1920 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 243050
+	name = "AI_EVENT"
+	country = U08
+	trigger = {
+		ai = yes
+		flag = no_war_1933
+	}
+	date = { day = 2 month = june year = 1920 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = ai which = "AAR/wars/no_war.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243036] U08 | 1921 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243036
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			event = 243106
+				}
+        name = "AI_EVENT"
+        date = { day = 1 month = may year = 1921 }
+	action_a = {
+		command = { type = headofgovernment which = 855208 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243037] U08 | 1922 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243037
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			event = 243106
+				}
+        name = "AI_EVENT"
+        date = { day = 1 month = november year = 1922 }
+	action_a = {
+		command = { type = headofgovernment which = 855209 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243038] U08 | 1923 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243038
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			event = 243106
+				}
+        name = "AI_EVENT"
+        date = { day = 1 month = august year = 1923 }
+	action_a = {
+		command = { type = headofgovernment which = 855210 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243039] U08 | 1923 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243039
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			event = 243106
+				}
+        name = "AI_EVENT"
+        date = { day = 1 month = november year = 1923 }
+	action_a = {
+		command = { type = headofgovernment which = 855211 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243031] U08 | 1925 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243031
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			event = 243106
+				}
+        name = "AI_EVENT"
+        date = { day = 1 month = may year = 1925 }
+	action_a = {
+		command = { type = headofstate which = 855301 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [243040] U08 | 1926 | AI_EVENT
+# Triggered by event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 243040
+        random = no
+        country = U08
+        trigger = {
+			ai = yes
+			event = 243106
+				}
+        name = "AI_EVENT"
+        date = { day = 1 month = may year = 1926 }
+	action_a = {
+		command = { type = headofgovernment which = 855211 }
+		command = { type = dissent value = -1 }
+		}
+}

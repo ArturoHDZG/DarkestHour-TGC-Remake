@@ -1,0 +1,51 @@
+# ============================================================================
+# File: events/Minors/SCH_Decisions.txt (1 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [216017] SCH | 1914 | End Mobilization (Finalizar la movilización)
+# Trigger event 329349 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 216017
+	random = no
+	persistent = yes
+	country = SCH
+	decision = {
+			NOT = { local_flag = demob }
+			OR = {
+				AND = {
+					atwar = no
+					local_flag = MOB8
+					}
+				}
+	}
+	decision_trigger = {
+			OR = {
+				local_flag = MOB9
+				AND = {
+					atwar = no
+					local_flag = MOB7
+					}
+				}
+	}
+	trigger = {
+		atwar = no
+		local_flag = MOB8
+		}
+	name = "EVT_SHARED_00267_NAME"
+	desc = "EVT_SHARED_00268_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	decision_picture = "GLOBAL/decision_german_total_war"
+	date = { day = 1 month = january year = 1914 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		trigger = { local_flag = MOB8 }
+		ai_chance = 100
+		command = { type = trigger which = 329349}
+	}
+}

@@ -1,0 +1,1491 @@
+# ============================================================================
+# File: events/FRA/FRA_14-14.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [147034] FRA | 1914 | Offensive Chit Expired (Reserva Logística Ofensiva agotada)
+# Triggered by event 147033 in events/FRA/FRA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147034
+	random = no
+	country = FRA
+	name = "EVT_SHARED_00461_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GLOBAL/ww1_offensive"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = -10 }
+		command = { type = morale which = land value = -10 }
+		command = { trigger = { ai = yes } type = morale which = land value = -20 }
+		command = { type = speed which = land value = -2 }
+		command = { type = morale which = naval value = -10 }
+		command = { type = morale which = air value = -10 }
+		command = { type = counterattack value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = encirclement value = -2 }
+		command = { type = hq_supply_eff value = -2 }
+		command = { type = sce_frequency value = -0.3 }
+		command = { type = attrition_mod value = -2 }
+		command = { type = trickleback_mod value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147233] FRA | 1914 | The Outcome of the Great War (historical) (El fin de la Gran Guerra)
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147233
+	country = FRA
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 30
+	trigger = {
+		OR = {
+			event = 147311
+		}
+		atwar = no
+	}
+	name = "EVT_FRA_147233_NAME"
+	desc = "EVT_FRA_147233_DESC"
+	picture = "GLOBAL/aar_versailles"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = alliance which = ENG }
+		command = { type = removeclaim which = 126 }
+		command = { type = removeclaim which = 127 }
+		command = { type = removeclaim which = 128 }
+		command = { type = removeclaim which = 129 }
+		command = { type = removeclaim which = 130 }
+		command = { type = removeclaim which = 131 }
+		command = { type = local_setflag which = winner }
+		command = { type = independence which = U23 value = 1 when = 1 }
+		command = { type = secedearea which = U23 value = "Rhineland" when = 2 }
+		command = { type = make_puppet which = U23 }
+		command = { type = secedeprovince which = U08 value = 126 when = 2 }
+		command = { type = secedeprovince which = U08 value = 131 when = 2 }
+		command = { type = demobilize which = land when = 0 where = 0 value = 50 }
+		command = { type = local_clrflag which = disarm_army_10 }
+		command = { type = local_clrflag which = disarm_army_25 }
+		command = { type = local_clrflag which = disarm_army_75 }
+		command = { type = local_setflag which = disarm_army_50 }
+		command = { type = demobilize which = naval when = 0 where = 0 value = 100 }
+		command = { type = local_clrflag which = disarm_naval_10 }
+		command = { type = local_clrflag which = disarm_naval_25 }
+		command = { type = local_clrflag which = disarm_naval_50 }
+		command = { type = local_setflag which = disarm_naval_100 }
+		command = { type = local_clrflag which = disarm_naval_150 }
+		command = { type = local_clrflag which = disarm_naval_200 }
+		command = { type = demobilize which = air when = 0 where = 0 value = 10 }
+		command = { type = local_clrflag which = disarm_air_0 }
+		command = { type = local_clrflag which = disarm_air_1 }
+		command = { type = local_setflag which = disarm_air_3 }
+		command = { type = local_clrflag which = disarm_air_5 }
+		command = { type = domestic which = interventionism value = -8 }
+		command = { trigger = { not = { flag = lon } } type = setflag which = lon }
+		command = { type = ai which = "AAR/national_behavior/FRA_Behavior.ai" }
+		command = { trigger = { or = { flag = no_war_1933 flag = no_war_1936 flag = no_war_1939 } }
+				type = ai which = "AAR/wars/no_war.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147235] FRA | 1914 | Occupation of the Ruhr (Ocupación del Ruhr)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147235
+	country = FRA
+	persistent = yes
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1939 }
+	offset = 30
+	trigger = {
+		flag = nogerrep2
+		not = { flag = ruhr_occupied }
+	}
+	name = "EVT_FRA_147235_NAME"
+	Desc = "EVT_FRA_147235_DESC"
+	Picture = "aar_ruhr"
+	action = {
+		name = "EVT_FRA_147235_A"
+		ai_chance = 90
+		command = { type = removeclaim which = 126 }
+		command = { type = removeclaim which = 127 }
+		command = { type = removeclaim which = 128 }
+		command = { type = removeclaim which = 129 }
+		command = { type = removeclaim which = 130 }
+		command = { type = removeclaim which = 131 }
+		command = { trigger = { exists = U23 } type = inherit which = U23 value = 0 }
+		command = { type = secedearea which = FRA value = "Rhineland" when = 2 }
+		command = { trigger = { exists = GER } type =	relation which =	GER value = -125 }
+		command = { trigger = { exists = U08 } type =	relation which =	U08 value = -125 }
+		command = { type = relation which =	ENG value = -50 }
+		command = { type = setflag which = ruhr_occupied }
+		command = { type = clrflag which = nogerrep2 }
+	}
+	action = {
+		name = "EVT_FRA_147235_B"
+		ai_chance = 10
+		command = { type = relation which = GER value = 150 }
+		command = { type = relation which = ENG value = 50 }
+		command = { type = clrflag which = nogerrep2 }
+		command = { type = clrflag which = nogerrep }
+		command = { trigger = { exists = U08 } type = secedearea which = U08 value = "Rhineland"	when = 2 }
+		command = { trigger = { exists = U08 } type =	relation which =	U08 value = 50 }
+		command = { trigger = { exists = GER } type = secedearea which = GER value = "Rhineland" when = 2	}
+		command = { trigger = { exists = GER } type =	relation which =	GER value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147236] FRA | 1914 | Return of the Ruhr (Devolución del Ruhr)
+# Triggered by event 316348 in events/USA/USA_16-28.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147236
+	country = FRA
+	persistent = yes
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1939 }
+	offset = 60
+	trigger = {
+		flag = ruhr_occupied
+		random = 20
+	}
+	name = "EVT_FRA_147236_NAME"
+	Desc = "EVT_FRA_147236_DESC"
+	Picture = "aar_ruhr"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { trigger = { exists = U08 } type = secedearea which = U08 value = "Rhineland"	when = 2 }
+		command = { trigger = { exists = U08 } type =	relation which =	U08 value = 50 }
+		command = { trigger = { exists = GER } type = secedearea which = GER value = "Rhineland" when = 2	}
+		command = { trigger = { exists = GER } type =	relation which =	GER value = 50 }
+		command = { type = relation which =	ENG value = 25 }
+		command = { type = setflag which = ruhr_return }
+		command = { type = clrflag which = ruhr_occupied }
+		command = { type = clrflag which = nogerrep2 }
+		command = { type = clrflag which = nogerrep }
+		command = { type = clrflag which = 13301011f }
+	}
+	action = {
+		trigger = {
+			not = { flag = 13301011f }
+		}
+		name = "EVT_FRA_147236_A"
+		ai_chance = 0
+		command = { trigger = { exists = GER } type =	relation which =	GER value = -200 }
+		command = { trigger = { exists = U08 } type =	relation which =	U08 value = -200 }
+		command = { type =	relation which =	ENG value = -200 }
+		command = { type =	relation which =	USA value = -200 }
+		command = { type =	relation which =	ITA value = -200 }
+		command = { type = leave_alliance }
+		command = { type =	dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147247] FRA | 1914 | Treaty of Athens (Tratado de Atenas)
+# Trigger event 166286 in events/ITA/ITA_14-20.txt
+# Trigger event 152218 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 147247
+   country = FRA
+   random = no
+   trigger = {
+	  flag = { which = CorfuwarLON }
+	  and = { war = { country = ITA } lost_national = { country = ITA value = 15 } }
+   }
+   name = "EVT_SHARED_01063_NAME"
+   desc = LOST_DESC
+	picture = "GLOBAL/diplomatic_campaign"
+   style = 2
+   date = { day = 1 month = january year = 1914 }
+   offset = 1
+   deathdate = { day = 1 month = january year = 9999 }
+   action = {
+       name = "ACTION_NAME_GREAT"
+	   command = { type = money value = 1000 }
+	   command = { type = trigger which = 166286 }
+	   command = { type = trigger which = 152218 }
+	   command = { type = peace which = ITA value = 0 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [147248] FRA | 1914 | Treaty of Rome (Tratado de Roma)
+# Triggered by event 166287 in events/ITA/ITA_14-20.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 147248
+   country = FRA
+   random = no
+   name = "EVT_SHARED_01064_NAME"
+   desc = LOST_DESC
+	picture = "GLOBAL/diplomatic_campaign"
+   style = 2
+   action = {
+       name = ACTION_NAME_DAMN
+	   command = { type = money value = 1000 }
+	   command = { type = secedeprovince which = ITA value = 833 }
+	   command = { type = secedeprovince which = ITA value = 94 }
+	   command = { type = secedeprovince which = ITA value = 741 }
+	   command = { type = secedeprovince which = ITA value = 742 }
+	   command = { type = secedeprovince which = ITA value = 744 }
+	   command = { type = secedeprovince which = ITA value = 740 }
+	   command = { type = secedeprovince which = ITA value = 745 }
+	   command = { type = secedeprovince which = ITA value = 746 }
+	   command = { type = secedeprovince which = ITA value = 747 }
+	   command = { type = secedeprovince which = ITA value = 748 }
+	   command = { type = secedeprovince which = ITA value = 749 }
+	   command = { type = peace which = ITA value = 0 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [147251] FRA | 1914 | French reserve system (Sistema de reserva francés)
+# Triggered by event 147250 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147251
+	country = FRA
+	persistent = yes
+	name = "EVT_FRA_147251_NAME"
+	desc = "EVT_SHARED_01014_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	action = {
+		name = ACTION_NAME_OK
+        command = { trigger = { war = { country = U08  country = FRA } } type = event which = 147251 where = -1 when = 30 }
+		command = {	type = manpowerpool value = 5 }
+		command = {	type = supplies value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147253] FRA | 1914 | German Ultimatum for Neutrality (Ultimátum alemán exigiendo neutralidad)
+# Triggered by event 243095 in events/Minors/U08_14-14.txt
+# Trigger event 243096 in events/Minors/U08_14-14.txt
+# Trigger event 243025 in events/AI/U08_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147253
+	country = FRA
+	name = "EVT_FRA_147253_NAME"
+	desc = "EVT_FRA_147253_DESC"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = belligerence value = 5 }
+		command = { trigger = { NOT = { ai = U08 } } type = trigger which = 243096 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147261] FRA | 1914 | Treaty of London with Greece Signed (Tratado con Grecia firmado)
+# Triggered by event 152016 in events/GRE/GRE_14-33.txt
+# Triggered by event 152017 in events/GRE/GRE_14-33.txt
+# Trigger event 152020 in events/GRE/GRE_14-33.txt
+# Trigger event 152022 in events/GRE/GRE_14-33.txt
+# Trigger event 152023 in events/GRE/GRE_14-33.txt
+# Trigger event 231040 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147261
+	random = no
+	country = FRA
+	name = "EVT_FRA_147261_NAME"
+	desc = "EVT_FRA_147261_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = relation which = GRE value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147262] FRA | 1914 | French Forces for the Dardanelles Expedition (Fuerzas francesas para los Dardanelos)
+# Triggered by event 143185 in events/ENG/ENG_Decisions.txt
+# Trigger event 143187 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147262
+	country = FRA
+	name = "EVT_FRA_147262_NAME"
+	desc = "EVT_FRA_147262_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "EVT_FRA_147262_A"
+		ai_chance = 75
+		command = { type = trigger which = 143187 }
+		command = { type = manpowerpool value = -20 }
+		command = { type = supplies value = -500 }
+	}
+	action_b = {
+		name = "EVT_FRA_147262_B"
+		ai_chance = 25
+		command = {  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147266] FRA | 1914 | Greece Demobilizes Its Forces (Grecia desmoviliza sus tropas)
+# Triggered by event 152025 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147266
+	random = no
+	country = FRA
+	name = "EVT_FRA_147266_NAME"
+	desc = "EVT_FRA_147266_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = relation which = GRE value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147267] FRA | 1914 | Resignation of Venizelos (Dimisión de Venizelos)
+# Triggered by event 152020 in events/GRE/GRE_14-33.txt
+# Triggered by event 152026 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147267
+	random = no
+	country = FRA
+	name = "EVT_FRA_147267_NAME"
+	desc = "EVT_FRA_147267_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = relation which = GRE value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147269] FRA | 1914 | Serbian Army Retreats through Albania (Retirada serbia a través de Albania)
+# Triggered by event 101016 in events/Minors/ALB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147269
+	country = FRA
+	name = "EVT_FRA_147269_NAME"
+	desc = "EVT_FRA_147269_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = {  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147271] FRA | 1914 | Greece Grants Transit to Bulgaria (Grecia concede paso militar a Bulgaria)
+# Triggered by event 152028 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147271
+	country = FRA
+	name = "EVT_FRA_147271_NAME"
+	desc = "EVT_FRA_147271_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GRE value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147274] FRA | 1914 | Athens Concedes to Demobilization (Atenas acata la desmovilización)
+# Triggered by event 152031 in events/GRE/GRE_14-33.txt
+# Trigger event 152032 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147274
+	country = FRA
+	name = "EVT_FRA_147274_NAME"
+	desc = "EVT_FRA_147274_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = relation which = GRE value = 15 }
+		command = { type = secedearea which = GRE value = "Thrace" }
+		command = { type = secedearea which = GRE value = "Attica" }
+		command = { type = secedearea which = GRE value = "Greek Island" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147275] FRA | 1914 | The 'Noemvriana' Clashes in Athens (Los sucesos de las «Vísperas Griegas»)
+# Triggered by event 152032 in events/GRE/GRE_14-33.txt
+# Trigger event 147276 in events/FRA/FRA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147275
+	country = FRA
+	name = "EVT_FRA_147275_NAME"
+	desc = "EVT_FRA_147275_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147280] FRA | 1914 | The Fall of Paris (La caída de París)
+# Trigger event 147252 in events/FRA/FRA_14-31.txt
+# Trigger event 147254 in events/FRA/FRA_Decisions.txt
+# Trigger event 147256 in events/FRA/FRA_Decisions.txt
+# Trigger event 147258 in events/FRA/FRA_Decisions.txt
+# Trigger event 147259 in events/FRA/FRA_Decisions.txt
+# Trigger event 147260 in events/FRA/FRA_Decisions.txt
+# Trigger event 147265 in events/FRA/FRA_Decisions.txt
+# Trigger event 147272 in events/FRA/FRA_Decisions.txt
+# Trigger event 147273 in events/FRA/FRA_Decisions.txt
+# Trigger event 147276 in events/FRA/FRA_Decisions.txt
+# Trigger event 243130 in events/Minors/U08_14-18.txt
+# Trigger event 244039 in events/Minors/U09.txt
+# Trigger event 243083 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147280
+	country = FRA
+	trigger = {
+		NOT = { flag = force_fall_kai }
+		NOT = { flag = force_historical_ww1 }
+		war = {country = U08 country = FRA }
+		random = 25
+		control = { province = 55 data = -2 }
+	}
+	name = "EVT_FRA_147280_NAME"
+	desc = "EVT_FRA_147280_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 4
+	deathdate = { day = 29 month = november year = 1914 }
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = ENG } }
+				type = alliance_leader which = ENG where = 0 }
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = RUS }
+					NOT = { alliance = { country = FRA country = ENG } } }
+				type = alliance_leader which = RUS where = 0 }
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = USA }
+					NOT = {
+						alliance = { country = FRA country = ENG }
+						alliance = { country = FRA country = RUS } } }
+				type = alliance_leader which = USA where = 0 }
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = ITA }
+					NOT = {
+						alliance = { country = FRA country = ENG }
+						alliance = { country = FRA country = RUS }
+						alliance = { country = FRA country = USA } } }
+				type = alliance_leader which = ITA where = 0 }
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = ROM }
+					NOT = {
+						alliance = { country = FRA country = ENG }
+						alliance = { country = FRA country = RUS }
+						alliance = { country = FRA country = USA }
+						alliance = { country = FRA country = ITA } } }
+				type = alliance_leader which = ROM where = 0 }
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = GRE }
+					NOT = {
+						alliance = { country = FRA country = ENG }
+						alliance = { country = FRA country = RUS }
+						alliance = { country = FRA country = USA }
+						alliance = { country = FRA country = ITA }
+						alliance = { country = FRA country = ROM } } }
+				type = alliance_leader which = GRE where = 0 }
+		command = { type = dissent value = 5 }
+		command = { type = sleepevent which = 147277 }
+		command = { type = sleepevent which = 147278 }
+		command = { type = sleepevent which = 147279 }
+		command = { type = sleepevent which = 147281 }
+		command = { type = trigger which = 243130 }
+		command = { type = trigger which = 244039 }
+		command = { type = leave_alliance }
+		command = { type = peace which = U08 value = 1 }
+		command = { type = peace which = U09 value = 1 }
+		command = { trigger = { war = { country = OTT country = FRA } } type = peace which = OTT value = 1 }
+		command = { trigger = { war = { country = BUL country = FRA } } type = peace which = BUL value = 1 }
+		command = { type = setflag which = German_EndWWI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147282] FRA | 1914 | Paris is lost! (¡París se ha perdido!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147282
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 55 data = -3 } }
+		NOT = { control = { province = 55 data = REB } }
+	}
+	name = "EVT_FRA_147282_NAME"
+	desc = "EVT_FRA_147282_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147283] FRA | 1914 | Loss of Nancy (Pérdida de Nancy)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147283
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 106 data = -3 } }
+		NOT = { control = { province = 106 data = REB } }
+	}
+	name = "EVT_FRA_147283_NAME"
+	desc = "EVT_FRA_147283_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1	  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147284] FRA | 1914 | Loss of Lille (Pérdida de Lille)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147284
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 62 data = -3 } }
+		NOT = { control = { province = 62 data = REB } }
+	}
+	name = "EVT_FRA_147284_NAME"
+	desc = "EVT_FRA_147284_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147285] FRA | 1914 | Loss of Reims (Pérdida de Reims)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147285
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 99 data = -3 } }
+		NOT = { control = { province = 99 data = REB } }
+	}
+	name = "EVT_FRA_147285_NAME"
+	desc = "EVT_FRA_147285_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147286] FRA | 1914 | Loss of Calais (Pérdida de Calais)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147286
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 49 data = -3 } }
+		NOT = { control = { province = 49 data = REB } }
+	}
+	name = "EVT_FRA_147286_NAME"
+	desc = "EVT_FRA_147286_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147287] FRA | 1914 | Loss of Orléans (Pérdida de Orleáns)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147287
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 66 data = -3 } }
+		NOT = { control = { province = 66 data = REB } }
+	}
+	name = "EVT_FRA_147287_NAME"
+	desc = "EVT_FRA_147287_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147288] FRA | 1914 | Loss of Caen (Pérdida de Caen)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147288
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 44 data = -3 } }
+		NOT = { control = { province = 44 data = REB } }
+	}
+	name = "EVT_FRA_147288_NAME"
+	desc = "EVT_FRA_147288_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147289] FRA | 1914 | Loss of Rennes (Pérdida de Rennes)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147289
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 38 data = -3 } }
+		NOT = { control = { province = 38 data = REB } }
+	}
+	name = "EVT_FRA_147289_NAME"
+	desc = "EVT_FRA_147289_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147290] FRA | 1914 | Loss of Lyon (Pérdida de Lyon)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147290
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 85 data = -3 } }
+		NOT = { control = { province = 85 data = REB } }
+	}
+	name = "EVT_FRA_147290_NAME"
+	desc = "EVT_FRA_147290_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147291] FRA | 1914 | Loss of Limoges (Pérdida de Limoges)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147291
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 73 data = -3 } }
+		NOT = { control = { province = 73 data = REB } }
+	}
+	name = "EVT_FRA_147291_NAME"
+	desc = "EVT_FRA_147291_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147292] FRA | 1914 | Loss of Bordeaux (Pérdida de Burdeos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147292
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 68 data = -3 } }
+		NOT = { control = { province = 68 data = REB } }
+	}
+	name = "EVT_FRA_147292_NAME"
+	desc = "EVT_FRA_147292_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147293] FRA | 1914 | Loss of Toulouse (Pérdida de Tolosa)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147293
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 77 data = -3 } }
+		NOT = { control = { province = 77 data = REB } }
+	}
+	name = "EVT_FRA_147293_NAME"
+	desc = "EVT_FRA_147293_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147294] FRA | 1914 | Loss of Marseille (Pérdida de Marsella)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147294
+	country = FRA
+	trigger = {
+		atwar = yes
+		NOT = { control = { province = 89 data = -3 } }
+		NOT = { control = { province = 89 data = REB } }
+	}
+	name = "EVT_FRA_147294_NAME"
+	desc = "EVT_FRA_147294_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147295] FRA | 1914 | Secret Russian Consultations in Paris (Consultas secretas rusas en París)
+# Triggered by event 211038 in events/Minors/RUS_Decisions.txt
+# Trigger event 211039 in events/Minors/RUS_14-14.txt
+# Trigger event 211040 in events/Minors/RUS_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147295
+	country = FRA
+	name = "EVT_FRA_147295_NAME"
+	desc = "EVT_FRA_147295_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "EVT_FRA_147295_A"
+		ai_chance = 85
+		command = { type = relation which = RUS value = 25 }
+		command = { type = trigger which = 211039 }
+	}
+	action_b = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 15
+		command = { type = relation which = RUS value = -15 }
+		command = { type = trigger which = 211040 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147301] FRA | 1914 | The Franco-Russian Alliance Activated (Activación de la Alianza Franco-Rusa)
+# Triggered by event 243025 in events/AI/U08_AI.txt
+# Triggered by event 243096 in events/Minors/U08_14-14.txt
+# Trigger event 211051 in events/Minors/RUS_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147301
+	country = FRA
+	style = 1
+	name = "EVT_SHARED_00104_NAME"
+	desc = "EVT_SHARED_00104_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { ispuppet = FRA alliance = { country = FRA country = GRE } } alliance = { country = RUS country = GRE } } type = alliance which = GRE }
+		command = { trigger = { NOT = { ispuppet = RUS alliance = { country = FRA country = RUS } } } type = alliance which = RUS }
+		command = { trigger = { NOT = { ispuppet = SER alliance = { country = FRA country = SER } } } type = alliance which = SER }
+		command = { trigger = { NOT = { ispuppet = MTN alliance = { country = FRA country = MTN } } } type = alliance which = MTN }
+		command = { type = trigger which = 211051 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147302] FRA | 1914 | The Franco-Russian Alliance Activated (Activación de la Alianza Franco-Rusa)
+# Triggered by event 211051 in events/Minors/RUS_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147302
+	country = FRA
+	style = 1
+	name = "EVT_SHARED_00104_NAME"
+	desc = "EVT_SHARED_00104_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { ispuppet = RUS alliance = { country = FRA country = RUS } } } type = alliance which = RUS }
+		command = { trigger = { NOT = { ispuppet = SER alliance = { country = FRA country = SER } } } type = alliance which = SER }
+		command = { trigger = { NOT = { ispuppet = MTN alliance = { country = FRA country = MTN } } } type = alliance which = MTN }
+		command = { type = alliance_leader which = FRA where = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147303] FRA | 1914 | Armistice with Germany (Armisticio con Alemania)
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147303
+	country = FRA
+	name = "EVT_FRA_147303_NAME"
+	desc = "EVT_FRA_147303_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147308] FRA | 1914 | Treaty of Versailles: Harsh Terms (Tratado de Versalles: Condiciones severas)
+# Triggered by event 244017 in events/Minors/U09.txt
+# Triggered by event 243083 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147308
+	country = FRA
+	name = "EVT_FRA_147308_NAME"
+	desc = "EVT_FRA_147308_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { trigger = { not = { dissent = 20 } } type = dissent value = 10 }
+		command = { trigger = { not = { dissent = 30 } } type = dissent value = 5 }
+		command = { trigger = { not = { dissent = 40 } } type = dissent value = 5 }
+		command = { trigger = { dissent = 60 } type = dissent value = -20 }
+		command = { trigger = { dissent = 55 } type = dissent value = -10 }
+		command = { trigger = { dissent = 50 } type = dissent value = -5 }
+		command = { type = removecore which = 104 }
+		command = { type = removecore which = 105 }
+		command = { type = removecore which = 107 }
+		command = { type = removecore which = 104 }
+		command = { type = removecore which = 105 }
+		command = { type = removecore which = 107 }
+		command = { type = secedearea which = U08 value = "Slave Coast" }
+		command = { type = secedearea which = U08 value = "Ivory Coast" }
+		command = { type = secedearea which = U08 value = "Guinean Coast" }
+		command = { type = secedearea which = U08 value = "Cameroonian Jungle" }
+		command = { type = secedearea which = U08 value = "Central Africa Plains" }
+		command = { type = secedeprovince which = U08 value = 922 }
+		command = { type = secedearea which = U08 value = "Madagascar" }
+		command = { type = secederegion which = U08 value = "Morocco" }
+		command = { type = end_mastery which = IDC  }
+		command = { type = secedeprovince which = U08 value = 96 }
+		command = { type = secedeprovince which = U08 value = 106 }
+		command = { trigger = { OR = { event = 244017 alliance = { country = U08 country = ITA }  } } type = secederegion which = ITA value = "Tunisia" }
+		command = { trigger = { OR = { event = 244017 alliance = { country = U08 country = ITA }  } } type = secedeprovince which = ITA value = 833 }
+		command = { trigger = { NOT = { alliance = { country = U08 country = ITA } } } type = secedeprovince which = U08 value = 833 }
+		command = { trigger = { OR = { event = 244017 alliance = { country = U08 country = ITA }  } } type = secedeprovince which = ITA value = 94 }
+		command = { trigger = { OR = { event = 244017 alliance = { country = U08 country = ITA }  } } type = secedeprovince which = ITA value = 91 }
+		command = { trigger = { OR = { event = 244017 alliance = { country = U08 country = ITA }  } } type = secedeprovince which = ITA value = 87 }
+		command = { type = demobilize which = land when = 0 where = 0 value = 24 }
+		command = { type = strength which = land when = 0 where = 0 value = 0.33 }
+		command = { type = demobilize which = battleship when = 0 where = 0 value = 6 }
+		command = { type = demobilize which = battlecruiser when = 0 where = 0 value = 6 }
+		command = { type = demobilize which = heavy_cruiser when = 0 where = 0 value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147309] FRA | 1914 | Treaty of Versailles: Moderate Terms (Tratado de Versalles: Condiciones moderadas)
+# Triggered by event 244017 in events/Minors/U09.txt
+# Triggered by event 243083 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147309
+	country = FRA
+	name = "EVT_FRA_147309_NAME"
+	desc = "EVT_FRA_147309_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { trigger = { not = { dissent = 10 } } type = dissent value = 5 }
+		command = { trigger = { not = { dissent = 20 } } type = dissent value = 3 }
+		command = { trigger = { not = { dissent = 35 } } type = dissent value = 3 }
+		command = { trigger = { dissent = 60 } type = dissent value = -25 }
+		command = { trigger = { dissent = 55 } type = dissent value = -15 }
+		command = { trigger = { dissent = 50 } type = dissent value = -10 }
+		command = { type = removecore which = 104 }
+		command = { type = removecore which = 105 }
+		command = { type = removecore which = 107 }
+		command = { type = removecore which = 104 }
+		command = { type = removecore which = 105 }
+		command = { type = removecore which = 107 }
+		command = { type = secedearea which = U08 value = "Slave Coast" }
+		command = { type = secedearea which = U08 value = "Ivory Coast" }
+		command = { type = secedearea which = U08 value = "Guinean Coast" }
+		command = { type = secedearea which = U08 value = "Cameroonian Jungle" }
+		command = { type = secedearea which = U08 value = "Central Africa Plains" }
+		command = { type = secedeprovince which = U08 value = 922 }
+		command = { type = secedearea which = U08 value = "Madagascar" }
+		command = { trigger = { OR = { event = 244017 alliance = { country = U08 country = ITA }  } } type = secederegion which = ITA value = "Tunisia" }
+		command = { trigger = { OR = { event = 244017 alliance = { country = U08 country = ITA }  } } type = secedeprovince which = ITA value = 833 }
+		command = { type = demobilize which = land when = 0 where = 0 value = 36 }
+		command = { type = strength which = land when = 0 where = 0 value = 0.33 }
+		command = { type = demobilize which = battleship when = 0 where = 0 value = 8 }
+		command = { type = demobilize which = battlecruiser when = 0 where = 0 value = 8 }
+		command = { type = demobilize which = heavy_cruiser when = 0 where = 0 value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147310] FRA | 1914 | Treaty of Versailles: Soft Terms (Tratado de Versalles: Condiciones leves)
+# Triggered by event 243083 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147310
+	country = FRA
+	name = "EVT_FRA_147310_NAME"
+	desc = "EVT_FRA_147310_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		ai_chance = 100
+		name = "ACTION_NAME_SIGN"
+		command = { trigger = { not = { dissent = 10 } } type = dissent value = 3 }
+		command = { trigger = { not = { dissent = 20 } } type = dissent value = 2 }
+		command = { trigger = { not = { dissent = 25 } } type = dissent value = 2 }
+		command = { trigger = { dissent = 60 } type = dissent value = -35 }
+		command = { trigger = { dissent = 50 } type = dissent value = -20 }
+		command = { trigger = { dissent = 40 } type = dissent value = -10 }
+		command = { type = removecore which = 104 }
+		command = { type = removecore which = 105 }
+		command = { type = removecore which = 107 }
+		command = { type = removecore which = 104 }
+		command = { type = removecore which = 105 }
+		command = { type = removecore which = 107 }
+		command = { type = demobilize which = land when = 0 where = 0 value = 48 }
+		command = { type = strength which = land when = 0 where = 0 value = 0.33 }
+		command = { type = demobilize which = battleship when = 0 where = 0 value = 12 }
+		command = { type = demobilize which = battlecruiser when = 0 where = 0 value = 12 }
+		command = { type = demobilize which = heavy_cruiser when = 0 where = 0 value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147311] FRA | 1914 | The Treaty of Versailles: Terms for Germany (El Tratado de Versalles: Condiciones para Alemania)
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Trigger event 108054 in events/Minors/AUS_14-37.txt
+# Trigger event 118024 in events/Minors/BUL.txt
+# Trigger event 118025 in events/Minors/BUL.txt
+# Trigger event 124067 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 124068 in events/USA/USA_14-16.txt
+# Trigger event 143391 in events/ENG/ENG_14-14.txt
+# Trigger event 143430 in events/ENG/ENG_14-25.txt
+# Trigger event 146027 in events/Minors/FIN_14-51.txt
+# Trigger event 147233 in events/FRA/FRA_14-14.txt
+# Trigger event 243086 in events/Minors/U08_14-14.txt
+# Trigger event 243087 in events/Minors/U08_14-14.txt
+# Trigger event 243088 in events/Minors/U08_14-14.txt
+# Trigger event 147314 in events/FRA/FRA_14-31.txt
+# Trigger event 147315 in events/FRA/FRA_14-31.txt
+# Trigger event 166223 in events/ITA/ITA_14-20.txt
+# Trigger event 167069 in events/JAP/JAP_Decisions.txt
+# Trigger event 196059 in events/Minors/OTT.txt
+# Trigger event 203065 in events/Minors/POL_Decisions.txt
+# Trigger event 217010 in events/Minors/SER.txt
+# Trigger event 231003 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231005 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231016 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231018 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231027 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 231029 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 231031 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 231151 in events/AI/ALL_AI.txt
+# Trigger event 231152 in events/AI/ALL_AI.txt
+# Trigger event 231160 in events/AI/ALL_AI.txt
+# Trigger event 243057 in events/Minors/U08_14-14.txt
+# Trigger event 243097 in events/Minors/U08_Decisions.txt
+# Trigger event 243134 in events/Minors/U08_18-36.txt
+# Trigger event 309036 in events/Minors/UCH.txt
+# Trigger event 316346 in events/USA/USA_14-16.txt
+# Trigger event 316352 in events/USA/USA_28-33.txt
+# Trigger event 316448 in events/USA/USA_14-16.txt
+# Trigger event 324243 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 324244 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 324245 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 324251 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 324253 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 324254 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 324516 in events/GLOBAL/MULTI_00-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147311
+	country = FRA
+	trigger = {
+		random = 75
+		OR = {
+			event = 243101
+			event = 243107
+			event = 243116
+			}
+		}
+	name = "EVT_FRA_147311_NAME"
+	desc = "EVT_FRA_147311_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		ai_chance = 90
+		name = "EVT_SHARED_01015_A"
+		command = { type = trigger which = 243086 }
+		command = { type = dissent value = -20 }
+		command = { type = addclaim which = 127 }
+		command = { type = addclaim which = 128 }
+		command = { type = addclaim which = 129 }
+		command = { type = addclaim which = 130 }
+		command = { type = addclaim which = 948 }
+		command = { type = addclaim which = 950 }
+		command = { type = addclaim which = 908 }
+		command = { type = addclaim which = 909 }
+		command = { type = addclaim which = 910 }
+		command = { type = addclaim which = 911 }
+		command = { type = addclaim which = 919 }
+		command = { type = addclaim which = 925 }
+		command = { type = addclaim which = 928 }
+	}
+	action_b = {
+		ai_chance = 7
+		name = "EVT_FRA_147311_A"
+		command = { type = trigger which = 243087 }
+		command = { type = dissent value = -20 }
+		command = { type = addclaim which = 127 }
+		command = { type = addclaim which = 948 }
+		command = { type = addclaim which = 950 }
+		command = { type = addclaim which = 908 }
+		command = { type = addclaim which = 909 }
+		command = { type = addclaim which = 910 }
+		command = { type = addclaim which = 911 }
+		command = { type = addclaim which = 919 }
+		command = { type = addclaim which = 925 }
+		command = { type = addclaim which = 928 }
+	}
+	action_c = {
+		ai_chance = 3
+		name = "EVT_SHARED_01015_B"
+		command = { type = trigger which = 243088 }
+		command = { type = dissent value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147312] FRA | 1914 | The Treaty of Grenoble: Italian Defeat (El Tratado de Grenoble: Derrota italiana)
+# Triggered by event 166110 in events/ITA/ITA_14-20.txt
+# Triggered by event 244017 in events/Minors/U09.txt
+# Triggered by event 166290 in events/ITA/ITA_14-20.txt
+# Trigger event 166289 in events/ITA/ITA_14-20.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147312
+	country = FRA
+	trigger = {
+		random = 25
+		event = 166110
+		OR = {
+			event = 244017
+			flag = ITA_against_FRA
+		}
+		NOT = { event = 166290 }
+	}
+	name = "EVT_FRA_147312_NAME"
+	desc = "EVT_FRA_147312_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 166289 }
+		command = { type = dissent value = -8 }
+		command = { type = clrflag which = ITA_against_FRA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147342] FRA | 1914 | Armed Forces Officer Reorganization (Reorganización de oficiales de las fuerzas armadas)
+# Trigger event 147343 in events/FRA/FRA_14-14.txt
+# Trigger event 147344 in events/FRA/FRA_14-14.txt
+# Trigger event 147345 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147342
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	trigger = {
+		local_flag = FRAM3
+	}
+	date = { day = 1 month = January year = 1914 }
+	deathdate = { day = 1 month = January year = 1933 }
+	offset = 30
+	name = "EVT_SHARED_01087_NAME"
+	desc = EVT_FRA_147342_DESC
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 5194 }
+		command = { type = trigger which = 147343 }
+		command = { type = trigger which = 147344 }
+		command = { type = trigger which = 147345 }
+		command = { type = local_clrflag which = FRAM3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147343] FRA | 1914 | Leading The Army? (¿Liderando el ejército?)
+# Triggered by event 147342 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147343
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = EVT_FRA_147343_NAME
+	desc = EVT_FRA_147343_DESC
+	action_a = {
+		ai_chance = 70
+		name = EVT_FRA_147343_A
+		command = { type = chiefofarmy which = 5239 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = EVT_FRA_147343_B
+		command = { type = chiefofarmy which = 5504 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147344] FRA | 1914 | Leading the Navy? (¿Dirigir la Armada?)
+# Triggered by event 147342 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147344
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = EVT_FRA_147344_NAME
+	desc = EVT_FRA_147344_DESC
+	action_a = {
+		ai_chance = 70
+		name = EVT_FRA_147344_A
+		command = { type = chiefofnavy which = 5009 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = EVT_FRA_147344_B
+		command = { type = chiefofnavy which = 5375 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147345] FRA | 1914 | Leading the Airforce? (¿Liderando la Fuerza Aérea?)
+# Triggered by event 147342 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147345
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = EVT_FRA_147345_NAME
+	desc = EVT_FRA_147345_DESC
+	action_a = {
+		ai_chance = 70
+		name = EVT_FRA_147345_A
+		command = { type = chiefofair which = 5196 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = EVT_FRA_147345_B
+		command = { type = chiefofair which = 5224 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147346] FRA | 1914 | Armed Forces Officer Reorganization (Reorganización de oficiales de las fuerzas armadas)
+# Trigger event 147347 in events/FRA/FRA_14-14.txt
+# Trigger event 147348 in events/FRA/FRA_14-14.txt
+# Trigger event 147349 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147346
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	trigger = {
+		local_flag = FRAC3
+	}
+	date = { day = 1 month = January year = 1914 }
+	deathdate = { day = 1 month = January year = 1933 }
+	offset = 30
+	name = "EVT_SHARED_01087_NAME"
+	desc = "EVT_SHARED_01098_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 5251 }
+		command = { type = trigger which = 147347 }
+		command = { type = trigger which = 147348 }
+		command = { type = trigger which = 147349 }
+		command = { type = local_clrflag which = FRAC3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147347] FRA | 1914 | Leading The Army? (¿Liderando el ejército?)
+# Triggered by event 147346 in events/FRA/FRA_14-14.txt
+# Triggered by event 147350 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147347
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01088_NAME"
+	desc = "EVT_SHARED_01099_DESC"
+	action_a = {
+		ai_chance = 70
+		name = "EVT_SHARED_01099_A"
+		command = { type = chiefofarmy which = 5134 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_01099_B"
+		command = { type = chiefofarmy which = 5135 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147348] FRA | 1914 | Leading the Navy? (¿Liderando la Armada?)
+# Triggered by event 147346 in events/FRA/FRA_14-14.txt
+# Triggered by event 147350 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147348
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01089_NAME"
+	desc = "EVT_SHARED_01100_DESC"
+	action_a = {
+		ai_chance = 70
+		name = "EVT_SHARED_01100_A"
+		command = { type = chiefofnavy which = 5143 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_01099_A"
+		command = { type = chiefofnavy which = 5142 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147349] FRA | 1914 | Leading the Airforce? (¿Liderando la Fuerza Aérea?)
+# Triggered by event 147346 in events/FRA/FRA_14-14.txt
+# Triggered by event 147350 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147349
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01090_NAME"
+	desc = "EVT_SHARED_01101_DESC"
+	action_a = {
+		ai_chance = 70
+		name = "EVT_SHARED_01101_A"
+		command = { type = chiefofair which = 5152 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_01100_A"
+		command = { type = chiefofair which = 5153 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147242] FRA | 1914 | 1914 French Grand Prix (Gran Premio de Francia de 1914)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147242
+	country = FRA
+	random = no
+	trigger = {
+		exists = FRA
+	}
+	name = "EVT_FRA_147242_NAME"
+	desc = "EVT_FRA_147242_DESC"
+	style = 2
+	picture = "FRA/grand_prix_1914"
+	date = { day = 3 month = july year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147243] FRA | 1914 | Trial of Henriette Caillaux (Juicio de Henriette Caillaux)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147243
+	country = FRA
+	random = no
+	trigger = {
+		exists = FRA
+	}
+	name = "EVT_FRA_147243_NAME"
+	desc = "EVT_FRA_147243_DESC"
+	style = 2
+	picture = "FRA/caillauxtrial"
+	date = { day = 19 month = july year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147296] FRA | 1914 | Assassination of Jean Jaurès (Asesinato de Jean Jaurès)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147296
+	country = FRA
+	date = { day = 29 month = july year = 1914 }
+	name = "EVT_FRA_147296_NAME"
+	desc = "EVT_FRA_147296_DESC"
+	style = 2
+	picture = "FRA/jaures"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = sleepminister which = 5341 }
+		command = { type = dissent value = 1 }
+	}
+}

@@ -1,0 +1,256 @@
+# ============================================================================
+# File: events/Minors/BHU.txt (8 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [112003] BHU | 1914 | Peace with the Central Powers (Paz con las Potencias Centrales)
+# Triggered by event 243004 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 112003
+	country = BHU
+	name = "EVT_SHARED_00055_NAME"
+	desc = "EVT_SHARED_00055_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = U08 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329002] BHU | 1933 | Join the Allies (Unirse a los Aliados)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329002
+         random = no
+         country = bhu
+         trigger = {
+		war = { country =eng  country = ger }
+		NOT = { war = { country = bhu country = eng }  }
+		NOT = { alliance = { country = bhu country = eng }  }
+         }
+         name = "ACTION_NAME_JOIN_ALLIES"
+         desc = "EVT_SHARED_00469_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1933 }
+         offset = 3
+         deathdate = { day = 29 month = december year = 1947 }
+	picture = "Minors/commonwealth"
+           action_a = {
+                  name = "EVT_SHARED_00469_A"
+                  ai_chance = 100
+                  command = { type = domestic which = freedom value = 1 }
+                  command = { type = domestic which = democratic value = 1 }
+                  command = { type = domestic which = defense_lobby value = 1 }
+                  command = { type = domestic which = interventionism value = 1 }
+                  command = { type = sleepevent which = 324000 }
+                  command = { type = set_relation which = ENG value = 200 }
+                  command = { type = alliance which = ENG }
+                  command = { type = dissent value = -50 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00469_B"
+                  command = { type = dissent value = 25 }
+                  command = { type = domestic which = interventionism value = -2 }
+                  command = { type = domestic which = defense_lobby value = -2 }
+                  command = { type = relation which = eng value = -150 }
+                  command = { type = relation which = ger value = 50 }
+                  ai_chance = 0
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [112000] BHU | 1935 | Centralised Government (Gobierno centralizado)
+# ----------------------------------------------------------------------------
+event = {
+         id = 112000
+         random = no
+         country = bhu
+         trigger = {
+                   random = 8
+         }
+         name = "EVT_BHU_112000_NAME"
+         desc = "EVT_BHU_112000_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1935 }
+         offset = 15
+         deathdate = { day = 29 month = january year = 1936 }
+	picture = "Minors/centralised_government"
+           action_a = {
+                  name = "EVT_SHARED_00468_A"
+                  ai_chance = 99
+                  command = { type = dissent value = -1 }
+                  command = { type = relation which = u02 value = 15 }
+                  command = { type = money value = -15 }
+                  command = { type = relative_manpower value = 2 }
+                  command = { type = construct which = infrastructure where = -1 value = 15 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00468_B"
+                  ai_chance = 1
+                  command = { type = dissent value = 3 }
+                  command = { type = domestic which = freedom value = -1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [112001] BHU | 1938 | Administration and taxes (Administración e impuestos)
+# ----------------------------------------------------------------------------
+event = {
+         id = 112001
+         random = no
+         country = bhu
+         trigger = {
+                   random = 8
+         }
+         name = "EVT_BHU_112001_NAME"
+         desc = "EVT_BHU_112001_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1938 }
+         offset = 15
+         deathdate = { day = 29 month = january year = 1939 }
+	picture = "GLOBAL/wage"
+           action_a = {
+                  name = "EVT_SHARED_00468_A"
+                  ai_chance = 99
+                  command = { type = dissent value = 2 }
+                  command = { type = money value = 40 }
+                  command = { type = resource which = money value = 5 }
+                  command = { type = relative_manpower value = 1 }
+                  command = { type = construct which = infrastructure where = -1 value = 5 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00468_B"
+                  ai_chance = 1
+                  command = { type = dissent value = -1 }
+                  command = { type = domestic which = freedom value = -1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [112007] BHU | 1952 | Reign of Jigme Dorji Wangchuck (Coronación en Bután)
+# ----------------------------------------------------------------------------
+event = {
+	id = 112007
+	country = BHU
+	name = "EVT_BHU_112007_NAME"
+	desc = "EVT_BHU_112007_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = sleepminister which = 330001 }
+		command = { type = sleepminister which = 330024 }
+		command = { type = sleepminister which = 330047 }
+		command = { type = headofstate which = 330054 }
+		command = { type = headofgovernment which = 330055 }
+		command = { type = foreignminister which = 330016 }
+		command = { type = armamentminister which = 330028 }
+		command = { type = ministerofsecurity which = 330035 }
+		command = { type = ministerofintelligence which = 330039 }
+		command = { type = chiefofstaff which = 330046 }
+		command = { type = chiefofarmy which = 330049 }
+		command = { type = chiefofnavy which = 330051 }
+		command = { type = chiefofair which = 330053 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [112002] BHU | 1952 | Death of the Head of State (Muerte del Jefe del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 112002
+	random = no
+	country = BHU
+	style = 2
+	trigger = {
+		headofstate = 330001
+		}
+	date = { day = 16 month = march year = 1952 }
+	name = "EVT_SHARED_00501_NAME"
+	desc = "EVT_SHARED_00501_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 330054 }
+		command = { type = headofgovernment which = 330055 }
+		command = { type = sleepminister which = 330001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [112008] BHU | 1964 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 112008
+	country = BHU
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1964 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 330100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [112009] BHU | 1972 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 112009
+	country = BHU
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = sleepminister which = 330054 }
+		command = { type = sleepminister which = 330100 }
+		command = { type = headofstate which = 330101 }
+		command = { type = headofgovernment which = 330102 }
+	}
+}

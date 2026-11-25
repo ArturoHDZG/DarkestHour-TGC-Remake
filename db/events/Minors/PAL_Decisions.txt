@@ -1,0 +1,63 @@
+# ============================================================================
+# File: events/Minors/PAL_Decisions.txt (1 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [198004] PAL | 1948 | 1948 Palestine War (Guerra árabe-israelí de 1948)
+# Triggered by event 165001 in events/Minors/ISR.txt
+# Triggered by event 165029 in events/Minors/ISR.txt
+# Triggered by event 198002 in events/Minors/PAL.txt
+# Triggered by event 198003 in events/Minors/PAL.txt
+# Trigger event 142047 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 198004
+	country = PAL
+	picture = "nwo/palestine_civil_war_1948"
+	decision_picture = "nwo/d_palestine_civil_war_1948"
+	style = 1
+	decision = {
+		exists = ISR
+	}
+	decision_trigger = {
+		exists = ISR
+		OR = {
+			event = { id = 165001 days = 50 }
+			event = { id = 165029 days = 50 }
+		}
+		OR = {
+			event = { id = 198002 days = 50 }
+			event = { id = 198003 days = 50 }
+		}
+	}
+	trigger = {
+		exists = ISR
+		OR = {
+			event = { id = 165001 days = 50 }
+			event = { id = 165029 days = 50 }
+		}
+		OR = {
+			event = { id = 198002 days = 50 }
+			event = { id = 198003 days = 50 }
+		}
+	}
+	name = EVT_PAL_198004_NAME
+	desc = EVT_PAL_198004_DESC
+	date = { day = 1 month = may year = 1948 }
+	offset = 150
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 99
+		command = { type = war which = ISR }
+		command = { type = sleepevent which = 165030 }
+	}
+	action = {
+		name = ACTION_NAME_OFFER_PEACE
+		trigger = { ai = yes }
+		ai_chance = 1
+		command = { type = dissent value = 25 }
+		command = { type = domestic which = interventionism value = -4 }
+	}
+}

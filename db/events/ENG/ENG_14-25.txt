@@ -1,0 +1,1821 @@
+# ============================================================================
+# File: events/ENG/ENG_14-25.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [143459] ENG | 1914 | Leading the Navy? (¿Liderando la Armada?)
+# Triggered by event 143457 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143459
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01089_NAME"
+	desc = "EVT_ENG_143459_DESC"
+	action_a = {
+		ai_chance = 70
+		name = "EVT_ENG_143459_A"
+		command = { type = chiefofnavy which = 10115 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_ENG_143459_B"
+		command = { type = chiefofnavy which = 10349 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143460] ENG | 1914 | Leading the Airforce? (¿Liderando la Fuerza Aérea?)
+# Triggered by event 143457 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143460
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01090_NAME"
+	desc = "EVT_ENG_143460_DESC"
+	action_a = {
+		ai_chance = 30
+		name = "EVT_ENG_143460_A"
+		command = { type = chiefofair which = 10350 }
+	}
+	action_a = {
+		ai_chance = 70
+		name = "EVT_ENG_143460_B"
+		command = { type = chiefofair which = 10124 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143405] ENG | 1914 | Simla Accord (Acuerdo de Simla)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143405
+	country = ENG
+	random = no
+	trigger = {
+		exists = ENG
+	}
+	name = "EVT_SHARED_01050_NAME"
+	desc = "EVT_SHARED_01050_DESC"
+	style = 2
+	picture = "GLOBAL/simlaaccord"
+	date = { day = 2 month = july year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = TIB value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143403] ENG | 1914 | Home Rule Crisis (Crisis colonial)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143403
+	random = no
+	country = ENG
+	trigger = {
+		exists = ENG
+	}
+	name = "EVT_ENG_143403_NAME"
+	desc = "EVT_ENG_143403_DESC"
+	style = 2
+	picture = "ENG/homerulecrisis"
+	date = { day = 19 month = july year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = local_setflag which = ENGirishcrisis }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143231] ENG | 1914 | Requisition Ottoman Dreadnoughts? (¿Requisar los acorazados otomanos?)
+# Trigger event 196021 in events/Minors/OTT.txt
+# Trigger event 196022 in events/Minors/OTT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143231
+	country = ENG
+	name = "EVT_ENG_143231_NAME"
+	desc = "EVT_ENG_143231_DESC"
+	style = 2
+	date = { day = 1 month = august year = 1914 }
+	picture = "GLOBAL/erin"
+	decision_picture = "ENG/decision_erin"
+	action = {
+		trigger = { NOT = { war = { country = OTT country = ENG } } }
+		name = "EVT_ENG_143231_A"
+		ai_chance = 5
+		command = { type = trigger which = 196021 }
+	}
+	action = {
+		trigger = {
+			OR = {
+				atwar = ENG
+				atwar = FRA
+				atwar = RUS
+				atwar = U08
+				atwar = U09
+			}
+		}
+		name = "EVT_ENG_143231_B"
+		ai_chance = 90
+		command = { type = relation which = OTT value = -50 }
+		command = { type = add_corps value = naval where = 25 }
+		command = { type = add_division which = "HMS Erin" value = battleship when = 7 }
+		command = { type = add_division which = "HMS Agincourt" value = battleship when = 4 }
+		command = { type = trigger which = 196022 }
+	}
+	action = {
+		trigger = {
+			OR = {
+				atwar = ENG
+				atwar = FRA
+				atwar = RUS
+				atwar = U08
+				atwar = U09
+			}
+			NOT = { war = { country = OTT country = ENG } }
+		}
+		name = "EVT_ENG_143231_C"
+		ai_chance = 5
+		command = { type = relation which = OTT value = -35 }
+		command = { type = money value = -200 }
+		command = { type = add_corps value = naval where = 25 }
+		command = { type = add_division which = "HMS Erin" value = battleship when = 7 }
+		command = { type = add_division which = "HMS Agincourt" value = battleship when = 4 }
+		command = { type = setflag which = ENG_OTT_Refund }
+		command = { type = trigger which = 196022 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231039] ENG | 1914 | Kitchener's Army (Ejército de Kitchener)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231039
+	country = ENG
+	random = no
+	trigger = {
+		war = { country = ENG country = U08 }
+	}
+	name = "EVT_ENG_231039_NAME"
+	desc = "EVT_ENG_231039_DESC"
+	style = 2
+	picture = "ENG/kitchenerarmy"
+	date = { day = 1 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 1 month = august year = 1916 }
+	action_a = {
+		name = "EVT_SHARED_00972_A"
+		ai_chance = 75
+		command = { type = dissent value = 1 }
+		command = { type = manpowerpool value = 500 }
+		command = { type = money value = -100 }
+	}
+	action_b = {
+		name = "EVT_ENG_231039_A"
+		ai_chance = 25
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231128] ENG | 1914 | The Illustrated War News (Revista 'The Illustrated War News')
+# ----------------------------------------------------------------------------
+event = {
+	id = 231128
+	country = ENG
+	random = no
+	trigger = {
+	war = {country = U08}
+	}
+	name = "EVT_ENG_231128_NAME"
+	desc = "EVT_ENG_231128_DESC"
+	style = 2
+	picture = "ENG/illustratedwarnews"
+	date = { day = 1 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 6 month = september year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231129] ENG | 1914 | Spirit of 1914 (Espíritu de 1914)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231129
+	country = ENG
+	random = no
+	trigger = {
+	war = {country = U08}
+	}
+	name = "EVT_SHARED_01070_NAME"
+	desc = "EVT_SHARED_01070_DESC"
+	style = 2
+	picture = "ENG/spirt14eng"
+	date = { day = 1 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 6 month = september year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { type = manpowerpool value = 5000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143222] ENG | 1914 | Total Military Collapse (Colapso militar británico)
+# Trigger event 243004 in events/Minors/U08_14-14.txt
+# Trigger event 143226 in events/ENG/ENG_14-14.txt
+# Trigger event 243133 in events/Minors/U08_14-18.txt
+# Trigger event 243090 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 143222
+   country = ENG
+	trigger = {
+		war = { country = U08 country = ENG }
+		random = 25
+		control = { province = 11 data = -2 }
+		control = { province = 18 data = -2 }
+		control = { province = 29 data = -2 }
+		OR = {
+			lost_national = { value = 80 }
+			AND = {
+				dissent = 10
+				lost_national = { value = 65 }
+			}
+			AND = {
+				dissent = 20
+				lost_national = { value = 50 }
+			}
+			AND = {
+				dissent = 30
+				lost_national = { value = 40 }
+			}
+		}
+	}
+	name = "EVT_ENG_143222_NAME"
+	desc = "EVT_ENG_143222_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = december year = 1914 }
+	offset = 7
+	deathdate = { day = 15 month = november year = 1925 }
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		command = { trigger = {
+					participant = { country = ENG value = 1 }
+					alliance = { country = ENG country = RUS }
+					NOT = {
+						alliance = { country = ENG country = FRA } } }
+				type = alliance_leader which = RUS where = 0 }
+		command = { trigger = {
+					participant = { country = ENG value = 1 }
+					alliance = { country = ENG country = USA }
+					NOT = {
+						alliance = { country = ENG country = FRA }
+						alliance = { country = ENG country = RUS } } }
+				type = alliance_leader which = USA where = 0 }
+		command = { trigger = {
+					participant = { country = ENG value = 1 }
+					alliance = { country = ENG country = ITA }
+					NOT = {
+						alliance = { country = ENG country = FRA }
+						alliance = { country = ENG country = RUS }
+						alliance = { country = ENG country = USA } } }
+				type = alliance_leader which = ITA where = 0 }
+		command = { trigger = {
+					participant = { country = ENG value = 1 }
+					alliance = { country = ENG country = ROM }
+					NOT = {
+						alliance = { country = ENG country = FRA }
+						alliance = { country = ENG country = RUS }
+						alliance = { country = ENG country = USA }
+						alliance = { country = ENG country = ITA } } }
+				type = alliance_leader which = ROM where = 0 }
+		command = { trigger = {
+					participant = { country = ENG value = 1 }
+					alliance = { country = ENG country = GRE }
+					NOT = {
+						alliance = { country = ENG country = FRA }
+						alliance = { country = ENG country = RUS }
+						alliance = { country = ENG country = USA }
+						alliance = { country = ENG country = ITA }
+						alliance = { country = ENG country = ROM } } }
+				type = alliance_leader which = GRE where = 0 }
+		command = { type = dissent value = 5 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = U08 value = 1 }
+		command = { type = trigger which = 243004 }
+		command = { trigger = { puppet = { country = CAN country = ENG} } type = peace which = CAN value = 1 }
+		command = { trigger = { puppet = { country = AST country = ENG} } type = peace which = AST value = 1 }
+		command = { trigger = { puppet = { country = NZL country = ENG} } type = peace which = NZL value = 1 }
+		command = { trigger = { puppet = { country = BHU country = ENG} } type = peace which = BHU value = 1 }
+		command = { trigger = { puppet = { country = NEP country = ENG} } type = peace which = NEP value = 1 }
+		command = { trigger = { puppet = { country = OMN country = ENG} } type = peace which = OMN value = 1 }
+		command = { trigger = { puppet = { country = SAF country = ENG} } type = peace which = SAF value = 1 }
+		command = { trigger = { puppet = { country = U02 country = ENG} } type = peace which = U02 value = 1 }
+		command = { type = event which = 143226 where = ENG when = 1 }
+		command = { type = event which = 243133 where = U08 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143229] ENG | 1915 | The Senussi sue for peace (Los sanusies solicitan la paz)
+# Triggered by event 175009 in events/Minors/LBY.txt
+# Trigger event 175010 in events/Minors/LBY.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143229
+	country = ENG
+	name = "EVT_ENG_143229_NAME"
+	desc = "EVT_SHARED_00073_DESC"
+	style = 2
+	picture = "GLOBAL/baghdad_captured"
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = dissent value = -2 }
+		command = { type = non_aggression which = ENG where = LBY }
+		command = { type = trigger which = 175010 }
+		command = { type = wakeminister which = 495037 }
+		command = { type = wakeminister which = 495038 }
+		command = { type = wakeminister which = 495039 }
+		command = { type = wakeminister which = 495040 }
+		command = { type = wakeminister which = 495041 }
+		command = { type = wakeminister which = 495042 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 0
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143428] ENG | 1915 | Shelter the Tsar and His Family (Asilo para el zar y su familia)
+# Triggered by event 211025 in events/Minors/RUS_14-14.txt
+# Trigger event 211070 in events/Minors/RUS_14-91.txt
+# Trigger event 211071 in events/Minors/RUS_14-91.txt
+# ----------------------------------------------------------------------------
+event = {
+		id = 143428
+		country = ENG
+		trigger = {
+				event = 211025
+				}
+	name = "EVT_ENG_143428_NAME"
+	desc = "EVT_ENG_143428_DESC"
+	style = 2
+	picture = "GLOBAL/nicolausiifled"
+	date = { day = 1 month = january year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+		ai_chance = 75
+		name = "EVT_ENG_143428_A"
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = TsarSafe }
+		command = { type = relation which = RUS value = 15 }
+		command = { type = trigger which = 211070 }
+		}
+	action = {
+		ai_chance = 25
+		name = "ACTION_NAME_NO"
+		command = { type = dissent value = -1}
+		command = { type = setflag which = TsarUnSafe }
+		command = { type = relation which = RUS value = -10 }
+		command = { type = trigger which = 211071 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [143429] ENG | 1915 | Changing of the Guard in London (Cambio de guardia en Londres)
+# ----------------------------------------------------------------------------
+event = {
+		id = 143429
+		country = ENG
+	trigger = { flag = cpvictory }
+	name = "EVT_ENG_143429_NAME"
+	desc = "EVT_ENG_143429_DESC"
+	style = 2
+	picture = "GLOBAL/additionaltreaty"
+	date = { day = 1 month = january year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+	name = ACTION_NAME_OK
+	command = { type = headofgovernment which = 10337 }
+	command = { type = foreignminister which = 10355 }
+	command = { type = ChiefofArmy which = 10348 }
+	command = { type = ChiefofNavy which = 10349}
+	command = { type = chiefofstaff which = 10100}
+	command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143190] ENG | 1915 | Failure of the Dardanelles Campaign (Fracaso de la campaña de los Dardanelos)
+# Triggered by event 143186 in events/ENG/ENG_14-14.txt
+# Triggered by event 143188 in events/ENG/ENG_14-14.txt
+# Triggered by event 196003 in events/Minors/OTT.txt
+# Trigger event 152026 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143190
+	country = ENG
+	trigger = {
+		event = { id = 143186 days = 150 }
+		war = { country = ENG country = OTT }
+		control = { province = 384 data = OTT }
+		NOT = {
+			event = 143188
+			event = 196003
+		}
+	}
+	name = "EVT_ENG_143190_NAME"
+	desc = "EVT_ENG_143190_DESC"
+	style = 2
+	picture = "GLOBAL/varyag"
+	date = { day = 1 month = december year = 1915 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = {  type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143409] ENG | 1916 | Easter Rising! (¡Levantamiento de Pascua!)
+# Triggered by event 243051 in events/Minors/U08_14-18.txt
+# Trigger event 163051 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+id = 143409
+random = no
+country = ENG
+style = 2
+name = "EVT_SHARED_01058_NAME"
+desc = "EVT_ENG_143409_DESC"
+	picture = "GLOBAL/aar_irishindependence"
+action_a = {
+name = "ACTION_NAME_FIGHT"
+command = { type = independence which = IRE value = 1 when = 1 }
+command = { type = war which = IRE }
+command = { type = trigger which = 163051 }
+command = { type = dissent value = 5 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [143221] ENG | 1916 | The Easter Rising in Dublin (El Levantamiento de Pascua en Dublín)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143221
+	country = ENG
+	trigger = {
+		atwar = yes
+		NOT = { exists = IRE }
+	}
+	name = "EVT_ENG_143221_NAME"
+	desc = "EVT_ENG_143221_DESC"
+	style = 2
+	picture = "GLOBAL/foreign_volunteers"
+	date = { day = 24 month = april year = 1916 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1918 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { type = revolt which = 34 }
+		command = { type = province_revoltrisk which = 30 value = 5 }
+		command = { type = province_revoltrisk which = 31 value = 5 }
+		command = { type = province_revoltrisk which = 32 value = 5 }
+		command = { type = province_revoltrisk which = 33 value = 5 }
+		command = { type = province_revoltrisk which = 34 value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143392] ENG | 1916 | Troubles brewing in the Empire's reaches (Problemas que se avecinan en los alcances del Imperio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143392
+	random = no
+	persistent = no
+	country = ENG
+	date = { day = 1 month = december year = 1916 }
+	offset = 5
+	deathdate = { day = 1 month = january year = 1936 }
+	trigger = {
+		or = {
+			and = {
+				province_revoltrisk = { province = 387 value = 5 }
+				province_revoltrisk = { province = 388 value = 5 }
+			}
+			province_revoltrisk = { province = 1782 value = 5 }
+		}
+	}
+	name = "EVT_ENG_143392_NAME"
+	desc = "EVT_ENG_143392_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 1
+	action = { ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { trigger = { not={money = 800} } type = supplies value = -1500 }
+		command = { trigger = { not={money = 800} } type = oilpool value = -250 }
+		command = { trigger = { not={money = 800} } type = metalpool value = -1120 }
+		command = { trigger = { not={money = 800} } type = energypool value = -2000 }
+		command = { trigger = { not={money = 800} } type = rarematerialspool value = -450 }
+		command = { trigger = {money = 800} type = money value = -800 }
+		command = { type = add_corps which = "British Group Fama." value = land where = 387 }
+		command = { type = add_division which = "British Cyprus Garrison 387" value = garrison when = 2 where = police }
+		command = { type = add_corps which = "British Group Nico." value = land where = 388 }
+		command = { type = add_division which = "British Cyprus Garrison 388" value = garrison when = 2 where = police }
+		command = { type = add_corps which = "British Group Jama." value = land where = 1782 }
+		command = { type = add_division which = "British Jamaica Garrison 1782" value = garrison when = 2 where = police }
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143218] ENG | 1917 | The Zimmermann Telegram Intercepted (Interceptado el telegrama Zimmermann)
+# Triggered by event 243127 in events/Minors/U08_Decisions.txt
+# Triggered by event 243128 in events/Minors/U08_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143218
+	country = ENG
+	name = "EVT_ENG_143218_NAME"
+	desc = "EVT_ENG_143218_DESC"
+	style = 2
+	picture = "GLOBAL/zimmermann_telegram"
+	action = {
+		name = ACTION_NAME_OK
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143430] ENG | 1917 | British Post-war Election (Elecciones británicas de posguerra)
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143430
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		event = 147311
+	}
+	name = "EVT_ENG_143430_NAME"
+	desc = "EVT_ENG_143430_DESC"
+	offset = 180
+	date = { day = 1 month = January year = 1917 }
+	deathdate = { day = 14 month = November year = 1922 }
+	action_a = {
+		ai_chance = 98
+		name = "EVT_ENG_143430_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10128}
+		command = { type = foreignminister which = 10219 }
+		command = { type = armamentminister which = 10227 }
+		command = { type = ministerofsecurity which = 10258 }
+		command = { type = ministerofintelligence which = 10266 }
+	}
+	action_b = {
+		ai_chance = 1
+		name = "ACTION_NAME_ELECT_LEFT"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10019 }
+		command = { type = foreignminister which = 10221 }
+		command = { type = armamentminister which = 10231 }
+		command = { type = ministerofsecurity which = 10260 }
+		command = { type = ministerofintelligence which = 10266 }
+	}
+	action_C = {
+		ai_chance = 1
+		name = "EVT_ENG_143430_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10213 }
+		command = { type = foreignminister which = 10218 }
+		command = { type = armamentminister which = 10354 }
+		command = { type = ministerofsecurity which = 10255 }
+		command = { type = ministerofintelligence which = 10266 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143441] ENG | 1918 | New Chief of Staff Appointed (Nuevo Jefe del Estado Mayor designado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143441
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_SHARED_01086_NAME"
+	desc = "EVT_ENG_143441_DESC"
+	offset = 2
+	date = { day = 19 month = February year = 1918 }
+	deathdate = { day = 19 month = February year = 1919 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 10248 }
+		command = { type = chiefofarmy which = 10226 }
+		command = { type = sleepminister which = 10243 }
+		command = { type = sleepminister which = 10220 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143386] ENG | 1918 | Naval Treaty Violated! (¡Tratado naval quebrantado!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143386
+	persistent = yes
+	country = ENG
+	date = { day = 1 month = march year = 1918 }
+	offset = 7
+	deathdate = { day = 29 month = march year = 1964 }
+	trigger = {
+		atwar = no
+		NOT = { local_flag = naval_treaty_void }
+		OR = {
+			AND = {
+				or = {
+					local_flag = washington_naval_treaty
+					local_flag = london_naval_treaty
+				}
+				OR = {
+					AND = { carrier = { value = 5 when = now } NOT = { local_flag = carrier_disabled } }
+					AND = { escort_carrier = { value = 3 when = now } NOT = { local_flag = escort_carrier_disabled } }
+					AND = { battlecruiser = { value = 3 when = now } NOT = { local_flag = battlecruiser_disabled } }
+					AND = { battleship = { value = 17 when = now } NOT = { local_flag = battleship_disabled } }
+				}
+			}
+			AND = {
+				local_flag = london_naval_treaty
+				OR = {
+					AND = { heavy_cruiser = { value = 16 when = now } NOT = { local_flag = heavy_cruiser_disabled } }
+					AND = { light_cruiser = { value = 35 when = now } NOT = { local_flag = light_cruiser_disabled } }
+				}
+			}
+		}
+	}
+	name = "EVT_ENG_143386_NAME"
+	Desc = "EVT_ENG_143386_DESC"
+	Picture = "american_carrier"
+	action = {
+		name = "EVT_SHARED_01034_A"
+		ai_chance = 100
+		trigger = {
+			carrier = { value = 5 when = now }
+			not = { local_flag = carrier_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = carrier when = 0 where = 0 value = 4 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = carrier }
+		command = { trigger = { ai = no } type = local_setflag which = carrier_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_B"
+		ai_chance = 100
+		trigger = {
+			escort_carrier = { value = 3 when = now }
+			not = { local_flag = escort_carrier_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = escort_carrier when = 0 where = 0 value = 2 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = escort_carrier }
+		command = { trigger = { ai = no } type = local_setflag which = escort_carrier_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_C"
+		ai_chance = 100
+		trigger = {
+			battlecruiser = { value = 3 when = now }
+			not = { local_flag = battlecruiser_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = battlecruiser when = 0 where = 0 value = 2 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = battlecruiser }
+		command = { trigger = { ai = no } type = local_setflag which = battlecruiser_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_D"
+		ai_chance = 100
+		trigger = {
+			battleship = { value = 17 when = now }
+			not = { local_flag = battleship_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = battleship when = 0 where = 0 value = 16 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = battleship }
+		command = { trigger = { ai = no } type = local_setflag which = battleship_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_E"
+		ai_chance = 100
+		trigger = {
+			local_flag = london_naval_treaty
+			heavy_cruiser = { value = 16 when = now }
+			not = { local_flag = heavy_cruiser_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = heavy_cruiser when = 0 where = 0 value = 15 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = heavy_cruiser }
+		command = { trigger = { ai = no } type = local_setflag which = heavy_cruiser_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_F"
+		ai_chance = 100
+		trigger = {
+			local_flag = london_naval_treaty
+			light_cruiser = { value = 35 when = now }
+			not = { local_flag = light_cruiser_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = light_cruiser when = 0 where = 0 value = 34 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = light_cruiser }
+		command = { trigger = { ai = no } type = local_setflag which = light_cruiser_disabled }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143387] ENG | 1918 | Naval Limits Restored (Desarme naval completado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143387
+	persistent = yes
+	country = ENG
+	date = { day = 1 month = march year = 1918 }
+	offset = 7
+	deathdate = { day = 29 month = march year = 1964 }
+	trigger = {
+		atwar = no
+		NOT = { local_flag = naval_treaty_void }
+		OR = {
+			AND = {
+				or = {
+					local_flag = washington_naval_treaty
+					local_flag = london_naval_treaty
+				}
+				OR = {
+					NOT = { AND = { carrier = { value = 4 } local_flag = carrier_disabled } }
+					NOT = { AND = { escort_carrier = { value = 3 } local_flag = escort_carrier_disabled } }
+					NOT = { AND = { battlecruiser = { value = 3 } local_flag = battlecruiser_disabled } }
+					NOT = { AND = { battleship = { value = 17 } local_flag = battleship_disabled } }
+				}
+			}
+			AND = {
+				local_flag = london_naval_treaty
+				OR = {
+					NOT = { AND = { heavy_cruiser = { value = 16 } local_flag = heavy_cruiser_disabled } }
+					NOT = { AND = { light_cruiser = { value = 35 } local_flag = light_cruiser_disabled } }
+				}
+			}
+		}
+	}
+	name = "EVT_ENG_143387_NAME"
+	Desc = "EVT_ENG_143387_DESC"
+	Picture = "american_carrier"
+	action = {
+		name = "EVT_SHARED_01034_A"
+		ai_chance = 100
+		trigger = {
+			NOT = { carrier = { value = 4 } }
+			local_flag = carrier_disabled
+		}
+		command = { type = activate_unit_type which = carrier }
+		command = { type = local_clrflag which = carrier_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_B"
+		ai_chance = 100
+		trigger = {
+			NOT = { escort_carrier = { value = 3 } }
+			local_flag = escort_carrier_disabled
+		}
+		command = { type = activate_unit_type which = escort_carrier }
+		command = { type = local_clrflag which = escort_carrier_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_C"
+		ai_chance = 100
+		trigger = {
+			NOT = { battlecruiser = { value = 3 } }
+			local_flag = battlecruiser_disabled
+		}
+		command = { type = activate_unit_type which = battlecruiser }
+		command = { type = local_clrflag which = battlecruiser_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_D"
+		ai_chance = 100
+		trigger = {
+			NOT = { battleship = { value = 17 } }
+			local_flag = battleship_disabled
+		}
+		command = { type = activate_unit_type which = battleship }
+		command = { type = local_clrflag which = battleship_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_E"
+		ai_chance = 100
+		trigger = {
+			local_flag = london_naval_treaty
+			NOT = { heavy_cruiser = { value = 16 } }
+			local_flag = heavy_cruiser_disabled
+		}
+		command = { type = activate_unit_type which = heavy_cruiser }
+		command = { type = local_clrflag which = heavy_cruiser_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_F"
+		ai_chance = 100
+		trigger = {
+			local_flag = london_naval_treaty
+			NOT = { light_cruiser = { value = 35 } }
+			local_flag = light_cruiser_disabled
+		}
+		command = { type = activate_unit_type which = light_cruiser }
+		command = { type = local_clrflag which = light_cruiser_disabled }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143410] ENG | 1919 | Irish War of Independence (Guerra de independencia irlandesa)
+# ----------------------------------------------------------------------------
+event = {
+id = 143410
+country = ENG
+	picture = "GLOBAL/aar_irishindependence"
+style = 2
+trigger = {
+NOT = {
+exists = IRE
+}
+}
+date = { day = 1 month = january year = 1919 }
+offset = 5
+deathdate = { day = 1 month = january year = 1920 }
+name = "EVT_ENG_143410_NAME"
+desc = "EVT_ENG_143410_DESC"
+action = {
+name = ACTION_NAME_OK
+command = { type = dissent value = 5 }
+command = { type = province_revoltrisk which = 30 value = 5 }
+command = { type = province_revoltrisk which = 31 value = 5 }
+command = { type = province_revoltrisk which = 32 value = 5 }
+command = { type = province_revoltrisk which = 33 value = 5 }
+command = { type = province_revoltrisk which = 34 value = 5 }
+command = { type = province_revoltrisk which = 35 value = 5 }
+command = { type = province_revoltrisk which = 36 value = 5 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [143411] ENG | 1919 | IRA Raid (Incursión del 'IRA')
+# Triggered by event 143395 in events/ENG/ENG_14-25.txt
+# ----------------------------------------------------------------------------
+event = {
+id = 143411
+country = ENG
+persistent = yes
+style = 2
+	picture = "GLOBAL/resistance"
+trigger = {
+NOT = {
+exists = IRE
+}
+}
+name = "EVT_ENG_143411_NAME"
+desc = "EVT_ENG_143411_DESC"
+date = { day = 1 month = january year = 1919 }
+offset = 120
+deathdate = { day = 29 month = december year = 1923 }
+action_a = {
+name = ACTION_NAME_DAMN
+command = { type = dissent value = 1 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [143412] ENG | 1919 | IRA Ambush (Emboscada del 'IRA')
+# ----------------------------------------------------------------------------
+event = {
+id = 143412
+country = ENG
+persistent = yes
+style = 2
+	picture = "GLOBAL/resistance"
+trigger = {
+NOT = {
+exists = IRE
+}
+}
+name = "EVT_ENG_143412_NAME"
+desc = "EVT_ENG_143412_DESC"
+date = { day = 1 month = january year = 1919 }
+offset = 200
+deathdate = { day = 29 month = december year = 1923 }
+action_a = {
+name = ACTION_NAME_DAMN
+command = { type = dissent value = 1 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [143413] ENG | 1919 | Black and Tan Reprisals (Represalias de los 'Negro y Caqui')
+# ----------------------------------------------------------------------------
+event = {
+id = 143413
+country = ENG
+persistent = yes
+style = 2
+	picture = "GLOBAL/resistance"
+trigger = {
+NOT = {
+exists = IRE
+}
+}
+name = "EVT_ENG_143413_NAME"
+desc = "EVT_ENG_143413_DESC"
+date = { day = 1 month = january year = 1919 }
+offset = 140
+deathdate = { day = 29 month = december year = 1923 }
+action_a = {
+name = ACTION_NAME_DAMN
+command = { type = dissent value = 2 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [143444] ENG | 1919 | Louis Alexander Mountbatten Retired (Louis Alexander Mountbatten se retira)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143444
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_ENG_143444_NAME"
+	desc = "EVT_ENG_143444_DESC"
+	offset = 2
+	date = { day = 1 month = January year = 1919 }
+	deathdate = { day = 1 month = January year = 1920 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofnavy which = 10233 }
+		command = { type = sleepminister which = 10232 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143425] ENG | 1919 | Battle of George Square (Batalla de George Square)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143425
+	country = ENG
+	random = no
+	trigger = {
+		exists = ENG
+	}
+	name = "EVT_ENG_143425_NAME"
+	desc = "EVT_ENG_143425_DESC"
+	style = 2
+	picture = "ENG/georgesquare"
+	date = { day = 29 month = january year = 1919 }
+	offset = 1
+	deathdate = { day = 20 month = august year = 1919 }
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143447] ENG | 1919 | Hugh Trenchard is appointed (Hugh Trenchard es nombrado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143447
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_ENG_143447_NAME"
+	desc = "EVT_ENG_143447_DESC"
+	offset = 2
+	date = { day = 1 month = March year = 1919 }
+	deathdate = { day = 1 month = March year = 1920 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofair which = 10212 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143406] ENG | 1919 | Kinmel Park mutiny (Motín del Parque Kinmel)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143406
+	country = ENG
+	random = no
+	trigger = {
+		exists = ENG
+	}
+	name = "EVT_SHARED_01053_NAME"
+	desc = "EVT_SHARED_01053_DESC"
+	style = 2
+	picture = "GLOBAL/kinmelpark"
+	date = { day = 3 month = march year = 1919 }
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143407] ENG | 1919 | Rowlatt Act (Decreto Rowlatt)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143407
+	country = ENG
+	random = no
+	trigger = {
+		exists = U02
+	}
+	name = "EVT_SHARED_01054_NAME"
+	desc = "EVT_SHARED_01054_DESC"
+	style = 2
+	picture = "GLOBAL/blackbill"
+	date = { day = 17 month = march year = 1919 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = U02 value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143404] ENG | 1919 | The Limerick Soviet (Sóviet de Limerick)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143404
+	country = ENG
+	random = no
+	trigger = {
+		exists = SOV
+	}
+	name = "EVT_ENG_143404_NAME"
+	desc = "EVT_ENG_143404_DESC"
+	style = 2
+	picture = "ENG/limericksoviet"
+	date = { day = 14 month = april year = 1919 }
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143408] ENG | 1919 | SetteGiugno ('Sette Giugno')
+# ----------------------------------------------------------------------------
+event = {
+	id = 143408
+	country = ENG
+	random = no
+	trigger = {
+		exists = ENG
+	}
+	name = "EVT_SHARED_01056_NAME"
+	desc = LOST_DESC
+	style = 2
+	picture = "GLOBAL/settegiugno"
+	date = { day = 6 month = june year = 1919 }
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+		command = { type = manpowerpool value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231045] ENG | 1919 | Peace with Ireland? (¿Paz con Irlanda?)
+# Trigger event 163057 in events/Minors/IRE_14-59.txt
+# Trigger event 163058 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+id = 231045
+country = ENG
+style = 2
+	picture = "GLOBAL/minister_died2"
+trigger = {
+war = { country = IRE country = ENG }
+control = { province = 30 data = IRE }
+control = { province = 31 data = IRE }
+control = { province = 32 data = IRE }
+control = { province = 33 data = IRE }
+control = { province = 34 data = IRE }
+control = { province = 35 data = IRE }
+control = { province = 36 data = IRE }
+NOT = {
+war = { country = U08 country = ENG }
+}
+}
+name = "EVT_ENG_231045_NAME"
+desc = "EVT_ENG_231045_DESC"
+date = { day = 21 month = june year = 1919 }
+offset = 30
+deathdate = { day = 29 month = december year = 1926 }
+action_a = {
+name = "EVT_ENG_231045_A"
+ai_chance = 99
+command = { type = dissent value = 5 }
+command = { type = peace which = IRE value = 0 }
+command = { type = secedeprovince which = IRE value = 30 }
+command = { type = secedeprovince which = IRE value = 31 }
+command = { type = secedeprovince which = IRE value = 32 }
+command = { type = secedeprovince which = IRE value = 33 }
+command = { type = secedeprovince which = IRE value = 34 }
+command = { type = secedeprovince which = IRE value = 35 }
+command = { type = secedeprovince which = IRE value = 36 }
+}
+action_b = {
+name = "EVT_ENG_231045_B"
+ai_chance = 1
+command = { type = dissent value = 8 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [143399] ENG | 1921 | Treaty of Taif (Tratado de Taif)
+# Triggered by event 322008 in events/Minors/YEM.txt
+# Trigger event 322009 in events/Minors/YEM.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143399
+	country = ENG
+	name = "EVT_ENG_143399_NAME"
+	desc = "EVT_ENG_143399_DESC"
+	style = 2
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = make_puppet which = YEM }
+		command = { type = relation which = U08 value = 50 }
+		command = { type = peace which = SAU value = 0 }
+		command = { type = trigger which = 322009 }
+		command = { type = local_setflag which = disarm_army_50 }
+		command = { type = local_setflag which = disarm_naval_150 }
+		command = { type = local_setflag which = disarm_air_3 }
+		command = { type = setflag which = UK_became_master_of_YEM }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 0
+		command = { type = relation which = U50 value = -150 }
+		command = { type = relation which = SAU value = 50 }
+		command = { type = setflag which = UK_refused_to_become_master_of_YEM }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143400] ENG | 1921 | Kuwait-Nejd Border War (Guerra Kuwait-Néyed)
+# Triggered by event 215009 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143400
+	country = ENG
+	name = "EVT_ENG_143400_NAME"
+	desc = "EVT_ENG_143400_DESC"
+	style = 2
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 99
+		command = { type = 	war which = SAU	}
+	}
+	action = {
+		name = "ACTION_NAME_NEUTRAL"
+		ai_chance = 1
+		command = { type = 	peace which = SAU value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231038] ENG | 1921 | Supplies to Najd (Suministros para Najd)
+# Triggered by event 215012 in events/Minors/SAU.txt
+# Trigger event 215013 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 231038
+	country = ENG
+	name = "EVT_ENG_231038_NAME"
+	desc = "EVT_ENG_231038_DESC"
+	style = 2
+	action = {
+		trigger = {
+			war = { country = SAU country = U52 }
+			supplies = 1000
+		}
+		name = "EVT_ENG_231038_A"
+		ai_chance = 70
+		command = { type = event which = 215013 where = SAU when = 7}
+		command = { type = supplies value = -1000 }
+		command = { type = relation which = SAU value = 50 }
+	}
+	action = {
+		name = "EVT_ENG_231038_B"
+		ai_chance = 30
+		command = { type = relation which = SAU value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143414] ENG | 1921 | Anglo-Irish Treaty (Tratado Angloirlandés)
+# Triggered by event 143395 in events/ENG/ENG_14-25.txt
+# Trigger event 163052 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+id = 143414
+country = ENG
+	picture = "GLOBAL/aar_irishindependence"
+style = 2
+trigger = {
+NOT = {
+exists = IRE
+}
+}
+date = { day = 5 month = december year = 1921 }
+offset = 5
+deathdate = { day = 1 month = january year = 1936 }
+name = "EVT_ENG_143414_NAME"
+desc = "EVT_ENG_143414_DESC"
+action_a = {
+name = "ACTION_NAME_SIGN"
+ai_chance = 100
+command = { type = removecore which = 30 }
+command = { type = removecore which = 31 }
+command = { type = removecore which = 32 }
+command = { type = removecore which = 33 }
+command = { type = removecore which = 34 }
+command = { type = independence which = IRE value = 0 when = 1 }
+command = { type = make_puppet which = IRE }
+command = { type = trigger which = 163052 }
+}
+action_b = {
+name = "EVT_ENG_143414_A"
+ai_chance = 0
+command = { type = dissent value = 10 }
+command = { type = province_revoltrisk which = 30 value = 20 }
+command = { type = province_revoltrisk which = 31 value = 20 }
+command = { type = province_revoltrisk which = 32 value = 20 }
+command = { type = province_revoltrisk which = 33 value = 20 }
+command = { type = province_revoltrisk which = 34 value = 20 }
+command = { type = province_revoltrisk which = 35 value = 20 }
+command = { type = province_revoltrisk which = 36 value = 20 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [143395] ENG | 1922 | The Irish Free State (El Estado Libre Irlandés)
+# Trigger event 143411 in events/ENG/ENG_14-25.txt
+# Trigger event 143414 in events/ENG/ENG_14-25.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143395
+	country = ENG
+	date = { day = 0 month = 0 year = 1922 }
+	offset = 365
+	deathdate = { day = 1 month = january year = 1936 }
+	trigger = {
+		not = {
+			or = {
+				exists = IRE
+				exists = U71
+			}
+		}
+	}
+	name = "EVT_ENG_143395_NAME"
+	desc = "EVT_ENG_143395_DESC"
+	picture = "GLOBAL/aar_irishindependence"
+	style = 2
+	action = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 100
+		command = { type = removecore which = 30 }
+		command = { type = removecore which = 31 }
+		command = { type = removecore which = 32 }
+		command = { type = removecore which = 33 }
+		command = { type = removecore which = 34 }
+		command = { type = removecore which = 35 }
+		command = { type = removecore which = 36 }
+		command = { type = independence which = IRE value = 0 when = 1 }
+		command = { type = make_puppet which = IRE }
+		command = { type = trigger which = 143411 }
+	}
+	action = {
+		name = "ACTION_NAME_NEVER"
+		ai_chance = 0
+		command = { type = independence which = IRE value = 0 when = 1 }
+		command = { type = war which = IRE }
+		command = { type = trigger which = 143414 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143415] ENG | 1922 | Anti-Treaty IRA Raid (Incursiones del 'IRA Anti-tratado')
+# ----------------------------------------------------------------------------
+event = {
+id = 143415
+country = ENG
+persistent = yes
+style = 2
+	picture = "GLOBAL/resistance"
+trigger = {
+exists = IRE
+owned = { province = 35 data = ENG }
+owned = { province = 36 data = ENG }
+}
+name = "EVT_ENG_143415_NAME"
+desc = "EVT_ENG_143415_DESC"
+date = { day = 1 month = january year = 1922 }
+offset = 100
+deathdate = { day = 29 month = december year = 1922 }
+action_a = {
+name = ACTION_NAME_DAMN
+command = { type = dissent value = 1 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [143416] ENG | 1922 | Conflict in Belfast (Conflicto en Belfast)
+# ----------------------------------------------------------------------------
+event = {
+id = 143416
+country = ENG
+persistent = yes
+style = 2
+	picture = "GLOBAL/irish_reunification"
+trigger = {
+exists = IRE
+owned = { province = 35 data = ENG }
+owned = { province = 36 data = ENG }
+}
+name = "EVT_ENG_143416_NAME"
+desc = "EVT_ENG_143416_DESC"
+date = { day = 1 month = january year = 1922 }
+offset = 120
+deathdate = { day = 29 month = december year = 1922 }
+action_a = {
+name = ACTION_NAME_DAMN
+command = { type = dissent value = 3 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [143417] ENG | 1922 | Anti-Treaty IRA takes over Ireland! (¡El 'IRA Anti-Tratado' toma el control de Irlanda!)
+# Triggered by event 163055 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+id = 143417
+country = ENG
+	picture = "GLOBAL/irish_reunification"
+style = 2
+name = "EVT_ENG_143417_NAME"
+desc = "EVT_ENG_143417_DESC"
+action_a = {
+name = "ACTION_NAME_MOBILIZE"
+ai_chance = 80
+command = { type = dissent value = 5 }
+command = { type = construct which = land_fort where = 35 value = 2 }
+command = { type = construct which = land_fort where = 36 value = 2 }
+}
+action_b = {
+name = "ACTION_NAME_WAR"
+ai_chance = 20
+command = { type = dissent value = 10 }
+command = { type = war which = IRE }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [143442] ENG | 1922 | Henry Wilson Died (Henry Wilson muere)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143442
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_ENG_143442_NAME"
+	desc = "EVT_ENG_143442_DESC"
+	offset = 2
+	date = { day = 20 month = February year = 1922 }
+	deathdate = { day = 25 month = February year = 1922 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 10249 }
+		command = { type = chiefofarmy which = 10227 }
+		command = { type = sleepminister which = 10226 }
+		command = { type = sleepminister which = 10248 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231048] ENG | 1922 | Assassination of General Henry Wilson (Asesinato del general Henry Wilson)
+# Trigger event 163053 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+id = 231048
+country = ENG
+style = 2
+	picture = "GLOBAL/minister_died2"
+trigger = {
+puppet = { country = IRE country = ENG }
+owned = { province = 35 data = ENG }
+owned = { province = 36 data = ENG }
+}
+name = "EVT_ENG_231048_NAME"
+desc = "EVT_ENG_231048_DESC"
+date = { day = 21 month = june year = 1922 }
+offset = 5
+deathdate = { day = 29 month = december year = 1922 }
+action_a = {
+name = "EVT_ENG_231048_A"
+ai_chance = 100
+command = { type = dissent value = 4 }
+command = { type = trigger which = 163053 }
+}
+action_b = {
+name = "EVT_ENG_231048_B"
+ai_chance = 0
+command = { type = dissent value = 10 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [143431] ENG | 1922 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143431
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ENG_143431_DESC"
+	offset = 2
+	date = { day = 15 month = November year = 1922 }
+	deathdate = { day = 15 month = November year = 1923 }
+	action_a = {
+		ai_chance = 1
+		name = "ACTION_NAME_ELECT_LEFT"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10319 }
+		command = { type = foreignminister which = 10221 }
+		command = { type = armamentminister which = 10231 }
+		command = { type = ministerofsecurity which = 10260 }
+		command = { type = ministerofintelligence which = 10266 }
+	}
+	action_b = {
+		ai_chance = 98
+		name = "EVT_SHARED_01083_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10215 }
+		command = { type = foreignminister which = 10220 }
+		command = { type = armamentminister which = 10229 }
+		command = { type = ministerofsecurity which = 10259 }
+		command = { type = ministerofintelligence which = 10266 }
+	}
+	action_c = {
+		ai_chance = 1
+		name = "EVT_ENG_143431_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10417 }
+		command = { type = foreignminister which = 10340 }
+		command = { type = armamentminister which = 10342 }
+		command = { type = ministerofsecurity which = 10315 }
+		command = { type = ministerofintelligence which = 10280 }
+		command = { type = local_setflag which = ENGC1}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143461] ENG | 1923 | New Chief of Staff (Nuevo Jefe del Estado Mayor)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143461
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = communist
+	}
+	name = "EVT_SHARED_01091_NAME"
+	desc = "EVT_ENG_143461_DESC"
+	offset = 2
+	date = { day = 1 month = March year = 1923 }
+	deathdate = { day = 1 month = March year = 1924 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 10100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143432] ENG | 1923 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143432
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ENG_143432_DESC"
+	offset = 2
+	date = { day = 6 month = December year = 1923 }
+	deathdate = { day = 6 month = December year = 1924 }
+	action_a = {
+		ai_chance = 1
+		name = "ACTION_NAME_ELECT_LEFT"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10334 }
+		command = { type = foreignminister which = 10418 }
+		command = { type = armamentminister which = 10306 }
+		command = { type = ministerofsecurity which = 10419 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_b = {
+		ai_chance = 98
+		name = "EVT_SHARED_01083_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10002 }
+		command = { type = foreignminister which = 10220 }
+		command = { type = armamentminister which = 10230 }
+		command = { type = ministerofsecurity which = 10259 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_c = {
+		ai_chance = 1
+		name = "EVT_SHARED_01084_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10417 }
+		command = { type = foreignminister which = 10340 }
+		command = { type = armamentminister which = 10342 }
+		command = { type = ministerofsecurity which = 10315 }
+		command = { type = ministerofintelligence which = 10280  }
+		command = { type = local_setflag which = ENGC2}
+		command = { type = local_setflag which = ENGC5}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143436] ENG | 1923 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143436
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = communist
+		NOT = {local_flag = ENGC5}
+	}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ENG_143436_DESC"
+	offset = 2
+	date = { day = 6 month = December year = 1923 }
+	deathdate = { day = 6 month = December year = 1924 }
+	action_a = {
+		ai_chance = 10
+		name = "ACTION_NAME_ELECT_LEFT"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10334 }
+		command = { type = foreignminister which = 10418 }
+		command = { type = armamentminister which = 10306 }
+		command = { type = ministerofsecurity which = 10419 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_b = {
+		ai_chance = 5
+		name = "EVT_ENG_143436_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10264 }
+		command = { type = foreignminister which = 10250 }
+		command = { type = armamentminister which = 10291 }
+		command = { type = ministerofsecurity which = 10310 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_c = {
+		ai_chance = 85
+		name = "EVT_SHARED_01085_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10417 }
+		command = { type = foreignminister which = 10340 }
+		command = { type = armamentminister which = 10342 }
+		command = { type = ministerofsecurity which = 10315 }
+		command = { type = ministerofintelligence which = 10280  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143433] ENG | 1924 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143433
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ENG_143433_DESC"
+	date = { day = 29 month = October year = 1924 }
+	deathdate = { day = 29 month = October year = 1925 }
+	action_a = {
+		ai_chance = 1
+		name = "ACTION_NAME_ELECT_LEFT"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10334 }
+		command = { type = foreignminister which = 10420 }
+		command = { type = armamentminister which = 10306 }
+		command = { type = ministerofsecurity which = 10419 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_b = {
+		ai_chance = 98
+		name = "EVT_SHARED_01083_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10002 }
+		command = { type = foreignminister which = 10222 }
+		command = { type = armamentminister which = 10154 }
+		command = { type = ministerofsecurity which = 10261 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_c = {
+		ai_chance = 1
+		name = "EVT_SHARED_01084_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10417 }
+		command = { type = foreignminister which = 10340 }
+		command = { type = armamentminister which = 10342 }
+		command = { type = ministerofsecurity which = 10315 }
+		command = { type = ministerofintelligence which = 10280  }
+		command = { type = local_setflag which = ENGC2}
+		command = { type = local_setflag which = ENGC6}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143437] ENG | 1924 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143437
+	random = no
+	country = ENG
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = communist
+		NOT = {local_flag = ENGC6}
+	}
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_ENG_143437_DESC"
+	date = { day = 29 month = October year = 1924 }
+	deathdate = { day = 29 month = October year = 1925 }
+	action_a = {
+		ai_chance = 25
+		name = "ACTION_NAME_ELECT_LEFT"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10334 }
+		command = { type = foreignminister which = 10259 }
+		command = { type = armamentminister which = 10154 }
+		command = { type = ministerofsecurity which = 10419 }
+		command = { type = ministerofintelligence which = 10006 }
+	}
+	action_b = {
+		ai_chance = 75
+		name = "EVT_SHARED_01085_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 10001 }
+		command = { type = headofgovernment which = 10417 }
+		command = { type = foreignminister which = 10340 }
+		command = { type = armamentminister which = 10342 }
+		command = { type = ministerofsecurity which = 10315 }
+		command = { type = ministerofintelligence which = 10280  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143397] ENG | 1925 | The Locarno Treaties (Tratados de Locarno)
+# Trigger event 147237 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143397
+	country = ENG
+	persistent = yes
+	date = { day = 0 month = 0 year = 1925 }
+	offset = 365
+	deathdate = { day = 0 month = 0 year = 1930 }
+	trigger = {
+		atwar = no
+		exists = U08
+		local_flag = winner
+		not = { flag = germany_invited_to_lon }
+	}
+	name = "EVT_ENG_143397_NAME"
+	desc = "EVT_ENG_143397_DESC"
+	picture = "GLOBAL/league_of_nations"
+	action = {
+		name = "EVT_ENG_143397_A"
+		ai_chance = 100
+		command = { type = trigger which = 147237 }
+		command = { trigger = { exists = GER } type =	relation which =	GER value = 100 }
+		command = { trigger = { exists = U08 } type =	relation which =	U08 value = 100 }
+	}
+	action = {
+		name = "ACTION_NAME_NEVER"
+		ai_chance = 0
+		command = { trigger = { exists = GER } type =	relation which =	GER value = -10 }
+		command = { trigger = { exists = U08 } type =	relation which =	U08 value = -10 }
+	}
+}

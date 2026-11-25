@@ -1,0 +1,849 @@
+# ============================================================================
+# File: events/Minors/LUX.txt (23 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [179000] LUX | 1936 | Collapse of Communist Luxembourg (Disolución del régimen comunista en Luxemburgo)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 179000
+	random = no
+	country = LUX
+	name = "EVT_LUX_179000_NAME"
+	desc = "EVT_LUX_179000_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U18 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179014] LUX | 1936 | People's Republic Founded (República Popular)
+# Trigger event 179015 in events/Minors/LUX.txt
+# Trigger event 253002 in events/Minors/U18.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 179014
+   country = LUX
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U18
+            NOT = { ai = LUX }
+            NOT = { ai = U18 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U18
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U18 } }
+      command = { type = country which = U18 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U18
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = LUX }
+               control = { province = 109 data = -1 }
+            }
+         }
+         type = trigger which = 179015
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U18 }
+               NOT = { control = { province = 109 data = -1 } }
+            }
+         }
+         type = trigger which = 253002
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U18
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [179015] LUX | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 179014 in events/Minors/LUX.txt
+# Triggered by event 253001 in events/Minors/U18.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 179015
+   country = LUX
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U18 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [329513] LUX | 1936 | German Aggression on the Border (Agresión alemana en las fronteras)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329513
+	random = no
+	country = LUX
+	name = EVT_SHARED_00398_NAME
+	desc = EVT_SHARED_00398_DESC
+ 	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		OR  = { war = { country = BEL country = GER }
+			war = { country = HOL country = GER }
+		       }
+		NOT = { alliance = { country = LUX country = ENG } }
+		NOT = { alliance = { country = LUX country = GER } }
+		NOT = { alliance = { country = LUX country = SOV } }
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_NEUTRAL
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179016] LUX | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 179016
+	country = LUX
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385015 }
+		command = { type = foreignminister which = 385026 }
+		command = { type = armamentminister which = 385027 }
+		command = { type = ministerofsecurity which = 385038 }
+		command = { type = ministerofintelligence which = 385047 }
+		command = { type = chiefofstaff which = 385056 }
+		command = { type = chiefofarmy which = 385059 }
+		command = { type = chiefofnavy which = 385068 }
+		command = { type = chiefofair which = 385066 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179017] LUX | 1945 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179017
+	country = LUX
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385015 }
+		command = { type = foreignminister which = 385003 }
+		command = { type = armamentminister which = 385028 }
+		command = { type = ministerofsecurity which = 385038 }
+		command = { type = ministerofintelligence which = 385045 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 385204 }
+		command = { type = foreignminister which = 385003 }
+		command = { type = armamentminister which = 385028 }
+		command = { type = ministerofsecurity which = 385038 }
+		command = { type = ministerofintelligence which = 385045 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179018] LUX | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179018
+	country = LUX
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385015 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 385200 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179010] LUX | 1950 | European Federation Proposal (Propuesta de Federación Europea)
+# Triggered by event 147172 in events/FRA/FRA_48-59.txt
+# Trigger event 147174 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 179010
+	country = LUX
+	name = EVT_LUX_179010_NAME
+	desc = EVT_LUX_179010_DESC
+	picture = "nwo/schuman_declaration"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		event = 147172
+		atwar = no
+	}
+	date = { day = 1 month = july year = 1950 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = EVT_LUX_179010_A
+		ai_chance = 50
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = LUX value = 50 }
+		command = { type = sleepevent which = 139009 }
+	}
+	action = {
+		name = EVT_LUX_179010_B
+		ai_chance = 45
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = LUX value = 50 }
+		command = { type = domestic which = interventionism value = 2 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = sleepevent which = 157035 }
+		command = { type = sleepevent which = 139009 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179019] LUX | 1951 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179019
+	country = LUX
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385015 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 385201 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179012] LUX | 1952 | The European Coal and Steel Community (Comunidad Europea del Carbón y del Acero)
+# Triggered by event 147178 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 179012
+	country = LUX
+	name = EVT_LUX_179012_NAME
+	desc = EVT_LUX_179012_DESC
+	picture = "nwo/european_coal_and_steel_community"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 147178
+	}
+	date = { day = 23 month = july year = 1952 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 95
+		command = { type = energypool value = 20000 }
+		command = { type = metalpool value = 10000 }
+	}
+	action = {
+		name = ACTION_NAME_DONT_SIGN
+		ai_chance = 5
+		command = { type = relation which = FRA value = -50 }
+		command = { type = relation which = ITA value = -50 }
+		command = { type = relation which = BEL value = -50 }
+		command = { type = relation which = HOL value = -50 }
+		command = { type = relation which = DFR value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179020] LUX | 1954 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179020
+	country = LUX
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385002 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 385202 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179011] LUX | 1955 | Britain and European Unification (Gran Bretaña y la unión europea)
+# Triggered by event 147175 in events/FRA/FRA_48-59.txt
+# Trigger event 147176 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 179011
+	country = LUX
+	name = EVT_LUX_179011_NAME
+	desc = EVT_LUX_179011_DESC
+	picture = "nwo/united_states_of_europe"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		event = 147175
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_SURRENDER_GAMEOVER
+		ai_chance = 80
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = DFR value = 50 }
+	}
+	action = {
+		name = EVT_LUX_179011_A
+		ai_chance = 15
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = sleepevent which = 147177 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = end_puppet }
+		command = { type = sleepevent which = 147177 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179013] LUX | 1957 | Common Market Growth (Crecimiento del Mercado Común)
+# Triggered by event 147174 in events/FRA/FRA_48-59.txt
+# Triggered by event 147179 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 179013
+	country = LUX
+	name = EVT_LUX_179013_NAME
+	desc = EVT_LUX_179013_DESC
+	picture = "nwo/european_economic_community"
+	style = 1
+	trigger = {
+		event = 147179
+	}
+	date = { day = 25 month = march year = 1957 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 7 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179021] LUX | 1958 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179021
+	country = LUX
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385203 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 385205 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179022] LUX | 1959 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179022
+	country = LUX
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		headofgovernment = 385205
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 385206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179023] LUX | 1964 | Abdication of Grand Duchess Charlotte (Abdicación de la gran duquesa Carlota)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179023
+	country = LUX
+	name = EVT_LUX_179023_NAME
+	desc = EVT_LUX_179023_DESC
+	picture = "nwo/grand_duke_jean"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1964 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = ACTION_NAME_GREAT
+		ai_chance = 100
+		command = { type = sleepminister which = 385001 }
+		command = { type = sleepminister which = 385067 }
+		command = { type = sleepminister which = 385086 }
+		command = { type = sleepminister which = 385087 }
+		command = { type = headofstate which = 385207 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179024] LUX | 1964 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179024
+	country = LUX
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1964 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1967 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 385206 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385208 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+			command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179025] LUX | 1968 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179025
+	country = LUX
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1968 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 385206 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385208 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179026] LUX | 1974 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179026
+	country = LUX
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385208 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 385209 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179027] LUX | 1979 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179027
+	country = LUX
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1983 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 385206 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385208 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179028] LUX | 1984 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179028
+	country = LUX
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1984 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1984 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 385209 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385210 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179029] LUX | 1985 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179029
+	country = LUX
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	date = { day = 0 month = january year = 1985 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 385001 }
+		command = { type = sleepminister which = 385067 }
+		command = { type = sleepminister which = 385086 }
+		command = { type = sleepminister which = 385087 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [179030] LUX | 1989 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 179030
+	country = LUX
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 385209 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 385211 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}

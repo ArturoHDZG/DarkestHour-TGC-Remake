@@ -1,0 +1,199 @@
+# ============================================================================
+# THE GRAND CAMPAIGN REMAKE: THE DESTINY OF CHINA (5 HISTORICAL & ALT PATHS)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231900] ALL (Human Player) | 1911-1945 | Master Decision: The Destiny of China
+# ----------------------------------------------------------------------------
+event = {
+	id = 231900
+	random = no
+	decision = {
+		year = 1911
+	}
+	decision_trigger = {
+		year = 1911
+	}
+	trigger = {
+		ai = no
+	}
+	name = "EVT_231900_NAME"
+	desc = "EVT_231900_DESC"
+	style = 2
+	picture = "CHI/ccip_peace"
+	decision_picture = "GLOBAL/decision_wargames"
+	date = { day = 10 month = october year = 1911 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = "EVT_231900_A"
+		command = { }
+	}
+	action = {
+		name = "EVT_231900_B"
+		command = { type = setflag which = china_path_qing }
+	}
+	action = {
+		name = "EVT_231900_C"
+		command = { type = setflag which = china_path_kmt }
+	}
+	action = {
+		name = "EVT_231900_D"
+		command = { type = setflag which = china_path_ccp }
+	}
+	action = {
+		name = "EVT_231900_E"
+		command = { type = setflag which = china_path_wang }
+	}
+	action = {
+		name = "EVT_231900_F"
+		command = { type = setflag which = china_path_warlords }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231901] CHI / UCH | 1912-1945 | Restoration of the Great Qing Dynasty
+# ----------------------------------------------------------------------------
+event = {
+	id = 231901
+	country = CHI
+	trigger = {
+		flag = china_path_qing
+		exists = CHI
+	}
+	name = "EVT_231901_NAME"
+	desc = "EVT_231901_DESC"
+	style = 2
+	picture = "CHI/ccip_peace"
+	date = { day = 1 month = january year = 1912 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { exists = CHC } type = inherit which = CHC value = 1 }
+		command = { trigger = { exists = CSX } type = inherit which = CSX value = 1 }
+		command = { trigger = { exists = CXB } type = inherit which = CXB value = 1 }
+		command = { trigger = { exists = CGX } type = inherit which = CGX value = 1 }
+		command = { trigger = { exists = CYN } type = inherit which = CYN value = 1 }
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = dissent value = -20 }
+		command = { type = setflag which = Qing_Restored_Master }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231902] CHI | 1928-1945 | Absolute Nationalist Victory of the Kuomintang
+# ----------------------------------------------------------------------------
+event = {
+	id = 231902
+	country = CHI
+	trigger = {
+		flag = china_path_kmt
+		exists = CHI
+	}
+	name = "EVT_231902_NAME"
+	desc = "EVT_231902_DESC"
+	style = 2
+	picture = "CHI/ccip_natarmy"
+	date = { day = 29 month = december year = 1928 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { exists = CHC } type = inherit which = CHC value = 1 }
+		command = { trigger = { exists = CSX } type = inherit which = CSX value = 1 }
+		command = { trigger = { exists = CXB } type = inherit which = CXB value = 1 }
+		command = { trigger = { exists = CGX } type = inherit which = CGX value = 1 }
+		command = { trigger = { exists = CYN } type = inherit which = CYN value = 1 }
+		command = { type = dissent value = -15 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { type = setflag which = KMT_Unified_China }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231903] CHC | 1935-1949 | Proclamation of the People's Republic of China
+# ----------------------------------------------------------------------------
+event = {
+	id = 231903
+	country = CHC
+	trigger = {
+		flag = china_path_ccp
+		exists = CHC
+	}
+	name = "EVT_231903_NAME"
+	desc = "EVT_231903_DESC"
+	style = 2
+	picture = "nwo/new_chinese_soviet"
+	date = { day = 1 month = october year = 1949 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { exists = CHI } type = inherit which = CHI value = 1 }
+		command = { trigger = { exists = CSX } type = inherit which = CSX value = 1 }
+		command = { trigger = { exists = CXB } type = inherit which = CXB value = 1 }
+		command = { trigger = { exists = CGX } type = inherit which = CGX value = 1 }
+		command = { trigger = { exists = CYN } type = inherit which = CYN value = 1 }
+		command = { trigger = { exists = SOV } type = alliance which = SOV }
+		command = { type = dissent value = -20 }
+		command = { type = setflag which = CCP_Unified_China }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231904] CHI | 1940-1945 | Wang Jingwei Reorganized Nationalist Government
+# ----------------------------------------------------------------------------
+event = {
+	id = 231904
+	country = CHI
+	trigger = {
+		flag = china_path_wang
+		exists = CHI
+		exists = JAP
+	}
+	name = "EVT_231904_NAME"
+	desc = "EVT_231904_DESC"
+	style = 2
+	picture = "nwo/chinese_civil_war"
+	date = { day = 30 month = march year = 1940 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peace which = JAP value = 1 }
+		command = { type = alliance which = JAP }
+		command = { trigger = { war = { country = CHI country = USA } } type = peace which = USA value = 1 }
+		command = { type = dissent value = -10 }
+		command = { type = setflag which = WangJingwei_Formed }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231905] CHI | 1916-1936 | Warlord Fragmentation: Splintered Middle Kingdom
+# ----------------------------------------------------------------------------
+event = {
+	id = 231905
+	country = CHI
+	trigger = {
+		flag = china_path_warlords
+		exists = CHI
+	}
+	name = "EVT_231905_NAME"
+	desc = "EVT_231905_DESC"
+	style = 2
+	picture = "CHI/ccip_natoff"
+	date = { day = 6 month = june year = 1916 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1936 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 25 }
+		command = { trigger = { exists = CSX } type = independence which = CSX value = 1 }
+		command = { trigger = { exists = CXB } type = independence which = CXB value = 1 }
+		command = { trigger = { exists = CGX } type = independence which = CGX value = 1 }
+		command = { trigger = { exists = CYN } type = independence which = CYN value = 1 }
+		command = { type = setflag which = Warlords_Dominant }
+	}
+}

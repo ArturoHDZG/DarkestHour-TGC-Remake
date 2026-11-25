@@ -1,0 +1,776 @@
+# ============================================================================
+# File: events/Minors/NEP.txt (27 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [190002] NEP | 1914 | Peace with the Central Powers (Paz con las Potencias Centrales)
+# Triggered by event 243004 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 190002
+	country = NEP
+	name = "EVT_SHARED_00055_NAME"
+	desc = "EVT_SHARED_00055_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = U08 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190001] NEP | 1935 | Protests policies (Políticas de protestas)
+# ----------------------------------------------------------------------------
+event = {
+         id = 190001
+         random = no
+         country = nep
+         trigger = {
+                   random = 7
+         }
+         name = "EVT_NEP_190001_NAME"
+         desc = "EVT_NEP_190001_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1935 }
+         offset = 15
+         deathdate = { day = 29 month = december year = 1935 }
+	picture = "Minors/protests_policies"
+           action_a = {
+                  name = "ACTION_NAME_SUPPRESS_REVOLT"
+                  ai_chance = 80
+                  command = { type = dissent value = 5 }
+                  command = { type = domestic which = democratic value = -2 }
+                  command = { type = domestic which = freedom value = -2 }
+                  command = { type = revolt which = 1457 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00468_A"
+                  ai_chance = 20
+                  command = { type = dissent value = -3 }
+                  command = { type = domestic which = democratic value = 2 }
+                  command = { type = domestic which = freedom value = 2 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329448] NEP | 1938 | Join the Allies (Unirse a los Aliados)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329448
+         random = no
+         country = nep
+         trigger = {
+		war = { country =eng  country = ger }
+		NOT = { war = { country = nep country = ENG }  }
+		NOT = { alliance = { country = nep country = eng }  }
+         }
+         name = "ACTION_NAME_JOIN_ALLIES"
+         desc = "EVT_SHARED_00469_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1938 }
+         offset = 3
+         deathdate = { day = 29 month = december year = 1942 }
+	picture = "Minors/commonwealth"
+           action_a = {
+                  name = "EVT_SHARED_00469_A"
+                  ai_chance = 100
+                  command = { type = domestic which = freedom value = 1 }
+                  command = { type = domestic which = democratic value = 1 }
+                  command = { type = domestic which = defense_lobby value = 1 }
+                  command = { type = domestic which = interventionism value = 1 }
+                  command = { type = sleepevent which = 324000 }
+                  command = { type = set_relation which = ENG value = 200 }
+                  command = { type = alliance which = ENG }
+                  command = { type = dissent value = -50 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00469_B"
+                  command = { type = dissent value = 25 }
+                  command = { type = domestic which = interventionism value = -2 }
+                  command = { type = domestic which = defense_lobby value = -2 }
+                  command = { type = relation which = eng value = -150 }
+                  command = { type = relation which = ger value = 50 }
+                  ai_chance = 0
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [190007] NEP | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190007
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395012 }
+		command = { type = foreignminister which = 395020 }
+		command = { type = armamentminister which = 395029 }
+		command = { type = ministerofsecurity which = 395036 }
+		command = { type = ministerofintelligence which = 395042 }
+		command = { type = chiefofstaff which = 395047 }
+		command = { type = chiefofarmy which = 395051 }
+		command = { type = chiefofnavy which = 395052 }
+		command = { type = chiefofair which = 395054 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190008] NEP | 1948 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190008
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395013 }
+		command = { type = chiefofstaff which = 395055 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190009] NEP | 1951 | Fall of the Rana Dynasty (Fin de la hegemonía Rana)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190009
+	country = NEP
+	name = EVT_NEP_190009_NAME
+	desc = EVT_NEP_190009_DESC
+	picture = "nwo/nepal"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 395056 }
+		command = { type = foreignminister which = 395019 }
+		command = { type = armamentminister which = 395029 }
+		command = { type = ministerofsecurity which = 395035 }
+		command = { type = ministerofintelligence which = 395041 }
+		command = { type = chiefofstaff which = 395046 }
+		command = { type = chiefofarmy which = 395049 }
+		command = { type = chiefofnavy which = 395052 }
+		command = { type = chiefofair which = 395053 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190000] NEP | 1951 | Democratic Restoration (Restauración democrática)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190000
+	random = no
+	country = NEP
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00497_NAME"
+	desc = "EVT_SHARED_00497_DESC"
+	date = { day = 1 month = november year = 1951 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 395001 }
+		command = { type = headofgovernment which = 395056 }
+		command = { type = foreignminister which = 395019 }
+		command = { type = armamentminister which = 395029 }
+		command = { type = ministerofsecurity which = 395035 }
+		command = { type = ministerofintelligence which = 395041 }
+		command = { type = chiefofstaff which = 395046 }
+		command = { type = chiefofarmy which = 395049 }
+		command = { type = chiefofnavy which = 395052 }
+		command = { type = chiefofair which = 395053 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [190010] NEP | 1952 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190010
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190011] NEP | 1953 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190011
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395056 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190012] NEP | 1956 | Death of King Tribhuvan (Muerte del rey Tribhuvan)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190012
+	country = NEP
+	name = EVT_NEP_190012_NAME
+	desc = EVT_NEP_190012_DESC
+	picture = "nwo/death"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		ai_chance = 100
+		command = { type = headofstate which = 395106 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190013] NEP | 1956 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190013
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395101 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190014] NEP | 1957 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190014
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190015] NEP | 1958 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190015
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395103 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190016] NEP | 1959 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190016
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395104 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190017] NEP | 1960 | The Panchayat System (El sistema Panchayat)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190017
+	country = NEP
+	name = EVT_NEP_190017_NAME
+	desc = EVT_NEP_190017_DESC
+	picture = "nwo/panchayat"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 395105 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190018] NEP | 1965 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190018
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1968 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395107 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190019] NEP | 1969 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190019
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1969 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1969 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190020] NEP | 1970 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190020
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1970 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395109 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190021] NEP | 1971 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190021
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190022] NEP | 1972 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190022
+	country = NEP
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 395106 }
+		command = { type = headofstate which = 395110 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190023] NEP | 1973 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190023
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1973 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395111 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190024] NEP | 1976 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190024
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1976 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1976 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395105 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190025] NEP | 1977 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190025
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1977 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190026] NEP | 1979 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190026
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395107 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190027] NEP | 1983 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190027
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1983 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395112 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190028] NEP | 1986 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190028
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395113 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [190030] NEP | 1991 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 190030
+	country = NEP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 395115 }
+	}
+}

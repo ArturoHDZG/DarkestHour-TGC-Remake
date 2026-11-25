@@ -1,0 +1,1024 @@
+# ============================================================================
+# File: events/Minors/ECU.txt (26 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [141008] ECU | 1933 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141008
+	random = no
+	country = ECU
+	style = 2
+	trigger = {
+		headofstate = 190019
+	}
+	date = { day = 18 month = october year = 1933 }
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 190156 }
+		command = { type = headofgovernment which = 190157 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141009] ECU | 1934 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141009
+	random = no
+	country = ECU
+	style = 2
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ECU }
+	}
+	date = { day = 29 month = august year = 1934 }
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		ai_chance = 95
+		name = "EVT_SHARED_00512_B"
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 190013 }
+		command = { type = headofgovernment which = 190031 }
+	}
+	action_b = {
+		ai_chance = 5
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141004] ECU | 1935 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141004
+	random = no
+	country = ECU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		NOT = { ispuppet = ECU }
+		OR = {
+			headofstate = 190119
+			headofstate = 190156
+			headofstate = 190013
+		}
+	}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 20 month = august year = 1935 }
+	action_a = {
+		ai_chance = 98
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 190017 }
+		command = { type = headofgovernment which = 190035 }
+	}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141005] ECU | 1935 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141005
+	random = no
+	country = ECU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		NOT = { ispuppet = ECU }
+		OR = {
+			headofstate = 190119
+			headofstate = 190156
+			headofstate = 190013
+			headofstate = 190017
+		}
+	}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 24 month = september year = 1935 }
+	action_a = {
+		ai_chance = 98
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 190001 }
+		command = { type = headofgovernment which = 190002 }
+		command = { type = foreignminister which = 190003 }
+		command = { type = armamentminister which = 190004 }
+		command = { type = ministerofsecurity which = 190005 }
+		command = { type = ministerofintelligence which = 190006 }
+	}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141000] ECU | 1937 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141000
+	random = no
+	country = ECU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = january year = 1937 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1939 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 190023 }
+		command = { type = headofgovernment which = 190041 }
+		command = { type = foreignminister which = 190059 }
+		command = { type = armamentminister which = 190075 }
+		command = { type = ministerofsecurity which = 190087 }
+		command = { type = ministerofintelligence which = 190100 }
+		command = { type = chiefofstaff which = 190007 }
+		command = { type = chiefofarmy which = 190008 }
+		command = { type = chiefofnavy which = 190122 }
+		command = { type = chiefofair which = 190126 }
+		command = { type = dissent value = 2 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [141001] ECU | 1940 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141001
+	random = no
+	country = ECU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = january year = 1940 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1943 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 190025 }
+		command = { type = headofgovernment which = 190043 }
+		command = { type = foreignminister which = 190133 }
+		command = { type = armamentminister which = 190076 }
+		command = { type = ministerofsecurity which = 190088 }
+		command = { type = ministerofintelligence which = 190100 }
+		command = { type = chiefofstaff which = 190109 }
+		command = { type = chiefofarmy which = 190008 }
+		command = { type = chiefofnavy which = 190122 }
+		command = { type = chiefofair which = 190126 }
+		command = { type = dissent value = 1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [141010] ECU | 1941 | War with Peru (Guerra con Perú)
+# Triggered by event 206005 in events/Minors/PRU.txt
+# Trigger event 127006 in events/Minors/COL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 141010
+	random = no
+	country = ECU
+	name = EVT_ECU_141010_NAME
+	desc = EVT_ECU_141010_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_BACK_DOWN
+		command = { type = money value = -15 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = 2 }
+		command = { type = secedeprovince which = PRU value = 2008 }
+		command = { type = secedeprovince which = PRU value = 2010 }
+		command = { type = secedeprovince which = PRU value = 2033 }
+		command = { type = sleepevent which = 127006 }
+	}
+	action_b = {
+		ai_chance = 10
+		name = ACTION_NAME_WAR
+		command = { type = war which = PRU }
+		command = { type = dissent value = -20 }
+		command = { type = domestic which = defense_lobby value = -1 }
+		command = { type = trigger which = 127006 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141002] ECU | 1944 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141002
+	random = no
+	country = ECU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = january year = 1944 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 190027 }
+		command = { type = headofgovernment which = 190045 }
+		command = { type = foreignminister which = 190049 }
+		command = { type = armamentminister which = 190076 }
+		command = { type = ministerofsecurity which = 190078 }
+		command = { type = ministerofintelligence which = 190101 }
+		command = { type = chiefofstaff which = 190110 }
+		command = { type = chiefofarmy which = 190116 }
+		command = { type = chiefofnavy which = 190123 }
+		command = { type = chiefofair which = 190125 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [141003] ECU | 1947 | Popular Revolution Victorious! (¡Triunfo de la revolución!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141003
+	random = no
+	country = ECU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 6
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 6
+					}
+				dissent = 3
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00496_NAME"
+	desc = "EVT_SHARED_00496_DESC"
+	date = { day = 1 month = january year = 1947 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 190018 }
+		command = { type = headofgovernment which = 190036 }
+		command = { type = foreignminister which = 190060 }
+		command = { type = armamentminister which = 190068 }
+		command = { type = ministerofsecurity which = 190081 }
+		command = { type = ministerofintelligence which = 190101 }
+		command = { type = chiefofstaff which = 190110 }
+		command = { type = chiefofarmy which = 190116 }
+		command = { type = chiefofnavy which = 190123 }
+		command = { type = chiefofair which = 190124 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [141027] ECU | 1947 | Deposition of Velasco Ibarra (Derrocamiento de Velasco)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141027
+	country = ECU
+	name = "EVT_ECU_141027_NAME"
+	desc = "EVT_ECU_141027_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 190018 }
+		command = { type = headofgovernment which = 190200 }
+		command = { type = foreignminister which = 190060 }
+		command = { type = armamentminister which = 190068 }
+		command = { type = ministerofsecurity which = 190081 }
+		command = { type = ministerofintelligence which = 190101 }
+		command = { type = chiefofstaff which = 190110 }
+		command = { type = chiefofarmy which = 190116 }
+		command = { type = chiefofnavy which = 190123 }
+		command = { type = chiefofair which = 190124 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141028] ECU | 1948 | Constitutional Rule of Galo Plaza (Presidencia de Galo Plaza)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141028
+	country = ECU
+	name = EVT_ECU_141028_NAME
+	desc = EVT_ECU_141028_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = EVT_ECU_141028_A
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 190136 }
+		command = { type = headofgovernment which = 190137 }
+		command = { type = foreignminister which = 190058 }
+		command = { type = armamentminister which = 190074 }
+		command = { type = ministerofsecurity which = 190086 }
+		command = { type = ministerofintelligence which = 190099 }
+	}
+	action = {
+		name = EVT_ECU_141028_B
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 190014 }
+		command = { type = headofgovernment which = 190032 }
+		command = { type = foreignminister which = 190051 }
+		command = { type = armamentminister which = 190064 }
+		command = { type = ministerofsecurity which = 190081 }
+		command = { type = ministerofintelligence which = 190092 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141006] ECU | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141006
+	random = no
+	country = ECU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		NOT = { ispuppet = ECU }
+		government = democratic
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = september year = 1948 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 190136 }
+		command = { type = headofgovernment which = 190137 }
+		command = { type = foreignminister which = 190058 }
+		command = { type = armamentminister which = 190074 }
+		command = { type = ministerofsecurity which = 190086 }
+		command = { type = ministerofintelligence which = 190099 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 190014 }
+		command = { type = headofgovernment which = 190032 }
+		command = { type = foreignminister which = 190051 }
+		command = { type = armamentminister which = 190064 }
+		command = { type = ministerofsecurity which = 190081 }
+		command = { type = ministerofintelligence which = 190092 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [141029] ECU | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141029
+	country = ECU
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 190013 }
+		command = { type = headofgovernment which = 190031 }
+		command = { type = foreignminister which = 190048 }
+		command = { type = armamentminister which = 190063 }
+		command = { type = ministerofsecurity which = 190078 }
+		command = { type = ministerofintelligence which = 190092 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 190136 }
+		command = { type = headofgovernment which = 190137 }
+		command = { type = foreignminister which = 190058 }
+		command = { type = armamentminister which = 190074 }
+		command = { type = ministerofsecurity which = 190086 }
+		command = { type = ministerofintelligence which = 190099 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141007] ECU | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141007
+	random = no
+	country = ECU
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		NOT = { ispuppet = ECU }
+		government = democratic
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = september year = 1952 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 190013 }
+		command = { type = headofgovernment which = 190031 }
+		command = { type = foreignminister which = 190048 }
+		command = { type = armamentminister which = 190063 }
+		command = { type = ministerofsecurity which = 190078 }
+		command = { type = ministerofintelligence which = 190092 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 190136 }
+		command = { type = headofgovernment which = 190137 }
+		command = { type = foreignminister which = 190058 }
+		command = { type = armamentminister which = 190074 }
+		command = { type = ministerofsecurity which = 190086 }
+		command = { type = ministerofintelligence which = 190099 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [141030] ECU | 1956 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141030
+	country = ECU
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 190014 }
+		command = { type = headofgovernment which = 190201 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141031] ECU | 1960 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141031
+	country = ECU
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 190013 }
+		command = { type = headofgovernment which = 190202 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141032] ECU | 1961 | Fall of Velasco's Fourth Term (Caída del cuarto velasquismo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141032
+	country = ECU
+	name = "EVT_ECU_141032_NAME"
+	desc = "EVT_ECU_141032_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 190203 }
+		command = { type = headofgovernment which = 190204 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141033] ECU | 1963 | Military Junta in Ecuador (Junta militar en Ecuador)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141033
+	country = ECU
+	name = "EVT_ECU_141033_NAME"
+	desc = "EVT_ECU_141033_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 190205 }
+		command = { type = headofgovernment which = 190206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141034] ECU | 1966 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141034
+	country = ECU
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1966 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1967 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 190207 }
+		command = { type = headofgovernment which = 190208 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141035] ECU | 1968 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141035
+	country = ECU
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1968 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 190013 }
+		command = { type = headofgovernment which = 190211 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 190209 }
+		command = { type = headofgovernment which = 190210 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141036] ECU | 1972 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141036
+	country = ECU
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 190212 }
+		command = { type = headofgovernment which = 190213 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141037] ECU | 1976 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141037
+	country = ECU
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1976 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 190214 }
+		command = { type = headofgovernment which = 190215 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141038] ECU | 1979 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141038
+	country = ECU
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 190216 }
+		command = { type = headofgovernment which = 190217 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 190218 }
+		command = { type = headofgovernment which = 190219 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141039] ECU | 1981 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141039
+	country = ECU
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+		headofstate = 190216
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1983 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = sleepminister which = 190216 }
+		command = { type = headofstate which = 190220 }
+		command = { type = headofgovernment which = 190221 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141040] ECU | 1984 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141040
+	country = ECU
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1984 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 190224 }
+		command = { type = headofgovernment which = 190225 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 190222 }
+		command = { type = headofgovernment which = 190223 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [141041] ECU | 1988 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 141041
+	country = ECU
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 190222 }
+		command = { type = headofgovernment which = 190226 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 190227 }
+		command = { type = headofgovernment which = 190228 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}

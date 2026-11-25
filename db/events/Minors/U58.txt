@@ -1,0 +1,340 @@
+# ============================================================================
+# File: events/Minors/U58.txt (9 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [278006] U58 | 1910 | Victory in Mexico City! (¡Toma de la Ciudad de México!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 278006
+	country = U58
+	persistent = yes
+	trigger = {
+		control = { province = 1974 data = U58 }
+		atwar = yes
+		NOT = { tech_team = 1114510 }
+		NOT = { tech_team = 1114511 }
+		NOT = { tech_team = 1114512 }
+	}
+	date = { day = 1 month = january year = 1910 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_SHARED_00127_NAME"
+	desc = "EVT_SHARED_00127_DESC"
+	picture = "GLOBAL/ww1_offensive"
+	style = 2
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = waketeam which = 1114510 }
+		command = { type = waketeam which = 1114511 }
+		command = { type = waketeam which = 1114512 }
+		command = { type = supplies value = -100 }
+		command = { type = money value = -30 }
+		command = { type = dissent value = -2 }
+		command = { trigger = { exists = U59 NOT = { war = { country = U59 country = U58 } } } type = relation which = U59 value = 5 }
+		command = { trigger = { exists = MEX war = { country = U59 country = MEX } } type = steal_tech which = MEX value = -1 }
+		command = { trigger = { exists = U57 war = { country = U59 country = U57 } } type = steal_tech which = U57 value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [278007] U58 | 1910 | Loss of Mexico City (Pérdida de la Ciudad de México)
+# ----------------------------------------------------------------------------
+event = {
+	id = 278007
+	country = U58
+	persistent = yes
+	trigger = {
+		NOT = { control = { province = 1974 data = U58 } }
+		tech_team = 1114510
+		tech_team = 1114511
+		tech_team = 1114512
+	}
+	name = "EVT_SHARED_00128_NAME"
+	desc = "EVT_SHARED_00128_DESC"
+	picture = "GLOBAL/ww1_offensive"
+	style = 2
+	date = { day = 1 month = january year = 1910 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = sleepteam which = 1114510 }
+		command = { type = sleepteam which = 1114511 }
+		command = { type = sleepteam which = 1114512 }
+		command = { type = supplies value = 20 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [183011] U58 | 1914 | The Convention of Aguascalientes (La Convención de Aguascalientes)
+# Triggered by event 277003 in events/Minors/U57.txt
+# Trigger event 277004 in events/Minors/U57.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 183011
+	country = U58
+	name = "EVT_SHARED_00079_NAME"
+	desc = "EVT_SHARED_00079_DESC"
+	picture = "Minors/convention_of_aguascalientes"
+	style = 2
+	action = {
+		trigger = {
+			exists = U57
+			exists = U59
+			NOT = { war = { country = U58 country = U59 } }
+			NOT = { alliance = { country = U58 country = U59 } }
+			NOT = { alliance = { country = U58 country = U57 } }
+			NOT = { alliance = { country = U59 country = U57 } }
+		}
+		ai_chance = 90
+		name = "ACTION_NAME_JOIN_ALLIANCE"
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = war which = U57 }
+		command = { type = dissent value = -5 }
+		command = { type = local_clrflag which = MEX_Conv }
+		command = { type = setflag which = U58_alliance_U59 }
+		command = { trigger = { ai = yes } type = ai which = "switch/U58_Convention.ai" }
+	}
+	action = {
+		trigger = {
+			exists = U57
+			exists = U59
+			NOT = { war = { country = U58 country = U59 } }
+			NOT = { alliance = { country = U58 country = U59 } }
+			NOT = { alliance = { country = U58 country = U57 } }
+			NOT = { alliance = { country = U59 country = U57 } }
+		}
+		ai_chance = 5
+		name = "EVT_U58_183011_A"
+		command = { type = domestic which = interventionism value = 2 }
+		command = { type = war which = U57 }
+		command = { type = war which = U59 }
+		command = { type = dissent value = -2 }
+		command = { type = local_clrflag which = MEX_Conv }
+		command = { trigger = { ai = yes } type = ai which = "switch/U58_Convention_B.ai" }
+	}
+	action = {
+		trigger = {
+			exists = U57
+			NOT = { exists = U59 }
+			NOT = { war = { country = U58 country = U57 } }
+			NOT = { alliance = { country = U58 country = U57 } }
+		}
+		ai_chance = 90
+		name = "EVT_SHARED_00080_A"
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = war which = U57 }
+		command = { type = dissent value = -5 }
+		command = { type = local_clrflag which = MEX_Conv }
+		command = { trigger = { ai = yes } type = ai which = "switch/U58_Convention.ai" }
+	}
+	action = {
+		trigger = {
+			exists = U57
+			NOT = { war = { country = U57 country = U58 } }
+			ai = yes
+		}
+		ai_chance = 5
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		command = { type = local_clrflag which = MEX_Conv }
+		command = { type = trigger which = 277004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [278000] U58 | 1914 | Villistas Win the Revolution (Los villistas triunfan en la Revolución)
+# Trigger event 183014 in events/Minors/MEX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 278000
+	country = U58
+	trigger = {
+		atwar = no
+		NOT = {
+			exists = MEX
+			exists = U57
+			exists = U59
+		}
+		control = { province = 1974 data = U58 }
+	}
+	name = "EVT_U58_278000_NAME"
+	desc = "EVT_U58_278000_DESC"
+	picture = "Minors/rheinland"
+	style = 2
+	date = { day = 1 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = dissent value = -5 }
+		command = { type = country which = MEX }
+		command = { type = trigger which = 183014 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [278001] U58 | 1914 | Conventionalist Coalition Wins the Revolution (La alianza de Villa y Zapata gana la Revolución)
+# Trigger event 183014 in events/Minors/MEX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 278001
+	country = U58
+	trigger = {
+		atwar = no
+		NOT = {
+			exists = MEX
+			exists = U59
+		}
+		exists = U57
+		alliance = { country = U58 country = U59 }
+		control = { province = 1974 data = U58 }
+	}
+	name = "EVT_U58_278001_NAME"
+	desc = "EVT_U58_278001_DESC"
+	picture = "Minors/rheinland"
+	style = 2
+	date = { day = 1 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+		trigger = { ai = U59 }
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U59 value = 1 }
+		command = { type = dissent value = -5 }
+		command = { type = country which = MEX }
+		command = { type = trigger which = 183014 }
+	}
+	action = {
+		trigger = { NOT = { ai = U59 } }
+		name = "ACTION_NAME_WAR"
+		command = { type = leave_alliance when = 1 }
+		command = { type = dissent value = 5 }
+		command = { type = war which = U59 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [278002] U58 | 1914 | The Final Revolutionary Decision (La encrucijada final de la Revolución)
+# Triggered by event 324219 in events/GLOBAL/MULTI_00-14.txt
+# Trigger event 277004 in events/Minors/U57.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 278002
+	country = U58
+	name = "EVT_SHARED_00081_NAME"
+	desc = "EVT_SHARED_00081_DESC"
+	picture = "GLOBAL/peace_conference"
+	style = 2
+	action = {
+		ai_chance = 80
+		name = "ACTION_NAME_WAR"
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = war which = U57 }
+		command = { type = dissent value = -5 }
+		command = { type = clrflag which = MEX_Convention }
+	}
+	action = {
+		trigger = { ai = yes }
+		ai_chance = 20
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		command = { type = trigger which = 277004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [278003] U58 | 1914 | Raid Stalled: Resistance Encountered (Incursión frenada: Resistencia enemiga)
+# Triggered by event 277008 in events/Minors/U58_Decisions.txt
+# Triggered by event 277009 in events/Minors/U58_Decisions.txt
+# Triggered by event 277010 in events/Minors/U58_Decisions.txt
+# Triggered by event 277011 in events/Minors/U58_Decisions.txt
+# Triggered by event 277012 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 278003
+	country = U58
+	persistent = yes
+	name = "EVT_U58_278003_NAME"
+	desc = "EVT_U58_278003_DESC"
+	style = 2
+	picture = "Minors/villa_raid"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = supplies value = 80 }
+		command = { type = rarematerialspool value = 10 }
+		command = { type = oilpool value = 10 }
+		command = { type = metalpool value = 20 }
+		command = { type = energypool value = 35 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [278004] U58 | 1914 | Raid Successful: Ample Loot Captured (Incursión exitosa: Cuantioso botín)
+# Triggered by event 277008 in events/Minors/U58_Decisions.txt
+# Triggered by event 277009 in events/Minors/U58_Decisions.txt
+# Triggered by event 277010 in events/Minors/U58_Decisions.txt
+# Triggered by event 277011 in events/Minors/U58_Decisions.txt
+# Triggered by event 277012 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 278004
+	country = U58
+	persistent = yes
+	name = "EVT_U58_278004_NAME"
+	desc = "EVT_U58_278004_DESC"
+	style = 2
+	picture = "Minors/villa_raid"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = supplies value = 160 }
+		command = { type = rarematerialspool value = 20 }
+		command = { type = oilpool value = 20 }
+		command = { type = metalpool value = 40 }
+		command = { type = energypool value = 70 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [278005] U58 | 1915 | Volunteers Swell Villista Ranks (Nuevos reclutas se unen a los villistas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 278005
+	country = U58
+	random = yes
+	persistent = yes
+	one_action = yes
+	trigger = {
+		atwar = yes
+		random = 10
+		NOT = { IC = 7 }
+	}
+	name = "EVT_U58_278005_NAME"
+	desc = "EVT_U58_278005_DESC"
+	picture = "GLOBAL/soviet_reinforcements"
+	style = 2
+	date = { day = 1 month = january year = 1915 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		ai_chance = 5
+		name = ACTION_NAME_OK
+		command = { type = manpowerpool value = 0.5 when = 1 }
+	}
+	action = {
+		ai_chance = 10
+		name = "ACTION_NAME_GOOD"
+		command = { type = manpowerpool value = 1 when = 1 }
+	}
+	action = {
+		ai_chance = 20
+		name = "ACTION_NAME_GREAT"
+		command = { type = manpowerpool value = 2 when = 1 }
+	}
+	action = {
+		ai_chance = 50
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = manpowerpool value = 5 when = 1 }
+	}
+}

@@ -1,0 +1,1712 @@
+# ============================================================================
+# File: events/Minors/U08_18-36.txt (49 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [243047] U08 | 1918 | The November Revolution Spreads (La Revolución de Noviembre se propaga)
+# Triggered by event 243046 in events/Minors/U08_14-18.txt
+# Trigger event 243048 in events/Minors/U08_18-36.txt
+# Trigger event 243106 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243047
+	country = U08
+	trigger = {
+		event = 243046
+	}
+	name = "EVT_SHARED_00996_NAME"
+	desc = "EVT_SHARED_00996_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 7 month = november year = 1918 }
+	offset = 1
+	deathdate = { day = 30 month = november year = 1918 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+		command = { type = trigger which = 243048 }
+		command = { type = trigger which = 243106 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243048] U08 | 1918 | Dual Proclamation of the Republic (Doble proclamación de la República)
+# Triggered by event 243047 in events/Minors/U08_18-36.txt
+# Trigger event 243049 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243048
+	country = U08
+	trigger = {
+		event = 243047
+	}
+	name = "EVT_SHARED_00997_NAME"
+	desc = "EVT_SHARED_00997_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 9 month = november year = 1918 }
+	offset = 1
+	deathdate = { day = 30 month = november year = 1918 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+		command = { type = trigger which = 243049 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243049] U08 | 1918 | Council of the People's Deputies Formed (Creación del Consejo de los Diputados del Pueblo)
+# Triggered by event 243048 in events/Minors/U08_18-36.txt
+# Trigger event 243107 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243049
+	country = U08
+	trigger = {
+		event = 243048
+	}
+	name = "EVT_SHARED_00998_NAME"
+	desc = "EVT_SHARED_00998_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 10 month = november year = 1918 }
+	offset = 1
+	deathdate = { day = 1 month = january year = 1920 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+		command = { type = trigger which = 243107 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243041] U08 | 1919 | War Reparations (Reparaciones de guerra)
+# Triggered by event 316348 in events/USA/USA_16-28.txt
+# Triggered by event 316349 in events/USA/USA_16-28.txt
+# Trigger event 231033 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 147238 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243041
+	country = U08
+	persistent = yes
+	date = { day = 1 month = january year = 1919 }
+	deathdate = { day = 1 month = january year = 1936 }
+	offset = 365
+	trigger = {
+		local_flag = reparations
+		not = { flag = nogerrep2 }
+		not = { flag = ruhr_occupied }
+	}
+	name = "EVT_U08_243041_NAME"
+	Desc = "EVT_U08_243041_DESC"
+	Picture = "aar_repar"
+	style = 2
+	action = {
+		name = "EVT_U08_243041_A"
+		ai_chance = 40
+		trigger = {
+			atwar = no
+			money = 2000
+			OR = {
+				and = {
+					flag = nogerrep
+					money = 3000
+				}
+				not = { year = 1923 }
+			}
+			not = {
+				local_flag = depression
+			}
+			not = { event = 316348 }
+			or = {
+				not = { year = 1923 }
+				random = 5
+				ai = no
+			}
+		}
+		command = { type = dissent value = 5 }
+		command = { type = money value = -2000 }
+		command = { type = resource which = money value = -5000 }
+		command = { type = event which = 231033 where = ENG when = 7 }
+		command = { type = event which = 231033 where = FRA when = 7 }
+		command = { type = event which = 231033 where = USA when = 7 }
+		command = { type = clrflag which = nogerrep }
+	}
+	action = {
+		name = "EVT_U08_243041_B"
+		ai_chance = 70
+		trigger = {
+			atwar = no
+			flag = ruhr_return
+			not = {
+				local_flag = depression
+			}
+			event = 316348
+			not = { event = 316349 }
+		}
+		command = { type =	dissent value = 1 }
+		command = { type = resource which = money value = -2500 }
+		command = { type = clrflag which = nogerrep }
+		command = { type = event which = 231033 where = ENG when = 7 }
+		command = { type = event which = 231033 where = FRA when = 7 }
+		command = { type = event which = 231033 where = USA when = 7 }
+	}
+	action = {
+		name = "EVT_U08_243041_C"
+		ai_chance = 90
+		trigger = {
+			atwar = no
+			not = {
+				local_flag = depression
+			}
+			event = 316349
+		}
+		command = { type = dissent value = 1 }
+		command = { type = resource which =	money value = -1250 }
+		command = { type = clrflag which = nogerrep }
+		command = { type = event which = 231033 where = ENG when = 7 }
+		command = { type = event which = 231033 where = FRA when = 7 }
+		command = { type = event which = 231033 where = USA when = 7 }
+	}
+	action = {
+		name = "EVT_U08_243041_D"
+		ai_chance = 40
+		trigger = {
+			atwar = no
+			or = {
+				not = { flag = nogerrep }
+				flag = ruhr_return
+			}
+			not = {
+				local_flag = depression
+			}
+		}
+		command = { type = dissent value = -5 }
+		command = { type = setflag which = nogerrep }
+		command = { trigger = { flag = ruhr_return } type = clrflag which = ruhr_return }
+		command = { type = relation which =	ENG value = -20 }
+		command = { type = relation which =	FRA value = -20 }
+		command = { type = relation which =	USA value = -20 }
+	}
+	action = {
+		name = "EVT_U08_243041_E"
+		ai_chance = 50
+		trigger = {
+			atwar = no
+			flag = nogerrep
+			not = { flag = ruhr_return }
+			not = {
+				local_flag = depression
+			}
+		}
+		command = { type = dissent value = -10 }
+		command = { type = setflag which = nogerrep2 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = FRA value = -20 }
+		command = { type = relation which = USA value = -20 }
+	}
+	action = {
+		name = "EVT_U08_243041_F"
+		ai_chance = 100
+		trigger = {
+			atwar = yes
+			or = {
+				war = { country = U08 country = FRA }
+				war = { country = U08 country = ENG }
+				war = { country = U08 country = USA }
+			}
+		}
+		command = { type = dissent value = -10 }
+		command = { type = local_clrflag which = reparations }
+		command = { type =	relation which = ENG value = -100 }
+		command = { type =	relation which = FRA value = -100 }
+		command = { type =	relation which = USA value = -100 }
+	}
+	action = {
+		ai_chance = 100
+		trigger = {
+			local_flag = depression
+		}
+		name = "EVT_U08_243041_G"
+		command = { type = dissent value = -2 }
+		command = { type = relation which = ENG value = -5 }
+		command = { type = relation which = FRA value = -5 }
+		command = { type = relation which = USA value = -5 }
+		command = { type = trigger which = 147238 }
+	}
+	action = {
+		ai_chance = 100
+		trigger = {
+			atwar = yes
+			not = {
+				or = {
+					war = { country = U08 country = FRA }
+					war = { country = U08 country = ENG }
+					war = { country = U08 country = USA }
+				}
+			}
+			not = { local_flag = depression }
+		}
+		name = "EVT_U08_243041_H"
+		command = { type = dissent value = -2 }
+		command = { type = relation which = ENG value = -5 }
+		command = { type = relation which = FRA value = -5 }
+		command = { type = relation which = USA value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243073] U08 | 1919 | The Freikorps (Los 'Freikorps')
+# Triggered by event 243070 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+         id =243073
+         country = U08
+         style = 2
+         name = "EVT_U08_243073_NAME"
+         Desc = "EVT_U08_243073_DESC"
+         Picture = "WWIposter9"
+         action_a = {
+                ai_chance = 80
+                Name = "EVT_U08_243073_A"
+                command = {type = add_division which = "Marinebrigade Ehrhardt" value = militia when = 3}
+                command = {type = add_division which = "Freikorps Hulsen" value = militia when = 3}
+                command = {type = add_division which = "Freikorps Epp" value = militia when = 3}
+                command = {type = add_division which = "Ostpreussisches Freiwilligenkorps" value = militia when = 3}
+                  }
+         action_b = {
+                ai_chance = 20
+                Name = "EVT_U08_243073_B"
+                command = {  type = dissent value = 1 }
+                    }
+}
+
+# ----------------------------------------------------------------------------
+# [243070] U08 | 1919 | Spartacist uprising (Levantamiento Espartaquista)
+# Trigger event 243073 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243070
+	country = U08
+	trigger = {
+	atwar = no
+	}
+	date = { day = 4 month = january year = 1919 }
+	offset = 5
+	deathdate = { day = 0 month = january year = 1925 }
+	name = "EVT_U08_243070_NAME"
+	desc = "EVT_U08_243070_DESC"
+	action = {
+		name = "ACTION_NAME_MOBILIZE"
+                command = { type = dissent value = 5 }
+		command = { type = revolt which = 157 }
+		command = { type = revolt which = 157 }
+		command = { type = revolt which = 157 }
+		command = { type = revolt which = 157 }
+		command = { type = revolt which = 157 }
+                command = { type = trigger which = 243073}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243077] U08 | 1919 | Founding of the DAP (Fundación del DAP)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243077
+	country = U08
+	random = no
+	trigger = {
+		exists = U08
+	}
+	name = "EVT_U08_243077_NAME"
+	desc = "EVT_U08_243077_DESC"
+	style = 2
+	picture = "Minors/dap"
+	date = { day = 4 month = january year = 1919 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243065] U08 | 1919 | Borning of German labor party (rise of NSDAP) (Nacimiento del Partido Obrero Alemán (Asenso del NSDAP))
+# ----------------------------------------------------------------------------
+event = {
+	id = 243065
+	country = U08
+	trigger = {
+	atwar = no
+	}
+	date = { day = 5 month = january year = 1919 }
+	offset = 14
+	deathdate = { day = 0 month = january year = 1925 }
+	name = "EVT_U08_243065_NAME"
+	desc = "EVT_U08_243065_DESC"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+                command = { type = domestic which = freedom value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243069] U08 | 1919 | Weimar republic-state of anarchy and disorder (República de Weimar - Estado de anarquía y desorden)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243069
+	random = no
+	country = U08
+	trigger = {
+		NOT = { flag = cpvictory }
+		atwar = no
+	}
+	name = "EVT_U08_243069_NAME"
+	desc = "EVT_U08_243069_DESC"
+	style = 2
+	picture = "GLOBAL/the_french_resistance_la_r_sistance"
+	date = { day = 1 month = march year = 1919 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = ACTION_NAME_OK
+                command = { type = dissent value = 20 }
+		command = { type = province_revoltrisk which = 163 value = 30 }
+		command = { type = province_revoltrisk which = 145 value = 30 }
+		command = { type = province_revoltrisk which = 106 value = 30 }
+		command = { type = province_revoltrisk which = 179 value = 40 }
+		command = { type = province_revoltrisk which = 157 value = 30 }
+		command = { type = province_revoltrisk which = 169 value = 30 }
+		command = { type = province_revoltrisk which = 170 value = 30 }
+		command = { type = province_revoltrisk which = 172 value = 30 }
+		command = { type = province_revoltrisk which = 130 value = 30 }
+		command = { type = province_revoltrisk which = 178 value = 30 }
+		command = { type = province_revoltrisk which = 176 value = 30 }
+		command = { type = province_revoltrisk which = 156 value = 30 }
+		command = { type = province_revoltrisk which = 175 value = 30 }
+		command = { type = province_revoltrisk which = 133 value = 30 }
+		command = { type = province_revoltrisk which = 135 value = 30 }
+		command = { type = province_revoltrisk which = 167 value = 30 }
+		command = { type = province_revoltrisk which = 164 value = 30 }
+		command = { type = province_revoltrisk which = 139 value = 23 }
+		command = { type = province_revoltrisk which = 138 value = 30 }
+		command = { type = province_revoltrisk which = 159 value = 30 }
+		command = { type = province_revoltrisk which = 142 value = 30 }
+		command = { type = province_revoltrisk which = 153 value = 11 }
+		command = { type = province_revoltrisk which = 162 value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243071] U08 | 1919 | Communist Uprising in Bavaria (Levantamiento comunista en Baviera)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243071
+	country = U08
+	trigger = {
+	atwar = no
+		NOT = { flag = cpvictory }
+	}
+	date = { day = 4 month = april year = 1919 }
+	offset = 5
+	deathdate = { day = 0 month = january year = 1925 }
+	name = "EVT_U08_243071_NAME"
+	desc = "EVT_U08_243071_DESC"
+	action = {
+		name = ACTION_NAME_OK
+                command = { type = dissent value = 5 }
+		command = { type = revolt which = 179 }
+                command = { type = revolt which = 179 }
+                command = { type = revolt which = 179 }
+		command = { type = revolt which = 176 }
+		command = { type = revolt which = 178 }
+		command = { type = revolt which = 177 }
+		command = { type = revolt which = 175 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243078] U08 | 1919 | Founding of the Bauhaus School (Fundación de la Escuela Bauhaus)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243078
+	country = U08
+	random = no
+	trigger = {
+		exists = U08
+	}
+	name = "EVT_U08_243078_NAME"
+	desc = "EVT_U08_243078_DESC"
+	style = 2
+	picture = "Minors/bauhaus"
+	date = { day = 24 month = april year = 1919 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243161] U08 | 1919 | New Chancellor (Nuevo Canciller)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243161
+	random = no
+	country = U08
+	date = { day = 21 month = 5 year = 1919 }
+	offset = 1
+	deathdate = { day = 21 month = 6 year = 1919 }
+	trigger = {
+		atwar = no
+		headofgovernment = 855204
+	}
+	name = "EVT_SHARED_01105_NAME"
+	Desc = "EVT_U08_243161_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = wakeminister which = 855205 }
+		command = { type = wakeminister which = 855214 }
+		command = { type = wakeminister which = 855243 }
+		command = { type = wakeminister which = 855231 }
+		command = { type = wakeminister which = 855075 }
+		command = { type = headofgovernment which = 855205 }
+		command = { type = foreignminister which = 855214 }
+		command = { type = ministerofsecurity which = 855243 }
+		command = { type = armamentminister which = 855231 }
+		command = { type = chiefofstaff which = 855075 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243134] U08 | 1919 | Problems from Within and Abroad! (¡Problemas desde dentro y en el extranjero!)
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Triggered by event 244019 in events/Minors/U09.txt
+# Triggered by event 243083 in events/Minors/U08_14-14.txt
+# Triggered by event 243091 in events/Minors/U08_14-14.txt
+# Triggered by event 223425 in events/SOV/SOV_14-33.txt
+# Triggered by event 223426 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243134
+	random = no
+	persistent = yes
+	country = U08
+	trigger = {
+		atwar = yes
+		not = { dissent = 30 }
+		or = {
+			year = 1920
+			war = { country = U08 country = USA }
+		}
+		not = {
+			or = {
+				and = {
+					or = {
+						event = 147311
+						event = 243101
+						event = 243107
+						event = 243116
+					}
+					event = 244019
+				}
+				and = {
+					event = 243083
+					or = {
+						event = 243091
+							event = 223425
+						event = 223426
+					}
+				}
+			}
+		}
+		random = 15
+	}
+	name = "EVT_U08_243134_NAME"
+	desc = "EVT_U08_243134_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 1
+	date = { day = 1 month = august year = 1919 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+		command = { trigger = { war = { country = U08 country = USA } } type = dissent value = 3 }
+		command = { trigger = { war = { country = U08 country = FRA } } type = dissent value = 1 }
+		command = { trigger = { war = { country = U08 country = ENG } } type = dissent value = 1 }
+		command = { trigger = { war = { country = U08 country = RUS } } type = dissent value = 2 }
+		command = { trigger = { war = { country = U08 country = SOV } } type = dissent value = 2 }
+		command = { trigger = { exists = SOV } type = dissent value = 1 }
+		command = { trigger = { year = 1920 } type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243066] U08 | 1919 | Adolf Hitler-new member of DAP (Adolf Hitler - Nuevo miembro del DAP)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243066
+	country = U08
+	trigger = {
+	atwar = no
+	}
+	date = { day = 5 month = september year = 1919 }
+	offset = 14
+	deathdate = { day = 0 month = january year = 1925 }
+	name = "EVT_U08_243066_NAME"
+	desc = "EVT_U08_243066_DESC"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243155] U08 | 1920 | Economic Boom in the Reich (Prosperidad económica en el Reich)
+# ----------------------------------------------------------------------------
+event = {
+		id = 243155
+		country = U08
+		random = yes
+		trigger = {
+		atwar = no
+		flag = cpvictory
+		}
+	name = "EVT_U08_243155_NAME"
+	desc = "EVT_U08_243155_DESC"
+	style = 2
+	picture = "GLOBAL/haus_des_rundfunks"
+	date = { day = 1 month = january year = 1920 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1924 }
+	action = {
+	name = ACTION_NAME_OK
+	command = { type = peacetime_ic_mod value = 12}
+	command = { type = tc_mod value = 10}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243157] U08 | 1920 | Preparations to Invade England (Preparativos para la invasión de Gran Bretaña)
+# ----------------------------------------------------------------------------
+event = {
+		id = 243157
+		country = U08
+		Trigger = {
+		atwar = ENG
+			Not = { atwar = FRA } }
+	name = "EVT_U08_243157_NAME"
+	desc = "EVT_U08_243157_DESC"
+	style = 2
+	picture = "GLOBAL/planz"
+	date = { day = 1 month = january year = 1920 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1930 }
+	action = {
+	name = ACTION_NAME_OK
+	command = { type = build_division which = transport when = 1}
+	command = { type = build_division which = transport when = 1}
+	command = { type = build_division which = transport when = 1}
+	command = { type = build_division which = transport when = 1}
+	command = { type = build_division which = transport when = 1}
+	command = { type = build_division which = transport when = 1}
+	command = { type = build_division which = transport when = 1}
+	command = { type = build_division which = transport when = 1}
+	command = { type = build_division which = transport when = 1}
+	command = { type = build_division which = transport when = 1}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243067] U08 | 1920 | DAP reformed as NSDAP (DAP reformado como NSDAP)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243067
+	country = U08
+	trigger = {
+	atwar = no
+	}
+	date = { day = 24 month = february year = 1920 }
+	offset = 5
+	deathdate = { day = 0 month = january year = 1925 }
+	name = "EVT_U08_243067_NAME"
+	desc = "EVT_U08_243067_DESC"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243162] U08 | 1920 | New Chancellor (Nuevo Canciller)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243162
+	random = no
+	country = U08
+	date = { day = 27 month = 2 year = 1920 }
+	offset = 1
+	deathdate = { day = 27 month = 3 year = 1920 }
+	trigger = {
+		atwar = no
+		headofgovernment = 855205
+	}
+	name = "EVT_SHARED_01105_NAME"
+	Desc = "EVT_U08_243162_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = wakeminister which = 855206 }
+		command = { type = wakeminister which = 855214 }
+		command = { type = wakeminister which = 855244 }
+		command = { type = wakeminister which = 855226 }
+		command = { type = headofgovernment which = 855206 }
+		command = { type = foreignminister which = 855214 }
+		command = { type = ministerofsecurity which = 855244 }
+		command = { type = armamentminister which = 855226 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243163] U08 | 1920 | 1920 Federal Elections (Elecciones federales de 1920)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243163
+	random = no
+	country = U08
+	date = { day = 6 month = 5 year = 1920 }
+	offset = 1
+	deathdate = { day = 6 month = 6 year = 1920 }
+	trigger = {
+		atwar = no
+		government = democratic
+	}
+	name = "EVT_U08_243163_NAME"
+	Desc = "EVT_U08_243163_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = wakeminister which = 855207 }
+		command = { type = wakeminister which = 855216 }
+		command = { type = wakeminister which = 855244 }
+		command = { type = wakeminister which = 855226 }
+		command = { type = headofgovernment which = 855207 }
+		command = { type = foreignminister which = 855216 }
+		command = { type = ministerofsecurity which = 855244 }
+		command = { type = armamentminister which = 855226 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243164] U08 | 1921 | New Chancellor (Nuevo Canciller)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243164
+	random = no
+	country = U08
+	date = { day = 10 month = 4 year = 1921 }
+	offset = 1
+	deathdate = { day = 10 month = 5 year = 1921 }
+	trigger = {
+		atwar = no
+		headofgovernment = 855207
+	}
+	name = "EVT_SHARED_01105_NAME"
+	Desc = "EVT_U08_243164_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = wakeminister which = 855208 }
+		command = { type = wakeminister which = 855217 }
+		command = { type = wakeminister which = 855245 }
+		command = { type = wakeminister which = 855226 }
+		command = { type = headofgovernment which = 855208 }
+		command = { type = foreignminister which = 855217 }
+		command = { type = ministerofsecurity which = 855245 }
+		command = { type = armamentminister which = 855226 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243068] U08 | 1921 | Hitler new leader of NSDAP (Hitler es el nuevo líder del NSDAP)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243068
+	country = U08
+	trigger = {
+	atwar = no
+	}
+	date = { day = 24 month = july year = 1921 }
+	offset = 5
+	deathdate = { day = 0 month = january year = 1925 }
+	name = "EVT_U08_243068_NAME"
+	desc = "EVT_U08_243068_DESC"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243165] U08 | 1922 | New Chancellor (Nuevo Canciller)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243165
+	random = no
+	country = U08
+	date = { day = 22 month = 10 year = 1922 }
+	offset = 1
+	deathdate = { day = 22 month = 11 year = 1922 }
+	trigger = {
+		atwar = no
+		headofgovernment = 855208
+	}
+	name = "EVT_SHARED_01105_NAME"
+	Desc = "EVT_U08_243165_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = wakeminister which = 855209 }
+		command = { type = wakeminister which = 855220 }
+		command = { type = wakeminister which = 855247 }
+		command = { type = wakeminister which = 855234 }
+		command = { type = headofgovernment which = 855209 }
+		command = { type = foreignminister which = 855220 }
+		command = { type = ministerofsecurity which = 855247 }
+		command = { type = armamentminister which = 855234 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243060] U08 | 1923 | The Beer Hall Putsch (Putsch de la Cervecería)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243060
+	country = U08
+	date = { day = 1 month = january year = 1923 }
+	deathdate = { day = 1 month = january year = 1934 }
+	offset = 365
+	trigger = {
+		local_flag=loser
+		flag=march_on_rome
+	}
+	name = "EVT_U08_243060_NAME"
+	Desc = "EVT_U08_243060_DESC"
+	Picture = "allied_strategic_defeat"
+	action = {
+		name = "ACTION_NAME_SUPPRESS_REVOLT"
+		ai_chance = 100
+		command = { type = setflag which = hitler_arrested }
+		command = { type = belligerence value = -10 }
+		command = { type = dissent value = -20 }
+	}
+	action = {
+		name = "EVT_U08_243060_A"
+		ai_chance = 0
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243166] U08 | 1923 | New Chancellor (Nuevo Canciller)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243166
+	random = no
+	country = U08
+	date = { day = 13 month = 7 year = 1923 }
+	offset = 1
+	deathdate = { day = 13 month = 8 year = 1923 }
+	trigger = {
+		atwar = no
+		headofgovernment = 855209
+	}
+	name = "EVT_SHARED_01105_NAME"
+	Desc = "EVT_U08_243166_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = wakeminister which = 855210 }
+		command = { type = wakeminister which = 855221 }
+		command = { type = wakeminister which = 855248 }
+		command = { type = wakeminister which = 855228 }
+		command = { type = headofgovernment which = 855210 }
+		command = { type = foreignminister which = 855221 }
+		command = { type = ministerofsecurity which = 855248 }
+		command = { type = armamentminister which = 855228 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243061] U08 | 1924 | Adolf Hitler
+# Trigger event 231003 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231006 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231161 in events/AI/ALL_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243061
+	country = U08
+	persistent = yes
+	date = { day = 1 month = january year = 1924 }
+	deathdate = { day = 1 month = january year = 1934 }
+	offset = 365
+	trigger = {
+		flag=hitler_arrested
+	}
+	name = "EVT_U08_243061_NAME"
+	Desc = "EVT_U08_243061_DESC"
+	Picture = "VIC"
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = setflag which = hitler_free }
+		command = { type = clrflag which = hitler_arrested }
+		command = { type =	belligerence value = -10 }
+		command = { type =	dissent value = -10 }
+		command = { type =	domestic which = political_left value = -1 }
+	}
+	action = {
+		name = "EVT_U08_243061_A"
+		ai_chance = 0
+		command = { type =	dissent value = 5 }
+		command = { type =	domestic which = political_left value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243167] U08 | 1924 | 1924 Federal Elections (Elecciones federales de 1924)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243167
+	random = no
+	country = U08
+	date = { day = 29 month = 10 year = 1924 }
+	offset = 1
+	deathdate = { day = 29 month = 11 year = 1924 }
+	trigger = {
+		atwar = no
+		government = democratic
+	}
+	name = "EVT_U08_243167_NAME"
+	Desc = "EVT_U08_243167_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = wakeminister which = 855211 }
+		command = { type = wakeminister which = 855221 }
+		command = { type = wakeminister which = 855249 }
+		command = { type = wakeminister which = 855229 }
+		command = { type = headofgovernment which = 855211 }
+		command = { type = foreignminister which = 855221 }
+		command = { type = ministerofsecurity which = 855249 }
+		command = { type = armamentminister which = 855229 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243042] U08 | 1925 | Lausanne Conference Fails! (¡La conferencia de Lausana falla!)
+# Triggered by event 143401 in events/ENG/ENG_25-34.txt
+# Triggered by event 147238 in events/FRA/FRA_14-31.txt
+# Triggered by event 316350 in events/USA/USA_16-28.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243042
+	country = U08
+	name = "EVT_U08_243042_NAME"
+	desc = "EVT_U08_243042_DESC"
+	style = 2
+	picture = "GLOBAL/aar_lausanne"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = sleepevent which = 243041 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243043] U08 | 1925 | Lausanne Conference Accepted! (¡Conferencia de Lausana aceptada!)
+# Triggered by event 316350 in events/USA/USA_16-28.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243043
+	country = U08
+	name = "EVT_U08_243043_NAME"
+	desc = "EVT_U08_243043_DESC"
+	style = 2
+	picture = "GLOBAL/aar_lausanne"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = relation which = ENG value = 5 }
+		command = { type = relation which = FRA value = 5 }
+		command = { type = relation which = USA value = 5 }
+		command = { type = dissent value = -10 }
+		command = { type = sleepevent which = 243041 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243168] U08 | 1925 | New Chancellor (Nuevo Canciller)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243168
+	random = no
+	country = U08
+	date = { day = 15 month = 0 year = 1925 }
+	offset = 1
+	deathdate = { day = 15 month = 2 year = 1925 }
+	trigger = {
+		atwar = no
+		headofgovernment = 855211
+	}
+	name = "EVT_SHARED_01105_NAME"
+	Desc = "EVT_U08_243168_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = wakeminister which = 855362 }
+		command = { type = wakeminister which = 855221 }
+		command = { type = wakeminister which = 855250 }
+		command = { type = wakeminister which = 855366 }
+		command = { type = headofgovernment which = 855362 }
+		command = { type = foreignminister which = 855221 }
+		command = { type = ministerofsecurity which = 855250 }
+		command = { type = armamentminister which = 855366 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243001] U08 | 1925 | Death of a Minister (Fallecimiento de un ministro)
+# Trigger event 243159 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243001
+	random = no
+	country = U08
+	style = 2
+	trigger = {
+		OR= {
+			headofstate = 855202
+			headofgovernment = 855203
+			minister = 855241
+		}
+	}
+	date = { day = 27 month = February year = 1925 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 855241 }
+		command = { type = sleepleader which = 855203 }
+		command = { type = sleepleader which = 855202 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243159] U08 | 1925 | 1925 Presidential Elections (Elecciones presidenciales de 1925)
+# Triggered by event 243001 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243159
+	random = no
+	country = U08
+	save_date = yes
+	date = { day = 29 month = 2 year = 1925 }
+	offset = 1
+	deathdate = { day = 29 month = 3 year = 1930 }
+	trigger = {
+		event = 243001
+		government = democratic
+		not = { ispuppet = U08 }
+	}
+	name = "EVT_U08_243159_NAME"
+	Desc = "EVT_U08_243159_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = "EVT_U08_243159_A"
+		ai_chance = 100
+		command = { type = domestic which = political_left value = -1 }
+		command = { trigger = { minister = 855202 } type = sleepminister which = 855202 }
+		command = { trigger = { minister = 855203 } type = sleepminister which = 855203 }
+		command = { trigger = { minister = 855241 } type = sleepminister which = 855241 }
+		command = { trigger = { minister = 855074 } type = sleepminister which = 855074 }
+		command = { trigger = { minister = 855082 } type = sleepminister which = 855082 }
+		command = { trigger = { minister = 855055 } type = sleepminister which = 855255 }
+		command = { trigger = { minister = 855042 } type = sleepminister which = 855342 }
+		command = { trigger = { not = { minister = 855301 } } type = wakeminister which = 855301 }
+		command = { type = headofstate which = 855301 }
+	}
+	action = {
+		name = "EVT_U08_243159_B"
+		ai_chance = 0
+		command = { type = domestic which = democratic value = 1 }
+		command = { trigger = { minister = 855202 } type = sleepminister which = 855202 }
+		command = { trigger = { minister = 855203 } type = sleepminister which = 855203 }
+		command = { trigger = { minister = 855241 } type = sleepminister which = 855241 }
+		command = { trigger = { minister = 855211 } type = sleepminister which = 855211 }
+		command = { trigger = { not = { minister = 855360 } } type = wakeminister which = 855360 }
+		command = { type = headofstate which = 855360 }
+	}
+	action = {
+		name = "EVT_U08_243159_C"
+		ai_chance = 0
+		command = { type = relation which = SOV value = 30 }
+		command = { trigger = { minister = 855202 } type = sleepminister which = 855202 }
+		command = { trigger = { minister = 855203 } type = sleepminister which = 855203 }
+		command = { trigger = { minister = 855241 } type = sleepminister which = 855241 }
+		command = { type = domestic which = political_left value = 2 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { trigger = { not = { minister = 855361 } } type = wakeminister which = 855361 }
+		command = { type = headofstate which = 855361 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243072] U08 | 1925 | Weimar golden years (Los años dorados de Weimar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243072
+	random = no
+	country = U08
+	trigger = {
+		 atwar = no
+	}
+	name = "EVT_U08_243072_NAME"
+	desc = "EVT_U08_243072_DESC"
+	date = { day = 1 month = november year = 1925 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1936 }
+	action_a = {
+		name = ACTION_NAME_OK
+                command = { type = dissent value = -10 }
+                command = { type =  relation which = ENG value = 50 }
+                command = { type =  relation which = FRA value = 50 }
+                command = { type =  relation which = SOV value = 50 }
+		command = { type = province_revoltrisk which = 163 value = -20 }
+		command = { type = province_revoltrisk which = 145 value = -20 }
+		command = { type = province_revoltrisk which = 106 value = -20 }
+		command = { type = province_revoltrisk which = 179 value = -20 }
+		command = { type = province_revoltrisk which = 157 value = -20 }
+		command = { type = province_revoltrisk which = 169 value = -20 }
+		command = { type = province_revoltrisk which = 170 value = -20 }
+		command = { type = province_revoltrisk which = 172 value = -20 }
+		command = { type = province_revoltrisk which = 130 value = -20 }
+		command = { type = province_revoltrisk which = 178 value = -20 }
+		command = { type = province_revoltrisk which = 176 value = -20 }
+		command = { type = province_revoltrisk which = 156 value = -20 }
+		command = { type = province_revoltrisk which = 175 value = -20 }
+		command = { type = province_revoltrisk which = 133 value = -20 }
+		command = { type = province_revoltrisk which = 135 value = -20 }
+		command = { type = province_revoltrisk which = 167 value = -20 }
+		command = { type = province_revoltrisk which = 164 value = -20 }
+		command = { type = province_revoltrisk which = 139 value = -13 }
+		command = { type = province_revoltrisk which = 138 value = -20 }
+		command = { type = province_revoltrisk which = 159 value = -20 }
+		command = { type = province_revoltrisk which = 142 value = -20 }
+		command = { type = province_revoltrisk which = 153 value = -11 }
+		command = { type = province_revoltrisk which = 162 value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243169] U08 | 1926 | New Chancellor (Nuevo Canciller)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243169
+	random = no
+	country = U08
+	date = { day = 17 month = 4 year = 1926 }
+	offset = 1
+	deathdate = { day = 17 month = 5 year = 1926 }
+	trigger = {
+		atwar = no
+		NOT = { headofstate =855360 }
+		headofgovernment = 855358
+	}
+	name = "EVT_SHARED_01105_NAME"
+	Desc = "EVT_U08_243169_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = wakeminister which = 855211 }
+		command = { type = wakeminister which = 855221 }
+		command = { type = wakeminister which = 855363 }
+		command = { type = wakeminister which = 855362 }
+		command = { type = headofgovernment which = 855211 }
+		command = { type = foreignminister which = 855221 }
+		command = { type = ministerofsecurity which = 855363 }
+		command = { type = armamentminister which = 855362 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243170] U08 | 1928 | 1928 Federal Elections (Elecciones federales de 1928)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243170
+	random = no
+	country = U08
+	date = { day = 28 month = 5 year = 1928 }
+	offset = 1
+	deathdate = { day = 28 month = 6 year = 1928 }
+	trigger = {
+		atwar = no
+		government = democratic
+	}
+	name = "EVT_U08_243170_NAME"
+	Desc = "EVT_SHARED_01106_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = wakeminister which = 855206 }
+		command = { type = wakeminister which = 855221 }
+		command = { type = wakeminister which = 855364 }
+		command = { type = wakeminister which = 855228 }
+		command = { type = headofgovernment which = 855206 }
+		command = { type = foreignminister which = 855221 }
+		command = { type = ministerofsecurity which = 855364 }
+		command = { type = armamentminister which = 855228 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243171] U08 | 1930 | 1930 Federal Elections (Elecciones federales de 1930)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243171
+	random = no
+	country = U08
+	date = { day = 29 month = 2 year = 1930 }
+	offset = 1
+	deathdate = { day = 29 month = 3 year = 1930 }
+	trigger = {
+		atwar = no
+		government = democratic
+	}
+	name = "EVT_U08_243171_NAME"
+	Desc = "EVT_SHARED_01106_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = wakeminister which = 855359 }
+		command = { type = wakeminister which = 855365 }
+		command = { type = wakeminister which = 855366 }
+		command = { type = wakeminister which = 855319 }
+		command = { type = headofgovernment which = 855363 }
+		command = { type = foreignminister which = 855369 }
+		command = { type = ministerofsecurity which = 855370 }
+		command = { type = armamentminister which = 855319 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243076] U08 | 1930 | Murder of Horst Wessel (Asesinato de Horst Wessel)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243076
+	country = U08
+	random = no
+	trigger = {
+		exists = U08
+	}
+	name = "EVT_U08_243076_NAME"
+	desc = "EVT_U08_243076_DESC"
+	style = 2
+	picture = "Minors/hwfuneral"
+	date = { day = 0 month = march year = 1930 }
+	action_a = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243160] U08 | 1932 | 1932 Presidential Elections (Elecciones presidenciales de 1932)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243160
+	random = no
+	country = U08
+	save_date = yes
+	date = { day = 13 month = 2 year = 1932 }
+	offset = 1
+	deathdate = { day = 13 month = 3 year = 1932 }
+	trigger = {
+	atwar = no
+	government = democratic	}
+	name = "EVT_U08_243160_NAME"
+	Desc = "EVT_U08_243160_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = EVT_U08_243160_A
+		ai_chance = 100
+		command = { type = wakeminister which = 855301 }
+		command = { type = headofstate which = 855301 }
+		command = { type = domestic which = political_left value = -1 }
+	}
+	action = {
+		trigger = { flag = hitler_free }
+		name = EVT_U08_243160_B
+		ai_chance = 0
+		command = { type = wakeminister which = 855302 }
+		command = { type = headofstate which = 855302 }
+		command = { type = domestic which = political_left value = -2 }
+		command = { type = domestic which = democratic value = -2 }
+	}
+	action = {
+		name = EVT_U08_243160_C
+		ai_chance = 0
+		command = { type = relation which = SOV value = 50 }
+		command = { type = domestic which = political_left value = 2 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { trigger = { not = { minister = 855361 } } type = wakeminister which = 855361 }
+		command = { type = headofstate which = 855361 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243063] U08 | 1932 | Dissolution of Reichstag (Disolución del Reichstag)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243063
+	random = no
+	country = U08
+	trigger = {
+		headofstate = 855361
+		atwar = no
+	}
+	name = "EVT_SHARED_01075_NAME"
+	Desc = "EVT_U08_243063_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 13 month = 5 year = 1932 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = country which = DDR }
+		command = { type = domestic which = political_left value = 6 }
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = dissent value = 40 }
+		command = { type = addcore which = 158 }
+		command = { type = addcore which = 155 }
+		command = { type = addcore which = 161 }
+		command = { type = addcore which = 159 }
+		command = { type = addcore which = 165 }
+		command = { type = addcore which = 167 }
+		command = { type = addcore which = 164 }
+		command = { type = addcore which = 166 }
+		command = { type = addcore which = 168 }
+		command = { type = addcore which = 183 }
+		command = { type = addcore which = 184 }
+		command = { type = addcore which = 182 }
+		command = { type = addcore which = 185 }
+		command = { type = addcore which = 221 }
+		command = { type = addcore which = 224 }
+		command = { type = addcore which = 225 }
+		command = { type = addcore which = 181 }
+		command = { type = addcore which = 261 }
+                command = { type = headofstate which = 507131}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243064] U08 | 1932 | Dissolution of Reichstag (Disolución del Reichstag)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243064
+	random = no
+	country = U08
+	trigger = {
+		headofstate = 855302
+		atwar = no
+	}
+	name = "EVT_SHARED_01075_NAME"
+	Desc = "EVT_U08_243064_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	date = { day = 13 month = 5 year = 1932 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = country which = GER }
+		command = { type = domestic which = democratic value = -3 }
+		command = { type = domestic which = political_left value = -4 }
+		command = { type = headofstate which = 1 }
+		command = { type = headofgovernment which = 2 }
+		command = { type = foreignminister which = 3 }
+		command = { type = ministerofsecurity which = 5 }
+		command = { type = ministerofintelligence which = 6 }
+		command = { type = armamentminister which = 4 }
+		command = { type = chiefofstaff which = 7 }
+		command = { type = chiefofarmy which = 8 }
+		command = { type = chiefofnavy which = 9 }
+		command = { type = chiefofair which = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243172] U08 | 1932 | July 1932 Federal Elections (Elecciones federales de Julio de 1932)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243172
+	random = no
+	country = U08
+	date = { day = 29 month = 6 year = 1932 }
+	offset = 1
+	deathdate = { day = 29 month = 7 year = 1932 }
+	trigger = {
+		atwar = no
+		government = democratic
+	}
+	name = "EVT_U08_243172_NAME"
+	Desc = "EVT_U08_243172_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = wakeminister which = 855360 }
+		command = { type = wakeminister which = 855030 }
+		command = { type = wakeminister which = 855367 }
+		command = { type = wakeminister which = 855368 }
+		command = { type = headofgovernment which = 855364 }
+		command = { type = foreignminister which = 855030 }
+		command = { type = ministerofsecurity which = 855371 }
+		command = { type = armamentminister which = 855372 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243173] U08 | 1932 | November 1932 Federal Elections (Elecciones federales de Noviembre de 1932)
+# Trigger event 243174 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243173
+	random = no
+	country = U08
+	date = { day = 6 month = 10 year = 1932 }
+	deathdate = { day = 6 month = 11 year = 1932 }
+	offset = 1
+	trigger = {
+		atwar = no
+		government = democratic
+	}
+	name = "EVT_U08_243173_NAME"
+	Desc = "EVT_U08_243173_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = wakeminister which = 855361 }
+		command = { type = wakeminister which = 855030 }
+		command = { type = wakeminister which = 855369 }
+		command = { type = wakeminister which = 855368 }
+		command = { type = headofgovernment which = 855365 }
+		command = { type = foreignminister which = 855030 }
+		command = { type = ministerofsecurity which = 855373 }
+		command = { type = armamentminister which = 855372 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243062] U08 | 1933 | Reichstag Fire (Incendio del Reichstag)
+# Trigger event 243175 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243062
+	random = no
+	country = U08
+	date = { day = 27 month = 1 year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	trigger = {
+		headofgovernment = 855308
+		NOT = { headofstate = 855302 }
+	}
+	name = "EVT_U08_243062_NAME"
+	Desc = "EVT_U08_243062_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243174] U08 | 1933 | Rise of Hitler (Ascenso de Hitler)
+# Triggered by event 243173 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243174
+	random = no
+	country = U08
+	date = { day = 29 month = 0 year = 1933 }
+	deathdate = { day = 29 month = 2 year = 1933 }
+	offset = 1
+	trigger = {
+		flag = hitler_free
+		event = 243173
+	}
+	name = "EVT_U08_243174_NAME"
+	Desc = "EVT_U08_243174_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		name = "EVT_U08_243174_A"
+		ai_chance = 100
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = wakeminister which = 855308 }
+		command = { type = wakeminister which = 855030 }
+		command = { type = wakeminister which = 855326 }
+		command = { type = wakeminister which = 855316 }
+		command = { type = headofgovernment which = 855308 }
+		command = { type = foreignminister which = 855030 }
+		command = { type = ministerofsecurity which = 855326 }
+		command = { type = armamentminister which = 855316 }
+	}
+	action = {
+		name = "EVT_U08_243174_B"
+		ai_chance = 0
+		command = { type = sleepevent which = 243175 }
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243175] U08 | 1933 | March 1933 Federal Elections (Elecciones federales de Marzo de 1932)
+# Triggered by event 243062 in events/Minors/U08_18-36.txt
+# Trigger event 150001 in events/GER/GER_Decisions.txt
+# Trigger event 150532 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243175
+	random = no
+	country = U08
+	trigger = {
+		event = 243062
+	}
+	date = { day = 4 month = march year = 1933 }
+	deathdate = { day = 4 month = april year = 1933 }
+	offset = 1
+	name = "EVT_U08_243175_NAME"
+	desc = "EVT_U08_243175_DESC"
+	style = 2
+	picture = "GLOBAL/reichstag"
+	action = {
+		ai_chance = 100
+		name = "EVT_U08_243175_A"
+		command = { type = country which = GER }
+		command = { type = flag_ext where = GER which = "_weimar" }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = headofstate which = 268 }
+		command = { type = headofgovernment which = 22 }
+		command = { type = foreignminister which = 3 }
+		command = { type = ministerofsecurity which = 5 }
+		command = { type = ministerofintelligence which = 6 }
+		command = { type = armamentminister which = 4 }
+		command = { type = chiefofstaff which = 7 }
+		command = { type = chiefofarmy which = 8 }
+		command = { type = chiefofnavy which = 9 }
+		command = { type = chiefofair which = 10 }
+		command = { trigger = { not = { dissent = 10 } } type = dissent value = 10 }
+		command = { trigger = { not = { dissent = 20 } } type = dissent value = 10 }
+		command = { trigger = { not = { dissent = 30 } } type = dissent value = 10 }
+		command = { trigger = { not = { dissent = 35 } } type = dissent value = 5 }
+		command = { trigger = { not = { dissent = 40 } } type = dissent value = 5 }
+	}
+	action = {
+		ai_chance = 0
+		name = "EVT_U08_243175_B"
+		command = { type = country which = DDR }
+		command = { type = domestic which = political_left value = 6 }
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = dissent value = 40 }
+		command = { type = waketeam which = 5 }
+		command = { type = waketeam which = 38 }
+		command = { type = waketeam which = 7 }
+		command = { type = waketeam which = 16 }
+		command = { type = waketeam which = 17 }
+		command = { type = waketeam which = 18 }
+		command = { type = waketeam which = 19 }
+		command = { type = waketeam which = 20 }
+		command = { type = waketeam which = 21 }
+		command = { type = waketeam which = 22 }
+		command = { type = waketeam which = 23 }
+		command = { type = waketeam which = 24 }
+		command = { type = waketeam which = 25 }
+		command = { type = waketeam which = 26 }
+		command = { type = waketeam which = 27 }
+		command = { type = waketeam which = 28 }
+		command = { type = waketeam which = 29 }
+		command = { type = waketeam which = 30 }
+		command = { type = waketeam which = 31 }
+		command = { type = waketeam which = 32 }
+		command = { type = addcore which = 158 }
+		command = { type = addcore which = 155 }
+		command = { type = addcore which = 161 }
+		command = { type = addcore which = 159 }
+		command = { type = addcore which = 165 }
+		command = { type = addcore which = 167 }
+		command = { type = addcore which = 164 }
+		command = { type = addcore which = 166 }
+		command = { type = addcore which = 168 }
+		command = { type = addcore which = 183 }
+		command = { type = addcore which = 184 }
+		command = { type = addcore which = 182 }
+		command = { type = addcore which = 185 }
+		command = { type = addcore which = 221 }
+		command = { type = addcore which = 224 }
+		command = { type = addcore which = 225 }
+		command = { type = addcore which = 181 }
+		command = { type = addcore which = 261 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243074] U08 | 1936 | The Soviets accept (Los soviéticos aceptan)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243074
+	country = U08
+	random = no
+	name = "EVT_SHARED_01076_NAME"
+	desc = "EVT_U08_243074_DESC"
+	style = 2
+	picture = "Minors/sovpioletschool"
+	action_a = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = waketeam which = 855052 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243075] U08 | 1936 | The Soviets accept (Los soviéticos aceptan)
+# ----------------------------------------------------------------------------
+event = {
+	id = 243075
+	country = U08
+	random = no
+	name = "EVT_SHARED_01076_NAME"
+	desc = "EVT_U08_243075_DESC"
+	style = 2
+	picture = "Minors/sovtankschool"
+	action_a = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = waketeam which = 855053 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243154] U08 | 1936 | British Deployments in France (Presencia británica en suelo francés)
+# Triggered by event 223429 in events/SOV/SOV_36-38.txt
+# Trigger event 243156 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+		id = 243154
+		country = U08
+	name = "EVT_U08_243154_NAME"
+	desc = "EVT_U08_243154_DESC"
+	style = 2
+	picture = "GLOBAL/aar_ruhr"
+	action = {
+	name = ACTION_NAME_OK
+	command = { type = relation which = ENG value = -50}
+	command = { type = relation which = FRA value = -50}
+	command = { type = event which = 243156 where = U08 when = 90}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243156] U08 | 1936 | War with Great Britain (Guerra con Gran Bretaña)
+# Triggered by event 243154 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+		id = 243156
+		country = U08
+	name = "EVT_U08_243156_NAME"
+	desc = "EVT_U08_243156_DESC"
+	style = 2
+	picture = "GLOBAL/rhineland"
+	action = {
+	ai_chance = 80
+	name = ACTION_NAME_WAR
+	command = { type = war which = ENG}
+	}
+	action = {
+	ai_chance = 20
+	name = "EVT_U08_243156_A"
+	command = { type = dissent value = 5}
+	command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243158] U08 | 1936 | The Soviet Border Question (El desafío soviético en el este)
+# Triggered by event 223431 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+		id = 243158
+		country = U08
+	name = "EVT_U08_243158_NAME"
+	desc = "EVT_U08_243158_DESC"
+	style = 2
+	picture = "GLOBAL/france_requests_emergency_intervention"
+	action = {
+	ai_chance = 99
+	name = "EVT_U08_243158_A"
+	command = { type = relation which = SOV value = -75}
+	}
+	action = {
+	name = "EVT_U08_243158_B"
+	ai_chance = 1
+	command = { type = relation which = SOV value = 60}
+	command = { type = secederegion which = SOV value = "Poland" when = 1 }
+	command = { type = secederegion which = SOV value = "Baltic States" when = 2 }
+	command = { type = secedearea which = SOV value = "Mozyr" when = 1 }
+	command = { type = secedeprovince which = SOV value = 596 when = 1 }
+	command = { type = secedeprovince which = SOV value = 599 when = 1 }
+	command = { type = secederegion which = SOV value = "Ukraine" when = 2 }
+	}
+}

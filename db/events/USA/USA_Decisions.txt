@@ -1,0 +1,3294 @@
+# ============================================================================
+# File: events/USA/USA_Decisions.txt (69 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [316047] USA | 1914 | Offensive Chit Prepared (Reserva Logística Ofensiva lista)
+# Trigger event 316048 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316047
+	random = no
+	country = USA
+	decision = { atwar = yes }
+	decision_trigger = { supplies = 10000 }
+	trigger = {
+		atwar = yes
+		lost_national = { country = USA value = 10 }
+		OR = {
+			ai = yes
+			supplies = 10000
+		}
+	}
+	name = "EVT_SHARED_00460_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	decision_picture = "USA/decision_grand_offensive2"
+	date = { day = 1 month = january year = 1914 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = "ACTION_NAME_VICTORY"
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { type = morale which = naval value = 10 }
+		command = { type = morale which = air value = 10 }
+		command = { type = speed which = land value = 2 }
+		command = { type = counterattack value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = encirclement value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = sce_frequency value = 0.3 }
+		command = { type = attrition_mod value = 2 }
+		command = { type = trickleback_mod value = 5 }
+		command = { trigger = { ai = no } type = supplies value = -10000 }
+		command = { type = event which = 316048 where = -1 when = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316068] USA | 1914 | Submit Conscription Bill to Congress (Presentar proyecto de ley de conscripción)
+# Trigger event 316069 in events/USA/USA_14-16.txt
+# Trigger event 316070 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316068
+	random = no
+	persistent = yes
+	country = USA
+	decision = {
+			government = democratic
+			atwar = no
+			policy = { type = professional_army value = 2 }
+			NOT = { policy = { type = professional_army value = 6 }}
+			NOT = { local_flag = incon1 }
+			NOT = { local_flag = incon2 }
+			}
+	decision_trigger = {
+		supplies = 200
+		OR = {
+			AND = {
+				government = democratic
+				policy = { type = interventionism value = 2 }
+				NOT = { dissent = 5 }
+				}
+			AND = {
+				NOT = { government = democratic }
+				NOT = { dissent = 8 }
+				}
+			}
+		}
+	trigger = {
+		ai = no
+		government = democratic
+		supplies = 100
+		atwar = no
+		policy = { type = professional_army value = 2 }
+		NOT = { policy = { type = professional_army value = 6 }}
+		NOT = { manpower = 200 }
+		}
+	name = "EVT_USA_316068_NAME"
+	desc = "EVT_USA_316068_DESC"
+	decision_desc = EVT_USA_316068_DESC
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	decision_picture = "GLOBAL/decision_german_total_war"
+	date = { day = 1 month = january year = 1914 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		trigger = {
+		policy = { type = professional_army value = 2 }
+		NOT = { policy = { type = professional_army value = 3 }}
+		}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = local_setflag which = incon1 }
+		command = { type = event which = 316069 where = -1 when = 60 }
+	}
+	action = {
+		trigger = {
+		policy = { type = professional_army value = 3 }
+		NOT = { policy = { type = professional_army value = 6 }}
+		}
+		name = "ACTION_NAME_MOBILIZE"
+		ai_chance = 100
+		command = { type = local_setflag which = incon2 }
+		command = { type = event which = 316070 where = -1 when = 60 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316443] USA | 1914 | Offer White Peace to Germany (Ofrecer paz blanca a Alemania)
+# Trigger event 243144 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316443
+	country = USA
+	decision = {
+		war = { country = USA country = U08 }
+		participant = { country = USA value = 1 }
+	}
+	decision_trigger = {
+		NOT = { alliance = { country = FRA country = USA } }
+		NOT = { alliance = { country = RUS country = USA } }
+		NOT = { alliance = { country = ENG country = USA } }
+		NOT = { war = { country = SOV country = U08 } }
+		NOT = { lost_national = { country = USA value = 5 } }
+		NOT = { lost_national = { country = U08 value = 5 } }
+	}
+	trigger = {
+		war = { country = USA country = U08 }
+		participant = { country = USA value = 1 }
+		NOT = { alliance = { country = FRA country = USA } }
+		NOT = { alliance = { country = RUS country = USA } }
+		NOT = { alliance = { country = ENG country = USA } }
+		NOT = { war = { country = SOV country = U08 } }
+		NOT = { lost_national = { country = USA value = 5 } }
+		NOT = { lost_national = { country = U08 value = 5 } }
+	}
+	name = "EVT_SHARED_00052_NAME"
+	desc = "EVT_SHARED_00052_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 24 month = april year = 1914 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		ai_chance = 100
+		name = "ACTION_NAME_OFFER_PEACE"
+		command = { type = trigger which = 243144 }
+	}
+	action = {
+		ai_chance = 0
+		name = "ACTION_NAME_REFUSE_PEACE"
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316416] USA | 1914 | Presidential War Address to Congress (Discurso de guerra presidencial ante el Congreso)
+# Trigger event 316417 in events/USA/USA_14-16.txt
+# Trigger event 316418 in events/USA/USA_14-16.txt
+# Trigger event 316419 in events/USA/USA_14-16.txt
+# Trigger event 316420 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316416
+	country = USA
+	persistent = yes
+	decision = {
+		war = { country = ENG country = U08 }
+		NOT = { domestic = { type = interventionism value = 8 } }
+		atwar = no
+	}
+	decision_trigger = {
+		money = 1500
+		NOT = { dissent = 4 }
+	}
+	trigger = {
+		war = { country = ENG country = U08 }
+		atwar = no
+		money = 1500
+		NOT = { dissent = 4 }
+		OR = {
+			AND = { domestic = { type = interventionism value = 1 } random = 2 }
+			AND = { domestic = { type = interventionism value = 2 } random = 4 }
+			AND = { domestic = { type = interventionism value = 3 } random = 10 }
+			AND = { domestic = { type = interventionism value = 4 } random = 15 }
+			AND = { domestic = { type = interventionism value = 5 } random = 20 }
+			AND = { domestic = { type = interventionism value = 6 } random = 35 }
+			AND = { domestic = { type = interventionism value = 7 } random = 50 }
+		}
+	}
+	name = "EVT_USA_316416_NAME"
+	desc = "EVT_USA_316416_DESC"
+	style = 2
+	picture = "GLOBAL/congress"
+	decision_picture = "GLOBAL/decision_congress"
+	date = { day = 0 month = august year = 1914 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = -1500 }
+		command = { trigger = { NOT = { policy = { type = interventionism value = 3 } } } type = trigger which = 316417 }
+		command = { trigger = { policy = { type = interventionism value = 3} NOT = { policy = { type = interventionism value = 5 } } } type = trigger which = 316418 }
+		command = { trigger = { policy = { type = interventionism value = 5} NOT = { policy = { type = interventionism value = 7 } } } type = trigger which = 316419 }
+		command = { trigger = { policy = { type = interventionism value = 7} } type = trigger which = 316420 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316421] USA | 1914 | United States Enters the Great War (Estados Unidos entra en la Gran Guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316421
+	country = USA
+	decision = {
+        not = { flag = force_us_join }
+		war = { country = ENG country = U08 }
+		NOT = {
+			war = { country = ENG country = USA }
+			war = { country = U08 country = USA }
+			alliance = { country = ENG country = USA }
+		}
+	}
+	decision_trigger = {
+        not = { flag = force_us_join }
+		atwar = no
+		policy = { type = interventionism value = 7 }
+	}
+	trigger = {
+		atwar = no
+        not = { flag = force_us_join }
+		war = { country = FRA country = U08 }
+		policy = { type = interventionism value = 7 }
+		war = { country = ENG country = U08 }
+		NOT = {
+			war = { country = ENG country = USA }
+			war = { country = FRA country = USA }
+			war = { country = U08 country = USA }
+			alliance = { country = ENG country = USA }
+			alliance = { country = FRA country = USA }
+			alliance = { country = U08 country = USA }
+		}
+		or = {
+			lost_national = { country = FRA value = 10 }
+			lost_national = { country = RUS value = 33 }
+			lost_national = { country = BEL value = 25 }
+			or = {
+				war = { country = U08  country = SCH }
+				war = { country = FRA  country = SCH }
+				war = { country = ENG  country = SCH }
+			}
+		}
+		random = 20
+	}
+	name = "EVT_USA_316421_NAME"
+	desc = "EVT_USA_316421_DESC"
+	style = 2
+	picture = "GLOBAL/congress"
+	decision_picture = "GLOBAL/decision_congress"
+	date = { day = 4 month = august year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = alliance which = 2 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316423] USA | 1914 | Withdrawal from Veracruz (Evacuación de Veracruz)
+# Triggered by event 316422 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316423
+	country = USA
+	decision = {
+		event = 316422
+		control = { province = 1968 data = USA }
+	}
+	decision_trigger = { atwar = no }
+	trigger = {
+		event = 316422
+		control = { province = 1968 data = USA }
+		atwar = no
+		random = 25
+	}
+	name = "EVT_USA_316423_NAME"
+	desc = "EVT_USA_316423_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 4 month = august year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { trigger = { exists = MEX } type = secedeprovince which = MEX value = 1968 }
+		command = { trigger = { exists = U57 NOT = { exists = MEX } } type = secedeprovince which = U57 value = 1968 }
+		command = { trigger = { exists = U59 NOT = { exists = MEX exists = U57 } } type = secedeprovince which = U59 value = 1968 }
+		command = { trigger = { exists = U58 NOT = { exists = MEX exists = U57 exists = U59 } } type = secedeprovince which = U58 value = 1968 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316434] USA | 1914 | The Pancho Villa Punitive Expedition (La Expedición Punitiva contra Pancho Villa)
+# Trigger event 316435 in events/USA/USA_Decisions.txt
+# Trigger event 316438 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316434
+	country = USA
+	decision = {
+		exists = U58
+		local_flag = USA_Mexican_Raids
+	}
+	decision_trigger = {
+		atwar = no
+	}
+	trigger = {
+		exists = U58
+		local_flag = USA_Mexican_Raids
+		atwar = no
+		random = 25
+	}
+	name = "EVT_USA_316434_NAME"
+	desc = "EVT_USA_316434_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 4 month = august year = 1914 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = war which = U58 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316435] USA | 1914 | Request Mexican Railway Transit (Petición de tránsito ferroviario a México)
+# Triggered by event 316434 in events/USA/USA_Decisions.txt
+# Triggered by event 316438 in events/USA/USA_Decisions.txt
+# Trigger event 183009 in events/Minors/MEX.txt
+# Trigger event 316438 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316435
+	country = USA
+	decision = {
+		exists = MEX
+		event = 316434
+		war = { country = USA country = U58 }
+		NOT = { war = { country = USA country = MEX } }
+		NOT = { event = 316438 }
+	}
+	decision_trigger = {
+		relation = { which = MEX value = 75 }
+	}
+	trigger = {
+		exists = MEX
+		event = 316434
+		war = { country = USA country = U58 }
+		NOT = { war = { country = USA country = MEX } }
+		NOT = { event = 316438 }
+		random = 10
+	}
+	name = "EVT_SHARED_01010_NAME"
+	desc = "EVT_SHARED_01010_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 4 month = august year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 183009 }
+		command = { type = sleepevent which = 316438 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316437] USA | 1914 | Invasion of Mexico (Invasión general de México)
+# Triggered by event 316436 in events/USA/USA_14-16.txt
+# Trigger event 183007 in events/Minors/MEX_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316437
+	country = USA
+	decision = {
+		event = 316436
+		war = { country = USA country = U58 }
+		NOT = { war = { country = USA country = MEX } }
+	}
+	decision_trigger = {
+		NOT = { war = { country = USA country = U08 }  }
+		NOT = { policy = { type = interventionism value = 4 } }
+	}
+	trigger = {
+		event = 316436
+		war = { country = USA country = U58 }
+		NOT = { war = { country = USA country = U08 }  }
+		NOT = { policy = { type = interventionism value = 4 } }
+		random = 5
+	}
+	name = "EVT_SHARED_01012_NAME"
+	desc = "EVT_SHARED_01012_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 4 month = august year = 1914 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+	name = "ACTION_NAME_FIGHT"
+		command = { type = war which = MEX }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316438] USA | 1914 | Request Mexican Railway Transit (Petición de tránsito ferroviario a México)
+# Triggered by event 316434 in events/USA/USA_Decisions.txt
+# Triggered by event 316435 in events/USA/USA_Decisions.txt
+# Trigger event 316435 in events/USA/USA_Decisions.txt
+# Trigger event 277002 in events/Minors/U57.txt
+# Trigger event 316440 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316438
+	country = USA
+	decision = {
+		exists = U57
+		NOT = { exists = MEX }
+		event = 316434
+		war = { country = USA country = U58 }
+		NOT = { war = { country = USA country = U57 } }
+		NOT = { event = 316435 }
+	}
+	decision_trigger = {
+		relation = { which = U57 value = 75 }
+	}
+	trigger = {
+		exists = U57
+		NOT = { exists = MEX }
+		event = 316434
+		war = { country = USA country = U58 }
+		NOT = { war = { country = USA country = U57 } }
+		NOT = { event = 316435 }
+		random = 10
+	}
+	name = "EVT_SHARED_01010_NAME"
+	desc = "EVT_SHARED_01010_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 4 month = august year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 277002 }
+		command = { type = sleepevent which = 316435 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316440] USA | 1914 | Invasion of Mexico (Invasión general de México)
+# Triggered by event 316438 in events/USA/USA_Decisions.txt
+# Trigger event 277001 in events/Minors/U57_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316440
+	country = USA
+	decision = {
+		event = 316438
+		war = { country = USA country = U58 }
+		NOT = { war = { country = USA country = U57 } }
+	}
+	decision_trigger = {
+		NOT = { war = { country = USA country = U08 }  }
+		NOT = { policy = { type = interventionism value = 4 } }
+	}
+	trigger = {
+		event = 316438
+		war = { country = USA country = U58 }
+		NOT = { war = { country = USA country = U57 } }
+		NOT = { war = { country = USA country = U08 }  }
+		NOT = { policy = { type = interventionism value = 4 } }
+		random = 5
+	}
+	name = "EVT_SHARED_01012_NAME"
+	desc = "EVT_SHARED_01012_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 4 month = august year = 1914 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+	name = "ACTION_NAME_FIGHT"
+		command = { type = war which = U57 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316441] USA | 1914 | Withdrawal of the Punitive Expedition (Retirada de la Expedición Punitiva)
+# Triggered by event 316436 in events/USA/USA_14-16.txt
+# Triggered by event 316439 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316441
+	country = USA
+	decision = {
+		OR = {
+			event = 316436
+			event = 316439
+		}
+		OR = {
+			war = { country = USA country = U57 }
+			war = { country = USA country = U58 }
+			war = { country = USA country = MEX }
+		}
+		NOT = {
+			alliance = { country = U08 country = U57 }
+			alliance = { country = U08 country = U58 }
+			alliance = { country = U08 country = MEX }
+			region = { region = "Southwest US" country = -2 value = 5 }
+			region = { region = "Southcentral US" country = -2 value = 5 }
+		}
+	}
+	decision_trigger = {
+		OR = {
+			war = { country = USA country = U08 }
+			policy = { type = interventionism value = 4 }
+		}
+	}
+	trigger = {
+		OR = {
+			event = 316436
+			event = 316439
+		}
+		OR = {
+			war = { country = USA country = U58 }
+			war = { country = USA country = MEX }
+		}
+		NOT = {
+			alliance = { country = U08 country = U57 }
+			alliance = { country = U08 country = U58 }
+			alliance = { country = U08 country = MEX }
+			region = { region = "Southwest US" country = -2 value = 5 }
+			region = { region = "Southcentral US" country = -2 value = 5 }
+		}
+		OR = {
+			war = { country = USA country = U08 }
+			policy = { type = interventionism value = 4 }
+		}
+		random = 5
+	}
+	name = "EVT_USA_316441_NAME"
+	desc = "EVT_USA_316441_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 4 month = august year = 1914 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { war = { country = USA country = U57 } } type = peace which = U57 }
+		command = { trigger = { war = { country = USA country = U58 } } type = peace which = U58 }
+		command = { trigger = { war = { country = USA country = MEX } } type = peace which = MEX }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316362] USA | 1915 | Signing of the ABC Pact (Firma del pacto ABC)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316362
+	country = USA
+	random = no
+	style = 1
+	decision = { money = 250 }
+	decision_trigger = { money = 250 }
+	trigger = { exists = USA }
+	date = { day = 0 month = may year = 1915 }
+	offset = 8
+	deathdate = {day = 0 month = july year = 1917 }
+	name = "EVT_USA_316362_NAME"
+	desc = "EVT_USA_316362_DESC"
+	picture = "USA/abc"
+	action = {
+		ai_chance = 100
+		name = "ACTION_NAME_ACCEPT"
+		command = { type = money value = -250 }
+		command = { type = relation which = ARG value = 25 }
+		command = { type = relation which = BRA value = 25 }
+		command = { type = relation which = CHL value = 25 }
+		command = { type = non_aggression which = USA where = ARG }
+		command = { type = non_aggression which = USA where = BRA }
+		command = { type = non_aggression which = USA where = CHL }
+	}
+	action = {
+		ai_chance = 0
+		name = "ACTION_NAME_REFUSE"
+		command = { type = relation which = ARG value = -15 }
+		command = { type = relation which = BRA value = -15 }
+		command = { type = relation which = CHL value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316445] USA | 1915 | Occupation of Haiti (Ocupación de Haití)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316445
+	country = USA
+	decision = {
+		exists = HAI
+		NOT = { ispuppet = HAI }
+		NOT = { war = { country = USA country = HAI } }
+		NOT = { alliance = { country = USA country = HAI } }
+		NOT = { lost_national = { value = 5 } }
+		OR = {
+			war = { country = U08 country = FRA }
+			war = { country = U08 country = ENG }
+		}
+	}
+	decision_trigger = {
+		supplies = 200
+		policy = { type = interventionism value = 2 }
+	}
+	trigger = {
+		exists = HAI
+		NOT = { ispuppet = HAI }
+		NOT = { war = { country = USA country = HAI } }
+		NOT = { alliance = { country = USA country = HAI } }
+		NOT = { lost_national = { value = 5 } }
+		OR = {
+			war = { country = U08 country = FRA }
+			war = { country = U08 country = ENG }
+		}
+		random = 15
+	}
+	name = "EVT_USA_316445_NAME"
+	desc = "EVT_USA_316445_DESC"
+	style = 2
+	picture = "GLOBAL/veracruz_occupation"
+	decision_picture = "USA/decision_bananawars"
+	date = { day = 27 month = july year = 1915 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		ai_chance = 90
+		name = "EVT_SHARED_01013_A"
+		command = { type = make_puppet which = HAI }
+		command = { type = dissent value = -1 }
+		command = { type = supplies value = -200 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { trigger = { NOT = { puppet = { country = DOM country = USA } } } type = relation which = DOM value = -100 }
+	}
+	action_b = {
+		name = "EVT_SHARED_01013_B"
+		ai_chance = 10
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316446] USA | 1916 | Occupation of the Dominican Republic (Ocupación de la República Dominicana)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316446
+	country = USA
+	decision = {
+		exists = DOM
+		NOT = { ispuppet = DOM }
+		NOT = { war = { country = USA country = DOM } }
+		NOT = { alliance = { country = USA country = DOM } }
+		NOT = { lost_national = { value = 5 } }
+		OR = {
+			war = { country = U08 country = FRA }
+			war = { country = U08 country = ENG }
+		}
+	}
+	decision_trigger = {
+		supplies = 200
+		policy = { type = interventionism value = 2 }
+	}
+	trigger = {
+		exists = DOM
+		NOT = { ispuppet = DOM }
+		NOT = { war = { country = USA country = DOM } }
+		NOT = { alliance = { country = USA country = DOM } }
+		NOT = { lost_national = { value = 5 } }
+		OR = {
+			war = { country = U08 country = FRA }
+			war = { country = U08 country = ENG }
+		}
+		random = 15
+	}
+	name = "EVT_USA_316446_NAME"
+	desc = "EVT_USA_316446_DESC"
+	style = 2
+	picture = "GLOBAL/veracruz_occupation"
+	decision_picture = "USA/decision_bananawars"
+	date = { day = 12 month = may year = 1916 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		ai_chance = 90
+		name = "EVT_SHARED_01013_A"
+		command = { type = make_puppet which = DOM }
+		command = { type = dissent value = -1 }
+		command = { type = supplies value = -200 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { trigger = { NOT = { puppet = { country = HAI country = USA } } } type = relation which = HAI value = -100 }
+	}
+	action_b = {
+		name = "EVT_SHARED_01013_B"
+		ai_chance = 10
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316364] USA | 1916 | The Federal Farm Loan Act of 1916 (La Ley Federal de Préstamos Agrícolas de 1916)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316364
+	country = USA
+	random = no
+	decision_picture = "USA/farm_loan"
+	style = 1
+	decision = { money = 1000 }
+	decision_trigger = { exists = USA }
+	trigger = { exists = USA }
+	date = { day = 0 month = july year = 1916 }
+	offset = 1
+	deathdate = { day = 0 month = july year = 1918 }
+	name = "EVT_USA_316364_NAME"
+	desc = "EVT_USA_316364_DESC"
+	picture = "USA/farm_board"
+	action = {
+		ai_chance = 75
+		name = "EVT_USA_316364_A"
+		command = { type = money value = -1000 }
+		command = { type = relative_manpower value = 0.5 }
+	}
+	action = {
+		ai_chance = 25
+		name = "EVT_USA_316364_B"
+		command = { type = dissent value = 2 }
+		command = { type = relative_manpower value = -0.3}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316369] USA | 1920 | The 18th Amendment (La Enmienda 18)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316369
+	country = USA
+	random = no
+	decision_picture = "USA/18th_amendment"
+	save_date = yes
+	style = 1
+	decision = {
+		money = 300
+		supplies = 200
+		manpower = 5
+ }
+	decision_trigger = { exists = USA }
+	trigger = { exists = USA }
+	date = { day = 0 month = january year = 1920 }
+	offset = 6
+	deathdate = { day = 0 month = january year = 1923 }
+	name = "EVT_USA_316369_NAME"
+	desc = "EVT_USA_316369_DESC"
+	picture = "USA/prohibition"
+	action = {
+		ai_chance = 75
+		name = "EVT_USA_316369_A"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -200 }
+		command = { type = manpowerpool value = -5 }
+		command = { type = dissent value = 2 }
+		command = { type = peacetime_ic_mod value = 1.5 }
+		command = { type = tc_mod value = 1 }
+		command = { type = setflag which = prohibition }
+	}
+	action = {
+		ai_chance = 25
+		name = "EVT_USA_316369_B"
+		command = { type = dissent value = -2 }
+		command = { type = peacetime_ic_mod value = -2 }
+		command = { type = tc_mod value = -2 }
+		command = { type = relative_manpower value = -0.3}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316370] USA | 1920 | The 19th Amendment (La enmienda 19)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316370
+	country = USA
+	random = no
+	decision_picture = "USA/19th_amendment"
+	style = 1
+	decision = { money = 50 }
+	decision_trigger = { exists = USA }
+	trigger = { exists = USA }
+	date = { day = 6 month = August year = 1920 }
+	offset = 5
+	deathdate = { day = 14 month = july year = 1923 }
+	name = "EVT_USA_316370_NAME"
+	desc = "EVT_USA_316370_DESC"
+	picture = "USA/vote_women"
+	action = {
+		ai_chance = 75
+		name = "EVT_USA_316370_A"
+		command = { type = money value = -50 }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		ai_chance = 25
+		name = "EVT_USA_316370_B"
+		command = { type = dissent value = 6 }
+		command = { type = relative_manpower value = -0.5}
+		command = { type = peacetime_ic_mod value = -1.2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316375] USA | 1921 | Emergency Quota Act (Ley de Cuotas de Emergencia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316375
+	country = USA
+	random = no
+	decision_picture = "USA/quota_act"
+	style = 1
+	decision = { money = 200 }
+	decision_trigger = { exists = USA }
+	trigger = { exists = USA }
+	date = { day = 0 month = may year = 1921 }
+	offset = 7
+	deathdate = { day = 0 month = march year = 1923 }
+	name = "EVT_USA_316375_NAME"
+	desc = "EVT_USA_316375_DESC"
+	picture = "USA/liberty"
+	action = {
+		ai_chance = 100
+		name = "EVT_USA_316375_A"
+		command = { type = local_setflag which = quotaactyes }
+		command = { type = free_manpower value = -0.05 }
+	}
+	action = {
+		ai_chance = 0
+		name = "EVT_USA_316375_B"
+		command = { type = free_manpower value = 0.04 }
+		command = { type = sleepevent which = 316376 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316374] USA | 1921 | Washington Disarmament Conference of 1921 (Conferencia sobre Desarme de Washington de 1921)
+# Trigger event 316340 in events/USA/USA_16-28.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316374
+	country = USA
+	random = no
+	decision_picture = "GLOBAL/decision_convoys"
+	style = 1
+	decision = { money = 1000 }
+	decision_trigger = { exists = USA }
+	trigger = { exists = USA }
+	date = { day = 0 month = november year = 1921 }
+	offset = 10
+	deathdate = { day = 0 month = may year = 1924 }
+	name = "EVT_USA_316374_NAME"
+	desc = "EVT_USA_316374_DESC"
+	picture = "GLOBAL/washington200"
+	action = {
+		ai_chance = 100
+		name = "ACTION_NOT_NOW"
+		command = { type = trigger which = 316340 }
+	}
+	action = {
+		ai_chance = 0
+		name = "ACTION_NAME_NO"
+		command = { type = sleepevent which = 316340 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316382] USA | 1928 | Kellogg–Briand Pact (Pacto Kellogg-Briand)
+# Trigger event 231148 in events/GLOBAL/ALL_26-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316382
+	country = USA
+	random = no
+	decision_picture = "USA/renunciation"
+	style = 1
+	decision = { money = 1000 }
+	decision_trigger = { exists = USA }
+	trigger = { exists = USA }
+	date = { day = 10 month = august year = 1928 }
+	offset = 10
+	deathdate = { day = 0 month = july year = 1930 }
+	name = "EVT_USA_316382_NAME"
+	desc = "EVT_USA_316382_DESC"
+	picture = "GLOBAL/kellogg_briand"
+	action = {
+		ai_chance = 100
+		name = "EVT_USA_316382_A"
+		command = { type = trigger which = 231148 }
+	}
+	action = {
+		ai_chance = 0
+		name = "EVT_USA_316382_B"
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316004] USA | 1933 | The First New Deal (El Primer «New Deal»)
+# Trigger event 316005 in events/USA/USA_Decisions.txt
+# Trigger event 316006 in events/USA/USA_Decisions.txt
+# Trigger event 316007 in events/USA/USA_Decisions.txt
+# Trigger event 316008 in events/USA/USA_Decisions.txt
+# Trigger event 316011 in events/USA/USA_Decisions.txt
+# Trigger event 316014 in events/USA/USA_Decisions.txt
+# Trigger event 316015 in events/USA/USA_Decisions.txt
+# Trigger event 316016 in events/USA/USA_Decisions.txt
+# Trigger event 316019 in events/USA/USA_Decisions.txt
+# Trigger event 316076 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316004
+	random = no
+	country = USA
+	save_date = yes
+	decision = {
+			headofstate = 240001
+	}
+	decision_trigger = { }
+	trigger = {
+			headofstate = 240001
+	}
+	name = "EVT_USA_316004_NAME"
+	desc = "EVT_USA_316004_DESC"
+	style = 2
+	picture = "GLOBAL/new_deal"
+	decision_picture = "GLOBAL/decision_new_deal"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = songs which = InauguralAddress-1933.txt }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316005] USA | 1933 | The Emergency Banking Relief Act (Ley de Emergencia Bancaria)
+# Triggered by event 316004 in events/USA/USA_Decisions.txt
+# Trigger event 316009 in events/USA/USA_28-33.txt
+# Trigger event 316010 in events/USA/USA_28-33.txt
+# Trigger event 316077 in events/USA/USA_33-36.txt
+# Trigger event 316078 in events/USA/USA_33-36.txt
+# Trigger event 316079 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316005
+	random = no
+	country = USA
+	decision = {
+			event = 316004
+			headofstate = 240001
+	}
+	decision_trigger = {
+			event = 316004
+			headofstate = 240001
+	}
+	trigger = {
+			event = 316004
+			headofstate = 240001
+	}
+	name = "EVT_USA_316005_NAME"
+	desc = "EVT_USA_316005_DESC"
+	style = 2
+	picture = "GLOBAL/congress"
+	decision_picture = "GLOBAL/decision_congress"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+	  	command = { type = industrial_modifier which = total value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316006] USA | 1933 | Agricultural Adjustment Act (AAA) (Ley de Ajuste Agrícola (AAA))
+# Triggered by event 316004 in events/USA/USA_Decisions.txt
+# Trigger event 316009 in events/USA/USA_28-33.txt
+# Trigger event 316010 in events/USA/USA_28-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316006
+	random = no
+	country = USA
+	decision = {
+			event = 316004
+			headofstate = 240001
+	}
+	decision_trigger = {
+			event = { id = 316004 days = 90 }
+			money = 1000
+			headofstate = 240001
+	}
+	trigger = {
+			event = { id = 316004 days = 90 }
+			headofstate = 240001
+	}
+	name = "EVT_USA_316006_NAME"
+	desc = "EVT_USA_316006_DESC"
+	style = 2
+	picture = "GLOBAL/congress"
+	decision_picture = "GLOBAL/decision_congress"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+	  	command = { type = industrial_modifier which = total value = 4 }
+		command = { trigger = { ai = no } type = money value = -1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316007] USA | 1933 | National Industrial Recovery Act (NIRA) (Ley de Recuperación Industrial Nacional (NIRA))
+# Triggered by event 316004 in events/USA/USA_Decisions.txt
+# Trigger event 316009 in events/USA/USA_28-33.txt
+# Trigger event 316010 in events/USA/USA_28-33.txt
+# Trigger event 316073 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316007
+	random = no
+	country = USA
+	decision = {
+			event = { id = 316004 days = 120 }
+			headofstate = 240001
+	}
+	decision_trigger = {
+			event = { id = 316004 days = 180 }
+			money = 1000
+			headofstate = 240001
+	}
+	trigger = {
+			event = { id = 316004 days = 180 }
+			headofstate = 240001
+	}
+	name = "EVT_USA_316007_NAME"
+	desc = "EVT_USA_316007_DESC"
+	style = 2
+	picture = "GLOBAL/congress"
+	decision_picture = "GLOBAL/decision_congress"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+	  	command = { type = industrial_modifier which = total value = 5 }
+		command = { trigger = { ai = no } type = money value = -1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316008] USA | 1933 | Contract a Federal State Loan (Suscribir un préstamo estatal federal)
+# Triggered by event 316004 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316008
+	random = no
+	country = USA
+	decision = {
+			event = 316004
+			headofstate = 240001
+	}
+	decision_trigger = {
+			event = 316004
+			headofstate = 240001
+	}
+	trigger = {
+			event = 316004
+			random = 30
+			headofstate = 240001
+	}
+	name = "EVT_USA_316008_NAME"
+	desc = "EVT_USA_316008_DESC"
+	style = 2
+	picture = "GLOBAL/money_devaluation"
+	decision_picture = "GLOBAL/decision_money_devaluation"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = 10000 }
+		command = { trigger = { ai = no } type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316011] USA | 1933 | The Second New Deal (El Segundo «New Deal»)
+# Triggered by event 316010 in events/USA/USA_28-33.txt
+# Triggered by event 316004 in events/USA/USA_Decisions.txt
+# Trigger event 316012 in events/USA/USA_28-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316011
+	random = no
+	country = USA
+	decision = {
+			event = 316010
+			headofstate = 240001
+			event = { id = 316004 days = 450 }
+	}
+	decision_trigger = {
+			event = 316010
+			money = 1000
+			headofstate = 240001
+	}
+	trigger = {
+			event = 316010
+			headofstate = 240001
+	}
+	name = "EVT_USA_316011_NAME"
+	desc = "EVT_USA_316011_DESC"
+	style = 2
+	picture = "GLOBAL/new_deal"
+	decision_picture = "GLOBAL/decision_new_deal"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -2 }
+		command = { trigger = { ai = no } type = money value = -1000 }
+	 	command = { type = industrial_modifier which = total value = 10 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = domestic which = political_left value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316019] USA | 1933 | Repeal Prohibition (Derogación de la Ley Seca)
+# Triggered by event 316004 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316019
+	random = no
+	country = USA
+	decision = {
+			event = 316004
+			headofstate = 240001
+	}
+	decision_trigger = {
+			event = 316004
+			headofstate = 240001
+	}
+	trigger = {
+			event = 316004
+			headofstate = 240001
+	}
+	name = "EVT_USA_316019_NAME"
+	desc = "EVT_USA_316019_DESC"
+	style = 2
+	picture = "USA/repeal_prohibition"
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 1 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316071] USA | 1933 | The Doolittle Raid on Tokyo (La Incursión Doolittle sobre Tokio)
+# Triggered by event 316057 in events/USA/USA_33-36.txt
+# Triggered by event 329391 in events/USA/USA_28-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316071
+	random = no
+	country = USA
+	decision = {
+		event = 316057
+		event = { id = 329391 days = 90 }
+		war = { country = JAP country = USA }
+	}
+	decision_trigger = { carrier = 1 supplies = 1000
+	}
+	trigger = {
+		event = 316057
+		event = { id = 329391 days = 90 }
+		war = { country = JAP country = USA }
+		random = 50
+	}
+	name = EVT_USA_316071_NAME
+	desc = EVT_USA_316071_DESC
+	style = 2
+	picture = "USA/doolittle"
+	decision_picture = "USA/decision_doolittle"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -2 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316125] USA | 1933 | Military Control: China (Mando militar sobre China)
+# Triggered by event 316098 in events/USA/USA_Decisions.txt
+# Trigger event 316126 in events/USA/USA_28-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316125
+	random = no
+	country = USA
+	decision = {
+		policy = { type = democratic value = 7 }
+		ai = CHI
+		NOT = { military_control = { country = CHI } }
+		war = { country = CHI country = JAP }
+		NOT = {
+			alliance = { country = USA country = CHI }
+			alliance = { country = USA country = JAP }
+		}
+	}
+	decision_trigger = {
+		event = 316098
+		relation = { which = CHI value = 0 }
+	}
+	trigger = {
+		ai = no
+		policy = { type = democratic value = 7 }
+		ai = CHI
+		NOT = { military_control = { country = CHI } }
+		relation = { which = CHI value = 0 }
+		war = { country = CHI country = JAP }
+		NOT = {
+			alliance = { country = USA country = CHI }
+			alliance = { country = USA country = JAP }
+		}
+	}
+	name = "EVT_USA_316125_NAME"
+	desc = "EVT_SHARED_00209_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type =  military_control which = USA where = CHI value = 1 }
+		command	= { type = local_setflag which = military_control_CHI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329055] USA | 1933 | Intervene in the Anti-Communist War (Intervenir en la guerra contra el comunismo)
+# Triggered by event 329070 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329055
+	random = no
+	country = USA
+	decision = {
+			event = 329070
+			war = { country = ENG country = DDR }
+	}
+	decision_trigger = {
+			relation = { which = ENG value = 100 }
+	}
+	trigger = {
+			war = { country = ENG country = DDR }
+			event = 329070
+			random = 20
+	}
+	name = "EVT_USA_329055_NAME"
+	desc = "EVT_USA_329055_DESC"
+	style = 2
+	picture = "GLOBAL/congress"
+	decision_picture = "GLOBAL/decision_congress"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = domestic which = interventionism value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329425] USA | 1933 | Train US Army Ranger Battalions (Instrucción de batallones de Rangers de EE. UU.)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329425
+	random = no
+	country = USA
+	decision = { OR = { war = { country = JAP } war = { country = GER } } }
+	decision_trigger = { supplies = 1000 }
+	trigger = {
+		OR = { war = { country = JAP } war = { country = GER } }
+		random = 20
+	}
+	name = EVT_USA_329425_NAME
+	desc = EVT_USA_329425_DESC
+	style = 2
+	picture = "USA/rangers"
+	decision_picture = "USA/decision_rangers"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = activate_unit_type which = b_06 }
+		command = { type = strength_cap which = bergsjaeger when = 0 value = 40 }
+		command = { type = build_division which = bergsjaeger value = b_06 cost = 0.1 where = 90 }
+		command = { type = build_division which = bergsjaeger value = b_06 cost = 0.1 where = 120 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316014] USA | 1933 | Roosevelt's Fireside Chats (Las «Charlas junto a la chimenea» de Roosevelt)
+# Triggered by event 316004 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316014
+	random = no
+	country = USA
+	decision = {
+			event = 316004
+			headofstate = 240001
+	}
+	decision_trigger = {
+			event = 316004
+			headofstate = 240001
+			money = 50
+	}
+	trigger = {
+			dissent = 1
+			event = 316004
+			headofstate = 240001
+	}
+	name = "EVT_SHARED_00186_NAME"
+	desc = "EVT_SHARED_00186_DESC"
+	style = 2
+	date = { day = 1 month = april year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1933 }
+	picture = "USA/fireside_chat"
+	decision_picture = "GLOBAL/decision_fireside_chat"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { trigger = { ai = no } type = money value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316021] USA | 1933 | Found the California Arabian Standard Oil Co. (Fundar la California Arabian Standard Oil Co.)
+# Trigger event 316022 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316021
+	random = no
+	country = USA
+	decision = {
+		exists = SAU
+		NOT = { atwar = SAU }
+		government = democratic
+		atwar = no
+	}
+	decision_trigger = {
+		relation = { which = SAU value = 50 }
+	}
+	trigger = {
+		exists = SAU NOT = { atwar = SAU }
+		government = democratic
+		atwar = no random = 30
+	}
+	name = "EVT_USA_316021_NAME"
+	desc = "EVT_USA_316021_DESC"
+	style = 2
+	date = { day = 1 month = may year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	picture = "GLOBAL/aramco"
+	decision_picture = "GLOBAL/decision_anticominternpact"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = sau value = 25 }
+		command = { type = trade which = SAU where = USA oil = -2 money = 1 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329056] USA | 1933 | The Quincy Agreement (El Acuerdo del USS Quincy)
+# Triggered by event 316022 in events/USA/USA_33-36.txt
+# Triggered by event 316060 in events/USA/USA_Decisions.txt
+# Trigger event 215001 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329056
+	random = no
+	country = USA
+	decision = {
+		event = 316022
+		event = 316060
+		government = democratic
+		atwar = yes
+		NOT = { war = { country = USA country = SOV } }
+		NOT = { war = { country = USA country = SAU } }
+		exists = SAU
+		control = { province = 55 data = -3 }
+		control = { province = 900 data = -3 }
+		control = { province = 750 data = -3 }
+	}
+	decision_trigger = {
+		relation = { which = SAU value = 100 }
+	}
+	trigger = {
+		event = 316022
+		government = democratic
+		atwar = yes
+		NOT = { war = { country = USA country = SOV } }
+		exists = SAU
+		control = { province = 55 data = -3 }
+		control = { province = 900 data = -3 }
+		control = { province = 750 data = -3 }
+	}
+	name = "EVT_SHARED_00188_NAME"
+	desc = "EVT_SHARED_00188_DESC"
+	style = 2
+	date = { day = 1 month = may year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	picture = "GLOBAL/quincy_agreement"
+	decision_picture = "GLOBAL/decision_anticominternpact"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = make_puppet which = SAU }
+		command = { type = trigger which = 215001 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316013] USA | 1933 | Diplomatic Recognition of the USSR (Reconocimiento diplomático de la URSS)
+# Trigger event 223001 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316013
+	random = no
+	country = USA
+	decision = {
+		atwar = no
+		NOT = { exists = DDR }
+	}
+	decision_trigger = { }
+	trigger = {
+		atwar = no
+		NOT = { exists = DDR }
+	}
+	name = "EVT_USA_316013_NAME"
+	desc = "EVT_SHARED_00185_DESC"
+	style = 2
+	date = { day = 16 month = november year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = SOV value = 10 }
+		command = { type = dissent value = 1 }
+		command = { type = money value = 75 }
+		command = { type = trigger which = 223001 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316015] USA | 1934 | Roosevelt's Fireside Chats (Las «Charlas junto a la chimenea» de Roosevelt)
+# Triggered by event 316004 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316015
+	random = no
+	country = USA
+	decision = {
+			event = 316004
+			headofstate = 240001
+	}
+	decision_trigger = {
+			event = 316004
+			headofstate = 240001
+			money = 50
+	}
+	trigger = {
+			dissent = 1
+			event = 316004
+			headofstate = 240001
+	}
+	name = "EVT_SHARED_00186_NAME"
+	desc = "EVT_SHARED_00186_DESC"
+	style = 2
+	date = { day = 1 month = january year = 1934 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1934 }
+	picture = "USA/fireside_chat"
+	decision_picture = "GLOBAL/decision_fireside_chat"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { trigger = { ai = no } type = money value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316020] USA | 1934 | Philippine Independence (Independencia de las Filipinas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316020
+	random = no
+	country = USA
+	decision = {
+			government = democratic
+			atwar = no
+	}
+	decision_trigger = {
+			region = { region = Philippines }
+			NOT = { exists = PHI }
+	}
+	trigger = {
+			region = { region = Philippines }
+			NOT = { exists = PHI }
+			random = 20
+			atwar = no
+			government = democratic
+	}
+	name = "EVT_USA_316020_NAME"
+	desc = "EVT_USA_316020_DESC"
+	style = 2
+	date = { day = 1 month = january year = 1934 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	picture = "USA/philippines_independence"
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = PHI value = 1 when = 0 }
+		command = { type = make_puppet which = PHI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316016] USA | 1935 | Roosevelt's Fireside Chats (Las «Charlas junto a la chimenea» de Roosevelt)
+# Triggered by event 316004 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316016
+	random = no
+	country = USA
+	decision = {
+			event = 316004
+			headofstate = 240001
+	}
+	decision_trigger = {
+			event = 316004
+			headofstate = 240001
+			money = 50
+	}
+	trigger = {
+			dissent = 1
+			event = 316004
+			headofstate = 240001
+	}
+	name = "EVT_SHARED_00186_NAME"
+	desc = "EVT_SHARED_00186_DESC"
+	style = 2
+	date = { day = 1 month = january year = 1935 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	picture = "USA/fireside_chat"
+	decision_picture = "GLOBAL/decision_fireside_chat"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { trigger = { ai = no } type = money value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316018] USA | 1935 | The Good Neighbor Policy (La Política de Buena Vecindad)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316018
+	random = no
+	country = USA
+	decision = {
+			government = democratic
+			headofstate = 240001
+			atwar = no
+	}
+	decision_trigger = {
+			money = 200
+	}
+	trigger = {
+			random = 20
+			atwar = no
+			government = democratic
+			headofstate = 240001
+	}
+	name = "EVT_USA_316018_NAME"
+	desc = "EVT_USA_316018_DESC"
+	style = 2
+	date = { day = 1 month = january year = 1935 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	picture = "GLOBAL/diplomatic_campaign"
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { trigger = { ai = no } type = money value = -200 }
+		command = { type = non_aggression which = usa where = arg }
+		command = { type = non_aggression which = usa where = bol }
+		command = { type = non_aggression which = usa where = bra }
+		command = { type = non_aggression which = usa where = chl }
+		command = { type = non_aggression which = usa where = col }
+		command = { type = non_aggression which = usa where = ecu }
+		command = { type = non_aggression which = usa where = par }
+		command = { type = non_aggression which = usa where = pru }
+		command = { type = non_aggression which = usa where = uru }
+		command = { type = non_aggression which = usa where = ven }
+		command = { type = non_aggression which = usa where = cos }
+		command = { type = non_aggression which = usa where = cub }
+		command = { type = non_aggression which = usa where = dom }
+		command = { type = non_aggression which = usa where = gua }
+		command = { type = non_aggression which = usa where = hai }
+		command = { type = non_aggression which = usa where = hon }
+		command = { type = non_aggression which = usa where = mex }
+		command = { type = non_aggression which = usa where = pan }
+		command = { type = non_aggression which = usa where = sal }
+		command = { type = non_aggression which = usa where = can }
+		command = { type = non_aggression which = usa where = nic }
+		command = { type = relation which = arg value = 50 }
+		command = { type = relation which = bol value = 50 }
+		command = { type = relation which = bra value = 50 }
+		command = { type = relation which = chl value = 50 }
+		command = { type = relation which = col value = 50 }
+		command = { type = relation which = ecu value = 50 }
+		command = { type = relation which = par value = 50 }
+		command = { type = relation which = pru value = 50 }
+		command = { type = relation which = uru value = 50 }
+		command = { type = relation which = ven value = 50 }
+		command = { type = relation which = cos value = 50 }
+		command = { type = relation which = cub value = 50 }
+		command = { type = relation which = dom value = 50 }
+		command = { type = relation which = gua value = 50 }
+		command = { type = relation which = hai value = 50 }
+		command = { type = relation which = hon value = 50 }
+		command = { type = relation which = mex value = 50 }
+		command = { type = relation which = pan value = 50 }
+		command = { type = relation which = sal value = 50 }
+		command = { type = relation which = can value = 50 }
+		command = { type = relation which = nic value = 50 }
+		command = { type = end_mastery which = NIC }
+		command = { type = end_mastery which = HAI }
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316060] USA | 1936 | Lend-Lease Act (Ley de Préstamo y Arriendo)
+# Triggered by event 316106 in events/USA/USA_33-36.txt
+# Trigger event 316061 in events/USA/USA_33-36.txt
+# Trigger event 329056 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316060
+	random = no
+	country = USA
+	decision = {
+		event = 316106
+	}
+	decision_trigger = {
+			OR = {
+				war = { country = USA country = GER }
+				AND = {
+					war = { country = ENG country = GER }
+					government = democratic
+				}
+			}
+	}
+	trigger = {
+		event = 316106
+		random = 60
+		OR = {
+				war = { country = USA country = GER }
+				AND = {
+					war = { country = ENG country = GER }
+					government = democratic
+				}
+			}
+	}
+	name = EVT_USA_316060_NAME
+	desc = EVT_SHARED_00249_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	decision_picture = "USA/decision_lend_lease"
+	date = { day = 0 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = U01 value = 15 }
+		command = { type = relation which = CHI value = 15 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = relation which = GER value = -15 }
+		command = { type = relation which = ITA value = -15 }
+		command = { type = relation which = JAP value = -15 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = peacetime_ic_mod value = 10 }
+		command = { type = trigger which = 316061 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316098] USA | 1936 | The Pitman Act (La Ley Pitman)
+# Trigger event 124026 in events/CHI/CHI_33-37.txt
+# Trigger event 316125 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316098
+	random = no
+	country = USA
+	name = EVT_USA_316098_NAME
+	desc = EVT_USA_316098_DESC
+	style = 2
+	picture = "USA/ccip_allies"
+	decision = {
+		war = { country = CHI country = JAP }
+		NOT = { alliance = { country = USA country = JAP } }
+	}
+	decision_trigger = {
+		supplies  = 1000
+	}
+	trigger = {
+		war = { country = CHI country = JAP }
+		random = 70
+		supplies  = 1000
+		NOT = { alliance = { country = USA country = JAP } }
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_SIGN
+		command = { type = supplies value = -1500 }
+		command = { type = oilpool value = -250 }
+		command = { type = money value = 50 }
+		command = { type = relation which = CHI value = 15 }
+		command = { type = relation which = JAP value = -10 }
+		command = { type = trigger which = 124026 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316115] USA | 1936 | US Forces Secure Iceland and Greenland (EE. UU. ocupa Islandia y Groenlandia)
+# Triggered by event 316106 in events/USA/USA_33-36.txt
+# Trigger event 143154 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316115
+	random = no
+	country = USA
+	decision = {
+		event = 316106
+		NOT = {
+			OR = {
+				alliance = { country = USA country = GER }
+				alliance = { country = USA country = SOV }
+			}
+		}
+		war = { country = ENG country = GER }
+	}
+	decision_trigger = {
+		control = { province = 1783 data = ENG }
+		control = { province = 1 data = ENG }
+		control = { province = 3 data = ENG }
+	}
+	trigger = {
+		war = { country = ENG country = GER }
+		random = 15
+		event = 316106
+		control = { province = 1783 data = ENG }
+		control = { province = 1 data = ENG }
+		control = { province = 3 data = ENG }
+		NOT = {
+			OR = {
+				alliance = { country = USA country = GER }
+				alliance = { country = USA country = SOV }
+			}
+		}
+	}
+	name = "EVT_USA_316115_NAME"
+	desc = "EVT_USA_316115_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 143154 }
+		command = { type = addcore which = 1 }
+		command = { type = addcore which = 3 }
+		command = { type = addcore which = 1783 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316127] USA | 1936 | Military Control: France (Mando militar sobre Francia)
+# Trigger event 316128 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316127
+	random = no
+	country = USA
+	decision = {
+		policy = { type = democratic value = 7 }
+		ai = FRA
+		NOT = { military_control = { country = FRA } }
+		war = { country = FRA country = GER }
+		NOT = {
+			alliance = { country = USA country = FRA }
+			alliance = { country = USA country = GER }
+		}
+	}
+	decision_trigger = {
+		relation = { which = FRA value = 0 }
+	}
+	trigger = {
+		ai = no
+		policy = { type = democratic value = 7 }
+		ai = FRA
+		NOT = { military_control = { country = FRA } }
+		relation = { which = FRA value = 0 }
+		war = { country = FRA country = GER }
+		NOT = {
+			alliance = { country = USA country = FRA }
+			alliance = { country = USA country = GER }
+		}
+	}
+	name = "EVT_USA_316127_NAME"
+	desc = "EVT_SHARED_00209_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type =  military_control which = USA where = FRA value = 1 }
+		command	= { type = local_setflag which = military_control_FRA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316139] USA | 1936 | Fortification of Dutch Harbor (Fortificación de Dutch Harbor)
+# Trigger event 316140 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316139
+	random = no
+	country = USA
+	save_date = yes
+	decision = {
+		OR = {
+			atwar = JAP
+			puppet = { country = CHI country = JAP }
+		}
+		control = { province = 2151 data = USA }
+	}
+	decision_trigger = {
+		supplies = 2000
+		oil = 1000
+		money = 6000
+	}
+	trigger = {
+		OR = {
+			AND = {
+				atwar = JAP
+				month = 6
+				year = 1940
+			}
+			puppet = { country = CHI country = JAP }
+			puppet = { country = U87 country = JAP }
+		}
+		control = { province = 2151 data = USA }
+	}
+	name = "EVT_USA_316139_NAME"
+	desc = "EVT_USA_316139_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 50
+		name = "EVT_USA_316139_A"
+		command = { type = local_setflag which = DutchHarborS }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { trigger = { ai = no } type = oilpool value = -500 }
+		command = { type = money value = -3000 }
+		command = { type = free_ic value = -3 }
+		command = { type = event which = 316140 where = -1 when = 250 }
+	}
+	action = {
+		ai_chance = 50
+		name = "EVT_USA_316139_B"
+		command = { type = local_setflag which = DutchHarborL }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+		command = { trigger = { ai = no } type = oilpool value = -1000 }
+		command = { type = money value = -6000 }
+		command = { type = free_ic value = -5 }
+		command = { type = event which = 316140 where = -1 when = 350 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316142] USA | 1936 | Fund Manhattan Project (Financiar el Proyecto Manhattan)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316142
+	random = no
+	country = USA
+	name = EVT_USA_316142_NAME
+	desc = EVT_SHARED_00329_DESC
+	style = 2
+	picture = "USA/manhattan_project"
+	decision_picture = "GLOBAL/decision_atomic_research"
+	decision = {
+		OR = {
+			war = { country = USA country = SOV }
+			war = { country = USA country = GER }
+			war = { country = USA country = JAP }
+			war = { country = USA country = ENG }
+		}
+		NOT = { technology = { country = USA value = 5540 } }
+	}
+	decision_trigger = {
+		money = 10000
+		technology = 5490
+	}
+	trigger = {
+		technology = 5490
+		NOT = { technology = { country = USA value = 5540 } }
+		OR = {
+			war = { country = USA country = SOV }
+			war = { country = USA country = GER }
+			war = { country = USA country = JAP }
+			war = { country = USA country = ENG }
+		}
+		random = 30
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { technology = { country = USA value = 5500 } } } type = gain_tech which = 5500 }
+		command = { trigger = { NOT = { technology = { country = USA value = 5510 } } } type = gain_tech which = 5510 }
+		command = { trigger = { NOT = { technology = { country = USA value = 5520 } } } type = gain_tech which = 5520 }
+		command = { trigger = { NOT = { technology = { country = USA value = 5530 } } } type = gain_tech which = 5530 }
+		command = { trigger = { NOT = { technology = { country = USA value = 5540 } } } type = gain_tech which = 5540 }
+		command = { trigger = { ai = no } type = money value = -10000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329333] USA | 1936 | Lend-Lease: United Kingdom (Préstamo y Arriendo: Reino Unido)
+# Triggered by event 316061 in events/USA/USA_33-36.txt
+# Trigger event 143124 in events/ENG/ENG_34-36.txt
+# Trigger event 143125 in events/ENG/ENG_34-36.txt
+# Trigger event 143126 in events/ENG/ENG_34-36.txt
+# Trigger event 329336 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329333
+	random = no
+	country = USA
+	persistent = yes
+	decision = {
+		war = { country = ENG country = GER }
+		NOT = { war = { country = ENG country = USA } }
+		event = 316061
+		NOT = { flag = Atlantic_War_UK }
+		NOT = { OR = { flag = Lend_Lease_to_UK1 flag = Lend_Lease_to_UK2 flag = Lend_Lease_to_UK3 } }
+	}
+	decision_trigger = {
+		event = 316061
+		war = { country = ENG country = GER }
+		control = { province = 10 data = ENG }
+		control = { province = 13 data = ENG }
+		control = { province = 18 data = ENG }
+		control = { province = 24 data = ENG }
+		control = { province = 28 data = ENG }
+		control = { province = 29 data = ENG }
+	}
+	trigger = {
+		war = { country = ENG country = GER }
+		NOT = { war = { country = ENG country = USA } }
+		event = 316061
+		NOT = { flag = Atlantic_War_UK }
+		NOT = { OR = { flag = Lend_Lease_to_UK1 flag = Lend_Lease_to_UK2 flag = Lend_Lease_to_UK3 } }
+		AND = {
+			control = { province = 10 data = ENG }
+			control = { province = 13 data = ENG }
+			control = { province = 18 data = ENG }
+			control = { province = 24 data = ENG }
+			control = { province = 28 data = ENG }
+			control = { province = 29 data = ENG }
+		}
+	}
+	name = EVT_SHARED_00251_NAME
+	desc = EVT_SHARED_00249_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	decision_picture = "USA/decision_lend_lease_eng"
+	date = { day = 0 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = june year = 1999 }
+	action = {
+		name = "EVT_SHARED_00251_A"
+		ai_chance = 0
+		command = { type = metalpool value = -1000 }
+		command = { type = oilpool value = -1000 }
+		command = { type = supplies value = -1000 }
+		command = { type = rarematerialspool value = -1000 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = trigger which = 143124 }
+	}
+	action = {
+		name = "EVT_SHARED_00251_B"
+		ai_chance = 100
+		command = { type = construct which = ic where = 1832 value = -5 }
+		command = { type = construct which = ic where = 1805 value = -5 }
+		command = { type = trade which = USA where = ENG metal = -20 rare_materials = -20 oil = -20 supplies = -10 value = 1 }
+		command = { type = relation which = ENG value = 30 }
+		command = { type = trigger which = 143125 }
+	}
+	action = {
+		name = "EVT_SHARED_00251_C"
+		ai_chance = 0
+		command = { type = construct which = ic where = 1832 value = -5 }
+		command = { type = construct which = ic where = 1805 value = -5 }
+		command = { type = construct which = ic where = 1889 value = -5 }
+		command = { type = construct which = ic where = 1846 value = -5 }
+		command = { type = trade which = USA where = ENG metal = -50 rare_materials = -50 oil = -50 supplies = -20 value = 1 }
+		command = { type = relation which = ENG value = 60 }
+		command = { type = trigger which = 143126 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329334] USA | 1936 | Lend-Lease: China (Préstamo y Arriendo: China)
+# Triggered by event 316061 in events/USA/USA_33-36.txt
+# Trigger event 124020 in events/CHI/CHI_33-37.txt
+# Trigger event 124021 in events/CHI/CHI_33-37.txt
+# Trigger event 124022 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329334
+	random = no
+	country = USA
+	persistent = yes
+	decision = {
+		war = { country = CHI country = JAP }
+		NOT = { war = { country = CHI country = USA } }
+		NOT = { war = { country = CHI country = ENG } }
+		NOT = { war = { country = CHI country = HOL } }
+		event = 316061
+		NOT = { OR = { flag = Lend_Lease_to_CHI1 flag = Lend_Lease_to_CHI2 flag = Lend_Lease_to_CHI3 } }
+	}
+	decision_trigger = {
+		event = 316061
+		war = { country = CHI country = JAP }
+		OR = { control = { province = 1415 data = ENG } control = { province = 1415 data = USA } control = { province = 1415 data = U02 } }
+		OR = { control = { province = 1442 data = ENG } control = { province = 1442 data = USA } control = { province = 1442 data = U02 } }
+		OR = { control = { province = 1414 data = ENG } control = { province = 1414 data = USA } control = { province = 1414 data = U02 } }
+		OR = { control = { province = 1408 data = ENG } control = { province = 1408 data = USA } control = { province = 1408 data = U02 } }
+		OR = { control = { province = 1409 data = ENG } control = { province = 1409 data = USA } control = { province = 1409 data = U02 } }
+		OR = { control = { province = 1389 data = CHI } AND = { alliance = { country = CHI country = CYN } control = { province = 1389 data = CYN } } }
+		OR = { control = { province = 1385 data = CHI } AND = { alliance = { country = CHI country = CYN } control = { province = 1385 data = CYN } } }
+		OR = { control = { province = 1390 data = CHI } AND = { alliance = { country = CHI country = CYN } control = { province = 1390 data = CYN } } }
+	}
+	trigger = {
+		war = { country = CHI country = JAP }
+		NOT = { war = { country = CHI country = USA } }
+		NOT = { war = { country = CHI country = ENG } }
+		NOT = { war = { country = CHI country = HOL } }
+		event = 316061
+		NOT = { OR = { flag = Lend_Lease_to_CHI1 flag = Lend_Lease_to_CHI2 flag = Lend_Lease_to_CHI3 } }
+		OR = { control = { province = 1415 data = ENG } control = { province = 1415 data = USA } control = { province = 1415 data = U02 } }
+		OR = { control = { province = 1442 data = ENG } control = { province = 1442 data = USA } control = { province = 1442 data = U02 } }
+		OR = { control = { province = 1414 data = ENG } control = { province = 1414 data = USA } control = { province = 1414 data = U02 } }
+		OR = { control = { province = 1408 data = ENG } control = { province = 1408 data = USA } control = { province = 1408 data = U02 } }
+		OR = { control = { province = 1409 data = ENG } control = { province = 1409 data = USA } control = { province = 1409 data = U02 } }
+		OR = { control = { province = 1389 data = CHI } AND = { alliance = { country = CHI country = CYN } control = { province = 1389 data = CYN } } }
+		OR = { control = { province = 1385 data = CHI } AND = { alliance = { country = CHI country = CYN } control = { province = 1385 data = CYN } } }
+		OR = { control = { province = 1390 data = CHI } AND = { alliance = { country = CHI country = CYN } control = { province = 1390 data = CYN } } }
+	}
+	name = EVT_SHARED_00252_NAME
+	desc = EVT_SHARED_00249_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	decision_picture = "USA/decision_lend_lease_chi"
+	date = { day = 0 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = june year = 1999 }
+	action = {
+		name = "EVT_SHARED_00251_A"
+		ai_chance = 0
+		command = { type = metalpool value = -1000 }
+		command = { type = oilpool value = -1000 }
+		command = { type = supplies value = -1000 }
+		command = { type = rarematerialspool value = -1000 }
+		command = { type = relation which = CHI value = 10 }
+		command = { type = trigger which = 124020 }
+	}
+	action = {
+		name = "EVT_SHARED_00251_B"
+		ai_chance = 100
+		command = { type = construct which = ic where = 1845 value = -5 }
+		command = { type = trade which = USA where = CHI metal = -10 rare_materials = -10 oil = -10 supplies = -5 value = 1 }
+		command = { type = relation which = CHI value = 30 }
+		command = { type = trigger which = 124021 }
+	}
+	action = {
+		name = "EVT_SHARED_00251_C"
+		ai_chance = 0
+		command = { type = construct which = ic where = 1845 value = -5 }
+		command = { type = construct which = ic where = 1825 value = -5 }
+		command = { type = trade which = USA where = CHI metal = -20 rare_materials = -20 oil = -20 supplies = -10 value = 1 }
+		command = { type = relation which = CHI value = 60 }
+		command = { type = trigger which = 124022 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329335] USA | 1936 | Lend-Lease: Soviet Union (Préstamo y Arriendo: Unión Soviética)
+# Triggered by event 316061 in events/USA/USA_33-36.txt
+# Trigger event 223046 in events/SOV/SOV_33-36.txt
+# Trigger event 223047 in events/SOV/SOV_33-36.txt
+# Trigger event 223048 in events/SOV/SOV_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329335
+	random = no
+	country = USA
+	persistent = yes
+	decision = {
+		war = { country = SOV country = GER }
+		NOT = { war = { country = SOV country = USA } }
+		NOT = { war = { country = SOV country = ENG } }
+		NOT = { war = { country = CHI country = SOV } }
+		event = 316061
+		NOT = { OR = { flag = Lend_Lease_to_SOV1 flag = Lend_Lease_to_SOV2 flag = Lend_Lease_to_SOV3 } }
+	}
+	decision_trigger = {
+		event = 316061
+		war = { country = SOV country = GER }
+		OR = {
+			AND = {
+				control = { province = 542 data = SOV }
+				control = { province = 543 data = SOV }
+				control = { province = 548 data = SOV }
+				control = { province = 556 data = SOV }
+				control = { province = 570 data = SOV }
+				control = { province = 572 data = SOV }
+			}
+			AND = {
+				control = { province = 535 data = SOV }
+				control = { province = 536 data = SOV }
+				control = { province = 537 data = SOV }
+				control = { province = 538 data = SOV }
+				control = { province = 547 data = SOV }
+				control = { province = 556 data = SOV }
+				control = { province = 570 data = SOV }
+				control = { province = 572 data = SOV }
+			}
+			AND = {
+				control = { province = 713 data = SOV }
+				control = { province = 663 data = SOV }
+				OR = {
+					control = { province = 1083 data = ENG }
+					AND = {
+						alliance = { country = PER  country = ENG }
+						control = { province = 1083 data = PER }
+					}
+				}
+				OR = {
+					control = { province = 1084 data = ENG }
+					AND = {
+						alliance = { country = PER  country = ENG }
+						control = { province = 1084 data = PER }
+					}
+				}
+				OR = {
+					control = { province = 1087 data = ENG }
+					AND = {
+						alliance = { country = PER  country = ENG }
+						control = { province = 1087 data = PER }
+						}
+				}
+			}
+			AND = {
+				OR = {
+					control = { province = 1744 data = USA }
+					control = { province = 688 data = USA }
+					control = { province = 689 data = USA }
+				}
+				control = { province = 2142 data = SOV }
+			}
+		}
+	}
+	trigger = {
+		war = { country = SOV country = GER }
+		NOT = { war = { country = SOV country = USA } }
+		NOT = { war = { country = SOV country = ENG } }
+		NOT = { war = { country = CHI country = SOV } }
+		event = 316061
+		NOT = { OR = { flag = Lend_Lease_to_SOV1 flag = Lend_Lease_to_SOV2 flag = Lend_Lease_to_SOV3 } }
+		OR = {
+			AND = {
+				control = { province = 542 data = SOV }
+				control = { province = 543 data = SOV }
+				control = { province = 548 data = SOV }
+				control = { province = 556 data = SOV }
+				control = { province = 570 data = SOV }
+				control = { province = 572 data = SOV }
+			}
+			AND = {
+				control = { province = 535 data = SOV }
+				control = { province = 536 data = SOV }
+				control = { province = 537 data = SOV }
+				control = { province = 538 data = SOV }
+				control = { province = 547 data = SOV }
+				control = { province = 556 data = SOV }
+				control = { province = 570 data = SOV }
+				control = { province = 572 data = SOV }
+			}
+			AND = {
+				control = { province = 713 data = SOV }
+				control = { province = 663 data = SOV }
+				OR = {
+					control = { province = 1083 data = ENG }
+					AND = {
+						alliance = { country = PER  country = ENG }
+						control = { province = 1083 data = PER }
+					}
+				}
+				OR = {
+					control = { province = 1084 data = ENG }
+					AND = {
+						alliance = { country = PER  country = ENG }
+						control = { province = 1084 data = PER }
+					}
+				}
+				OR = {
+					control = { province = 1087 data = ENG }
+					AND = {
+						alliance = { country = PER  country = ENG }
+						control = { province = 1087 data = PER }
+						}
+				}
+			}
+			AND = {
+				OR = {
+					control = { province = 1744 data = USA }
+					control = { province = 688 data = USA }
+					control = { province = 689 data = USA }
+				}
+				control = { province = 2142 data = SOV }
+			}
+		}
+	}
+	name = EVT_SHARED_00253_NAME
+	desc = EVT_SHARED_00249_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	decision_picture = "USA/decision_lend_lease_sov"
+	date = { day = 0 month = january year = 1936 }
+	offset = 8
+	deathdate = { day = 29 month = june year = 1999 }
+	action_a = {
+		name = "EVT_SHARED_00251_A"
+		ai_chance = 0
+		command = { type = metalpool value = -1000 }
+		command = { type = oilpool value = -1000 }
+		command = { type = supplies value = -1000 }
+		command = { type = rarematerialspool value = -1000 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = trigger which = 223046 }
+	}
+	action_b = {
+		name = "EVT_SHARED_00251_B"
+		ai_chance = 100
+		command = { type = trade which = USA where = SOV supplies = -15 value = 1 }
+		command = { type = extra_tc value = -50 }
+		command = { type = relation which = SOV value = 30 }
+		command = { type = trigger which = 223047 }
+	}
+	action_c = {
+		name = "EVT_SHARED_00251_C"
+		ai_chance = 0
+		command = { type = trade which = USA where = SOV supplies = -30 value = 1 }
+		command = { type = extra_tc value = -100 }
+		command = { type = relation which = SOV value = 60 }
+		command = { type = trigger which = 223048 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329337] USA | 1936 | Lend-Lease: Free France (Préstamo y Arriendo: Francia Libre)
+# Triggered by event 316061 in events/USA/USA_33-36.txt
+# Trigger event 236009 in events/Minors/U01.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329337
+	random = no
+	country = USA
+	decision = {
+		event = 316061
+		exists = U01
+		war = { country = U01 country = GER }
+		control = { province = 907 data = U01 }
+	}
+	decision_trigger = {
+		event = 316061
+		war = { country = U01 country = GER }
+		control = { province = 907 data = U01 }
+	}
+	trigger = {
+		event = 316061
+		exists = U01
+		war = { country = U01 country = GER }
+		control = { province = 907 data = U01 }
+	}
+	name = EVT_SHARED_00257_NAME
+	desc = EVT_SHARED_00250_DESC
+	style = 2
+	picture = "GLOBAL/lend_lease"
+	decision_picture = "GLOBAL/decision_lend_lease_ffl"
+	date = { day = 0 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = june year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 1924 value = -5 }
+		command = { type = construct which = ic where = 1887 value = -5 }
+		command = { type = trade which = USA where = U01 metal = -5 rare_materials = -5 oil = -5 supplies = -5 value = 1 }
+		command = { type = relation which = U01 value = 30 }
+		command = { type = trigger which = 236009 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329429] USA | 1936 | Accelerate the Manhattan Project (Acelerar el Proyecto Manhattan)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329429
+	random = no
+	country = USA
+	name = EVT_USA_329429_NAME
+	desc = EVT_SHARED_00329_DESC
+	style = 2
+	picture = "USA/manhattan_project"
+	decision_picture = "GLOBAL/decision_atomic_research"
+	decision = {
+		OR = {
+			war = { country = USA country = SOV }
+			war = { country = USA country = GER }
+			war = { country = USA country = JAP }
+			war = { country = USA country = ENG }
+		}
+		technology = 5540
+	}
+	decision_trigger = {
+		money = 2500
+	}
+	trigger = {
+		technology = 5540
+		OR = {
+			war = { country = USA country = SOV }
+			war = { country = USA country = GER }
+			war = { country = USA country = JAP }
+			war = { country = USA country = ENG }
+		}
+		random = 30
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = double_nuke_prod }
+		command = { trigger = { ai = no } type = money value = -2500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329930] USA | 1939 | Support for Russian Solidarists (NTS) (Apoyo a los solidaristas rusos (NTS))
+# Trigger event 329931 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329930
+	country = USA
+	name = EVT_USA_329930_NAME
+	desc = EVT_USA_329930_DESC
+	picture = "nwo/national_alliance_of_russian_solidarists"
+	decision_picture = "nwo/d_national_alliance_of_russian_solidarists"
+	style = 1
+	decision = {
+		war = { country = USA country = SOV }
+		flag = ww3
+		lost_national = { country = SOV value = 15 }
+		lost_ic = { country = SOV value = 15 }
+		NOT = {	flag = novus_ordo_seclorum	}
+	}
+	trigger = {
+		war = { country = USA country = SOV }
+		flag = ww3
+		lost_national = { country = SOV value = 15 }
+		lost_ic = { country = SOV value = 15 }
+		NOT = {	flag = novus_ordo_seclorum	}
+	}
+    date = { day = 0 month = january year = 1939 }
+    offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_USA_329930_A
+		ai_chance = 60
+		command = { type = money value = -500 }
+	}
+	action = {
+		name = EVT_USA_329930_B
+		ai_chance = 40
+		trigger = { ai = yes }
+		command = { type = money value = 1 }
+		command = { type = sleepevent which = 329931 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316107] USA | 1940 | Ultimatum to Japan (Ultimátum a Japón)
+# Trigger event 167054 in events/JAP/JAP_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316107
+	random = no
+	country = USA
+	decision = {
+		NOT = {	war = { country = USA country = JAP } }
+		NOT = { alliance = { country = JAP country = ENG } }
+		NOT = { alliance = { country = JAP country = FRA } }
+		NOT = { alliance = { country = JAP country = USA } }
+		government = democratic
+		OR = {
+      		puppet = { country = U03 country = JAP }
+      		puppet = { country = IDC country = JAP }
+      		puppet = { country = VIE country = JAP }
+      		puppet = { country = U05 country = JAP }
+      		puppet = { country = INO country = JAP }
+      		puppet = { country = CHI country = JAP }
+      		puppet = { country = U87 country = JAP }
+      		war = { country = CHI country = JAP }
+      		war = { country = ENG country = JAP }
+      		war = { country = HOL country = JAP }
+      		war = { country = U05 country = JAP }
+		control = { province = 1337 data = JAP }
+		control = { province = 1247 data = JAP }
+		}
+	}
+	decision_trigger = {
+		OR = {
+      		puppet = { country = U03 country = JAP }
+      		puppet = { country = IDC country = JAP }
+      		puppet = { country = VIE country = JAP }
+      		puppet = { country = U05 country = JAP }
+      		puppet = { country = INO country = JAP }
+      		puppet = { country = CHI country = JAP }
+      		puppet = { country = CHC country = JAP }
+      		puppet = { country = U87 country = JAP }
+      		war = { country = CHI country = JAP }
+      		war = { country = ENG country = JAP }
+      		war = { country = HOL country = JAP }
+      		war = { country = U05 country = JAP }
+		control = { province = 1337 data = JAP }
+		control = { province = 1247 data = JAP }
+		}
+	}
+	trigger = {
+		OR = { AND = { random = 5 control = { province = 1337 data = JAP } } AND = { year = 1941 month = june random = 50 } }
+		NOT = {	war = { country = USA country = JAP } }
+		NOT = { alliance = { country = JAP country = ENG } }
+		NOT = { alliance = { country = JAP country = FRA } }
+		NOT = { alliance = { country = JAP country = USA } }
+		government = democratic
+		OR = {
+      		puppet = { country = U03 country = JAP }
+      		puppet = { country = IDC country = JAP }
+      		puppet = { country = VIE country = JAP }
+      		puppet = { country = U05 country = JAP }
+      		puppet = { country = INO country = JAP }
+      		puppet = { country = CHI country = JAP }
+      		puppet = { country = CHC country = JAP }
+      		puppet = { country = U87 country = JAP }
+      		war = { country = CHI country = JAP }
+      		war = { country = ENG country = JAP }
+      		war = { country = HOL country = JAP }
+      		war = { country = U05 country = JAP }
+		control = { province = 1337 data = JAP }
+		control = { province = 1247 data = JAP }
+		}
+	}
+	name = "EVT_USA_316107_NAME"
+	desc = "EVT_SHARED_00423_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1940 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = JAP value = -50 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = peacetime_ic_mod value = 10 }
+		command = { type = trigger which = 167054 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316241] USA | 1940 | Atomic Bombing of Nagasaki (Bombardeo atómico de Nagasaki)
+# Triggered by event 167180 in events/JAP/JAP_42-88.txt
+# Trigger event 167181 in events/JAP/JAP_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316241
+	country = USA
+	name = EVT_USA_316241_NAME
+	desc = EVT_USA_316241_DESC
+	picture = "nwo/nagasaki_nuke"
+	style = 1
+	trigger = {
+		technology = 7170
+		NOT = { local_flag = nukes_enabled }
+		war = { country = USA country = JAP }
+		OR = {
+			control = { province = 1663 data = -1 }
+			control = { province = 1563 data = -1 }
+			control = { province = 1562 data = -1 }
+		}
+		control = { province = 1560 data = JAP }
+		event = 167180
+	}
+	decision = {
+		technology = 7170
+		NOT = { local_flag = nukes_enabled }
+		war = { country = USA country = JAP }
+		OR = {
+			control = { province = 1663 data = -1 }
+			control = { province = 1563 data = -1 }
+			control = { province = 1562 data = -1 }
+		}
+		control = { province = 1560 data = JAP }
+		event = 167180
+	}
+	decision_trigger = {
+		technology = 7170
+		NOT = { local_flag = nukes_enabled }
+		war = { country = USA country = JAP }
+		OR = {
+			control = { province = 1663 data = -1 }
+			control = { province = 1563 data = -1 }
+			control = { province = 1562 data = -1 }
+		}
+		control = { province = 1560 data = JAP }
+		event = 167180
+	}
+	date = { day = 1 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		command = { type = trigger which = 167181 }
+		command = { type = belligerence value = 25 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 10
+		trigger = { ai = yes }
+		command = { type = belligerence value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316242] USA | 1940 | Atomic Bombing of Kokura (Bombardeo atómico de Kokura)
+# Triggered by event 167181 in events/JAP/JAP_38-40.txt
+# Triggered by event 167180 in events/JAP/JAP_42-88.txt
+# Trigger event 167182 in events/JAP/JAP_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316242
+	country = USA
+	name = EVT_USA_316242_NAME
+	desc = EVT_USA_316242_DESC
+	picture = "nwo/kokura_nuke"
+	style = 1
+	trigger = {
+		technology = 7170
+		NOT = { local_flag = nukes_enabled }
+		war = { country = USA country = JAP }
+		OR = {
+			control = { province = 1663 data = -1 }
+			control = { province = 1563 data = -1 }
+			control = { province = 1562 data = -1 }
+		}
+		control = { province = 1554 data = JAP }
+		event = 167181
+	}
+	decision = {
+		technology = 7170
+		NOT = { local_flag = nukes_enabled }
+		war = { country = USA country = JAP }
+		OR = {
+			control = { province = 1663 data = -1 }
+			control = { province = 1563 data = -1 }
+			control = { province = 1562 data = -1 }
+		}
+		control = { province = 1554 data = JAP }
+		event = 167180
+	}
+	decision_trigger = {
+		technology = 7170
+		NOT = { local_flag = nukes_enabled }
+		war = { country = USA country = JAP }
+		OR = {
+			control = { province = 1663 data = -1 }
+			control = { province = 1563 data = -1 }
+			control = { province = 1562 data = -1 }
+		}
+		control = { province = 1554 data = JAP }
+		event = 167180
+	}
+	date = { day = 1 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		command = { type = trigger which = 167182 }
+		command = { type = belligerence value = 25 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 10
+		trigger = { ai = yes }
+		command = { type = belligerence value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316194] USA | 1944 | Recognition of the Beijing Government (Retirada del reconocimiento a Taiwán)
+# Trigger event 123024 in events/Minors/CHC_30-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316194
+	country = USA
+	name = EVT_USA_316194_NAME
+	desc = EVT_USA_316194_DESC
+	picture = "nwo/communist_china_in_unsc"
+	decision_picture = "nwo/d_communist_china_in_unsc"
+	style = 1
+	decision = {
+		exists = CHC
+		exists = CHI
+		NOT = { exists = UCH }
+		flag = CHC_won_civil_war
+		NOT = { flag = CHC_in_UNSC }
+	}
+	trigger = {
+		exists = CHC
+		exists = CHI
+		NOT = { exists = UCH }
+		flag = CHC_won_civil_war
+		NOT = { flag = CHC_in_UNSC }
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_USA_316194_A
+		ai_chance = 1
+		command = { type = trigger which = 123024 }
+		command = { type = relation which = CHC value = 200 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 99
+		trigger = { ai = yes }
+		command = { type = money value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329767] USA | 1945 | Conclusion of Intervention in China (Fin de la intervención aliada en China)
+# Triggered by event 124167 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329767
+	random = no
+	country = USA
+	name = "EVT_USA_329767_NAME"
+	desc = "EVT_USA_329767_DESC"
+	picture = "nwo/failed_intervention"
+	style = 1
+	decision = {
+		flag = CHC_won_civil_war
+		war = { country = CHC }
+		NOT = { war = { country = SOV } }
+		event = 124167
+	}
+	trigger = {
+		flag = CHC_won_civil_war
+		war = { country = CHC }
+		NOT = { war = { country = SOV } }
+		event = 124167
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peace which = CHC value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329924] USA | 1945 | Nationalist China Allies with USSR (China se alía con la URSS)
+# Triggered by event 124191 in events/CHI/CHI_37-45.txt
+# Trigger event 124194 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329924
+	country = USA
+	name = EVT_USA_329924_NAME
+	desc = EVT_USA_329924_DESC
+	picture = "nwo/kmt_sovietunion"
+	decision_picture = "nwo/d_kmt_sovietunion"
+	style = 1
+	decision = {
+		event = 124191
+		alliance = { country = CHI country = SOV }
+		flag = CHI_won_civil_war
+	}
+	trigger = {
+		event = 124191
+		alliance = { country = CHI country = SOV }
+		flag = CHI_won_civil_war
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 70
+		command = { type = trigger which = 124194 }
+		command = { type = belligerence value = 20 }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 30
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316240] USA | 1945 | Atomic Bombing of Hiroshima (Bombardeo atómico de Hiroshima)
+# Trigger event 167180 in events/JAP/JAP_42-88.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316240
+	country = USA
+	name = EVT_USA_316240_NAME
+	desc = EVT_USA_316240_DESC
+	picture = "nwo/hiroshima_nuke"
+	style = 1
+	trigger = {
+		technology = 7170
+		NOT = { local_flag = nukes_enabled }
+		war = { country = USA country = JAP }
+		OR = {
+			control = { province = 1663 data = -1 }
+			control = { province = 1563 data = -1 }
+			control = { province = 1562 data = -1 }
+		}
+		control = { province = 1554 data = JAP }
+	}
+	decision = {
+		technology = 7170
+		NOT = { local_flag = nukes_enabled }
+		war = { country = USA country = JAP }
+		OR = {
+			control = { province = 1663 data = -1 }
+			control = { province = 1563 data = -1 }
+			control = { province = 1562 data = -1 }
+		}
+		control = { province = 1554 data = JAP }
+	}
+	decision_trigger = {
+		technology = 7170
+		NOT = { local_flag = nukes_enabled }
+		war = { country = USA country = JAP }
+		OR = {
+			control = { province = 1663 data = -1 }
+			control = { province = 1563 data = -1 }
+			control = { province = 1562 data = -1 }
+		}
+		control = { province = 1554 data = JAP }
+	}
+	date = { day = 1 month = august year = 1945 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		command = { type = trigger which = 167180 }
+		command = { type = belligerence value = 25 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 10
+		trigger = { ai = yes }
+		command = { type = belligerence value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316309] USA | 1947 | The McCarthy Era (La era del macartismo)
+# Trigger event 316310 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316309
+	country = USA
+	name = EVT_USA_316309_NAME
+	desc = EVT_USA_316309_DESC
+	picture = "nwo/mc_carthy"
+	decision_picture = "nwo/d_mccarthy"
+	style = 1
+	decision = {
+		NOT = { government = communist }
+	}
+	trigger = {
+		NOT = { government = communist }
+	}
+	date = { day = 1 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action_a = {
+		name = EVT_USA_316309_A
+		ai_chance = 80
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = dissent value = -2 }
+	}
+	action_b = {
+		name = EVT_USA_316309_B
+		ai_chance = 20
+		trigger = { ai = yes }
+		command = { type = sleepevent which = 316310 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316249] USA | 1949 | Proposal for a Neutral Unified Germany (Propuesta de una Alemania unida y neutral)
+# Trigger event 223293 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316249
+	country = USA
+	name = EVT_USA_316249_NAME
+	desc = EVT_USA_316249_DESC
+	picture = "nwo/united_germany"
+	decision_picture = "nwo/d_united_germany"
+	style = 1
+	decision = {
+		flag = cold_war
+		exists = U24
+		exists = U25
+	}
+	trigger = {
+		flag = cold_war
+		exists = U24
+		exists = U25
+	}
+	date = { day = 1 month = march year = 1949 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1949 }
+	action  = {
+		name = EVT_USA_316249_A
+		ai_chance = 50
+		command = { type = trigger which = 223293 }
+	}
+	action = {
+		name = EVT_USA_316249_B
+		trigger = { ai = yes }
+		ai_chance = 50
+		command = { type = money value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316312] USA | 1953 | Execution of the Rosenbergs (Ejecución de los Rosenberg)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316312
+	country = USA
+	name = EVT_USA_316312_NAME
+	desc = EVT_USA_316312_DESC
+	picture = "nwo/rosenbergs"
+	decision_picture = "nwo/d_rosenbergs"
+	style = 1
+	decision = {
+		NOT = { government = communist }
+		exists = SOV
+	}
+	trigger = {
+		NOT = { government = communist }
+		exists = SOV
+	}
+	date = { day = 1 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1954 }
+	action_a = {
+		name = EVT_USA_316312_A
+		ai_chance = 80
+		command = { type = dissent value = -2 }
+		command = { type = relation which = SOV value = -25 }
+		command = { type = intelligence which = us value = 5 }
+		command = { type = intelligence which = them value = 5 }
+	}
+	action_b = {
+		name = EVT_USA_316312_B
+		ai_chance = 20
+		trigger = { ai = yes }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316223] USA | 1954 | Operation PBSUCCESS (Operación PBSUCCESS)
+# Trigger event 153009 in events/Minors/GUA.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316223
+	country = USA
+	name = EVT_USA_316223_NAME
+	desc = EVT_USA_316223_DESC
+	picture = "nwo/operation_pbsuccess"
+	decision_picture = "nwo/operation_pbsuccess"
+	style = 1
+	decision = {
+		atwar = no
+		exists = GUA
+	}
+	trigger = {
+		atwar = no
+		exists = GUA
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 90
+		command = { type = belligerence value = 5 }
+		command = { type = trigger which = 153009 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		trigger = { ai = yes }
+		ai_chance = 10
+		command = { type = money value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330055] USA | 1959 | Reassessment of US Involvement (Revisión del compromiso en Vietnam)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330055
+	country = USA
+	name = EVT_USA_330055_NAME
+	desc = EVT_USA_330055_DESC
+	picture = "nwo/vietnam_war"
+	decision_picture = "nwo/d_vietnam_war"
+	style = 1
+	decision = {
+		war = { country = U72 country = VIE }
+		OR = {
+			flag = vietnam_war_limited_usa_assistance
+			flag = vietnam_war_total_usa_assistance
+		}
+	}
+	trigger = {
+		war = { country = U72 country = VIE }
+		OR = {
+			flag = vietnam_war_limited_usa_assistance
+			flag = vietnam_war_total_usa_assistance
+		}
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_USA_330055_A
+		trigger = { flag = vietnam_war_limited_usa_assistance }
+		ai_chance = 5
+		command = { type = clrflag which = vietnam_war_limited_usa_assistance }
+		command = { type = setflag which = vietnam_war_total_usa_assistance }
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = EVT_USA_330055_B
+		trigger = { flag = vietnam_war_total_usa_assistance }
+		ai_chance = 5
+		command = { type = clrflag which = vietnam_war_total_usa_assistance }
+		command = { type = setflag which = vietnam_war_limited_usa_assistance }
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_WITHDRAW
+		trigger = { flag = vietnam_war_limited_usa_assistance }
+		ai_chance = 1
+		command = { type = clrflag which = vietnam_war_limited_usa_assistance }
+		command = { type = clrflag which = vietnam_war_total_usa_assistance }
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 94
+		trigger = { ai = yes }
+		command = { type = money value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316254] USA | 1960 | U-2 Reconnaissance Sorties (Vuelos de reconocimiento U-2)
+# Trigger event 316255 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316254
+	country = USA
+	name = EVT_USA_316254_NAME
+	desc = EVT_USA_316254_DESC
+	picture = "nwo/u2_flights"
+	decision_picture = "nwo/d_u2_flights"
+	style = 1
+	trigger = {
+		flag = cold_war
+		relation = { which = PAK value = 50 }
+	}
+	decision = {
+		flag = cold_war
+	}
+	decision_trigger = {
+		flag = cold_war
+		relation = { which = PAK value = 50 }
+	}
+	date = { day = 25 month = march year = 1960 }
+	offset = 14
+	deathdate = { day = 29 month = april year = 1960 }
+	action = {
+		name = ACTION_NAME_SEND_TROOPS
+		ai_chance = 70
+		command = { type = money value = -500 }
+		command = { type = intelligence which = them value = 15 }
+	}
+	action = {
+		name = EVT_USA_316254_A
+		ai_chance = 30
+		trigger = { ai = yes }
+		command = { type = money value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316315] USA | 1965 | The Great Society (La Gran Sociedad)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316315
+	country = USA
+	name = EVT_USA_316315_NAME
+	desc = EVT_USA_316315_DESC
+	picture = "nwo/great_society"
+	decision_picture = "nwo/d_great_society"
+	style = 1
+	decision = {
+		government = democratic
+		headofstate = 240214
+	}
+	trigger = {
+		government = democratic
+		headofstate = 240214
+	}
+	date = { day = 1 month = january year = 1965 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1968 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = money value = 10000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329792] USA | 1965 | US Intervention in Quisqueya (Intervención en Dominicana)
+# Trigger event 140016 in events/Minors/DOM.txt
+# Trigger event 140017 in events/Minors/DOM.txt
+# Trigger event 140018 in events/Minors/DOM.txt
+# Trigger event 140019 in events/Minors/DOM.txt
+# Trigger event 140020 in events/Minors/DOM.txt
+# Trigger event 140021 in events/Minors/DOM.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329792
+	country = USA
+	name = EVT_USA_329792_NAME
+	desc = EVT_USA_329792_DESC
+	picture = "nwo/operation_power_pack"
+	decision_picture = "nwo/d_operation_power_pack"
+	style = 1
+	decision = {
+		exists = DOM
+		flag = cold_War
+		NOT = { war = { country = USA country = DOM } }
+		domestic = { type = interventionism value = 3 }
+	}
+	trigger = {
+		exists = DOM
+		flag = cold_War
+		NOT = { war = { country = USA country = DOM } }
+		domestic = { type = interventionism value = 3 }
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_SEND_TROOPS
+		ai_chance = 90
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 10
+		command = { type = sleepevent which = 140016 }
+		command = { type = sleepevent which = 140017 }
+		command = { type = sleepevent which = 140018 }
+		command = { type = sleepevent which = 140019 }
+		command = { type = sleepevent which = 140020 }
+		command = { type = sleepevent which = 140021 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316237] USA | 1982 | Funding the Contras (Financiamiento de los Contras)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316237
+	country = USA
+	name = EVT_USA_316237_NAME
+	desc = EVT_USA_316237_DESC
+	picture = "nwo/sandinistas"
+	decision_picture = "nwo/d_sandinistas"
+	style = 1
+	trigger = {
+		exists = NIC
+	}
+	decision = {
+		exists = NIC
+	}
+	date = { day = 0 month = january year = 1982 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 90
+		command = { type = money value = -2000 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 10
+		trigger = { ai = yes }
+		command = { type = money value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316316] USA | 1982 | Reaganomics
+# ----------------------------------------------------------------------------
+event = {
+	id = 316316
+	country = USA
+	name = EVT_USA_316316_NAME
+	desc = EVT_USA_316316_DESC
+	picture = "nwo/reaganomics"
+	decision_picture = "nwo/d_reaganomics"
+	style = 1
+	decision = {
+		government = democratic
+		headofstate = 240414
+	}
+	trigger = {
+		government = democratic
+		headofstate = 240414
+	}
+	date = { day = 1 month = january year = 1982 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = domestic which = free_market value = 6 }
+		command = { type = money value = 10000 }
+	}
+}

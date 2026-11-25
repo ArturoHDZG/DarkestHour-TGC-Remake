@@ -1,0 +1,773 @@
+# ============================================================================
+# File: events/Minors/EST.txt (30 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [144037] EST | 1917 | Soviet Republic of Soldiers and Fortress-Builders of Naissaar (República Soviética de los Soldados y Constructores de Fortalezas de Naissaar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144037
+	country = EST
+	random = no
+	trigger = {
+		exists = SOV
+	}
+	name = "EVT_SHARED_01055_NAME"
+	desc = "EVT_SHARED_01055_DESC"
+	style = 2
+	picture = "GLOBAL/naissaar"
+	date = { day = 28 month = december year = 1917 }
+	offset = 10
+	deathdate = { day = 18 month = march year = 1920 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144001] EST | 1933 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144001
+	random = no
+	country = EST
+	style = 2
+	trigger = {
+		headofstate = 130001
+	}
+	date = { day = 20 month = october year = 1933 }
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 130076 }
+		command = { type = headofgovernment which = 130077 }
+		command = { type = foreignminister which = 130026 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144002] EST | 1934 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144002
+	random = no
+	country = EST
+	style = 2
+	trigger = {
+		headofstate = 130076
+	}
+	date = { day = 23 month = january year = 1934 }
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 130001 }
+		command = { type = headofgovernment which = 130002 }
+		command = { type = foreignminister which = 324273 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144003] EST | 1939 | Soviet Union is demanding base agreement. (La Unión Soviética está exigiendo un acuerdo sobre bases)
+# Triggered by event 329088 in events/SOV/SOV_Decisions.txt
+# Trigger event 144004 in events/Minors/EST.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 144003
+	random = no
+	country = EST
+	name = "EVT_SHARED_00229_NAME"
+	desc = "EVT_EST_144003_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		ai_chance = 100
+		command = { type = trigger which = 144004}
+	}
+	action_b = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 0
+		command = { type = war which = SOV }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144004] EST | 1939 | Base treaties (Tratados de bases)
+# Triggered by event 144003 in events/Minors/EST.txt
+# Trigger event 329089 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 144004
+	random = no
+	country = EST
+	name = "EVT_SHARED_00230_NAME"
+	desc = "EVT_EST_144004_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+		command = { type = access which = SOV }
+		command = { type = guarantee which = SOV where = EST}
+		command = { type = relation which = SOV value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144005] EST | 1940 | Soviet Union demanding friendly government. (La Unión Soviética exige un gobierno amigo)
+# Triggered by event 329089 in events/SOV/SOV_Decisions.txt
+# Trigger event 223011 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 144005
+	random = no
+	country = EST
+	name = "EVT_SHARED_00232_NAME"
+	desc = "EVT_EST_144005_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		ai_chance = 80
+		command = { type = trigger which = 223011}
+	}
+	action_b = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 20
+		command = { type = war which = SOV }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144006] EST | 1940 | Soviet Union ocupation of Estonia (Ocupación Soviética de Estonia)
+# Triggered by event 223011 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 144006
+	random = no
+	country = EST
+	name = "EVT_SHARED_00233_NAME"
+	desc = "EVT_EST_144006_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 10 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = relation which = SOV value = 200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144015] EST | 1941 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144015
+	country = EST
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 143274 }
+		command = { type = headofgovernment which = 130016 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144020] EST | 1943 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144020
+	country = EST
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1943 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 130103 }
+		command = { type = headofgovernment which = 130101 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144000] EST | 1944 | Left-Wing Coup d'État (Golpe de Estado de izquierdas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144000
+	random = no
+	country = EST
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = GER
+		control = { province = 599 data = SOV }
+		control = { province = 243 data = SOV }
+		}
+	name = "EVT_SHARED_00499_NAME"
+	desc = "EVT_SHARED_00499_DESC"
+	date = { day = 1 month = january year = 1944 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1947 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 130015 }
+		command = { type = headofgovernment which = 130024 }
+		command = { type = foreignminister which = 150491 }
+		command = { type = armamentminister which = 130041 }
+		command = { type = ministerofsecurity which = 130051 }
+		command = { type = ministerofintelligence which = 130057 }
+		command = { type = chiefofstaff which = 166140 }
+		command = { type = chiefofarmy which = 130065 }
+		command = { type = chiefofnavy which = 130068 }
+		command = { type = chiefofair which = 130071 }
+		command = { type = dissent value = -1 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_WAR"
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [144021] EST | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144021
+	country = EST
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 130105 }
+		command = { type = headofgovernment which = 130106 }
+		command = { type = foreignminister which = 150491 }
+		command = { type = armamentminister which = 130041 }
+		command = { type = ministerofsecurity which = 130051 }
+		command = { type = ministerofintelligence which = 130057 }
+		command = { type = chiefofstaff which = 166140 }
+		command = { type = chiefofarmy which = 130065 }
+		command = { type = chiefofnavy which = 130068 }
+		command = { type = chiefofair which = 130071 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144016] EST | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 144016
+	country = EST
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 143273 }
+		command = { type = headofgovernment which = 130017 }
+		command = { type = foreignminister which = 130027 }
+		command = { type = armamentminister which = 130035 }
+		command = { type = ministerofsecurity which = 130044 }
+		command = { type = ministerofintelligence which = 130053 }
+		command = { type = chiefofstaff which = 130059 }
+		command = { type = chiefofarmy which = 166141 }
+		command = { type = chiefofnavy which = 130066 }
+		command = { type = chiefofair which = 130069 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144017] EST | 1953 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144017
+	country = EST
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 143273 }
+		command = { type = headofgovernment which = 130100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144022] EST | 1953 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144022
+	country = EST
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 130107 }
+		command = { type = headofgovernment which = 130108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144023] EST | 1955 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144023
+	country = EST
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 130109 }
+		command = { type = headofgovernment which = 130110 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144024] EST | 1959 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144024
+	country = EST
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 130111 }
+		command = { type = headofgovernment which = 130112 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144018] EST | 1960 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144018
+	country = EST
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 143273 }
+		command = { type = headofgovernment which = 130101 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144019] EST | 1962 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144019
+	country = EST
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 143273 }
+		command = { type = headofgovernment which = 130102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144025] EST | 1963 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144025
+	country = EST
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1966 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 223171 }
+		command = { type = headofgovernment which = 130114 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144027] EST | 1967 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144027
+	country = EST
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1967 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1967 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 130117 }
+		command = { type = headofgovernment which = 130118 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144028] EST | 1968 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144028
+	country = EST
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1968 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1969 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 130119 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144029] EST | 1970 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144029
+	country = EST
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1970 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1974 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 324274 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144026] EST | 1971 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144026
+	country = EST
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 130115 }
+		command = { type = headofgovernment which = 130116 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144030] EST | 1975 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144030
+	country = EST
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1975 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1977 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 130121 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144031] EST | 1978 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144031
+	country = EST
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1978 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1981 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 130122 }
+		command = { type = headofgovernment which = 130123 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144032] EST | 1982 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144032
+	country = EST
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1982 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 130124 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144033] EST | 1983 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144033
+	country = EST
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1983 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1984 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 130125 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144034] EST | 1985 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144034
+	country = EST
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1985 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 130126 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144035] EST | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144035
+	country = EST
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 130127 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [144036] EST | 1991 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 144036
+	country = EST
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 130125 }
+		command = { type = headofgovernment which = 130129 }
+	}
+}

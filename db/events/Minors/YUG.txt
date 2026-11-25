@@ -1,0 +1,1116 @@
+# ============================================================================
+# File: events/Minors/YUG.txt (35 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [323041] YUG | 1914 | The Croatian Opposition (La oposición croata)
+# Triggered by event 217027 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323041
+	country = YUG
+	date = { day = 1 month = january year = 1914 }
+	deathdate = { day = 1 month = january year = 1933 }
+	offset = 180
+	trigger = {
+		event = 217027
+		government = fascist
+		incabinet = 415092
+	}
+	name = "EVT_YUG_323041_NAME"
+	desc = "EVT_YUG_323041_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 2
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = province_revoltrisk which = 343 value = 30 }
+		command = { type = province_revoltrisk which = 344 value = 20 }
+		command = { type = province_revoltrisk which = 345 value = 25 }
+		command = { type = province_revoltrisk which = 346 value = 25 }
+		command = { type = province_revoltrisk which = 347 value = 30 }
+		command = { type = province_revoltrisk which = 349 value = 30 }
+		command = { type = province_revoltrisk which = 351 value = 20 }
+		command = { type = province_revoltrisk which = 352 value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323013] YUG | 1933 | Stojadinovic's state visit to France (Visita de Estado de Stojadinovic a Francia)
+# Triggered by event 323008 in events/Minors/YUG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323013
+        random = no
+	country = YUG
+	trigger = {
+		  event = { id = 323008 days = 40 }
+                  headofgovernment = 100002
+		}
+	name = "EVT_YUG_323013_NAME"
+	desc = "EVT_YUG_323013_DESC"
+	style = 2
+	picture = "Minors/stojadinovicparis"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_GOOD"
+                command = { type = relation which = FRA value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323026] YUG | 1933 | The meeting with Hitler (El encuentro con Hitler)
+# Triggered by event 323014 in events/Minors/YUG.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323026
+        random = no
+	country = YUG
+	trigger = {
+		   AND = { event = { id = 323014 days = 330 }
+                 headofgovernment = 100002
+                 year = 1938
+                  }
+		}
+	name = "EVT_YUG_323026_NAME"
+	desc = "EVT_YUG_323026_DESC"
+	style = 2
+	picture = "Minors/stojadinovicberlin"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_GOOD"
+                command = { type = relation which = GER value = 25 }
+                command = { type = dissent value = -1 }
+                command = { type = trade which = YUG where = GER  supplies = 5 value = 1 }
+	        command = { type = trade which = GER where = YUG  rare_materials = 3 value = 1 }
+                command = { type = gain_tech which = 4030 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323028] YUG | 1933 | Itallians offer us Shkoder (Los italianos nos ofrecen Shkoder)
+# Triggered by event 329553 in events/ITA/ITA_Decisions.txt
+# Trigger event 166096 in events/ITA/ITA_20-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323028
+	random = no
+	country = YUG
+	name = "EVT_YUG_323028_NAME"
+	desc = "EVT_SHARED_01185_DESC"
+	style = 2
+	picture = "GLOBAL/cianobelgrade"
+        action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 97
+                command = { type = relation which = ITA value = 25 }
+                command = { type = dissent value = -2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+                command = { type = trigger which = 166096 }
+                command = { type = addclaim which = 361 }
+        }
+        action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 3
+		command = { type = relation which = ITA value = -50 }
+                command = { type = domestic which = defense_lobby value = 1 }
+                command = { type = dissent value = 2 }
+                command = { type = end_trades which = YUG where = ITA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329059] YUG | 1933 | Communist Coup Attempt (Intento de golpe de Estado comunista)
+# Triggered by event 329058 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329059
+	random = no
+	country = YUG
+	one_action = yes
+	trigger = {
+		event = 329058
+		random = 5
+		atwar = no
+		not = { alliance = { country = DDR } }
+		not = { war = { country = DDR } }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_SHARED_00197_NAME"
+	desc = "EVT_SHARED_00197_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	action = {
+		ai_chance = 80
+		name = "EVT_SHARED_00197_A"
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = dissent value = -5 }
+		command = { type = country which = U27 }
+		command = { type = set_relation which = DDR value = 200 }
+		command = { type = set_relation which = SOV value = 200 }
+		command = { type = alliance which = SOV when = 1 }
+	}
+	action = {
+		ai_chance = 20
+		name = "EVT_SHARED_00197_B"
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329552] YUG | 1933 | The end of the Little Entente (El fin de la Pequeña Entente)
+# Trigger event 209061 in events/Minors/ROM_14-36.txt
+# Trigger event 136023 in events/Minors/CZE_14-53.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329552
+	random = no
+	country = YUG
+	trigger = {
+                    OR = {
+			flag = Munich
+                        year = 1938
+                        alliance = { country = GER country = YUG }
+		}
+	}
+	name = "EVT_SHARED_01181_NAME"
+	desc = "EVT_SHARED_01181_DESC"
+	style = 2
+	picture = "Minors/little_entente_end"
+	decision_picture = "Minors/decision_little_entente"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1938 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ROM value = -15 }
+		command = { type = relation which = CZE value = -15 }
+		command = { type = relation which = ITA value = 15 }
+                command = { type = relation which = GER value = 15 }
+                command = { type = dissent value = 1 }
+		command = { type = trigger which = 209061 }
+                command = { type = trigger which = 136023 }
+                command = { type = domestic which = defense_lobby value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323024] YUG | 1933 | The Seventeen Principles (Los Diecisiete Principios)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323024
+        random = no
+	country = YUG
+	trigger = {
+		  year = 1933
+		}
+	name = "EVT_YUG_323024_NAME"
+	desc = "EVT_YUG_323024_DESC"
+	style = 2
+	picture = "Minors/pavelic"
+	date = { day = 0 month = april year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+                command = { type = relation which = ITA value = -15 }
+                command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323025] YUG | 1933 | Failed assassination attempt on King Aleksandar in Zagreb (Intento fallido de asesinato del rey Alejandro en Zagreb)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323025
+        random = no
+	country = YUG
+	trigger = {
+		  year = 1933
+		}
+	name = "EVT_YUG_323025_NAME"
+	desc = "EVT_YUG_323025_DESC"
+	style = 2
+	picture = "Minors/ustase"
+	date = { day = 17 month = december year = 1933 }
+	action = {
+		name = "ACTION_NAME_GOOD"
+                command = { type = relation which = ITA value = -15 }
+                command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323000] YUG | 1934 | Trade agreements with Albania (Acuerdos comerciales con Albania)
+# Triggered by event 101002 in events/Minors/ALB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323000
+	random = no
+	country = YUG
+	name = "EVT_SHARED_00464_NAME"
+	desc = "EVT_SHARED_00463_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action_a = {
+		name = "ACTION_NAME_SIGN"
+		ai_chance = 95
+                command = { type = relation which = ALB value = 25 }
+                command = { type = metalpool value = 500 }
+                command = { type = money value = 500 }
+		command = { type = supplies value = 200 }
+		command = { type = dissent value = -2 }
+        }
+        action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 5
+		command = { type = relation which = ALB value = -25 }
+                command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323027] YUG | 1934 | 130 years since the First Serbian Uprising (130 años desde el primer levantamiento serbio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323027
+        random = no
+	country = YUG
+	trigger = {
+			atwar = no
+		}
+	name = "EVT_YUG_323027_NAME"
+	desc = "EVT_YUG_323027_DESC"
+	style = 2
+	picture = "Minors/1804"
+	date = { day = 14 month = february year = 1934 }
+	action = {
+		name = ACTION_NAME_OK
+                command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323002] YUG | 1934 | Death of the Head of State (Muerte del Jefe del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323002
+	random = no
+	country = YUG
+	style = 2
+	trigger = {
+		headofstate = 100086
+	}
+	date = { day = 8 month = october year = 1934 }
+	name = "EVT_SHARED_00501_NAME"
+	desc = "EVT_SHARED_00501_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 100001 }
+		command = { type = sleepminister which = 100086 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323042] YUG | 1934 | Assassination of Alexander I (Magnicidio de Alejandro I)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323042
+	country = YUG
+	date = { day = 9 month = october year = 1934 }
+	deathdate = { day = 1 month = january year = 1938 }
+	offset = 5
+	trigger = {
+		incabinet = 415092
+	}
+	name = "EVT_YUG_323042_NAME"
+	desc = "EVT_YUG_323042_DESC"
+	action = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 100001 }
+		command = { type = sleepminister which = 100093 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323011] YUG | 1935 | ZBOR (El 'ZBOR')
+# ----------------------------------------------------------------------------
+event = {
+	id = 323011
+        random = no
+	country = YUG
+	trigger = {
+			headofstate = 100001
+		}
+	name = "EVT_YUG_323011_NAME"
+	desc = "EVT_YUG_323011_DESC"
+	style = 2
+	picture = "Minors/zbor"
+	date = { day = 6 month = january year = 1935 }
+	action = {
+		name = ACTION_NAME_OK
+                command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323015] YUG | 1935 | National Bureau created (Creación de la Oficina Nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323015
+        random = no
+	country = YUG
+	trigger = {
+			headofstate = 100001
+                  not = { government = communist
+            }
+		}
+	name = "EVT_YUG_323015_NAME"
+	desc = "EVT_YUG_323015_DESC"
+	style = 2
+	picture = "Minors/kpj"
+	date = { day = 1 month = march year = 1935 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+                command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323007] YUG | 1935 | The Yugoslav parliamentary election-1935 (Las elecciones parlamentarias yugoslavas de 1935)
+# Trigger event 323008 in events/Minors/YUG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323007
+	save_date = yes
+        random = no
+	country = YUG
+	trigger = {
+			headofstate = 100001
+		}
+	name = "EVT_YUG_323007_NAME"
+	desc = "EVT_YUG_323007_DESC"
+	style = 2
+	picture = "Minors/elections1935"
+	date = { day = 5 month = may year = 1935 }
+	action = {
+		name = ACTION_NAME_OK
+                command = { type = dissent value = 5 }
+		command = { type = domestic which = democratic value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323003] YUG | 1936 | Yugoslavia Signs Tripartite Pact (Yugoslavia firma el Pacto Tripartito)
+# Triggered by event 329126 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323003
+	random = no
+	country = YUG
+	name = EVT_SHARED_00606_NAME
+	desc = EVT_SHARED_00606_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 100
+		command = { type = alliance which = GER }
+		command = { type = relation which = GER value = 100 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 0
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323005] YUG | 1936 | Collapse of the SFR Yugoslavia (Caída de la RFS de Yugoslavia)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323005
+	random = no
+	country = YUG
+	name = "EVT_YUG_323005_NAME"
+	desc = "EVT_YUG_323005_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U27 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323038] YUG | 1936 | People's Republic Founded (República Popular)
+# Trigger event 323039 in events/Minors/YUG.txt
+# Trigger event 262033 in events/Minors/U27.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 323038
+   country = YUG
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U27
+            NOT = { ai = YUG }
+            NOT = { ai = U27 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U27
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U27 } }
+      command = { type = country which = U27 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U27
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = YUG }
+               control = { province = 338 data = -1 }
+            }
+         }
+         type = trigger which = 323039
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U27 }
+               NOT = { control = { province = 338 data = -1 } }
+            }
+         }
+         type = trigger which = 262033
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U27
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [323039] YUG | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 262032 in events/Minors/U27.txt
+# Triggered by event 323038 in events/Minors/YUG.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 323039
+   country = YUG
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U27 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [329127] YUG | 1936 | Military Coup in Yugoslavia (Golpe militar en Yugoslavia)
+# Triggered by event 329126 in events/GER/GER_Decisions.txt
+# Trigger event 150070 in events/GER/GER_33-36.txt
+# Trigger event 329726 in events/AI/YUG_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329127
+	random = no
+	country = YUG
+	trigger = {
+		war = { country = GER country = ENG }
+		alliance = { country = YUG country = GER }
+		NOT = { puppet = { country = YUG country = GER } }
+	}
+	name = EVT_YUG_329127_NAME
+	desc = EVT_YUG_329127_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_YUG_329127_A
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = domestic which = political_left value = -2 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { trigger = { NOT = { event = 329126 } } type = sleepevent which = 329126 }
+	}
+	action = {
+		name = ACTION_NAME_DONT_SIGN
+		ai_chance = 100
+		command = { type = dissent value = -5 }
+		command = { type = leave_alliance }
+		command = { type = peace which = ENG value = 1 }
+		command = { type = peace which = SOV value = 1 }
+		command = { type = peace which = USA value = 1 }
+		command = { type = peace which = GRE value = 1 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = headofstate which = 100069 }
+		command = { type = headofgovernment which = 100013 }
+		command = { type = foreignminister which = 100020 }
+		command = { type = armamentminister which = 100030 }
+		command = { type = ministerofsecurity which = 100037 }
+		command = { type = ministerofintelligence which = 100044 }
+		command = { type = chiefofstaff which = 100050 }
+		command = { type = chiefofarmy which = 100056 }
+		command = { type = chiefofnavy which = 100061 }
+		command = { type = chiefofair which = 100010 }
+		command = { type = relation which = GER value = -150 }
+		command = { type = relation which = ITA value = -100 }
+		command = { type = relation which = HUN value = -100 }
+		command = { type = relation which = ROM value = -100 }
+		command = { type = relation which = BUL value = -100 }
+		command = { trigger = { NOT = { event = 329126 } } type = sleepevent which = 329126 }
+		command = { type = event which = 150070 where = GER when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323012] YUG | 1936 | Failed assassination attempt on Stojadinovic! (¡Intento fallido de asesinato de Stojadinovic!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323012
+        random = no
+	country = YUG
+	trigger = {
+			headofgovernment = 100002
+		}
+	name = "EVT_YUG_323012_NAME"
+	desc = "EVT_YUG_323012_DESC"
+	style = 2
+	picture = "Minors/petarzivkovic"
+	date = { day = 6 month = march year = 1936 }
+	action = {
+		name = ACTION_NAME_OK
+                command = { type = chiefofarmy which = 100100 }
+                command = { type = chiefofnavy which = 100101 }
+                command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323019] YUG | 1936 | King Edward VIII visits Yugoslavia (El rey Eduardo VIII visita Yugoslavia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323019
+        random = no
+	country = YUG
+	trigger = {
+		  year = 1936
+                  headofgovernment = 100002
+		}
+	name = "EVT_YUG_323019_NAME"
+	desc = "EVT_YUG_323019_DESC"
+	style = 2
+	picture = "Minors/edvard"
+	date = { day = 0 month = june year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_GOOD"
+                command = { type = relation which = ENG value = 15 }
+                command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323022] YUG | 1936 | The oppening of the new parliament building (Apertura del nuevo edificio parlamentario)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323022
+        random = no
+	country = YUG
+	trigger = {
+		  year = 1936
+		}
+	name = "EVT_YUG_323022_NAME"
+	desc = "EVT_YUG_323022_DESC"
+	style = 2
+	picture = "Minors/dom"
+	date = { day = 19 month = october year = 1936 }
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { trigger = { ai = no } type = money value = -50 }
+                command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323014] YUG | 1937 | Italo-Yugoslav treaty of friendship and trade agreement (Tratado italo-yugoslavo de amistad y acuerdo comercial)
+# Triggered by event 166095 in events/ITA/ITA_Decisions.txt
+# Trigger event 323026 in events/Minors/YUG.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323014
+	random = no
+	country = YUG
+        save_date = yes
+	name = "EVT_SHARED_01183_NAME"
+	desc = "EVT_SHARED_01183_DESC"
+	style = 2
+	picture = "GLOBAL/italoyugoslav"
+	decision_picture = "GLOBAL/decision_italoyugoslav"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 50
+                command = { type = dissent value = -1 }
+                command = { type = trade which = YUG where = ITA  supplies = 4 value = 1 }
+	        command = { type = trade which = ITA where = YUG  rare_materials = 2 value = 1 }
+                command = { type = relation which = ITA value = 35 }
+        }
+        action_b = {
+		name = "ACTION_NAME_NEVER"
+		ai_chance = 50
+                command = { type = dissent value = 1 }
+                command = { type = relation which = ITA value = -35 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323018] YUG | 1937 | The Concordate crisis (La crisis del concordato)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323018
+	random = no
+	country = YUG
+	trigger = {
+		AND = {
+			headofgovernment = 100002
+                        year = 1937
+		}
+	}
+	name = "EVT_YUG_323018_NAME"
+	desc = "EVT_YUG_323018_DESC"
+	style = 2
+	picture = "Minors/concordate"
+	date = { day = 0 month = may year = 1937 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = "ACTION_NAME_DONT_SIGN"
+		ai_chance = 95
+		command = { type = relation which = ITA value = -5 }
+                command = { type = dissent value = 5 }
+        }
+        action_b = {
+		name = "ACTION_NAME_SIGN"
+		ai_chance = 5
+		command = { type = relation which = ITA value = 5 }
+                command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323023] YUG | 1938 | Monument to the Unknown Hero (Monumento al héroe desconocido)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323023
+        random = no
+	country = YUG
+	trigger = {
+		  year = 1938
+		}
+	name = "EVT_YUG_323023_NAME"
+	desc = "EVT_YUG_323023_DESC"
+	style = 2
+	picture = "Minors/avala"
+	date = { day = 28 month = june year = 1938 }
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { trigger = { ai = no } type = money value = -50 }
+                command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323020] YUG | 1938 | The Yugoslav parliamentary election-1938 (Las elecciones parlamentarias yugoslavas de 1938)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323020
+	save_date = yes
+        random = no
+	country = YUG
+	trigger = {
+			headofstate = 100001
+		}
+	name = "EVT_YUG_323020_NAME"
+	desc = "EVT_YUG_323020_DESC"
+	style = 2
+	picture = "Minors/elections1938"
+	date = { day = 11 month = december year = 1938 }
+	action = {
+		name = ACTION_NAME_OK
+                command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323037] YUG | 1939 | Neutrality Preserved (Preservación de la neutralidad)
+# Triggered by event 329787 in events/GER/GER_38-40.txt
+# Triggered by event 329788 in events/GLOBAL/ALL_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323037
+	country = YUG
+	name = EVT_SHARED_00897_NAME
+	desc = EVT_SHARED_00897_DESC
+	picture = "nwo/out_of_war"
+	style = 1
+	trigger = {
+		flag = der_untergang
+		OR = {
+			event = { id = 329787 days = 3 }
+			event = { id = 329788 days = 3 }
+		}
+		NOT = {
+			local_flag = tito_uprising
+		}
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = out_of_war }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [323001] YUG | 1939 | Minister Resigns (Dimisión de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 323001
+	random = no
+	country = YUG
+	style = 2
+	trigger = {
+		OR = {
+			minister = 100002
+			minister = 100003
+			}
+		}
+	date = { year = 1939 month = february day = 5 }
+	name = "EVT_SHARED_00500_NAME"
+	desc = "EVT_SHARED_00500_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 100002 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [323004] YUG | 1941 | Diplomatic Talks: Yugoslavia (Negociaciones con Yugoslavia)
+# Triggered by event 143170 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323004
+	random = no
+	country = YUG
+	name = EVT_SHARED_00410_NAME
+	desc = EVT_SHARED_00410_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = { trigger = { NOT = { army = 20 } }
+		ai_chance = 5
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 20 NOT = { army = 30 } alliance = { country = ITA country = GER } }
+		ai_chance = 20
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 20 NOT = { army = 30 } NOT = { alliance = { country = ITA country = GER } } }
+		ai_chance = 40
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 30 NOT = { army = 40 } alliance = { country = ITA country = GER } }
+		ai_chance = 40
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 30 NOT = { army = 40 } NOT = { alliance = { country = ITA country = GER } } }
+		ai_chance = 80
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 40 }
+		ai_chance = 900
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = {
+		ai_chance = 50
+		name = ACTION_NAME_NEUTRAL
+		command = { type = relation which = ENG value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329050] YUG | 1942 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329050
+	random = no
+	country = YUG
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = GER
+		puppet = { country = YUG country = GER }
+		random = 5
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = january year = 1942 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1942 }
+	action_a = {
+		ai_chance = 80
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 100070 }
+		command = { type = headofgovernment which = 100014 }
+		command = { type = foreignminister which = 100072 }
+		command = { type = armamentminister which = 100031 }
+		command = { type = ministerofsecurity which = 100038 }
+		command = { type = ministerofintelligence which = 100045 }
+		command = { type = chiefofstaff which = 100051 }
+		command = { type = chiefofarmy which = 100057 }
+		command = { type = chiefofnavy which = 100062 }
+		command = { type = chiefofair which = 100065 }
+		command = { type = dissent value = -1 }
+		}
+	action_b = {
+		ai_chance = 20
+		name = "ACTION_NAME_WAR"
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329051] YUG | 1943 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329051
+	random = no
+	country = YUG
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = GER
+		puppet = { country = YUG country = GER }
+		random = 5
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = january year = 1943 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1943 }
+	action_a = {
+		ai_chance = 80
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 100071 }
+		command = { type = headofgovernment which = 100015 }
+		command = { type = foreignminister which = 100022 }
+		command = { type = armamentminister which = 100032 }
+		command = { type = ministerofsecurity which = 100039 }
+		command = { type = ministerofintelligence which = 100046 }
+		command = { type = chiefofstaff which = 100052 }
+		command = { type = chiefofarmy which = 100058 }
+		command = { type = chiefofnavy which = 100063 }
+		command = { type = chiefofair which = 100066 }
+		command = { type = dissent value = -1 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_WAR"
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [323040] YUG | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 323040
+	country = YUG
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 100069 }
+		command = { type = headofgovernment which = 100077 }
+		command = { type = foreignminister which = 100024 }
+		command = { type = armamentminister which = 100033 }
+		command = { type = ministerofsecurity which = 100041 }
+		command = { type = ministerofintelligence which = 100048 }
+		command = { type = chiefofstaff which = 100053 }
+		command = { type = chiefofarmy which = 100059 }
+		command = { type = chiefofnavy which = 100061 }
+		command = { type = chiefofair which = 100067 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329052] YUG | 1944 | Democratic Restoration (Restauración democrática)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329052
+	random = no
+	country = YUG
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		atwar = GER
+		puppet = { country = YUG country = GER }
+		control = { province = 304 data = SOV }
+		control = { province = 209 data = SOV }
+		control = { province = 281 data = SOV }
+		random = 5
+		}
+	name = "EVT_SHARED_00497_NAME"
+	desc = "EVT_SHARED_00497_DESC"
+	date = { day = 1 month = january year = 1944 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 100069 }
+		command = { type = headofgovernment which = 100016 }
+		command = { type = foreignminister which = 100024 }
+		command = { type = armamentminister which = 100033 }
+		command = { type = ministerofsecurity which = 100041 }
+		command = { type = ministerofintelligence which = 100048 }
+		command = { type = chiefofstaff which = 100053 }
+		command = { type = chiefofarmy which = 100059 }
+		command = { type = chiefofnavy which = 100064 }
+		command = { type = chiefofair which = 100067 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329053] YUG | 1945 | Left-Wing Coup d'État (Golpe de Estado de izquierdas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329053
+	random = no
+	country = YUG
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		random = 5
+		war = { country = GER country = SOV }
+		control = { province = 232 data = SOV }
+		control = { province = 167 data = SOV }
+		control = { province = 184 data = SOV }
+		control = { province = 209 data = SOV }
+		}
+	name = "EVT_SHARED_00499_NAME"
+	desc = "EVT_SHARED_00499_DESC"
+	date = { day = 1 month = january year = 1945 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1947 }
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 90
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 100011 }
+		command = { type = headofgovernment which = 100017 }
+		command = { type = foreignminister which = 100025 }
+		command = { type = armamentminister which = 100034 }
+		command = { type = ministerofsecurity which = 100042 }
+		command = { type = ministerofintelligence which = 100049 }
+		command = { type = chiefofstaff which = 100073 }
+		command = { type = chiefofarmy which = 100074 }
+		command = { type = chiefofnavy which = 100075 }
+		command = { type = chiefofair which = 100068 }
+		command = { type = dissent value = -1 }
+		}
+	action_b = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 10
+		command = { }
+		}
+	}

@@ -1,0 +1,76 @@
+# ============================================================================
+# File: events/Minors/ARA.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [104001] ARA | 1936 | Lebanon Joins the UAR (El Líbano se une a la RAU)
+# ----------------------------------------------------------------------------
+event = {
+	id = 104001
+	country = ARA
+	name = EVT_ARA_104001_NAME
+	desc = EVT_ARA_104001_DESC
+	picture = "nwo/united_arab_republic"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = inherit which = LEB value = 1 }
+		command = { type = addcore which = 1018 }
+		command = { type = addcore which = 1019 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [104003] ARA | 1936 | Palestine Incorporated into the UAR (Palestina se incorpora a la RAU)
+# ----------------------------------------------------------------------------
+event = {
+	id = 104003
+	country = ARA
+	name = EVT_ARA_104003_NAME
+	desc = EVT_ARA_104003_DESC
+	picture = "nwo/united_arab_republic"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = inherit which = PAL value = 1 }
+		command = { type = addclaim which = 1010 }
+		command = { type = addclaim which = 1008 }
+		command = { type = addcore which = 1172 }
+		command = { type = addclaim which = 1011 }
+		command = { type = addcore which = 1013 }
+		command = { type = sleepevent which = 104004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [104004] ARA | 1958 | Annexation of the Palestinian Coast (Anexión de los territorios de Palestina)
+# ----------------------------------------------------------------------------
+event = {
+	id = 104004
+	country = ARA
+	name = EVT_ARA_104004_NAME
+	desc = EVT_ARA_104004_DESC
+	picture = "nwo/dome_of_the_rock"
+	style = 1
+	trigger = {
+		flag = cold_war
+		atwar = no
+		control = { province = 1008 data = -1 }
+		NOT = { exists = ISR }
+		}
+	date = { day = 1 month = february year = 1958 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = addclaim which = 1010 }
+		command = { type = addclaim which = 1008 }
+		command = { type = addcore which = 1172 }
+		command = { type = addclaim which = 1011 }
+		command = { type = addcore which = 1013 }
+	}
+}

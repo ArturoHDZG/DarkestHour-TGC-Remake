@@ -1,0 +1,533 @@
+# ============================================================================
+# File: events/Minors/CHC_Decisions.txt (10 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329033] CHC | 1933 | The Proclamation of the People's Republic of China (Proclamación de la República Popular China)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329033
+	country = CHC
+	decision = {
+		region = { region = "China" country = CHC data = 1 value = 50 }
+		government = communist
+	}
+	decision_trigger = {
+		region = { region = "China" country = CHC data = 1 value = 80 }
+	}
+	trigger = {
+		region = { region = "China" country = CHC data = 1 value = 80 }
+		government = communist
+	}
+	name = EVT_CHC_329033_NAME
+	desc = EVT_CHC_329033_DESC
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	decision_picture = "GLOBAL/decision_spread_revolution"
+	date = { day = 0 month = january year = 1933 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_HURRAH
+		command = { type = name where = CHC which = CHC1949 }
+		command = { type = flag_ext where = CHC which = "_PRC" }
+		command = { trigger = { owned = { province = 1247 data = CHC } } type = capital which = 1247 }
+		command = { type = dissent value = -20 }
+		command = { type = sleepteam which = 260125 when = 1 }
+		command = { type = waketeam which = 260126 when = 1 }
+		command = { type = waketeam which = 260127 when = 1 }
+		command = { type = waketeam which = 260128 when = 1 }
+		command = { type = waketeam which = 260129 when = 1 }
+		command = { type = waketeam which = 260131 when = 1 }
+		command = { type = waketeam which = 260132 when = 1 }
+		command = { type = waketeam which = 260027 when = 1 }
+		command = { type = waketeam which = 260028 when = 1 }
+		command = { type = waketeam which = 260029 when = 1 }
+		command = { type = waketeam which = 260007 when = 1 }
+		command = { type = waketeam which = 260008 when = 1 }
+		command = { type = waketeam which = 260009 when = 1 }
+		command = { type = waketeam which = 260010 when = 1 }
+		command = { type = waketeam which = 260011 when = 1 }
+		command = { type = waketeam which = 260012 when = 1 }
+		command = { type = waketeam which = 260013 when = 1 }
+		command = { type = waketeam which = 260019 when = 1 }
+		command = { type = waketeam which = 260020 when = 1 }
+		command = { type = waketeam which = 260021 when = 1 }
+		command = { type = waketeam which = 260023 when = 1 }
+		command = { type = waketeam which = 260024 when = 1 }
+		command = { type = waketeam which = 260134 when = 1 }
+		command = { type = waketeam which = 260135 when = 1 }
+		command = { type = waketeam which = 260137 when = 1 }
+		command = { type = waketeam which = 260138 when = 1 }
+		command = { type = waketeam which = 260140 when = 1 }
+		command = { type = waketeam which = 260142 when = 1 }
+		command = { type = waketeam which = 260143 when = 1 }
+		command = { type = waketeam which = 260144 when = 1 }
+		command = { type = waketeam which = 260145 when = 1 }
+		command = { type = waketeam which = 260146 when = 1 }
+		command = { type = waketeam which = 260147 when = 1 }
+		command = { type = waketeam which = 260148 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123044] CHC | 1945 | Submission of Regional Warlords (Sumisión de los señores de la guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123044
+	random = no
+	country = CHC
+	persistent = yes
+	name = "EVT_CHC_123044_NAME"
+	desc = "EVT_CHC_123044_DESC"
+	picture = "nwo/united_china"
+	style = 1
+	decision = {
+		flag = CHC_won_civil_war
+		OR = {
+			exists = CSX
+			exists = CXB
+			exists = CGX
+			exists = CYN
+		}
+	}
+	trigger = {
+		flag = CHC_won_civil_war
+		OR = {
+			AND = {
+				exists = CSX
+				NOT = { war = { country = CSX } }
+				ai = CSX
+			}
+			AND = {
+				exists = CXB
+				NOT = { war = { country = CXB} }
+				ai = CXB
+			}
+			AND = {
+				exists = CGX
+				NOT = { war = { country = CGX} }
+				ai = CGX
+			}
+			AND = {
+				exists = CYN
+				NOT = { war = { country = CYN} }
+				ai = CYN
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { exists = CSX NOT = { war = { country = CSX } } ai = CSX } type = inherit which = CSX }
+		command = { trigger = { exists = CXB NOT = { war = { country = CXB } } ai = CXB } type = inherit which = CXB }
+		command = { trigger = { exists = CGX NOT = { war = { country = CGX } } ai = CSX } type = inherit which = CGX }
+		command = { trigger = { exists = CYN NOT = { war = { country = CYN } } ai = CSX } type = inherit which = CYN }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329747] CHC | 1946 | Outbreak of Civil War (Estallido de la Guerra Civil China)
+# Trigger event 123031 in events/Minors/CHC_45-62.txt
+# Trigger event 124164 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329747
+	random = no
+	country = CHC
+	persistent = yes
+	name = "EVT_CHC_329747_NAME"
+	desc = "EVT_CHC_329747_DESC"
+	picture = "nwo/chinese_civil_war"
+	decision_picture = "nwo/d_chinese_civil_war"
+	style = 1
+	decision = {
+		NOT = { war = { country = CHI country = CHC } }
+		exists = CHC
+		flag = cold_war_pacific
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		NOT = { area = { area = "Heilongjiang" country = CHC value = 75 } }
+		NOT = { area = { area = "Jilin" country = CHC value = 75 } }
+	}
+	trigger = {
+		NOT = { war = { country = CHI country = CHC } }
+		exists = CHI
+		NOT = { non_aggression = { country = CHI country = CHC } }
+		NOT = { flag = chinese_unity_govt }
+		flag = cold_war_pacific
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		NOT = { area = { area = "Heilongjiang" country = CHC value = 75 } }
+		NOT = { area = { area = "Jilin" country = CHC value = 75 } }
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 40
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 25
+		command = { type = war which = CHI }
+	}
+	action = {
+		name = "ACTION_NAME_MOBILIZE"
+		ai_chance = 75
+		trigger = { ai = yes }
+		command = { type = relation which = CHI value = 1 }
+		command = { type = end_access which = CHI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329748] CHC | 1946 | Outbreak of Civil War (Estallido de la Guerra Civil China)
+# Trigger event 123031 in events/Minors/CHC_45-62.txt
+# Trigger event 124164 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329748
+	random = no
+	country = CHC
+	persistent = yes
+	name = "EVT_CHC_329748_NAME"
+	desc = "EVT_CHC_329748_DESC"
+	picture = "nwo/chinese_civil_war"
+	decision_picture = "nwo/d_chinese_civil_war"
+	style = 1
+	decision = {
+		NOT = { war = { country = CHI country = CHC } }
+		exists = CHC
+		flag = cold_war_pacific
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		area = { area = "Heilongjiang" country = CHC value = 75 }
+		area = { area = "Jilin" country = CHC value = 75 }
+	}
+	trigger = {
+		NOT = { war = { country = CHI country = CHC } }
+		exists = CHI
+		NOT = { non_aggression = { country = CHI country = CHC } }
+		NOT = { flag = chinese_unity_govt }
+		flag = cold_war_pacific
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		area = { area = "Heilongjiang" country = CHC value = 75 }
+		area = { area = "Jilin" country = CHC value = 75 }
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 40
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 75
+		command = { type = war which = CHI }
+	}
+	action = {
+		name = "ACTION_NAME_MOBILIZE"
+		ai_chance = 25
+		trigger = { ai = yes }
+		command = { type = relation which = CHI value = 1 }
+		command = { type = end_access which = CHI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329915] CHC | 1950 | Chinese Intervention in the Korean War (Intervención china en la Guerra de Corea)
+# Triggered by event 170011 in events/Minors/KOR.txt
+# Triggered by event 316231 in events/USA/USA_48-61.txt
+# Triggered by event 223278 in events/SOV/SOV_47-56.txt
+# Trigger event 205005 in events/Minors/PRK.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329915
+	country = CHC
+	name = EVT_CHC_329915_NAME
+	desc = EVT_CHC_329915_DESC
+	picture = "nwo/chinese_intervention_in_korea"
+	decision_picture = "nwo/d_chinese_intervention_in_korea"
+	style = 1
+	decision = {
+		war = { country = PRK country = KOR }
+		flag = CHC_won_civil_war
+	}
+	decision_trigger = {
+		war = { country = PRK country = KOR }
+		flag = CHC_won_civil_war
+		OR = {
+			event = 170011
+			event = 316231
+			event = 223278
+		}
+	}
+	trigger = {
+		war = { country = PRK country = KOR }
+		flag = CHC_won_civil_war
+		OR = {
+			event = 170011
+			event = 316231
+			event = 223278
+		}
+	}
+	date = { day = 1 month = october year = 1950 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = EVT_CHC_329915_A
+		ai_chance = 98
+		command = { type = trigger which = 205005 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = access which = PRK }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 2
+		trigger = { ai = yes }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123095] CHC | 1960 | Chinese Border Claims in the Himalayas (Reclamaciones chinas en el Himalaya)
+# Trigger event 329944 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123095
+	country = CHC
+	name = EVT_CHC_123095_NAME
+	desc = EVT_CHC_123095_DESC
+	picture = "nwo/himalayan_border"
+	decision_picture = "nwo/d_himalayan_border"
+	style = 1
+	decision = {
+		flag = cold_war
+		exists = IND
+		OR = {
+			NOT = { control = { province = 1278 data = -1 } }
+			NOT = { control = { province = 1455 data = -1 } }
+			NOT = { control = { province = 1458 data = -1 } }
+		}
+		NOT = { war = { country = IND country = CHC } }
+	}
+	trigger = {
+		flag = cold_war
+		exists = IND
+		OR = {
+			NOT = { control = { province = 1278 data = -1 } }
+			NOT = { control = { province = 1455 data = -1 } }
+			NOT = { control = { province = 1458 data = -1 } }
+		}
+		NOT = { war = { country = IND country = CHC } }
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = EVT_CHC_123095_A
+		ai_chance = 90
+		command = { type = belligerence value = 1 }
+		command = { type = addcore which = 1278 }
+		command = { type = addcore which = 1455 }
+		command = { type = addcore which = 1458 }
+	}
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		trigger = { ai = yes }
+		ai_chance = 10
+		command = { type = sleepevent which = 329944 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329947] CHC | 1962 | Zhou Enlai's Ceasefire Proposal (La propuesta de alto el fuego de Zhou Enlai)
+# Triggered by event 329946 in events/Minors/CHC_45-62.txt
+# Trigger event 329948 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329947
+	country = CHC
+	name = EVT_CHC_329947_NAME
+	desc = EVT_CHC_329947_DESC
+	picture = "nwo/sino_indian_war"
+	decision_picture = "nwo/d_sino_indian_war"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 329946
+		exists = IND
+		war = { country = IND country = CHC }
+	}
+	decision = {
+		flag = cold_war
+		event = 329946
+		exists = IND
+		war = { country = IND country = CHC }
+	}
+	date = { day = 0 month = september year = 1962 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = EVT_CHC_329947_A
+		ai_chance = 95
+		command = { type = trigger which = 329948 }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 5
+		command = { type = sleepevent which = 329948 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123080] CHC | 1971 | Ping-Pong Diplomacy (Diplomacia del ping-pong)
+# Trigger event 329779 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123080
+	country = CHC
+	name = EVT_CHC_123080_NAME
+	desc = EVT_CHC_123080_DESC
+	picture = "nwo/ping_pong_diplomacy"
+	decision_picture = "nwo/d_ping_pong_diplomacy"
+	decision = {
+		relation = { which = USA value = -100 }
+		exists = USA
+		NOT = { flag = CHC_in_UNSC }
+		flag = cold_war
+	}
+	decision_trigger = {
+		atwar = no
+		relation = { which = USA value = -100 }
+		exists = USA
+		NOT = { flag = CHC_in_UNSC }
+		flag = cold_war
+	}
+	trigger = {
+		atwar = no
+		relation = { which = USA value = -100 }
+		exists = USA
+		NOT = { flag = CHC_in_UNSC }
+		flag = cold_war
+	}
+	date = { day = 1 month = april year = 1971 }
+	offset = 7
+	deathdate = { day = 29 month = april year = 1971 }
+	action = {
+		name = EVT_CHC_123080_A
+		ai_chance = 98
+		command = { type = trigger which = 329779 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		trigger = { ai = yes }
+		ai_chance = 2
+		command = { type = money value = 1 }
+		command = { type = sleepevent which = 329779 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123073] CHC | 1982 | Deng Xiaoping's Reforms (Reformas de Deng Xiaoping)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123073
+	country = CHC
+	name = EVT_CHC_123073_NAME
+	desc = EVT_CHC_123073_DESC
+	picture = "nwo/chinese_economy"
+	style = 1
+	decision = {
+		headofstate = 51313
+		atwar = no
+	}
+	decision_trigger = {
+		headofstate = 51313
+		atwar = no
+		NOT = { domestic = { type = political_left value = 9 } }
+	}
+	trigger = {
+		headofstate = 51313
+		atwar = no
+		NOT = { domestic = { type = political_left value = 9 } }
+	}
+	date = { day = 1 month = june year = 1982 }
+	offset = 1080
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 15 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123074] CHC | 1984 | Hong Kong Sovereignty Talks (Negociaciones sobre Hong Kong)
+# Trigger event 143286 in events/ENG/ENG_82-91.txt
+# Trigger event 143287 in events/ENG/ENG_82-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123074
+	country = CHC
+	name = EVT_CHC_123074_NAME
+	desc = EVT_CHC_123074_DESC
+	picture = "nwo/chinese_hongkong"
+	decision_picture = "nwo/d_chinese_hongkong"
+	style = 1
+	decision = {
+		control = { province = 1371 data = ENG }
+	}
+	decision_trigger = {
+		atwar = no
+		control = { province = 1371 data = ENG }
+	}
+	trigger = {
+		atwar = no
+		control = { province = 1371 data = ENG }
+	}
+	date = { day = 1 month = june year = 1984 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = EVT_CHC_123074_A
+		ai_chance = 93
+		command = { type = trigger which = 143286 }
+		command = { type = dissent value = -5 }
+		command = { type = addcore which = 1371 }
+		command = { type = addcore which = 1372 }
+	}
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 5
+		trigger = { headofstate = 51313 }
+		command = { type = trigger which = 143287 }
+		command = { type = belligerence value = 5 }
+		command = { type = addcore which = 1371 }
+		command = { type = addcore which = 1372 }
+	}
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 93
+		trigger = { NOT = { headofstate = 51313 } }
+		command = { type = trigger which = 143287 }
+		command = { type = belligerence value = 5 }
+		command = { type = addcore which = 1371 }
+		command = { type = addcore which = 1372 }
+	}
+	action = {
+		name = ACTION_NOT_NOW
+		trigger = { ai = yes }
+		ai_chance = 2
+		command = { type = dissent value = 2 }
+	}
+}

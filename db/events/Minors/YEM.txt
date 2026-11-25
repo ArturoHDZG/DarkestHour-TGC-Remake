@@ -1,0 +1,306 @@
+# ============================================================================
+# File: events/Minors/YEM.txt (11 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [322000] YEM | 1910 | Recognize Burmese independence (Reconocer la independencia de Birmania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 322000
+	country = YEM
+	date = { day = 1 month = january year = 1910 }
+	offset = 30
+	deathdate = { day = 1 month = january year = 1936 }
+	trigger = {
+		NOT = { ispuppet = yes }
+		}
+	name = "EVT_SHARED_00057_NAME"
+	desc = "EVT_SHARED_00058_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = sleepminister which = 445026 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [322010] YEM | 1916 | All is Lost! (¡Todo está perdido!)
+# Triggered by event 196004 in events/Minors/OTT.txt
+# Triggered by event 196005 in events/Minors/OTT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 322010
+	country = YEM
+	date = { day = 1 month = 1 year = 1916 }
+	offset = 3
+	deathdate = { day = 1 month = 11 year = 1933 }
+	name = "EVT_YEM_322010_NAME"
+	desc = "EVT_YEM_322010_DESC"
+	style = 2
+	trigger = {
+		or = {
+			war = { country = FRA }
+			war = { country = ENG }
+			war = { country = RUS }
+			war = { country = SOV }
+			participant = { value = 2 }
+		}
+		or = {
+			not = { and = {
+				alliance = { country = OTT }
+				ispuppet = yes
+			} }
+			event = 196004
+			event = 196005
+		}
+		not = { ic = 20 }
+	}
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		ai_chance = 100
+		command = { type = leave_alliance }
+		command = { type = peace which = ENG value = 1 }
+		command = { type = peace which = FRA value = 1 }
+		command = { type = peace which = RUS value = 1 }
+		command = { type = peace which = SOV value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [322008] YEM | 1921 | Treaty of Taif (Tratado de Taif)
+# Triggered by event 159082 in events/Minors/HUN_14-38.txt
+# Triggered by event 215017 in events/Minors/SAU.txt
+# Trigger event 143399 in events/ENG/ENG_14-25.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 322008
+	country = YEM
+	name = "EVT_YEM_322008_NAME"
+	desc = "EVT_YEM_322008_DESC"
+	action = {
+		name = "EVT_YEM_322008_A"
+		ai_chance = 100
+		command = { type = event which = 143399 where = ENG when = 2}
+		command = { trigger = { war = { country = YEM country = ENG } } type = peace which = ENG }
+		command = { trigger = { war = { country = YEM country = FRA } alliance = { country = FRA country = ENG } } type = peace which = FRA }
+	}
+	action = {
+		name = "EVT_YEM_322008_B"
+		command = { type = relation which = ENG value = -5 }
+		ai_chance = 0
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [322009] YEM | 1921 | British Protection Offer (Protección británica)
+# Triggered by event 143399 in events/ENG/ENG_14-25.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 322009
+	country = YEM
+	name = "EVT_YEM_322009_NAME"
+	desc = "EVT_YEM_322009_DESC"
+	action = {
+		trigger = { flag = UK_became_master_of_YEM }
+		name = "ACTION_NAME_OFFER_PEACE"
+		ai_chance = 100
+		command = { type = relation which = U08 value = 50 }
+		command = { type = peace which = SAU value = 0 }
+	}
+	action = {
+		trigger = { flag = UK_refused_to_become_master_of_YEM }
+		name = "EVT_YEM_322009_A"
+		ai_chance = 0
+		command = { type = relation which = ENG value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [322001] YEM | 1948 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 322001
+	country = YEM
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 445100 }
+		command = { type = headofgovernment which = 445101 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [322002] YEM | 1962 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 322002
+	country = YEM
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 445102 }
+		command = { type = headofgovernment which = 445103 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [322003] YEM | 1963 | Proclamation of the Yemen Arab Republic (Proclamación de la República Árabe del Yemen)
+# ----------------------------------------------------------------------------
+event = {
+	id = 322003
+	country = YEM
+	name = EVT_YEM_322003_NAME
+	desc = EVT_YEM_322003_DESC
+	picture = "nwo/abdullah_al_sallal"
+	style = 1
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1966 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = flag_ext where = YEM which = _1962 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 445104 }
+		command = { type = headofgovernment which = 445105 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [322004] YEM | 1967 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 322004
+	country = YEM
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1967 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 445106 }
+		command = { type = headofgovernment which = 445107 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [322005] YEM | 1974 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 322005
+	country = YEM
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1976 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 445108 }
+		command = { type = headofgovernment which = 445109 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [322006] YEM | 1977 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 322006
+	country = YEM
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1977 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1977 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 445110 }
+		command = { type = headofgovernment which = 445111 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [322007] YEM | 1978 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 322007
+	country = YEM
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1978 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 445112 }
+		command = { type = headofgovernment which = 445113 }
+	}
+}

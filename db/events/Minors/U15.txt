@@ -1,0 +1,96 @@
+# ============================================================================
+# File: events/Minors/U15.txt (2 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [250000] U15 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 250001 in events/Minors/U15.txt
+# Trigger event 204022 in events/Minors/POR.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 250000
+   country = U15
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = POR
+            NOT = { ai = POR }
+            NOT = { ai = U15 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = POR
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = POR } }
+      command = { type = country which = POR }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = POR
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U15 }
+               control = { province = 481 data = -1 }
+            }
+         }
+         type = trigger which = 250001
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = POR }
+               NOT = { control = { province = 481 data = -1 } }
+            }
+         }
+         type = trigger which = 204022
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = POR
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [250001] U15 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 204021 in events/Minors/POR.txt
+# Triggered by event 250000 in events/Minors/U15.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 250001
+   country = U15
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = POR value = 1 }
+   }
+}

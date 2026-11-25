@@ -1,0 +1,1591 @@
+# ============================================================================
+# File: events/Minors/DFR.txt (45 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [139037] DFR | 1936 | People's Republic Founded (República Popular)
+# Triggered by event 137017 in events/Minors/DDR.txt
+# Trigger event 139038 in events/Minors/DFR.txt
+# Trigger event 137028 in events/Minors/DDR.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 139037
+   country = DFR
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = DDR
+            NOT = { ai = DFR }
+            NOT = { ai = DDR }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = DDR
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+	  NOT = { event = 137017 }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = DDR } }
+      command = { type = country which = DDR }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = DDR
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = DFR }
+               control = { province = 131 data = -1 }
+            }
+         }
+         type = trigger which = 139038
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = DDR }
+               NOT = { control = { province = 131 data = -1 } }
+            }
+         }
+         type = trigger which = 137028
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = DDR
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [139038] DFR | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 137027 in events/Minors/DDR.txt
+# Triggered by event 139037 in events/Minors/DFR.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 139038
+   country = DFR
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = DDR value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [139005] DFR | 1939 | The Saar Protectorate (El Protectorado del Sarre)
+# Triggered by event 259000 in events/Minors/U24.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139005
+	random = no
+	country = DFR
+	name = EVT_SHARED_00774_NAME
+	desc = EVT_DFR_139005_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+	exists = U23
+	event = 259000
+	OR = {
+          AND = { random = 2  event = { id = 259000 days = 1000 } }
+          AND = { random = 10 event = { id = 259000 days = 2100 } }
+          AND = { random = 50 event = { id = 259000 days = 4170 } }
+          }
+}
+	date = { day = 0 month = january year = 1939 }
+  	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 95
+		command = { type = inherit which = U23 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139043] DFR | 1948 | Nuremberg Verdicts Delivered (Sentencias de Núremberg)
+# Triggered by event 316251 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139043
+	country = DFR
+	name = EVT_DFR_139043_NAME
+	desc = EVT_DFR_139043_DESC
+	picture = "nwo/nuremburg_trials"
+	style = 1
+	trigger = {
+		event = 316251
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 30
+	deathdate = { day = 29 month = april year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = sleepminister which = 630054 }
+		command = { type = sleepminister which = 630055 }
+		command = { type = sleepminister which = 630056 }
+		command = { type = sleepminister which = 630057 }
+		command = { type = sleepminister which = 630058 }
+		command = { type = sleepminister which = 630059 }
+		command = { type = sleepminister which = 630060 }
+		command = { type = sleepminister which = 630061 }
+		command = { type = sleepminister which = 630062 }
+		command = { type = sleepminister which = 630063 }
+		command = { type = sleepminister which = 630064 }
+		command = { type = sleepminister which = 630065 }
+		command = { type = sleepminister which = 630066 }
+		command = { type = sleepminister which = 630067 }
+		command = { type = sleepminister which = 630069 }
+		command = { type = sleepminister which = 630070 }
+		command = { type = sleepminister which = 630071 }
+		command = { type = sleepminister which = 630072 }
+		command = { type = sleepminister which = 630074 }
+		command = { type = sleepminister which = 630075 }
+		command = { type = sleepminister which = 630077 }
+		command = { type = sleepminister which = 630079 }
+		command = { type = sleepminister which = 630080 }
+		command = { type = sleepminister which = 630081 }
+		command = { type = sleepminister which = 630082 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139044] DFR | 1948 | Severe Purges at Nuremberg (Ejecuciones masivas en Núremberg)
+# Triggered by event 316251 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139044
+	country = DFR
+	name = EVT_DFR_139044_NAME
+	desc = EVT_DFR_139044_DESC
+	picture = "nwo/nuremburg_trials"
+	style = 1
+	trigger = {
+		event = 316251
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 30
+	deathdate = { day = 29 month = april year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 25 }
+		command = { type = relation which = USA value = -150 }
+		command = { type = relation which = FRA value = -150 }
+		command = { type = relation which = ENG value = -150 }
+		command = { type = relation which = SOV value = -150 }
+		command = { type = domestic which = political_left value = 2 }
+		command = { type = domestic which = democratic value = 2 }
+		command = { type = industrial_modifier which = total value = -5 }
+		command = { type = sleepminister which = 630054 }
+		command = { type = sleepminister which = 630055 }
+		command = { type = sleepminister which = 630056 }
+		command = { type = sleepminister which = 630057 }
+		command = { type = sleepminister which = 630058 }
+		command = { type = sleepminister which = 630059 }
+		command = { type = sleepminister which = 630060 }
+		command = { type = sleepminister which = 630061 }
+		command = { type = sleepminister which = 630062 }
+		command = { type = sleepminister which = 630063 }
+		command = { type = sleepminister which = 630064 }
+		command = { type = sleepminister which = 630065 }
+		command = { type = sleepminister which = 630066 }
+		command = { type = sleepminister which = 630067 }
+		command = { type = sleepminister which = 630069 }
+		command = { type = sleepminister which = 630070 }
+		command = { type = sleepminister which = 630071 }
+		command = { type = sleepminister which = 630072 }
+		command = { type = sleepminister which = 630074 }
+		command = { type = sleepminister which = 630075 }
+		command = { type = sleepminister which = 630077 }
+		command = { type = sleepminister which = 630079 }
+		command = { type = sleepminister which = 630080 }
+		command = { type = sleepminister which = 630081 }
+		command = { type = sleepminister which = 630082 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139045] DFR | 1948 | Leniency at Nuremberg (Indulgencia en Núremberg)
+# Triggered by event 316251 in events/USA/USA_43-48.txt
+# Trigger event 329934 in events/Minors/DFR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139045
+	country = DFR
+	name = EVT_DFR_139045_NAME
+	desc = EVT_DFR_139045_DESC
+	picture = "nwo/nuremburg_trials"
+	style = 1
+	trigger = {
+		event = 316251
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 30
+	deathdate = { day = 29 month = april year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = relation which = USA value = 50 }
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = ENG value = 50 }
+		command = { type = relation which = SOV value = 50 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = industrial_modifier which = total value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329934] DFR | 1948 | The Secret Postwar Army (El ejército secreto de veteranos)
+# Triggered by event 139045 in events/Minors/DFR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329934
+	country = DFR
+	name = EVT_DFR_329934_NAME
+	desc = EVT_DFR_329934_DESC
+	picture = "nwo/wehrmacht_veterans"
+	style = 1
+	trigger = {
+		event = 139045
+		flag = ww3
+		war = { country = DFR country = SOV }
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 30
+	deathdate = { day = 29 month = april year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = add_division value = mechanized when = 5 }
+		command = { type = add_division value = mechanized when = 5 }
+		command = { type = add_division value = mechanized when = 5 }
+		command = { type = add_division value = mechanized when = 5 }
+		command = { type = add_division value = mechanized when = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139012] DFR | 1949 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139012
+	country = DFR
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 630002 }
+		command = { type = chiefofstaff which = 630074 }
+		command = { type = chiefofarmy which = 630008 }
+		command = { type = chiefofnavy which = 630078 }
+		command = { type = chiefofair which = 630037 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630011 }
+		command = { type = chiefofstaff which = 630074 }
+		command = { type = chiefofarmy which = 630008 }
+		command = { type = chiefofnavy which = 630078 }
+		command = { type = chiefofair which = 630037 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139008] DFR | 1950 | European Federation Proposal (Propuesta de Federación Europea)
+# Triggered by event 147172 in events/FRA/FRA_48-59.txt
+# Trigger event 147173 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139008
+	country = DFR
+	name = EVT_DFR_139008_NAME
+	desc = EVT_DFR_139008_DESC
+	picture = "nwo/schuman_declaration"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		event = 147172
+		atwar = no
+	}
+	date = { day = 1 month = july year = 1950 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = EVT_DFR_139008_A
+		ai_chance = 50
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+		command = { type = sleepevent which = 147173 }
+		command = { type = sleepevent which = 147174 }
+	}
+	action = {
+		name = EVT_DFR_139008_B
+		ai_chance = 45
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+		command = { type = domestic which = interventionism value = 2 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = sleepevent which = 147173 }
+		command = { type = sleepevent which = 147174 }
+		command = { type = sleepevent which = 139010 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139041] DFR | 1952 | A Unified Germany Aligned with the West (Alemania unificada en el bloque occidental)
+# Triggered by event 223295 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139041
+	random = no
+	country = DFR
+	name = EVT_DFR_139041_NAME
+	desc = EVT_DFR_139041_DESC
+	picture = "nwo/united_germany"
+	style = 1
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = inherit which = DDR }
+		command = { type = end_puppet }
+		command = { type = set_relation which = USA value = 100 }
+		command = { type = set_relation which = ENG value = 100 }
+		command = { type = set_relation which = FRA value = 100 }
+		command = { type = set_relation which = SOV value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139042] DFR | 1952 | A Neutral Unified Germany (Alemania unificada y neutral)
+# Triggered by event 223296 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139042
+	random = no
+	country = DFR
+	name = EVT_DFR_139042_NAME
+	desc = EVT_DFR_139042_DESC
+	picture = "nwo/united_germany"
+	style = 1
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = inherit which = DDR }
+		command = { type = end_puppet }
+		command = { type = leave_alliance }
+		command = { type = setflag which = neutral_germany }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { type = set_relation which = USA value = 0 }
+		command = { type = set_relation which = ENG value = 0 }
+		command = { type = set_relation which = FRA value = 0 }
+		command = { type = set_relation which = SOV value = 0 }
+		command = { type = capital which = 163 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139010] DFR | 1952 | The European Coal and Steel Community (Comunidad Europea del Carbón y del Acero)
+# Triggered by event 147178 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139010
+	country = DFR
+	name = EVT_DFR_139010_NAME
+	desc = EVT_DFR_139010_DESC
+	picture = "nwo/european_coal_and_steel_community"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 147178
+	}
+	date = { day = 23 month = july year = 1952 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 95
+		command = { type = energypool value = 20000 }
+		command = { type = metalpool value = 10000 }
+	}
+	action = {
+		name = ACTION_NAME_DONT_SIGN
+		ai_chance = 5
+		command = { type = relation which = FRA value = -50 }
+		command = { type = relation which = ITA value = -50 }
+		command = { type = relation which = BEL value = -50 }
+		command = { type = relation which = HOL value = -50 }
+		command = { type = relation which = DFR value = -50 }
+		command = { type = sleepevent which = 147179 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139013] DFR | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139013
+	country = DFR
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 630002 }
+		command = { type = foreignminister which = 630003 }
+		command = { type = armamentminister which = 630039 }
+		command = { type = ministerofsecurity which = 630040 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630043 }
+		command = { type = foreignminister which = 630014 }
+		command = { type = armamentminister which = 630018 }
+		command = { type = ministerofsecurity which = 630023 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139046] DFR | 1953 | Beria's Proposal (La propuesta de Beria)
+# Triggered by event 223309 in events/SOV/SOV_Decisions.txt
+# Trigger event 324491 in events/GLOBAL/MULTI_48-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139046
+	country = DFR
+	name = EVT_DFR_139046_NAME
+	desc = EVT_DFR_139046_DESC
+	picture = "nwo/united_germany"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 80
+		command = { type = dissent value = 5 }
+		command = { type = relation which = DDR value = 100 }
+		command = { type = relation which = SOV value = 50 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 20
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = sleepevent which = 324491 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139001] DFR | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139001
+	random = no
+	country = DFR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = DFR }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 16 month = june year = 1953 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 630001 }
+		command = { type = headofgovernment which = 630002 }
+		command = { type = foreignminister which = 630003 }
+		command = { type = armamentminister which = 630039 }
+		command = { type = ministerofsecurity which = 630040 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 630051 }
+		command = { type = headofgovernment which = 630043 }
+		command = { type = foreignminister which = 630014 }
+		command = { type = armamentminister which = 630018 }
+		command = { type = ministerofsecurity which = 630023 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [139007] DFR | 1955 | Accession of the FRG to NATO (Ingreso de la RFA en la OTAN)
+# Triggered by event 316203 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139007
+	country = DFR
+	name = EVT_DFR_139007_NAME
+	desc = EVT_DFR_139007_DESC
+	picture = "nwo/nato"
+	style = 1
+	trigger = {
+		OR = {
+			flag = cold_war
+			flag = ww3
+		}
+		NOT = { flag = neutral_germany }
+		event = 316203
+	}
+    date = { day = 0 month = january year = 1955 }
+    offset = 7
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 98
+		command = { type = alliance which = USA }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = EVT_DFR_139007_A
+		ai_chance = 2
+		command = { type = domestic which = interventionism value = -4 }
+		command = { type = sleepevent which = 223212 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139009] DFR | 1955 | Britain and European Unification (Gran Bretaña y la unión europea)
+# Triggered by event 147175 in events/FRA/FRA_48-59.txt
+# Trigger event 147176 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139009
+	country = DFR
+	name = EVT_DFR_139009_NAME
+	desc = EVT_DFR_139009_DESC
+	picture = "nwo/united_states_of_europe"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		event = 147175
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_SURRENDER_GAMEOVER
+		ai_chance = 80
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+	}
+	action = {
+		name = EVT_DFR_139009_A
+		ai_chance = 15
+		command = { type = sleepevent which = 147176 }
+		command = { type = sleepevent which = 147177 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = end_puppet }
+		command = { type = sleepevent which = 166157 }
+		command = { type = sleepevent which = 110059 }
+		command = { type = sleepevent which = 157034 }
+		command = { type = sleepevent which = 179011 }
+		command = { type = sleepevent which = 147176 }
+		command = { type = sleepevent which = 147177 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139040] DFR | 1955 | The Wirtschaftswunder (El Wirtschaftswunder)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139040
+	country = DFR
+	name = "EVT_DFR_139040_NAME"
+	desc = "EVT_DFR_139040_DESC"
+	picture = "nwo/wirtschaftswunder"
+	style = 1
+	date = { day = 1 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { flag = allied_occupation_of_germany_hard } type = industrial_modifier which = total value = 14 }
+		command = { trigger = { flag = allied_occupation_of_germany_medium } type = industrial_modifier which = total value = 8 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139039] DFR | 1956 | Reunification of the Saarland (Reunificación del Sarre)
+# Triggered by event 258000 in events/Minors/U23.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139039
+	country = DFR
+	name = "EVT_DFR_139039_NAME"
+	desc = "EVT_DFR_139039_DESC"
+	picture = "nwo/saar_protectorate"
+	style = 1
+	trigger = {
+		event = 258000
+		exists = U23
+	}
+	date = { day = 1 month = january year = 1956 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = inherit which = U23 }
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139014] DFR | 1957 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139014
+	country = DFR
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 630002 }
+		command = { type = foreignminister which = 630013 }
+		command = { type = armamentminister which = 630047 }
+		command = { type = ministerofsecurity which = 630022 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630043 }
+		command = { type = foreignminister which = 630014 }
+		command = { type = armamentminister which = 630018 }
+		command = { type = ministerofsecurity which = 630023 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139011] DFR | 1957 | Common Market Growth (Crecimiento del Mercado Común)
+# Triggered by event 147179 in events/FRA/FRA_48-59.txt
+# Triggered by event 147173 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139011
+	country = DFR
+	name = EVT_DFR_139011_NAME
+	desc = EVT_DFR_139011_DESC
+	picture = "nwo/european_economic_community"
+	style = 1
+	trigger = {
+		event = 147179
+	}
+	date = { day = 25 month = march year = 1957 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 7 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139002] DFR | 1957 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139002
+	random = no
+	country = DFR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = DFR }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 16 month = june year = 1957 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 630001 }
+		command = { type = headofgovernment which = 630002 }
+		command = { type = foreignminister which = 630013 }
+		command = { type = armamentminister which = 630047 }
+		command = { type = ministerofsecurity which = 630022 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 630051 }
+		command = { type = headofgovernment which = 630043 }
+		command = { type = foreignminister which = 630014 }
+		command = { type = armamentminister which = 630018 }
+		command = { type = ministerofsecurity which = 630023 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [139015] DFR | 1959 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139015
+	country = DFR
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 630041 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139000] DFR | 1959 | Minister Resigns (Dimisión de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139000
+	random = no
+	country = DFR
+	style = 2
+	trigger = {
+		OR = {
+			headofstate = 630001
+			headofstate = 630051
+		}
+	}
+	date = { day = 12 month = september year = 1959 }
+	name = "EVT_SHARED_00500_NAME"
+	desc = "EVT_SHARED_00500_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 630001 } type = headofstate which = 630041 }
+		command = { trigger = { headofstate = 630051 } type = headofstate which = 630052 }
+		command = { type = sleepminister which = 630001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [139016] DFR | 1961 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139016
+	country = DFR
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 630002 }
+		command = { type = foreignminister which = 630045 }
+		command = { type = armamentminister which = 630047 }
+		command = { type = ministerofsecurity which = 630022 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630044 }
+		command = { type = foreignminister which = 630046 }
+		command = { type = armamentminister which = 630018 }
+		command = { type = ministerofsecurity which = 630050 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139003] DFR | 1961 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139003
+	random = no
+	country = DFR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = DFR }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 16 month = june year = 1961 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 630041 }
+		command = { type = headofgovernment which = 630002 }
+		command = { type = foreignminister which = 630045 }
+		command = { type = armamentminister which = 630047 }
+		command = { type = ministerofsecurity which = 630022 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 630052 }
+		command = { type = headofgovernment which = 630044 }
+		command = { type = foreignminister which = 630046 }
+		command = { type = armamentminister which = 630018 }
+		command = { type = ministerofsecurity which = 630050 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [139034] DFR | 1961 | F-84 Thunderstreak Incident (Incidente de los F-84)
+# Trigger event 223243 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 139034
+	country = DFR
+	one_action = yes
+	name = EVT_DFR_139034_NAME
+	desc = EVT_DFR_139034_DESC
+	picture = "nwo/f_84_thunderstreak"
+	style = 1
+	trigger = {
+		exists = DDR
+		flag = cold_war
+		atwar = no
+		random = 50
+	}
+	date = { day = 1 month = september year = 1961 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_DFR_139034_A
+		ai_chance = 95
+		command = { type = dissent value = -1 }
+	}
+	action = {
+		name = EVT_DFR_139034_B
+		ai_chance = 5
+		command = { type = trigger which = 223243 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139033] DFR | 1962 | The Spiegel Affair (El escándalo Spiegel)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139033
+	country = DFR
+	name = EVT_DFR_139033_NAME
+	desc = EVT_DFR_139033_DESC
+	picture = "nwo/spiegel_affair"
+	style = 1
+	trigger = {
+		exists = DDR
+		flag = cold_war
+		atwar = no
+	}
+	date = { day = 8 month = october year = 1962 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = freedom value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139017] DFR | 1963 | Adenauer Steps Down (Dimisión de Adenauer)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139017
+	country = DFR
+	name = "EVT_DFR_139017_NAME"
+	desc = "EVT_DFR_139017_DESC"
+	picture = "nwo/old_adenauer"
+	style = 1
+	trigger = {
+		headofgovernment = 630002
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = sleepminister which = 630002 }
+		command = { type = headofgovernment which = 630042 }
+		command = { type = foreignminister which = 630045 }
+		command = { type = armamentminister which = 630048 }
+		command = { type = ministerofsecurity which = 630049 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139004] DFR | 1963 | Retirement of Konrad Adenauer (Retiro de Konrad Adenauer)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139004
+	random = no
+	country = DFR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		headofgovernment = 630002
+		random = 85
+		NOT = { ispuppet = DFR }
+		}
+	name = "EVT_DFR_139004_NAME"
+	desc = "EVT_DFR_139004_DESC"
+	date = { day = 16 month = october year = 1963 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 630041 }
+		command = { type = headofgovernment which = 630042 }
+		command = { type = foreignminister which = 630045 }
+		command = { type = armamentminister which = 630048 }
+		command = { type = ministerofsecurity which = 630049 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [139018] DFR | 1965 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139018
+	country = DFR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 630042 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630044 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139019] DFR | 1966 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139019
+	country = DFR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+		headofgovernment = 630042
+	}
+	date = { day = 0 month = january year = 1966 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1968 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 630083 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139020] DFR | 1967 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139020
+	country = DFR
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	date = { day = 19 month = april year = 1967 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1967 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 630002 }
+		command = { type = sleepminister which = 630003 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139021] DFR | 1969 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139021
+	country = DFR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1969 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 630084 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139022] DFR | 1969 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139022
+	country = DFR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1969 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630044 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 630083 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139023] DFR | 1972 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139023
+	country = DFR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630044 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofgovernment which = 630085 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139024] DFR | 1974 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139024
+	country = DFR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 630086 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139025] DFR | 1974 | Resignation of Willy Brandt (Dimisión de Willy Brandt)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139025
+	country = DFR
+	name = EVT_DFR_139025_NAME
+	desc = EVT_DFR_139025_DESC
+	picture = "nwo/willy_brandt"
+	style = 1
+	trigger = {
+		government = democratic
+		headofgovernment = 630044
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 630087 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139026] DFR | 1976 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139026
+	country = DFR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1976 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1979 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630087 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 630094 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139027] DFR | 1979 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139027
+	country = DFR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1983 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 630088 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139028] DFR | 1980 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139028
+	country = DFR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630087 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 630089 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139029] DFR | 1983 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139029
+	country = DFR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1983 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 630094 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630090 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139030] DFR | 1984 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139030
+	country = DFR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1984 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 630093 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139031] DFR | 1987 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139031
+	country = DFR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1987 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 630094 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630091 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [139032] DFR | 1990 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 139032
+	country = DFR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 630094 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 630092 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}

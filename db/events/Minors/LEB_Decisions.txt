@@ -1,0 +1,43 @@
+# ============================================================================
+# File: events/Minors/LEB_Decisions.txt (1 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329900] LEB | 1948 | Transjordan Enters Arab-Israeli War (Transjordania declara la guerra a Israel)
+# Triggered by event 142047 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329900
+	country = LEB
+	decision = {
+		event = 142047
+		war = { country = EGY country = ISR }
+	}
+	trigger = {
+		event = 142047
+		war = { country = EGY country = ISR }
+	}
+	name = EVT_SHARED_00928_NAME
+	desc = EVT_SHARED_00928_DESC
+	picture = "nwo/arab_israeli_war_1948"
+	style = 1
+	date = { day = 1 month = june year = 1948 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 95
+		command = { type = leave_alliance }
+		command = { type = alliance which = EGY }
+		command = { type = add_corps where = 1019 }
+		command = { type = add_division value = infantry when = 13 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		trigger = { ai = yes }
+		ai_chance = 5
+		command = { type = dissent value = 7 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}

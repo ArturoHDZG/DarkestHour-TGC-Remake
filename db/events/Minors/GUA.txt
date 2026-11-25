@@ -1,0 +1,681 @@
+# ============================================================================
+# File: events/Minors/GUA.txt (18 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329526] GUA | 1940 | Diplomatic Talks: Guatemala (Negociaciones con Guatemala)
+# Triggered by event 329517 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329526
+	random = no
+	country = GUA
+	trigger = {
+		random = 5
+		event = 329517
+		alliance = { country = BRA country = ENG }
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = GUA country = SOV } }
+		NOT = { alliance = { country = GUA country = ENG } }
+		NOT = { alliance = { country = GUA country = GER } }
+		NOT = { alliance = { country = GUA country = JAP } }
+		NOT = { war = { country = GUA country = ENG } }
+		NOT = { ispuppet = yes }
+	}
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_GUA_329526_NAME
+	desc = EVT_SHARED_00416_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = { trigger = { NOT = { army = 3 } }
+		ai_chance = 20
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } alliance = { country = ARG country = GER } }
+		ai_chance = 40
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 60
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } alliance = { country = ARG country = GER } }
+		ai_chance = 80
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 200
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 10 }
+		ai_chance = 900
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = {
+		ai_chance = 10
+		name = ACTION_NAME_NEUTRAL
+		command = { type = relation which = ENG value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153000] GUA | 1944 | Popular Revolution Victorious! (¡Triunfo de la revolución!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153000
+	random = no
+	country = GUA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 6
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 6
+					}
+				dissent = 3
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00496_NAME"
+	desc = "EVT_SHARED_00496_DESC"
+	date = { day = 1 month = january year = 1944 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 305011 }
+		command = { type = headofgovernment which = 305016 }
+		command = { type = foreignminister which = 305023 }
+		command = { type = armamentminister which = 305028 }
+		command = { type = ministerofsecurity which = 305036 }
+		command = { type = ministerofintelligence which = 305043 }
+		command = { type = chiefofstaff which = 305050 }
+		command = { type = chiefofarmy which = 305052 }
+		command = { type = chiefofnavy which = 305058 }
+		command = { type = chiefofair which = 305060 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [153006] GUA | 1944 | Ten Years of Spring (Diez Años de Primavera)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153006
+	country = GUA
+	name = EVT_GUA_153006_NAME
+	desc = EVT_GUA_153006_DESC
+	picture = "nwo/ten_years_of_spring"
+	style = 1
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 305100 }
+		command = { type = headofgovernment which = 305016 }
+		command = { type = foreignminister which = 305023 }
+		command = { type = armamentminister which = 305028 }
+		command = { type = ministerofsecurity which = 305036 }
+		command = { type = ministerofintelligence which = 305043 }
+		command = { type = chiefofstaff which = 305050 }
+		command = { type = chiefofarmy which = 305052 }
+		command = { type = chiefofnavy which = 305058 }
+		command = { type = chiefofnavy which = 305059 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153007] GUA | 1945 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153007
+	country = GUA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 305012 }
+		command = { type = headofgovernment which = 305101 }
+		command = { type = foreignminister which = 305024 }
+		command = { type = armamentminister which = 305029 }
+		command = { type = ministerofsecurity which = 305037 }
+		command = { type = ministerofintelligence which = 305045 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 305102 }
+		command = { type = headofgovernment which = 305103 }
+		command = { type = foreignminister which = 305024 }
+		command = { type = armamentminister which = 305029 }
+		command = { type = ministerofsecurity which = 305037 }
+		command = { type = ministerofintelligence which = 305045 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153008] GUA | 1951 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153008
+	country = GUA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -18 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 305011 }
+		command = { type = headofgovernment which = 305104 }
+		command = { type = foreignminister which = 305025 }
+		command = { type = armamentminister which = 305030 }
+		command = { type = ministerofsecurity which = 305036 }
+		command = { type = ministerofintelligence which = 305044 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 305105 }
+		command = { type = headofgovernment which = 305106 }
+		command = { type = foreignminister which = 305026 }
+		command = { type = armamentminister which = 305032 }
+		command = { type = ministerofsecurity which = 305039 }
+		command = { type = ministerofintelligence which = 305046 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153001] GUA | 1951 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153001
+	random = no
+	country = GUA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = GUA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = march year = 1951 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 305011 }
+		command = { type = headofgovernment which = 305016 }
+		command = { type = foreignminister which = 305025 }
+		command = { type = armamentminister which = 305030 }
+		command = { type = ministerofsecurity which = 305036 }
+		command = { type = ministerofintelligence which = 305044 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 305014 }
+		command = { type = headofgovernment which = 305019 }
+		command = { type = foreignminister which = 305026 }
+		command = { type = armamentminister which = 305032 }
+		command = { type = ministerofsecurity which = 305039 }
+		command = { type = ministerofintelligence which = 305046 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [153009] GUA | 1954 | Operation PBSUCCESS (Operación PBSUCCESS)
+# Triggered by event 316223 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 153009
+	country = GUA
+	one_action = yes
+	name = EVT_GUA_153009_NAME
+	desc = EVT_GUA_153009_DESC
+	picture = "nwo/operation_pbsuccess"
+	style = 1
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_COUP_SUCCEEDS
+		ai_chance = 90
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = headofstate which = 305107 }
+		command = { type = headofgovernment which = 305108 }
+		command = { type = dissent value = 20 }
+		command = { type = relation which = USA value = 100 }
+	}
+	action = {
+		name = ACTION_NAME_COUP_SUCCEEDS
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = political_left value = 4 }
+		command = { type = relation which = USA value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153010] GUA | 1958 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153010
+	country = GUA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 305105 }
+		command = { type = headofgovernment which = 305109 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153011] GUA | 1963 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153011
+	country = GUA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 305110 }
+		command = { type = headofgovernment which = 305111 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153012] GUA | 1966 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153012
+	country = GUA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1966 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1969 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 305112 }
+		command = { type = headofgovernment which = 305109 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153013] GUA | 1970 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153013
+	country = GUA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1970 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 305113 }
+		command = { type = headofgovernment which = 305114 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153014] GUA | 1974 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153014
+	country = GUA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1977 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 305115 }
+		command = { type = headofgovernment which = 305116 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153015] GUA | 1978 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153015
+	country = GUA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1978 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1979 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 305117 }
+		command = { type = headofgovernment which = 305118 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153016] GUA | 1980 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153016
+	country = GUA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1981 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 305119 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153017] GUA | 1982 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153017
+	country = GUA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1982 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 305120 }
+		command = { type = headofgovernment which = 305121 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153018] GUA | 1983 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153018
+	country = GUA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1983 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 305122 }
+		command = { type = headofgovernment which = 305123 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153019] GUA | 1986 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153019
+	country = GUA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 305126 }
+		command = { type = headofgovernment which = 305127 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 305124 }
+		command = { type = headofgovernment which = 305125 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [153020] GUA | 1991 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 153020
+	country = GUA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 305124 }
+		command = { type = headofgovernment which = 305128 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 305129 }
+		command = { type = headofgovernment which = 305130 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}

@@ -1,0 +1,84 @@
+# ============================================================================
+# File: events/Minors/U06.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [241000] U06 | 1933 | Head of State Resigns (Dimisión del Jefe de Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 241000
+	random = no
+	country = U06
+	style = 2
+	trigger = {
+		headofstate =  845011
+	}
+	date = { day = 19 month = june year = 1933 }
+	name = "EVT_SHARED_00507_NAME"
+	desc = "EVT_SHARED_00507_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 845014 }
+		command = { type = headofgovernment which = 845015 }
+		command = { type = foreignminister which = 845016 }
+		command = { type = sleepminister which = 845011 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [241001] U06 | 1934 | Head of State Resigns (Dimisión del Jefe de Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 241001
+	random = no
+	country = U06
+	style = 2
+	trigger = {
+		headofstate =  845014
+	}
+	date = { day = 22 month = november year = 1934 }
+	name = "EVT_SHARED_00507_NAME"
+	desc = "EVT_SHARED_00507_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 845001 }
+		command = { type = headofgovernment which = 845002 }
+		command = { type = foreignminister which = 845003 }
+		command = { type = sleepminister which = 845014 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [241002] U06 | 1936 | Danzig Coup d'État (Golpe de Estado en Danzig)
+# Triggered by event 150048 in events/GER/GER_33-36.txt
+# Triggered by event 150051 in events/GER/GER_38-40.txt
+# Trigger event 150049 in events/GER/GER_33-36.txt
+# Trigger event 203002 in events/Minors/POL_14-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 241002
+	random = no
+	country = U06
+	name = EVT_SHARED_00598_NAME
+	desc = EVT_SHARED_00598_DESC
+	style = 2
+	picture = "GLOBAL/danzig_coup"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+		command = { type = set_domestic which = democratic value = 0 }
+		command = { type = set_domestic which = political_left value = 0 }
+		command = { type = set_relation which = POL value = -150 }
+		command = { type = set_relation which = GER value = 150 }
+		command = { type = dissent value = 20 }
+		command = { type = headofstate which = 845017 }
+		command = { type = headofgovernment which = 845018 }
+		command = { type = foreignminister which = 845019 }
+		command = { type = sleepminister which = 845001 }
+		command = { type = trigger which = 150049 }
+		command = { type = trigger which = 203002 }
+	}
+}

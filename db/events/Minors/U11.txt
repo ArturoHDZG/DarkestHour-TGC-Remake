@@ -1,0 +1,128 @@
+# ============================================================================
+# File: events/Minors/U11.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [246001] U11 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 246002 in events/Minors/U11.txt
+# Trigger event 147212 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 246001
+   country = U11
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = FRA
+            NOT = { ai = FRA }
+            NOT = { ai = U11 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = FRA
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = FRA } }
+      command = { type = country which = FRA }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = FRA
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U11 }
+               control = { province = 55 data = -1 }
+            }
+         }
+         type = trigger which = 246002
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = FRA }
+               NOT = { control = { province = 55 data = -1 } }
+            }
+         }
+         type = trigger which = 147212
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = FRA
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [246002] U11 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 147211 in events/FRA/FRA_31-36.txt
+# Triggered by event 246001 in events/Minors/U11.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 246002
+   country = U11
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = FRA value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [246000] U11 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 246000
+	country = U11
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 870009 }
+		command = { type = headofgovernment which = 870014 }
+		command = { type = foreignminister which = 870022 }
+		command = { type = armamentminister which = 870039 }
+		command = { type = ministerofsecurity which = 870054 }
+		command = { type = ministerofintelligence which = 870065 }
+		command = { type = chiefofstaff which = 870066 }
+		command = { type = chiefofarmy which = 870069 }
+		command = { type = chiefofnavy which = 870073 }
+		command = { type = chiefofair which = 870075 }
+	}
+}

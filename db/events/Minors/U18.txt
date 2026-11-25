@@ -1,0 +1,128 @@
+# ============================================================================
+# File: events/Minors/U18.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [253001] U18 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 253002 in events/Minors/U18.txt
+# Trigger event 179015 in events/Minors/LUX.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 253001
+   country = U18
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = LUX
+            NOT = { ai = LUX }
+            NOT = { ai = U18 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = LUX
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = LUX } }
+      command = { type = country which = LUX }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = LUX
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U18 }
+               control = { province = 109 data = -1 }
+            }
+         }
+         type = trigger which = 253002
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = LUX }
+               NOT = { control = { province = 109 data = -1 } }
+            }
+         }
+         type = trigger which = 179015
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = LUX
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [253002] U18 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 179014 in events/Minors/LUX.txt
+# Triggered by event 253001 in events/Minors/U18.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 253002
+   country = U18
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = LUX value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [253000] U18 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 253000
+	country = U18
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 905002 }
+		command = { type = headofgovernment which = 905003 }
+		command = { type = foreignminister which = 905009 }
+		command = { type = armamentminister which = 905013 }
+		command = { type = ministerofsecurity which = 905017 }
+		command = { type = ministerofintelligence which = 905022 }
+		command = { type = chiefofstaff which = 905025 }
+		command = { type = chiefofarmy which = 905026 }
+		command = { type = chiefofnavy which = 905027 }
+		command = { type = chiefofair which = 905028 }
+	}
+}

@@ -1,0 +1,92 @@
+# ============================================================================
+# File: events/Minors/ISR_Decisions.txt (2 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [165030] ISR | 1948 | 1948 Palestine War (Guerra árabe-israelí de 1948)
+# Triggered by event 165001 in events/Minors/ISR.txt
+# Triggered by event 165029 in events/Minors/ISR.txt
+# Triggered by event 198002 in events/Minors/PAL.txt
+# Triggered by event 198003 in events/Minors/PAL.txt
+# Trigger event 142047 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 165030
+	country = ISR
+	picture = "nwo/palestine_civil_war_1948"
+	decision_picture = "nwo/d_palestine_civil_war_1948"
+	style = 1
+	decision = {
+		exists = PAL
+	}
+	decision_trigger = {
+		exists = PAL
+		OR = {
+			event = { id = 165001 days = 50 }
+			event = { id = 165029 days = 50 }
+		}
+		OR = {
+			event = { id = 198002 days = 50 }
+			event = { id = 198003 days = 50 }
+		}
+	}
+	trigger = {
+		exists = PAL
+		OR = {
+			event = { id = 165001 days = 50 }
+			event = { id = 165029 days = 50 }
+		}
+		OR = {
+			event = { id = 198002 days = 50 }
+			event = { id = 198003 days = 50 }
+		}
+	}
+	name = EVT_ISR_165030_NAME
+	desc = EVT_ISR_165030_DESC
+	date = { day = 1 month = may year = 1948 }
+	offset = 150
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 99
+		command = { type = war which = PAL }
+		command = { type = sleepevent which = 198004 }
+	}
+	action = {
+		name = ACTION_NAME_OFFER_PEACE
+		trigger = { ai = yes }
+		ai_chance = 1
+		command = { type = dissent value = 25 }
+		command = { type = domestic which = interventionism value = -4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [165035] ISR | 1950 | The Law of Return (La Ley del Retorno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 165035
+	country = ISR
+	name = EVT_ISR_165035_NAME
+	desc = EVT_ISR_165035_DESC
+	picture = "nwo/law_of_return"
+	decision_picture = "nwo/d_law_of_return"
+	style = 1
+	trigger = {
+		atwar = no
+	}
+	decision = {
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = province_manpower which = -1 value = 8 }
+		command = { type = province_manpower which = -1 value = 8 }
+		command = { type = province_manpower which = -1 value = 8 }
+		command = { type = industrial_modifier which = total value = 2 }
+	}
+}

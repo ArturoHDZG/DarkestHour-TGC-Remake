@@ -1,0 +1,444 @@
+# ============================================================================
+# File: events/Minors/ETH.txt (15 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [145014] ETH | 1933 | Formation of National Army (Creación del ejército)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145014
+	country = ETH
+	name = EVT_SHARED_00916_NAME
+	desc = EVT_SHARED_00916_DESC
+	picture = "nwo/foundation_of_army"
+	style = 1
+	date = { day = 1 month = january year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329183] ETH | 1935 | Ethiopian Appeal to the League (Llamamiento etíope a la Liga)
+# Trigger event 166043 in events/ITA/ITA_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329183
+	random = no
+	country = ETH
+	trigger = {
+			war = { country = ITA country = ETH }
+			}
+	date = { day = 02 month = january year = 1935 }
+	offset = 30
+	deathdate = { day = 04 month = january year = 1936 }
+	name = "EVT_SHARED_00671_NAME"
+	desc = "EVT_SHARED_00671_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_NO"
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		command = { type = trigger which = 166043 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329189] ETH | 1935 | Italian Occupation of Addis Ababa (Ocupación italiana de Addis Abeba)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329189
+	random = no
+	country = ETH
+	trigger = {
+			war = { country = ITA country = ETH }
+			control = { province = 825 data = ITA }
+			}
+	date = { day = 25 month = january year = 1935 }
+	offset = 10
+	deathdate = { day = 27 month = january year = 1938 }
+	name = "EVT_SHARED_00674_NAME"
+	desc = "EVT_SHARED_00674_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+			command = { type = dissent value = 1 }
+			command = { type = relation which = ITA value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145000] ETH | 1935 | Italian-Ethiopian Arbitration Negotiations (Negociaciones de arbitraje italiano-etíope)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145000
+	random = no
+	country = ETH
+	trigger = {
+			exists = ITA
+			}
+	date = { day = 24 month = june year = 1935 }
+	name = "EVT_SHARED_00673_NAME"
+	desc = "EVT_SHARED_00673_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 100
+		command = { type = relation which = ITA value = -20 }
+		command = { type = belligerence value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145004] ETH | 1942 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145004
+	country = ETH
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1942 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 245014 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145015] ETH | 1952 | Federation of Eritrea with Ethiopia (Federación de Eritrea con Etiopía)
+# Triggered by event 330006 in events/USA/USA_48-61.txt
+# Triggered by event 330007 in events/ENG/ENG_43-54.txt
+# Triggered by event 330008 in events/FRA/FRA_48-59.txt
+# Triggered by event 330009 in events/CHI/CHI_45-75.txt
+# Triggered by event 330010 in events/Minors/CHC_45-62.txt
+# Triggered by event 330011 in events/SOV/SOV_47-56.txt
+# Trigger event 324436 in events/GLOBAL/MULTI_48-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 145015
+	country = ETH
+	name = EVT_ETH_145015_NAME
+	desc = EVT_ETH_145015_DESC
+	picture = "nwo/united_nations"
+	style = 1
+	trigger = {
+		OR = {
+			NOT = { exists = USA }
+			event = 330006
+		}
+		OR = {
+			NOT = { exists = ENG }
+			event = 330007
+		}
+		OR = {
+			NOT = { exists = FRA }
+			event = 330008
+		}
+		OR = {
+			NOT = { exists = CHI }
+			flag = CHC_in_UNSC
+			event = 330009
+		}
+		OR = {
+			NOT = { exists = CHC }
+			NOT = { flag = CHC_in_UNSC }
+			event = 330010
+		}
+		OR = {
+			NOT = { exists = SOV }
+			event = 330011
+			flag = un_soviet_boycott
+		}
+		NOT = { flag = un_eritrea_veto }
+	}
+	date = { day = 1 month = january year = 1952 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 324436 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145005] ETH | 1957 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145005
+	country = ETH
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 245100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145006] ETH | 1960 | 1960 Ethiopian Coup Attempt (Conspiración de 1960 en Etiopía)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145006
+	country = ETH
+	one_action = yes
+	name = EVT_ETH_145006_NAME
+	desc = EVT_ETH_145006_DESC
+	picture = "nwo/haile_selassie_old"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = EVT_ETH_145006_A
+		ai_chance = 80
+		command = { type = headofstate which = 245111 }
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		name = EVT_ETH_145006_B
+		ai_chance = 20
+		command = { type = headofstate which = 245101 }
+		command = { type = headofgovernment which = 245013 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = freedom value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145007] ETH | 1961 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145007
+	country = ETH
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 245102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145013] ETH | 1961 | Eritrean Independence War (Guerra de Independencia eritrea)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145013
+	country = ETH
+	name = EVT_ETH_145013_NAME
+	desc = EVT_ETH_145013_DESC
+	picture = "nwo/eritrea"
+	style = 1
+	trigger = {
+		control = { province = 817 data = -1 }
+	}
+	date = { day = 1 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = province_revoltrisk which = 817 value = 15 }
+		command = { type = province_revoltrisk which = 815 value = 15 }
+		command = { type = province_revoltrisk which = 816 value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145008] ETH | 1974 | Ethiopian Revolution of 1974 (Revolución etíope de 1974)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145008
+	country = ETH
+	name = EVT_ETH_145008_NAME
+	desc = EVT_ETH_145008_DESC
+	picture = "nwo/derg"
+	style = 1
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1974 }
+	action = {
+		name = EVT_ETH_145008_A
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 245101 }
+		command = { type = headofgovernment which = 245103 }
+		command = { type = flag_ext where = ETH which = _1975 }
+		command = { type = name where = ETH which = ETH74 }
+	}
+	action = {
+		name = EVT_ETH_145008_B
+		ai_chance = 1
+		command = { type = dissent value = 30 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 245101 }
+		command = { type = headofgovernment which = 245103 }
+		command = { type = sleepevent which = 145009 }
+		command = { type = sleepevent which = 145010 }
+		command = { type = sleepevent which = 145011 }
+		command = { type = sleepevent which = 145012 }
+		command = { type = flag_ext where = ETH which = _1975 }
+		command = { type = name where = ETH which = ETH74 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145009] ETH | 1975 | The Derg Military Regime (Dictadura del Derg)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145009
+	country = ETH
+	name = EVT_ETH_145009_NAME
+	desc = EVT_ETH_145009_DESC
+	picture = "nwo/derg"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1975 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 245107 }
+		command = { type = headofgovernment which = 245108 }
+		command = { type = sleepminister which = 245001 }
+		command = { type = sleepminister which = 245006 }
+		command = { type = sleepminister which = 245013 }
+		command = { type = sleepminister which = 245017 }
+		command = { type = sleepminister which = 245043 }
+		command = { type = relation which = USA value = -150 }
+		command = { type = relation which = ENG value = -150 }
+		command = { type = relation which = SOV value = 150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145010] ETH | 1987 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145010
+	country = ETH
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1987 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 245104 }
+		command = { type = flag_ext where = ETH which = _1987 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145011] ETH | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145011
+	country = ETH
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 245105 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [145012] ETH | 1991 | Fall of the Derg (Caída del régimen del Derg)
+# ----------------------------------------------------------------------------
+event = {
+	id = 145012
+	country = ETH
+	name = EVT_ETH_145012_NAME
+	desc = EVT_ETH_145012_DESC
+	picture = "nwo/fall_of_derg"
+	style = 1
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_ETH_145012_A
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 245109 }
+		command = { type = headofgovernment which = 245106 }
+		command = { type = flag_ext where = ETH which = _1975 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 2
+		command = { type = dissent value = 10 }
+	}
+}

@@ -1,0 +1,2676 @@
+# ============================================================================
+# File: events/ENG/ENG_Decisions.txt (51 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [143040] ENG | 1914 | Offensive Chit Prepared (Reserva Logística Ofensiva lista)
+# Trigger event 143041 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143040
+	random = no
+	country = ENG
+	decision = { atwar = yes }
+	decision_trigger = { supplies = 10000 }
+	trigger = {
+		lost_national = { country = ENG value = 10 }
+		atwar = yes
+		OR = {
+			ai = yes
+			supplies = 10000
+		}
+	}
+	name = "EVT_SHARED_00460_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	decision_picture = "GLOBAL/decision_grand_offensive5"
+	date = { day = 1 month = january year = 1914 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = "ACTION_NAME_VICTORY"
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { type = morale which = naval value = 10 }
+		command = { type = morale which = air value = 10 }
+		command = { type = speed which = land value = 2 }
+		command = { type = counterattack value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = encirclement value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = sce_frequency value = 0.3 }
+		command = { type = attrition_mod value = 2 }
+		command = { type = trickleback_mod value = 5 }
+		command = { trigger = { ai = no } type = supplies value = -10000 }
+		command = { type = event which = 143041 where = -1 when = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143185] ENG | 1914 | The Dardanelles Expedition Plan (El plan de la expedición a los Dardanelos)
+# Trigger event 147262 in events/FRA/FRA_14-14.txt
+# Trigger event 143186 in events/ENG/ENG_14-14.txt
+# Trigger event 152021 in events/GRE/GRE_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143185
+	country = ENG
+	decision = {
+		war = { country = ENG country = OTT }
+	}
+	decision_trigger = { manpower = 100 }
+	trigger = {
+		ai = no
+		random = 10
+		war = { country = ENG country = OTT }
+	}
+	name = "EVT_ENG_143185_NAME"
+	desc = "EVT_ENG_143185_DESC"
+	style = 2
+	picture = "GLOBAL/varyag"
+	decision_picture = "ENG/decision_english_declaration_war"
+	date = { day = 1 month = january year = 1914 }
+	offset = 12
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = trigger which = 147262 }
+		command = { type = trigger which = 143186 }
+		command = { type = manpowerpool value = -100 }
+		command = { type = resource which = supplies value = -15  }
+		command = { type = add_division which = "1. Transport flotilla" value = transport when = 0 where = none  }
+		command = { type = add_division which = "2. Transport flotilla" value = transport when = 0 where = none  }
+		command = { type = add_division which = "3. Transport flotilla" value = transport when = 0 where = none  }
+	}
+	action_b = { trigger = { ai = yes }
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 0
+		command = {  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143189] ENG | 1914 | Seize the Port of Thessaloniki? (¿Ocupar el puerto de Salónica?)
+# Triggered by event 143186 in events/ENG/ENG_14-14.txt
+# Triggered by event 196003 in events/Minors/OTT.txt
+# Trigger event 152024 in events/GRE/GRE_14-33.txt
+# Trigger event 147260 in events/FRA/FRA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143189
+	country = ENG
+	decision = {
+		event = 143186
+		control = { province = 384 data = OTT }
+		war = { country = ENG country = OTT }
+		NOT = {
+			event = 196003
+			alliance = { country = FRA country = GRE }
+			war = { country = ENG country = GRE }
+		}
+	}
+	decision_trigger = {
+		control = { province = 365 data = GRE }
+	}
+	trigger = {
+   		random = 5
+		event = 143186
+		control = { province = 384 data = OTT }
+		control = { province = 365 data = GRE }
+		war = { country = ENG country = OTT }
+		NOT = {
+			event = 196003
+			alliance = { country = FRA country = GRE }
+			war = { country = ENG country = GRE }
+		}
+	}
+	name = "EVT_ENG_143189_NAME"
+	desc = "EVT_ENG_143189_DESC"
+	style = 2
+	picture = "GLOBAL/varyag"
+	decision_picture = "ENG/decision_english_declaration_war"
+	date = { day = 1 month = january year = 1914 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = trigger which = 152024  }
+		command = { type = dissent value = -2 }
+		command = { type = relation which = GRE value = -20 }
+	}
+	action_b = { trigger = { ai = yes }
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		command = { type = dissent value = -2 }
+		command = { type = relation which = GRE value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143223] ENG | 1914 | Offer White Peace to Germany (Ofrecer paz blanca a Alemania)
+# Trigger event 243005 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143223
+	country = ENG
+	decision = {
+		war = { country = ENG country = U08 }
+		participant = { country = ENG value = 1 }
+		NOT = { alliance = { country = FRA country = ENG } }
+		NOT = { alliance = { country = RUS country = ENG } }
+		NOT = { war = { country = SOV country = U08 } }
+	}
+	decision_trigger = {
+		NOT = { alliance = { country = FRA country = ENG } }
+		NOT = { alliance = { country = RUS country = ENG } }
+		NOT = { war = { country = SOV country = U08 } }
+		NOT = { lost_national = { country = ENG value = 5 } }
+		NOT = { lost_national = { country = U08 value = 5 } }
+	}
+	trigger = {
+		war = { country = ENG country = U08 }
+		participant = { country = ENG value = 1 }
+		NOT = { alliance = { country = FRA country = ENG } }
+		NOT = { alliance = { country = RUS country = ENG } }
+		NOT = { war = { country = SOV country = U08 } }
+		NOT = { lost_national = { country = ENG value = 5 } }
+		NOT = { lost_national = { country = U08 value = 5 } }
+	}
+	name = "EVT_SHARED_00052_NAME"
+	desc = "EVT_SHARED_00052_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 24 month = april year = 1914 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 243005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [196039] ENG | 1914 | Secure Southern Persian Oilfields (Asegurar los campos petrolíferos del sur de Persia)
+# Triggered by event 196025 in events/Minors/OTT.txt
+# Trigger event 201005 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 196039
+	country = ENG
+	decision = {
+		war = { country = U08 country = ENG }
+		alliance = { country = U02 country = ENG }
+		NOT = { war = { country = PER country = ENG } }
+		exists = PER
+		event = 196025
+	}
+	decision_trigger = {
+		war = { country = U08 country = ENG }
+		control = { province = 1538 data = -3 }
+	}
+	trigger = {
+		war = { country = U08 country = ENG }
+		alliance = { country = U02 country = ENG }
+		NOT = { war = { country = PER country = ENG } }
+		control = { province = 1538 data = -3 }
+		exists = PER
+		event = 196025
+	}
+	name = "EVT_ENG_196039_NAME"
+	desc = "EVT_SHARED_00099_DESC"
+	style = 2
+	picture = "GLOBAL/abadan_oil"
+	decision_picture = "GLOBAL/decision_abadan_oil"
+	date = { day = 28 month = july year = 1914 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1917 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = PER value = -15 }
+		command = { type = trigger which = 201005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143184] ENG | 1914 | Declaration of War on Germany (Declaración de guerra a Alemania)
+# Triggered by event 143227 in events/ENG/ENG_Decisions.txt
+# Triggered by event 143228 in events/ENG/ENG_Decisions.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 143227 in events/ENG/ENG_Decisions.txt
+# Trigger event 143228 in events/ENG/ENG_Decisions.txt
+# Trigger event 166289 in events/ITA/ITA_14-20.txt
+# Trigger event 243084 in events/Minors/U08_14-14.txt
+# Trigger event 243086 in events/Minors/U08_14-14.txt
+# Trigger event 243087 in events/Minors/U08_14-14.txt
+# Trigger event 243088 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143184
+	country = ENG
+	decision = {
+		war = { country = BEL country = U08 }
+		war = { country = FRA country = U08 }
+		alliance = { country = FRA country = BEL }
+		NOT = { alliance = { country = ENG country = FRA } }
+		NOT = { alliance = { country = ENG country = U08 } }
+		NOT = { war = { country = ENG country = FRA } }
+		NOT = { event = 143227 }
+		NOT = { event = 143228 }
+	}
+	decision_trigger = {
+		war = { country = BEL country = U08 }
+	}
+	trigger = {
+		war = { country = BEL country = U08 }
+		war = { country = FRA country = U08 }
+		alliance = { country = FRA country = BEL }
+		NOT = { alliance = { country = ENG country = FRA } }
+		NOT = { alliance = { country = ENG country = U08 } }
+		NOT = { war = { country = ENG country = FRA } }
+		NOT = { event = 143227 }
+		NOT = { event = 143228 }
+	}
+	name = "EVT_SHARED_00050_NAME"
+	desc = "EVT_ENG_143184_DESC"
+	style = 2
+	picture = "ENG/english_declaration_war"
+	decision_picture = "ENG/decision_english_declaration_war"
+	date = { day = 4 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1914 }
+	action = {
+		ai_chance = 100
+		name = "ACTION_NAME_WAR"
+		command = { type = alliance which = 2 when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+		command = { type = sleepevent which = 143227 }
+		command = { type = sleepevent which = 143228 }
+		command = { trigger = { war = { country = FRA country = SCH } NOT = { ispuppet = SCH } } type = dissent value = 5 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_NEUTRAL
+		command = { type = sleepevent which = 143227 }
+		command = { type = sleepevent which = 143228 }
+		command = { trigger = {
+						OR = {
+							NOT = { war = { country = FRA country = SCH } }
+							AND = {
+								ispuppet = SCH
+								war = { country = FRA country = SCH }
+							}
+						}
+					} type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143227] ENG | 1914 | Declaration of War on Germany (Declaración de guerra a Alemania)
+# Triggered by event 143184 in events/ENG/ENG_Decisions.txt
+# Triggered by event 143228 in events/ENG/ENG_Decisions.txt
+# Trigger event 143184 in events/ENG/ENG_Decisions.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 143228 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143227
+	country = ENG
+	decision = {
+		war = { country = SCH country = U08 }
+		war = { country = FRA country = U08 }
+		alliance = { country = FRA country = SCH }
+		NOT = { alliance = { country = ENG country = FRA } }
+		NOT = { alliance = { country = ENG country = U08 } }
+		NOT = { war = { country = ENG country = FRA } }
+		NOT = { event = 143184 }
+		NOT = { event = 143228 }
+	}
+	decision_trigger = { war = { country = SCH country = U08 } }
+	trigger = {
+		war = { country = SCH country = U08 }
+		war = { country = FRA country = U08 }
+		alliance = { country = FRA country = SCH }
+		NOT = { alliance = { country = ENG country = FRA } }
+		NOT = { alliance = { country = ENG country = U08 } }
+		NOT = { war = { country = ENG country = FRA } }
+		NOT = { event = 143184 }
+		NOT = { event = 143228 }
+	}
+	name = "EVT_SHARED_00050_NAME"
+	desc = "EVT_ENG_143227_DESC"
+	style = 2
+	picture = "ENG/english_declaration_war"
+	decision_picture = "ENG/decision_english_declaration_war"
+	date = { day = 4 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1914 }
+	action = {
+		ai_chance = 80
+		name = "ACTION_NAME_WAR"
+		command = { type = alliance which = FRA when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+		command = { type = sleepevent which = 143184 }
+		command = { type = sleepevent which = 143228 }
+	}
+	action = {
+		ai_chance = 20
+		name = ACTION_NAME_NEUTRAL
+		command = { type = dissent value = 1 }
+		command = { type = sleepevent which = 143184 }
+		command = { type = sleepevent which = 143228 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143228] ENG | 1914 | Declaration of War on Germany (Declaración de guerra a Alemania)
+# Triggered by event 143184 in events/ENG/ENG_Decisions.txt
+# Triggered by event 143227 in events/ENG/ENG_Decisions.txt
+# Trigger event 143184 in events/ENG/ENG_Decisions.txt
+# Trigger event 143227 in events/ENG/ENG_Decisions.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143228
+	country = ENG
+	decision = {
+		war = { country = FRA country = U08 }
+		NOT = { war = { country = BEL country = U08 } }
+		NOT = { war = { country = SCH country = U08 } }
+		NOT = { alliance = { country = ENG country = FRA } }
+		NOT = { alliance = { country = ENG country = U08 } }
+		NOT = { war = { country = ENG country = FRA } }
+		NOT = { event = 143184 }
+		NOT = { event = 143227 }
+	}
+	decision_trigger = { war = { country = FRA country = U08 }
+}
+	trigger = {
+		war = { country = FRA country = U08 }
+		NOT = { war = { country = BEL country = U08 } }
+		NOT = { war = { country = SCH country = U08 } }
+		NOT = { alliance = { country = ENG country = FRA } }
+		NOT = { alliance = { country = ENG country = U08 } }
+		NOT = { war = { country = ENG country = FRA } }
+		NOT = { event = 143184 }
+		NOT = { event = 143227 }
+	}
+	name = "EVT_SHARED_00050_NAME"
+	desc = "EVT_ENG_143228_DESC"
+	style = 2
+	picture = "ENG/english_declaration_war"
+	decision_picture = "ENG/decision_english_declaration_war"
+	date = { day = 4 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1914 }
+	action = {
+		ai_chance = 50
+		name = "ACTION_NAME_WAR"
+		command = { type = alliance which = FRA when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+		command = { type = sleepevent which = 143184 }
+		command = { type = sleepevent which = 143227 }
+		command = { trigger = { war = { country = FRA country = SCH } NOT = { ispuppet = SCH } } type = dissent value = 10 }
+		command = { trigger = {
+						OR = {
+							NOT = { war = { country = FRA country = SCH } }
+							AND = {
+								ispuppet = SCH
+								war = { country = FRA country = SCH }
+							}
+						}
+					} type = dissent value = 5 }
+	}
+	action = {
+		ai_chance = 50
+		name = ACTION_NAME_NEUTRAL
+		command = { type = sleepevent which = 143184 }
+		command = { type = sleepevent which = 143227 }
+		command = { trigger = { war = { country = FRA country = SCH } NOT = { ispuppet = SCH } } type = dissent value = -5 }
+		command = { trigger = {
+						OR = {
+							NOT = { war = { country = FRA country = SCH } }
+							AND = {
+								ispuppet = SCH
+								war = { country = FRA country = SCH }
+							}
+						}
+					} type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143213] ENG | 1915 | Naval Blockade of Germany (Bloqueo naval contra Alemania)
+# Trigger event 243123 in events/Minors/U08_14-18.txt
+# Trigger event 243124 in events/Minors/U08_Decisions.txt
+# Trigger event 243126 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143213
+	country = ENG
+	decision = {
+		war = { country = U08 country = ENG }
+	}
+	decision_trigger = {
+		garrison = { country = ENG province = 2692 type = naval size = 6 }
+		garrison = { country = ENG province = 2693 type = naval size = 6 }
+		garrison = { country = ENG province = 2696 type = naval size = 6 }
+	}
+	trigger = {
+		war = { country = U08 country = ENG }
+		random = 30
+	}
+	name = "EVT_ENG_143213_NAME"
+	desc = "EVT_ENG_143213_DESC"
+	style = 2
+	picture = "GLOBAL/naval_blockade"
+	date = { day = 1 month = january year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+	name = ACTION_NAME_OK
+		command = { type = belligerence value = 8 }
+		command = { type = gain_tech which = 8600 }
+		command = { type = trigger which = 243123 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143191] ENG | 1916 | The McMahon-Hussein Correspondence (Correspondencia McMahon-Huséin)
+# Trigger event 274002 in events/Minors/U50.txt
+# Trigger event 143192 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143191
+	country = ENG
+	decision = {
+		war = { country = OTT country = ENG  }
+		exists = U50
+		NOT = { war = { country = U50 country = ENG  }  }
+	}
+	decision_trigger = {
+		control = { province = 1004 data = ENG }
+	}
+	trigger = {
+		war = { country = OTT country = ENG  }
+		control = { province = 1004 data = ENG }
+		random = 20
+		exists = U50
+		NOT = { war = { country = U50 country = ENG  }  }
+	}
+	name = "EVT_ENG_143191_NAME"
+	desc = "EVT_ENG_143191_DESC"
+	style = 2
+	picture = "GLOBAL/ottoman_declaration_war"
+	decision_picture = "GLOBAL/decision_ottoman_declaration_war"
+	date = { day = 1 month = january year = 1916 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 274002 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143219] ENG | 1916 | Alliance Rapprochement with Portugal (Alineamiento diplomático de Portugal)
+# Trigger event 204004 in events/Minors/POR.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 143219
+   country = ENG
+	decision = {
+		exists = POR
+		war = { country = U08 country = ENG }
+		NOT = {
+			war = { country = POR country = ENG }
+			alliance = { country = POR country = ENG }
+			alliance = { country = POR country = U08 }
+		}
+	}
+	decision_trigger = {
+		relation = { which = POR value = 100 }
+		control = { province = 55 data = -3 }
+	}
+	trigger = {
+		exists = POR
+		war = { country = U08 country = ENG }
+		control = { province = 55 data = -3 }
+		random = 30
+		NOT = {
+			war = { country = POR country = ENG }
+			alliance = { country = POR country = ENG }
+			alliance = { country = POR country = U08 }
+		}
+	}
+	name = "EVT_ENG_143219_NAME"
+	desc = "EVT_SHARED_00051_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	date = { day = 1 month = january year = 1916 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+	name = ACTION_NAME_OK
+	command = { type = trigger which = 204004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143235] ENG | 1916 | Establish Protectorate over Qatar (Establecer protectorado sobre Catar)
+# Triggered by event 243090 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143235
+	country = ENG
+	decision = {
+		exists = U51
+		NOT = { event = 243090 }
+	}
+	decision_trigger = {
+		NOT = { war = { country = ENG country = U51 } }
+		NOT = { ispuppet = U51 }
+		OR = {
+			puppet = { country = U02 country = ENG }
+			puppet = { country = U53 country = ENG }
+			puppet = { country = OMN country = ENG }
+		}
+	}
+	trigger = {
+		exists = U51
+		NOT = { event = 243090 }
+		NOT = { war = { country = ENG country = U51 } }
+		NOT = { ispuppet = U51 }
+		OR = {
+			puppet = { country = U02 country = ENG }
+			puppet = { country = U53 country = ENG }
+			puppet = { country = OMN country = ENG }
+		}
+	}
+	name = "EVT_ENG_143235_NAME"
+	desc = "EVT_ENG_143235_DESC"
+	style = 2
+	picture = "ENG/qatar"
+	decision_picture = "ENG/decision_qatar"
+	date = { day = 1 month = january year = 1916 }
+	offset = 181
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { trigger = { NOT= { relation = { which = U51 value = 50 } } } type = set_relation which = U51 value = 50 }
+		command = { type = make_puppet which = U51 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143192] ENG | 1916 | Pledges for an Arab Kingdom (Promesas para un reino árabe unificado)
+# Triggered by event 143191 in events/ENG/ENG_Decisions.txt
+# Trigger event 274003 in events/Minors/U50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143192
+	country = ENG
+	decision = {
+		event = 143191
+		war = { country = OTT country = ENG  }
+		exists = U50
+		NOT = { war = { country = U50 country = ENG  }  }
+	}
+	decision_trigger = {
+		control = { province = 1004 data = ENG }
+	}
+	trigger = {
+		event = 143191
+		war = { country = OTT country = ENG  }
+		control = { province = 1004 data = ENG }
+		random = 20
+		exists = U50
+		NOT = { war = { country = U50 country = ENG  }  }
+	}
+	name = "EVT_ENG_143192_NAME"
+	desc = "EVT_ENG_143192_DESC"
+	style = 2
+	picture = "GLOBAL/ottoman_declaration_war"
+	decision_picture = "GLOBAL/decision_ottoman_declaration_war"
+	date = { day = 1 month = june year = 1916 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 274003 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143193] ENG | 1917 | Dispatch T.E. Lawrence (Misión de T.E. Lawrence)
+# Trigger event 274005 in events/Minors/U50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143193
+	country = ENG
+	decision = {
+		war = { country = OTT country = ENG }
+		war = { country = OTT country = U50 }
+		NOT = { war = { country = U50 country = ENG  }  }
+	}
+	decision_trigger = {
+		control = { province = 1004 data = ENG }
+	}
+	trigger = {
+		war = { country = OTT country = ENG  }
+		war = { country = OTT country = U50 }
+		control = { province = 1004 data = ENG }
+		random = 20
+		NOT = { war = { country = U50 country = ENG  }  }
+	}
+	name = "EVT_ENG_143193_NAME"
+	desc = "EVT_ENG_143193_DESC"
+	style = 2
+	picture = "GLOBAL/ottoman_declaration_war"
+	decision_picture = "GLOBAL/decision_ottoman_declaration_war"
+	date = { day = 1 month = january year = 1917 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 274005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143194] ENG | 1917 | Military Assistance to Hejaz (Asistencia militar a Hejaz)
+# Trigger event 274006 in events/Minors/U50.txt
+# Trigger event 143195 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143194
+	country = ENG
+	decision = {
+		war = { country = OTT country = ENG }
+		war = { country = OTT country = U50 }
+		NOT = { war = { country = U50 country = ENG  }  }
+	}
+	decision_trigger = {
+		control = { province = 1004 data = ENG }
+		NOT = { control = { province = 1025 data = OTT } }
+		supplies = 5000
+	}
+	trigger = {
+		war = { country = OTT country = ENG  }
+		war = { country = OTT country = U50 }
+		NOT = { war = { country = U50 country = ENG  }  }
+		control = { province = 1004 data = ENG }
+		NOT = { control = { province = 1025 data = OTT } }
+		random = 10
+	}
+	name = "EVT_ENG_143194_NAME"
+	desc = "EVT_ENG_143194_DESC"
+	style = 2
+	picture = "GLOBAL/ottoman_declaration_war"
+	decision_picture = "GLOBAL/decision_ottoman_declaration_war"
+	date = { day = 1 month = january year = 1917 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no} type = supplies value = -5000 }
+		command = { type = trigger which = 274006 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143230] ENG | 1917 | Jafar al-Askari Joins the Arab Revolt (Jafar al-Askari se une a la rebelión arabe)
+# Triggered by event 175010 in events/Minors/LBY.txt
+# Triggered by event 274004 in events/Minors/U50_Decisions.txt
+# Trigger event 274001 in events/Minors/U50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143230
+	country = ENG
+	decision = {
+		OR= {
+			event = 175010
+			NOT = { exists = LBY }
+		}
+		exists = OTT
+	}
+	decision_trigger = {
+		event = 274004
+		war = { country = ENG country = OTT }
+		war = { country = U50 country = OTT }
+		NOT = { war = { country = U50 country = ENG } }
+		money = 20
+		supplies = 200
+	}
+	trigger = {
+		OR= {
+			event = 175010
+			NOT = { exists = LBY }
+		}
+		exists = OTT
+		event = 274004
+		war = { country = ENG country = OTT }
+		war = { country = U50 country = OTT }
+		NOT = { war = { country = U50 country = ENG } }
+	}
+	name = "EVT_ENG_143230_NAME"
+	desc = "EVT_SHARED_00074_DESC"
+	style = 2
+	picture = "GLOBAL/ww1_offensive"
+	date = { day = 0 month = january year = 1917 }
+	offset = 121
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 95
+		command = { trigger = { ai = no } type = money value = -20 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+		command = { type = trigger which = 274001 }
+	}
+	action = {
+		name = "ACTION_NAME_NEVER"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143195] ENG | 1918 | Renew Supplies to Hejaz (Renovar suministros a Hejaz)
+# Triggered by event 143194 in events/ENG/ENG_Decisions.txt
+# Trigger event 274007 in events/Minors/U50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143195
+	country = ENG
+	decision = {
+		event = 143195
+		war = { country = OTT country = ENG }
+		war = { country = OTT country = U50 }
+		NOT = { war = { country = U50 country = ENG  }  }
+	}
+	decision_trigger = {
+		control = { province = 1004 data = ENG }
+		NOT = { control = { province = 1025 data = OTT } }
+		supplies = 8000
+	}
+	trigger = {
+		event = 143194
+		war = { country = OTT country = ENG  }
+		war = { country = OTT country = U50 }
+		NOT = { war = { country = U50 country = ENG  }  }
+		control = { province = 1004 data = ENG }
+		NOT = { control = { province = 1025 data = OTT } }
+		random = 10
+	}
+	name = "EVT_ENG_143195_NAME"
+	desc = "EVT_ENG_143195_DESC"
+	style = 2
+	picture = "GLOBAL/ottoman_declaration_war"
+	decision_picture = "GLOBAL/decision_ottoman_declaration_war"
+	date = { day = 1 month = february year = 1918 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no} type = supplies value = -8000 }
+		command = { type = trigger which = 274007 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143424] ENG | 1923 | British help to Kurdish Rebels (Ayuda británica a los rebeldes kurdos)
+# Triggered by event 235047 in events/Minors/TUR.txt
+# Triggered by event 171004 in events/Minors/KUR.txt
+# Trigger event 171005 in events/Minors/KUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143424
+	random = no
+	country = ENG
+	decision = {
+		event = 235047
+		event = 171004
+		exists = KUR
+	}
+	decision_trigger = {
+		event = 235047
+		event = 171004
+		exists = KUR
+	}
+	trigger = {
+		event = 235047
+		event = 171004
+		exists = KUR
+	}
+	name = "EVT_ENG_143424_NAME"
+	desc = "EVT_ENG_143424_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision_picture = "ENG/decision_said"
+	date = { day = 0 month = january year = 1923 }
+	offset = 50
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = TUR value = -50 }
+		command = { type = relation which = KUR value = 100 }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+		command = { trigger = { ai = no } type = metalpool	value = -1000 }
+		command = { trigger = { ai = no } type = energypool value = -1000 }
+		command = { trigger = { ai = no } type = rarematerialspool value = -500 }
+		command = { trigger = { ai = no } type = oilpool value = -500 }
+		command = { type = trigger which = 171005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143013] ENG | 1933 | National Economic Recovery Policy (Plan de reactivación económica nacional)
+# Trigger event 143014 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143013
+	random = no
+	country = ENG
+	decision = {
+	}
+	decision_trigger = {
+		money = 500
+	}
+	trigger = {
+		OR = {
+			random = 10
+			AND = {
+				year = 1935
+				random = 50
+			}
+			AND = {
+				year = 1935
+				month = december
+			}
+		}
+	}
+	name = "EVT_SHARED_00189_NAME"
+	desc = "EVT_SHARED_00189_DESC"
+	style = 2
+	picture = "GLOBAL/new_deal"
+	decision_picture = "GLOBAL/decision_new_deal"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -2 }
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { trigger = { ai = no } type = money value = -500 }
+		command = { type = domestic which = free_market value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143137] ENG | 1933 | The Western Desert Campaign (La Campaña del Desierto Occidental)
+# Triggered by event 329417 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143137
+	random = no
+	country = ENG
+	decision = {
+		event = 329417
+	}
+	decision_trigger = {
+		supplies = 2000
+	}
+	trigger = {
+		event = 329417
+		random = 30
+	}
+	name = EVT_ENG_143137_NAME
+	desc = EVT_SHARED_00330_DESC
+	style = 2
+	picture = "ENG/montgomery"
+	decision_picture = "ENG/decision_gurkha"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_SHARED_00330_A
+		ai_chance = 0
+	   	command = { trigger = { NOT = { technology = 5960 } } type = gain_tech which = 5960 }
+	   	command = { trigger = { NOT = { technology = 5970 } } type = gain_tech which = 5970 }
+		command = { type = add_leader_skill which = 10185 value = 1 }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 100
+	   	command = { trigger = { NOT = { technology = 5960 } } type = gain_tech which = 5960 }
+	   	command = { trigger = { NOT = { technology = 5970 } } type = gain_tech which = 5970 }
+		command = { trigger = { control = { province = 781 data = -3 } } type = construct which = land_fort where = 781 value = 1 }
+		command = { trigger = { control = { province = 782 data = -3 } } type = construct which = land_fort where = 782 value = 1 }
+		command = { trigger = { control = { province = 780 data = -3 } } type = construct which = land_fort where = 780 value = 1 }
+		command = { trigger = { control = { province = 783 data = -3 } } type = construct which = land_fort where = 783 value = 1 }
+		command = { trigger = { control = { province = 789 data = -3 } } type = construct which = land_fort where = 789 value = 1 }
+		command = { type = add_leader_skill which = 10185 value = 1 }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+		command = { trigger = { ai = no } type = metalpool value = -2000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329071] ENG | 1933 | Request League Sanctions on Italy (Solicitar sanciones de la SDN contra Italia)
+# Trigger event 143012 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329071
+	random = no
+	country = ENG
+	decision = {
+		atwar = no
+		war = { country = ITA country = ETH }
+		NOT = { puppet = { country = ETH country = ENG } }
+	}
+	decision_trigger = {
+		money = 100
+		atwar = no
+		war = { country = ITA country = ETH }
+	}
+	trigger = {
+		war = { country = ITA country = ETH }
+		NOT = { puppet = { country = ETH country = ENG } }
+		random = 10
+		atwar = no
+	}
+	name = "EVT_ENG_329071_NAME"
+	desc = "EVT_SHARED_00201_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision_picture = "GLOBAL/decision_league_of_nations"
+	date = { day = 1 month = january year = 1933 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 143012 }
+		command = { trigger = { ai = no } type = money value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329361] ENG | 1933 | Operation Freshman: Sabotage at Vemork (Operación Freshman: Sabotaje en Vemork)
+# Triggered by event 150168 in events/GER/GER_14-33.txt
+# Trigger event 329363 in events/ENG/ENG_25-34.txt
+# Trigger event 329362 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329361
+	random = no
+	country = ENG
+	decision = { event = 150168 region = { region = Norway country = GER } building = { province = 486 type = nuclear_reactor value = 1 } war = { country = ENG country = GER } }
+	decision_trigger = {
+		paratrooper = { value = 1 when = now }
+		money = 100
+		supplies = 500
+	}
+	trigger = { event = 150168 region = { region = Norway country = GER } building = { province = 486 type = nuclear_reactor value = 1 } war = { country = ENG country = GER } random = 20 }
+	name = "EVT_SHARED_00286_NAME"
+	desc = "EVT_SHARED_00286_DESC"
+	style = 2
+	picture = "GLOBAL/heavy_water"
+	decision_picture = "GLOBAL/decision_peenemunde"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = trigger which = 329363 }
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { trigger = { ai = no } type = supplies value = -500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329362] ENG | 1933 | Operation Freshman: Sabotage at Vemork (Operación Freshman: Sabotaje en Vemork)
+# Triggered by event 329361 in events/ENG/ENG_Decisions.txt
+# Triggered by event 150168 in events/GER/GER_14-33.txt
+# Trigger event 329364 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329362
+	random = no
+	country = ENG
+	decision = { event = 329361 region = { region = Norway country = GER } building = { province = 486 type = nuclear_reactor value = 1 } war = { country = ENG country = GER } }
+	decision_trigger = {
+		paratrooper = { value = 3 when = now }
+		money = 500
+		supplies = 1000
+	}
+	trigger = { event = 150168 region = { region = Norway country = GER } building = { province = 486 type = nuclear_reactor value = 1 } war = { country = ENG country = GER } random = 20 }
+	name = "EVT_SHARED_00286_NAME"
+	desc = "EVT_SHARED_00287_DESC"
+	style = 2
+	picture = "GLOBAL/heavy_water"
+	decision_picture = "GLOBAL/decision_peenemunde"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = trigger which = 329364 }
+		command = { trigger = { ai = no } type = money value = -500 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329367] ENG | 1933 | Construct Radar Early Warning Stations (Construcción de estaciones de radar de alerta temprana)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329367
+	random = no
+	country = ENG
+	decision = { war = { country = ENG country = GER } }
+	decision_trigger = {
+		technology = 5420
+		money = 500
+		metal = 20000
+	}
+	trigger = { war = { country = ENG country = GER } random = 50 }
+	name = "EVT_ENG_329367_NAME"
+	desc = "EVT_ENG_329367_DESC"
+	style = 2
+	picture = "ENG/radar"
+	decision_picture = "GLOBAL/decision_radar"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = building_prod_mod which = radar_station value = 25 }
+		command = { trigger = { control = { province = 23 data = ENG } } type = construct which = radar_station where = 23 value = 1 }
+		command = { trigger = { control = { province = 20 data = ENG } } type = construct which = radar_station where = 20 value = 1 }
+		command = { trigger = { control = { province = 27 data = ENG } } type = construct which = radar_station where = 27 value = 1 }
+		command = { trigger = { control = { province = 26 data = ENG } } type = construct which = radar_station where = 26 value = 1 }
+		command = { trigger = { control = { province = 25 data = ENG } } type = construct which = radar_station where = 25 value = 1 }
+		command = { trigger = { control = { province = 19 data = ENG } } type = construct which = radar_station where = 19 value = 1 }
+		command = { trigger = { ai = no } type = money value = -500 }
+		command = { trigger = { ai = no } type = metalpool value = -20000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329377] ENG | 1933 | Anglo-American Military Conference (Conferencia militar angloamericana)
+# Triggered by event 329722 in events/AI/USA_AI.txt
+# Triggered by event 316159 in events/AI/USA_AI.txt
+# Trigger event 329722 in events/AI/USA_AI.txt
+# Trigger event 316159 in events/AI/USA_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329377
+	random = no
+	country = ENG
+	decision = { ai = USA atwar = yes alliance = { country = ENG country = USA } OR = { war = { country = USA country = GER } war = { country = USA country = ITA } } }
+	decision_trigger = { }
+	trigger = { }
+	name = EVT_ENG_329377_NAME
+	desc = EVT_SHARED_00295_DESC
+	style = 2
+	picture = "GLOBAL/dday"
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	date = { day = 0 month = january year = 1933 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_ENG_329377_A
+	trigger = {
+		NOT = { event = 329722 }
+		war = { country = ENG country = GER }
+		war = { country = USA country = GER }
+		war = { country = SOV country = GER }
+		OR = {
+			control = { province = 55 data = -2 }
+			control = { province = 52 data = -2 }
+			control = { province = 104 data = -2 }
+		}
+	}
+		command = { type = trigger which = 329722 }
+	}
+	action = {
+		name = EVT_ENG_329377_B
+	trigger = {
+		NOT = { event = 316159 }
+		war = { country = ITA }
+		war = { country = USA country = ITA }
+		NOT = { region = { region = "Libya" country = -2 value = 10 } }
+		NOT = { region = { region = "Egypt" country = -2 value = 10 } }
+		NOT = { control = { province = 750 data = -2 } }
+		OR = {
+			NOT = { exists = FRA }
+			NOT = { war = { country = FRA } }
+			AND = {
+				war = { country = FRA }
+				NOT = {  region = {  region = "Algeria" country = -2 value = 10 } }
+				NOT = {  region = {  region = "Tunisia" country = -2 value = 10 } }
+				NOT = {  region = {  region = "Morocco" country = -2 value = 10 } }
+			}
+		}
+	}
+		command = { type = trigger which = 316159 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329384] ENG | 1933 | Proscription of the British Union of Fascists (Ilegalización de la Unión Británica de Fascistas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329384
+	random = no
+	country = ENG
+	decision = {
+		war = { country = GER country = ENG }
+		government = democratic
+	}
+	decision_trigger = { }
+	trigger = {
+		war = { country = GER country = ENG }
+		government = democratic
+		random = 20
+	}
+	name = "EVT_ENG_329384_NAME"
+	desc = "EVT_ENG_329384_DESC"
+	style = 2
+	picture = "ENG/mosley"
+	decision_picture = "GLOBAL/decision_fireside_chat"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { type = relation which = ITA value = -30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329424] ENG | 1933 | Recruit Gurkha Battalions (Reclutamiento de regimientos Gurkha)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329424
+	random = no
+	country = ENG
+	decision = { OR = { war = { country = JAP } war = { country = GER } } }
+	decision_trigger = { supplies = 1000 puppet = { country = U02 } }
+	trigger = {
+		OR = { war = { country = JAP } war = { country = GER } }
+		random = 20
+	}
+	name = EVT_ENG_329424_NAME
+	desc = EVT_ENG_329424_DESC
+	style = 2
+	picture = "ENG/gurkha"
+	decision_picture = "ENG/decision_gurkha"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = activate_unit_type which = b_06 }
+		command = { type = strength_cap which = bergsjaeger when = 0 value = 40 }
+		command = { type = build_division which = bergsjaeger value = b_06 cost = 0.1 where = 90 }
+		command = { type = build_division which = bergsjaeger value = b_06 cost = 0.1 where = 120 }
+		command = { type = build_division which = bergsjaeger value = b_06 cost = 0.1 where = 180 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329439] ENG | 1933 | Diplomatic Negotiations with Ireland over Treaty Ports (Negociaciones diplomáticas con Irlanda sobre los puertos de los tratados)
+# Trigger event 163024 in events/Minors/IRE_14-59.txt
+# Trigger event 163025 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329439
+	random = no
+	country = ENG
+	decision = {
+			war = { country = GER }
+			not = { alliance = { country = IRE } }
+			control = { province = 55 data = -3 }
+			headofgovernment = 10017
+			}
+	decision_trigger = { money = 100 }
+	trigger = { war = { country = GER } not = { alliance = { country = IRE } } control = { province = 55 data = -3 } headofgovernment = 10017 random = 20 }
+	date = { year = 1933 month = january day = 1 }
+	offset = 60
+	deathdate = { year = 1999 month = december day = 29 }
+   	name = EVT_ENG_329439_NAME
+	desc = EVT_SHARED_00341_DESC
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	action = {
+		ai_chance = 80
+		name = EVT_ENG_329439_A
+		command = { type = trigger which = 163024 }
+	}
+	action = {
+		ai_chance = 20
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = trigger which = 163025 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329443] ENG | 1933 | Deployment of 'Hobart's Funnies' (Despliegue de los blindados «Hobart's Funnies»)
+# Trigger event 143149 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329443
+	random = no
+	country = ENG
+	decision = {
+		year = 1943
+		war = { country = GER country = ENG }
+		control = { province = 29 data = -3 }
+		control = { province = 163 data = -2 }
+		control = { province = 55 data = -2 }
+	}
+	decision_trigger = {
+		supplies = 500
+	}
+	trigger = {
+		year = 1943
+		war = { country = GER country = ENG }
+		control = { province = 29 data = -3 }
+		control = { province = 163 data = -2 }
+		control = { province = 55 data = -2 }
+		random = 30
+	}
+	name = EVT_ENG_329443_NAME
+	desc = EVT_ENG_329443_DESC
+	style = 2
+	picture = "ENG/hobarts_funnies"
+	decision_picture = "ENG/decision_hobarts_funnies"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+      	command = { type = build_time which = amph_armor when = on_upgrade where = relative value = -10 }
+		command = { type = add_leader_skill which = 10134 value = 1 }
+		command = { trigger = { ai = no } type = supplies value = -500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143016] ENG | 1934 | Suspension of Newfoundland Self-Government (Suspensión del autogobierno en Terranova)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143016
+	random = no
+	country = ENG
+	decision = {
+		exists = U60
+		atwar = no
+	}
+	decision_trigger = {
+		money = 100
+		control = { province = 2136 data = U60 }
+		control = { province = 2137 data = U60 }
+		control = { province = 2138 data = U60 }
+	}
+	trigger = {
+		exists = U60
+		control = { province = 2136 data = U60 }
+		control = { province = 2137 data = U60 }
+		control = { province = 2138 data = U60 }
+		atwar = no
+		random = 10
+	}
+	name = "EVT_ENG_143016_NAME"
+	desc = "EVT_ENG_143016_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision_picture = "GLOBAL/decision_anticominternpact"
+	date = { day = 1 month = january year = 1934 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { type = addclaim which = 2136 }
+		command = { type = addclaim which = 2137 }
+		command = { type = addclaim which = 2138 }
+		command = { type = inherit which = U60 }
+		command = { type = secedeprovince which = ENG value = 2136 when = 2 }
+		command = { type = secedeprovince which = ENG value = 2137 when = 2 }
+		command = { type = secedeprovince which = ENG value = 2138 when = 2 }
+		command = { trigger = { ai = no } type = money value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143037] ENG | 1936 | De Gaulle's Appeal (El llamamiento de De Gaulle)
+# Triggered by event 147025 in events/FRA/FRA_31-36.txt
+# Trigger event 147026 in events/FRA/FRA_31-36.txt
+# Trigger event 329097 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143037
+	random = no
+	country = ENG
+	style = 2
+	picture = "ENG/appel_de_gaulle"
+	decision_picture = "GLOBAL/decision_appel_de_gaulle"
+	name = "EVT_ENG_143037_NAME"
+	desc = "EVT_ENG_143037_DESC"
+	decision = {
+		event = { id = 147025 days = 30 }
+		NOT = {
+			exists = U01
+			region = { region = France country = -3 data = 2 value = 1 }
+		}
+		war =  { country = ENG country = GER }
+	}
+	decision_trigger = {
+		event = { id = 147025 days = 30 }
+		NOT = { exists = U01 }
+		war =  { country = ENG country = GER }
+	}
+	trigger = {
+		event = { id = 147025 days = 30 }
+		NOT = { exists = U01 }
+		war =  { country = ENG country = GER }
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = FRA value = -100 }
+		command = { type = independence which = U01 value = 1 }
+        command = { type = alliance which = U01 when = 1 }
+		command = { type = transport_pool which = U01 value = 50 }
+        command = { type = event which = 147026 where = FRA when = 3 }
+    }
+}
+
+# ----------------------------------------------------------------------------
+# [143151] ENG | 1936 | Guarantees to Poland (Garantías anglo-francesas a Polonia)
+# Triggered by event 150036 in events/GER/GER_33-36.txt
+# Triggered by event 150039 in events/GER/GER_33-36.txt
+# Triggered by event 150041 in events/GER/GER_33-36.txt
+# Triggered by event 150042 in events/GER/GER_33-36.txt
+# Triggered by event 150043 in events/GER/GER_33-36.txt
+# Trigger event 203010 in events/Minors/POL_14-89.txt
+# Trigger event 203012 in events/Minors/POL_14-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143151
+	random = no
+	country = ENG
+	decision = {
+		exists = POL
+		exists = GER
+		OR = {
+			event = 150036
+			event = 150039
+			event = 150041
+			event = 150042
+			event = 150043
+		}
+		NOT = {
+			ispuppet = ENG
+			alliance = { country = POL country = SOV }
+			alliance = { country = POL country = GER }
+			alliance = { country = POL country = ENG }
+			atwar = POL
+		}
+	}
+	decision_trigger = {
+		OR = {
+			event = 150036
+			event = 150039
+			event = 150041
+			event = 150042
+			event = 150043
+		}
+		NOT = {
+			ispuppet = ENG
+			alliance = { country = POL country = SOV }
+			alliance = { country = POL country = GER }
+			alliance = { country = POL country = ENG }
+			atwar = POL
+		}
+	}
+	trigger = {
+		random = 30
+		exists = POL
+		exists = GER
+		OR = {
+			event = 150036
+			event = 150039
+			event = 150041
+			event = 150042
+			event = 150043
+		}
+		NOT = {
+			OR = {
+				ispuppet = ENG
+				alliance = { country = POL country = SOV }
+				alliance = { country = POL country = GER }
+				alliance = { country = POL country = ENG }
+			}
+		}
+		NOT = {
+			atwar = POL
+		}
+	}
+	name = "EVT_ENG_143151_NAME"
+	desc = "EVT_ENG_143151_DESC"
+	style = 2
+	picture = "GLOBAL/munich"
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 100
+		name = "EVT_ENG_143151_A"
+		command = { type = relation which = POL value = 25 }
+		command = { type = relation which = FRA value = 10 }
+		command = { type = relation which = GER value = -15 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = trigger which = 203010 }
+	}
+	action = {
+		ai_chance = 0
+		name = "ACTION_NAME_NO_NEED"
+		command = { type = trigger which = 203012 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316103] ENG | 1936 | Destroyers-for-Bases Agreement (Acuerdo de destructores por bases)
+# Trigger event 316104 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316103
+	random = no
+	country = ENG
+	name = EVT_SHARED_00421_NAME
+	desc = EVT_SHARED_00421_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+        	NOT = {
+			war = { country = USA country = ENG }
+        		alliance = { country = GER country = USA }
+		}
+		war = { country = GER country = ENG }
+		control = { province = 55 data = GER }
+	}
+	decision_trigger = {
+		war = { country = GER country = ENG }
+		control = { province = 55 data = GER }
+	}
+	trigger = {
+		control = { province = 55 data = GER }
+		random = 50
+		war = { country = GER country = ENG }
+        	NOT = {
+			war = { country = USA country = ENG }
+        		alliance = { country = GER country = USA }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 316104 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329097] ENG | 1936 | Attack on Mers-el-Kébir (Ataque a Mers-el-Kébir)
+# Triggered by event 143037 in events/ENG/ENG_Decisions.txt
+# Trigger event 236000 in events/Minors/U01_Decisions.txt
+# Trigger event 147028 in events/FRA/FRA_31-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329097
+	random = no
+	country = ENG
+	style = 2
+	picture = "GLOBAL/mers_el_kebir"
+	name = "EVT_SHARED_00521_NAME"
+	desc = "EVT_SHARED_00521_DESC"
+	decision = {
+		event = 143037
+		NOT = { alliance = { country = FRA country = ENG } }
+		NOT = { alliance = { country = FRA country = GER } }
+	}
+	decision_trigger = {
+		event = 143037
+		garrison = { country = ENG province = 348 type = naval size = 6 area = no }
+	}
+	trigger = {
+		event = 143037
+		NOT = { alliance = { country = FRA country = ENG } }
+		NOT = { alliance = { country = FRA country = GER } }
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 147028 }
+                                 }
+}
+
+# ----------------------------------------------------------------------------
+# [329129] ENG | 1936 | Operation Wilfred (Operación Wilfred)
+# Triggered by event 150057 in events/GER/GER_Decisions.txt
+# Trigger event 150078 in events/AI/GER_AI_33-36.txt
+# Trigger event 316113 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329129
+	random = no
+	country = ENG
+	name = EVT_ENG_329129_NAME
+	desc = EVT_ENG_329129_DESC
+	style = 2
+	picture = "ENG/churchill"
+	decision = {
+		war = { country = ENG country = GER }
+		exists = NOR
+		NOT = {
+			alliance = { country = NOR country = GER }
+			war = { country = NOR country = ENG }
+			war = { country = NOR country = GER }
+			war = { country = NOR country = SOV }
+		}
+		NOT = { event = { id = 150057 days = 210 } }
+	}
+	decision_trigger = {
+		NOT = {
+			alliance = { country = NOR country = ENG }
+			alliance = { country = NOR country = SOV }
+		}
+		NOT = { event = { id = 150057 days = 210 } }
+		supplies = 300
+	}
+	trigger = {
+		random = 5
+		war = { country = ENG country = GER }
+		exists = NOR
+		NOT = {
+			alliance = { country = NOR country = GER }
+			alliance = { country = NOR country = ENG }
+			alliance = { country = NOR country = SOV }
+			war = { country = NOR country = ENG }
+			war = { country = NOR country = GER }
+			war = { country = NOR country = SOV }
+		}
+		NOT = { event = { id = 150057 days = 210 } }
+	}
+	date = { day = 1 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = january year = 1960 }
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_WAR
+		command = { type = war which = NOR }
+		command = { type = dissent value = 10 }
+		command = { type = supplies value = -300 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = USA value = -80 }
+		command = { type = relation which = SOV value = -80 }
+		command = { type = end_trades which = ENG where = USA }
+		command = { type = end_trades which = ENG where = SOV }
+		command = { trigger = { ai = GER } type = trigger which = 150078 }
+		command = { type = sleepevent which = 150079 }
+		command = { type = trigger which = 316113 }
+	}
+	action = {
+		trigger = { ai = yes }
+		ai_chance = 100
+		name = "ACTION_NAME_NO_NEED"
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329130] ENG | 1936 | Plan R 4 Authorized (Plan R 4 autorizado)
+# Triggered by event 150057 in events/GER/GER_Decisions.txt
+# Triggered by event 150079 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329130
+	random = no
+	country = ENG
+	decision = {
+		war = { country = ENG country = GER }
+		NOT = { war = { country = GER country = SOV } }
+		NOT = { alliance = { country = NOR country = SOV } }
+		event = { id = 150057 days = 210 }
+		OR = {
+			NOT = { event = 150079 }
+			AND = {
+				exists = NOR
+				NOT = { atwar = NOR }
+			}
+		}
+	}
+	decision_trigger = {
+		NOT = { alliance = { country = NOR country = SOV } }
+		supplies = 300
+	}
+	trigger = {
+		war = { country = ENG country = GER }
+		NOT = { war = { country = GER country = SOV } }
+		NOT = { alliance = { country = NOR country = SOV } }
+		OR = {
+			random = 1
+			AND = {
+				random = 20
+				year = 1940
+				month = february
+			}
+		}
+		event = { id = 150057 days = 300 }
+		OR = {
+			NOT = { event = 150079 }
+			AND = {
+				exists = NOR
+				NOT = { atwar = NOR }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = january year = 1960 }
+	name = EVT_ENG_329130_NAME
+	desc = EVT_SHARED_00612_DESC
+	style = 2
+	picture = "GLOBAL/british_navy"
+	action = {
+		name = ACTION_NAME_FIGHT
+		command = { type = war which = NOR }
+		command = { type = dissent value = 5 }
+		command = { type = supplies value = -300 }
+		command = { type = relation which = USA value = -40 }
+		command = { type = relation which = SOV value = -40 }
+		command = { trigger = { ai = ENG } type = ai which = "switch/ENG_Norway.ai" }
+		command = { trigger = { ai = ENG } type = local_setflag which = ENGInvadeNorway }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329501] ENG | 1936 | British Guarantees to Greece (Garantías británicas a Grecia)
+# Triggered by event 150038 in events/GER/GER_Decisions.txt
+# Trigger event 152007 in events/GRE/GRE_33-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329501
+	random = no
+	country = ENG
+	name = EVT_ENG_329501_NAME
+	desc = EVT_ENG_329501_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		event = 150038
+		exists = GRE
+		alliance = { country = ITA country = GER }
+		control = { province = 359 data = ITA }
+		war = { country = GER country = ENG }
+		NOT = { war = { country = ITA country = GRE } }
+		NOT = { war = { country = ENG country = GRE } }
+	}
+	decision_trigger = {
+		alliance = { country = ITA country = GER }
+		control = { province = 359 data = ITA }
+		war = { country = GER country = ENG }
+	}
+	trigger = {
+        OR = {
+			random = 6
+			AND = {
+				month = june
+				year = 1939
+				random = 50
+			}
+		}
+		event = 150038
+		exists = GRE
+		alliance = { country = ITA country = GER }
+		control = { province = 359 data = ITA }
+		war = { country = GER country = ENG }
+		NOT = { war = { country = ITA country = GRE } }
+		NOT = { war = { country = ENG country = GRE } }
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = trigger which = 152007 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329514] ENG | 1936 | Churchill Becomes Prime Minister (Churchill nombrado primer ministro)
+# Trigger event 143021 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329514
+	random = no
+	country = ENG
+	name = EVT_ENG_329514_NAME
+	desc = EVT_ENG_329514_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		OR = {
+			war = { country = ENG country = GER }
+			war = { country = ENG country = SOV }
+			}
+		government = democratic
+		OR = {
+			war = { country = ENG country = SOV }
+			control = { province = 55 data = GER }
+			control = { province = 116 data = GER }
+		}
+	}
+decision_trigger = {
+		OR = {
+			war = { country = ENG country = GER }
+			war = { country = ENG country = SOV }
+			}
+		OR = {
+			war = { country = ENG country = SOV }
+			control = { province = 55 data = GER }
+			control = { province = 116 data = GER }
+		}
+ }
+	trigger = {
+		OR = {
+			war = { country = ENG country = GER }
+			war = { country = ENG country = SOV }
+			}
+		government = democratic
+		OR = {
+			war = { country = ENG country = SOV }
+			control = { province = 55 data = GER }
+			control = { province = 116 data = GER }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 10018 }
+		command = { type = foreignminister which = 10003 }
+		command = { type = money value = 500 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = defense_lobby value = 2 }
+		command = { type = dissent value = -2 }
+		command = { type = songs which = FinestHour.txt }
+	}
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 10018 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329503] ENG | 1936 | Invasion of Poland (Polonia bajo ataque)
+# Triggered by event 150058 in events/GER/GER_33-36.txt
+# Triggered by event 329117 in events/GER/GER_Decisions.txt
+# Triggered by event 143152 in events/ENG/ENG_34-36.txt
+# Trigger event 223114 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329503
+	random = no
+	country = ENG
+	decision = {
+		event = 143152
+		guarantee = { country = ENG country = POL }
+	}
+	decision_trigger = {
+		war = { country = POL country = GER }
+		NOT = { war = { country = GER country = ENG } }
+		NOT = { alliance = { country = POL country = ENG } }
+	}
+	trigger = {
+		event = 143152
+		guarantee = { country = ENG country = POL }
+		war = { country = POL country = GER }
+		NOT = { war = { country = GER country = ENG } }
+		NOT = { alliance = { country = POL country = ENG } }
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	name = EVT_ENG_329503_NAME
+	desc = EVT_ENG_329503_DESC
+	style = 2
+	picture = "GLOBAL/poland_invasion"
+	action = {
+		name = ACTION_NAME_FIGHT
+		command = { type = war which = GER }
+        command = { type = end_guarantee which = ENG where = POL }
+        command = { trigger = { guarantee = { country = FRA country = POL } alliance = { country = FRA country = ENG } } type = end_guarantee which = FRA where = POL }
+        command = { trigger = { guarantee = { country = CAN country = POL } alliance = { country = CAN country = ENG } } type = end_guarantee which = CAN where = POL }
+        command = { trigger = { guarantee = { country = SAF country = POL } alliance = { country = SAF country = ENG } } type = end_guarantee which = SAF where = POL }
+        command = { trigger = { guarantee = { country = AST country = POL } alliance = { country = AST country = ENG } } type = end_guarantee which = AST where = POL }
+        command = { trigger = { guarantee = { country = NZL country = POL } alliance = { country = NZL country = ENG } } type = end_guarantee which = NZL where = POL }
+		command = { type = songs which = ChamberlainDeclaresWar.txt }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329500] ENG | 1936 | Spanish Civil War: Intervention Policy (Guerra civil española: Política exterior)
+# Triggered by event 225010 in events/Minors/SPR.txt
+# Trigger event 324121 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 225013 in events/Minors/SPR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329500
+	random = no
+	country = ENG
+	decision = {
+		war = { country = SPA country = SPR }
+		event = 225010
+		NOT = {
+			OR = {
+			alliance = { country = FRA country = SPR }
+			alliance = { country = ENG country = SPR }
+			war = { country = ENG country = SPR }
+			war = { country = ENG country = SOV }
+			war = { country = ENG country = GER }
+			war = { country = ENG country = USA }
+			war = { country = ENG country = FRA }
+			war = { country = ENG country = ITA }
+			war = { country = ENG country = FIN }
+			government = fascist
+			}
+		}
+	}
+	decision_trigger = {
+		manpower = 15
+		supplies = 2500
+		money = 200
+	}
+	trigger = {
+		war = { country = SPA country = SPR }
+		event = 225010
+		NOT = {
+			OR = {
+			government = fascist
+			alliance = { country = ENG country = SPR }
+			war = { country = ENG country = SPR }
+			war = { country = ENG country = SOV }
+			war = { country = ENG country = GER }
+			war = { country = ENG country = USA }
+			war = { country = ENG country = FRA }
+			}
+		}
+	}
+	name = "EVT_ENG_329500_NAME"
+	desc = "EVT_ENG_329500_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 19 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		trigger = { ai = yes }
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 100
+		command = { type = relation which = SPR value = -15 }
+		command = { type = relation which = SPA value = 10 }
+		command = { type = relation which = SOV value = -5 }
+		command = { type = relation which = FRA value = 5 }
+		command = { type = relation which = GER value = 5 }
+		command = { type = relation which = ITA value = 10 }
+		command = { type = relation which = POR value = 10 }
+	}
+	action_b = {
+		name = "EVT_ENG_329500_A"
+		ai_chance = 0
+		command = { type = money value = -200 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = supplies value = -2500 }
+		command = { type = dissent value = 8 }
+		command = { type = relation which = SPR value = 15 }
+		command = { type = relation which = SPA value = -10 }
+		command = { type = relation which = SOV value = 5 }
+		command = { type = relation which = FRA value = -5 }
+		command = { type = relation which = GER value = -5 }
+		command = { type = relation which = ITA value = -10 }
+		command = { type = relation which = POR value = -10 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = trigger which = 225013 }
+		command = { type = non_aggression which = ENG where = SPR }
+		command	= { type = setflag which = SCW_allied_intervention }
+	}
+	action = {
+		trigger = { ai = no }
+		ai_chance = 0
+		name = EVT_SHARED_00204_A
+		command = { type = dissent value = 10 }
+		command = { type = money value = -200 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = supplies value = -2300 }
+		command = { type = trigger which = 225013 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SPR value = 20 }
+		command = { type = relation which = SPA value = -15 }
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = ITA value = -5 }
+		command = { type = non_aggression which = ENG where = SPR }
+		command	= { type = setflag which = SCW_allied_intervention }
+		command = { type = military_control which = ENG where = SPR value = 1 }
+		command	= { type = local_setflag which = military_control_SPR }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330159] ENG | 1938 | A peace deal with Japan (Un acuerdo de paz con Japón)
+# Trigger event 167322 in events/JAP/JAP_37-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 330159
+	random = no
+	country = ENG
+	decision = {
+		war = { country = ENG country = GER }
+		war = { country = ENG country = JAP }
+		NOT = { war = { country = USA country = JAP } }
+	}
+	decision_trigger = {
+		AND = {
+			war = { country = ENG country = GER }
+			war = { country = ENG country = JAP }
+			}
+		NOT = { war = { country = USA country = JAP } }
+		AND = {
+			control = { province = 1371 data = JAP }
+			control = { province = 1432 data = JAP }
+			control = { province = 1437 data = JAP }
+			control = { province = 1436 data = JAP }
+			control = { province = 1438 data = JAP }
+			control = { province = 1435 data = JAP }
+			control = { province = 1431 data = JAP }
+			control = { province = 1433 data = JAP }
+			}
+	}
+	trigger = {
+		AND = {
+			war = { country = ENG country = GER }
+			war = { country = ENG country = JAP }
+			}
+		NOT = { war = { country = USA country = JAP } }
+		AND = {
+			control = { province = 1371 data = JAP }
+			control = { province = 1432 data = JAP }
+			control = { province = 1437 data = JAP }
+			control = { province = 1436 data = JAP }
+			control = { province = 1438 data = JAP }
+			control = { province = 1435 data = JAP }
+			control = { province = 1431 data = JAP }
+			control = { province = 1433 data = JAP }
+			}
+		}
+	date = { day = 10 month = january year = 1938 }
+	offset = 20
+	deathdate = { day = 1 month = january year = 1953 }
+	name = "EVT_SHARED_01164_NAME"
+	desc = "EVT_SHARED_01164_DESC"
+	style = 2
+	picture = "GLOBAL/negotiaton"
+	decision_picture = "GLOBAL/decision_negotiaton"
+	action_a = {
+		name = "EVT_ENG_330159_A"
+		ai_chance = 90
+		command = { type = dissent value = -2 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "EVT_ENG_330159_B"
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 167322 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [143176] ENG | 1940 | Diplomatic Talks: Mexico (Negociaciones con México)
+# Triggered by event 329517 in events/ENG/ENG_Decisions.txt
+# Trigger event 183005 in events/Minors/MEX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143176
+	random = no
+	country = ENG
+	decision = {
+		exists = MEX
+		NOT = { ispuppet = MEX }
+		NOT = { war = { country = MEX country = ENG } }
+		event = 329517
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = MEX country = SOV } }
+		NOT = { alliance = { country = MEX country = ENG } }
+		NOT = { alliance = { country = MEX country = GER } }
+		NOT = { alliance = { country = MEX country = JAP } }
+	}
+	decision_trigger = {
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = MEX country = SOV } }
+		NOT = { alliance = { country = MEX country = ENG } }
+		NOT = { alliance = { country = MEX country = GER } }
+		NOT = { alliance = { country = MEX country = JAP } }
+	}
+	trigger = {
+		exists = MEX
+		NOT = { ispuppet = MEX }
+		NOT = { war = { country = MEX country = ENG } }
+		random = 5
+		event = 329517
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = MEX country = SOV } }
+		NOT = { alliance = { country = MEX country = ENG } }
+		NOT = { alliance = { country = MEX country = GER } }
+		NOT = { alliance = { country = MEX country = JAP } }
+	}
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_SHARED_00417_NAME
+	desc = EVT_SHARED_00416_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 183005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143177] ENG | 1940 | Diplomatic Talks: Brazil (Negociaciones con Brasil)
+# Triggered by event 329517 in events/ENG/ENG_Decisions.txt
+# Trigger event 116004 in events/Minors/BRA.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143177
+	random = no
+	country = ENG
+	decision = {
+		exists = BRA
+		NOT = { ispuppet = BRA }
+		NOT = { war = { country = BRA country = ENG } }
+		event = 329517
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = BRA country = SOV } }
+		NOT = { alliance = { country = BRA country = ENG } }
+		NOT = { alliance = { country = BRA country = GER } }
+		NOT = { alliance = { country = BRA country = JAP } }
+	}
+	decision_trigger = {
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = BRA country = SOV } }
+		NOT = { alliance = { country = BRA country = ENG } }
+		NOT = { alliance = { country = BRA country = GER } }
+		NOT = { alliance = { country = BRA country = JAP } }
+	}
+	trigger = {
+		exists = BRA
+		NOT = { ispuppet = BRA }
+		NOT = { war = { country = BRA country = ENG } }
+		random = 5
+		event = 329517
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = BRA country = SOV } }
+		NOT = { alliance = { country = BRA country = ENG } }
+		NOT = { alliance = { country = BRA country = GER } }
+		NOT = { alliance = { country = BRA country = JAP } }
+	}
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_SHARED_00418_NAME
+	desc = EVT_SHARED_00416_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 116004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329517] ENG | 1940 | Allied Offensive in Latin America (Ofensiva diplomática en Latinoamérica)
+# Trigger event 143176 in events/ENG/ENG_Decisions.txt
+# Trigger event 143177 in events/ENG/ENG_Decisions.txt
+# Trigger event 329518 in events/Minors/BOL.txt
+# Trigger event 329519 in events/Minors/CHL.txt
+# Trigger event 329520 in events/Minors/COL.txt
+# Trigger event 329521 in events/Minors/VEN.txt
+# Trigger event 329522 in events/Minors/COS.txt
+# Trigger event 329523 in events/Minors/CUB.txt
+# Trigger event 329524 in events/Minors/DOM.txt
+# Trigger event 329525 in events/Minors/SAL.txt
+# Trigger event 329526 in events/Minors/GUA.txt
+# Trigger event 329527 in events/Minors/HAI.txt
+# Trigger event 329528 in events/Minors/HON.txt
+# Trigger event 329529 in events/Minors/NIC.txt
+# Trigger event 329530 in events/Minors/PAN.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329517
+	random = no
+	country = ENG
+	decision = {
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+	}
+	decision_trigger = {
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+	}
+	trigger = {
+		random = 3
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+	}
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_ENG_329517_NAME
+	desc = EVT_SHARED_00416_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = -1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143169] ENG | 1941 | Allied Diplomatic Offensive (Ofensiva diplomática aliada)
+# Triggered by event 150057 in events/GER/GER_Decisions.txt
+# Trigger event 316114 in events/USA/USA_39-43.txt
+# Trigger event 143170 in events/ENG/ENG_Decisions.txt
+# Trigger event 143171 in events/ENG/ENG_Decisions.txt
+# Trigger event 143172 in events/ENG/ENG_Decisions.txt
+# Trigger event 143173 in events/ENG/ENG_Decisions.txt
+# Trigger event 143174 in events/ENG/ENG_Decisions.txt
+# Trigger event 143175 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143169
+	random = no
+	country = ENG
+	decision = {
+		control = { province = 55 data = -3 }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { war = { country = GER country = SOV } }
+	}
+	decision_trigger = {
+		event = { id = 150057 days = 500 }
+		control = { province = 55 data = -3 }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+	}
+	trigger = {
+		event = { id = 150057 days = 500 }
+		control = { province = 55 data = -3 }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { war = { country = GER country = SOV } }
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_SHARED_00409_NAME
+	desc = EVT_ENG_143169_DESC
+  	style = 2
+	picture = "ENG/churchill"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = -1000 }
+		command = { trigger = { NOT = { war = { country = GER country = USA } } } type = trigger which = 316114 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143170] ENG | 1941 | Diplomatic Talks: Yugoslavia (Negociaciones con Yugoslavia)
+# Triggered by event 143169 in events/ENG/ENG_Decisions.txt
+# Trigger event 323004 in events/Minors/YUG.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143170
+	random = no
+	country = ENG
+	decision = {
+		exists = YUG
+		event = 143169
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = YUG country = ENG } }
+		NOT = { alliance = { country = YUG country = SOV } }
+		NOT = { alliance = { country = YUG country = GER } }
+		NOT = { alliance = { country = YUG country = JAP } }
+		NOT = { war = { country = YUG country = ENG } }
+		NOT = { ispuppet = YUG }
+	}
+	decision_trigger = {
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = YUG country = ENG } }
+		NOT = { alliance = { country = YUG country = SOV } }
+		NOT = { alliance = { country = YUG country = GER } }
+		NOT = { alliance = { country = YUG country = JAP } }
+	}
+	trigger = {
+		random = 5
+		exists = YUG
+		event = 143169
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = YUG country = ENG } }
+		NOT = { alliance = { country = YUG country = SOV } }
+		NOT = { alliance = { country = YUG country = GER } }
+		NOT = { alliance = { country = YUG country = JAP } }
+		NOT = { war = { country = YUG country = ENG } }
+		NOT = { ispuppet = YUG }
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_SHARED_00410_NAME
+	desc = EVT_SHARED_00410_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 323004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143171] ENG | 1941 | Diplomatic Talks: Romania (Negociaciones con Rumanía)
+# Triggered by event 143169 in events/ENG/ENG_Decisions.txt
+# Trigger event 209056 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143171
+	random = no
+	country = ENG
+	decision = {
+		exists = ROM
+		event = 143169
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = ROM country = ENG } }
+		NOT = { alliance = { country = ROM country = SOV } }
+		NOT = { alliance = { country = ROM country = GER } }
+		OR = {
+			alliance = { country = YUG country = ENG }
+			alliance = { country = GRE country = ENG }
+		}
+		NOT = { war = { country = ROM country = ENG } }
+		NOT = { alliance = { country = ROM country = JAP } }
+		NOT = { ispuppet = ROM }
+	}
+	decision_trigger = {
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = ROM country = ENG } }
+		NOT = { alliance = { country = ROM country = SOV } }
+		NOT = { alliance = { country = ROM country = GER } }
+		NOT = { alliance = { country = ROM country = JAP } }
+		OR = {
+			alliance = { country = YUG country = ENG }
+			alliance = { country = GRE country = ENG }
+		}
+	}
+	trigger = {
+		random = 5
+		exists = ROM
+		event = 143169
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = ROM country = ENG } }
+		NOT = { alliance = { country = ROM country = SOV } }
+		NOT = { alliance = { country = ROM country = GER } }
+		OR = {
+			alliance = { country = YUG country = ENG }
+			alliance = { country = GRE country = ENG }
+		}
+		NOT = { war = { country = ROM country = ENG } }
+		NOT = { alliance = { country = ROM country = JAP } }
+		NOT = { ispuppet = ROM }
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_SHARED_00411_NAME
+	desc = EVT_SHARED_00410_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 209056 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143172] ENG | 1941 | Diplomatic Talks: Turkey (Negociaciones con Turquía)
+# Triggered by event 143169 in events/ENG/ENG_Decisions.txt
+# Trigger event 235010 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143172
+	random = no
+	country = ENG
+	decision = {
+		exists = TUR
+		OR = {
+			event = 143169
+			AND = {
+				NOT = { control = { province = 232 data = -2 } }
+				NOT = { control = { province = 419 data = -2 } }
+				NOT = { control = { province = 116 data = -2 } }
+				lost_national = { country = GER value = 20 }
+			}
+		}
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = TUR country = ENG } }
+		NOT = { alliance = { country = TUR country = SOV } }
+		NOT = { alliance = { country = TUR country = GER } }
+		NOT = { war = { country = TUR country = ENG } }
+		NOT = { alliance = { country = TUR country = JAP } }
+		NOT = { ispuppet = TUR }
+	}
+	decision_trigger = {
+		OR = {
+			event = 143169
+			AND = {
+				NOT = { control = { province = 232 data = -2 } }
+				NOT = { control = { province = 419 data = -2 } }
+				NOT = { control = { province = 116 data = -2 } }
+				lost_national = { country = GER value = 20 }
+			}
+		}
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = TUR country = ENG } }
+		NOT = { alliance = { country = TUR country = SOV } }
+		NOT = { alliance = { country = TUR country = GER } }
+		NOT = { alliance = { country = TUR country = JAP } }
+	}
+	trigger = {
+		random = 5
+		exists = TUR
+		OR = {
+			event = 143169
+			AND = {
+				NOT = { control = { province = 232 data = -2 } }
+				NOT = { control = { province = 419 data = -2 } }
+				NOT = { control = { province = 116 data = -2 } }
+				lost_national = { country = GER value = 20 }
+			}
+		}
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = TUR country = ENG } }
+		NOT = { alliance = { country = TUR country = SOV } }
+		NOT = { alliance = { country = TUR country = GER } }
+		NOT = { war = { country = TUR country = ENG } }
+		NOT = { alliance = { country = TUR country = JAP } }
+		NOT = { ispuppet = TUR }
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_SHARED_00412_NAME
+	desc = EVT_SHARED_00410_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 235010 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143173] ENG | 1941 | Diplomatic Talks: Greece (Negociaciones con Grecia)
+# Triggered by event 143169 in events/ENG/ENG_Decisions.txt
+# Trigger event 152008 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143173
+	random = no
+	country = ENG
+	decision = {
+		exists = GRE
+		event = 143169
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = GRE country = ENG } }
+		NOT = { alliance = { country = GRE country = SOV } }
+		NOT = { alliance = { country = GRE country = GER } }
+		NOT = { alliance = { country = GRE country = JAP } }
+		NOT = { war = { country = GRE country = ENG } }
+		NOT = { ispuppet = GRE }
+	}
+	decision_trigger = {
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = GRE country = ENG } }
+		NOT = { alliance = { country = GRE country = SOV } }
+		NOT = { alliance = { country = GRE country = GER } }
+		NOT = { alliance = { country = GRE country = JAP } }
+		OR = {
+			alliance = { country = YUG country = ENG }
+			alliance = { country = ROM country = ENG }
+		}
+	}
+	trigger = {
+		random = 5
+		exists = GRE
+		event = 143169
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = GRE country = ENG } }
+		NOT = { alliance = { country = GRE country = SOV } }
+		NOT = { alliance = { country = GRE country = GER } }
+		NOT = { alliance = { country = GRE country = JAP } }
+		NOT = { war = { country = GRE country = ENG } }
+		NOT = { ispuppet = GRE }
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_SHARED_00413_NAME
+	desc = EVT_SHARED_00410_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 152008 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143174] ENG | 1941 | Diplomatic Talks: Spain (Negociaciones con España)
+# Triggered by event 143169 in events/ENG/ENG_Decisions.txt
+# Trigger event 225019 in events/Minors/SPR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143174
+	random = no
+	country = ENG
+	decision = {
+		exists = SPR
+		event = 143169
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { war = { country = SPR country = SPA } }
+		NOT = { alliance = { country = SPR country = ENG } }
+		NOT = { alliance = { country = SPR country = SOV } }
+		NOT = { alliance = { country = SPR country = GER } }
+		NOT = { alliance = { country = SPR country = JAP } }
+		NOT = { war = { country = SPR country = ENG } }
+		NOT = { ispuppet = SPR }
+	}
+	decision_trigger = {
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { war = { country = SPR country = SPA } }
+		NOT = { alliance = { country = SPR country = ENG } }
+		NOT = { alliance = { country = SPR country = SOV } }
+		NOT = { alliance = { country = SPR country = GER } }
+		NOT = { alliance = { country = SPR country = JAP } }
+	}
+	trigger = {
+		random = 5
+		exists = SPR
+		event = 143169
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { war = { country = SPR country = SPA } }
+		NOT = { alliance = { country = SPR country = ENG } }
+		NOT = { alliance = { country = SPR country = SOV } }
+		NOT = { alliance = { country = SPR country = GER } }
+		NOT = { alliance = { country = SPR country = JAP } }
+		NOT = { war = { country = SPR country = ENG } }
+		NOT = { ispuppet = SPR }
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_SHARED_00414_NAME
+	desc = EVT_SHARED_00410_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 225019 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143175] ENG | 1941 | Align the Soviet Union (Alinear a la Unión Soviética)
+# Triggered by event 143169 in events/ENG/ENG_Decisions.txt
+# Trigger event 223084 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143175
+	random = no
+	country = ENG
+	decision = {
+		exists = SOV
+		event = 143169
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { war = { country = SOV country = GER } }
+		NOT = { war = { country = SOV country = JAP } }
+		NOT = { alliance = { country = SOV country = ENG } }
+		NOT = { alliance = { country = SOV country = GER } }
+		NOT = { alliance = { country = SOV country = JAP } }
+		NOT = { war = { country = SOV country = ENG } }
+		NOT = { ispuppet = SOV }
+	}
+	decision_trigger = {
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { war = { country = SOV country = GER } }
+		NOT = { war = { country = SOV country = JAP } }
+		NOT = { alliance = { country = SOV country = ENG } }
+		NOT = { alliance = { country = SOV country = GER } }
+		NOT = { alliance = { country = SOV country = JAP } }
+	}
+	trigger = {
+		random = 1
+		exists = SOV
+		event = 143169
+		control = { province = 55 data = -3 }
+		control = { province = 163 data = GER }
+		alliance = { country = FRA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { war = { country = SOV country = GER } }
+		NOT = { war = { country = SOV country = JAP } }
+		NOT = { alliance = { country = SOV country = ENG } }
+		NOT = { alliance = { country = SOV country = GER } }
+		NOT = { alliance = { country = SOV country = JAP } }
+		NOT = { war = { country = SOV country = ENG } }
+		NOT = { ispuppet = SOV }
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_SHARED_00415_NAME
+	desc = EVT_SHARED_00410_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 223084 }
+	}
+}

@@ -1,0 +1,2082 @@
+# ============================================================================
+# File: events/GLOBAL/ALL_26-36.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [231060] ALL | 1926 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231060
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 12 month = january year = 1926 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231060_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.1 }
+		command = { type = trickleback_mod value = 0.1 }
+		command = { type = attrition_mod value = 0.1 }
+		command = { type = research_mod value = 0.0 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231007] ALL | 1928 | The Great Depression (La Gran Depresión)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231007
+	persistent = yes
+	trigger = {
+		flag = great_depression
+		not = { local_flag = depression }
+		not = { local_flag = depression_over }
+		not = { OR = { ideology = leninist ideology =	stalinist } }
+		policy = { type = free_market value = 3 }
+	}
+	date = { day = 1 month = january year = 1928 }
+	offset = 30
+	deathdate = { day = 1 month = january year = 1939 }
+	name = "EVT_ALL_231007_NAME"
+	desc = "EVT_ALL_231007_DESC"
+	picture = "GLOBAL/aar_depression"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = resource which = energy value = -20000 }
+		command = { type = resource which = metal value = -20000 }
+		command = { type = resource which = oil value = -20000 }
+		command = { type = resource which = rare_materials value = -20000 }
+		command = { type = resource which = supplies value = -30000 }
+		command = { trigger = { IC = 10 not = { IC = 30 } } type = free_money value = -3 }
+		command = { trigger = { IC = 10 not = { IC = 30 } } type = local_setflag which = gd_cashred_3 }
+		command = { trigger = { IC = 30 not = { IC = 50 } } type = free_money value = -9 }
+		command = { trigger = { IC = 30 not = { IC = 50 } } type = local_setflag which = gd_cashred_9 }
+		command = { trigger = { IC = 50 not = { IC = 70 } } type = free_money value = -15 }
+		command = { trigger = { IC = 50 not = { IC = 70 } } type = local_setflag which = gd_cashred_15 }
+		command = { trigger = { IC = 70 not = { IC = 80 } } type = free_money value = -21 }
+		command = { trigger = { IC = 70 not = { IC = 80 } } type = local_setflag which = gd_cashred_21 }
+		command = { trigger = { IC = 80 not = { IC = 100 } } type = free_money value = -24 }
+		command = { trigger = { IC = 80 not = { IC = 100 } } type = local_setflag which = gd_cashred_24 }
+		command = { trigger = { IC = 100 not = { IC = 120 } } type = free_money value = -30 }
+		command = { trigger = { IC = 100 not = { IC = 120 } } type = local_setflag which = gd_cashred_30 }
+		command = { trigger = { IC = 120 not = { IC = 150 } } type = free_money value = -36 }
+		command = { trigger = { IC = 120 not = { IC = 150 } } type = local_setflag which = gd_cashred_36 }
+		command = { trigger = { IC = 150 not = { IC = 175 } } type = free_money value = -45 }
+		command = { trigger = { IC = 150 not = { IC = 175 } } type = local_setflag which = gd_cashred_45 }
+		command = { trigger = { IC = 175 not = { IC = 200 } } type = free_money value = -53 }
+		command = { trigger = { IC = 175 not = { IC = 200 } } type = local_setflag which = gd_cashred_53 }
+		command = { trigger = { IC = 200 not = { IC = 250 } } type = free_money value = -60 }
+		command = { trigger = { IC = 200 not = { IC = 250 } } type = local_setflag which = gd_cashred_60 }
+		command = { trigger = { IC = 250 not = { IC = 300 } } type = free_money value = -75 }
+		command = { trigger = { IC = 250 not = { IC = 300 } } type = local_setflag which = gd_cashred_75 }
+		command = { trigger = { IC = 300 not = { IC = 350 } } type = free_money value = -90 }
+		command = { trigger = { IC = 300 not = { IC = 350 } } type = local_setflag which = gd_cashred_90 }
+		command = { trigger = { IC = 350 not = { IC = 400 } } type = free_money value = -105 }
+		command = { trigger = { IC = 350 not = { IC = 400 } } type = local_setflag which = gd_cashred_105 }
+		command = { trigger = { IC = 400 } type = free_money value = -120 }
+		command = { trigger = { IC = 400 } type = local_setflag which = gd_cashred_120 }
+		command = { type = dissent value = 19 }
+		command = { type = local_setflag which = depression }
+		command = { type = ai which = "AAR/economic/aar-build_industry-disable.ai" }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231148] ALL | 1928 | Kellogg Pact Signed (Pacto de Kellogg firmado)
+# Triggered by event 316382 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 231148
+	random = no
+	style = 1
+	name = "EVT_ALL_231148_NAME"
+	desc = "EVT_ALL_231148_DESC"
+	picture = "GLOBAL/kellogg_briand"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = USA value = 20 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = FRA value = 20 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = relation which = GER value = 20 }
+		command = { type = relation which = ITA value = 20 }
+		command = { type = relation which = JAP value = 20 }
+		command = { type = relation which = AUS value = 20 }
+		command = { type = relation which = CAN value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231061] ALL | 1928 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231061
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 3 month = january year = 1928 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231061_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.0 }
+		command = { type = trickleback_mod value = 0.0 }
+		command = { type = research_mod value = 0.5 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231063] ALL | 1929 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231063
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 2 month = april year = 1929 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231063_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.00 }
+		command = { type = trickleback_mod value = 0.20 }
+		command = { type = attrition_mod value = 0.1 }
+		command = { type = research_mod value = 0.5 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231064] ALL | 1929 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231064
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 2 month = april year = 1929 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231064_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.00 }
+		command = { type = trickleback_mod value = 0.00 }
+		command = { type = research_mod value = 0.5 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231065] ALL | 1929 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231065
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 28 month = june year = 1929 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231065_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.00 }
+		command = { type = trickleback_mod value = 0.00 }
+		command = { type = research_mod value = 0.5 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231017] ALL | 1930 | Second Industrial Revolution (Segunda Revolución Industrial)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231017
+	persistent = yes
+	date = { day = 1 month = 1 year = 1930 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1932 }
+	trigger = {
+		local_flag = interwar_economics
+		or = {
+			year = 1936
+			and = {
+				year = 1930
+				or = {
+					country = ITA
+					country = JAP
+					country = HUN
+					country = SER
+					country = YUG
+					country = MAN
+				}
+			}
+		}
+	}
+	name = "EVT_SHARED_01018_NAME"
+	Desc = "EVT_SHARED_01018_DESC"
+	Picture = "naval_reinforcements"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { trigger = { not = { local_flag = interwar_economics_fascist } } type = building_prod_mod which = ic value = 20 }
+		command = { trigger = { not = { local_flag = interwar_economics_fascist } } type = building_prod_mod which = anti_air value = 20 }
+		command = { type = local_clrflag which = interwar_economics }
+		command = { trigger = { local_flag = interwar_economics_fascist }	type = building_prod_mod which = ic value = 20 }
+		command = { trigger = { local_flag = interwar_economics_fascist }	type = building_prod_mod which = anti_air value = 20 }
+		command = { trigger = { local_flag = interwar_economics_fascist }	type = local_clrflag which = interwar_economics_fascist }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231066] ALL | 1930 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231066
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 2 month = january year = 1930 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231066_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.00 }
+		command = { type = trickleback_mod value = 0.00 }
+		command = { type = research_mod value = 0.7 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231068] ALL | 1930 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231068
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 2 month = january year = 1930 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231068_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.00 }
+		command = { type = trickleback_mod value = 0.00 }
+		command = { type = research_mod value = 1.5 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231067] ALL | 1930 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231067
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 2 month = march year = 1930 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231067_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.00 }
+		command = { type = trickleback_mod value = 0.00 }
+		command = { type = research_mod value = 0.7 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [124136] ALL | 1931 | Demobilization (Desmovilización)
+# Triggered by event 123007 in events/Minors/CHC_30-45.txt
+# Triggered by event 123009 in events/Minors/CHC_30-45.txt
+# Triggered by event 123013 in events/Minors/CHC_30-45.txt
+# Triggered by event 123014 in events/Minors/CHC_30-45.txt
+# Triggered by event 123017 in events/Minors/CHC_30-45.txt
+# Triggered by event 124123 in events/CHI/CHI_13-33.txt
+# Triggered by event 124131 in events/CHI/CHI_13-33.txt
+# Triggered by event 124135 in events/CHI/CHI_13-33.txt
+# Triggered by event 324312 in events/GLOBAL/MULTI_14-32.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124136
+	random = no
+	persistent = yes
+	name = EVT_ALL_124136_NAME
+	desc = EVT_ALL_124136_DESC
+	style = 2
+	picture = "GLOBAL/ccip_mob"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = professional_army value = 2 }
+		command = { trigger = { local_flag = MOB3 } type = manpowerpool value = -2.5 when = 1 }
+		command = { trigger = { local_flag = MOB4 } type = manpowerpool value = -4 when = 1 }
+		command = { trigger = { local_flag = MOB5 } type = manpowerpool value = -4.5 when = 1 }
+		command = { trigger = { local_flag = MOB6 } type = manpowerpool value = -5 when = 1 }
+		command = { trigger = { local_flag = MOB7 } type = manpowerpool value = -11.25 when = 1 }
+		command = { trigger = { local_flag = MOB8 } type = manpowerpool value = -60 when = 1 }
+		command = { trigger = { local_flag = MOB9 } type = manpowerpool value = -25 when = 1 }
+		command = { trigger = { local_flag = MOB10 } type = manpowerpool value = -15 when = 1 }
+		command = { type = local_clrflag which = MOB3 }
+		command = { type = local_clrflag which = MOB4 }
+		command = { type = local_clrflag which = MOB5 }
+		command = { type = local_clrflag which = MOB6 }
+		command = { type = local_clrflag which = MOB7 }
+		command = { type = local_clrflag which = MOB8 }
+		command = { type = local_clrflag which = MOB9 }
+		command = { type = local_clrflag which = MOB10 }
+		command = { type = local_setflag which = RES }
+		command = { trigger = { ai = no } type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231009] ALL | 1931 | Economic Recovery (Recuperación Económica)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231009
+	invention = yes
+	date = { day = 0 month = 0 year = 1931 }
+	offset = 830
+	deathdate = { day = 1 month = january year = 1942 }
+	trigger = {
+		local_flag = depression
+		not = { local_flag = depression_over }
+		NOT = { AND = {
+			country = USA
+			atwar = no
+		}
+		}
+		or = {
+			ideology = leninist
+			ideology =	stalinist
+			not = { policy = { type = free_market value = 3 } }
+			and = {
+				local_flag = abandoned_gold_standard
+				not = { dissent = 10 }
+			}
+			year = 1936
+			local_flag = fascist_recovery
+			atwar = yes
+		}
+	}
+	name = "EVT_ALL_231009_NAME"
+	Desc = "EVT_ALL_231009_DESC"
+	picture = "GLOBAL/aar_recovery"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_clrflag which = depression }
+		command = { type = local_setflag which = depression_over }
+		command = { trigger = { local_flag = fascist_recovery } type = building_prod_mod which = IC value = -50 }
+		command = { trigger = { local_flag = gd_cashred_3 } type = free_money value = 3 }
+		command = { trigger = { local_flag = gd_cashred_9 } type = free_money value = 9 }
+		command = { trigger = { local_flag = gd_cashred_15 } type = free_money value = 15 }
+		command = { trigger = { local_flag = gd_cashred_21 } type = free_money value = 21 }
+		command = { trigger = { local_flag = gd_cashred_24 } type = free_money value = 24 }
+		command = { trigger = { local_flag = gd_cashred_30 } type = free_money value = 30 }
+		command = { trigger = { local_flag = gd_cashred_36 } type = free_money value = 36 }
+		command = { trigger = { local_flag = gd_cashred_45 } type = free_money value = 45 }
+		command = { trigger = { local_flag = gd_cashred_53 } type = free_money value = 53 }
+		command = { trigger = { local_flag = gd_cashred_60 } type = free_money value = 60 }
+		command = { trigger = { local_flag = gd_cashred_75 } type = free_money value = 75 }
+		command = { trigger = { local_flag = gd_cashred_90 } type = free_money value = 90 }
+		command = { trigger = { local_flag = gd_cashred_105 } type = free_money value = 105 }
+		command = { trigger = { local_flag = gd_cashred_120 } type = free_money value = 120 }
+		command = { type = local_clrflag which = gd_cashred_3 }
+		command = { type = local_clrflag which = gd_cashred_9 }
+		command = { type = local_clrflag which = gd_cashred_15 }
+		command = { type = local_clrflag which = gd_cashred_21 }
+		command = { type = local_clrflag which = gd_cashred_24 }
+		command = { type = local_clrflag which = gd_cashred_30 }
+		command = { type = local_clrflag which = gd_cashred_36 }
+		command = { type = local_clrflag which = gd_cashred_45 }
+		command = { type = local_clrflag which = gd_cashred_53 }
+		command = { type = local_clrflag which = gd_cashred_60 }
+		command = { type = local_clrflag which = gd_cashred_75 }
+		command = { type = local_clrflag which = gd_cashred_90 }
+		command = { type = local_clrflag which = gd_cashred_105 }
+		command = { type = local_clrflag which = gd_cashred_120 }
+		command = { type =	domestic which = free_market value = 2 }
+		command = { type = ai which = "AAR/economic/aar-build_industry.ai" }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231069] ALL | 1931 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231069
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 14 month = september year = 1931 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231069_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.00 }
+		command = { type = trickleback_mod value = 0.1 }
+		command = { type = attrition_mod value = 0.1 }
+		command = { type = research_mod value = 1.0 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231070] ALL | 1931 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231070
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 12 month = november year = 1931 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231070_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.00 }
+		command = { type = trickleback_mod value = 0.1 }
+		command = { type = attrition_mod value = 0.1 }
+		command = { type = research_mod value = 0.0 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231028] ALL | 1932 | Geneva Disarmament Talks (Desarme general en Ginebra)
+# Triggered by event 243057 in events/Minors/U08_14-14.txt
+# Trigger event 143384 in events/ENG/ENG_25-34.txt
+# Trigger event 324512 in events/GLOBAL/MULTI_14-32.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 231028
+	persistent = yes
+	trigger = {
+		flag = london_naval_treaty
+		atwar = no
+		not = { atwar = U08 }
+		not = { atwar = GER }
+		not = { atwar = ENG }
+		not = { atwar = FRA }
+		not = { atwar = JAP }
+		not = { atwar = ITA }
+		not = { local_flag = naval_treaty_void }
+		not = { local_flag = geneva_conference }
+	}
+	name = "EVT_ALL_231028_NAME"
+	Desc = "EVT_ALL_231028_DESC"
+	Picture = "naval_reinforcements"
+	date = { day = 1 month = 1 year = 1932 }
+	offset = 300
+	deathdate = { day = 29 month = december year = 1933 }
+	action = {
+		name = "EVT_ALL_231028_A"
+		ai_chance = 100
+		command = { type = local_setflag which = geneva_conference }
+		command = { type = setflag which = geneva_conference }
+		command = { trigger = { local_flag = london_naval_treaty country = ENG not = { local_flag = naval_treaty_void } } type = event which = 143384 where = ENG when = 15 }
+		command = {
+			trigger = {
+				event = 243057
+				or = {
+					country = U08
+					country = GER
+				}
+			}
+			type = event which = 324512 where = -1 when = 7
+		}
+}
+	action = {
+		name = "ACTION_NAME_NO"
+		ai_chance = 0
+		command = { type = belligerence value = 30 }
+		command = { type =	dissent value = 5 }
+		command = { type = local_setflag which = naval_treaty_void }
+		command = { trigger = { or = { country = U08 country = GER } } type = sleepevent which = 324512 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [236011] ALL | 1933 | Selective Conscription (Conscripción selectiva)
+# Triggered by event 121049 in events/AI/CAN_AI.txt
+# Triggered by event 143272 in events/AI/ENG_AI_14-33.txt
+# Triggered by event 316150 in events/AI/USA_AI.txt
+# Triggered by event 324110 in events/GLOBAL/MULTI_Decisions.txt
+# Triggered by event 324274 in events/AI/MULTI_AI.txt
+# Triggered by event 324275 in events/AI/MULTI_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 236011
+	random = no
+	persistent = yes
+	name = "EVT_ALL_236011_NAME"
+	desc = "EVT_ALL_236011_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	action = {
+		trigger = {
+			NOT = { country = U01 }
+			OR = {
+				NOT = { country = JAP }
+				AND = {
+					country = JAP
+					NOT = { region = { region = Korea country = JAP data = 1 value = 50 } }
+				}
+			}
+		}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.6 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.7 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { type = local_setflag which = MOB3 }
+	}
+	action = {
+		trigger = {
+			country = JAP
+			region = { region = Korea country = JAP data = 1 value = 50 }
+			}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.45 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value =.56 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { type = local_setflag which = MOB3 }
+	}
+	action = {
+		trigger = {	country = U01 }
+		name = "EVT_SHARED_00269_A"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 3 }
+		command = { type = resource which = supplies value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 30 }
+		command = { type = dissent value = -2 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { type = local_setflag which = MOB3 }
+	}
+	action = {
+		name = "ACTION_NAME_DECLINE"
+		ai_chance = 100
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [236012] ALL | 1933 | One-Year Conscription (Servicio militar de un año)
+# Triggered by event 121050 in events/AI/CAN_AI.txt
+# Triggered by event 316151 in events/AI/USA_AI.txt
+# Triggered by event 324110 in events/GLOBAL/MULTI_Decisions.txt
+# Triggered by event 324274 in events/AI/MULTI_AI.txt
+# Triggered by event 324275 in events/AI/MULTI_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 236012
+	random = no
+	persistent = yes
+	name = "EVT_ALL_236012_NAME"
+	desc = "EVT_ALL_236012_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	action = {
+		trigger = {
+			NOT = { country = U01 }
+			OR = {
+				NOT = { country = JAP }
+				AND = {
+					country = JAP
+					NOT = { region = { region = Korea country = JAP data = 1 value = 50 } }
+				}
+			}
+		}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 4 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.6 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.75 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 1.2 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB4 }
+	}
+	action = {
+		trigger = {
+			country = JAP
+			region = { region = Korea country = JAP data = 1 value = 50 }
+			}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 4 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.45 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.56 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 0.9 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB4 }
+	}
+	action = {
+		trigger = {	country = U01 }
+		name = "EVT_SHARED_00269_A"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 4 }
+		command = { type = resource which = supplies value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 30 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 30 }
+		command = { type = dissent value = -2 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = local_setflag which = MOB4 }
+		command = { type = local_setflag which = MOB4 }
+	}
+	action = {
+		name = "ACTION_NAME_DECLINE"
+		ai_chance = 100
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [236013] ALL | 1933 | Two-Year Conscription (Servicio militar de dos años)
+# Triggered by event 150488 in events/AI/GER_AI_33-36.txt
+# Triggered by event 159052 in events/AI/HUN_AI.txt
+# Triggered by event 324110 in events/GLOBAL/MULTI_Decisions.txt
+# Triggered by event 324271 in events/AI/MULTI_AI.txt
+# Triggered by event 324274 in events/AI/MULTI_AI.txt
+# Triggered by event 324275 in events/AI/MULTI_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 236013
+	random = no
+	persistent = yes
+	name = "EVT_ALL_236013_NAME"
+	desc = "EVT_ALL_236013_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	action = {
+		trigger = {
+			NOT = { country = U01 }
+			OR = {
+				NOT = { country = JAP }
+				AND = {
+					country = JAP
+					NOT = { region = { region = Korea country = JAP data = 1 value = 50 } }
+				}
+			}
+		}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 5 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.6 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.75 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 1.2 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 1.35 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB4 }
+		command = { type = local_setflag which = MOB5 }
+	}
+	action = {
+		trigger = {
+			country = JAP
+			region = { region = Korea country = JAP data = 1 value = 50 }
+			}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 5 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.45 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.56 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 0.9 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 1.0125 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB4 }
+		command = { type = local_setflag which = MOB5 }
+	}
+	action = {
+		trigger = {	country = U01 }
+		name = "EVT_SHARED_00263_A"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 5 }
+		command = { type = resource which = supplies value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 30 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 30 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 20 }
+		command = { type = dissent value = -2 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = local_setflag which = MOB3 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = local_setflag which = MOB4 }
+		command = { type = local_setflag which = MOB5 }
+	}
+	action = {
+		name = "ACTION_NAME_DECLINE"
+		ai_chance = 100
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [236014] ALL | 1933 | Three-Year Conscription (Servicio militar de tres años)
+# Triggered by event 316152 in events/AI/USA_AI.txt
+# Triggered by event 324110 in events/GLOBAL/MULTI_Decisions.txt
+# Triggered by event 324270 in events/AI/MULTI_AI.txt
+# Triggered by event 324274 in events/AI/MULTI_AI.txt
+# Triggered by event 324275 in events/AI/MULTI_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 236014
+	random = no
+	persistent = yes
+	name = "EVT_ALL_236014_NAME"
+	desc = "EVT_SHARED_00270_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	action = {
+		trigger = {
+			NOT = { country = U01 }
+			OR = {
+				NOT = { country = JAP }
+				AND = {
+					country = JAP
+					NOT = { region = { region = Korea country = JAP data = 1 value = 50 } }
+				}
+			}
+		}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 6 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB6 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.6 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.75 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 1.2 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 1.35 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 1.5 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB6 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB4 }
+		command = { type = local_setflag which = MOB5 }
+		command = { type = local_setflag which = MOB6 }
+	}
+	action = {
+		trigger = {
+			country = JAP
+			region = { region = Korea country = JAP data = 1 value = 50 }
+			}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 6 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB6 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.45 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.56 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 0.9 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 1.0125 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 1.125 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB6 } ai = no } type = dissent value = 3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB4 }
+		command = { type = local_setflag which = MOB5 }
+		command = { type = local_setflag which = MOB6 }
+	}
+	action = {
+		trigger = {	country = U01 }
+		name = "EVT_SHARED_00269_A"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 6 }
+		command = { type = resource which = supplies value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 30 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 30 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 30 }
+		command = { type = dissent value = -2 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = local_setflag which = MOB3 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = local_setflag which = MOB4 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = local_setflag which = MOB5 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = local_setflag which = MOB6 }
+	}
+	action = {
+		name = "ACTION_NAME_DECLINE"
+		ai_chance = 100
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [236015] ALL | 1933 | Partial Mobilization (Movilización parcial)
+# Triggered by event 110032 in events/AI/BEL_AI.txt
+# Triggered by event 136005 in events/Minors/CZE_14-53.txt
+# Triggered by event 136007 in events/Minors/CZE_14-53.txt
+# Triggered by event 143273 in events/AI/ENG_AI_14-33.txt
+# Triggered by event 144011 in events/AI/EST_AI.txt
+# Triggered by event 146012 in events/Minors/FIN_14-51.txt
+# Triggered by event 146060 in events/AI/FIN_AI.txt
+# Triggered by event 150466 in events/AI/GER_AI_33-36.txt
+# Triggered by event 150489 in events/AI/GER_AI_33-36.txt
+# Triggered by event 152065 in events/AI/GRE_AI.txt
+# Triggered by event 159053 in events/AI/HUN_AI.txt
+# Triggered by event 166140 in events/AI/ITA_AI.txt
+# Triggered by event 167121 in events/JAP/JAP_33-36.txt
+# Triggered by event 167123 in events/JAP/JAP_33-36.txt
+# Triggered by event 167149 in events/JAP/JAP_Decisions.txt
+# Triggered by event 174037 in events/AI/LAT_AI.txt
+# Triggered by event 178015 in events/AI/LIT_AI.txt
+# Triggered by event 203029 in events/AI/POL_AI.txt
+# Triggered by event 324111 in events/GLOBAL/MULTI_Decisions.txt
+# Triggered by event 324269 in events/AI/MULTI_AI.txt
+# Triggered by event 324270 in events/AI/MULTI_AI.txt
+# Triggered by event 324271 in events/AI/MULTI_AI.txt
+# Triggered by event 324272 in events/AI/MULTI_AI.txt
+# Triggered by event 324274 in events/AI/MULTI_AI.txt
+# Triggered by event 324275 in events/AI/MULTI_AI.txt
+# Triggered by event 329502 in events/Minors/POL_14-89.txt
+# Triggered by event 329539 in events/Minors/FIN_14-51.txt
+# Trigger event 329344 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 329345 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 236015
+	random = no
+	persistent = yes
+	name = "EVT_ALL_236015_NAME"
+	desc = "EVT_SHARED_00271_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	action = {
+		trigger = {
+			NOT = { country = U01 }
+			OR = {
+				NOT = { country = JAP }
+				AND = {
+					country = JAP
+					NOT = { region = { region = Korea country = JAP data = 1 value = 50 } }
+				}
+			}
+		}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 7 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB6 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { ai = no } type = resource which = supplies value = -500 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.6 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.75 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 1.2 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 1.35 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 1.5 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = manpowerpool value = 4.5 when = 1 }
+		command = { trigger = { atwar = no } type = belligerence value = 15 }
+		command = { trigger = { NOT = { local_flag = MOB3 } atwar = no ai = no } type = dissent value = 4 }
+		command = { trigger = { NOT = { local_flag = MOB4 } atwar = no ai = no } type = dissent value = 4 }
+		command = { trigger = { NOT = { local_flag = MOB5 } atwar = no ai = no } type = dissent value = 4 }
+		command = { trigger = { NOT = { local_flag = MOB6 } atwar = no ai = no } type = dissent value = 4 }
+		command = { trigger = { atwar = no ai = no } type = dissent value = 12 }
+		command = { trigger = { NOT = { local_flag = RES } year = 1922 }  type = trigger which = 329344 }
+		command = { trigger = { NOT = { local_flag = RES } NOT = { year = 1922 } }  type = trigger which = 329345 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = local_setflag which = MOB7 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = local_setflag which = MOB6 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = local_setflag which = MOB5 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = local_setflag which = MOB4 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = local_setflag which = MOB3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+	}
+	action = {
+		trigger = {
+			country = JAP
+			region = { region = Korea country = JAP data = 1 value = 50 }
+			}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 7 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB6 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { ai = no } type = resource which = supplies value = -500 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.45 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.56 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 0.9 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 1.0125 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 1.125 when = 1 }
+    	command = { trigger = { atwar = no } type = belligerence value = 15 }
+		command = { trigger = { NOT = { local_flag = MOB3 } atwar = no ai = no } type = dissent value = 4 }
+		command = { trigger = { NOT = { local_flag = MOB4 } atwar = no ai = no } type = dissent value = 4 }
+		command = { trigger = { NOT = { local_flag = MOB5 } atwar = no ai = no } type = dissent value = 4 }
+		command = { trigger = { NOT = { local_flag = MOB6 } atwar = no ai = no } type = dissent value = 4 }
+		command = { trigger = { atwar = no ai = no } type = dissent value = 12 }
+		command = { trigger = { NOT = { local_flag = RES } year = 1922 }  type = trigger which = 329344 }
+		command = { trigger = { NOT = { local_flag = RES } NOT = { year = 1922 } }  type = trigger which = 329345 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = local_setflag which = MOB7 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = local_setflag which = MOB6 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = local_setflag which = MOB5 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = local_setflag which = MOB4 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = local_setflag which = MOB3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+		}
+	action = {
+		trigger = {	country = U01 }
+		name = "EVT_SHARED_00269_A"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 7 }
+		command = { type = resource which = supplies value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 30 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 30 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 30 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = manpowerpool value = 20 }
+		command = { type = dissent value = -2 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = local_setflag which = MOB7 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = local_setflag which = MOB6 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = local_setflag which = MOB5 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = local_setflag which = MOB4 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = local_setflag which = MOB3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+	}
+	action = {
+		name = "ACTION_NAME_DECLINE"
+		ai_chance = 100
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [236016] ALL | 1933 | General Mobilization (Movilización general)
+# Triggered by event 143274 in events/AI/ENG_AI_14-33.txt
+# Triggered by event 144012 in events/AI/EST_AI.txt
+# Triggered by event 146061 in events/AI/FIN_AI.txt
+# Triggered by event 152066 in events/AI/GRE_AI.txt
+# Triggered by event 159054 in events/AI/HUN_AI.txt
+# Triggered by event 174038 in events/AI/LAT_AI.txt
+# Triggered by event 178016 in events/AI/LIT_AI.txt
+# Triggered by event 196026 in events/Minors/OTT_Decisions.txt
+# Triggered by event 196028 in events/Minors/OTT.txt
+# Triggered by event 196029 in events/Minors/OTT.txt
+# Triggered by event 196030 in events/Minors/OTT.txt
+# Triggered by event 196043 in events/Minors/OTT.txt
+# Triggered by event 196044 in events/AI/OTT_AI.txt
+# Triggered by event 216038 in events/AI/SCH_AI.txt
+# Triggered by event 223171 in events/AI/SOV_AI_14-41.txt
+# Triggered by event 243025 in events/AI/U08_AI.txt
+# Triggered by event 243026 in events/AI/U08_AI.txt
+# Triggered by event 324112 in events/GLOBAL/MULTI_Decisions.txt
+# Triggered by event 324270 in events/AI/MULTI_AI.txt
+# Triggered by event 324271 in events/AI/MULTI_AI.txt
+# Triggered by event 324273 in events/AI/MULTI_AI.txt
+# Triggered by event 324274 in events/AI/MULTI_AI.txt
+# Triggered by event 324275 in events/AI/MULTI_AI.txt
+# Triggered by event 329615 in events/AI/FIN_AI.txt
+# Trigger event 329344 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 329345 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 236016
+	random = no
+	persistent = yes
+	name = "EVT_ALL_236016_NAME"
+	desc = "EVT_ALL_236016_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	action = {
+		trigger = {
+			NOT = { country = U01 }
+			OR = {
+				NOT = { country = JAP }
+				AND = {
+					country = JAP
+					NOT = { region = { region = Korea country = JAP data = 1 value = 50 } }
+				}
+			}
+		}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 8 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB6 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB7 } ai = no } type = resource which = supplies value = -500 }
+		command = { trigger = { ai = no } type = resource which = supplies value = -700 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 1.0 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 1.25 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 2.0 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 2.25 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 2.5 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = manpowerpool value = 7.5 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB8 } } type = manpowerpool value = 40 when = 1 }
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { trigger = { NOT = { local_flag = RES } year = 1922 }  type = trigger which = 329344 }
+		command = { trigger = { NOT = { local_flag = RES } NOT = { year = 1922 } }  type = trigger which = 329345 }
+		command = { trigger = { NOT = { local_flag = MOB8 } } type = local_setflag which = MOB8 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = local_setflag which = MOB7 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = local_setflag which = MOB6 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = local_setflag which = MOB5 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = local_setflag which = MOB4 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = local_setflag which = MOB3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+	}
+	action = {
+		trigger = {
+			country = JAP
+			region = { region = Korea country = JAP data = 1 value = 50 }
+			}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 8 }
+		command = { trigger = { NOT = { local_flag = MOB3 } ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB4 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB5 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB6 } ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB7 } ai = no } type = resource which = supplies value = -500 }
+		command = { trigger = { ai = no } type = resource which = supplies value = -700 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0..75 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = .9375 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 1.5 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 1.0125 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 1.6875 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = manpowerpool value = 5.625 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB8 } } type = manpowerpool value = 30 when = 1 }
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { trigger = { NOT = { local_flag = RES } year = 1922 }  type = trigger which = 329344 }
+		command = { trigger = { NOT = { local_flag = RES } NOT = { year = 1922 } }  type = trigger which = 329345 }
+		command = { trigger = { NOT = { local_flag = MOB8 } } type = local_setflag which = MOB8 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = local_setflag which = MOB7 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = local_setflag which = MOB6 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = local_setflag which = MOB5 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = local_setflag which = MOB4 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = local_setflag which = MOB3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+	}
+	action = {
+		trigger = {	country = U01 }
+		name = "EVT_SHARED_00269_A"
+		ai_chance = 100
+		command = { type = set_domestic which = professional_army value = 8 }
+		command = { type = resource which = supplies value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 30 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 30 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 30 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = manpowerpool value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB8 } } type = manpowerpool value = 50 }
+		command = { type = dissent value = -2 }
+		command = { trigger = { NOT = { local_flag = MOB8 } } type = local_setflag which = MOB8 }
+		command = { trigger = { NOT = { local_flag = MOB7 } } type = local_setflag which = MOB7 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = local_setflag which = MOB6 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = local_setflag which = MOB5 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = local_setflag which = MOB4 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = local_setflag which = MOB3 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = local_setflag which = MOB2 }
+	}
+	action = {
+		name = "ACTION_NAME_DECLINE"
+		ai_chance = 100
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [236018] ALL | 1933 | Total Mobilization (Movilización total)
+# Triggered by event 223171 in events/AI/SOV_AI_14-41.txt
+# Triggered by event 324113 in events/GLOBAL/MULTI_Decisions.txt
+# Triggered by event 324273 in events/AI/MULTI_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 236018
+	random = no
+	persistent = yes
+	name = "EVT_ALL_236018_NAME"
+	desc = "EVT_ALL_236018_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	action = {
+		trigger = {
+			NOT = { country = U01 }
+			OR = {
+				NOT = { country = JAP }
+				AND = {
+					country = JAP
+					NOT = { region = { region = Korea country = JAP data = 1 value = 50 } }
+				}
+			}
+		}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { trigger = { ai = no } type = resource which = supplies value = -300 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = manpowerpool value = 1.5 when = 1 }
+		command = { type = set_domestic which = professional_army value = 10 }
+		command = { type = 	belligerence value = 10 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = build_time which = militia when = on_upgrade where = relative value = -15 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = build_cost which = militia when = on_upgrade where = relative value = 25 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = soft_attack which = militia value = -3 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = hard_attack which = militia value = -2 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = air_defense which = militia value = -1 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = max_organization which = militia value = -5 }
+		command = { trigger = { ai = no } type = dissent value = 15 }
+		command = { type = local_setflag which = MOB10 }
+	}
+	action = {
+		trigger = {
+			country = JAP
+			region = { region = Korea country = JAP data = 1 value = 50 }
+			}
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { trigger = { ai = no } type = resource which = supplies value = -300 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = manpowerpool value = 3.375 when = 1 }
+		command = { type = set_domestic which = professional_army value = 10 }
+		command = { type = 	belligerence value = 10 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = build_time which = militia when = on_upgrade where = relative value = -15 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = build_cost which = militia when = on_upgrade where = relative value = 25 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = soft_attack which = militia value = -3 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = hard_attack which = militia value = -2 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = air_defense which = militia value = -1 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = max_organization which = militia value = -5 }
+		command = { trigger = { ai = no } type = dissent value = 15 }
+		command = { type = local_setflag which = MOB10 }
+	}
+	action = {
+		trigger = {	country = U01 }
+		name = "EVT_SHARED_00269_A"
+		ai_chance = 100
+		command = { type = resource which = supplies value = 20 }
+		command = { trigger = { NOT = { local_flag = MOB10 } } type = manpowerpool value = 50 }
+		command = { type = set_domestic which = professional_army value = 10 }
+		command = { type = dissent value = -2 }
+		command = { type = local_setflag which = MOB10 }
+	}
+	action = {
+		name = "ACTION_NAME_DECLINE"
+		ai_chance = 100
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324000] ALL | 1933 | 1931 Statute of Westminster. (Estatuto de Westminster de 1931)
+# Trigger event 143011 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 324000
+         random = no
+         persistent = yes
+         all = yes
+        trigger = {
+            exists = ENG
+            alliance = { country = -1 country = ENG }
+            NOT = { war = { country = GER country = ENG }  }
+			NOT = { ispuppet = -1 }
+		}
+        name = "EVT_SHARED_00488_NAME"
+        desc = "EVT_SHARED_00488_DESC"
+        style = 2
+        date = { day = 1 month = january year = 1933 }
+        offset = 20
+        deathdate = { day = 29 month = december year = 1937 }
+	picture = "GLOBAL/1931_statute_of_westminster"
+        action_a = {
+            name = ACTION_NAME_OK
+            command = { type = leave_alliance }
+			command = { type = end_puppet }
+            command = { type = trigger which = 143011 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [324123] ALL | 1933 | FIFA World Cup (Copa Mundial de la FIFA)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324123
+	random = no
+	persistent = no
+	all = yes
+trigger = {
+		NOT = {
+		flag = Sports
+		ai = yes
+			}
+		}
+name = "EVT_SHARED_00980_NAME"
+desc = "EVT_SHARED_00980_DESC"
+style = 2
+date = { day = 1 month = june year = 1933 }
+offset = 15
+deathdate = { day = 1 month = july year = 1933 }
+	picture = "GLOBAL/wc01"
+save_date = yes
+action = {
+	trigger = {
+		NOT = {
+		war = { country = ENG  country = GER }
+		war = { country = ENG  country = JAP }
+		war = { country = ENG  country = USA }
+		war = { country = ENG  country = ITA }
+		war = { country = ENG  country = SOV }
+		war = { country = GER  country = JAP }
+		war = { country = GER  country = USA }
+		war = { country = GER  country = ITA }
+		war = { country = GER  country = SOV }
+		war = { country = JAP  country = USA }
+		war = { country = JAP  country = ITA }
+		war = { country = JAP  country = SOV }
+		war = { country = USA  country = ITA }
+		war = { country = USA  country = SOV }
+		war = { country = ITA  country = SOV }
+		war = { country = DDR  country = JAP }
+		war = { country = DDR  country = USA }
+		war = { country = DDR  country = ITA }
+		war = { country = DDR  country = SOV }
+			}
+		}
+	name = "ACTION_NAME_GREAT"
+	command = { type = setflag which = Sports }
+	}
+action = {
+	trigger = {
+		OR = {
+		war = { country = ENG  country = GER }
+		war = { country = ENG  country = JAP }
+		war = { country = ENG  country = USA }
+		war = { country = ENG  country = ITA }
+		war = { country = ENG  country = SOV }
+		war = { country = GER  country = JAP }
+		war = { country = GER  country = USA }
+		war = { country = GER  country = ITA }
+		war = { country = GER  country = SOV }
+		war = { country = JAP  country = USA }
+		war = { country = JAP  country = ITA }
+		war = { country = JAP  country = SOV }
+		war = { country = USA  country = ITA }
+		war = { country = USA  country = SOV }
+		war = { country = ITA  country = SOV }
+		war = { country = DDR  country = JAP }
+		war = { country = DDR  country = USA }
+		war = { country = DDR  country = ITA }
+		war = { country = DDR  country = SOV }
+			}
+		}
+	name = "ACTION_NAME_UNFORTUNATE"
+	command = { type = sleepevent which = 324124 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324125] ALL | 1934 | FIFA World Cup (Copa Mundial de la FIFA)
+# Triggered by event 324124 in events/GLOBAL/ALL_26-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324125
+	random = no
+	persistent = yes
+	all = yes
+	name = "EVT_SHARED_00980_NAME"
+	desc = "EVT_ALL_324125_DESC"
+	style = 2
+	picture = "GLOBAL/wc1934"
+action = {
+	name = "ACTION_NAME_GREAT"
+	command = { trigger = { country = ITA local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = ITA local_flag = Sportgo } type = money value = 100 }
+	command = { trigger = { country = ITA local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = CZE local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = GER local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = DDR local_flag = Sportgo NOT = { exists = GER } } type = dissent value = -1 }
+	command = { trigger = { local_flag = Sportgo } type = dissent value = -1 }
+	command = { type = local_clrflag which = Sportgo }
+	command = { type = clrflag which = Sports }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231071] ALL | 1934 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231071
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 12 month = january year = 1934 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231071_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.0 }
+		command = { type = trickleback_mod value = 0.1 }
+		command = { type = research_mod value = 0.1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [324099] ALL | 1934 | Treaty of Sanaa (Tratado de Saná)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324099
+	random = no
+	all = yes
+	trigger = {
+			NOT = { war = { country = ENG country = SAU } }
+			exists = ENG
+			exists = SAU
+			}
+	date = { day = 01 month = february year = 1934 }
+	name = "EVT_ALL_324099_NAME"
+	desc = "EVT_ALL_324099_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = SAU value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324100] ALL | 1934 | Anglo-Indian-Yemeni Treaty of Friendship (Tratado de amistad anglo-indio-yemení)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324100
+	random = no
+	all = yes
+	trigger = {
+			NOT = {
+				war = { country = ENG country = YEM }
+				war = { country = ENG country = U02 }
+				war = { country = YEM country = U02 }
+				}
+			exists = ENG
+			exists = YEM
+			exists = U02
+			}
+	date = { day = 11 month = february year = 1934 }
+	name = "EVT_ALL_324100_NAME"
+	desc = "EVT_ALL_324100_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = YEM value = 15 }
+		command = { type = relation which = U02 value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324101] ALL | 1934 | Anglo-Russian Trade Agreement (Acuerdo comercial anglo-ruso)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324101
+	random = no
+	all = yes
+	trigger = {
+			NOT = {
+				war = { country = ENG country = SOV }
+				}
+			exists = ENG
+			exists = SOV
+			}
+	date = { day = 16 month = february year = 1934 }
+	name = "EVT_ALL_324101_NAME"
+	desc = "EVT_ALL_324101_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = relation which = ENG value = 7 }
+		command = { type = relation which = SOV value = 7 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324097] ALL | 1934 | French official visit to Prague (Visita oficial francesa a Praga)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324097
+	random = no
+	all = yes
+	trigger = {
+			NOT = { war = { country = FRA country = CZE } }
+			exists = FRA
+			exists = CZE
+			}
+	date = { day = 26 month = april year = 1934 }
+	name = "EVT_ALL_324097_NAME"
+	desc = "EVT_ALL_324097_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = relation which = CZE value = 10 }
+		command = { type = relation which = FRA value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324124] ALL | 1934 | FIFA World Cup (Copa Mundial de la FIFA)
+# Trigger event 324125 in events/GLOBAL/ALL_26-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324124
+	random = no
+	persistent = yes
+	all = yes
+trigger = {
+		flag = Sports
+		NOT = { local_flag = Sportgo }
+		}
+name = "EVT_SHARED_00980_NAME"
+desc = "EVT_ALL_324124_DESC"
+style = 2
+date = { day = 27 month = may year = 1934 }
+offset = 5
+deathdate = { day = 10 month = june year = 1934 }
+	picture = "GLOBAL/wc01"
+save_date = yes
+action = {
+	trigger = {
+		NOT = {
+		country = ITA
+		atwar = yes
+		atwar = ITA
+		war = { country = ENG  country = GER }
+		war = { country = ENG  country = JAP }
+		war = { country = ENG  country = USA }
+		war = { country = ENG  country = ITA }
+		war = { country = ENG  country = SOV }
+		war = { country = GER  country = JAP }
+		war = { country = GER  country = USA }
+		war = { country = GER  country = ITA }
+		war = { country = GER  country = SOV }
+		war = { country = JAP  country = USA }
+		war = { country = JAP  country = ITA }
+		war = { country = JAP  country = SOV }
+		war = { country = USA  country = ITA }
+		war = { country = USA  country = SOV }
+		war = { country = ITA  country = SOV }
+		war = { country = DDR  country = JAP }
+		war = { country = DDR  country = USA }
+		war = { country = DDR  country = ITA }
+		war = { country = DDR  country = SOV }
+			}
+		}
+	name = "ACTION_NAME_GREAT"
+	command = { type = event which = 324125 where = -1 when = 13 }
+	command = { trigger = { ai = no } type = supplies value = -100 }
+	command = { type = local_setflag which = Sportgo }
+	}
+action = {
+	trigger = {
+		country = ITA
+		NOT = {
+		atwar = yes
+		atwar = ITA
+		war = { country = ENG  country = GER }
+		war = { country = ENG  country = JAP }
+		war = { country = ENG  country = USA }
+		war = { country = ENG  country = ITA }
+		war = { country = ENG  country = SOV }
+		war = { country = GER  country = JAP }
+		war = { country = GER  country = USA }
+		war = { country = GER  country = ITA }
+		war = { country = GER  country = SOV }
+		war = { country = JAP  country = USA }
+		war = { country = JAP  country = ITA }
+		war = { country = JAP  country = SOV }
+		war = { country = USA  country = ITA }
+		war = { country = USA  country = SOV }
+		war = { country = ITA  country = SOV }
+		war = { country = DDR  country = JAP }
+		war = { country = DDR  country = USA }
+		war = { country = DDR  country = ITA }
+		war = { country = DDR  country = SOV }
+			}
+		}
+	name = "ACTION_NAME_ACCEPT"
+	command = { type = event which = 324125 where = -1 when = 13 }
+	command = { type = dissent value = -1 }
+	command = { trigger = { ai = no } type = supplies value = -200 }
+	command = { type = local_setflag which = Sportgo }
+	}
+action = {
+	trigger = {
+		atwar = yes
+		NOT = {
+		atwar = ITA
+		war = { country = ENG  country = GER }
+		war = { country = ENG  country = JAP }
+		war = { country = ENG  country = USA }
+		war = { country = ENG  country = ITA }
+		war = { country = ENG  country = SOV }
+		war = { country = GER  country = JAP }
+		war = { country = GER  country = USA }
+		war = { country = GER  country = ITA }
+		war = { country = GER  country = SOV }
+		war = { country = JAP  country = USA }
+		war = { country = JAP  country = ITA }
+		war = { country = JAP  country = SOV }
+		war = { country = USA  country = ITA }
+		war = { country = USA  country = SOV }
+		war = { country = ITA  country = SOV }
+		war = { country = DDR  country = JAP }
+		war = { country = DDR  country = USA }
+		war = { country = DDR  country = ITA }
+		war = { country = DDR  country = SOV }
+			}
+		}
+	name = "ACTION_NAME_NO"
+	command = { type = event which = 324125 where = -1 when = 13 }
+	command = { type = local_clrflag which = Sportgo }
+	}
+action = {
+	trigger = {
+		OR = {
+		atwar = ITA
+		war = { country = ENG  country = GER }
+		war = { country = ENG  country = JAP }
+		war = { country = ENG  country = USA }
+		war = { country = ENG  country = ITA }
+		war = { country = ENG  country = SOV }
+		war = { country = GER  country = JAP }
+		war = { country = GER  country = USA }
+		war = { country = GER  country = ITA }
+		war = { country = GER  country = SOV }
+		war = { country = JAP  country = USA }
+		war = { country = JAP  country = ITA }
+		war = { country = JAP  country = SOV }
+		war = { country = USA  country = ITA }
+		war = { country = USA  country = SOV }
+		war = { country = ITA  country = SOV }
+		war = { country = DDR  country = JAP }
+		war = { country = DDR  country = USA }
+		war = { country = DDR  country = ITA }
+		war = { country = DDR  country = SOV }
+			}
+		}
+	name = "ACTION_NAME_UNFORTUNATE"
+	command = { type = sleepevent which = 324125 }
+	command = { type = local_clrflag which = Sportgo }
+	command = { type = clrflag which = Sports }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324102] ALL | 1934 | Allied default on War Loans (Ley de Incumplimiento de Deudas de Johnson)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324102
+	random = no
+	all = yes
+	trigger = {
+			atwar = no
+			exists = BEL
+			exists = ENG
+			exists = FRA
+			exists = ITA
+			exists = USA
+			}
+	date = { day = 15 month = june year = 1934 }
+	name = "EVT_ALL_324102_NAME"
+	desc = "EVT_ALL_324102_DESC"
+	style = 2
+	picture = "GLOBAL/money_devaluation"
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { country = USA } type = money value = 300 }
+		command = { trigger = { country = USA } type = relation which = BEL value = -5 }
+		command = { trigger = { country = USA } type = relation which = ENG value = -5 }
+		command = { trigger = { country = USA } type = relation which = FRA value = -5 }
+		command = { trigger = { country = USA } type = relation which = ITA value = -5 }
+		command = { type = relation which = USA value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324098] ALL | 1934 | Prorogation of the Syrian Parliament (Prórroga del parlamento sirio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 324098
+	random = no
+	all = yes
+	trigger = {
+			exists = FRA
+		}
+	date = { day = 3 month = november year = 1934 }
+	name = "EVT_ALL_324098_NAME"
+	desc = "EVT_ALL_324098_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231072] ALL | 1935 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231072
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 19 month = april year = 1935 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231072_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.0 }
+		command = { type = trickleback_mod value = 0.2 }
+		command = { type = attrition_mod value = 0.1 }
+		command = { type = research_mod value = 0.1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [231073] ALL | 1935 | Medical Breakthrough (Avance médico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231073
+	trigger = { difficulty = 0
+	ai = no }
+	style = 2
+	date = { day = 9 month = may year = 1935 }
+	name = "EVT_SHARED_01080_NAME"
+	desc = "EVT_ALL_231073_DESC"
+	picture = "GLOBAL/scientist"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 0.0 }
+		command = { type = trickleback_mod value = 0.0 }
+		command = { type = research_mod value = 1.0 }
+		}
+	action = {
+		name = "ACTION_NAME_NO"
+		command = { type = dissent value = -2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [124081] ALL | 1936 | Jiangsu Secedes (Secesión de Jiangsu)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124081
+	persistent = yes
+	random = no
+	name = EVT_ALL_124081_NAME
+	desc = EVT_ALL_124081_DESC
+	picture = "GLOBAL/ccip_beiyangarmy"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				country = U74
+				country = UCH
+			}
+		}
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+		command = { trigger = { country = U74 } type = remove_division which = "Jiangsu Lujun" value = U74 }
+		command = { trigger = { country = U74 } type = remove_division which = "Shanghai Mingbin" value = U74 }
+		command = { trigger = { country = UCH } type = remove_division which = "Jiangsu Lujun" value = UCH }
+		command = { trigger = { country = UCH } type = remove_division which = "Shanghai Mingbin" value = UCH }
+		command = { trigger = { division_exists = { type = 22000 id = 10021 } } type = remove_division which = 22000 value = 10021 }
+		command = { trigger = { division_exists = { type = 22000 id = 10031 } } type = remove_division which = 22000 value = 10031 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231149] ALL | 1936 | Music (Música)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231149
+	random = no
+	persistent = yes
+	name = "EVT_SHARED_01081_NAME"
+	desc = "EVT_SHARED_01081_DESC"
+	picture = "GLOBAL/music"
+	action = {
+		name = "EVT_ALL_231149_A"
+		command = { type = songs which = Hitler.txt }
+	}
+	action = {
+		name = "EVT_ALL_231149_B"
+		command = { type = songs which = callofduty.txt }
+	}
+	action = {
+		name = "EVT_ALL_231149_C"
+		command = { type = songs which = speech.txt }
+	}
+	action = {
+		name = "EVT_ALL_231149_D"
+		command = { type = songs which = Classical.txt }
+	}
+	action = {
+		name = "EVT_ALL_231149_E"
+		command = { type = songs which = WWI.txt }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324149] ALL | 1936 | The Olympic Games (Los Juegos Olímpicos)
+# Triggered by event 324148 in events/GLOBAL/ALL_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324149
+	random = no
+	persistent = yes
+	all = yes
+	name = "EVT_SHARED_00981_NAME"
+	desc = "EVT_SHARED_00983_DESC"
+	style = 2
+	picture = "GLOBAL/olympics1936b"
+action = {
+	name = "ACTION_NAME_GREAT"
+	command = { trigger = { country = GER local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = GER local_flag = Sportgo } type = money value = 200 }
+	command = { trigger = { country = GER local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = USA local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = HUN local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = U13 local_flag = Sportgo NOT = { exists = HUN } } type = dissent value = -1 }
+	command = { trigger = { country = ITA local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { local_flag = Sportgo } type = dissent value = -3 }
+	command = { type = local_clrflag which = Sportgo }
+	command = { type = clrflag which = Sports }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [324151] ALL | 1936 | The Olympic Games (Los Juegos Olímpicos)
+# Triggered by event 324150 in events/GLOBAL/ALL_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 324151
+	random = no
+	persistent = yes
+	all = yes
+	name = "EVT_SHARED_00981_NAME"
+	desc = "EVT_SHARED_00983_DESC"
+	style = 2
+	picture = "GLOBAL/olympics1936b"
+action = {
+	name = "ACTION_NAME_GREAT"
+	command = { trigger = { country = DDR local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = DDR local_flag = Sportgo } type = money value = 200 }
+	command = { trigger = { country = DDR local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = USA local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = HUN local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { country = U13 local_flag = Sportgo NOT = { exists = HUN } } type = dissent value = -1 }
+	command = { trigger = { country = ITA local_flag = Sportgo } type = dissent value = -1 }
+	command = { trigger = { local_flag = Sportgo } type = dissent value = -3 }
+	command = { type = local_clrflag which = Sportgo }
+	command = { type = clrflag which = Sports }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329456] ALL | 1936 | Secret Weapon: Rocket Interceptor (Arma secreta: Interceptor cohete)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329456
+	random = no
+	invention = yes
+	trigger = {
+		technology = 4060
+		technology = 7560
+		NOT = {
+			is_tech_active = 7010
+		}
+	}
+	name = "EVT_SHARED_00976_NAME"
+	desc = "EVT_ALL_329456_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {  type = activate which = 7010 }
+		command = {  type = activate which = 7020 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329457] ALL | 1936 | Secret Weapon: Rocket Interceptor (Arma secreta: Interceptor cohete)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329457
+	random = no
+	invention = yes
+	trigger = {
+		technology = 7570
+		NOT = {
+			is_tech_active = 15500
+		}
+	}
+	name = "EVT_SHARED_00976_NAME"
+	desc = "EVT_ALL_329457_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {  type = activate which = 15500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329458] ALL | 1936 | Secret Weapon: Rocket Interceptor (Arma secreta: Interceptor cohete)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329458
+	random = no
+	invention = yes
+	trigger = {
+		technology = 7580
+		NOT = {
+			is_tech_active = 7100
+		}
+	}
+	name = "EVT_SHARED_00976_NAME"
+	desc = "EVT_ALL_329458_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {  type = activate which = 7100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329459] ALL | 1936 | Secret Weapon: Rocket Interceptor (Arma secreta: Interceptor cohete)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329459
+	random = no
+	invention = yes
+	trigger = {
+		technology = 7590
+		technology = 7100
+		NOT = {
+			is_tech_active = 7110
+		}
+	}
+	name = "EVT_SHARED_00976_NAME"
+	desc = "EVT_ALL_329459_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {  type = activate which = 7110 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329460] ALL | 1936 | Secret Weapon: Rocket Interceptor (Arma secreta: Interceptor cohete)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329460
+	random = no
+	invention = yes
+	trigger = {
+		technology = 7110
+		NOT = {
+			is_tech_active = 7120
+		}
+	}
+	name = "EVT_SHARED_00976_NAME"
+	desc = "EVT_ALL_329460_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {  type = activate which = 7120 }
+		command = {  type = activate which = 7130 }
+		command = { type = activate which = 7460 }
+                command = { type = activate which = 7770 }
+                command = { type = activate which = 7780 }
+                command = { type = activate which = 7790 }
+                command = { type = activate which = 7800 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329461] ALL | 1936 | Secret Weapon: Rocket Interceptor (Arma secreta: Interceptor cohete)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329461
+	random = no
+	invention = yes
+	trigger = {
+		technology = 5340
+		NOT = {
+			is_tech_active = 7140
+		}
+	}
+	name = "EVT_SHARED_00976_NAME"
+	desc = "EVT_ALL_329461_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {  type = activate which = 7140 }
+		command = {  type = activate which = 7150 }
+		command = {  type = activate which = 7160 }
+		command = {  type = activate which = 16000 }
+		command = {  type = activate which = 16040 }
+		command = {  type = activate which = 16050 }
+		command = {  type = activate which = 7820 }
+		command = {  type = activate which = 7830 }
+		command = {  type = activate which = 7840 }
+		command = {  type = activate which = 7850 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329462] ALL | 1936 | Secret Weapon: Rocket Interceptor (Arma secreta: Interceptor cohete)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329462
+	random = no
+	invention = yes
+	trigger = {
+		technology = 5540
+		NOT = {
+			is_tech_active = 7170
+		}
+	}
+	name = "EVT_SHARED_00976_NAME"
+	desc = "EVT_ALL_329462_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {  type = activate which = 7170 }
+		command = {  type = activate which = 7180 }
+		command = {  type = activate which = 7190 }
+		command = { type = activate which = 16010 }
+		command = { type = activate which = 16020 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329463] ALL | 1936 | Secret Weapon: Rocket Interceptor (Arma secreta: Interceptor cohete)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329463
+	random = no
+	invention = yes
+	trigger = {
+		technology = 3480
+		technology = 5540
+		NOT = {
+			is_tech_active = 7200
+		}
+	}
+	name = "EVT_SHARED_00976_NAME"
+	desc = "EVT_ALL_329463_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {  type = activate which = 7200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329464] ALL | 1936 | Secret Weapon: Rocket Interceptor (Arma secreta: Interceptor cohete)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329464
+	random = no
+	invention = yes
+	trigger = {
+		technology = 3180
+		technology = 5540
+		NOT = {
+			is_tech_active = 7210
+		}
+	}
+	name = "EVT_SHARED_00976_NAME"
+	desc = "EVT_ALL_329464_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {  type = activate which = 7210 }
+		command = { type = activate which = 7250 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329465] ALL | 1936 | Secret Weapon: Rocket Interceptor (Arma secreta: Interceptor cohete)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329465
+	random = no
+	invention = yes
+	trigger = {
+		technology = 3570
+		technology = 5540
+		NOT = {
+			is_tech_active = 7220
+		}
+	}
+	name = "EVT_SHARED_00976_NAME"
+	desc = "EVT_ALL_329465_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = {  type = activate which = 7220 }
+		command = { type = activate which = 7290 }
+	}
+}

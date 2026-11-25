@@ -1,0 +1,63 @@
+# ============================================================================
+# File: events/Minors/U60_Decisions.txt (1 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [280001] U60 | 1948 | Newfoundland referendums, 1948 (Referéndum de Terranova de 1948)
+# Trigger event 121013 in events/Minors/CAN_14-52.txt
+# Trigger event 143005 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 280001
+	random = no
+	country = u60
+	decision = {
+		exists = U60
+		atwar = no
+	}
+	decision_trigger = {
+		money = 100
+		control = { province = 2136 data = U60 }
+		control = { province = 2137 data = U60 }
+		control = { province = 2138 data = U60 }
+	}
+	trigger = {
+		exists = U60
+		control = { province = 2136 data = U60 }
+		control = { province = 2137 data = U60 }
+		control = { province = 2138 data = U60 }
+		atwar = no
+		random = 10
+	}
+	name = "EVT_U60_280001_NAME"
+	desc = "EVT_U60_280001_DESC"
+	style = 2
+	picture = "Minors/newfoundland_referendums_1948"
+	decision_picture = "GLOBAL/decision_negotiaton"
+	date = { day = 1 month = january year = 1948 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = "EVT_U60_280001_A"
+		ai_chance = 50
+		command = {type = trigger which = 121013 }
+	}
+	action = {
+		name = "EVT_U60_280001_B"
+		ai_chance = 40
+		command = { type = end_puppet }
+		command = { type = supplies value = 700 }
+		command = { type = oilpool value = 200 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = headofstate which = 1115001 }
+		command = { type = headofgovernment which = 1115002 }
+		command = { type = sleepminister which = 1115012 }
+		command = { type = sleepminister which = 1115013 }
+	}
+	action = {
+		name = "EVT_U60_280001_C"
+		ai_chance = 10
+		command = {type = trigger which = 143005 }
+	}
+}

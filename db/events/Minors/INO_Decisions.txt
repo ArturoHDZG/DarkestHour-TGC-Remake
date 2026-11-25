@@ -1,0 +1,143 @@
+# ============================================================================
+# File: events/Minors/INO_Decisions.txt (4 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [162037] INO | 1962 | Indonesian-Malaysian Confrontation (Confrontación indonesio-malaya)
+# Trigger event 184022 in events/Minors/MLY.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 162037
+	country = INO
+	name = EVT_INO_162037_NAME
+	desc = EVT_INO_162037_DESC
+	picture = "nwo/konfrontasi"
+	decision_picture = "nwo/d_konfrontasi"
+	style = 1
+	trigger = {
+		exists = SAR
+		ai = SAR
+	}
+	decision = {
+		exists = SAR
+		ai = SAR
+	}
+	date = { day = 1 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = EVT_INO_162037_A
+		ai_chance = 80
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 15 }
+		command = { type = manpowerpool value = -20 }
+		command = { type = money value = -500 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		trigger = { ai = yes }
+		ai_chance = 20
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [162035] INO | 1965 | The New Order Regime (El «Nuevo Orden» indonesio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 162035
+	country = INO
+	name = EVT_INO_162035_NAME
+	desc = EVT_INO_162035_DESC
+	picture = "nwo/indonesian_new_order"
+	decision_picture = "nwo/d_indonesian_new_order"
+	style = 1
+	decision = {
+		atwar = no
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	trigger = {
+		atwar = no
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = political_left value = -2 }
+		command = { type = domestic which = freedom value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [162041] INO | 1969 | The New Economic Policy (La Nueva Política Económica)
+# ----------------------------------------------------------------------------
+event = {
+	id = 162041
+	country = INO
+	name = EVT_INO_162041_NAME
+	desc = EVT_INO_162041_DESC
+	picture = "nwo/malaysian_economy"
+	decision_picture = "nwo/d_malaysian_economy"
+	style = 1
+	decision = {
+		atwar = no
+	}
+	trigger = {
+		atwar = no
+	}
+	date = { day = 13 month = may year = 1969 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1969 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = freedom value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [162036] INO | 1975 | Annexation of East Timor (Invasión de Timor Oriental)
+# ----------------------------------------------------------------------------
+event = {
+	id = 162036
+	country = INO
+	name = EVT_INO_162036_NAME
+	desc = EVT_INO_162036_DESC
+	picture = "nwo/east_timor"
+	decision_picture = "nwo/d_east_timor"
+	style = 1
+	decision = {
+		control = { province = 1617 data = POR }
+	}
+	trigger = {
+		control = { province = 1617 data = POR }
+	}
+	date = { day = 0 month = january year = 1975 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = EVT_INO_162036_A
+		ai_chance = 97
+		command = { type = dissent value = -5 }
+		command = { type = belligerence value = 10 }
+		command = { type = secedeprovince which = INO value = 1617 when = 2 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		trigger = { ai = yes }
+		ai_chance = 3
+		command = { type = money value = 1 }
+	}
+}

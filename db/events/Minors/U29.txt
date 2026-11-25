@@ -1,0 +1,501 @@
+# ============================================================================
+# File: events/Minors/U29.txt (17 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [264018] U29 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 264019 in events/Minors/U29.txt
+# Trigger event 118052 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 264018
+   country = U29
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = BUL
+            NOT = { ai = BUL }
+            NOT = { ai = U29 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = BUL
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = BUL } }
+      command = { type = country which = BUL }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = BUL
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U29 }
+               control = { province = 321 data = -1 }
+            }
+         }
+         type = trigger which = 264019
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = BUL }
+               NOT = { control = { province = 321 data = -1 } }
+            }
+         }
+         type = trigger which = 118052
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = BUL
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [264019] U29 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 118051 in events/Minors/BUL.txt
+# Triggered by event 264018 in events/Minors/U29.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 264019
+   country = U29
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = BUL value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [264005] U29 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264005
+	country = U29
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 960003 }
+		command = { type = headofgovernment which = 960006 }
+		command = { type = foreignminister which = 960009 }
+		command = { type = armamentminister which = 960016 }
+		command = { type = ministerofsecurity which = 960020 }
+		command = { type = ministerofintelligence which = 960023 }
+		command = { type = chiefofstaff which = 960024 }
+		command = { type = chiefofarmy which = 960027 }
+		command = { type = chiefofnavy which = 960029 }
+		command = { type = chiefofair which = 960032 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264006] U29 | 1945 | Execution of Prince Kiril (Ejecución del príncipe Cirilo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264006
+	country = U29
+	name = EVT_U29_264006_NAME
+	desc = EVT_U29_264006_DESC
+	picture = "nwo/kiril_preslav"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 960100 }
+		command = { type = sleepminister which = 960003 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264007] U29 | 1946 | Abolition of the Bulgarian Monarchy (Abolición de la monarquía búlgara)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264007
+	country = U29
+	name = EVT_U29_264007_NAME
+	desc = EVT_U29_264007_DESC
+	picture = "nwo/simeon_ii"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 960005 }
+		command = { type = sleepminister which = 960100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264008] U29 | 1946 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264008
+	country = U29
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 960007 }
+		command = { type = foreignminister which = 960012 }
+		command = { type = armamentminister which = 960017 }
+		command = { type = ministerofsecurity which = 960020 }
+		command = { type = ministerofintelligence which = 960023 }
+		command = { type = chiefofstaff which = 960026 }
+		command = { type = chiefofarmy which = 960028 }
+		command = { type = chiefofnavy which = 960031 }
+		command = { type = chiefofair which = 960033 }
+		command = { type = flag_ext where = U29 which = _1946 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264020] U29 | 1947 | The Bled Agreement (El Acuerdo de Bled)
+# Triggered by event 262039 in events/Minors/U27.txt
+# Trigger event 262040 in events/Minors/U27.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 264020
+	country = U29
+	name = EVT_U29_264020_NAME
+	desc = EVT_U29_264020_DESC
+	picture = "nwo/united_balkans"
+	style = 1
+	trigger = {
+		NOT = { flag = tito_stalin_split }
+		event = 262039
+	}
+	date = { day = 29 month = july year = 1947 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 95
+		command = { type = relation which = U27 value = 100 }
+		command = { type = relation which = SOV value = 50 }
+		command = { type = dissent value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = relation which = SOV value = -50 }
+		command = { type = relation which = U27 value = -50 }
+		command = { type = dissent value = 2 }
+		command = { type = sleepevent which = 262040 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264009] U29 | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264009
+	country = U29
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 960101 }
+		command = { type = headofgovernment which = 960045 }
+		command = { type = flag_ext where = U29 which = _1948 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264021] U29 | 1950 | Bulgarian-Yugoslav Unification (Unificación de Bulgaria y Yugoslavia)
+# Triggered by event 223374 in events/SOV/SOV_47-56.txt
+# Trigger event 262041 in events/Minors/U27.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 264021
+	country = U29
+	name = EVT_U29_264021_NAME
+	desc = EVT_U29_264021_DESC
+	picture = "nwo/bulgaria_in_yugoslavia"
+	style = 1
+	trigger = {
+		NOT = { flag = tito_stalin_split }
+		event = 223374
+	}
+	date = { day = 1 month = july year = 1950 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_SURRENDER_GAMEOVER
+		ai_chance = 70
+		command = { type = trigger which = 262041 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 30
+		command = { type = relation which = SOV value = -200 }
+		command = { type = relation which = U27 value = -200 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264010] U29 | 1956 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264010
+	country = U29
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 960102 }
+		command = { type = headofgovernment which = 960103 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264011] U29 | 1962 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264011
+	country = U29
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 960104 }
+		command = { type = flag_ext where = U29 which = _1967 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264012] U29 | 1971 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264012
+	country = U29
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 960105 }
+		command = { type = flag_ext where = U29 which = _1971 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264013] U29 | 1981 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264013
+	country = U29
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 960106 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264014] U29 | 1986 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264014
+	country = U29
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 960107 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264015] U29 | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264015
+	country = U29
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 960108 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264016] U29 | 1990 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264016
+	country = U29
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 960109 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [264017] U29 | 1990 | Fall of the Bulgarian Communist Regime (Fin de la República Popular de Bulgaria)
+# ----------------------------------------------------------------------------
+event = {
+	id = 264017
+	country = U29
+	name = EVT_U29_264017_NAME
+	desc = EVT_U29_264017_DESC
+	picture = "nwo/bulgaria_1989"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 99
+		command = { type = country which = BUL }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = end_puppet }
+		command = { type = leave_alliance }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 1
+		command = { type = dissent value = 25 }
+		command = { type = end_puppet }
+	}
+}

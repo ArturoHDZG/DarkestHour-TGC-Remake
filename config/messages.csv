@@ -1,0 +1,3223 @@
+##### Open this document in Excel, version 5 or later.;;;;;;;;;;;X
+##### To convert the semicolon-separated list to a normal Excel table, first click on the 'A' above to select the entire 'A' column.;;;;;;;;;;;X
+##### Select 'Data' -> 'Text to Columns' -> 'Delimited' -> 'Next';;;;;;;;;;;X
+##### Check 'Semicolon' (ONLY!) -> 'Finish';;;;;;;;;;;X
+##### Select column 'A' through 'K' (click + drag on letters above columns);;;;;;;;;;;X
+##### Right-click anywhere on the sheet (inside the selection) and select 'Column width' and set it so that only THREE columns are visible ('45' with 1024 x 768 screen resolution);;;;;;;;;;;X
+##### Right-click anywhere on the sheet again (still inside the selection) and select 'Format Cells' -> 'Alignment' -> check 'Wrap Text' + select 'Vertical: Top' -> 'OK';;;;;;;;;;;X
+##### Place the cursor in cell C1 and select 'Window' -> 'Freeze Panes' (allows you to scroll horizontally to see any language in the rightmost coulmn while still having the string names/comments and the english original text in the left and middle column;;;;;;;;;;;X
+##### CAREFULLY read the instructions in cells B18 ? B36;;;;;;;;;;;X
+##;;;;;;;;;;;X
+##;NOTES TO TRANSLATORS:;;;;;;;;;;X
+##;Err:510;;;;;;;;;;X
+##;;;;;;;;;;;X
+##;1) ' percents' is for indicating where another string is inserted, and MAY NEVER BE REMOVED! If there are more than one ' percents' in a string, they may NOT CHANGE PLACES.;;;;;;;;;;X
+##;###############################################################################################################################################################################################################################################################;;;;;;;;;;X
+##;3) ' percentt' is for indicating where the player's 'title' is inserted, however only in game message boxes.';;;;;;;;;;X
+##;###############################################################################################################################################################################################################################################################;;;;;;;;;;X
+##;5) A dollar sign, '$' will always automatically be replaced by the 'ducats' icon.;;;;;;;;;;X
+##;6) Any row with a '#' in the first column (column 'A') will be ignored. However, you cannot use any paragraph characters in these rows!!!;;;;;;;;;;X
+##;7) To insert a carriage return, insert a '\n' (backslash + n);;;;;;;;;;X
+##;8) No formatting can be done in this file. To change the color of a text, insert the following codes in front of the word:;;;;;;;;;;X
+##;TEXT COLORS:;;;;;;;;;;X
+##; A = 0,64,0;;;;;;;;;;X
+##; B = 0,0,192;;;;;;;;;;X
+##; C = 128,0,0;;;;;;;;;;X
+##; D = 255,255,0;;;;;;;;;;X
+##; E = 255,0,255;;;;;;;;;;X
+##; F = 255,128,0;;;;;;;;;;X
+##; G = 0,100,0;;;;;;;;;;X
+##; H = 128,128, 128;;;;;;;;;;X
+##; I = 0,0,255;;;;;;;;;;X
+##; J = 0,192,0;;;;;;;;;;X
+##; M = 100,255,100;;;;;;;;;;X
+##; N = 255,100,100;;;;;;;;;;X
+##; R = 240,0,0;;;;;;;;;;X
+##; W = 255,255,255;;;;;;;;;;X
+##; Y = 208,232,248;;;;;;;;;;X
+##; Z = 0,0,0;;;;;;;;;;X
+##;   - restores old color;;;;;;;;;;X
+##;###############################################################################################################################################################################################################################################################;;;;;;;;;;X
+##;10) ALL CELLS in column 'L' in this document MUST contain a character!;;;;;;;;;;X
+##;11) The LAST CELL in the 'A' column MUST contain the string '#EOF';;;;;;;;;;X
+##;12) If you want to begin a string with a ' (citation mark), you will need to type it twice (Excel will read the first one as a commentary which is not  exported into the actual text database file);;;;;;;;;;X
+##;;;;;;;;;;;X
+##;WHEN DONE: save as 'Semicolon Separated (.csv)' format, and make sure the file is called 'Text.csv'.;;;;;;;;;;X
+##;;;;;;;;;;;X
+##;NOTE: If Excel complains about an 'Error in formula' when the cell content begins with a '+' or '-' sign, type a ' (citation mark) in front of the plus or minus.;;;;;;;;;;X
+##;;;;;;;;;;;X
+#  STRING NAME (do not change!);English;French;Italian;Spanish;German;Polish;Portuguese;Russian;Extra1;Extra2;X
+#  ========================;Err:510;Err:510;Err:510;Err:510;Err:510;Err:510;Err:510;Err:510;Err:510;Err:510;X
+###########################################;;;;;;;;;;;X
+########### MESSAGE HANDLER ############;;;;;;;;;;;X
+###########################################;;;;;;;;;;;X
+##;;;;;;;;;;;X
+#  PLAYER TITLES;;;;;;;;;;;X
+##;;;;;;;;;;;X
+MESS_RANK0;Sir;;;Señor;;;;;;;X
+MESS_RANK1;Sir;;;Señor;;;;;;;X
+MESS_RANK2;Sir;;;Señor;;;;;;;X
+MESS_RANK3;Sir;;;Señor;;;;;;;X
+MESS_RANK4;Sir;;;Señor;;;;;;;X
+MESS_RANK5;Sir;;;Señor;;;;;;;X
+MESS_RANK6;Sir;;;Señor;;;;;;;X
+##;;;;;;;;;;;X
+MESS_MASTERCALL1;Sir;;;Señor;;;;;;;X
+MESS_MASTERCALL2;Sir;;;Señor;;;;;;;X
+MESS_MASTERCALL3;Sir;;;Señor;;;;;;;X
+MESS_MASTERCALL4;Sir;;;Señor;;;;;;;X
+MESS_MASTERCALL5;Sir;;;Señor;;;;;;;X
+MESS_MASTERCALL6;Sir;;;Señor;;;;;;;X
+##;;;;;;;;;;;X
+#  These following pejorative adjectives are randomly inserted in some messages. The definite article ('the') can either be in the actual message or in this string ? the syntax in the english version is 'the %s (in %s have declared war on us)'.;;;;;;;;;;;X
+##;;;;;;;;;;;X
+MESS_BADWORDS1;the bastards;;;esos bastardos;;;;;;;X
+MESS_BADWORDS2;the rotten swines;;;esos cerdos despreciables;;;;;;;X
+MESS_BADWORDS3;the infidels;;;esos infieles;;;;;;;X
+MESS_BADWORDS4;the traitors;;;esos traidores;;;;;;;X
+##;;;;;;;;;;;X
+EFFECTS;Effect;;;Efecto;;;;;;;X
+HISTORY;History;;;Historia;;;;;;;X
+##;;;;;;;;;;;X
+MESS_NOSUNK;(No ships were sunk.);;;(Ningún barco fue hundido).;;;;;;;X
+MESS_SUNKLIST;The following ships were sunk.\n;;;Se han hundido los siguientes barcos:\n;;;;;;;X
+##;;;;;;;;;;;X
+#  NOTE: The messages work this way:;;;;;;;;;;;X
+##;*_HEADER = small orange header in message box;;;;;;;;;;;X
+##;*_1 = large white header in message box (limited space!);;;;;;;;;;;X
+##;*_2 = small orange text in message box;;;;;;;;;;;X
+##;*_3 = all caps white text in message box;;;;;;;;;;;X
+##;*_4 = small orange text in message box;;;;;;;;;;;X
+##;*_5 = all caps white text in message box;;;;;;;;;;;X
+##;*_6 = small orange text in message box;;;;;;;;;;;X
+##;*_LOG = the text that is displayed in the game log (in the bottom of the screen) ? most often this is just a shorter recap of all the other text strings.;;;;;;;;;;;X
+##;*_BTN1 = left button;;;;;;;;;;;X
+##;*_BTN2 = right button;;;;;;;;;;;X
+##;;;;;;;;;;;X
+##;If any field is left blank it will not be displayed at all in the message box. If a button is left blank the button will not be displayed. Functionality of buttons cannot be changed.;;;;;;;;;;;X
+##;All texts EXCEPT the '*_HEADER' can be of virtually any length ? the box and button size will change accordingly.;;;;;;;;;;;X
+##;VERY VERY VERY IMPORTANT!!! YOU MUST NOT CHANGE THE ORDER OF ANY VARIABLES ('%s' and '%d') OR ADD OR REMOVE ANY VARIABLES!!!;;;;;;;;;;;X
+##;;;;;;;;;;;X
+TASKFORCE_SETUP;When you have spotted an enemy naval Taskforce.;;;Cuando aviste una fuerza operativa naval enemiga.;;;;;;;X
+TASKFORCE_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+TASKFORCE_1;Taskforce Detected;;;Fuerza operativa detectada;;;;;;;X
+TASKFORCE_2;%t, we have detected a naval taskforce from;;;%t, hemos detectado una fuerza operativa naval de;;;;;;;X
+TASKFORCE_3;%s;;;%s;;;;;;;X
+TASKFORCE_4;in;;;en;;;;;;;X
+TASKFORCE_5;%s;;;%s.;;;;;;;X
+TASKFORCE_6;;;;;;;;;;;X
+TASKFORCE_LOG;We have detected an taskforce of %s in %s.;;;Hemos detectado una fuerza operativa naval de %s en %s.;;;;;;;X
+TASKFORCE_BTN1;Ok;;;Aceptar;;;;;;;X
+TASKFORCE_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+DIVDEPLOY_SETUP;Whenever one of your divisions/ships/airflottillas have been deployed to a new unit.;;;Cuando una de sus divisiones, barcos o escuadrillas aéreas se traslade a una nueva unidad.;;;;;;;X
+DIVDEPLOY_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+DIVDEPLOY_1;Unit Reorganised;;;Unidad reorganizada;;;;;;;X
+DIVDEPLOY_2;%t, we have given orders that;;;%t, hemos dado órdenes de que;;;;;;;X
+DIVDEPLOY_3;%s;;;%s;;;;;;;X
+DIVDEPLOY_4;should now be a part of;;;ahora forme parte de;;;;;;;X
+DIVDEPLOY_5;%s;;;%s.;;;;;;;X
+DIVDEPLOY_6;;;;;;;;;;;X
+DIVDEPLOY_LOG;%s was assigned to %s.;;;%s ha sido asignado a %s.;;;;;;;X
+DIVDEPLOY_BTN1;Ok;;;Aceptar;;;;;;;X
+DIVDEPLOY_BTN2;Select;;;Seleccionar;;;;;;;X
+DIVFROM; from %s;;; de %s;;;;;;;X
+##;;;;;;;;;;;X
+AMISFIN_SETUP;When one of your airunits has finished the mission assigned to them,  due to time-limit given.;;;Cuando una de sus unidades aéreas termine la misión asignada debido al límite temporal impuesto.;;;;;;;X
+AMISFIN_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+AMISFIN_1;Mission Finished;;;Misión finalizada;;;;;;;X
+AMISFIN_2;%t, the air-forces of;;;%t, las fuerzas aéreas de;;;;;;;X
+AMISFIN_3;%s;;;%s;;;;;;;X
+AMISFIN_4;have finished their assigned mission.;;;han terminado la misión que tenían asignada.;;;;;;;X
+AMISFIN_5;;;;;;;;;;;X
+AMISFIN_6;;;;;;;;;;;X
+AMISFIN_LOG;%s have finished with their '%s' mission.;;;%s ha terminado la misión «%s».;;;;;;;X
+AMISFIN_BTN1;Ok;;;Aceptar;;;;;;;X
+AMISFIN_BTN2;Select;;;Seleccionar;;;;;;;X
+##;;;;;;;;;;;X
+NMISFIN_SETUP;When one of your navalunits has finished the mission assigned to them, due to time-limit given.;;;Cuando una de sus unidades navales termine la misión asignada debido al límite temporal impuesto.;;;;;;;X
+NMISFIN_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+NMISFIN_1;Mission Finished;;;Misión finalizada;;;;;;;X
+NMISFIN_2;%t, the naval forces of;;;%t, las fuerzas navales de;;;;;;;X
+NMISFIN_3;%s;;;%s;;;;;;;X
+NMISFIN_4;have finished their assigned mission.;;;han terminado la misión que tenían asignada.;;;;;;;X
+NMISFIN_5;;;;;;;;;;;X
+NMISFIN_6;;;;;;;;;;;X
+NMISFIN_LOG;%s have finished with their '%s' mission.;;;%s ha terminado la misión «%s».;;;;;;;X
+NMISFIN_BTN1;Ok;;;Aceptar;;;;;;;X
+NMISFIN_BTN2;Select;;;Seleccionar;;;;;;;X
+##;;;;;;;;;;;X
+HOST_DROP_MSG_CLIENT_HEADER;;;;;;;;;;;X
+HOST_DROP_MSG_CLIENT_1;Connection Lost;;;Conexión perdida;;;;;;;X
+HOST_DROP_MSG_CLIENT_2;You have lost connection with the Game Host either because he quit the game or because he lost his network connection. If the Host saved the game you will be able to reconnect and continue that saved game. This game will however quit now (if you click RESUME you can inspect the realm).;;;Ha perdido la conexión con el anfitrión de la partida, ya sea porque este salió del juego o porque perdió su conexión de red. Si el anfitrión guardó la partida, podrá volver a conectarse y continuar dicha partida. Sin embargo, esta partida finalizará ahora (si hace clic en REANUDAR, podrá inspeccionar el mapa).;;;;;;;X
+HOST_DROP_MSG_CLIENT_3;;;;;;;;;;;X
+HOST_DROP_MSG_CLIENT_4;;;;;;;;;;;X
+HOST_DROP_MSG_CLIENT_5;;;;;;;;;;;X
+HOST_DROP_MSG_CLIENT_6;;;;;;;;;;;X
+HOST_DROP_MSG_CLIENT_LOG;;;;;;;;;;;X
+HOST_DROP_MSG_CLIENT_BTN1;Quit;;;Salir;;;;;;;X
+HOST_DROP_MSG_CLIENT_BTN2;Resume;;;Reanudar;;;;;;;X
+##;;;;;;;;;;;X
+WEADT_SETUP;When we give in to the territorial demands of another nation.;;;Cuando accedamos a las exigencias territoriales de otra nación.;;;;;;;X
+WEADT_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+WEADT_1;Territory Ceded;;;Territorio cedido;;;;;;;X
+WEADT_2;%t,we have caved in to the demands of;;;%t, hemos accedido a las exigencias de;;;;;;;X
+WEADT_3;%s;;;%s;;;;;;;X
+WEADT_4;and ceded;;;y les hemos entregado;;;;;;;X
+WEADT_5;%s;;;%s;;;;;;;X
+WEADT_6;to them.;;;.;;;;;;;X
+WEADT_LOG;We accepted %s's demands and ceded %s.;;;Aceptamos las exigencias de %s y le cedimos %s.;;;;;;;X
+WEADT_BTN1;OK;;;Aceptar;;;;;;;X
+WEADT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+THEYADT_SETUP;When another nation gives in to the territorial demands of a third nation.;;;Cuando otra nación acceda a las reclamaciones territoriales de una tercera.;;;;;;;X
+THEYADT_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+THEYADT_1;Territory Ceded;;;Territorio cedido;;;;;;;X
+THEYADT_2;%t, %s have caved in to the demands of;;;%t, %s ha accedido a las exigencias de;;;;;;;X
+THEYADT_3;%s;;;%s;;;;;;;X
+THEYADT_4;and ceded;;;y le ha entregado;;;;;;;X
+THEYADT_5;%s;;;%s;;;;;;;X
+THEYADT_6;to them.;;;.;;;;;;;X
+THEYADT_LOG;%s accepted %s's demands and ceded %s.;;;%s aceptó las exigencias de %s y le entregó %s.;;;;;;;X
+THEYADT_BTN1;OK;;;Aceptar;;;;;;;X
+THEYADT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ADTUS_SETUP;When another nation gives in to our territorial demands.;;;Cuando otra nación acceda a nuestras reclamaciones territoriales.;;;;;;;X
+ADTUS_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+ADTUS_1;Territory Ceded;;;Territorio cedido;;;;;;;X
+ADTUS_2;%t, %s have caved into our rightful demands and ceded;;;%t, %s ha accedido a nuestras justas reclamaciones y nos ha entregado;;;;;;;X
+ADTUS_3;%s;;;%s;;;;;;;X
+ADTUS_4;to us.;;;.;;;;;;;X
+ADTUS_5;;;;;;;;;;;X
+ADTUS_6;;;;;;;;;;;X
+ADTUS_LOG;%s accepted our demands and ceded %s.;;;%s aceptó nuestras reclamaciones y nos entregó %s.;;;;;;;X
+ADTUS_BTN1;OK;;;Aceptar;;;;;;;X
+ADTUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WEDDT_SETUP;When we refuse to give in to the territorial demands of another nation.;;;Cuando rechacemos acceder a las reclamaciones territoriales de otra nación.;;;;;;;X
+WEDDT_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+WEDDT_1;Demands Denied!;;;¡Reclamaciones denegadas!;;;;;;;X
+WEDDT_2;%t, we refused to cave into the outrageous demands of;;;%t, nos hemos negado a acceder a las escandalosas exigencias de;;;;;;;X
+WEDDT_3;%s;;;%s;;;;;;;X
+WEDDT_4;regarding our rightfully owned territory;;;respecto a nuestro legítimo territorio nacional.;;;;;;;X
+WEDDT_5;;;;;;;;;;;X
+WEDDT_6;;;;;;;;;;;X
+WEDDT_LOG;We refused to give in to %s territorial demands.;;;Nos hemos negado a acceder a las reclamaciones territoriales de %s.;;;;;;;X
+WEDDT_BTN1;OK;;;Aceptar;;;;;;;X
+WEDDT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+THEYDDT_SETUP;When another nation refuse to give in to the territorial demands of a third nation.;;;Cuando otra nación se niegue a acceder a las reclamaciones territoriales de una tercera.;;;;;;;X
+THEYDDT_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+THEYDDT_1;Demands Denied!;;;¡Reclamaciones denegadas!;;;;;;;X
+THEYDDT_2;%s;;;%s;;;;;;;X
+THEYDDT_3;refused to give in to the territorial demands of;;;se ha negado a acceder a las reclamaciones territoriales de;;;;;;;X
+THEYDDT_4;%s;;;%s.;;;;;;;X
+THEYDDT_5;;;;;;;;;;;X
+THEYDDT_6;;;;;;;;;;;X
+THEYDDT_LOG;%s refused to give in to %s's territorial demands.;;;%s se ha negado a acceder a las reclamaciones territoriales de %s.;;;;;;;X
+THEYDDT_BTN1;OK;;;Aceptar;;;;;;;X
+THEYDDT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+DDTUS_SETUP;When another nation refuse to give in to our territorial demands.;;;Cuando otra nación se niegue a acceder a nuestras reclamaciones territoriales.;;;;;;;X
+DDTUS_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+DDTUS_1;Demands Denied!;;;¡Reclamaciones denegadas!;;;;;;;X
+DDTUS_2;%s;;;%s;;;;;;;X
+DDTUS_3;refused to cave in to our rightful territorial demands.;;;se ha negado a acceder a nuestras legítimas reclamaciones territoriales.;;;;;;;X
+DDTUS_4;;;;;;;;;;;X
+DDTUS_5;;;;;;;;;;;X
+DDTUS_6;;;;;;;;;;;X
+DDTUS_LOG;%s refused our territorial demands.;;;%s ha rechazado nuestras reclamaciones territoriales.;;;;;;;X
+DDTUS_BTN1;OK;;;Aceptar;;;;;;;X
+DDTUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+THEYCOUPUSF_SETUP;When another nation fails to coup us.;;;Cuando otra nación fracase en dar un golpe de Estado contra nosotros.;;;;;;;X
+THEYCOUPUSF_HEADER;SECURITY BRIEFING;;;PARTE DE SEGURIDAD;;;;;;;X
+THEYCOUPUSF_1;Coup Attempt;;;Tentativa de golpe de Estado;;;;;;;X
+THEYCOUPUSF_2;%t, we suspect that;;;%t, sospechamos que;;;;;;;X
+THEYCOUPUSF_3;%s;;;%s;;;;;;;X
+THEYCOUPUSF_4;were behind the attempt to coup our legal government.\n%s;;;estaba detrás del intento de derrocar a nuestro legítimo gobierno.\n%s;;;;;;;X
+THEYCOUPUSF_5;;;;;;;;;;;X
+THEYCOUPUSF_6;;;;;;;;;;;X
+THEYCOUPUSF_LOG;%s failed to stage a coup in our nation. %s;;;%s no ha conseguido perpetrar un golpe de Estado en nuestra nación. %s;;;;;;;X
+THEYCOUPUSF_BTN1;OK;;;Aceptar;;;;;;;X
+THEYCOUPUSF_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+EVENTOTHER_SETUP;When an historical event happens to another country.;;;Cuando le ocurra un evento histórico a otro país.;;;;;;;X
+EVENTOTHER_HEADER;INTELLIGENCE BRIEFING\nConcerning%s;;;PARTE DE INTELIGENCIA\nRelativo a %s;;;;;;;X
+EVENTOTHER_1;%s;;;%s;;;;;;;X
+EVENTOTHER_2;Their government announces;;;Su gobierno anuncia que el evento;;;;;;;X
+EVENTOTHER_3;%s;;;«%s»;;;;;;;X
+EVENTOTHER_4;happened to them recently.;;;ha tenido lugar recientemente en su país.;;;;;;;X
+EVENTOTHER_5;;;;;;;;;;;X
+EVENTOTHER_6;;;;;;;;;;;X
+EVENTOTHER_LOG;%s had %s .;;;En %s ha ocurrido el evento «%s».;;;;;;;X
+EVENTOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+EVENTOTHER_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+EVENTOTHERS_SETUP;When an historical event with multiple choice happens to another country.;;;Cuando le ocurra un evento histórico con múltiples opciones a otro país.;;;;;;;X
+EVENTOTHERS_HEADER;INTELLIGENCE BRIEFING\nConcerning%s;;;PARTE DE INTELIGENCIA\nRelativo a %s;;;;;;;X
+EVENTOTHERS_1;%s;;;%s;;;;;;;X
+EVENTOTHERS_2;They tell us that they selected;;;Nos informan que han elegido la opción;;;;;;;X
+EVENTOTHERS_3;%s;;;«%s»;;;;;;;X
+EVENTOTHERS_4;in;;;en el evento;;;;;;;X
+EVENTOTHERS_5;%s;;;«%s».;;;;;;;X
+EVENTOTHERS_6;;;;;;;;;;;X
+EVENTOTHERS_LOG;%s went with %s in %s.;;;%s eligió «%s» en el evento «%s».;;;;;;;X
+EVENTOTHERS_BTN1;OK;;;Aceptar;;;;;;;X
+EVENTOTHERS_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+WGEXP_SETUP;When you send out an expeditionary force.;;;Cuando enviemos una fuerza expedicionaria.;;;;;;;X
+WGEXP_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+WGEXP_1;Expeditionary Force;;;Fuerza expedicionaria;;;;;;;X
+WGEXP_2;%t , we have lent some of our troops to ;;;%t, hemos cedido parte de nuestras tropas a;;;;;;;X
+WGEXP_3;%s;;;%s.;;;;;;;X
+WGEXP_4;They have recieved our expeditionary force, consisting of;;;Han recibido nuestra fuerza expedicionaria, compuesta por:;;;;;;;X
+WGEXP_5;%s;;;%s.;;;;;;;X
+WGEXP_6;;;;;;;;;;;X
+WGEXP_LOG;%s has been lent %s by us.;;;Hemos cedido a %s la fuerza: %s.;;;;;;;X
+WGEXP_BTN1;OK;;;Aceptar;;;;;;;X
+WGEXP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TGEXP_SETUP;When another nation sends an expeditionary force.;;;Cuando otra nación envíe una fuerza expedicionaria.;;;;;;;X
+TGEXP_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+TGEXP_1;Expeditionary Force;;;Fuerza expedicionaria;;;;;;;X
+TGEXP_2;%t , we have received important information that;;;%t, hemos recibido informes importantes de que;;;;;;;X
+TGEXP_3;%s;;;%s;;;;;;;X
+TGEXP_4;have sent an Expeditionary Force consisting of %s to;;;ha enviado una fuerza expedicionaria compuesta por %s a;;;;;;;X
+TGEXP_5;%s;;;%s.;;;;;;;X
+TGEXP_6;;;;;;;;;;;X
+TGEXP_LOG;%s sent %s as a loan to %s.;;;%s ha cedido %s a %s.;;;;;;;X
+TGEXP_BTN1;OK;;;Aceptar;;;;;;;X
+TGEXP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TGEXPUS_SETUP;When you receive an expeditionary force.;;;Cuando recibamos una fuerza expedicionaria.;;;;;;;X
+TGEXPUS_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+TGEXPUS_1;Expeditionary Force;;;Fuerza expedicionaria;;;;;;;X
+TGEXPUS_2;%t , troops have been temporarily placed under our command by;;;%t, se han puesto tropas temporalmente bajo nuestro mando por parte de;;;;;;;X
+TGEXPUS_3;%s;;;%s.;;;;;;;X
+TGEXPUS_4;They have sent us;;;Nos han enviado;;;;;;;X
+TGEXPUS_5;%s;;;%s;;;;;;;X
+TGEXPUS_6;as a loan.;;;como contingente cedido.;;;;;;;X
+TGEXPUS_LOG;%s have lent %s to us.;;;%s nos ha prestado la fuerza: %s.;;;;;;;X
+TGEXPUS_BTN1;OK;;;Aceptar;;;;;;;X
+TGEXPUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WRETEXP_SETUP;When you take back an expeditionary force.;;;Cuando recupere una fuerza expedicionaria propia.;;;;;;;X
+WRETEXP_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+WRETEXP_1;Expeditionary Force Returns;;;Retorno de fuerza expedicionaria;;;;;;;X
+WRETEXP_2;%t , we have resumed command of our expeditionary force.;;;%t, hemos reasumido el mando de nuestra fuerza expedicionaria.;;;;;;;X
+WRETEXP_3;%s;;;%s;;;;;;;X
+WRETEXP_4;has returned control of;;;nos ha devuelto el control de;;;;;;;X
+WRETEXP_5;%s;;;%s;;;;;;;X
+WRETEXP_6;to us.;;;a nosotros.;;;;;;;X
+WRETEXP_LOG;%s has returned control of %s to us.;;;%s nos ha devuelto el control de %s.;;;;;;;X
+WRETEXP_BTN1;OK;;;Aceptar;;;;;;;X
+WRETEXP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TRETEXP_SETUP;When another nation returns control of an expeditionary force.;;;Cuando otra nación devuelva el mando de una fuerza expedicionaria a un tercero.;;;;;;;X
+TRETEXP_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+TRETEXP_1;Expeditionary Force Returns;;;Retorno de fuerza expedicionaria;;;;;;;X
+TRETEXP_2;%t , we have received important information that;;;%t, hemos recibido informes importantes de que;;;;;;;X
+TRETEXP_3;%s;;;%s;;;;;;;X
+TRETEXP_4;have returned control of %s to;;;ha devuelto el control de %s a;;;;;;;X
+TRETEXP_5;%s;;;%s.;;;;;;;X
+TRETEXP_6;;;;;;;;;;;X
+TRETEXP_LOG;%s have returned control of %s to %s;;;%s ha devuelto el control de %s a %s.;;;;;;;X
+TRETEXP_BTN1;OK;;;Aceptar;;;;;;;X
+TRETEXP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TRETEXPUS_SETUP;When you return control of an expeditionary force;;;Cuando devuelva el mando de una fuerza expedicionaria.;;;;;;;X
+TRETEXPUS_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+TRETEXPUS_1;Expeditionary Force Returns;;;Retorno de fuerza expedicionaria;;;;;;;X
+TRETEXPUS_2;%t, we have returned control of;;;%t, hemos devuelto el control de;;;;;;;X
+TRETEXPUS_3;%s;;;%s;;;;;;;X
+TRETEXPUS_4;to;;;a;;;;;;;X
+TRETEXPUS_5;%s;;;%s.;;;;;;;X
+TRETEXPUS_6;;;;;;;;;;;X
+TRETEXPUS_LOG;We returned control over %s to %s.;;;Devolvimos el control de %s a %s.;;;;;;;X
+TRETEXPUS_BTN1;OK;;;Aceptar;;;;;;;X
+TRETEXPUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TECHFINISHED_SETUP;When we have discovered a new technology.;;;Cuando desarrollemos una nueva tecnología.;;;;;;;X
+TECHFINISHED_HEADER;ARMAMENTS BRIEFING%s;;;PARTE DE ARMAMENTO%s;;;;;;;X
+TECHFINISHED_1;New Technology Developed;;;Nueva tecnología desarrollada;;;;;;;X
+TECHFINISHED_2;%t, %s has completed their research into;;;%t, %s ha completado su investigación sobre;;;;;;;X
+TECHFINISHED_3;%s;;;«%s».;;;;;;;X
+TECHFINISHED_4;;;;;;;;;;;X
+TECHFINISHED_5;;;;;;;;;;;X
+TECHFINISHED_6;;;;;;;;;;;X
+TECHFINISHED_LOG;%s has developed '%s'.;;;%s ha desarrollado «%s».;;;;;;;X
+TECHFINISHED_BTN1;OK;;;Aceptar;;;;;;;X
+TECHFINISHED_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+GAINTECH_SETUP;When other nations share their research with us.;;;Cuando otras naciones compartan sus investigaciones con nosotros.;;;;;;;X
+GAINTECH_HEADER;ARMAMENTS BRIEFING%s;;;PARTE DE ARMAMENTO%s;;;;;;;X
+GAINTECH_1;Technology Given;;;Tecnología transferida;;;;;;;X
+GAINTECH_2;%t , our friends in;;;%t, nuestros aliados en;;;;;;;X
+GAINTECH_3;%s;;;%s;;;;;;;X
+GAINTECH_4;have shared their knowledge about;;;han compartido sus conocimientos sobre;;;;;;;X
+GAINTECH_5;%s;;;«%s».;;;;;;;X
+GAINTECH_6;;;;;;;;;;;X
+GAINTECH_LOG;%s have shared '%s' with us.;;;%s ha compartido la tecnología «%s» con nosotros.;;;;;;;X
+GAINTECH_BTN1;OK;;;Aceptar;;;;;;;X
+GAINTECH_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+BOMB_OIL;%.2f Oil;;;%.2f de petróleo;;;;;;;X
+BOMB_RARE_MATERIALS;%.2f Rare Materials;;;%.2f de materiales raros;;;;;;;X
+BOMB_ENERGY;%.2f Energy;;;%.2f de energía;;;;;;;X
+BOMB_METAL;%.2f Metal;;;%.2f de metal;;;;;;;X
+BOMB_IC;%.2f IC;;;%.2f de CI;;;;;;;X
+BOMB_INFRA;%.2f percent of infrastructure;;;%.2f por ciento de infraestructura;;;;;;;X
+BOMB_NONE;Nothing;;;Nada;;;;;;;X
+BOMB_COAST;%.2f levels of coastal fortification;;;%.2f niveles de fortificación costera;;;;;;;X
+BOMB_LAND;%.2f levels of land fortification;;;%.2f niveles de fortificación terrestre;;;;;;;X
+BOMB_AA;%.2f anti-aircraft installation;;;%.2f de baterías antiaéreas;;;;;;;X
+BOMB_AIRB;%.2f levels in the airbase;;;%.2f niveles de base aérea;;;;;;;X
+BOMB_NAVB;%.2f levels in the navalbase;;;%.2f niveles de base naval;;;;;;;X
+BOMB_RAD;%.2f levels of the radarstation;;;%.2f niveles de estación de radar;;;;;;;X
+BOMB_NUC;%.2f levels of the nuclear test site;;;%.2f niveles de reactor nuclear;;;;;;;X
+BOMB_ROC;%.2f levels of the rocket site;;;%.2f niveles de base de cohetes;;;;;;;X
+NODAMAGE;nothing;;;nada;;;;;;;X
+##;;;;;;;;;;;X
+WSTRBOMB_SETUP;When we strategically bomb a province.;;;Cuando bombardeemos estratégicamente una provincia.;;;;;;;X
+WSTRBOMB_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+WSTRBOMB_1;Bombing Mission;;;Misión de bombardeo;;;;;;;X
+WSTRBOMB_2;%t, our Air Force has commenced a strategic bombing run. Our brave pilots have attacked;;;%t, nuestra Fuerza Aérea ha iniciado una incursión de bombardeo estratégico. Nuestros pilotos han atacado;;;;;;;X
+WSTRBOMB_3;%s;;;%s.;;;;;;;X
+WSTRBOMB_4;The enemy has taken %s in damages.;;;El enemigo ha sufrido %s en daños.;;;;;;;X
+WSTRBOMB_5;;;;;;;;;;;X
+WSTRBOMB_6;;;;;;;;;;;X
+WSTRBOMB_LOG;We bombed %s for %s in damage.;;;Hemos bombardeado %s infligiendo %s en daños.;;;;;;;X
+WSTRBOMB_BTN1;OK;;;Aceptar;;;;;;;X
+WSTRBOMB_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TSTRBOMB_SETUP;When another nation strategically bomb a province.;;;Cuando otra nación bombardee estratégicamente una provincia.;;;;;;;X
+TSTRBOMB_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+TSTRBOMB_1;Bombing Mission;;;Misión de bombardeo;;;;;;;X
+TSTRBOMB_2;%t, bombers from %s have attacked;;;%t, bombarderos de %s han atacado;;;;;;;X
+TSTRBOMB_3;%s;;;%s.;;;;;;;X
+TSTRBOMB_4;They have taken %s in damages.;;;Han sufrido %s en daños.;;;;;;;X
+TSTRBOMB_5;;;;;;;;;;;X
+TSTRBOMB_6;;;;;;;;;;;X
+TSTRBOMB_LOG;%s bombed %s for %s in damage.;;;%s bombardeó %s causando %s en daños.;;;;;;;X
+TSTRBOMB_BTN1;OK;;;Aceptar;;;;;;;X
+TSTRBOMB_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TSTRBOMBUS_SETUP;When one of our provinces gets strategically bombed.;;;Cuando una de nuestras provincias sea bombardeada estratégicamente.;;;;;;;X
+TSTRBOMBUS_HEADER;SECURITY BRIEFING%s;;;PARTE DE SEGURIDAD%s;;;;;;;X
+TSTRBOMBUS_1;Our Cities have been Bombed!;;;¡Nuestras ciudades han sido bombardeadas!;;;;;;;X
+TSTRBOMBUS_2;%t, some inferior %s Air units have bombed;;;%t, aeronaves de %s han bombardeado;;;;;;;X
+TSTRBOMBUS_3;%s;;;%s.;;;;;;;X
+TSTRBOMBUS_4;We took %s in damage.;;;Hemos sufrido %s en daños.;;;;;;;X
+TSTRBOMBUS_5;;;;;;;;;;;X
+TSTRBOMBUS_6;;;;;;;;;;;X
+TSTRBOMBUS_LOG;%s bombed us!  %s took %s in damage.;;;¡%s nos ha bombardeado! %s sufrió %s en daños.;;;;;;;X
+TSTRBOMBUS_BTN1;OK;;;Aceptar;;;;;;;X
+TSTRBOMBUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WAMC_SETUP;When we grant military control to another nation.;;;Cuando concedamos el control militar a otra nación.;;;;;;;X
+WAMC_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+WAMC_1;Military Control;;;Control militar;;;;;;;X
+WAMC_2;%t, we have granted;;;%t, hemos concedido a;;;;;;;X
+WAMC_3;%s;;;%s;;;;;;;X
+WAMC_4;control over our military forces.;;;el control sobre nuestras fuerzas militares.;;;;;;;X
+WAMC_5;;;;;;;;;;;X
+WAMC_6;;;;;;;;;;;X
+WAMC_LOG;We granted military control to %s.;;;Hemos concedido el control militar a %s.;;;;;;;X
+WAMC_BTN1;OK;;;Aceptar;;;;;;;X
+WAMC_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TAMC_SETUP;When another nation grants military control to a third nation.;;;Cuando otra nación conceda el control militar a una tercera.;;;;;;;X
+TAMC_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+TAMC_1;Military Control;;;Control militar;;;;;;;X
+TAMC_2;%t, %s have granted;;;%t, %s ha concedido a;;;;;;;X
+TAMC_3;%s;;;%s;;;;;;;X
+TAMC_4;control over their military forces.;;;el control sobre sus fuerzas militares.;;;;;;;X
+TAMC_5;;;;;;;;;;;X
+TAMC_6;;;;;;;;;;;X
+TAMC_LOG;%s granted military control to %s.;;;%s concedió el control militar a %s.;;;;;;;X
+TAMC_BTN1;OK;;;Aceptar;;;;;;;X
+TAMC_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TAMCU_SETUP;When another nation grant us military control.;;;Cuando otra nación nos conceda el control militar.;;;;;;;X
+TAMCU_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+TAMCU_1;Military Control;;;Control militar;;;;;;;X
+TAMCU_2;%t, the nation of;;;%t, la nación de;;;;;;;X
+TAMCU_3;%s;;;%s;;;;;;;X
+TAMCU_4;has granted us full control over their military forces.;;;nos ha concedido el control total sobre sus fuerzas militares.;;;;;;;X
+TAMCU_5;;;;;;;;;;;X
+TAMCU_6;;;;;;;;;;;X
+TAMCU_LOG;%s granted military control to us.;;;%s nos ha concedido el control militar.;;;;;;;X
+TAMCU_BTN1;OK;;;Aceptar;;;;;;;X
+TAMCU_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WDMC_SETUP;When we decline to grant military control to another nation.;;;Cuando nos neguemos a conceder el control militar a otra nación.;;;;;;;X
+WDMC_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+WDMC_1;Military Control;;;Control militar;;;;;;;X
+WDMC_2;%t, we declined;;;%t, nos hemos negado a dar a;;;;;;;X
+WDMC_3;%s;;;%s;;;;;;;X
+WDMC_4;control over our military forces.;;;el control sobre nuestras fuerzas militares.;;;;;;;X
+WDMC_5;;;;;;;;;;;X
+WDMC_6;;;;;;;;;;;X
+WDMC_LOG;We declined military control to %s.;;;Nos hemos negado a conceder el control militar a %s.;;;;;;;X
+WDMC_BTN1;OK;;;Aceptar;;;;;;;X
+WDMC_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TDMC_SETUP;When another nation decline to grant military control to a third nation.;;;Cuando otra nación se niegue a conceder el control militar a una tercera.;;;;;;;X
+TDMC_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+TDMC_1;Military Control;;;Control militar;;;;;;;X
+TDMC_2;%t, %s have declined to grant;;;%t, %s se ha negado a conceder a;;;;;;;X
+TDMC_3;%s;;;%s;;;;;;;X
+TDMC_4;control over their military forces.;;;el control sobre sus fuerzas militares.;;;;;;;X
+TDMC_5;;;;;;;;;;;X
+TDMC_6;;;;;;;;;;;X
+TDMC_LOG;%s declined military control to %s.;;;%s se negó a conceder el control militar a %s.;;;;;;;X
+TDMC_BTN1;OK;;;Aceptar;;;;;;;X
+TDMC_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TDMCU_SETUP;When another nation decline to give us military control.;;;Cuando otra nación se niegue a concedernos el control militar.;;;;;;;X
+TDMCU_HEADER;FOREIGN POLICY BRIEFING ;;;PARTE DE POLÍTICA EXTERIOR;;;;;;;X
+TDMCU_1;Military Control;;;Control militar;;;;;;;X
+TDMCU_2;%t, the nation of;;;%t, la nación de;;;;;;;X
+TDMCU_3;%s;;;%s;;;;;;;X
+TDMCU_4;has declined to grant us full control over their military forces.;;;se ha negado a concedernos el control total sobre sus fuerzas militares.;;;;;;;X
+TDMCU_5;;;;;;;;;;;X
+TDMCU_6;;;;;;;;;;;X
+TDMCU_LOG;%s declined military control to us.;;;%s se ha negado a darnos el control militar.;;;;;;;X
+TDMCU_BTN1;OK;;;Aceptar;;;;;;;X
+TDMCU_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WCMC_SETUP;When we cancel another nations military control of our forces.;;;Cuando cancelemos el control militar de otra nación sobre nuestras fuerzas.;;;;;;;X
+WCMC_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+WCMC_1;Military Control Terminated;;;Control militar finalizado;;;;;;;X
+WCMC_2;%t, we have cancelled the right of;;;%t, hemos cancelado el derecho de;;;;;;;X
+WCMC_3;%s;;;%s;;;;;;;X
+WCMC_4;to control our military forces.;;;a controlar nuestras fuerzas militares.;;;;;;;X
+WCMC_5;;;;;;;;;;;X
+WCMC_6;;;;;;;;;;;X
+WCMC_LOG;We cancelled %s's military control.;;;Hemos cancelado el control militar de %s.;;;;;;;X
+WCMC_BTN1;OK;;;Aceptar;;;;;;;X
+WCMC_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TCMC_SETUP;When another nation cancel a third nations military control.;;;Cuando otra nación cancele el control militar de una tercera nación.;;;;;;;X
+TCMC_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+TCMC_1;Military Control Terminated;;;Control militar finalizado;;;;;;;X
+TCMC_2;%t, %s have cancelled;;;%t, %s ha cancelado;;;;;;;X
+TCMC_3;%s's;;;el derecho de %s;;;;;;;X
+TCMC_4;control over their military forces.;;;a controlar sus fuerzas militares.;;;;;;;X
+TCMC_5;;;;;;;;;;;X
+TCMC_6;;;;;;;;;;;X
+TCMC_LOG;%s cancelled %s's military control.;;;%s canceló el control militar ejercido por %s.;;;;;;;X
+TCMC_BTN1;OK;;;Aceptar;;;;;;;X
+TCMC_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TCMCU_SETUP;When another nation cancels our military control over them.;;;Cuando otra nación cancele el control militar que teníamos sobre ella.;;;;;;;X
+TCMCU_HEADER;FOREIGN POLICY BRIEFING ;;;PARTE DE POLÍTICA EXTERIOR;;;;;;;X
+TCMCU_1;Military Control Terminated;;;Control militar finalizado;;;;;;;X
+TCMCU_2;%t, the nation of;;;%t, la nación de;;;;;;;X
+TCMCU_3;%s;;;%s;;;;;;;X
+TCMCU_4;has cancelled our full control over their military forces.;;;ha cancelado nuestro control total sobre sus fuerzas militares.;;;;;;;X
+TCMCU_5;;;;;;;;;;;X
+TCMCU_6;;;;;;;;;;;X
+TCMCU_LOG;%s cancelled our military control over their forces.;;;%s ha cancelado nuestro control militar sobre sus fuerzas.;;;;;;;X
+TCMCU_BTN1;OK;;;Aceptar;;;;;;;X
+TCMCU_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WECOUP_SETUP;When we succesfully coup another nation.;;;Cuando perpetremos con éxito un golpe de Estado en otra nación.;;;;;;;X
+WECOUP_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+WECOUP_1;Government Falls;;;¡El gobierno ha caído!;;;;;;;X
+WECOUP_2;%t, our agents have caused the government of;;;%t, nuestros agentes han derrocado al gobierno de;;;;;;;X
+WECOUP_3;%s;;;%s;;;;;;;X
+WECOUP_4;to fall, and they have installed a government much more loyal to us.;;;e instaurado un nuevo gabinete mucho más leal hacia nosotros.;;;;;;;X
+WECOUP_5;;;;;;;;;;;X
+WECOUP_6;;;;;;;;;;;X
+WECOUP_LOG;We have succeeded in replacing the government in %s with a much more loyal one.;;;Hemos logrado reemplazar el gobierno de %s por uno mucho más leal.;;;;;;;X
+WECOUP_BTN1;OK;;;Aceptar;;;;;;;X
+WECOUP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+THEYCOUP_SETUP;When another nation succesfully coup a third nation.;;;Cuando otra nación perpetre con éxito un golpe de Estado en un tercer país.;;;;;;;X
+THEYCOUP_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+THEYCOUP_1;Government Falls;;;¡El gobierno ha caído!;;;;;;;X
+THEYCOUP_2;%t, %s have engineered the government of;;;%t, %s ha orquestado la caída del gobierno de;;;;;;;X
+THEYCOUP_3;%s;;;%s;;;;;;;X
+THEYCOUP_4;to fall, and they have installed a government much more loyal to them.;;;e instaurado un nuevo ejecutivo mucho más afín a sus intereses.;;;;;;;X
+THEYCOUP_5;;;;;;;;;;;X
+THEYCOUP_6;;;;;;;;;;;X
+THEYCOUP_LOG;%s have succesfully replaced the government in %s with a more loyal one.;;;%s ha logrado reemplazar el gobierno de %s por uno más leal.;;;;;;;X
+THEYCOUP_BTN1;OK;;;Aceptar;;;;;;;X
+THEYCOUP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+THEYCOUPUS_SETUP;When another nation succesfully coup us.;;;Cuando otra nación perpetre con éxito un golpe de Estado contra nosotros.;;;;;;;X
+THEYCOUPUS_HEADER;NEWSPAPER HEADLINE;;;TITULAR DE PRENSA;;;;;;;X
+THEYCOUPUS_1;Government Falls;;;¡El gobierno ha caído!;;;;;;;X
+THEYCOUPUS_2;%t, our government has collapsed, and been replaced with a government more loyal to;;;%t, nuestro gobierno ha caído y ha sido sustituido por un gabinete más afín a;;;;;;;X
+THEYCOUPUS_3;%s;;;%s.;;;;;;;X
+THEYCOUPUS_4;;;;;;;;;;;X
+THEYCOUPUS_5;;;;;;;;;;;X
+THEYCOUPUS_6;;;;;;;;;;;X
+THEYCOUPUS_LOG;%s have succesfully replaced our government with a more loyal one.;;;%s ha logrado sustituir nuestro gobierno por uno afín a sus intereses.;;;;;;;X
+THEYCOUPUS_BTN1;OK;;;Aceptar;;;;;;;X
+THEYCOUPUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WECOUPF_SETUP;When we fail to coup another nation.;;;Cuando fracasemos al intentar un golpe de Estado en otra nación.;;;;;;;X
+WECOUPF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+WECOUPF_1;Coup Attempt;;;Tentativa de golpe de Estado;;;;;;;X
+WECOUPF_2;%t, our agents attempted to change the government of;;;%t, nuestros agentes intentaron cambiar el gobierno de;;;;;;;X
+WECOUPF_3;%s;;;%s,;;;;;;;X
+WECOUPF_4;but their secret police thwarted our attempts.\n%s;;;pero su policía secreta desbarató nuestros planes.\n%s;;;;;;;X
+WECOUPF_5;;;;;;;;;;;X
+WECOUPF_6;;;;;;;;;;;X
+WECOUPF_LOG;We failed to stage a coup in %s. %s;;;Fracasamos en el intento de golpe de Estado en %s. %s;;;;;;;X
+WECOUPF_BTN1;OK;;;Aceptar;;;;;;;X
+WECOUPF_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+THEYCOUPF_SETUP;When another nation fails to coup a third nation.;;;Cuando otra nación fracase al intentar un golpe de Estado en un tercer país.;;;;;;;X
+THEYCOUPF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+THEYCOUPF_1;Coup Attempt;;;Tentativa de golpe de Estado;;;;;;;X
+THEYCOUPF_2;%t, %s attempted to stage a coup in;;;%t, %s intentó orquestar un golpe de Estado en;;;;;;;X
+THEYCOUPF_3;%s;;;%s,;;;;;;;X
+THEYCOUPF_4;but they failed.\n%s;;;pero fracasó en el intento.\n%s;;;;;;;X
+THEYCOUPF_5;;;;;;;;;;;X
+THEYCOUPF_6;;;;;;;;;;;X
+THEYCOUPF_LOG;%s failed to stage a coup in %s. %s;;;%s fracasó al intentar un golpe de Estado en %s. %s;;;;;;;X
+THEYCOUPF_BTN1;OK;;;Aceptar;;;;;;;X
+THEYCOUPF_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+DECLWAR_SETUP;When a nation declares war upon you;;;Cuando una nación le declare la guerra.;;;;;;;X
+DECLWAR_HEADER;EMERGENCY CABINET MEETING;;;REUNIÓN DE EMERGENCIA DEL GABINETE;;;;;;;X
+DECLWAR_1;WAR!;;;¡GUERRA!;;;;;;;X
+DECLWAR_2;%t, %s in;;;¡%t, %s en;;;;;;;X
+DECLWAR_3;%s declared war;;;%s ha declarado la guerra;;;;;;;X
+DECLWAR_4;upon us! Enemy troops are preparing to invade our country.We have to plan our defence immediately…;;;contra nosotros! Tropas enemigas se preparan para invadir nuestro territorio. Debemos organizar la defensa de inmediato...;;;;;;;X
+DECLWAR_5;;;;;;;;;;;X
+DECLWAR_6;;;;;;;;;;;X
+DECLWAR_LOG;%s declared war upon us!;;;¡%s nos ha declarado la guerra!;;;;;;;X
+DECLWAR_BTN1;OK;;;Aceptar;;;;;;;X
+DECLWAR_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+PEACEPROP_SETUP;When a nation sends you a peace proposal;;;Cuando una nación le envíe una propuesta de paz.;;;;;;;X
+PEACEPROP_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+PEACEPROP_1;%s;;;%s;;;;;;;X
+PEACEPROP_2;%t, %s offers us;;;%t, %s nos ofrece la;;;;;;;X
+PEACEPROP_3;peace, %s;;;paz, %s;;;;;;;X
+PEACEPROP_4;the following in return:;;;lo siguiente a cambio:;;;;;;;X
+PEACEPROP_5;%s;;;%s;;;;;;;X
+PEACEPROP_6;What is your response?;;;¿Cuál es su respuesta?;;;;;;;X
+PEACEPROP_LOG;;;;;;;;;;;X
+PEACEPROP_BTN1;Accept;;;Aceptar;;;;;;;X
+PEACEPROP_BTN2;No way!;;;¡De ninguna manera!;;;;;;;X
+##;;;;;;;;;;;X
+PEACEACCEPT_SETUP;When a nation accepts your peace offer;;;Cuando una nación acepte su oferta de paz.;;;;;;;X
+PEACEACCEPT_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+PEACEACCEPT_1;%s;;;%s;;;;;;;X
+PEACEACCEPT_2;%t, %s;;;%t, %s;;;;;;;X
+PEACEACCEPT_3;accepted;;;ha aceptado;;;;;;;X
+PEACEACCEPT_4;our generous;;;nuestra generosa;;;;;;;X
+PEACEACCEPT_5;peace offer;;;oferta de paz.;;;;;;;X
+PEACEACCEPT_6;;;;;;;;;;;X
+PEACEACCEPT_LOG;%s accepted our generous peace offer.;;;%s ha aceptado nuestra generosa oferta de paz.;;;;;;;X
+PEACEACCEPT_BTN1;Fine!;;;¡Excelente!;;;;;;;X
+PEACEACCEPT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+PEACEACCEPTOTHER_SETUP;When a nation accepts peace with another nation;;;Cuando una nación firme la paz con otro país.;;;;;;;X
+PEACEACCEPTOTHER_HEADER;INTELLIGENCE BRIEFING\nConcerning;;;PARTE DE INTELIGENCIA\nRelativo a:;;;;;;;X
+PEACEACCEPTOTHER_1;%s;;;%s;;;;;;;X
+PEACEACCEPTOTHER_2;%t, %s;;;%t, %s;;;;;;;X
+PEACEACCEPTOTHER_3;accepted peace;;;ha firmado la paz;;;;;;;X
+PEACEACCEPTOTHER_4;with their former enemies;;;con sus antiguos enemigos de;;;;;;;X
+PEACEACCEPTOTHER_5;%s;;;%s;;;;;;;X
+PEACEACCEPTOTHER_6;on the following terms: %s;;;en las siguientes condiciones: %s;;;;;;;X
+PEACEACCEPTOTHER_LOG;%s accepted peace with %s on the following terms : %s;;;%s acordó la paz con %s en las siguientes condiciones: %s;;;;;;;X
+PEACEACCEPTOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+PEACEACCEPTOTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+PEACETERM_PROV;%s to %s;;;%s para %s;;;;;;;X
+PEACETERM_PUPPET;%s will become a puppet nation.;;;%s se convertirá en un Estado títere.;;;;;;;X
+PEACETERM_ACCESS;%s will have to give up military access.;;;%s tendrá que conceder paso militar.;;;;;;;X
+PEACETERM_QUO;Return to Status Quo.;;;Restablecimiento del statu quo.;;;;;;;X
+PEACETERM_DISARM;%s will have to demobilize its military.;;;%s tendrá que desmovilizar sus fuerzas armadas.;;;;;;;X
+##;;;;;;;;;;;X
+PEACEREJECT_SETUP;When a nation rejects your peace offer;;;Cuando una nación rechace su oferta de paz.;;;;;;;X
+PEACEREJECT_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+PEACEREJECT_1;%s;;;%s;;;;;;;X
+PEACEREJECT_2;%t, %s;;;%t, %s;;;;;;;X
+PEACEREJECT_3;rejected;;;ha rechazado;;;;;;;X
+PEACEREJECT_4;our generous;;;nuestra generosa;;;;;;;X
+PEACEREJECT_5;peace offer;;;oferta de paz.;;;;;;;X
+PEACEREJECT_6;;;;;;;;;;;X
+PEACEREJECT_LOG;%s rejected our generous peace offer!;;;¡%s ha rechazado nuestra generosa oferta de paz!;;;;;;;X
+PEACEREJECT_BTN1;OK;;;Aceptar;;;;;;;X
+PEACEREJECT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WHITEPEACEUS_SETUP;When one of your wars reaches a White Peace;;;Cuando una de sus guerras concluya en paz blanca.;;;;;;;X
+WHITEPEACEUS_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+WHITEPEACEUS_1;White Peace!;;;¡Paz blanca!;;;;;;;X
+WHITEPEACEUS_2;%t after 36 months of inactivity a White Peace was signed between;;;%t, tras 36 meses sin hostilidades, se ha firmado una paz blanca entre;;;;;;;X
+WHITEPEACEUS_3;%s;;;%s;;;;;;;X
+WHITEPEACEUS_4;and our former enemies;;;y nuestros antiguos enemigos de;;;;;;;X
+WHITEPEACEUS_5;%s;;;%s.;;;;;;;X
+WHITEPEACEUS_6;We are now at peace, no tributes were granted to either side.;;;Ahora estamos en paz; no se han concedido tributos ni concesiones a ningún bando.;;;;;;;X
+WHITEPEACEUS_LOG;A White Peace was signed between %s and %s.;;;Se ha firmado una paz blanca entre %s y %s.;;;;;;;X
+WHITEPEACEUS_BTN1;OK;;;Aceptar;;;;;;;X
+WHITEPEACEUS_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+WHITEPEACEOTHER_SETUP;When a White Peace is closed between two other nations;;;Cuando se acuerde una paz blanca entre dos terceras naciones.;;;;;;;X
+WHITEPEACEOTHER_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+WHITEPEACEOTHER_1;White Peace!;;;¡Paz blanca!;;;;;;;X
+WHITEPEACEOTHER_2;%t after 36 months of inactivity a white peace was signed in the war between;;;%t, tras 36 meses sin hostilidades, se ha firmado una paz blanca en la guerra entre;;;;;;;X
+WHITEPEACEOTHER_3;%s;;;%s;;;;;;;X
+WHITEPEACEOTHER_4;and their former enemies;;;y sus antiguos enemigos de;;;;;;;X
+WHITEPEACEOTHER_5;%s;;;%s.;;;;;;;X
+WHITEPEACEOTHER_6;They are now at peace, no tributes were granted to either side.;;;Ahora están en paz; ningún bando ha otorgado concesiones territoriales ni tributos.;;;;;;;X
+WHITEPEACEOTHER_LOG;A White Peace was signed between %s and %s.;;;Se ha firmado una paz blanca entre %s y %s.;;;;;;;X
+WHITEPEACEOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+WHITEPEACEOTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+PEACEEXPIRY_SETUP;When a peace treaty expires;;;Cuando expire un tratado de paz.;;;;;;;X
+PEACEEXPIRY_HEADER;FOREIGN POLICY BRIEFING;;;PARTE DE POLÍTICA EXTERIOR;;;;;;;X
+PEACEEXPIRY_1;Peace Treaty Expired!;;;¡Tratado de paz expirado!;;;;;;;X
+PEACEEXPIRY_2;%t, Our;;;%t, nuestro;;;;;;;X
+PEACEEXPIRY_3;peace treaty;;;tratado de paz;;;;;;;X
+PEACEEXPIRY_4;with %s;;;con %s;;;;;;;X
+PEACEEXPIRY_5;has expired.;;;ha expirado.;;;;;;;X
+PEACEEXPIRY_6;;;;;;;;;;;X
+PEACEEXPIRY_LOG;Our peace treaty with %s expired.;;;Nuestro tratado de paz con %s ha expirado.;;;;;;;X
+PEACEEXPIRY_BTN1;OK;;;Aceptar;;;;;;;X
+PEACEEXPIRY_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+TRADEEXPIRY_SETUP;When a trade agreement expires;;;Cuando expire un acuerdo comercial.;;;;;;;X
+TRADEEXPIRY_HEADER;FOREIGN POLICY BRIEFING;;;PARTE DE POLÍTICA EXTERIOR;;;;;;;X
+TRADEEXPIRY_1;Trade Agreement Expired!;;;¡Acuerdo comercial expirado!;;;;;;;X
+TRADEEXPIRY_2;%t, A;;;%t, el;;;;;;;X
+TRADEEXPIRY_3;trade agreement;;;acuerdo comercial;;;;;;;X
+TRADEEXPIRY_4;with %s;;;con %s;;;;;;;X
+TRADEEXPIRY_5;has expired.;;;ha expirado.;;;;;;;X
+TRADEEXPIRY_6;;;;;;;;;;;X
+TRADEEXPIRY_LOG;A trade agreement with %s expired.;;;Ha expirado un acuerdo comercial con %s.;;;;;;;X
+TRADEEXPIRY_BTN1;OK;;;Aceptar;;;;;;;X
+TRADEEXPIRY_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+NAPEXPIRY_SETUP;When a non-aggression pact expires;;;Cuando expire un pacto de no agresión.;;;;;;;X
+NAPEXPIRY_HEADER;FOREIGN POLICY BRIEFING;;;PARTE DE POLÍTICA EXTERIOR;;;;;;;X
+NAPEXPIRY_1;Non-Aggression Pact Expired!;;;¡Pacto de no agresión expirado!;;;;;;;X
+NAPEXPIRY_2;%t, The;;;%t, el;;;;;;;X
+NAPEXPIRY_3;non-aggression pact;;;pacto de no agresión;;;;;;;X
+NAPEXPIRY_4;with;;;con;;;;;;;X
+NAPEXPIRY_5;%s;;;%s;;;;;;;X
+NAPEXPIRY_6;has expired.;;;ha expirado.;;;;;;;X
+NAPEXPIRY_LOG;A non-aggression pact with %s expired.;;;Ha expirado el pacto de no agresión con %s.;;;;;;;X
+NAPEXPIRY_BTN1;OK;;;Aceptar;;;;;;;X
+NAPEXPIRY_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+SUCC_HARDLY;hardly influenced;;;apenas atraído;;;;;;;X
+SUCC_BARELY;barely influenced;;;ligeramente atraído;;;;;;;X
+SUCC_OK;influenced;;;atraído;;;;;;;X
+SUCC_GOOD;successfully influenced;;;atraído con éxito;;;;;;;X
+SUCC_VGOOD;completely influenced;;;fuertemente influenciado;;;;;;;X
+SUCC_EXTREMELY;completely swayed;;;completamente persuadido;;;;;;;X
+##;;;;;;;;;;;X
+PUPPET_SETUP;When a nation becomes a puppet of another nation.;;;Cuando una nación se convierta en títere de otra.;;;;;;;X
+PUPPET_HEADER;INTELLIGENCE BRIEFING\nConcerning%s;;;PARTE DE INTELIGENCIA\nRelativo a %s;;;;;;;X
+PUPPET_1;%s;;;%s;;;;;;;X
+PUPPET_2;%t, they have taken full control of;;;%t, ha asumido el control total de;;;;;;;X
+PUPPET_3;%s;;;%s;;;;;;;X
+PUPPET_4;and have installed a puppet state.;;;y ha establecido un Estado títere.;;;;;;;X
+PUPPET_5;;;;;;;;;;;X
+PUPPET_6;;;;;;;;;;;X
+PUPPET_LOG;%s have made %s their puppet state.;;;%s ha convertido a %s en su Estado títere.;;;;;;;X
+PUPPET_BTN1;OK;;;Aceptar;;;;;;;X
+PUPPET_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+PUPPETUS_SETUP;When we are forced to become another nations puppet state.;;;Cuando seamos forzados a convertirnos en Estado títere de otra nación.;;;;;;;X
+PUPPETUS_HEADER;FOREIGN POLICY BRIEFING\nConcerning%s;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a %s:;;;;;;;X
+PUPPETUS_1;%s;;;%s;;;;;;;X
+PUPPETUS_2;%t, we have been forced to become their puppet state.;;;%t, hemos sido forzados a convertirnos en su Estado títere.;;;;;;;X
+PUPPETUS_3;;;;;;;;;;;X
+PUPPETUS_4;;;;;;;;;;;X
+PUPPETUS_5;;;;;;;;;;;X
+PUPPETUS_6;;;;;;;;;;;X
+PUPPETUS_LOG;We have been forced to become the puppet state of %s.;;;Hemos sido forzados a convertirnos en el Estado títere de %s.;;;;;;;X
+PUPPETUS_BTN1;OK;;;Aceptar;;;;;;;X
+PUPPETUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+RPUPPET_SETUP;When a nation ends their puppet mastery of another nation.;;;Cuando una nación libere a su Estado títere.;;;;;;;X
+RPUPPET_HEADER;INTELLIGENCE BRIEFING\nConcerning%s;;;PARTE DE INTELIGENCIA\nRelativo a %s;;;;;;;X
+RPUPPET_1;%s;;;%s;;;;;;;X
+RPUPPET_2;%t, they have ended their puppet mastery over;;;%t, ha cesado su tutela sobre el régimen de;;;;;;;X
+RPUPPET_3;%s;;;%s.;;;;;;;X
+RPUPPET_4;;;;;;;;;;;X
+RPUPPET_5;;;;;;;;;;;X
+RPUPPET_6;;;;;;;;;;;X
+RPUPPET_LOG;%s have ended their mastery over %s.;;;%s ha cesado su control sobre %s.;;;;;;;X
+RPUPPET_BTN1;OK;;;Aceptar;;;;;;;X
+RPUPPET_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+RPUPPETUS_SETUP;When a nation ends their puppet mastery over us.;;;Cuando una nación cese su control sobre nosotros.;;;;;;;X
+RPUPPETUS_HEADER;FOREIGN POLICY BRIEFING\nConcerning%s;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a %s:;;;;;;;X
+RPUPPETUS_1;%s;;;%s;;;;;;;X
+RPUPPETUS_2;%t, we have been liberated!;;;%t, ¡hemos recuperado la soberanía total!;;;;;;;X
+RPUPPETUS_3;;;;;;;;;;;X
+RPUPPETUS_4;;;;;;;;;;;X
+RPUPPETUS_5;;;;;;;;;;;X
+RPUPPETUS_6;;;;;;;;;;;X
+RPUPPETUS_LOG;The regime in %s has ended its puppet mastery over us.;;;El gobierno de %s ha cesado su tutela sobre nosotros.;;;;;;;X
+RPUPPETUS_BTN1;OK;;;Aceptar;;;;;;;X
+RPUPPETUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WEINFL_SETUP;When you influence another nation towards your politics;;;Cuando ejerza influencia sobre la postura política de otra nación.;;;;;;;X
+WEINFL_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+WEINFL_1;%s ;;;%s;;;;;;;X
+WEINFL_2;%t, we have;;;%t, hemos;;;;;;;X
+WEINFL_3;%s;;;%s;;;;;;;X
+WEINFL_4;%s towards our political viewpoint.;;;a %s hacia nuestra posición política.;;;;;;;X
+WEINFL_5;%s;;;%s;;;;;;;X
+WEINFL_6;;;;;;;;;;;X
+WEINFL_LOG;We have %s %s towards our political viewpoint.;;;Hemos %s a %s hacia nuestra postura política.;;;;;;;X
+WEINFL_BTN1;OK;;;Aceptar;;;;;;;X
+WEINFL_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+THEYINFL_SETUP;When another nation influences a third nation towards their politics;;;Cuando otra nación influya en la orientación política de un tercer país.;;;;;;;X
+THEYINFL_HEADER;INTELLIGENCE BRIEFING\nConcerning%s ;;;PARTE DE INTELIGENCIA\nRelativo a %s;;;;;;;X
+THEYINFL_1;%s;;;%s;;;;;;;X
+THEYINFL_2;%t, they have been ;;;%t, se han visto ;;;;;;;X
+THEYINFL_3;%s;;;%s;;;;;;;X
+THEYINFL_4;by %s towards their political viewpoint.;;;por %s hacia su postura política.;;;;;;;X
+THEYINFL_5;%s;;;%s;;;;;;;X
+THEYINFL_6;;;;;;;;;;;X
+THEYINFL_LOG;%s have been %s by %s.;;;%s se ha visto %s por %s.;;;;;;;X
+THEYINFL_BTN1;OK;;;Aceptar;;;;;;;X
+THEYINFL_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+INFLUS_SETUP;When another nation influences you towards their politics;;;Cuando otra nación influya en nuestra postura política.;;;;;;;X
+INFLUS_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+INFLUS_1;%s ;;;%s;;;;;;;X
+INFLUS_2;%t, we have been;;;%t, nos hemos visto;;;;;;;X
+INFLUS_3;%s;;;%s;;;;;;;X
+INFLUS_4;towards the political viewpoint of;;;hacia la orientación política de;;;;;;;X
+INFLUS_5;%s\n%s;;;%s\n%s;;;;;;;X
+INFLUS_6;;;;;;;;;;;X
+INFLUS_LOG;We have been %s by %s.;;;Nos hemos visto %s por %s.;;;;;;;X
+INFLUS_BTN1;OK;;;Aceptar;;;;;;;X
+INFLUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+MILALLACCEPT_SETUP;When a nation accepts your Military Alliance proposal;;;Cuando una nación acepte su propuesta de alianza militar.;;;;;;;X
+MILALLACCEPT_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+MILALLACCEPT_1;%s;;;%s;;;;;;;X
+MILALLACCEPT_2;%t, %s;;;%t, %s;;;;;;;X
+MILALLACCEPT_3;agreed;;;ha aceptado;;;;;;;X
+MILALLACCEPT_4;to enter our;;;entrar en nuestra;;;;;;;X
+MILALLACCEPT_5;military alliance.;;;alianza militar.;;;;;;;X
+MILALLACCEPT_6;;;;;;;;;;;X
+MILALLACCEPT_LOG;%s entered our Military Alliance.;;;%s ha entrado en nuestra alianza militar.;;;;;;;X
+MILALLACCEPT_BTN1;Perfect!;;;¡Excelente!;;;;;;;X
+MILALLACCEPT_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+MILALLREJECT_SETUP;When a nation rejects your Military Alliance proposal;;;Cuando una nación rechace su propuesta de alianza militar.;;;;;;;X
+MILALLREJECT_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+MILALLREJECT_1;%s;;;%s;;;;;;;X
+MILALLREJECT_2;%t, I have serious news for you:;;;%t, tengo noticias desalentadoras:;;;;;;;X
+MILALLREJECT_3;%s;;;%s;;;;;;;X
+MILALLREJECT_4;refused to join our;;;se ha negado a unirse a nuestra;;;;;;;X
+MILALLREJECT_5;military alliance;;;alianza militar.;;;;;;;X
+MILALLREJECT_6;;;;;;;;;;;X
+MILALLREJECT_LOG;%s rejected our Military Alliance proposal.;;;%s ha rechazado nuestra propuesta de alianza militar.;;;;;;;X
+MILALLREJECT_BTN1;OK;;;Aceptar;;;;;;;X
+MILALLREJECT_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+MILALLINVACCEPT_SETUP;When a nation accepts your invitation to a Military Alliance;;;Cuando una nación acepte su invitación para unirse a una alianza militar.;;;;;;;X
+MILALLINVACCEPT_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+MILALLINVACCEPT_1;%s;;;%s;;;;;;;X
+MILALLINVACCEPT_2;%t, %s;;;%t, %s;;;;;;;X
+MILALLINVACCEPT_3;agreed;;;ha aceptado;;;;;;;X
+MILALLINVACCEPT_4;to join our;;;unirse a nuestra;;;;;;;X
+MILALLINVACCEPT_5;Military Alliance;;;alianza militar;;;;;;;X
+MILALLINVACCEPT_6;with %s.;;;con %s.;;;;;;;X
+MILALLINVACCEPT_LOG;%s joined our Military Alliance with %s;;;%s se ha unido a nuestra alianza militar con %s.;;;;;;;X
+MILALLINVACCEPT_BTN1;Super!;;;¡Magnífico!;;;;;;;X
+MILALLINVACCEPT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+MILALLINVREJECT_SETUP;When a nation rejects your invitation to a Military Alliance;;;Cuando una nación rechace su invitación para unirse a una alianza militar.;;;;;;;X
+MILALLINVREJECT_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+MILALLINVREJECT_1;%s;;;%s;;;;;;;X
+MILALLINVREJECT_2;%t, %s;;;%t, %s;;;;;;;X
+MILALLINVREJECT_3;refused;;;se ha negado;;;;;;;X
+MILALLINVREJECT_4;to join our;;;a unirse a nuestra;;;;;;;X
+MILALLINVREJECT_5;military alliance;;;alianza militar;;;;;;;X
+MILALLINVREJECT_6;with %s.;;;con %s.;;;;;;;X
+MILALLINVREJECT_LOG;%s refused to join our Military Alliance with %s.;;;%s ha rechazado unirse a nuestra alianza militar con %s.;;;;;;;X
+MILALLINVREJECT_BTN1;Bastards...;;;Insolentes...;;;;;;;X
+MILALLINVREJECT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+MILALLBAN_SETUP;When a nation bans you from a Military Alliance;;;Cuando una nación lo expulse de una alianza militar.;;;;;;;X
+MILALLBAN_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+MILALLBAN_1;%s;;;%s;;;;;;;X
+MILALLBAN_2;%t, %s;;;%t, %s;;;;;;;X
+MILALLBAN_3;banned;;;nos ha expulsado;;;;;;;X
+MILALLBAN_4;us from their;;;de su;;;;;;;X
+MILALLBAN_5;Military Alliance;;;alianza militar;;;;;;;X
+MILALLBAN_6;with %s.;;;con %s.;;;;;;;X
+MILALLBAN_LOG;%s banned us from their Military Alliance with %s.;;;%s nos ha expulsado de su alianza militar con %s.;;;;;;;X
+MILALLBAN_BTN1;OK;;;Aceptar;;;;;;;X
+MILALLBAN_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+MILALLEXPIRY_SETUP;When a military alliance expires;;;Cuando expire una alianza militar.;;;;;;;X
+MILALLEXPIRY_HEADER;FOREIGN POLICY BRIEFING;;;PARTE DE POLÍTICA EXTERIOR;;;;;;;X
+MILALLEXPIRY_1;Alliance Expired!;;;¡Alianza expirada!;;;;;;;X
+MILALLEXPIRY_2;%t, Our;;;%t, nuestra;;;;;;;X
+MILALLEXPIRY_3;Military Alliance;;;alianza militar;;;;;;;X
+MILALLEXPIRY_4;with %s;;;con %s;;;;;;;X
+MILALLEXPIRY_5;has expired.;;;ha expirado.;;;;;;;X
+MILALLEXPIRY_6;;;;;;;;;;;X
+MILALLEXPIRY_LOG;Our Military Alliance with %s expired.;;;Nuestra alianza militar con %s ha expirado.;;;;;;;X
+MILALLEXPIRY_BTN1;OK;;;Aceptar;;;;;;;X
+MILALLEXPIRY_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+ANNEXACCEPTOTHER_SETUP;When a nation annexes another nation;;;Cuando una nación se anexione a otra.;;;;;;;X
+ANNEXACCEPTOTHER_HEADER;INTELLIGENCE BRIEFING\nConcerning;;;PARTE DE INTELIGENCIA\nRelativo a:;;;;;;;X
+ANNEXACCEPTOTHER_1;%s;;;%s;;;;;;;X
+ANNEXACCEPTOTHER_2;%t ;;;%t, ;;;;;;;X
+ANNEXACCEPTOTHER_3;%s annexed %s;;;%s se ha anexionado %s,;;;;;;;X
+ANNEXACCEPTOTHER_4;which now is part of their nation.;;;que ahora pasa a formar parte de su territorio.;;;;;;;X
+ANNEXACCEPTOTHER_5;The international community will not tolerate this…;;;La comunidad internacional no tolerará este atropello...;;;;;;;X
+ANNEXACCEPTOTHER_6;;;;;;;;;;;X
+ANNEXACCEPTOTHER_LOG;%s annexed %s.;;;%s se ha anexionado %s.;;;;;;;X
+ANNEXACCEPTOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+ANNEXACCEPTOTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ANNEXACCEPT_SETUP;When a nation accepts your annexation proposal;;;Cuando una nación acepte su propuesta de anexión.;;;;;;;X
+ANNEXACCEPT_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+ANNEXACCEPT_1;%s;;;%s;;;;;;;X
+ANNEXACCEPT_2;%t, %s;;;%t, %s;;;;;;;X
+ANNEXACCEPT_3;accepted;;;ha aceptado;;;;;;;X
+ANNEXACCEPT_4;our irresistible proposal of;;;nuestra incontestable propuesta de;;;;;;;X
+ANNEXACCEPT_5;annexation;;;anexión,;;;;;;;X
+ANNEXACCEPT_6;and they are now part of our glorious nation!;;;¡y ahora forma parte de nuestra gloriosa nación!;;;;;;;X
+ANNEXACCEPT_LOG;%s are now part of our nation!;;;¡%s ahora forma parte de nuestra nación!;;;;;;;X
+ANNEXACCEPT_BTN1;Perfect!;;;¡Perfecto!;;;;;;;X
+ANNEXACCEPT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ANNEXREJECT_SETUP;When a nation rejects your annexation proposal;;;Cuando una nación rechace su propuesta de anexión.;;;;;;;X
+ANNEXREJECT_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+ANNEXREJECT_1;%s;;;%s;;;;;;;X
+ANNEXREJECT_2;%t, %s;;;%t, %s;;;;;;;X
+ANNEXREJECT_3;rejected;;;ha rechazado;;;;;;;X
+ANNEXREJECT_4;our kind proposal of;;;nuestra generosa propuesta de;;;;;;;X
+ANNEXREJECT_5;annexation;;;anexión.;;;;;;;X
+ANNEXREJECT_6;They didn't see the advantages of being part of our glorious nation.;;;No han sabido apreciar las ventajas de unirse a nuestra nación.;;;;;;;X
+ANNEXREJECT_LOG;%s declined to be annexed by us.;;;%s ha rechazado nuestra propuesta de anexión.;;;;;;;X
+ANNEXREJECT_BTN1;OK;;;Aceptar;;;;;;;X
+ANNEXREJECT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+MILLALLINVACCEPTOTHER_SETUP;When a nation accepts an invitation to a military alliance with a third nation;;;Cuando una nación acepte una invitación para unirse a una alianza militar con un tercer país.;;;;;;;X
+MILLALLINVACCEPTOTHER_HEADER;INTELLIGENCE BRIEFING\nConcerning;;;PARTE DE INTELIGENCIA\nRelativo a:;;;;;;;X
+MILLALLINVACCEPTOTHER_1;%s;;;%s;;;;;;;X
+MILLALLINVACCEPTOTHER_2;%t, %s;;;%t, %s;;;;;;;X
+MILLALLINVACCEPTOTHER_3;entered a Military Alliance;;;ha entrado en una alianza militar;;;;;;;X
+MILLALLINVACCEPTOTHER_4;with their new ally;;;con su nuevo aliado,;;;;;;;X
+MILLALLINVACCEPTOTHER_5;%s;;;%s.;;;;;;;X
+MILLALLINVACCEPTOTHER_6;;;;;;;;;;;X
+MILLALLINVACCEPTOTHER_LOG;%s entered a Military Alliance with %s.;;;%s ha entrado en una alianza militar con %s.;;;;;;;X
+MILLALLINVACCEPTOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+MILLALLINVACCEPTOTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+MILALLBANOTHER_SETUP;When a nation is banned from a military alliance by its leader;;;Cuando una nación sea expulsada de una alianza militar por su líder.;;;;;;;X
+MILALLBANOTHER_HEADER;Our Intelligence Minister received reports from;;;Nuestro jefe de inteligencia ha recibido informes de;;;;;;;X
+MILALLBANOTHER_1;%s;;;%s;;;;;;;X
+MILALLBANOTHER_2;%t, %s was;;;%t, %s fue;;;;;;;X
+MILALLBANOTHER_3;banned from their Military Alliance;;;expulsado de su alianza militar;;;;;;;X
+MILALLBANOTHER_4;with their former ally;;;con su antiguo aliado,;;;;;;;X
+MILALLBANOTHER_5;%s;;;%s.;;;;;;;X
+MILALLBANOTHER_6;;;;;;;;;;;X
+MILALLBANOTHER_LOG;%s was banned from a Military Alliance by %s.;;;%s fue expulsado de su alianza militar con %s.;;;;;;;X
+MILALLBANOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+MILALLBANOTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+DECLWAROTHER_SETUP;When a nation declares war upon a third nation;;;Cuando una nación declare la guerra a un tercer país.;;;;;;;X
+DECLWAROTHER_HEADER;INTELLIGENCE BRIEFING\nConcerning;;;PARTE DE INTELIGENCIA\nRelativo a:;;;;;;;X
+DECLWAROTHER_1;%s;;;%s;;;;;;;X
+DECLWAROTHER_2;%t, %s;;;%t, %s;;;;;;;X
+DECLWAROTHER_3;declared war;;;ha declarado la guerra;;;;;;;X
+DECLWAROTHER_4;upon their new enemies;;;a sus nuevos enemigos de;;;;;;;X
+DECLWAROTHER_5;%s;;;%s.;;;;;;;X
+DECLWAROTHER_6;;;;;;;;;;;X
+DECLWAROTHER_LOG;%s declared war upon %s.;;;%s ha declarado la guerra a %s.;;;;;;;X
+DECLWAROTHER_BTN1;OK;;;Aceptar;;;;;;;X
+DECLWAROTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+JOINWAROTHER_SETUP;When a nation joins an ongoing war;;;Cuando una nación se una a una guerra en curso.;;;;;;;X
+JOINWAROTHER_HEADER;INTELLIGENCE BRIEFING\nConcerning;;;PARTE DE INTELIGENCIA\nRelativo a:;;;;;;;X
+JOINWAROTHER_1;%s;;;%s;;;;;;;X
+JOINWAROTHER_2;%t, %s has;;;%t, %s se ha;;;;;;;X
+JOINWAROTHER_3;joined the war;;;unido a la guerra;;;;;;;X
+JOINWAROTHER_4;on the same side as %s in their war against;;;en el mismo bando que %s en su guerra contra;;;;;;;X
+JOINWAROTHER_5;%s;;;%s.;;;;;;;X
+JOINWAROTHER_6;;;;;;;;;;;X
+JOINWAROTHER_LOG;%s joined the war on the same side as %s in their war against %s.;;;%s se unió a la guerra en el bando de %s contra %s.;;;;;;;X
+JOINWAROTHER_BTN1;OK;;;Aceptar;;;;;;;X
+JOINWAROTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+MILALLBREAK_SETUP;When a nation breaks a military alliance;;;Cuando una nación rompa una alianza militar.;;;;;;;X
+MILALLBREAK_HEADER;INTELLIGENCE BRIEFING\nConcerning;;;PARTE DE INTELIGENCIA\nRelativo a:;;;;;;;X
+MILALLBREAK_1;%s;;;%s;;;;;;;X
+MILALLBREAK_2;%t, %s;;;%t, %s;;;;;;;X
+MILALLBREAK_3;has broken;;;ha roto;;;;;;;X
+MILALLBREAK_4;the;;;la;;;;;;;X
+MILALLBREAK_5;Military Alliance;;;alianza militar;;;;;;;X
+MILALLBREAK_6;she had with %s.;;;que mantenía con %s.;;;;;;;X
+MILALLBREAK_LOG;%s left the Military Alliance she had with %s.;;;%s ha abandonado la alianza militar que tenía con %s.;;;;;;;X
+MILALLBREAK_BTN1;OK;;;Aceptar;;;;;;;X
+MILALLBREAK_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ANNEXTOUS_SETUP;When another country demands our annexation.;;;Cuando otro país exija nuestra anexión.;;;;;;;X
+ANNEXTOUS_HEADER;;;;;;;;;;;X
+ANNEXTOUS_1;;;;;;;;;;;X
+ANNEXTOUS_2;;;;;;;;;;;X
+ANNEXTOUS_3;;;;;;;;;;;X
+ANNEXTOUS_4;;;;;;;;;;;X
+ANNEXTOUS_5;;;;;;;;;;;X
+ANNEXTOUS_6;;;;;;;;;;;X
+ANNEXTOUS_LOG;;;;;;;;;;;X
+ANNEXTOUS_BTN1;;;;;;;;;;;X
+ANNEXTOUS_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+##;;;;;;;;;;;X
+ACCTOUS_SETUP;When another country asks for military access from us.;;;Cuando otro país nos solicite paso militar.;;;;;;;X
+ACCTOUS_HEADER;;;;;;;;;;;X
+ACCTOUS_1;;;;;;;;;;;X
+ACCTOUS_2;;;;;;;;;;;X
+ACCTOUS_3;;;;;;;;;;;X
+ACCTOUS_4;;;;;;;;;;;X
+ACCTOUS_5;;;;;;;;;;;X
+ACCTOUS_6;;;;;;;;;;;X
+ACCTOUS_LOG;;;;;;;;;;;X
+ACCTOUS_BTN1;;;;;;;;;;;X
+ACCTOUS_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+##;;;;;;;;;;;X
+GUARATOUS_SETUP;When another nation sends us a guarantee;;;Cuando otra nación nos garantice la independencia.;;;;;;;X
+GUARATOUS_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+GUARATOUS_1;%s;;;%s;;;;;;;X
+GUARATOUS_2;%t, we now have our independence;;;%t, nuestra independencia ha sido;;;;;;;X
+GUARATOUS_3;GUARANTEED;;;GARANTIZADA;;;;;;;X
+GUARATOUS_4;by;;;por;;;;;;;X
+GUARATOUS_5;%s;;;%s.;;;;;;;X
+GUARATOUS_6;;;;;;;;;;;X
+GUARATOUS_LOG;%s will now guarantee our independence.;;;%s ahora garantiza nuestra independencia.;;;;;;;X
+GUARATOUS_BTN1;OK;;;Aceptar;;;;;;;X
+GUARATOUS_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+DECMILUS_SETUP;When another nation declines us military access;;;Cuando otra nación nos deniegue el paso militar.;;;;;;;X
+DECMILUS_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+DECMILUS_1;%s;;;%s;;;;;;;X
+DECMILUS_2;%t;;;%t,;;;;;;;X
+DECMILUS_3;%s;;;%s;;;;;;;X
+DECMILUS_4;refuses to grant us military access.;;;se niega a concedernos paso militar.;;;;;;;X
+DECMILUS_5;;;;;;;;;;;X
+DECMILUS_6;;;;;;;;;;;X
+DECMILUS_LOG;%s refuses to grant us military access.;;;%s se niega a concedernos paso militar.;;;;;;;X
+DECMILUS_BTN1;OK;;;Aceptar;;;;;;;X
+DECMILUS_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+ACCMILUS_SETUP;When another nation grants us military access;;;Cuando otra nación nos conceda paso militar.;;;;;;;X
+ACCMILUS_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+ACCMILUS_1;%s;;;%s;;;;;;;X
+ACCMILUS_2;%t;;;%t,;;;;;;;X
+ACCMILUS_3;%s;;;%s;;;;;;;X
+ACCMILUS_4;will now grant us military access.;;;nos ha concedido paso militar.;;;;;;;X
+ACCMILUS_5;We can now move our troops through their territory.;;;Ahora podemos desplazar nuestras tropas a través de su territorio.;;;;;;;X
+ACCMILUS_6;;;;;;;;;;;X
+ACCMILUS_LOG;%s is now granting us military access to their country.;;;%s nos concede paso militar por su territorio.;;;;;;;X
+ACCMILUS_BTN1;OK;;;Aceptar;;;;;;;X
+ACCMILUS_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+ACCMILOTHER_SETUP;When another nation grants military access to a third party.;;;Cuando otra nación conceda paso militar a un tercer país.;;;;;;;X
+ACCMILOTHER_HEADER;INTELLIGENCE BRIEFING\nConcerning;;;PARTE DE INTELIGENCIA\nRelativo a:;;;;;;;X
+ACCMILOTHER_1;%s;;;%s;;;;;;;X
+ACCMILOTHER_2;%t;;;%t,;;;;;;;X
+ACCMILOTHER_3;%s;;;%s;;;;;;;X
+ACCMILOTHER_4;now grants military access to;;;ha concedido paso militar a;;;;;;;X
+ACCMILOTHER_5;%s;;;%s.;;;;;;;X
+ACCMILOTHER_6;;;;;;;;;;;X
+ACCMILOTHER_LOG;%s is now granting %s military access through their country.;;;%s ha concedido paso militar por su territorio a %s.;;;;;;;X
+ACCMILOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+ACCMILOTHER_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+CANCMILUS_SETUP;When another nation cancels the military access we gave them.;;;Cuando otra nación renuncie al paso militar que le habíamos concedido.;;;;;;;X
+CANCMILUS_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+CANCMILUS_1;%s;;;%s;;;;;;;X
+CANCMILUS_2;%t;;;%t,;;;;;;;X
+CANCMILUS_3;%s;;;%s;;;;;;;X
+CANCMILUS_4;has cancelled the military access they have been given by us.;;;ha renunciado al paso militar que le habíamos concedido.;;;;;;;X
+CANCMILUS_5;;;;;;;;;;;X
+CANCMILUS_6;;;;;;;;;;;X
+CANCMILUS_LOG;%s has cancelled the treaty of military access they had through our country.;;;%s ha cancelado el acuerdo de paso militar por nuestro territorio.;;;;;;;X
+CANCMILUS_BTN1;OK;;;Aceptar;;;;;;;X
+CANCMILUS_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+CANMILOTHE_SETUP;When another nation cancels the military access they gave a third nation.;;;Cuando una nación renuncie al paso militar que le concedió un tercer país.;;;;;;;X
+CANMILOTHE_HEADER;INTELLIGENCE BRIEFING\nConcerning;;;PARTE DE INTELIGENCIA\nRelativo a:;;;;;;;X
+CANMILOTHE_1;%s;;;%s;;;;;;;X
+CANMILOTHE_2;%t;;;%t,;;;;;;;X
+CANMILOTHE_3;%s;;;%s;;;;;;;X
+CANMILOTHE_4;has cancelled the military access they have been given by;;;ha renunciado al paso militar que le había concedido;;;;;;;X
+CANMILOTHE_5;%s;;;%s.;;;;;;;X
+CANMILOTHE_6;;;;;;;;;;;X
+CANMILOTHE_LOG;%s has cancelled the treaty of military access they had in %s..;;;%s ha cancelado el acuerdo de paso militar que tenía con %s.;;;;;;;X
+CANMILOTHE_BTN1;OK;;;Aceptar;;;;;;;X
+CANMILOTHE_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+REVMILUS_SETUP;When another nation revokes the military access they granted us;;;Cuando otra nación revoque el paso militar que nos había concedido.;;;;;;;X
+REVMILUS_HEADER;FOREIGN POLICY BRIEFING\nConcerning%s;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a %s:;;;;;;;X
+REVMILUS_1;%s;;;%s;;;;;;;X
+REVMILUS_2;%t, we are informed that they have;;;%t, se nos ha informado de que han;;;;;;;X
+REVMILUS_3;REVOKED MILITARY ACCESS;;;REVOCADO EL PASO MILITAR;;;;;;;X
+REVMILUS_4;for us.;;;que teníamos concedido.;;;;;;;X
+REVMILUS_5;;;;;;;;;;;X
+REVMILUS_6;;;;;;;;;;;X
+REVMILUS_LOG;%s has revoked our military access.;;;%s ha revocado nuestro paso militar.;;;;;;;X
+REVMILUS_BTN1;OK;;;Aceptar;;;;;;;X
+REVMILUS_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+REVMILOTHER_SETUP;When another nation revokes the military access they granted a third nation.;;;Cuando otra nación revoque el paso militar concedido a un tercer país.;;;;;;;X
+REVMILOTHER_HEADER;INTELLIGENCE BRIEFING\nConcerning%s;;;PARTE DE INTELIGENCIA\nRelativo a %s;;;;;;;X
+REVMILOTHER_1;%s;;;%s;;;;;;;X
+REVMILOTHER_2;%t, we are informed that they have;;;%t, se nos ha informado de que han;;;;;;;X
+REVMILOTHER_3;REVOKED MILITARY ACCESS;;;REVOCADO EL PASO MILITAR;;;;;;;X
+REVMILOTHER_4;for;;;a;;;;;;;X
+REVMILOTHER_5;%s;;;%s.;;;;;;;X
+REVMILOTHER_6;;;;;;;;;;;X
+REVMILOTHER_LOG;%s has revoked the military access for %s.;;;%s ha revocado el paso militar concedido a %s.;;;;;;;X
+REVMILOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+REVMILOTHER_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+LEADERDIES_SETUP;When one of your leaders dies;;;Cuando muera uno de sus comandantes.;;;;;;;X
+LEADERDIES_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+LEADERDIES_1;A leader has died!;;;¡Ha muerto un comandante!;;;;;;;X
+LEADERDIES_2;%t ;;;%t, ;;;;;;;X
+LEADERDIES_3;%s;;;%s;;;;;;;X
+LEADERDIES_4;has died on the battle field. He will be granted a state funeral.;;;ha caído en el campo de batalla. Recibirá un funeral de Estado.;;;;;;;X
+LEADERDIES_5;;;;;;;;;;;X
+LEADERDIES_6;;;;;;;;;;;X
+LEADERDIES_LOG;%s has died.;;;%s ha muerto.;;;;;;;X
+LEADERDIES_BTN1;OK;;;Aceptar;;;;;;;X
+LEADERDIES_BTN2;Select;;;Seleccionar;;;;;;;X
+##;;;;;;;;;;;X
+OTHER_LEADERDIES_SETUP;When a leader of another nation dies.;;;Cuando muera el comandante de otra nación.;;;;;;;X
+OTHER_LEADERDIES_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+OTHER_LEADERDIES_1;A leader has died!;;;¡Ha muerto un comandante!;;;;;;;X
+OTHER_LEADERDIES_2;%t ;;;%t, ;;;;;;;X
+OTHER_LEADERDIES_3;%s;;;%s;;;;;;;X
+OTHER_LEADERDIES_4;has died on the battle field. He will be granted a state funeral.;;;ha caído en el campo de batalla. Recibirá un funeral de Estado.;;;;;;;X
+OTHER_LEADERDIES_5;;;;;;;;;;;X
+OTHER_LEADERDIES_6;;;;;;;;;;;X
+OTHER_LEADERDIES_LOG;%s has died.;;;%s ha muerto.;;;;;;;X
+OTHER_LEADERDIES_BTN1;OK;;;Aceptar;;;;;;;X
+OTHER_LEADERDIES_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+LEADERNEW_SETUP;When you receive a new leader;;;Cuando reciba un nuevo comandante.;;;;;;;X
+LEADERNEW_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+LEADERNEW_1;New Leader!;;;¡Nuevo comandante!;;;;;;;X
+LEADERNEW_2;%t ;;;%t, ;;;;;;;X
+LEADERNEW_3;%s;;;%s;;;;;;;X
+LEADERNEW_4;is now available and awaits your command.;;;ha completado su formación en la academia militar y aguarda sus órdenes.;;;;;;;X
+LEADERNEW_5;;;;;;;;;;;X
+LEADERNEW_6;;;;;;;;;;;X
+LEADERNEW_LOG;%s awaits your command.;;;%s aguarda sus órdenes.;;;;;;;X
+LEADERNEW_BTN1;OK;;;Aceptar;;;;;;;X
+LEADERNEW_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+PROVOWNOCC_SETUP;When someone has occupied one of your provinces;;;Cuando alguien ocupe una de sus provincias.;;;;;;;X
+PROVOWNOCC_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+PROVOWNOCC_1;Enemy in Sight!;;;¡Enemigo a la vista!;;;;;;;X
+PROVOWNOCC_2;%t, the province of;;;%t, la provincia de;;;;;;;X
+PROVOWNOCC_3;%s;;;%s;;;;;;;X
+PROVOWNOCC_4;has been lost to the despicable troops of;;;ha caído ante las despreciables tropas de;;;;;;;X
+PROVOWNOCC_5;%s;;;%s.;;;;;;;X
+PROVOWNOCC_6;;;;;;;;;;;X
+PROVOWNOCC_LOG;We have lost control over %s to %s.;;;Hemos perdido el control de %s a manos de %s.;;;;;;;X
+PROVOWNOCC_BTN1;OK;;;Aceptar;;;;;;;X
+PROVOWNOCC_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NBLOSS_SETUP;When you lose a naval battle;;;Cuando pierda una batalla naval.;;;;;;;X
+NBLOSS_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+NBLOSS_1;Defeat!;;;¡Derrota!;;;;;;;X
+NBLOSS_2;%t, our valiant navy lost a naval battle against a force from;;;%t, nuestra valiente armada ha perdido una batalla naval contra las fuerzas de;;;;;;;X
+NBLOSS_3;%s;;;%s;;;;;;;X
+NBLOSS_4;in the waters of;;;en las aguas de;;;;;;;X
+NBLOSS_5;%s.;;;%s.;;;;;;;X
+NBLOSS_6;%s;;;%s;;;;;;;X
+NBLOSS_LOG;We lost a naval battle against %s in %s.;;;Perdimos una batalla naval contra %s en %s.;;;;;;;X
+NBLOSS_BTN1;OK;;;Aceptar;;;;;;;X
+NBLOSS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+CONVOYSPOT_SETUP;When your navalships spots a too heavily-protected convoy to attack it.;;;Cuando sus buques de guerra avisten un convoy con demasiada escolta para atacarlo.;;;;;;;X
+CONVOYSPOT_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+CONVOYSPOT_1;Failure!;;;¡Objetivo inalcanzable!;;;;;;;X
+CONVOYSPOT_2;%t,  the commander of;;;%t, el comandante de;;;;;;;X
+CONVOYSPOT_3;%s;;;%s;;;;;;;X
+CONVOYSPOT_4;have spotted a too heavily protected convoy in;;;ha avistado un convoy con una escolta demasiado pesada para atacar en;;;;;;;X
+CONVOYSPOT_5;%s;;;%s.;;;;;;;X
+CONVOYSPOT_6;;;;;;;;;;;X
+CONVOYSPOT_LOG;%s spotted heavily protected convoy in %s.;;;%s avistó un convoy fuertemente protegido en %s.;;;;;;;X
+CONVOYSPOT_BTN1;OK;;;Aceptar;;;;;;;X
+CONVOYSPOT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+CONVOYLOSSES;%d transports and %d escorts;;;%d transportes y %d escoltas;;;;;;;X
+##;;;;;;;;;;;X
+LBLOSS_SETUP;When you lose a land battle;;;Cuando pierda una batalla terrestre.;;;;;;;X
+LBLOSS_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+LBLOSS_1;Defeat!;;;¡Derrota!;;;;;;;X
+LBLOSS_2;%t, our brave armies lost a battle against superior forces of;;;%t, nuestros bravos ejércitos han perdido la batalla frente a las fuerzas superiores de;;;;;;;X
+LBLOSS_3;%s;;;%s;;;;;;;X
+LBLOSS_4;in the province of;;;en la provincia de;;;;;;;X
+LBLOSS_5;%s.;;;%s.;;;;;;;X
+LBLOSS_6;The survivors had to retreat to reorganize.;;;Los supervivientes han tenido que retirarse para reorganizarse.;;;;;;;X
+LBLOSS_LOG;We lost a battle against %s in %s.;;;Perdimos una batalla contra %s en %s.;;;;;;;X
+LBLOSS_BTN1;OK;;;Aceptar;;;;;;;X
+LBLOSS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+AIRDESTROY_SETUP;When one of your airunits is destroyed;;;Cuando una de sus unidades aéreas sea destruida.;;;;;;;X
+AIRDESTROY_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+AIRDESTROY_1;Disaster!;;;¡Desastre!;;;;;;;X
+AIRDESTROY_2;%t, our air unit in;;;%t, nuestra unidad aérea en;;;;;;;X
+AIRDESTROY_3;%s;;;%s;;;;;;;X
+AIRDESTROY_4;has been completely annihilated by the enemy!;;;¡ha sido completamente aniquilada por el enemigo!;;;;;;;X
+AIRDESTROY_5;;;;;;;;;;;X
+AIRDESTROY_6;;;;;;;;;;;X
+AIRDESTROY_LOG;Our air unit in %s has been completely annihilated!;;;¡Nuestra unidad aérea en %s ha sido completamente destruida!;;;;;;;X
+AIRDESTROY_BTN1;OK;;;Aceptar;;;;;;;X
+AIRDESTROY_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NAVYDESTROY_SETUP;When one of your fleets is destroyed;;;Cuando una de sus flotas sea destruida.;;;;;;;X
+NAVYDESTROY_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+NAVYDESTROY_1;Disaster!;;;¡Desastre!;;;;;;;X
+NAVYDESTROY_2;%t, our fleet in;;;%t, nuestra flota en;;;;;;;X
+NAVYDESTROY_3;%s;;;%s;;;;;;;X
+NAVYDESTROY_4;has been completely annihilated by the enemy!;;;¡ha sido completamente aniquilada por el enemigo!;;;;;;;X
+NAVYDESTROY_5;;;;;;;;;;;X
+NAVYDESTROY_6;;;;;;;;;;;X
+NAVYDESTROY_LOG;Our fleet in %s has been completely annihilated!;;;¡Nuestra flota en %s ha sido completamente destruida!;;;;;;;X
+NAVYDESTROY_BTN1;OK;;;Aceptar;;;;;;;X
+NAVYDESTROY_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NAVYWASTE_SETUP;When one of your fleets is destroyed by lack of supplies;;;Cuando una de sus flotas sea destruida por falta de suministros.;;;;;;;X
+NAVYWASTE_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+NAVYWASTE_1;Disaster!;;;¡Desastre!;;;;;;;X
+NAVYWASTE_2;%t, our fleet in;;;%t, nuestra flota en;;;;;;;X
+NAVYWASTE_3;%s;;;%s;;;;;;;X
+NAVYWASTE_4;has been annihilated due to lack of supplies!;;;¡ha sido aniquilada debido a la falta de suministros!;;;;;;;X
+NAVYWASTE_5;;;;;;;;;;;X
+NAVYWASTE_6;;;;;;;;;;;X
+NAVYWASTE_LOG;Our fleet in %s has been annihilated due to lack of supplies!;;;¡Nuestra flota en %s ha sido destruida por falta de suministros!;;;;;;;X
+NAVYWASTE_BTN1;OK;;;Aceptar;;;;;;;X
+NAVYWASTE_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ARMYDESTROY_SETUP;When one of your armies is destroyed in combat;;;Cuando uno de sus ejércitos sea destruido en combate.;;;;;;;X
+ARMYDESTROY_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+ARMYDESTROY_1;Disaster!;;;¡Desastre!;;;;;;;X
+ARMYDESTROY_2;%t, our army in;;;%t, nuestro ejército en;;;;;;;X
+ARMYDESTROY_3;%s;;;%s;;;;;;;X
+ARMYDESTROY_4;has been completely annihilated by the enemy! The front line has been broken!;;;¡ha sido completamente aniquilado por el enemigo! ¡La línea de frente ha caído!;;;;;;;X
+ARMYDESTROY_5;;;;;;;;;;;X
+ARMYDESTROY_6;;;;;;;;;;;X
+ARMYDESTROY_LOG;Our army in %s has been completely annihilated!;;;¡Nuestro ejército en %s ha sido completamente aniquilado!;;;;;;;X
+ARMYDESTROY_BTN1;OK;;;Aceptar;;;;;;;X
+ARMYDESTROY_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ARMYWASTE_SETUP;When one of your armies is destroyed by lack of supplies;;;Cuando uno de sus ejércitos sea disuelto por falta de suministros.;;;;;;;X
+ARMYWASTE_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+ARMYWASTE_1;Disaster!;;;¡Desastre!;;;;;;;X
+ARMYWASTE_2;%t, our army in;;;%t, nuestro ejército en;;;;;;;X
+ARMYWASTE_3;%s;;;%s;;;;;;;X
+ARMYWASTE_4;has been dissolved due to lack of supplies!;;;¡ha sido disuelto debido a la falta de suministros!;;;;;;;X
+ARMYWASTE_5;;;;;;;;;;;X
+ARMYWASTE_6;;;;;;;;;;;X
+ARMYWASTE_LOG;Our army in %s has been dissolved due to lack of supplies!;;;¡Nuestro ejército en %s ha sido disuelto debido a la falta de suministros!;;;;;;;X
+ARMYWASTE_BTN1;OK;;;Aceptar;;;;;;;X
+ARMYWASTE_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NBWIN_SETUP;When you win a naval battle;;;Cuando gane una batalla naval.;;;;;;;X
+NBWIN_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+NBWIN_1;Victory!;;;¡Victoria!;;;;;;;X
+NBWIN_2;%t, we won a battle against the navy of;;;%t, hemos ganado una batalla contra la flota de;;;;;;;X
+NBWIN_3;%s;;;%s;;;;;;;X
+NBWIN_4;in the waters of;;;en las aguas de;;;;;;;X
+NBWIN_5;%s;;;%s;;;;;;;X
+NBWIN_6;%s;;;%s;;;;;;;X
+NBWIN_LOG;We won a battle against %s in %s.;;;Ganamos una batalla naval contra %s en %s.;;;;;;;X
+NBWIN_BTN1;OK;;;Aceptar;;;;;;;X
+NBWIN_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+LBWIN_SETUP;When you win a land battle;;;Cuando gane una batalla terrestre.;;;;;;;X
+LBWIN_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+LBWIN_1;Victory!;;;¡Victoria!;;;;;;;X
+LBWIN_2;%t, our victorious armies have defeated the divisions from;;;%t, nuestros ejércitos victoriosos han derrotado a las divisiones de;;;;;;;X
+LBWIN_3;%s;;;%s;;;;;;;X
+LBWIN_4;in the province of;;;en la provincia de;;;;;;;X
+LBWIN_5;%s;;;%s.;;;;;;;X
+LBWIN_6;;;;;;;;;;;X
+LBWIN_LOG;We won a battle against %s in %s.;;;Ganamos una batalla contra %s en %s.;;;;;;;X
+LBWIN_BTN1;OK;;;Aceptar;;;;;;;X
+LBWIN_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ABLOSS_SETUP;When you lose an air battle;;;Cuando pierda una batalla aérea.;;;;;;;X
+ABLOSS_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+ABLOSS_1;Defeat!;;;¡Derrota!;;;;;;;X
+ABLOSS_2;%t, our brave air units lost a battle against superior forces of;;;%t, nuestras unidades aéreas han perdido el combate ante las fuerzas superiores de;;;;;;;X
+ABLOSS_3;%s;;;%s;;;;;;;X
+ABLOSS_4;in the skies above;;;en los cielos de;;;;;;;X
+ABLOSS_5;%s.;;;%s.;;;;;;;X
+ABLOSS_6;The survivors had to retreat to reorganize.;;;Los supervivientes han tenido que retirarse para reorganizarse.;;;;;;;X
+ABLOSS_LOG;We lost a battle in the skies against %s above %s.;;;Perdimos una batalla aérea contra %s sobre %s.;;;;;;;X
+ABLOSS_BTN1;OK;;;Aceptar;;;;;;;X
+ABLOSS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ABWIN_SETUP;When you win an air battle;;;Cuando gane una batalla aérea.;;;;;;;X
+ABWIN_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+ABWIN_1;Victory!;;;¡Victoria!;;;;;;;X
+ABWIN_2;%t, our victorious air units have defeated the air units from;;;%t, nuestras unidades aéreas han vencido a las escuadrillas de;;;;;;;X
+ABWIN_3;%s;;;%s;;;;;;;X
+ABWIN_4;in the skies above;;;en los cielos de;;;;;;;X
+ABWIN_5;%s;;;%s.;;;;;;;X
+ABWIN_6;;;;;;;;;;;X
+ABWIN_LOG;We won a battle against %s in the skies above %s.;;;Ganamos una batalla contra %s en los cielos de %s.;;;;;;;X
+ABWIN_BTN1;OK;;;Aceptar;;;;;;;X
+ABWIN_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+LIBPROV_SETUP;When you liberate a province;;;Cuando libere una provincia.;;;;;;;X
+LIBPROV_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+LIBPROV_1;Province Liberated!;;;¡Provincia liberada!;;;;;;;X
+LIBPROV_2;%t, we liberated the province of;;;%t, hemos liberado la provincia de;;;;;;;X
+LIBPROV_3;%s;;;%s;;;;;;;X
+LIBPROV_4;from the unlawful occupants of;;;de la ocupación ilegal de;;;;;;;X
+LIBPROV_5;%s;;;%s.;;;;;;;X
+LIBPROV_6;;;;;;;;;;;X
+LIBPROV_LOG;We liberated the province of %s from %s;;;Hemos liberado la provincia de %s de manos de %s.;;;;;;;X
+LIBPROV_BTN1;OK;;;Aceptar;;;;;;;X
+LIBPROV_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+AIRARRIVE_SETUP;When one of your airunits reach its destination.;;;Cuando una de sus unidades aéreas llegue a su destino.;;;;;;;X
+AIRARRIVE_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+AIRARRIVE_1;%s;;;%s;;;;;;;X
+AIRARRIVE_2;has reached its final destination;;;ha llegado a su destino final en;;;;;;;X
+AIRARRIVE_3;%s;;;%s.;;;;;;;X
+AIRARRIVE_4;;;;;;;;;;;X
+AIRARRIVE_5;;;;;;;;;;;X
+AIRARRIVE_6;;;;;;;;;;;X
+AIRARRIVE_LOG;%s has arrived in %s.;;;%s ha llegado a %s.;;;;;;;X
+AIRARRIVE_BTN1;OK;;;Aceptar;;;;;;;X
+AIRARRIVE_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ARMYARRIVE_SETUP;When one of your armies reach its destination.;;;Cuando uno de sus ejércitos llegue a su destino.;;;;;;;X
+ARMYARRIVE_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+ARMYARRIVE_1;%s;;;%s;;;;;;;X
+ARMYARRIVE_2;has reached its final destination;;;ha llegado a su destino final en;;;;;;;X
+ARMYARRIVE_3;%s;;;%s;;;;;;;X
+ARMYARRIVE_4;;;;;;;;;;;X
+ARMYARRIVE_5;;;;;;;;;;;X
+ARMYARRIVE_6;;;;;;;;;;;X
+ARMYARRIVE_LOG;%s has arrived in %s.;;;%s ha llegado a %s.;;;;;;;X
+ARMYARRIVE_BTN1;OK;;;Aceptar;;;;;;;X
+ARMYARRIVE_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ARMYLOAD_SETUP;When one of your armies has finished loading onto a ship.;;;Cuando uno de sus ejércitos termine de embarcar.;;;;;;;X
+ARMYLOAD_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+ARMYLOAD_1;%s;;;%s;;;;;;;X
+ARMYLOAD_2;has boarded the ships in;;;ha embarcado en los buques en;;;;;;;X
+ARMYLOAD_3;%s;;;%s.;;;;;;;X
+ARMYLOAD_4;The troops can now by transported by sea.;;;Las tropas ya pueden ser transportadas por mar.;;;;;;;X
+ARMYLOAD_5;;;;;;;;;;;X
+ARMYLOAD_6;;;;;;;;;;;X
+ARMYLOAD_LOG;%s has finished loading in %s.;;;%s ha terminado de embarcar en %s.;;;;;;;X
+ARMYLOAD_BTN1;OK;;;Aceptar;;;;;;;X
+ARMYLOAD_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ARMYUNLOAD_SETUP;When one of your armies has finished unloading from a ship.;;;Cuando uno de sus ejércitos termine de desembarcar.;;;;;;;X
+ARMYUNLOAD_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+ARMYUNLOAD_1;%s;;;%s;;;;;;;X
+ARMYUNLOAD_2;has unloaded from the ships into;;;ha desembarcado en las costas de;;;;;;;X
+ARMYUNLOAD_3;%s.;;;%s.;;;;;;;X
+ARMYUNLOAD_4;The troops can now commence operations.;;;Las tropas ya están listas para iniciar operaciones.;;;;;;;X
+ARMYUNLOAD_5;;;;;;;;;;;X
+ARMYUNLOAD_6;;;;;;;;;;;X
+ARMYUNLOAD_LOG;%s has finished unloading in %s.;;;%s ha terminado de desembarcar en %s.;;;;;;;X
+ARMYUNLOAD_BTN1;OK;;;Aceptar;;;;;;;X
+ARMYUNLOAD_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+FLEETARRIVE_SETUP;When one of your fleets reach its destination.;;;Cuando una de sus flotas llegue a su destino.;;;;;;;X
+FLEETARRIVE_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+FLEETARRIVE_1;%s;;;%s;;;;;;;X
+FLEETARRIVE_2;has reached its final destination;;;ha llegado a su destino final en;;;;;;;X
+FLEETARRIVE_3;%s;;;%s.;;;;;;;X
+FLEETARRIVE_4;;;;;;;;;;;X
+FLEETARRIVE_5;;;;;;;;;;;X
+FLEETARRIVE_6;;;;;;;;;;;X
+FLEETARRIVE_LOG;%s has arrived in %s.;;;%s ha llegado a %s.;;;;;;;X
+FLEETARRIVE_BTN1;OK;;;Aceptar;;;;;;;X
+FLEETARRIVE_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WESNCOM_SETUP;When we have attacked another fleet.;;;Cuando ataquemos a otra flota.;;;;;;;X
+WESNCOM_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+WESNCOM_1;;;;;;;;;;;X
+WESNCOM_2;Our fleet in;;;Nuestra flota en;;;;;;;X
+WESNCOM_3;%s;;;%s;;;;;;;X
+WESNCOM_4;has made contact and is now engaged in combat!;;;ha establecido contacto y ha entrado en combate.;;;;;;;X
+WESNCOM_5;;;;;;;;;;;X
+WESNCOM_6;;;;;;;;;;;X
+WESNCOM_LOG;We have engaged hostile fleets in %s.;;;Hemos trabado combate con flotas hostiles en %s.;;;;;;;X
+WESNCOM_BTN1;OK;;;Aceptar;;;;;;;X
+WESNCOM_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+THEYSNCOM_SETUP;When one of our fleets is under attack.;;;Cuando una de nuestras flotas esté bajo ataque.;;;;;;;X
+THEYSNCOM_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+THEYSNCOM_1;;;;;;;;;;;X
+THEYSNCOM_2;Our fleet in;;;Nuestra flota en;;;;;;;X
+THEYSNCOM_3;%s;;;%s;;;;;;;X
+THEYSNCOM_4;are under attack from;;;está sufriendo un ataque de;;;;;;;X
+THEYSNCOM_5;%s!;%s !;%s!;%s!;%s;%s!;;¡%s!;;;X
+THEYSNCOM_6;;;;;;;;;;;X
+THEYSNCOM_LOG;We are attacked by hostile fleets of %s in %s.;;;Flotas hostiles de %s nos han atacado en %s.;;;;;;;X
+THEYSNCOM_BTN1;OK;;;Aceptar;;;;;;;X
+THEYSNCOM_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WESLCOM_SETUP;When our armies attack another army.;;;Cuando nuestros ejércitos ataquen a otro ejército.;;;;;;;X
+WESLCOM_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+WESLCOM_1;;;;;;;;;;;X
+WESLCOM_2;Our army in;;;Nuestro ejército en;;;;;;;X
+WESLCOM_3;%s;;;%s;;;;;;;X
+WESLCOM_4;has reached the enemy lines and has now engaged in combat!;;;ha alcanzado las líneas enemigas y ha entrado en combate.;;;;;;;X
+WESLCOM_5;;;;;;;;;;;X
+WESLCOM_6;;;;;;;;;;;X
+WESLCOM_LOG;We have engaged hostile armies in %s.;;;Nos hemos enfrentado a ejércitos hostiles en %s.;;;;;;;X
+WESLCOM_BTN1;OK;;;Aceptar;;;;;;;X
+WESLCOM_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+THEYSLCOM_SETUP;When our armies have been attacked;;;Cuando nuestros ejércitos hayan sido atacados.;;;;;;;X
+THEYSLCOM_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+THEYSLCOM_1;;;;;;;;;;;X
+THEYSLCOM_2;Our army in;;;Nuestro ejército en;;;;;;;X
+THEYSLCOM_3;%s;;;%s;;;;;;;X
+THEYSLCOM_4;is under attack from;;;está siendo atacado por;;;;;;;X
+THEYSLCOM_5;%s!;%s !;%s;%s!;%s;%s!;;¡%s!;;;X
+THEYSLCOM_6;They try to hold their position as long as possible.;;;Intentará mantener la posición todo el tiempo que le sea posible.;;;;;;;X
+THEYSLCOM_LOG;We are attacked by hostile armies of %s in %s.;;;Ejércitos hostiles de %s nos han atacado en %s.;;;;;;;X
+THEYSLCOM_BTN1;OK;;;Aceptar;;;;;;;X
+THEYSLCOM_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WESACOM_SETUP;When our air flottillas attack other airplanes.;;;Cuando nuestras escuadrillas aéreas ataquen a otros aviones.;;;;;;;X
+WESACOM_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+WESACOM_1;;;;;;;;;;;X
+WESACOM_2;Our planes above;;;Nuestros aviones sobre;;;;;;;X
+WESACOM_3;%s;;;%s;;;;;;;X
+WESACOM_4;have intercepted the enemy squadrons and have now engaged in combat!;;;han interceptado a las escuadrillas enemigas y han entrado en combate.;;;;;;;X
+WESACOM_5;;;;;;;;;;;X
+WESACOM_6;;;;;;;;;;;X
+WESACOM_LOG;We have engaged hostile airplanes above %s.;;;Nos hemos enfrentado a aviones hostiles sobre %s.;;;;;;;X
+WESACOM_BTN1;OK;;;Aceptar;;;;;;;X
+WESACOM_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+THEYSACOM_SETUP;When our air flottillas are under attack.;;;Cuando nuestras escuadrillas aéreas estén bajo ataque.;;;;;;;X
+THEYSACOM_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+THEYSACOM_1;;;;;;;;;;;X
+THEYSACOM_2;Our planes above;;;Nuestros aviones sobre;;;;;;;X
+THEYSACOM_3;%s;;;%s;;;;;;;X
+THEYSACOM_4;have been intercepted and are under attack from;;;han sido interceptados y están bajo ataque de;;;;;;;X
+THEYSACOM_5;%s!;%s;%s!;%s!;%s!;%s!;;¡%s!;;;X
+THEYSACOM_6;;;;;;;;;;;X
+THEYSACOM_LOG;We are attacked by hostile airplanes of %s above %s.;;;Aviones hostiles de %s nos han atacado sobre %s.;;;;;;;X
+THEYSACOM_BTN1;OK;;;Aceptar;;;;;;;X
+THEYSACOM_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+##;;;;;;;;;;;X
+REVOLT_SETUP;When there is a revolt in one of your provinces;;;Cuando estalle una revuelta en una de sus provincias.;;;;;;;X
+REVOLT_HEADER;SECURITY BRIEFING%s;;;PARTE DE SEGURIDAD%s;;;;;;;X
+REVOLT_1;A Revolt!;;;¡Una revuelta!;;;;;;;X
+REVOLT_2;%t, the populace in;;;%t, la población de;;;;;;;X
+REVOLT_3;%s is revolting!;;;¡%s se ha rebelado!;;;;;;;X
+REVOLT_4;The partisans should be crushed forthwith before they cause more trouble.;;;Los partisanos deben ser aplastados de inmediato antes de que causen mayores problemas.;;;;;;;X
+REVOLT_5;;;;;;;;;;;X
+REVOLT_6;;;;;;;;;;;X
+REVOLT_LOG;The populace in %s is revolting!;;;¡La población de %s se ha rebelado!;;;;;;;X
+REVOLT_BTN1;OK;;;Aceptar;;;;;;;X
+REVOLT_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+##;;;;;;;;;;;X
+LIBPROVOTHERALLY_SETUP;When another nation liberates a province for one of their allies;;;Cuando otra nación libere una provincia para uno de sus aliados.;;;;;;;X
+LIBPROVOTHERALLY_HEADER;Our Intelligence Minister Reports;;;Nuestro ministro de inteligencia informa:;;;;;;;X
+LIBPROVOTHERALLY_1;%s;;;%s;;;;;;;X
+LIBPROVOTHERALLY_2;%t, the forces of %s have;;;%t, las fuerzas de %s han;;;;;;;X
+LIBPROVOTHERALLY_3;liberated;;;liberado;;;;;;;X
+LIBPROVOTHERALLY_4;the province of;;;la provincia de;;;;;;;X
+LIBPROVOTHERALLY_5;%s;;;%s;;;;;;;X
+LIBPROVOTHERALLY_6;for their allies %s.;;;para sus aliados de %s.;;;;;;;X
+LIBPROVOTHERALLY_LOG;%s has liberated the province of %s for their allies %s.;;;%s ha liberado la provincia de %s para sus aliados de %s.;;;;;;;X
+LIBPROVOTHERALLY_BTN1;OK;;;Aceptar;;;;;;;X
+LIBPROVOTHERALLY_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+LBWINOTHER_SETUP;When another nation wins a land battle;;;Cuando otra nación gane una batalla terrestre.;;;;;;;X
+LBWINOTHER_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+LBWINOTHER_1;%s;;;%s;;;;;;;X
+LBWINOTHER_2;%t, the forces of %s have;;;%t, las fuerzas de %s han;;;;;;;X
+LBWINOTHER_3;won a battle against %s;;;ganado una batalla contra %s;;;;;;;X
+LBWINOTHER_4;in the province of;;;en la provincia de;;;;;;;X
+LBWINOTHER_5;%s;;;%s.;;;;;;;X
+LBWINOTHER_6;;;;;;;;;;;X
+LBWINOTHER_LOG;%s won a battle against %s in %s;;;%s ha ganado una batalla contra %s en %s.;;;;;;;X
+LBWINOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+LBWINOTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NBWINOTHER_SETUP;When another nation wins a naval battle;;;Cuando otra nación gane una batalla naval.;;;;;;;X
+NBWINOTHER_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+NBWINOTHER_1;%s;;;%s;;;;;;;X
+NBWINOTHER_2;%t, the navies of %s have;;;%t, la armada de %s ha;;;;;;;X
+NBWINOTHER_3;defeated the navies of %s;;;derrotado a los navíos de %s;;;;;;;X
+NBWINOTHER_4;in the waters of;;;en las aguas de;;;;;;;X
+NBWINOTHER_5;%s;;;%s.;;;;;;;X
+NBWINOTHER_6;;;;;;;;;;;X
+NBWINOTHER_LOG;%s won a battle against %s in %s.;;;%s ha ganado una batalla naval contra %s en %s.;;;;;;;X
+NBWINOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+NBWINOTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NEWNATION_SETUP;When a new nation is created;;;Cuando se cree una nueva nación.;;;;;;;X
+NEWNATION_HEADER;Our Governor reports%s;;;Nuestro gobernador informa%s;;;;;;;X
+NEWNATION_1;New Nation;;;Nueva nación;;;;;;;X
+NEWNATION_2;%t, the free people in;;;%t, el pueblo libre de;;;;;;;X
+NEWNATION_3;%s;;;%s;;;;;;;X
+NEWNATION_4;have declared independence from their former oppressors in;;;ha declarado su independencia de sus antiguos opresores en;;;;;;;X
+NEWNATION_5;%s;;;%s.;;;;;;;X
+NEWNATION_6;We have established diplomatic relations with them.;;;Hemos establecido relaciones diplomáticas con el nuevo gobierno.;;;;;;;X
+NEWNATION_LOG;The people of %s declared independence from %s.;;;El pueblo de %s se ha declarado independiente de %s.;;;;;;;X
+NEWNATION_BTN1;OK;;;Aceptar;;;;;;;X
+NEWNATION_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+BROKENUS_SETUP;When our nation falls apart;;;Cuando nuestro gobierno colapse.;;;;;;;X
+BROKENUS_HEADER;Our Governor reports%s;;;Nuestro gobernador informa%s;;;;;;;X
+BROKENUS_1;Government falls!;;;¡El gobierno ha caído!;;;;;;;X
+BROKENUS_2;%t, the rebels in;;;%t, los rebeldes en;;;;;;;X
+BROKENUS_3;%s;;;%s;;;;;;;X
+BROKENUS_4;have broken our government.;;;han derrocado a nuestro gobierno.;;;;;;;X
+BROKENUS_5;;;;;;;;;;;X
+BROKENUS_6;;;;;;;;;;;X
+BROKENUS_LOG;Our current goverment of %s have fallen.;;;Nuestro gobierno de %s ha caído.;;;;;;;X
+BROKENUS_BTN1;OK;;;Aceptar;;;;;;;X
+BROKENUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+BROKENOTHER_SETUP;When another nation falls apart;;;Cuando colapse el gobierno de otra nación.;;;;;;;X
+BROKENOTHER_HEADER;Our Governor reports%s;;;Nuestro gobernador informa%s;;;;;;;X
+BROKENOTHER_1;Rebels successful!;;;¡La rebelión ha triunfado!;;;;;;;X
+BROKENOTHER_2;%t, the rebels in;;;%t, los rebeldes en;;;;;;;X
+BROKENOTHER_3;%s;;;%s;;;;;;;X
+BROKENOTHER_4;have broken the government.;;;han derrocado al gobierno.;;;;;;;X
+BROKENOTHER_5;;;;;;;;;;;X
+BROKENOTHER_6;;;;;;;;;;;X
+BROKENOTHER_LOG;The government of %s has fallen.;;;El gobierno de %s ha caído.;;;;;;;X
+BROKENOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+BROKENOTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+RELCH_DEC_5;enormously impaired;;;empeorado enormemente;;;;;;;X
+RELCH_DEC_4;drastically impaired;;;empeorado drásticamente;;;;;;;X
+RELCH_DEC_3;considerably impaired;;;empeorado considerablemente;;;;;;;X
+RELCH_DEC_2;moderately impaired;;;empeorado un poco;;;;;;;X
+RELCH_DEC_1;slightly impaired;;;empeorado ligeramente;;;;;;;X
+RELCH_INC_1;slightly improved;;;mejorado ligeramente;;;;;;;X
+RELCH_INC_2;moderately improved;;;mejorado un poco;;;;;;;X
+RELCH_INC_3;considerably improved;;;mejorado considerablemente;;;;;;;X
+RELCH_INC_4;drastically improved;;;mejorado drásticamente;;;;;;;X
+RELCH_INC_5;enormously improved;;;mejorado enormemente;;;;;;;X
+##;;;;;;;;;;;X
+RELCH_R_0;the closest of our friends!;;;nuestros amigos más íntimos.;;;;;;;X
+RELCH_R_1;very dear friends!;;;amigos muy cercanos.;;;;;;;X
+RELCH_R_2;our friends;;;nuestros amigos.;;;;;;;X
+RELCH_R_3;completely neutral;;;completamente neutrales.;;;;;;;X
+RELCH_R_4;our enemies;;;nuestros enemigos.;;;;;;;X
+RELCH_R_5;our hated enemies!;;;nuestros aborrecidos enemigos.;;;;;;;X
+RELCH_R_6;the worst of our enemies!;;;nuestros peores enemigos.;;;;;;;X
+##;;;;;;;;;;;X
+QUIT_HEADER;;;;;;;;;;;X
+QUIT_1;Surrender?;;;¿Capitular?;;;;;;;X
+QUIT_2;This will exit the current scenario without saving. To save, press F10 then select 'Save'.;;;Esto cerrará el escenario actual sin guardar. Para guardar la partida, pulse F10 y elija «Guardar».;;;;;;;X
+QUIT_3;;;;;;;;;;;X
+QUIT_4;;;;;;;;;;;X
+QUIT_5;;;;;;;;;;;X
+QUIT_6;;;;;;;;;;;X
+QUIT_BTN1;QUIT;;;SALIR;;;;;;;X
+QUIT_BTN2;Cancel;;;Cancelar;;;;;;;X
+##;;;;;;;;;;;X
+QUITHOST_HEADER;;;;;;;;;;;X
+QUITHOST_1;Surrender?;;;¿Capitular?;;;;;;;X
+QUITHOST_2;This will exit the current scenario without saving. PLEASE NOTE this will also end the game for all other players as well!;;;Esto cerrará el escenario actual sin guardar. ¡TENGA EN CUENTA que esto también terminará la partida para el resto de los jugadores!;;;;;;;X
+QUITHOST_3;Saving;;;Guardando;;;;;;;X
+QUITHOST_4;To save press F10 then select 'Save'. You can resume the game later with the same or other players.;;;Para guardar, pulse F10 y seleccione «Guardar». Podrá reanudar la partida más tarde con los mismos o distintos jugadores.;;;;;;;X
+QUITHOST_5;;;;;;;;;;;X
+QUITHOST_6;;;;;;;;;;;X
+QUITHOST_BTN1;QUIT;;;SALIR;;;;;;;X
+QUITHOST_BTN2;Cancel;;;Cancelar;;;;;;;X
+##;;;;;;;;;;;X
+QUITCLIENT_HEADER;;;;;;;;;;;X
+QUITCLIENT_1;Surrender?;;;¿Capitular?;;;;;;;X
+QUITCLIENT_2;This will exit the current scenario without saving. Only the Host of the game can save. The other players will be able to continue playing.;;;Esto cerrará el escenario actual sin guardar. Solo el anfitrión puede guardar. Los demás jugadores podrán continuar la partida.;;;;;;;X
+QUITCLIENT_3;;;;;;;;;;;X
+QUITCLIENT_4;;;;;;;;;;;X
+QUITCLIENT_5;;;;;;;;;;;X
+QUITCLIENT_6;;;;;;;;;;;X
+QUITCLIENT_BTN1;QUIT;;;SALIR;;;;;;;X
+QUITCLIENT_BTN2;Cancel;;;Cancelar;;;;;;;X
+##;;;;;;;;;;;X
+##;;;;;;;;;;;X
+MILALLPROP_SETUP;When a nation sends you a Military Alliance proposal;;;Cuando una nación le envíe una propuesta de alianza militar.;;;;;;;X
+MILALLPROP_HEADER;Herald from;;;Emisario de:;;;;;;;X
+MILALLPROP_1;%s;;;%s;;;;;;;X
+MILALLPROP_2;%t, %s invites us to enter a;;;%t, %s nos invita a concertar una;;;;;;;X
+MILALLPROP_3;military alliance;;;alianza militar;;;;;;;X
+MILALLPROP_4;directed against;;;dirigida contra;;;;;;;X
+MILALLPROP_5;%s;;;%s.;;;;;;;X
+MILALLPROP_6;What is your response?;;;¿Cuál es su respuesta?;;;;;;;X
+MILALLPROP_LOG;%s invited us to a Military Alliance directed against %s.;;;%s nos invitó a una alianza militar dirigida contra %s.;;;;;;;X
+MILALLPROP_BTN1;Accept;;;Aceptar;;;;;;;X
+MILALLPROP_BTN2;No thanks;;;No, gracias;;;;;;;X
+##;;;;;;;;;;;X
+MILALLINVPROP_SETUP;When a nation invites you to a Military Alliance;;;Cuando una nación le invite a unirse a una alianza militar.;;;;;;;X
+MILALLINVPROP_HEADER;Diplomat from;;;Diplomático de:;;;;;;;X
+MILALLINVPROP_1;%s;;;%s;;;;;;;X
+MILALLINVPROP_2;%t, %s invites us to enter a;;;%t, %s nos invita a integrarnos en una;;;;;;;X
+MILALLINVPROP_3;Military Alliance;;;alianza militar;;;;;;;X
+MILALLINVPROP_4;along with %s, directed against;;;junto con %s, dirigida contra;;;;;;;X
+MILALLINVPROP_5;%s;;;%s.;;;;;;;X
+MILALLINVPROP_6;What is your response?;;;¿Cuál es su respuesta?;;;;;;;X
+MILALLINVPROP_LOG;%s invited us to a Military Alliance directed against %s;;;%s nos invitó a una alianza militar dirigida contra %s.;;;;;;;X
+MILALLINVPROP_BTN1;Accept;;;Aceptar;;;;;;;X
+MILALLINVPROP_BTN2;No thanks;;;No, gracias;;;;;;;X
+##;;;;;;;;;;;X
+##;;;;;;;;;;;X
+MILALLJOINPROP_SETUP;When a nation wants to join your Military Alliance;;;Cuando una nación desee unirse a su alianza militar.;;;;;;;X
+MILALLJOINPROP_HEADER;Herald from;;;Emisario de:;;;;;;;X
+MILALLJOINPROP_1;%s;;;%s;;;;;;;X
+MILALLJOINPROP_2;%t, %s wishes to join our;;;%t, %s desea unirse a nuestra;;;;;;;X
+MILALLJOINPROP_3;Military Alliance;;;alianza militar;;;;;;;X
+MILALLJOINPROP_4;directed against;;;dirigida contra;;;;;;;X
+MILALLJOINPROP_5;%s;;;%s.;;;;;;;X
+MILALLJOINPROP_6;What is your response?;;;¿Cuál es su respuesta?;;;;;;;X
+MILALLJOINPROP_LOG;%s want to join our Military Alliance directed against %s.;;;%s desea unirse a nuestra alianza militar dirigida contra %s.;;;;;;;X
+MILALLJOINPROP_BTN1;Welcome!;;;¡Bienvenido!;;;;;;;X
+MILALLJOINPROP_BTN2;No way!;;;¡De ninguna manera!;;;;;;;X
+##;;;;;;;;;;;X
+BFIN_SETUP;When production of a unit is complete, and it is ready to deploy.;;;Cuando termine la producción de una unidad y esté lista para desplegarse.;;;;;;;X
+BFIN_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+BFIN_1;%s;;;%s;;;;;;;X
+BFIN_2;may now be deployed.;;;ya puede desplegarse en el frente.;;;;;;;X
+BFIN_3;;;;;;;;;;;X
+BFIN_4;;;;;;;;;;;X
+BFIN_5;;;;;;;;;;;X
+BFIN_6;;;;;;;;;;;X
+BFIN_LOG;%s may now be deployed.;;;%s ya puede desplegarse.;;;;;;;X
+BFIN_BTN1;OK;;;Aceptar;;;;;;;X
+BFIN_BTN2;Deploy;;;Desplegar;;;;;;;X
+##;;;;;;;;;;;X
+BPFIN_SETUP;When production of a building is complete, and it is ready to deploy.;;;Cuando termine la construcción de un edificio y esté listo para colocarse.;;;;;;;X
+BPFIN_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+BPFIN_1;%s;;;%s;;;;;;;X
+BPFIN_2;may now be deployed.;;;ya puede emplazarse.;;;;;;;X
+BPFIN_3;;;;;;;;;;;X
+BPFIN_4;;;;;;;;;;;X
+BPFIN_5;;;;;;;;;;;X
+BPFIN_6;;;;;;;;;;;X
+BPFIN_LOG;%s may now be deployed.;;;%s ya puede emplazarse.;;;;;;;X
+BPFIN_BTN1;OK;;;Aceptar;;;;;;;X
+BPFIN_BTN2;Deploy;;;Emplazar;;;;;;;X
+##;;;;;;;;;;;X
+CFIN_SETUP;When the production of convoy transports or escorts has finished.;;;Cuando termine la producción de transportes o escoltas de convoy.;;;;;;;X
+CFIN_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+CFIN_1;%s;;;%s;;;;;;;X
+CFIN_2;has been deployed to the convoy pool.;;;ha sido asignado a la reserva de convoyes.;;;;;;;X
+CFIN_3;;;;;;;;;;;X
+CFIN_4;;;;;;;;;;;X
+CFIN_5;;;;;;;;;;;X
+CFIN_6;;;;;;;;;;;X
+CFIN_LOG;%s has been deployed to the convoy pool.;;;%s ha sido asignado a la reserva de convoyes.;;;;;;;X
+CFIN_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+PFIN_SETUP;When the construction of a building has finished in a province.;;;Cuando termine la construcción de una instalación en una provincia.;;;;;;;X
+PFIN_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+PFIN_1;%s;;;%s;;;;;;;X
+PFIN_2;has been finished in;;;ha finalizado sus obras en;;;;;;;X
+PFIN_3;%s;;;%s.;;;;;;;X
+PFIN_4;;;;;;;;;;;X
+PFIN_5;;;;;;;;;;;X
+PFIN_6;;;;;;;;;;;X
+PFIN_LOG;%s has been finished in %s.;;;%s se ha completado en %s.;;;;;;;X
+PFIN_BTN1;OK;;;Aceptar;;;;;;;X
+PFIN_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+UFIN_BRIG_STRING;The attachment to;;;La brigada agregada a;;;;;;;X
+UFIN_SETUP;When a division has been upgraded.;;;Cuando se haya modernizado una división.;;;;;;;X
+UFIN_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+UFIN_1;%s;;;%s;;;;;;;X
+UFIN_2;has been upgraded to;;;ha sido modernizada a;;;;;;;X
+UFIN_3;%s;;;%s.;;;;;;;X
+UFIN_4;;;;;;;;;;;X
+UFIN_5;;;;;;;;;;;X
+UFIN_6;;;;;;;;;;;X
+UFIN_LOG;%s has been upgraded to %s.;;;%s ha sido modernizada a %s.;;;;;;;X
+UFIN_BTN1;OK;;;Aceptar;;;;;;;X
+UFIN_BTN2;Select;;;Seleccionar;;;;;;;X
+##;;;;;;;;;;;X
+ABWINOTHER_SETUP;When another nation wins an air battle;;;Cuando otra nación gane una batalla aérea.;;;;;;;X
+ABWINOTHER_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+ABWINOTHER_1;%s;;;%s;;;;;;;X
+ABWINOTHER_2;%t, the airforce of %s has;;;%t, la fuerza aérea de %s ha;;;;;;;X
+ABWINOTHER_3;defeated %s in the skies above %s;;;derrotado a %s en los cielos de %s.;;;;;;;X
+ABWINOTHER_4;;;;;;;;;;;X
+ABWINOTHER_5;;;;;;;;;;;X
+ABWINOTHER_6;;;;;;;;;;;X
+ABWINOTHER_LOG;%s won a battle of the skies against %s above %s;;;%s ganó una batalla aérea contra %s sobre %s.;;;;;;;X
+ABWINOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+ABWINOTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WTACBOMB_SETUP;When our air flottillas attack landforces.;;;Cuando nuestras escuadrillas aéreas ataquen fuerzas terrestres.;;;;;;;X
+WTACBOMB_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+WTACBOMB_1;;;;;;;;;;;X
+WTACBOMB_2;Our planes above;;;Nuestros aviones sobre;;;;;;;X
+WTACBOMB_3;%s;;;%s;;;;;;;X
+WTACBOMB_4;have engaged enemy forces and started bombing!;;;han trabado combate con fuerzas enemigas e iniciado el bombardeo.;;;;;;;X
+WTACBOMB_5;;;;;;;;;;;X
+WTACBOMB_6;;;;;;;;;;;X
+WTACBOMB_LOG;We have started bombing enemy forces in %s.;;;Hemos comenzado a bombardear fuerzas enemigas en %s.;;;;;;;X
+WTACBOMB_BTN1;OK;;;Aceptar;;;;;;;X
+WTACBOMB_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WTACBOMBUS_SETUP;When our landforces are being bombed.;;;Cuando nuestras fuerzas terrestres sean bombardeadas.;;;;;;;X
+WTACBOMBUS_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+WTACBOMBUS_1;;;;;;;;;;;X
+WTACBOMBUS_2;Our troops in;;;Nuestras tropas en;;;;;;;X
+WTACBOMBUS_3;%s;;;%s;;;;;;;X
+WTACBOMBUS_4;are being bombarded by planes from;;;están siendo bombardeadas por aviones de;;;;;;;X
+WTACBOMBUS_5;%s!;%s;%s!;%s!;%s!;%s!;;¡%s!;;;X
+WTACBOMBUS_6;;;;;;;;;;;X
+WTACBOMBUS_LOG;Our troops in %s are being bombed by %s.;;;Nuestras tropas en %s están siendo bombardeadas por %s.;;;;;;;X
+WTACBOMBUS_BTN1;OK;;;Aceptar;;;;;;;X
+WTACBOMBUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WNAVBOMB_SETUP;When our air flottillas attack navalforces.;;;Cuando nuestras escuadrillas aéreas ataquen fuerzas navales.;;;;;;;X
+WNAVBOMB_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+WNAVBOMB_1;;;;;;;;;;;X
+WNAVBOMB_2;Our planes above;;;Nuestros aviones sobre;;;;;;;X
+WNAVBOMB_3;%s;;;%s;;;;;;;X
+WNAVBOMB_4;have engaged a fleet and started bombing!;;;han entablado combate con una flota e iniciado el bombardeo.;;;;;;;X
+WNAVBOMB_5;;;;;;;;;;;X
+WNAVBOMB_6;;;;;;;;;;;X
+WNAVBOMB_LOG;We have spotted and started bombing an enemy fleet in %s.;;;Hemos avistado y comenzado a bombardear a una flota enemiga en %s.;;;;;;;X
+WNAVBOMB_BTN1;OK;;;Aceptar;;;;;;;X
+WNAVBOMB_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WNAVBOMBUS_SETUP;When our fleets are being bombed.;;;Cuando nuestras flotas sean bombardeadas.;;;;;;;X
+WNAVBOMBUS_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+WNAVBOMBUS_1;;;;;;;;;;;X
+WNAVBOMBUS_2;Our fleet in;;;¡Nuestra flota en;;;;;;;X
+WNAVBOMBUS_3;%s;;;%s;;;;;;;X
+WNAVBOMBUS_4;is being attacked by planes from;;;está siendo atacada por aviones de;;;;;;;X
+WNAVBOMBUS_5;%s!;;;¡%s!;;;;;;;X
+WNAVBOMBUS_6;;;;;;;;;;;X
+WNAVBOMBUS_LOG;Our ships in %s are being bombed by %s.;;;Nuestros barcos en %s están siendo bombardeados por %s.;;;;;;;X
+WNAVBOMBUS_BTN1;OK;;;Aceptar;;;;;;;X
+WNAVBOMBUS_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WADD_SETUP;When we accept a diplomatic deal offered by another nation.;;;Cuando aceptemos un acuerdo diplomático ofrecido por otra nación.;;;;;;;X
+WADD_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+WADD_1;Diplomatic Deal;;;Acuerdo diplomático;;;;;;;X
+WADD_2;%t, we have concluded a deal with;;;%t, hemos cerrado un acuerdo con;;;;;;;X
+WADD_3;%s.;;;%s.;;;;;;;X
+WADD_4;;;;;;;;;;;X
+WADD_5;;;;;;;;;;;X
+WADD_6;;;;;;;;;;;X
+WADD_LOG;We concluded a diplomatic deal with %s.;;;Hemos ratificado un acuerdo diplomático con %s.;;;;;;;X
+WADD_BTN1;OK;;;Aceptar;;;;;;;X
+WADD_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TADD_SETUP;When another nation concludes a diplomatic deal with a third nation.;;;Cuando otra nación cierre un acuerdo diplomático con un tercer país.;;;;;;;X
+TADD_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+TADD_1;Diplomatic Deal;;;Acuerdo diplomático;;;;;;;X
+TADD_2;%t, %s has concluded a deal with;;;%t, %s ha cerrado un acuerdo diplomático con;;;;;;;X
+TADD_3;%s.;;;%s.;;;;;;;X
+TADD_4;;;;;;;;;;;X
+TADD_5;;;;;;;;;;;X
+TADD_6;;;;;;;;;;;X
+TADD_LOG;%s concluded a diplomatic deal with %s.;;;%s ha ratificado un acuerdo diplomático con %s.;;;;;;;X
+TADD_BTN1;OK;;;Aceptar;;;;;;;X
+TADD_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TADDU_SETUP;When another nation concludes a diplomatic deal offered by us.;;;Cuando otra nación acepte el acuerdo diplomático que le ofrecimos.;;;;;;;X
+TADDU_HEADER;FOREIGN POLICY BRIEFING ;;;PARTE DE POLÍTICA EXTERIOR;;;;;;;X
+TADDU_1;Diplomatic Deal;;;Acuerdo diplomático;;;;;;;X
+TADDU_2;%t, the nation of;;;%t, la nación de;;;;;;;X
+TADDU_3;%s;;;%s;;;;;;;X
+TADDU_4;has concluded a diplomatic deal with us.;;;ha aceptado un acuerdo diplomático con nosotros.;;;;;;;X
+TADDU_5;;;;;;;;;;;X
+TADDU_6;;;;;;;;;;;X
+TADDU_LOG;%s concluded a diplomatic deal with us.;;;%s ha ratificado un acuerdo diplomático con nosotros.;;;;;;;X
+TADDU_BTN1;OK;;;Aceptar;;;;;;;X
+TADDU_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WDDD_SETUP;When we decline a diplomatic deal offered by another nation.;;;Cuando rechacemos un acuerdo diplomático propuesto por otra nación.;;;;;;;X
+WDDD_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+WDDD_1;Diplomatic Deal;;;Acuerdo diplomático;;;;;;;X
+WDDD_2;%t, we declined the diplomatic deal suggested by;;;%t, hemos rechazado la propuesta de acuerdo diplomático de;;;;;;;X
+WDDD_3;%s.;;;%s.;;;;;;;X
+WDDD_4;;;;;;;;;;;X
+WDDD_5;;;;;;;;;;;X
+WDDD_6;;;;;;;;;;;X
+WDDD_LOG;We declined a diplomatic deal suggested by %s.;;;Hemos rechazado el acuerdo diplomático propuesto por %s.;;;;;;;X
+WDDD_BTN1;OK;;;Aceptar;;;;;;;X
+WDDD_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TDDD_SETUP;When another nation declines a diplomatic deal suggested by a third nation.;;;Cuando otra nación rechace un acuerdo diplomático propuesto por un tercer país.;;;;;;;X
+TDDD_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+TDDD_1;Diplomatic Deal;;;Acuerdo diplomático;;;;;;;X
+TDDD_2;%t, %s has declined the diplomatic deal suggested by;;;%t, %s ha rechazado la propuesta de acuerdo diplomático de;;;;;;;X
+TDDD_3;%s.;;;%s.;;;;;;;X
+TDDD_4;;;;;;;;;;;X
+TDDD_5;;;;;;;;;;;X
+TDDD_6;;;;;;;;;;;X
+TDDD_LOG;%s declined the diplomatic deal suggested by %s.;;;%s ha rechazado el acuerdo diplomático propuesto por %s.;;;;;;;X
+TDDD_BTN1;OK;;;Aceptar;;;;;;;X
+TDDD_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TDDDU_SETUP;When another nation declines a diplomatic deal suggested by us.;;;Cuando otra nación rechace el acuerdo diplomático que le propusimos.;;;;;;;X
+TDDDU_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+TDDDU_1;Diplomatic Deal;;;Acuerdo diplomático;;;;;;;X
+TDDDU_2;%t, the nation of;;;%t, la nación de;;;;;;;X
+TDDDU_3;%s;;;%s;;;;;;;X
+TDDDU_4;has declined the diplomatic deal suggested by us.;;;ha rechazado el acuerdo diplomático que le propusimos.;;;;;;;X
+TDDDU_5;;;;;;;;;;;X
+TDDDU_6;;;;;;;;;;;X
+TDDDU_LOG;%s declined the diplomatic deal suggested by us.;;;%s ha rechazado el acuerdo diplomático que le propusimos.;;;;;;;X
+TDDDU_BTN1;OK;;;Aceptar;;;;;;;X
+TDDDU_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+DEALWE_SETUP;When another nation offers a trade deal;;;Cuando otra nación ofrezca un acuerdo comercial.;;;;;;;X
+##;;;;;;;;;;;X
+AOW_TA;%t, %s suggests a Trade Agreement. They will trade us;;;%t, %s propone un acuerdo comercial. Nos suministrarán:;;;;;;;X
+AOW_DEAL;%t, %s suggests a Deal. They will give us;;;%t, %s propone un trato. Nos entregarán:;;;;;;;X
+AOW_DEAL2;for;;;a cambio de:;;;;;;;X
+AOW_DEAL3;Claims on %s;;;Reclamaciones sobre %s;;;;;;;X
+##;;;;;;;;;;;X
+TCPTUS_SETUP;When another nation breaks a peace treaty with us.;;;Cuando otra nación rompa un tratado de paz con nosotros.;;;;;;;X
+TCPTUS_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+TCPTUS_1;Peace Treaty Broken;;;Tratado de paz roto;;;;;;;X
+TCPTUS_2;%t, the nation of;;;%t, la nación de;;;;;;;X
+TCPTUS_3;%s;;;%s;;;;;;;X
+TCPTUS_4;has broken the peace treaty they had with us!;;;¡ha roto el tratado de paz que mantenía con nosotros!;;;;;;;X
+TCPTUS_5;;;;;;;;;;;X
+TCPTUS_6;;;;;;;;;;;X
+TCPTUS_LOG;%s broke the peace treaty they had with us.;;;%s ha roto el tratado de paz que mantenía con nosotros.;;;;;;;X
+TCPTUS_BTN1;OK;;;Aceptar;;;;;;;X
+TCPTUS_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TCTAUS_SETUP;When another nation cancels a trade agreement with us.;;;Cuando otra nación cancele un acuerdo comercial con nosotros.;;;;;;;X
+TCTAUS_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+TCTAUS_1;Trade Agreement Cancelled;;;Acuerdo comercial cancelado;;;;;;;X
+TCTAUS_2;%t, the nation of;;;%t, la nación de;;;;;;;X
+TCTAUS_3;%s;;;%s;;;;;;;X
+TCTAUS_4;has cancelled a trade agreement they had with us.;;;ha cancelado un acuerdo comercial que mantenía con nosotros.;;;;;;;X
+TCTAUS_5;(%s);;;(%s);;;;;;;X
+TCTAUS_6;;;;;;;;;;;X
+TCTAUS_LOG;%s cancelled a trade agreement they had with us.;;;%s ha cancelado un acuerdo comercial que mantenía con nosotros.;;;;;;;X
+TCTAUS_BTN1;OK;;;Aceptar;;;;;;;X
+TCTAUS_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TCNAUS_SETUP;When another nation breaks a non-aggression pact with us.;;;Cuando otra nación rompa un pacto de no agresión con nosotros.;;;;;;;X
+TCNAUS_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+TCNAUS_1;Non-Aggression Pact Cancelled;;;Pacto de no agresión cancelado;;;;;;;X
+TCNAUS_2;%t, the nation of;;;%t, la nación de;;;;;;;X
+TCNAUS_3;%s;;;%s;;;;;;;X
+TCNAUS_4;has broken the non-aggression pact they had with us.;;;ha roto el pacto de no agresión que mantenía con nosotros.;;;;;;;X
+TCNAUS_5;;;;;;;;;;;X
+TCNAUS_6;;;;;;;;;;;X
+TCNAUS_LOG;%s broken the non-aggression pact they had with us.;;;%s ha roto el pacto de no agresión que mantenía con nosotros.;;;;;;;X
+TCNAUS_BTN1;OK;;;Aceptar;;;;;;;X
+TCNAUS_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WANAP_SETUP;When we accept a non-aggression pact offered by another nation.;;;Cuando aceptemos un pacto de no agresión propuesto por otra nación.;;;;;;;X
+WANAP_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+WANAP_1;Non-Aggression Pact;;;Pacto de no agresión;;;;;;;X
+WANAP_2;%t, we have entered non-aggression pact with;;;%t, hemos suscrito un pacto de no agresión con;;;;;;;X
+WANAP_3;%s.;;;%s.;;;;;;;X
+WANAP_4;;;;;;;;;;;X
+WANAP_5;;;;;;;;;;;X
+WANAP_6;;;;;;;;;;;X
+WANAP_LOG;We have entered non-aggression pact with %s.;;;Hemos suscrito un pacto de no agresión con %s.;;;;;;;X
+WANAP_BTN1;OK;;;Aceptar;;;;;;;X
+WANAP_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TANAP_SETUP;When another nation enters a non-aggression pact with a third nation.;;;Cuando otra nación suscriba un pacto de no agresión con un tercer país.;;;;;;;X
+TANAP_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+TANAP_1;Non-Aggression Pact;;;Pacto de no agresión;;;;;;;X
+TANAP_2;%t, %s has entered a non-aggression pact with;;;%t, %s ha suscrito un pacto de no agresión con;;;;;;;X
+TANAP_3;%s.;;;%s.;;;;;;;X
+TANAP_4;;;;;;;;;;;X
+TANAP_5;;;;;;;;;;;X
+TANAP_6;;;;;;;;;;;X
+TANAP_LOG;%s entered a non-aggression pact with %s.;;;%s ha suscrito un pacto de no agresión con %s.;;;;;;;X
+TANAP_BTN1;OK;;;Aceptar;;;;;;;X
+TANAP_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TANAPU_SETUP;When another nation enters a non-aggression pact offered by us.;;;Cuando otra nación acepte un pacto de no agresión propuesto por nosotros.;;;;;;;X
+TANAPU_HEADER;FOREIGN POLICY BRIEFING %s;;;PARTE DE POLÍTICA EXTERIOR %s;;;;;;;X
+TANAPU_1;Non-Aggression Pact;;;Pacto de no agresión;;;;;;;X
+TANAPU_2;%t, the nation of;;;%t, la nación de;;;;;;;X
+TANAPU_3;%s;;;%s;;;;;;;X
+TANAPU_4;has entered a non-aggression pact with us.;;;ha suscrito un pacto de no agresión con nosotros.;;;;;;;X
+TANAPU_5;;;;;;;;;;;X
+TANAPU_6;;;;;;;;;;;X
+TANAPU_LOG;%s entered a non-aggression pact with us.;;;%s ha suscrito un pacto de no agresión con nosotros.;;;;;;;X
+TANAPU_BTN1;OK;;;Aceptar;;;;;;;X
+TANAPU_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WDNAP_SETUP;When we decline a non-aggression pact offered by another nation.;;;Cuando rechacemos un pacto de no agresión ofrecido por otra nación.;;;;;;;X
+WDNAP_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+WDNAP_1;Non-Aggression Pact;;;Pacto de no agresión;;;;;;;X
+WDNAP_2;%t, we declined the non-aggression pact suggested by;;;%t, hemos rechazado el pacto de no agresión propuesto por;;;;;;;X
+WDNAP_3;%s.;;;%s.;;;;;;;X
+WDNAP_4;;;;;;;;;;;X
+WDNAP_5;;;;;;;;;;;X
+WDNAP_6;;;;;;;;;;;X
+WDNAP_LOG;We declined the non-aggression pact suggested by %s.;;;Hemos rechazado el pacto de no agresión propuesto por %s.;;;;;;;X
+WDNAP_BTN1;OK;;;Aceptar;;;;;;;X
+WDNAP_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TDNAP_SETUP;When another nation declines a non-aggression pact suggested by a third nation.;;;Cuando otra nación rechace un pacto de no agresión propuesto por un tercer país.;;;;;;;X
+TDNAP_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+TDNAP_1;Non-Aggression Pact;;;Pacto de no agresión;;;;;;;X
+TDNAP_2;%t, %s has declined the non-aggression pact suggested by;;;%t, %s ha rechazado la propuesta de pacto de no agresión de;;;;;;;X
+TDNAP_3;%s.;;;%s.;;;;;;;X
+TDNAP_4;;;;;;;;;;;X
+TDNAP_5;;;;;;;;;;;X
+TDNAP_6;;;;;;;;;;;X
+TDNAP_LOG;%s declined the non-aggression pact suggested by %s.;;;%s ha rechazado el pacto de no agresión propuesto por %s.;;;;;;;X
+TDNAP_BTN1;OK;;;Aceptar;;;;;;;X
+TDNAP_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TDNAPU_SETUP;When another nation declines a non-aggression pact suggested by us.;;;Cuando otra nación rechace el pacto de no agresión que le propusimos.;;;;;;;X
+TDNAPU_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+TDNAPU_1;Non-Aggression Pact;;;Pacto de no agresión;;;;;;;X
+TDNAPU_2;%t, the nation of;;;%t, la nación de;;;;;;;X
+TDNAPU_3;%s;;;%s;;;;;;;X
+TDNAPU_4;has declined the non-aggression pact suggested by us.;;;ha rechazado el pacto de no agresión propuesto por nosotros.;;;;;;;X
+TDNAPU_5;;;;;;;;;;;X
+TDNAPU_6;;;;;;;;;;;X
+TDNAPU_LOG;%s declined the non-aggression pact suggested by us.;;;%s ha rechazado el pacto de no agresión propuesto por nosotros.;;;;;;;X
+TDNAPU_BTN1;OK;;;Aceptar;;;;;;;X
+TDNAPU_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NAGGWE_SETUP;When a nation sends you a non-aggression pact proposal;;;Cuando una nación le envíe una propuesta de pacto de no agresión.;;;;;;;X
+##;;;;;;;;;;;X
+WEGUARA_HEADER;FOREIGN POLICY BRIEFING\nConcerning;;;PARTE DE POLÍTICA EXTERIOR\nRelativo a:;;;;;;;X
+WEGUARA_1;%s;;;%s;;;;;;;X
+WEGUARA_2;%t, we have now;;;%t, hemos;;;;;;;X
+WEGUARA_3;GUARANTEED;;;GARANTIZADO;;;;;;;X
+WEGUARA_4;the independence of;;;la independencia de;;;;;;;X
+WEGUARA_5;%s;;;%s.;;;;;;;X
+WEGUARA_6;;;;;;;;;;;X
+WEGUARA_LOG;We now guarantee the independence of %s.;;;Garantizamos ahora la independencia de %s.;;;;;;;X
+WEGUARA_BTN1;OK;;;Aceptar;;;;;;;X
+WEGUARA_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+REMOVETECH_SETUP;When we abandon a doctrine;;;Cuando abandonemos una doctrina militar.;;;;;;;X
+REMOVETECH_HEADER;ARMAMENTS BRIEFING%s;;;PARTE DE ARMAMENTO%s;;;;;;;X
+REMOVETECH_1;Doctrine abandoned;;;Doctrina abandonada;;;;;;;X
+REMOVETECH_2;%t, %swe have abandoned the doctrine;;;%t, %shemos abandonado la doctrina:;;;;;;;X
+REMOVETECH_3;%s;;;%s.;;;;;;;X
+REMOVETECH_4;;;;;;;;;;;X
+REMOVETECH_5;;;;;;;;;;;X
+REMOVETECH_6;;;;;;;;;;;X
+REMOVETECH_LOG;We abandoned doctrine %s%s.;;;Hemos abandonado la doctrina: %s%s.;;;;;;;X
+REMOVETECH_BTN1;OK;;;Aceptar;;;;;;;X
+REMOVETECH_BTN2;;;;;;;;;;;X
+##;;;;;;;;;;;X
+SPY3DNUCS_SETUP;When somebody has destroyed a nuke;;;Cuando alguien destruya un arma atómica.;;;;;;;X
+SPY3DNUCS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3DNUCS_1;A spy from %s has succeeded in destroying a nuclear weapon ;;;Un espía de %s ha conseguido destruir un arma nuclear;;;;;;;X
+SPY3DNUCS_2;in;;;en;;;;;;;X
+SPY3DNUCS_3;%s;;;%s.;;;;;;;X
+SPY3DNUCS_4;%s;;;%s;;;;;;;X
+SPY3DNUCS_5;;;;;;;;;;;X
+SPY3DNUCS_6;;;;;;;;;;;X
+SPY3DNUCS_LOG;%s has destroyed a nuclear weapon in %s. %s;;;%s ha destruido un arma nuclear en %s. %s;;;;;;;X
+SPY3DNUCS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3DNUCF_SETUP;When somebody failed to destroy a nuke;;;Cuando alguien fracase en destruir un arma atómica.;;;;;;;X
+SPY3DNUCF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3DNUCF_1;A spy from %s has failed to destroy a nuclear warhead;;;Un espía de %s no ha conseguido destruir una ojiva nuclear;;;;;;;X
+SPY3DNUCF_2;in;;;en;;;;;;;X
+SPY3DNUCF_3;%s;;;%s;;;;;;;X
+SPY3DNUCF_4;%s;;;%s;;;;;;;X
+SPY3DNUCF_5;;;;;;;;;;;X
+SPY3DNUCF_6;;;;;;;;;;;X
+SPY3DNUCF_LOG;%s failed to destroy a nuclear warhead in %s. %s;;;%s no ha conseguido destruir una ojiva nuclear en %s. %s;;;;;;;X
+SPY3DNUCF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3COUF_SETUP;When others counter espionage fails;;;Cuando fracase la contrainteligencia de otra nación.;;;;;;;X
+SPY3COUF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3COUF_1;%s failed to find and kill a spy;;;%s no ha conseguido localizar ni eliminar a ningún espía.;;;;;;;X
+SPY3COUF_2;;;;;;;;;;;X
+SPY3COUF_3;;;;;;;;;;;X
+SPY3COUF_4;;;;;;;;;;;X
+SPY3COUF_5;;;;;;;;;;;X
+SPY3COUF_6;;;;;;;;;;;X
+SPY3COUF_LOG;%s failed to find any spies.;;;%s no ha conseguido localizar espía alguno.;;;;;;;X
+SPY3COUF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3COUS_SETUP;When others counter espionage succeeds;;;Cuando la contrainteligencia de otra nación tenga éxito.;;;;;;;X
+SPY3COUS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3COUS_1;%s has found and killed a spy;;;%s ha localizado y ejecutado a un espía;;;;;;;X
+SPY3COUS_2;from;;;procedente de:;;;;;;;X
+SPY3COUS_3;%s;;;%s;;;;;;;X
+SPY3COUS_4;;;;;;;;;;;X
+SPY3COUS_5;;;;;;;;;;;X
+SPY3COUS_6;;;;;;;;;;;X
+SPY3COUS_LOG;%s has found and killed a spy from %s.;;;%s ha localizado y ejecutado a un espía de %s.;;;;;;;X
+SPY3COUS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3SMF_SETUP;When others fails with a smear campaign;;;Cuando fracase una campaña de descrédito de otra nación.;;;;;;;X
+SPY3SMF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3SMF_1;%s has failed with a smear campaign;;;Ha fracasado la campaña de descrédito de %s;;;;;;;X
+SPY3SMF_2;in;;;en;;;;;;;X
+SPY3SMF_3;%s;;;%s.;;;;;;;X
+SPY3SMF_4;%s;;;%s;;;;;;;X
+SPY3SMF_5;;;;;;;;;;;X
+SPY3SMF_6;;;;;;;;;;;X
+SPY3SMF_LOG;%s has failed with a smear campaign in %s. %s;;;Ha fracasado la campaña de descrédito de %s en %s. %s;;;;;;;X
+SPY3SMF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3SMS_SETUP;When others succeed with a smear campaign;;;Cuando otra nación tenga éxito con una campaña de descrédito.;;;;;;;X
+SPY3SMS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3SMS_1;%s has succeeded with a smear campaign;;;%s ha tenido éxito con una campaña de descrédito;;;;;;;X
+SPY3SMS_2;in;;;en;;;;;;;X
+SPY3SMS_3;%s;;;%s.;;;;;;;X
+SPY3SMS_4;%s;;;%s;;;;;;;X
+SPY3SMS_5;;;;;;;;;;;X
+SPY3SMS_6;;;;;;;;;;;X
+SPY3SMS_LOG;%s has succeeded with a smear campaign in %s. %s;;;%s ha tenido éxito con una campaña de descrédito en %s. %s;;;;;;;X
+SPY3SMS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3MASSF_SETUP;When others failed to influence the global opinion;;;Cuando otra nación fracase al intentar manipular la opinión mundial.;;;;;;;X
+SPY3MASSF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3MASSF_1;%s has failed to manipulate the global opinion;;;%s no ha conseguido manipular la opinión mundial;;;;;;;X
+SPY3MASSF_2;about;;;acerca de:;;;;;;;X
+SPY3MASSF_3;%s;;;%s;;;;;;;X
+SPY3MASSF_4;%s;;;%s;;;;;;;X
+SPY3MASSF_5;;;;;;;;;;;X
+SPY3MASSF_6;;;;;;;;;;;X
+SPY3MASSF_LOG;%s has failed to manipulate the global opinion about %s. %s;;;%s no ha conseguido manipular la opinión mundial sobre %s. %s;;;;;;;X
+SPY3MASSF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3MASSS_SETUP;When others successfully influence global opinion;;;Cuando otra nación influya con éxito en la opinión mundial.;;;;;;;X
+SPY3MASSS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3MASSS_1;%s has succeeded in influencing the global opinion;;;%s ha conseguido influir en la opinión mundial;;;;;;;X
+SPY3MASSS_2;about;;;acerca de:;;;;;;;X
+SPY3MASSS_3;%s;;;%s;;;;;;;X
+SPY3MASSS_4;%s;;;%s;;;;;;;X
+SPY3MASSS_5;;;;;;;;;;;X
+SPY3MASSS_6;;;;;;;;;;;X
+SPY3MASSS_LOG;%s has succeeded in influencing the global opinion about %s. %s;;;%s ha conseguido influir en la opinión mundial sobre %s. %s;;;;;;;X
+SPY3MASSS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3BLUEF_SETUP;When others failed to steal a blueprint;;;Cuando otra nación fracase al intentar robar planos.;;;;;;;X
+SPY3BLUEF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3BLUEF_1;%s has failed to steal blueprints;;;%s no ha conseguido robar planos;;;;;;;X
+SPY3BLUEF_2;from;;;a:;;;;;;;X
+SPY3BLUEF_3;%s;;;%s;;;;;;;X
+SPY3BLUEF_4;%s;;;%s;;;;;;;X
+SPY3BLUEF_5;;;;;;;;;;;X
+SPY3BLUEF_6;;;;;;;;;;;X
+SPY3BLUEF_LOG;%s has failed to steal blueprints from %s. %s;;;%s no ha conseguido robar planos a %s. %s;;;;;;;X
+SPY3BLUEF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3BLUES_SETUP;When others managed to steal a blueprint;;;Cuando otra nación consiga robar planos.;;;;;;;X
+SPY3BLUES_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3BLUES_1;%s has succeeded in stealing the blueprint;;;%s ha conseguido robar los planos;;;;;;;X
+SPY3BLUES_2;for;;;de:;;;;;;;X
+SPY3BLUES_3;%s;;;«%s»;;;;;;;X
+SPY3BLUES_4;from;;;a:;;;;;;;X
+SPY3BLUES_5;%s;;;%s;;;;;;;X
+SPY3BLUES_6;%s;;;%s;;;;;;;X
+SPY3BLUES_LOG;%s has succeeded in stealing the blueprint for %s from %s.  %s;;;%s ha conseguido robar los planos de «%s» a %s. %s;;;;;;;X
+SPY3BLUES_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3DTEF_SETUP;When others failed to delay a tech team;;;Cuando otra nación no consiga sabotear a un equipo de investigación.;;;;;;;X
+SPY3DTEF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3DTEF_1;%s has failed to delay a tech team ;;;%s no ha conseguido sabotear a un equipo de investigación;;;;;;;X
+SPY3DTEF_2;in;;;en;;;;;;;X
+SPY3DTEF_3;%s;;;%s;;;;;;;X
+SPY3DTEF_4;%s;;;%s;;;;;;;X
+SPY3DTEF_5;;;;;;;;;;;X
+SPY3DTEF_6;;;;;;;;;;;X
+SPY3DTEF_LOG;%s has failed to delay a tech team in %s. %s;;;%s no ha conseguido sabotear a un equipo de investigación en %s. %s;;;;;;;X
+SPY3DTEF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3DTES_SETUP;When others succeed in delaying a tech team;;;Cuando otra nación consiga sabotear a un equipo de investigación.;;;;;;;X
+SPY3DTES_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3DTES_1;%s has succeeded in delaying ;;;%s ha conseguido sabotear;;;;;;;X
+SPY3DTES_2;the tech team;;;al equipo de investigación:;;;;;;;X
+SPY3DTES_3;%s;;;%s;;;;;;;X
+SPY3DTES_4;in;;;en;;;;;;;X
+SPY3DTES_5;%s;;;%s;;;;;;;X
+SPY3DTES_6;%s;;;%s;;;;;;;X
+SPY3DTES_LOG;%s has succeeded in delaying the tech team %s in %s. %s;;;%s ha conseguido sabotear al equipo de investigación %s en %s. %s;;;;;;;X
+SPY3DTES_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3PRODF_SETUP;When others fail to delay production;;;Cuando otra nación no consiga sabotear la producción.;;;;;;;X
+SPY3PRODF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3PRODF_1;%s has failed in delaying production;;;%s no ha conseguido sabotear la producción;;;;;;;X
+SPY3PRODF_2;in;;;en;;;;;;;X
+SPY3PRODF_3;%s;;;%s;;;;;;;X
+SPY3PRODF_4;%s;;;%s;;;;;;;X
+SPY3PRODF_5;;;;;;;;;;;X
+SPY3PRODF_6;;;;;;;;;;;X
+SPY3PRODF_LOG;%s has failed in delaying production in %s. %s;;;%s no ha conseguido sabotear la producción en %s. %s;;;;;;;X
+SPY3PRODF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3FPF_SETUP;When others fail to fund partisans;;;Cuando otra nación no consiga financiar a partisanos.;;;;;;;X
+SPY3FPF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3FPF_1;%s has failed to fund partisans ;;;%s no ha conseguido financiar a partisanos;;;;;;;X
+SPY3FPF_2;in;;;en;;;;;;;X
+SPY3FPF_3;%s;;;%s;;;;;;;X
+SPY3FPF_4;%s;;;%s;;;;;;;X
+SPY3FPF_5;;;;;;;;;;;X
+SPY3FPF_6;;;;;;;;;;;X
+SPY3FPF_LOG;%s has failed to fund partisans in %s. %s;;;%s no ha conseguido financiar a partisanos en %s. %s;;;;;;;X
+SPY3FPF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3PRODS_SETUP;When others managed to delay production;;;Cuando otra nación consiga sabotear la producción.;;;;;;;X
+SPY3PRODS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3PRODS_1;%s has disrupted the production;;;%s ha conseguido sabotear la producción;;;;;;;X
+SPY3PRODS_2;of;;;de:;;;;;;;X
+SPY3PRODS_3;%s;;;%s;;;;;;;X
+SPY3PRODS_4;in;;;en;;;;;;;X
+SPY3PRODS_5;%s.;;;%s.;;;;;;;X
+SPY3PRODS_6;%s;;;%s;;;;;;;X
+SPY3PRODS_LOG;%s has disrupted production of %s in %s. %s;;;%s ha saboteado la producción de %s en %s. %s;;;;;;;X
+SPY3PRODS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3AF_SETUP;When others failed to send a spy;;;Cuando otra nación no consiga infiltrar a un espía.;;;;;;;X
+SPY3AF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3AF_1;%s tried but failed to send a spy;;;%s intentó sin éxito infiltrar a un espía;;;;;;;X
+SPY3AF_2;to;;;en;;;;;;;X
+SPY3AF_3;%s;;;%s.;;;;;;;X
+SPY3AF_4;%s;;;%s;;;;;;;X
+SPY3AF_5;;;;;;;;;;;X
+SPY3AF_6;;;;;;;;;;;X
+SPY3AF_LOG;%s tried but failed to send a spy to %s. %s;;;%s intentó sin éxito infiltrar a un espía en %s. %s;;;;;;;X
+SPY3AF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3AS_SETUP;When others send a spy;;;Cuando otra nación infiltre a un espía.;;;;;;;X
+SPY3AS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3AS_1;%s has sent a spy;;;%s ha infiltrado a un espía;;;;;;;X
+SPY3AS_2;to;;;en;;;;;;;X
+SPY3AS_3;%s;;;%s.;;;;;;;X
+SPY3AS_4;%s;;;%s;;;;;;;X
+SPY3AS_5;;;;;;;;;;;X
+SPY3AS_6;;;;;;;;;;;X
+SPY3AS_LOG;%s has sent a spy to %s. %s;;;%s ha infiltrado a un espía en %s. %s;;;;;;;X
+SPY3AS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3ASF_SETUP;When others failed to assassinate a minister;;;Cuando otra nación fracase al intentar asesinar a un ministro.;;;;;;;X
+SPY3ASF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3ASF_1;%s tried but failed to assassinate;;;%s intentó sin éxito asesinar;;;;;;;X
+SPY3ASF_2;the minister;;;al ministro;;;;;;;X
+SPY3ASF_3;%s;;;%s;;;;;;;X
+SPY3ASF_4;in;;;en;;;;;;;X
+SPY3ASF_5;%s;;;%s;;;;;;;X
+SPY3ASF_6;%s;;;%s;;;;;;;X
+SPY3ASF_LOG;%s tried but failed to assassinate %s in %s. %s;;;%s intentó sin éxito asesinar a %s en %s. %s;;;;;;;X
+SPY3ASF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY3ASS_SETUP;When others assassinate a minister;;;Cuando otra nación asesine a un ministro.;;;;;;;X
+SPY3ASS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY3ASS_1;%s has assassinated;;;%s ha asesinado;;;;;;;X
+SPY3ASS_2;the minister;;;al ministro;;;;;;;X
+SPY3ASS_3;%s;;;%s;;;;;;;X
+SPY3ASS_4;in;;;en;;;;;;;X
+SPY3ASS_5;%s;;;%s;;;;;;;X
+SPY3ASS_6;%s;;;%s;;;;;;;X
+SPY3ASS_LOG;%s has assassinated %s in %s. %s;;;%s ha asesinado a %s en %s. %s;;;;;;;X
+SPY3ASS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2DNUCS_SETUP;When somebody has destroyed our nuke;;;Cuando alguien destruya una de nuestras armas nucleares.;;;;;;;X
+SPY2DNUCS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2DNUCS_1;A spy from %s has succeeded in destroying one of our nuclear warheads;;;Un espía de %s ha conseguido destruir una de nuestras ojivas nucleares;;;;;;;X
+SPY2DNUCS_2;%s;;;%s;;;;;;;X
+SPY2DNUCS_3;;;;;;;;;;;X
+SPY2DNUCS_4;;;;;;;;;;;X
+SPY2DNUCS_5;;;;;;;;;;;X
+SPY2DNUCS_6;;;;;;;;;;;X
+SPY2DNUCS_LOG;%s has destroyed one of our nuclear warheads. %s;;;%s ha destruido una de nuestras ojivas nucleares. %s;;;;;;;X
+SPY2DNUCS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2DNUCF_SETUP;When somebody failed to destroy our nuke;;;Cuando alguien no consiga destruir nuestra arma nuclear.;;;;;;;X
+SPY2DNUCF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2DNUCF_1;A spy from %s has failed to destroy one of our nuclear warheads;;;Un espía de %s no ha conseguido destruir una de nuestras ojivas nucleares;;;;;;;X
+SPY2DNUCF_2;%s;;;%s;;;;;;;X
+SPY2DNUCF_3;;;;;;;;;;;X
+SPY2DNUCF_4;;;;;;;;;;;X
+SPY2DNUCF_5;;;;;;;;;;;X
+SPY2DNUCF_6;;;;;;;;;;;X
+SPY2DNUCF_LOG;%s failed to destroy one of our nuclear warheads. %s;;;%s no ha conseguido destruir una de nuestras ojivas nucleares. %s;;;;;;;X
+SPY2DNUCF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2SMF_SETUP;When someone fails with a smear campaign against us;;;Cuando fracase una campaña de descrédito contra nosotros.;;;;;;;X
+SPY2SMF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2SMF_1;%s has failed with a smear campaign against our government;;;Ha fracasado la campaña de descrédito de %s contra nuestro gobierno;;;;;;;X
+SPY2SMF_2;%s;;;%s;;;;;;;X
+SPY2SMF_3;;;;;;;;;;;X
+SPY2SMF_4;;;;;;;;;;;X
+SPY2SMF_5;;;;;;;;;;;X
+SPY2SMF_6;;;;;;;;;;;X
+SPY2SMF_LOG;%s has failed with a smear campaign against us. %s;;;%s ha fracasado en su campaña de descrédito contra nosotros. %s;;;;;;;X
+SPY2SMF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2SMS_SETUP;When someone succeed with a smear campaign against us;;;Cuando otros tengan éxito con una campaña de descrédito contra nosotros.;;;;;;;X
+SPY2SMS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2SMS_1;%s has succeeded with a smear campaign against our government;;;%s ha tenido éxito con una campaña de descrédito contra nuestro gobierno;;;;;;;X
+SPY2SMS_2;%s;;;%s;;;;;;;X
+SPY2SMS_3;;;;;;;;;;;X
+SPY2SMS_4;;;;;;;;;;;X
+SPY2SMS_5;;;;;;;;;;;X
+SPY2SMS_6;;;;;;;;;;;X
+SPY2SMS_LOG;%s has succeeded with a smear campaign against us. %s;;;%s ha tenido éxito con una campaña de descrédito contra nosotros. %s;;;;;;;X
+SPY2SMS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2MASSF_SETUP;When someone failed to influence the global opinion against us;;;Cuando otros fracasen al intentar predisponer la opinión mundial en nuestra contra.;;;;;;;X
+SPY2MASSF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2MASSF_1;%s has failed to manipulate the global opinion against our country;;;%s no ha conseguido manipular la opinión mundial en contra de nuestro país;;;;;;;X
+SPY2MASSF_2;%s;;;%s;;;;;;;X
+SPY2MASSF_3;;;;;;;;;;;X
+SPY2MASSF_4;;;;;;;;;;;X
+SPY2MASSF_5;;;;;;;;;;;X
+SPY2MASSF_6;;;;;;;;;;;X
+SPY2MASSF_LOG;%s has failed to manipulate the global opinion against us. %s;;;%s no ha conseguido manipular la opinión mundial en nuestra contra. %s;;;;;;;X
+SPY2MASSF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2MASSS_SETUP;When someone successfully influence global opinion against us;;;Cuando otros tengan éxito al manipular la opinión mundial en nuestra contra.;;;;;;;X
+SPY2MASSS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2MASSS_1;%s has succeeded in influencing the global opinion against our country;;;%s ha tenido éxito al manipular la opinión mundial en contra de nuestro país;;;;;;;X
+SPY2MASSS_2;%s;;;%s;;;;;;;X
+SPY2MASSS_3;;;;;;;;;;;X
+SPY2MASSS_4;;;;;;;;;;;X
+SPY2MASSS_5;;;;;;;;;;;X
+SPY2MASSS_6;;;;;;;;;;;X
+SPY2MASSS_LOG;%s has succeeded in influencing the global opinion against us. %s;;;%s ha tenido éxito al manipular la opinión mundial en nuestra contra. %s;;;;;;;X
+SPY2MASSS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2BLUEF_SETUP;When someone failed to steal our blueprint;;;Cuando otros no consigan robar nuestros planos.;;;;;;;X
+SPY2BLUEF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2BLUEF_1;%s has failed to steal one of our blueprints;;;%s no ha conseguido robar uno de nuestros planos;;;;;;;X
+SPY2BLUEF_2;%s;;;%s.;;;;;;;X
+SPY2BLUEF_3;;;;;;;;;;;X
+SPY2BLUEF_4;;;;;;;;;;;X
+SPY2BLUEF_5;;;;;;;;;;;X
+SPY2BLUEF_6;;;;;;;;;;;X
+SPY2BLUEF_LOG;%s has failed to steal blueprints from us. %s;;;%s no ha conseguido robarnos planos. %s;;;;;;;X
+SPY2BLUEF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2BLUES_SETUP;When someone managed to steal our blueprints;;;Cuando otros consigan robar nuestros planos.;;;;;;;X
+SPY2BLUES_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2BLUES_1;%s has succeeded in stealing the blueprints;;;%s ha conseguido robarnos los planos;;;;;;;X
+SPY2BLUES_2;for;;;de:;;;;;;;X
+SPY2BLUES_3;%s;;;«%s»;;;;;;;X
+SPY2BLUES_4;from us;;;.;;;;;;;X
+SPY2BLUES_5;%s;;;%s;;;;;;;X
+SPY2BLUES_6;;;;;;;;;;;X
+SPY2BLUES_LOG;%s has succeeded in stealing the blueprint for %s from us. %s;;;%s ha conseguido robarnos los planos de «%s». %s;;;;;;;X
+SPY2BLUES_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2DTEF_SETUP;When someone failed to delay our tech team;;;Cuando otros no consigan sabotear a nuestro equipo de investigación.;;;;;;;X
+SPY2DTEF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2DTEF_1;%s has failed to delay one of our tech teams;;;%s no ha conseguido sabotear a uno de nuestros equipos de investigación;;;;;;;X
+SPY2DTEF_2;%s;;;%s;;;;;;;X
+SPY2DTEF_3;;;;;;;;;;;X
+SPY2DTEF_4;;;;;;;;;;;X
+SPY2DTEF_5;;;;;;;;;;;X
+SPY2DTEF_6;;;;;;;;;;;X
+SPY2DTEF_LOG;%s has failed to delay our tech team. %s;;;%s no ha conseguido sabotear a nuestro equipo de investigación. %s;;;;;;;X
+SPY2DTEF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2DTES_SETUP;When someone succeeded to delay our tech team;;;Cuando otros consigan sabotear a uno de nuestros equipos de investigación.;;;;;;;X
+SPY2DTES_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2DTES_1;%s has succeeded in delaying;;;%s ha conseguido sabotear;;;;;;;X
+SPY2DTES_2;the tech team;;;al equipo de investigación:;;;;;;;X
+SPY2DTES_3;%s;;;%s;;;;;;;X
+SPY2DTES_4;%s;;;%s;;;;;;;X
+SPY2DTES_5;;;;;;;;;;;X
+SPY2DTES_6;;;;;;;;;;;X
+SPY2DTES_LOG;%s has succeeded in delaying our tech team %s. %s;;;%s ha conseguido sabotear a nuestro equipo de investigación %s. %s;;;;;;;X
+SPY2DTES_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2PRODS_SETUP;When someone managed to delay our production;;;Cuando otros consigan sabotear nuestra producción.;;;;;;;X
+SPY2PRODS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2PRODS_1;%s has disrupted the production;;;%s ha conseguido sabotear la producción;;;;;;;X
+SPY2PRODS_2;of;;;de:;;;;;;;X
+SPY2PRODS_3;%s;;;%s;;;;;;;X
+SPY2PRODS_4;%s;;;%s;;;;;;;X
+SPY2PRODS_5;;;;;;;;;;;X
+SPY2PRODS_6;;;;;;;;;;;X
+SPY2PRODS_LOG;%s has disrupted the production of %s. %s;;;%s ha saboteado la producción de %s. %s;;;;;;;X
+SPY2PRODS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2PRODF_SETUP;When someone fail to delay our production;;;Cuando otros no consigan sabotear nuestra producción.;;;;;;;X
+SPY2PRODF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2PRODF_1;%s has failed to delay our production;;;%s no ha conseguido sabotear nuestra producción;;;;;;;X
+SPY2PRODF_2;%s;;;%s.;;;;;;;X
+SPY2PRODF_3;;;;;;;;;;;X
+SPY2PRODF_4;;;;;;;;;;;X
+SPY2PRODF_5;;;;;;;;;;;X
+SPY2PRODF_6;;;;;;;;;;;X
+SPY2PRODF_LOG;%s has failed to delay our production. %s;;;%s no ha conseguido sabotear nuestra producción. %s;;;;;;;X
+SPY2PRODF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2FPF_SETUP;When someone fail to fund partisans in our country;;;Cuando otros fracasen al intentar financiar a partisanos en nuestro país.;;;;;;;X
+SPY2FPF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2FPF_1;%s has failed to fund partisans;;;%s no ha conseguido financiar a partisanos;;;;;;;X
+SPY2FPF_2;in;;;en;;;;;;;X
+SPY2FPF_3;%s;;;%s;;;;;;;X
+SPY2FPF_4;%s;;;%s;;;;;;;X
+SPY2FPF_5;;;;;;;;;;;X
+SPY2FPF_6;;;;;;;;;;;X
+SPY2FPF_LOG;%s has failed to fund partisans in %s, %s;;;%s no ha conseguido financiar a partisanos en %s. %s;;;;;;;X
+SPY2FPF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2ASF_SETUP;When someone failed to assassinate our minister;;;Cuando otros fracasen al intentar asesinar a nuestro ministro.;;;;;;;X
+SPY2ASF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2ASF_1;%s tried but failed to assassinate;;;%s intentó asesinar sin éxito;;;;;;;X
+SPY2ASF_2;the minister;;;al ministro;;;;;;;X
+SPY2ASF_3;%s;;;%s;;;;;;;X
+SPY2ASF_4;%s;;;%s;;;;;;;X
+SPY2ASF_5;;;;;;;;;;;X
+SPY2ASF_6;;;;;;;;;;;X
+SPY2ASF_LOG;%s tried but failed to assassinate %s. %s;;;%s intentó asesinar sin éxito a %s. %s;;;;;;;X
+SPY2ASF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPY2ASS_SETUP;When someone assassinate our minister;;;Cuando otros asesinen a uno de nuestros ministros.;;;;;;;X
+SPY2ASS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPY2ASS_1;%s has assassinated;;;%s ha asesinado;;;;;;;X
+SPY2ASS_2;the minister;;;al ministro;;;;;;;X
+SPY2ASS_3;%s;;;%s;;;;;;;X
+SPY2ASS_4;%s;;;%s;;;;;;;X
+SPY2ASS_5;;;;;;;;;;;X
+SPY2ASS_6;;;;;;;;;;;X
+SPY2ASS_LOG;%s has assassinated %s. %s;;;%s ha asesinado a %s. %s;;;;;;;X
+SPY2ASS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYASF_SETUP;When we failed to assassinate a minister;;;Cuando no consigamos asesinar a un ministro.;;;;;;;X
+SPYASF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYASF_1;We tried but failed to assassinate;;;Intentamos asesinar sin éxito;;;;;;;X
+SPYASF_2;the minister;;;al ministro;;;;;;;X
+SPYASF_3;%s;;;%s;;;;;;;X
+SPYASF_4;in;;;en;;;;;;;X
+SPYASF_5;%s;;;%s.;;;;;;;X
+SPYASF_6;%s;;;%s;;;;;;;X
+SPYASF_LOG;We tried but failed to assassinate %s in %s. %s;;;Intentamos asesinar sin éxito a %s en %s. %s;;;;;;;X
+SPYASF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYASS_SETUP;When we assassinate a minister;;;Cuando asesinemos a un ministro.;;;;;;;X
+SPYASS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYASS_1;We have assassinated;;;Hemos asesinado;;;;;;;X
+SPYASS_2;the minister;;;al ministro;;;;;;;X
+SPYASS_3;%s;;;%s;;;;;;;X
+SPYASS_4;in;;;en;;;;;;;X
+SPYASS_5;%s;;;%s.;;;;;;;X
+SPYASS_6;%s;;;%s;;;;;;;X
+SPYASS_LOG;We have assassinated %s in %s. %s;;;Hemos asesinado a %s en %s. %s;;;;;;;X
+SPYASS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYSMS_SETUP;When we launch a smear campaign;;;Cuando iniciemos con éxito una campaña de descrédito.;;;;;;;X
+SPYSMS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYSMS_1;We have launched a smear campaign;;;Hemos desatado una campaña de descrédito;;;;;;;X
+SPYSMS_2;against;;;contra;;;;;;;X
+SPYSMS_3;%s;;;%s.;;;;;;;X
+SPYSMS_4;%s;;;%s;;;;;;;X
+SPYSMS_5;;;;;;;;;;;X
+SPYSMS_6;;;;;;;;;;;X
+SPYSMS_LOG;We have smear campaigned %s. %s.;;;Hemos desatado una campaña de descrédito contra %s. %s;;;;;;;X
+SPYSMS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYSMF_SETUP;When we failed with smear campaign;;;Cuando fracasemos en una campaña de descrédito.;;;;;;;X
+SPYSMF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYSMF_1;We failed with a smear campaign;;;Hemos fracasado en la campaña de descrédito;;;;;;;X
+SPYSMF_2;against;;;contra;;;;;;;X
+SPYSMF_3;%s;;;%s.;;;;;;;X
+SPYSMF_4;%s;;;%s;;;;;;;X
+SPYSMF_5;;;;;;;;;;;X
+SPYSMF_6;;;;;;;;;;;X
+SPYSMF_LOG;We have failed to smear campaign against %s. %s.;;;Hemos fracasado en la campaña de descrédito contra %s. %s;;;;;;;X
+SPYSMF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYMASSF_SETUP;When we fail to influence global opinion;;;Cuando no consigamos influir en la opinión mundial.;;;;;;;X
+SPYMASSF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYMASSF_1;We have failed to influence global opinion;;;No hemos conseguido influir en la opinión mundial;;;;;;;X
+SPYMASSF_2;about;;;acerca de:;;;;;;;X
+SPYMASSF_3;%s;;;%s.;;;;;;;X
+SPYMASSF_4;%s;;;%s;;;;;;;X
+SPYMASSF_5;;;;;;;;;;;X
+SPYMASSF_6;;;;;;;;;;;X
+SPYMASSF_LOG;We have failed to influence global opinion about %s. %s;;;No hemos conseguido influir en la opinión mundial acerca de %s. %s;;;;;;;X
+SPYMASSF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYMASSS_SETUP;When we succeeded to influence global opinion;;;Cuando consigamos influir con éxito en la opinión mundial.;;;;;;;X
+SPYMASSS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYMASSS_1;We have succeeded in influencing global opinion;;;Hemos conseguido influir en la opinión mundial;;;;;;;X
+SPYMASSS_2;about;;;acerca de:;;;;;;;X
+SPYMASSS_3;%s;;;%s.;;;;;;;X
+SPYMASSS_4;%s;;;%s;;;;;;;X
+SPYMASSS_5;;;;;;;;;;;X
+SPYMASSS_6;;;;;;;;;;;X
+SPYMASSS_LOG;We have succeeded in influencing global opinion about %s. %s;;;Hemos conseguido influir en la opinión mundial acerca de %s. %s;;;;;;;X
+SPYMASSS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYBLUEF_SETUP;When we failed to steal a blueprint;;;Cuando no consigamos robar planos.;;;;;;;X
+SPYBLUEF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYBLUEF_1;We have failed to steal blueprints ;;;No hemos conseguido robar los planos;;;;;;;X
+SPYBLUEF_2;from;;;a:;;;;;;;X
+SPYBLUEF_3;%s;;;%s.;;;;;;;X
+SPYBLUEF_4;%s;;;%s;;;;;;;X
+SPYBLUEF_5;;;;;;;;;;;X
+SPYBLUEF_6;;;;;;;;;;;X
+SPYBLUEF_LOG;We have failed to steal blueprints from %s. %s;;;No hemos conseguido robar los planos a %s. %s;;;;;;;X
+SPYBLUEF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYBLUES_SETUP;When we stole a blueprint;;;Cuando consigamos robar planos.;;;;;;;X
+SPYBLUES_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYBLUES_1;We succeeded in stealing the blueprint;;;Hemos conseguido robar planos;;;;;;;X
+SPYBLUES_2;for;;;de:;;;;;;;X
+SPYBLUES_3;%s;;;«%s»;;;;;;;X
+SPYBLUES_4;from;;;a:;;;;;;;X
+SPYBLUES_5;%s;;;%s.;;;;;;;X
+SPYBLUES_6;%s;;;%s;;;;;;;X
+SPYBLUES_LOG;We succeeded in stealing the blueprint for %s from %s. %s.;;;Hemos conseguido robar los planos de «%s» a %s. %s;;;;;;;X
+SPYBLUES_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYDTEF_SETUP;When we failed to delay a tech team;;;Cuando no consigamos sabotear a un equipo de investigación.;;;;;;;X
+SPYDTEF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYDTEF_1;We failed to delay a tech team;;;No hemos conseguido sabotear a un equipo de investigación;;;;;;;X
+SPYDTEF_2;in;;;en;;;;;;;X
+SPYDTEF_3;%s;;;%s.;;;;;;;X
+SPYDTEF_4;%s;;;%s;;;;;;;X
+SPYDTEF_5;;;;;;;;;;;X
+SPYDTEF_6;;;;;;;;;;;X
+SPYDTEF_LOG;We failed to delay a tech team in %s. %s;;;No hemos conseguido sabotear a un equipo de investigación en %s. %s;;;;;;;X
+SPYDTEF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYDTES_SETUP;When we delayed a tech team;;;Cuando saboteemos con éxito a un equipo de investigación.;;;;;;;X
+SPYDTES_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYDTES_1;We succeeded in delaying;;;Hemos conseguido sabotear;;;;;;;X
+SPYDTES_2;the tech team;;;al equipo de investigación:;;;;;;;X
+SPYDTES_3;%s;;;%s;;;;;;;X
+SPYDTES_4;in;;;en;;;;;;;X
+SPYDTES_5;%s;;;%s;;;;;;;X
+SPYDTES_6;%s;;;%s;;;;;;;X
+SPYDTES_LOG;We succeeded in delaying tech team %s in %s. %s;;;Hemos conseguido sabotear al equipo de investigación %s en %s. %s;;;;;;;X
+SPYDTES_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYPRODF_SETUP;When we failed to delay production;;;Cuando no consigamos sabotear la producción.;;;;;;;X
+SPYPRODF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYPRODF_1;We have failed to disrupt production;;;No hemos conseguido sabotear la producción;;;;;;;X
+SPYPRODF_2;in;;;en;;;;;;;X
+SPYPRODF_3;%s;;;%s.;;;;;;;X
+SPYPRODF_4;%s;;;%s;;;;;;;X
+SPYPRODF_5;;;;;;;;;;;X
+SPYPRODF_6;;;;;;;;;;;X
+SPYPRODF_LOG;We have failed to delay the production in %s. %s;;;No hemos conseguido sabotear la producción en %s. %s;;;;;;;X
+SPYPRODF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYFPF_SETUP;When we failed to fund partisans;;;Cuando no consigamos financiar a partisanos.;;;;;;;X
+SPYFPF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYFPF_1;We have failed to fund partisans ;;;No hemos conseguido financiar a los partisanos;;;;;;;X
+SPYFPF_2;in;;;en;;;;;;;X
+SPYFPF_3;%s;;;%s;;;;;;;X
+SPYFPF_4;%s;;;%s;;;;;;;X
+SPYFPF_5;;;;;;;;;;;X
+SPYFPF_6;;;;;;;;;;;X
+SPYFPF_LOG;We have failed to fund partisans in %s. %s;;;No hemos conseguido financiar a partisanos en %s. %s;;;;;;;X
+SPYFPF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYPRODS_SETUP;When we managed to delay production;;;Cuando consigamos sabotear la producción.;;;;;;;X
+SPYPRODS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYPRODS_1;We have disrupted the production;;;Hemos conseguido sabotear la producción;;;;;;;X
+SPYPRODS_2;of;;;de:;;;;;;;X
+SPYPRODS_3;%s;;;%s;;;;;;;X
+SPYPRODS_4;in;;;en;;;;;;;X
+SPYPRODS_5;%s.;;;%s.;;;;;;;X
+SPYPRODS_6;%s;;;%s;;;;;;;X
+SPYPRODS_LOG;We have disrupted the production of %s in %s. %s;;;Hemos saboteado la producción de %s en %s. %s;;;;;;;X
+SPYPRODS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYCOUF_SETUP;When we decrease intelligence expenditure;;;Cuando reduzcamos los gastos de inteligencia.;;;;;;;X
+SPYCOUF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYCOUF_1;We have decreased our intelligence agencies expenditure.;;;Hemos reducido el presupuesto asignado a nuestras agencias de inteligencia.;;;;;;;X
+SPYCOUF_2;They will now operate at reduced effectiveness.;;;Operarán ahora con una eficacia reducida.;;;;;;;X
+SPYCOUF_3;;;;;;;;;;;X
+SPYCOUF_4;;;;;;;;;;;X
+SPYCOUF_5;;;;;;;;;;;X
+SPYCOUF_6;;;;;;;;;;;X
+SPYCOUF_LOG;We have decreased our intelligence agencies expenditure.;;;Hemos reducido el presupuesto asignado a nuestras agencias de inteligencia.;;;;;;;X
+SPYCOUF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYCOUS_SETUP;When our counter espionage succeeds;;;Cuando nuestro contraespionaje tenga éxito.;;;;;;;X
+SPYCOUS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYCOUS_1;We have found and killed a spy;;;Hemos localizado y neutralizado a un espía;;;;;;;X
+SPYCOUS_2;from;;;procedente de:;;;;;;;X
+SPYCOUS_3;%s;;;%s;;;;;;;X
+SPYCOUS_4;;;;;;;;;;;X
+SPYCOUS_5;;;;;;;;;;;X
+SPYCOUS_6;;;;;;;;;;;X
+SPYCOUS_LOG;We have found and killed a spy from %s.;;;Hemos localizado y neutralizado a un espía de %s.;;;;;;;X
+SPYCOUS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+##;;;;;;;;;;;X
+SPYCHAF_SETUP;When our spies will act friendly;;;Cuando pongamos a nuestros espías en modo inactivo.;;;;;;;X
+SPYCHAF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYCHAF_1;Our spies;;;Nuestros espías;;;;;;;X
+SPYCHAF_2;in ;;;en;;;;;;;X
+SPYCHAF_3;%s;;;%s;;;;;;;X
+SPYCHAF_4;will stay inactive until we need them again.;;;permanecerán inactivos hasta que volvamos a requerir sus servicios.;;;;;;;X
+SPYCHAF_5;;;;;;;;;;;X
+SPYCHAF_6;;;;;;;;;;;X
+SPYCHAF_LOG;Our spies in %s will stay inactive until we need them again.;;;Nuestros espías en %s permanecerán inactivos hasta nueva orden.;;;;;;;X
+SPYCHAF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYCHAS_SETUP;When your spies will act hostile;;;Cuando reactivemos las operaciones de nuestros espías.;;;;;;;X
+SPYCHAS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYCHAS_1;Our spies are once again active;;;Nuestros espías vuelven a estar activos;;;;;;;X
+SPYCHAS_2;in;;;en;;;;;;;X
+SPYCHAS_3;%s;;;%s.;;;;;;;X
+SPYCHAS_4;;;;;;;;;;;X
+SPYCHAS_5;;;;;;;;;;;X
+SPYCHAS_6;;;;;;;;;;;X
+SPYCHAS_LOG;Our spies are once again active in %s.;;;Nuestros espías están activos de nuevo en %s.;;;;;;;X
+SPYCHAS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYDNUCS_SETUP;When our spy has destroyed a nuke;;;Cuando nuestro espía destruya un arma atómica.;;;;;;;X
+SPYDNUCS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYDNUCS_1;We have destroyed a nuclear warhead;;;Hemos destruido una ojiva nuclear;;;;;;;X
+SPYDNUCS_2;in;;;en;;;;;;;X
+SPYDNUCS_3;%s;;;%s.;;;;;;;X
+SPYDNUCS_4;%s;;;%s;;;;;;;X
+SPYDNUCS_5;;;;;;;;;;;X
+SPYDNUCS_6;;;;;;;;;;;X
+SPYDNUCS_LOG;We have destroyed a nuke in %s. %s;;;Hemos destruido un arma nuclear en %s. %s;;;;;;;X
+SPYDNUCS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYDNUCF_SETUP;When our spy failed to destroy a nuke;;;Cuando nuestro espía fracase al intentar destruir un arma nuclear.;;;;;;;X
+SPYDNUCF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYDNUCF_1;We have failed to destroy a nuke;;;No hemos conseguido destruir un arma nuclear;;;;;;;X
+SPYDNUCF_2;in;;;en;;;;;;;X
+SPYDNUCF_3;%s;;;%s.;;;;;;;X
+SPYDNUCF_4;%s;;;%s;;;;;;;X
+SPYDNUCF_5;;;;;;;;;;;X
+SPYDNUCF_6;;;;;;;;;;;X
+SPYDNUCF_LOG;We have failed to destroy a nuclear warhead in %s. %s;;;No hemos conseguido destruir una ojiva nuclear en %s. %s;;;;;;;X
+SPYDNUCF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYAF_SETUP;When we failed to send a spy;;;Cuando no consigamos infiltrar a un espía.;;;;;;;X
+SPYAF_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYAF_1;We have failed to send a spy;;;No hemos conseguido infiltrar a un espía;;;;;;;X
+SPYAF_2;to;;;en;;;;;;;X
+SPYAF_3;%s;;;%s.;;;;;;;X
+SPYAF_4;%s;;;%s;;;;;;;X
+SPYAF_5;;;;;;;;;;;X
+SPYAF_6;;;;;;;;;;;X
+SPYAF_LOG;We have failed to send a spy to %s. %s;;;No hemos conseguido infiltrar a un espía en %s. %s;;;;;;;X
+SPYAF_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+SPYAS_SETUP;When we increase intelligence funding;;;Cuando aumentemos los gastos de inteligencia.;;;;;;;X
+SPYAS_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+SPYAS_1;We have increased intelligence funding;;;Hemos aumentado el presupuesto de inteligencia;;;;;;;X
+SPYAS_2;Our intelligence agencies are now operating with increased efficiency;;;Nuestras agencias de inteligencia operan ahora con mayor eficacia.;;;;;;;X
+SPYAS_3;;;;;;;;;;;X
+SPYAS_4;;;;;;;;;;;X
+SPYAS_5;;;;;;;;;;;X
+SPYAS_6;;;;;;;;;;;X
+SPYAS_LOG;We have increased intelligence funding;;;Hemos aumentado el presupuesto de inteligencia.;;;;;;;X
+SPYAS_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+LEADTR_SETUP;When one of your leaders has gained a new trait;;;Cuando uno de sus comandantes obtenga una nueva cualidad.;;;;;;;X
+LEADTR_HEADER;LEADER BRIEFING%s;;;PARTE DEL MANDO%s;;;;;;;X
+LEADTR_1;New Leader Trait;;;Nueva cualidad de comandante;;;;;;;X
+LEADTR_2;%t, Commander;;;%t, el oficial al mando;;;;;;;X
+LEADTR_3;%s;;;%s,;;;;;;;X
+LEADTR_4;has become a ;;;ha adquirido la cualidad de:;;;;;;;X
+LEADTR_5;%s;;;%s.;;;;;;;X
+LEADTR_6;;;;;;;;;;;X
+LEADTR_LOG;%s has gained '%s' Trait;;;%s ha adquirido la cualidad «%s».;;;;;;;X
+LEADTR_BTN1;OK;;;Aceptar;;;;;;;X
+LEADTR_BTN2;Select;;;Seleccionar;;;;;;;X
+##;;;;;;;;;;;X
+DEMTERR_SETUP;When someone demands your territory.;;;Cuando alguien reclame partes de su territorio nacional.;;;;;;;X
+##;;;;;;;;;;;X
+WEGUARA_SETUP;When we guarantee the independence of another nation;;;Cuando garanticemos la independencia de otra nación.;;;;;;;X
+##;;;;;;;;;;;X
+# Darkest Hour;;;;;;;;;;;X
+##;;;;;;;;;;;X
+PSMOVED_SETUP;When one of our policy sliders has been auto-moved.;;;Cuando una de nuestras barras de política interna se mueva automáticamente.;;;;;;;X
+PSMOVED_HEADER;POLICY BRIEFING;;;PARTE DE POLÍTICA INTERIOR;;;;;;;X
+PSMOVED_1;%t!;;;%t!;;;;;;;X
+PSMOVED_2;Our policy has been moved one step toward;;;Nuestra política interna se ha desplazado un paso hacia:;;;;;;;X
+PSMOVED_3;%s.;;;%s.;;;;;;;X
+PSMOVED_4;Current value:;;;Valor actual:;;;;;;;X
+PSMOVED_5;%s.;;;%s.;;;;;;;X
+PSMOVED_6;;;;;;;;;;;X
+PSMOVED_LOG;Our policy has been moved one step toward %s. Current value: %s.;;;Nuestra política se ha desplazado un paso hacia %s. Valor actual: %s.;;;;;;;X
+PSMOVED_BTN1;OK;;;Aceptar;;;;;;;X
+PSMOVED_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+PSINVALID_SETUP;When our policy sliders cannot be auto-moved.;;;Cuando una barra de política interna no pueda desplazarse automáticamente.;;;;;;;X
+PSINVALID_HEADER;POLICY BRIEFING;;;PARTE DE POLÍTICA INTERIOR;;;;;;;X
+PSINVALID_1;%t!;;;%t!;;;;;;;X
+PSINVALID_2;Our policy cannot be moved further toward;;;Nuestra política no puede avanzar más hacia:;;;;;;;X
+PSINVALID_3;%s.;;;%s.;;;;;;;X
+PSINVALID_4;Current value:;;;Valor actual:;;;;;;;X
+PSINVALID_5;%s.;;;%s.;;;;;;;X
+PSINVALID_6;;;;;;;;;;;X
+PSINVALID_LOG;Our policy cannot be moved further toward %s. Current value: %s.;;;Nuestra política no puede desplazarse más hacia %s. Valor actual: %s.;;;;;;;X
+PSINVALID_BTN1;OK;;;Aceptar;;;;;;;X
+PSINVALID_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+PSALLOWED_SETUP;When our policy sliders can be moved.;;;Cuando se pueda desplazar una barra de política interna.;;;;;;;X
+PSALLOWED_HEADER;POLICY BRIEFING;;;PARTE DE POLÍTICA INTERIOR;;;;;;;X
+PSALLOWED_1;%t!;;;%t!;;;;;;;X
+PSALLOWED_2;Our policy can be changed.%s;;;Nuestra política interna puede ser modificada.%s;;;;;;;X
+PSALLOWED_3;;;;;;;;;;;X
+PSALLOWED_4;;;;;;;;;;;X
+PSALLOWED_5;;;;;;;;;;;X
+PSALLOWED_6;;;;;;;;;;;X
+PSALLOWED_LOG;Our policy can be changed.%s;;;Nuestra política interna puede ser modificada.%s;;;;;;;X
+PSALLOWED_BTN1;OK;;;Aceptar;;;;;;;X
+PSALLOWED_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NEWDEC_SETUP;When new decisions are available.;;;Cuando haya nuevas decisiones nacionales disponibles.;;;;;;;X
+NEWDEC_HEADER;POLICY BRIEFING;;;PARTE DE POLÍTICA INTERIOR;;;;;;;X
+NEWDEC_1;%t!;;;%t!;;;;;;;X
+NEWDEC_2;The following decisions are now available:;;;Las siguientes decisiones están ahora disponibles:;;;;;;;X
+NEWDEC_3;%s;;;%s;;;;;;;X
+NEWDEC_4;;;;;;;;;;;X
+NEWDEC_5;;;;;;;;;;;X
+NEWDEC_6;;;;;;;;;;;X
+NEWDEC_LOG;The following decisions are now available: %s;;;Las siguientes decisiones están ahora disponibles: %s;;;;;;;X
+NEWDEC_BTN1;OK;;;Aceptar;;;;;;;X
+NEWDEC_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TD_AUTO_ACCEPT_SETUP;When we auto accept a single trade offer;;;Cuando aceptemos automáticamente una oferta comercial puntual.;;;;;;;X
+TD_AUTO_ACCEPT_HEADER;FOREIGN POLICY BRIEFING;;;PARTE DE POLÍTICA EXTERIOR;;;;;;;X
+TD_AUTO_ACCEPT_1;%t!;;;%t!;;;;;;;X
+TD_AUTO_ACCEPT_2;We have negotiated a deal for;;;Hemos acordado un intercambio de:;;;;;;;X
+TD_AUTO_ACCEPT_3;%s;;;%s;;;;;;;X
+TD_AUTO_ACCEPT_4;with;;;con:;;;;;;;X
+TD_AUTO_ACCEPT_5;%s.;;;%s.;;;;;;;X
+TD_AUTO_ACCEPT_6;;;;;;;;;;;X
+TD_AUTO_ACCEPT_LOG;We have negotiated a deal for %s with %s.;;;Hemos cerrado un acuerdo para intercambiar %s con %s.;;;;;;;X
+TD_AUTO_ACCEPT_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+TD_AUTO_REJECT_SETUP;When we auto reject a single trade offer;;;Cuando rechacemos automáticamente una oferta comercial puntual.;;;;;;;X
+TD_AUTO_REJECT_HEADER;FOREIGN POLICY BRIEFING;;;PARTE DE POLÍTICA EXTERIOR;;;;;;;X
+TD_AUTO_REJECT_1;%t!;;;%t!;;;;;;;X
+TD_AUTO_REJECT_2;We have rejected a deal for;;;Hemos rechazado un intercambio de:;;;;;;;X
+TD_AUTO_REJECT_3;%s;;;%s;;;;;;;X
+TD_AUTO_REJECT_4;from;;;procedente de:;;;;;;;X
+TD_AUTO_REJECT_5;%s.;;;%s.;;;;;;;X
+TD_AUTO_REJECT_6;;;;;;;;;;;X
+TD_AUTO_REJECT_LOG;We have rejected a deal of %s from %s.;;;Hemos rechazado un acuerdo para intercambiar %s propuesto por %s.;;;;;;;X
+TD_AUTO_REJECT_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+TD_AUTO_NEG_FOR; for;;; a cambio de:;;;;;;;X
+##;;;;;;;;;;;X
+EMBARGO_SET_SETUP;When we enforce an embargo towards other country.;;;Cuando impongamos un embargo a otro país.;;;;;;;X
+EMBARGO_SET_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+EMBARGO_SET_1;We have enforced;;;Hemos impuesto;;;;;;;X
+EMBARGO_SET_2;a;;;un;;;;;;;X
+EMBARGO_SET_3;%s;;;%s;;;;;;;X
+EMBARGO_SET_4;to;;;a;;;;;;;X
+EMBARGO_SET_5;%s.;;;%s.;;;;;;;X
+EMBARGO_SET_6;;;;;;;;;;;X
+EMBARGO_SET_LOG;We have enforced a %s to %s.;;;Hemos impuesto un %s a %s.;;;;;;;X
+EMBARGO_SET_BTN1;OK;;;Aceptar;;;;;;;X
+EMBARGO_SET_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+EMBARGO2_SET_SETUP;When someone enforces an embargo towards our country.;;;Cuando alguien imponga un embargo contra nuestro país.;;;;;;;X
+EMBARGO2_SET_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+EMBARGO2_SET_1;%s;;;%s;;;;;;;X
+EMBARGO2_SET_2;has enforced;;;ha impuesto;;;;;;;X
+EMBARGO2_SET_3;%s;;;un %s;;;;;;;X
+EMBARGO2_SET_4;towards;;;contra;;;;;;;X
+EMBARGO2_SET_5;us.;;;nosotros.;;;;;;;X
+EMBARGO2_SET_6;;;;;;;;;;;X
+EMBARGO2_SET_LOG;%s has enforced %s towards us!;;;¡%s nos ha impuesto un %s!;;;;;;;X
+EMBARGO2_SET_BTN1;OK;;;Aceptar;;;;;;;X
+EMBARGO2_SET_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+EMBARGO3_SET_SETUP;When someone enforces an embargo towards other country.;;;Cuando alguien imponga un embargo contra otro país.;;;;;;;X
+EMBARGO3_SET_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+EMBARGO3_SET_1;%s;;;%s;;;;;;;X
+EMBARGO3_SET_2;has enforced;;;ha impuesto;;;;;;;X
+EMBARGO3_SET_3;%s;;;un %s;;;;;;;X
+EMBARGO3_SET_4;towards;;;contra;;;;;;;X
+EMBARGO3_SET_5;%s.;;;%s.;;;;;;;X
+EMBARGO3_SET_6;;;;;;;;;;;X
+EMBARGO3_SET_LOG;%s has enforced %s towards %s.;;;%s ha impuesto un %s contra %s.;;;;;;;X
+EMBARGO3_SET_BTN1;OK;;;Aceptar;;;;;;;X
+EMBARGO3_SET_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+EMBARGO_CLR_SETUP;When we remove an embargo towards other country.;;;Cuando levantemos un embargo a otro país.;;;;;;;X
+EMBARGO_CLR_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+EMBARGO_CLR_1;We have removed;;;Hemos levantado;;;;;;;X
+EMBARGO_CLR_2;our;;;nuestro;;;;;;;X
+EMBARGO_CLR_3;%s;;;%s;;;;;;;X
+EMBARGO_CLR_4;to;;;a;;;;;;;X
+EMBARGO_CLR_5;%s.;;;%s.;;;;;;;X
+EMBARGO_CLR_6;;;;;;;;;;;X
+EMBARGO_CLR_LOG;We have removed our %s to %s.;;;Hemos levantado nuestro %s a %s.;;;;;;;X
+EMBARGO_CLR_BTN1;OK;;;Aceptar;;;;;;;X
+EMBARGO_CLR_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+EMBARGO2_CLR_SETUP;When someone removes an embargo towards our country.;;;Cuando alguien levante un embargo contra nuestro país.;;;;;;;X
+EMBARGO2_CLR_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+EMBARGO2_CLR_1;%s;;;%s;;;;;;;X
+EMBARGO2_CLR_2;removed;;;ha levantado;;;;;;;X
+EMBARGO2_CLR_3;The %s;;;el %s;;;;;;;X
+EMBARGO2_CLR_4;towards;;;contra;;;;;;;X
+EMBARGO2_CLR_5;us.;;;nosotros.;;;;;;;X
+EMBARGO2_CLR_6;;;;;;;;;;;X
+EMBARGO2_CLR_LOG;%s removed the %s towards us!;;;¡%s ha levantado el %s contra nosotros!;;;;;;;X
+EMBARGO2_CLR_BTN1;OK;;;Aceptar;;;;;;;X
+EMBARGO2_CLR_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+EMBARGO3_CLR_SETUP;When someone removes an embargo towards other country.;;;Cuando alguien levante un embargo contra otro país.;;;;;;;X
+EMBARGO3_CLR_HEADER;FOREIGN POLICY BRIEFING%s;;;PARTE DE POLÍTICA EXTERIOR%s;;;;;;;X
+EMBARGO3_CLR_1;%s;;;%s;;;;;;;X
+EMBARGO3_CLR_2;removed;;;ha levantado;;;;;;;X
+EMBARGO3_CLR_3;The %s;;;el %s;;;;;;;X
+EMBARGO3_CLR_4;towards;;;contra;;;;;;;X
+EMBARGO3_CLR_5;%s.;;;%s.;;;;;;;X
+EMBARGO3_CLR_6;;;;;;;;;;;X
+EMBARGO3_CLR_LOG;%s removed the %s towards %s.;;;%s ha levantado el %s contra %s.;;;;;;;X
+EMBARGO3_CLR_BTN1;OK;;;Aceptar;;;;;;;X
+EMBARGO3_CLR_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NUKED_SETUP;When a province has been targetted by nuclear bomb.;;;Cuando una provincia sea blanco de un ataque nuclear.;;;;;;;X
+NUKED_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+NUKED_1;A Nuclear Attack%s;;;Ataque nuclear%s;;;;;;;X
+NUKED_2;has been launched by\n§W%s§§\nagainst;;;ha sido lanzado por\n§W%s§§\ncontra;;;;;;;X
+NUKED_3;%s;;;%s;;;;;;;X
+NUKED_4;at;;;en;;;;;;;X
+NUKED_5;%s.;;;%s.;;;;;;;X
+NUKED_6;%s;;;%s;;;;;;;X
+NUKED_LOG;A Nuclear Attack has been launched by %s against %s at %s.;;;Un ataque nuclear ha sido lanzado por %s contra %s en %s.;;;;;;;X
+NUKED_BTN1;OK;;;Aceptar;;;;;;;X
+NUKED_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+SPYFPSE_SETUP;When we managed to fund partisans;;;Cuando logremos financiar a partisanos.;;;;;;;X
+SPYFPSE_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+SPYFPSE_1;We have succeeded in funding partisans ;;;Hemos logrado financiar a partisanos;;;;;;;X
+SPYFPSE_2;against;;;contra;;;;;;;X
+SPYFPSE_3;%s;;;%s;;;;;;;X
+SPYFPSE_4;in;;;en;;;;;;;X
+SPYFPSE_5;%s;;;%s;;;;;;;X
+SPYFPSE_6;%s;;;%s;;;;;;;X
+SPYFPSE_LOG;We have succeeded in funding partisans against %s in %s. %s;;;Hemos financiado con éxito a partisanos contra %s en %s. %s;;;;;;;X
+SPYFPSE_BTN1;Ok;;;Aceptar;;;;;;;X
+SPYFPSE_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+SPY2FPSE_SETUP;When someone fund partisans in our country;;;Cuando alguien financie a partisanos en nuestro país.;;;;;;;X
+SPY2FPSE_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+SPY2FPSE_1;%s has successfully funded partisans;;;%s ha financiado con éxito a partisanos;;;;;;;X
+SPY2FPSE_2;in;;;en;;;;;;;X
+SPY2FPSE_3;%s;;;%s;;;;;;;X
+SPY2FPSE_4;%s;;;%s;;;;;;;X
+SPY2FPSE_5;;;;;;;;;;;X
+SPY2FPSE_6;;;;;;;;;;;X
+SPY2FPSE_LOG;%s has successfully funded partisans in %s. %s;;;%s ha financiado con éxito a partisanos en %s. %s;;;;;;;X
+SPY2FPSE_BTN1;Ok;;;Aceptar;;;;;;;X
+SPY2FPSE_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+SPY3FPSE_SETUP;When others fund partisans;;;Cuando otros financien a partisanos.;;;;;;;X
+SPY3FPSE_HEADER;INTELLIGENCE BRIEFING%s;;;PARTE DE INTELIGENCIA%s;;;;;;;X
+SPY3FPSE_1;%s has successfully funded partisans ;;;%s ha financiado con éxito a partisanos;;;;;;;X
+SPY3FPSE_2;against;;;contra;;;;;;;X
+SPY3FPSE_3;%s;;;%s;;;;;;;X
+SPY3FPSE_4;in;;;en;;;;;;;X
+SPY3FPSE_5;%s;;;%s;;;;;;;X
+SPY3FPSE_6;%s;;;%s;;;;;;;X
+SPY3FPSE_LOG;%s has successfully funded partisans against %s in %s. %s;;;%s ha financiado con éxito a partisanos contra %s en %s. %s;;;;;;;X
+SPY3FPSE_BTN1;Ok;;;Aceptar;;;;;;;X
+SPY3FPSE_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+## Darkest Hour 1.03;;;;;;;;;;;X
+##;;;;;;;;;;;X
+LEADERRETIRES_SETUP;When one of your appointed leaders retires.;;;Cuando uno de sus comandantes asignados se retire.;;;;;;;X
+LEADERRETIRES_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+LEADERRETIRES_1;A leader has retired.;;;Un comandante se ha retirado.;;;;;;;X
+LEADERRETIRES_2;%t ;;;%t ;;;;;;;X
+LEADERRETIRES_3;%s;;;%s;;;;;;;X
+LEADERRETIRES_4;has retired from active military service. We need a replacement leader to his last appointment.;;;se ha retirado del servicio militar activo. Necesitamos nombrar a un sustituto en su puesto.;;;;;;;X
+LEADERRETIRES_5;;;;;;;;;;;X
+LEADERRETIRES_6;;;;;;;;;;;X
+LEADERRETIRES_LOG;%s has retired from active military service.;;;%s se ha retirado del servicio militar activo.;;;;;;;X
+LEADERRETIRES_BTN1;OK;;;Aceptar;;;;;;;X
+LEADERRETIRES_BTN2;Select;;;Seleccionar;;;;;;;X
+##;;;;;;;;;;;X
+LEADER2RETIRES_SETUP;When one of your leaders retires.;;;Cuando uno de sus comandantes se retire.;;;;;;;X
+LEADER2RETIRES_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+LEADER2RETIRES_1;A leader has retired.;;;Un comandante se ha retirado.;;;;;;;X
+LEADER2RETIRES_2;%t ;;;%t ;;;;;;;X
+LEADER2RETIRES_3;%s;;;%s;;;;;;;X
+LEADER2RETIRES_4;has retired from active military service.;;;se ha retirado del servicio militar activo.;;;;;;;X
+LEADER2RETIRES_5;;;;;;;;;;;X
+LEADER2RETIRES_6;;;;;;;;;;;X
+LEADER2RETIRES_LOG;%s has retired from active military service.;;;%s se ha retirado del servicio militar activo.;;;;;;;X
+LEADER2RETIRES_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+MINISTERRETIRES_SETUP;When one of your assigned ministers retires.;;;Cuando uno de sus ministros en activo se retire.;;;;;;;X
+MINISTERRETIRES_HEADER;DOMESTIC REPORT%s;;;INFORME INTERIOR%s;;;;;;;X
+MINISTERRETIRES_1;A minister has retired.;;;Un ministro se ha retirado.;;;;;;;X
+MINISTERRETIRES_2;%t ;;;%t ;;;;;;;X
+MINISTERRETIRES_3;%s;;;%s;;;;;;;X
+MINISTERRETIRES_4;has retired from politics. We need a replacement for his last position in the government. ;;;se ha retirado de la política. Necesitamos nombrar un reemplazo para su cargo en el gobierno.;;;;;;;X
+MINISTERRETIRES_5;;;;;;;;;;;X
+MINISTERRETIRES_6;;;;;;;;;;;X
+MINISTERRETIRES_LOG;%s has retired from politics.;;;%s se ha retirado de la política.;;;;;;;X
+MINISTERRETIRES_BTN1;OK;;;Aceptar;;;;;;;X
+MINISTERRETIRES_BTN2;Go to;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+MINISTER2RETIRES_SETUP;When one of your ministers retires.;;;Cuando uno de sus ministros se retire.;;;;;;;X
+MINISTER2RETIRES_HEADER;DOMESTIC REPORT%s;;;INFORME INTERIOR%s;;;;;;;X
+MINISTER2RETIRES_1;A minister has retired.;;;Un ministro se ha retirado.;;;;;;;X
+MINISTER2RETIRES_2;%t ;;;%t ;;;;;;;X
+MINISTER2RETIRES_3;%s;;;%s;;;;;;;X
+MINISTER2RETIRES_4;has retired from politics.;;;se ha retirado de la política.;;;;;;;X
+MINISTER2RETIRES_5;;;;;;;;;;;X
+MINISTER2RETIRES_6;;;;;;;;;;;X
+MINISTER2RETIRES_LOG;%s has retired from politics.;;;%s se ha retirado de la política.;;;;;;;X
+MINISTER2RETIRES_BTN1;OK;;;Aceptar;;;;;;;X
+##;;;;;;;;;;;X
+ABLOSSREP_SETUP;When you lose an air battle;;;Cuando pierda una batalla aérea.;;;;;;;X
+ABLOSSREP_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+ABLOSSREP_1;Defeat!;;;¡Derrota!;;;;;;;X
+ABLOSSREP_2;%t, our brave air units lost a battle against superior forces of;;;%t, nuestras unidades aéreas han perdido el combate ante las fuerzas superiores de;;;;;;;X
+ABLOSSREP_3;%s;;;%s;;;;;;;X
+ABLOSSREP_4;in the skies above;;;en los cielos de;;;;;;;X
+ABLOSSREP_5;%s.;;;%s.;;;;;;;X
+ABLOSSREP_6;The survivors had to retreat to reorganize.\n%s;;;Los supervivientes han tenido que retirarse para reorganizarse.\n%s;;;;;;;X
+ABLOSSREP_LOG;We lost a battle in the skies against %s above %s.;;;Perdimos una batalla aérea contra %s sobre %s.;;;;;;;X
+ABLOSSREP_BTN1;OK;;;Aceptar;;;;;;;X
+ABLOSSREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ABWINREP_SETUP;When you win an air battle;;;Cuando gane una batalla aérea.;;;;;;;X
+ABWINREP_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+ABWINREP_1;Victory!;;;¡Victoria!;;;;;;;X
+ABWINREP_2;%t, our victorious air units have defeated the air units from;;;%t, nuestras unidades aéreas han vencido a las escuadrillas de;;;;;;;X
+ABWINREP_3;%s;;;%s;;;;;;;X
+ABWINREP_4;in the skies above;;;en los cielos de;;;;;;;X
+ABWINREP_5;%s;;;%s.;;;;;;;X
+ABWINREP_6;%s;;;%s;;;;;;;X
+ABWINREP_LOG;We won a battle against %s in the skies above %s.;;;Ganamos una batalla contra %s en los cielos de %s.;;;;;;;X
+ABWINREP_BTN1;OK;;;Aceptar;;;;;;;X
+ABWINREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+LBLOSSREP_SETUP;When you lose a land battle;;;Cuando pierda una batalla terrestre.;;;;;;;X
+LBLOSSREP_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+LBLOSSREP_1;Defeat!;;;¡Derrota!;;;;;;;X
+LBLOSSREP_2;%t, our brave armies lost a battle against superior forces of;;;%t, nuestros bravos ejércitos han perdido la batalla frente a las fuerzas superiores de;;;;;;;X
+LBLOSSREP_3;%s;;;%s;;;;;;;X
+LBLOSSREP_4;in the province of;;;en la provincia de;;;;;;;X
+LBLOSSREP_5;%s.;;;%s.;;;;;;;X
+LBLOSSREP_6;The survivors had to retreat to reorganize.\n%s;;;Los supervivientes han tenido que retirarse para reorganizarse.\n%s;;;;;;;X
+LBLOSSREP_LOG;We lost a battle against %s in %s.;;;Perdimos una batalla contra %s en %s.;;;;;;;X
+LBLOSSREP_BTN1;OK;;;Aceptar;;;;;;;X
+LBLOSSREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+LBWINREP_SETUP;When you win a land battle;;;Cuando gane una batalla terrestre.;;;;;;;X
+LBWINREP_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+LBWINREP_1;Victory!;;;¡Victoria!;;;;;;;X
+LBWINREP_2;%t, our victorious armies have defeated the divisions from;;;%t, nuestros ejércitos victoriosos han derrotado a las divisiones de;;;;;;;X
+LBWINREP_3;%s;;;%s;;;;;;;X
+LBWINREP_4;in the province of;;;en la provincia de;;;;;;;X
+LBWINREP_5;%s;;;%s.;;;;;;;X
+LBWINREP_6;%s;;;%s;;;;;;;X
+LBWINREP_LOG;We won a battle against %s in %s.;;;Ganamos una batalla contra %s en %s.;;;;;;;X
+LBWINREP_BTN1;OK;;;Aceptar;;;;;;;X
+LBWINREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+LBWINOTHERREP_SETUP;When another nation wins a land battle;;;Cuando otra nación gane una batalla terrestre.;;;;;;;X
+LBWINOTHERREP_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+LBWINOTHERREP_1;%s;;;%s;;;;;;;X
+LBWINOTHERREP_2;%t, the forces of %s have;;;%t, las fuerzas de %s han;;;;;;;X
+LBWINOTHERREP_3;won a battle against %s;;;ganado una batalla contra %s;;;;;;;X
+LBWINOTHERREP_4;in the province of;;;en la provincia de;;;;;;;X
+LBWINOTHERREP_5;%s;;;%s.;;;;;;;X
+LBWINOTHERREP_6;%s;;;%s;;;;;;;X
+LBWINOTHERREP_LOG;%s won a battle against %s in %s;;;%s ha ganado una batalla contra %s en %s.;;;;;;;X
+LBWINOTHERREP_BTN1;OK;;;Aceptar;;;;;;;X
+LBWINOTHERREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NBWINOTHERREP_SETUP;When another nation wins a naval battle;;;Cuando otra nación gane una batalla naval.;;;;;;;X
+NBWINOTHERREP_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+NBWINOTHERREP_1;%s;;;%s;;;;;;;X
+NBWINOTHERREP_2;%t, the navies of %s have;;;%t, la armada de %s ha;;;;;;;X
+NBWINOTHERREP_3;defeated the navies of %s;;;derrotado a los navíos de %s;;;;;;;X
+NBWINOTHERREP_4;in the waters of;;;en las aguas de;;;;;;;X
+NBWINOTHERREP_5;%s;;;%s.;;;;;;;X
+NBWINOTHERREP_6;%s;;;%s;;;;;;;X
+NBWINOTHERREP_LOG;%s won a battle against %s in %s.;;;%s ha ganado una batalla naval contra %s en %s.;;;;;;;X
+NBWINOTHERREP_BTN1;OK;;;Aceptar;;;;;;;X
+NBWINOTHERREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ABWINOTHERREP_SETUP;When another nation wins an air battle;;;Cuando otra nación gane una batalla aérea.;;;;;;;X
+ABWINOTHERREP_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+ABWINOTHERREP_1;%s;;;%s;;;;;;;X
+ABWINOTHERREP_2;%t, the airforce of %s has;;;%t, la fuerza aérea de %s ha;;;;;;;X
+ABWINOTHERREP_3;defeated %s in the skies above %s;;;vencido a %s en los cielos de %s.;;;;;;;X
+ABWINOTHERREP_4;%s;;;%s;;;;;;;X
+ABWINOTHERREP_5;;;;;;;;;;;X
+ABWINOTHERREP_6;;;;;;;;;;;X
+ABWINOTHERREP_LOG;%s won a battle of the skies against %s above %s;;;%s ganó una batalla aérea contra %s sobre %s.;;;;;;;X
+ABWINOTHERREP_BTN1;OK;;;Aceptar;;;;;;;X
+ABWINOTHERREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+BOMBLANDWE_SETUP;When you bomb enemy armies;;;Cuando bombardee ejércitos enemigos.;;;;;;;X
+BOMBLANDWE_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+BOMBLANDWE_1;Air Raid Report;;;Informe de incursión aérea;;;;;;;X
+BOMBLANDWE_2;%t, our air units have bombed armies from;;;%t, nuestras unidades aéreas han bombardeado ejércitos de;;;;;;;X
+BOMBLANDWE_3;%s;;;%s;;;;;;;X
+BOMBLANDWE_4;in the province of;;;en la provincia de;;;;;;;X
+BOMBLANDWE_5;%s;;;%s;;;;;;;X
+BOMBLANDWE_6;%s;;;%s;;;;;;;X
+BOMBLANDWE_LOG;We bombed armies from %s in the province of %s.;;;Bombardeamos ejércitos de %s en la provincia de %s.;;;;;;;X
+BOMBLANDWE_BTN1;OK;;;Aceptar;;;;;;;X
+BOMBLANDWE_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+BOMBLANDTHEY_SETUP;When your armies are bombed by enemy air units;;;Cuando sus ejércitos sean bombardeados por unidades aéreas enemigas.;;;;;;;X
+BOMBLANDTHEY_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+BOMBLANDTHEY_1;Air Raid Report;;;Informe de incursión aérea;;;;;;;X
+BOMBLANDTHEY_2;%t, our armies have been bombed by;;;%t, nuestros ejércitos han sido bombardeados por;;;;;;;X
+BOMBLANDTHEY_3;%s;;;%s;;;;;;;X
+BOMBLANDTHEY_4;in the province of;;;en la provincia de;;;;;;;X
+BOMBLANDTHEY_5;%s;;;%s;;;;;;;X
+BOMBLANDTHEY_6;%s;;;%s;;;;;;;X
+BOMBLANDTHEY_LOG;Our armies have been bombed by %s in the province of %s.;;;Nuestros ejércitos han sido bombardeados por %s en la provincia de %s.;;;;;;;X
+BOMBLANDTHEY_BTN1;OK;;;Aceptar;;;;;;;X
+BOMBLANDTHEY_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+BOMBLANDOTHER_SETUP;When another nation bombs other nation's armies;;;Cuando otra nación bombardee los ejércitos de un tercer país.;;;;;;;X
+BOMBLANDOTHER_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+BOMBLANDOTHER_1;%s;;;%s;;;;;;;X
+BOMBLANDOTHER_2;%t, the airforce of %s has;;;%t, la fuerza aérea de %s ha;;;;;;;X
+BOMBLANDOTHER_3;bombed armies from %s in the province of %s;;;bombardeado ejércitos de %s en la provincia de %s;;;;;;;X
+BOMBLANDOTHER_4;%s;;;%s;;;;;;;X
+BOMBLANDOTHER_5;;;;;;;;;;;X
+BOMBLANDOTHER_6;;;;;;;;;;;X
+BOMBLANDOTHER_LOG;%s bombed armies from %s in the province of %s.;;;%s bombardeó ejércitos de %s en la provincia de %s.;;;;;;;X
+BOMBLANDOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+BOMBLANDOTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+BOMBNAVYWE_SETUP;When you bomb enemy ships at sea;;;Cuando bombardee buques enemigos en el mar.;;;;;;;X
+BOMBNAVYWE_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+BOMBNAVYWE_1;Air Raid Report;;;Informe de incursión aérea;;;;;;;X
+BOMBNAVYWE_2;%t, our air units have bombed ships from;;;%t, nuestras unidades aéreas han bombardeado buques de;;;;;;;X
+BOMBNAVYWE_3;%s;;;%s;;;;;;;X
+BOMBNAVYWE_4;in the waters of;;;en las aguas de;;;;;;;X
+BOMBNAVYWE_5;%s;;;%s;;;;;;;X
+BOMBNAVYWE_6;%s;;;%s;;;;;;;X
+BOMBNAVYWE_LOG;We bombed ships from %s in the waters of %s.;;;Bombardeamos buques de %s en las aguas de %s.;;;;;;;X
+BOMBNAVYWE_BTN1;OK;;;Aceptar;;;;;;;X
+BOMBNAVYWE_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+BOMBNAVYTHEY_SETUP;When your ships at sea are bombed by enemy air units;;;Cuando sus buques en el mar sean bombardeados por unidades aéreas enemigas.;;;;;;;X
+BOMBNAVYTHEY_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+BOMBNAVYTHEY_1;Air Raid Report;;;Informe de incursión aérea;;;;;;;X
+BOMBNAVYTHEY_2;%t, our ships have been bombed by;;;%t, nuestros buques han sido bombardeados por;;;;;;;X
+BOMBNAVYTHEY_3;%s;;;%s;;;;;;;X
+BOMBNAVYTHEY_4;in the waters of;;;en las aguas de;;;;;;;X
+BOMBNAVYTHEY_5;%s;;;%s;;;;;;;X
+BOMBNAVYTHEY_6;%s;;;%s;;;;;;;X
+BOMBNAVYTHEY_LOG;Our ships have been bombed by %s in the waters of %s.;;;Nuestros buques han sido bombardeados por %s en las aguas de %s.;;;;;;;X
+BOMBNAVYTHEY_BTN1;OK;;;Aceptar;;;;;;;X
+BOMBNAVYTHEY_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+BOMBNAVYOTHER_SETUP;When another nation bombs other nation's ships at sea;;;Cuando otra nación bombardee los buques de un tercer país en el mar.;;;;;;;X
+BOMBNAVYOTHER_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+BOMBNAVYOTHER_1;%s;;;%s;;;;;;;X
+BOMBNAVYOTHER_2;%t, the airforce of %s has;;;%t, la fuerza aérea de %s ha;;;;;;;X
+BOMBNAVYOTHER_3;bombed ships from %s in the waters of %s;;;bombardeado buques de %s en las aguas de %s;;;;;;;X
+BOMBNAVYOTHER_4;%s;;;%s;;;;;;;X
+BOMBNAVYOTHER_5;;;;;;;;;;;X
+BOMBNAVYOTHER_6;;;;;;;;;;;X
+BOMBNAVYOTHER_LOG;%s bombed ships from %s in the waters of %s.;;;%s bombardeó buques de %s en las aguas de %s.;;;;;;;X
+BOMBNAVYOTHER_BTN1;OK;;;Aceptar;;;;;;;X
+BOMBNAVYOTHER_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+## Darkest Hour 1.04;;;;;;;;;;;X
+##;;;;;;;;;;;X
+ABDRAWREP_SETUP;When an air battle ends in a draw ;;;Cuando un combate aéreo acabe en tablas.;;;;;;;X
+ABDRAWREP_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+ABDRAWREP_1;Air Combat Report;;;Informe de combate aéreo;;;;;;;X
+ABDRAWREP_2;%t, the air combat with;;;%t, el combate aéreo con;;;;;;;X
+ABDRAWREP_3;%s;;;%s;;;;;;;X
+ABDRAWREP_4;ended without a clear winner in the skies above;;;acabó sin un vencedor claro sobre los cielos de;;;;;;;X
+ABDRAWREP_5;%s;;;%s;;;;;;;X
+ABDRAWREP_6;%s;;;%s;;;;;;;X
+ABDRAWREP_LOG;Air battle against %s ended without a clear winner in the skies above %s.;;;La batalla aérea contra %s acabó sin un vencedor claro sobre los cielos de %s.;;;;;;;X
+ABDRAWREP_BTN1;OK;;;Aceptar;;;;;;;X
+ABDRAWREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ABDRAWOTHERREP_SETUP;When an air battle ends in a draw for other nations;;;Cuando una batalla aérea termine en tablas entre otros países.;;;;;;;X
+ABDRAWOTHERREP_HEADER;INTELLIGENCE BRIEFING;;;PARTE DE INTELIGENCIA;;;;;;;X
+ABDRAWOTHERREP_1;%s;;;%s;;;;;;;X
+ABDRAWOTHERREP_2;%t, the air combat between;;;%t, el combate aéreo entre;;;;;;;X
+ABDRAWOTHERREP_3;%s and %s;;;%s y %s;;;;;;;X
+ABDRAWOTHERREP_4;ended without a clear winner in the skies above;;;acabó sin un vencedor claro sobre los cielos de;;;;;;;X
+ABDRAWOTHERREP_5;%s;;;%s;;;;;;;X
+ABDRAWOTHERREP_6;%s;;;%s;;;;;;;X
+ABDRAWOTHERREP_LOG;;;;;;;;;;;X
+ABDRAWOTHERREP_BTN1;OK;;;Aceptar;;;;;;;X
+ABDRAWOTHERREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+CONVOYLOSSREP_DETAILS;%s-%s convoy at %s;;;convoy %s-%s en %s;;;;;;;X
+##;;;;;;;;;;;X
+CONVOYLOSSREP_SETUP;When you lose ships in a convoy;;;Cuando pierda buques de un convoy.;;;;;;;X
+CONVOYLOSSREP_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+CONVOYLOSSREP_1;Failure!;;;¡Pérdidas de convoy!;;;;;;;X
+CONVOYLOSSREP_2;%t, the;;;%t, el;;;;;;;X
+CONVOYLOSSREP_3;%s;;;%s;;;;;;;X
+CONVOYLOSSREP_4;have lost the following:;;;ha perdido lo siguiente:;;;;;;;X
+CONVOYLOSSREP_5;%s;;;%s.;;;;;;;X
+CONVOYLOSSREP_6;%s;;;%s;;;;;;;X
+CONVOYLOSSREP_LOG;The %s lost %s.;;;El convoy %s perdió: %s.;;;;;;;X
+CONVOYLOSSREP_BTN1;OK;;;Aceptar;;;;;;;X
+CONVOYLOSSREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+CONVOYLOSSTREP_SETUP;When you sink ships in another nations convoy;;;Cuando hunda buques de un convoy de otra nación.;;;;;;;X
+CONVOYLOSSTREP_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+CONVOYLOSSTREP_1;Success!;;;¡Éxito!;;;;;;;X
+CONVOYLOSSTREP_2;%t, our forces in;;;%t, nuestras fuerzas en;;;;;;;X
+CONVOYLOSSTREP_3;%s;;;%s;;;;;;;X
+CONVOYLOSSTREP_4;have sank the following from a convoy:;;;han hundido los siguientes buques de un convoy:;;;;;;;X
+CONVOYLOSSTREP_5;%s;;;%s;;;;;;;X
+CONVOYLOSSTREP_6;%s;;;%s;;;;;;;X
+CONVOYLOSSTREP_LOG;Our forces in %s have sunk %s.;;;Nuestras fuerzas en %s han hundido: %s.;;;;;;;X
+CONVOYLOSSTREP_BTN1;OK;;;Aceptar;;;;;;;X
+CONVOYLOSSTREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+CONVOYLOSSMC_SETUP;When a country military controlled by you loses ships in a convoy;;;Cuando una nación bajo su control militar pierda buques en un convoy.;;;;;;;X
+CONVOYLOSSMC_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+CONVOYLOSSMC_1;Failure!;;;¡Pérdidas de convoy!;;;;;;;X
+CONVOYLOSSMC_2;%t, a convoy from %s in;;;%t, un convoy de %s en;;;;;;;X
+CONVOYLOSSMC_3;%s;;;%s;;;;;;;X
+CONVOYLOSSMC_4;has lost the following;;;ha perdido lo siguiente:;;;;;;;X
+CONVOYLOSSMC_5;%s;;;%s;;;;;;;X
+CONVOYLOSSMC_6;%s;;;%s;;;;;;;X
+CONVOYLOSSMC_LOG;A convoy from %s in %s has lost %s.;;;Un convoy de %s en %s ha perdido: %s.;;;;;;;X
+CONVOYLOSSMC_BTN1;OK;;;Aceptar;;;;;;;X
+CONVOYLOSSMC_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+CONVOYATTFAIL_SETUP;When an attack on convoy fails to inflict any damage;;;Cuando un ataque a un convoy fracase sin infligir daño alguno.;;;;;;;X
+CONVOYATTFAIL_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+CONVOYATTFAIL_1;Convoy attack failure!;;;¡Ataque a convoy fallido!;;;;;;;X
+CONVOYATTFAIL_2;%t, the commander of\n§W%s§§\nattacked a convoy from;;;%t, el comandante de\n§W%s§§\natacó un convoy de;;;;;;;X
+CONVOYATTFAIL_3;%s;;;%s;;;;;;;X
+CONVOYATTFAIL_4;in the waters of;;;en aguas de;;;;;;;X
+CONVOYATTFAIL_5;%s;;;%s;;;;;;;X
+CONVOYATTFAIL_6;but failed to inflict any damage to it!\n%s ;;;¡pero no logró infligirle ningún daño!\n%s;;;;;;;X
+CONVOYATTFAIL_LOG;%s failed to damage a convoy from %s.;;;%s no logró dañar el convoy de %s.;;;;;;;X
+CONVOYATTFAIL_BTN1;OK;;;Aceptar;;;;;;;X
+CONVOYATTFAIL_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+CONVOYDEFSUCC_SETUP;When enemy attack on convoy fails;;;Cuando el ataque enemigo a un convoy sea rechazado sin daños.;;;;;;;X
+CONVOYDEFSUCC_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+CONVOYDEFSUCC_1;Success!;;;¡Éxito defensivo!;;;;;;;X
+CONVOYDEFSUCC_2;%t, a convoy in;;;%t, un convoy en;;;;;;;X
+CONVOYDEFSUCC_3;%s;;;%s;;;;;;;X
+CONVOYDEFSUCC_4;repelled an attack from;;;repelió un ataque de;;;;;;;X
+CONVOYDEFSUCC_5;%s;;;%s;;;;;;;X
+CONVOYDEFSUCC_6;%s;;;%s;;;;;;;X
+CONVOYDEFSUCC_LOG;A convoy in %s repelled an attack from %s.;;;Un convoy en %s repelió un ataque de %s.;;;;;;;X
+CONVOYDEFSUCC_BTN1;OK;;;Aceptar;;;;;;;X
+CONVOYDEFSUCC_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+PROVAALOSSREP_SETUP;When one of our air units is damaged by enemy anti aircraft batteries;;;Cuando una de nuestras unidades aéreas sufra daños por baterías antiaéreas enemigas.;;;;;;;X
+PROVAALOSSREP_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+PROVAALOSSREP_1;Air Losses Report;;;Informe de pérdidas aéreas;;;;;;;X
+PROVAALOSSREP_2;%t,\n§W%s§§\ntook losses by the anti aircraft batteries of;;;%t,\n§W%s§§\nsufrió bajas ante el fuego de las baterías antiaéreas de;;;;;;;X
+PROVAALOSSREP_3;%s;;;%s;;;;;;;X
+PROVAALOSSREP_4;in the skies above;;;en los cielos de;;;;;;;X
+PROVAALOSSREP_5;%s;;;%s;;;;;;;X
+PROVAALOSSREP_6;%s;;;%s;;;;;;;X
+PROVAALOSSREP_LOG;;;;;;;;;;;X
+PROVAALOSSREP_BTN1;OK;;;Aceptar;;;;;;;X
+PROVAALOSSREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+PROVAAWEREP_SETUP;When our anti aircraft batteries inflict damage to enemy air units;;;Cuando nuestras baterías antiaéreas inflijan daños a unidades aéreas enemigas.;;;;;;;X
+PROVAAWEREP_HEADER;ARMY BRIEFING%s;;;PARTE DE DEFENSA ANTIAÉREA%s;;;;;;;X
+PROVAAWEREP_1;AA Defence Report;;;Informe de defensa antiaérea;;;;;;;X
+PROVAAWEREP_2;%t, the anti aircraft batteries in;;;%t, las baterías antiaéreas en;;;;;;;X
+PROVAAWEREP_3;%s;;;%s;;;;;;;X
+PROVAAWEREP_4;shot down invading planes of;;;derribaron aviones invasores de;;;;;;;X
+PROVAAWEREP_5;%s;;;%s;;;;;;;X
+PROVAAWEREP_6;%s;;;%s;;;;;;;X
+PROVAAWEREP_LOG;;;;;;;;;;;X
+PROVAAWEREP_BTN1;OK;;;Aceptar;;;;;;;X
+PROVAAWEREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+PROVAAOTHERREP_SETUP;When anti aircraft batteries of another country inflict damage to air units;;;Cuando baterías antiaéreas de otro país inflijan daños a unidades aéreas enemigas.;;;;;;;X
+PROVAAOTHERREP_HEADER;INTELLIGENCE BRIEFING%s\nConcerning;;;PARTE DE INTELIGENCIA%s\nRelativo a:;;;;;;;X
+PROVAAOTHERREP_1;%s;;;%s;;;;;;;X
+PROVAAOTHERREP_2;%t, their anti aircraft batteries in;;;%t, sus baterías antiaéreas en;;;;;;;X
+PROVAAOTHERREP_3;%s;;;%s;;;;;;;X
+PROVAAOTHERREP_4;shot down invading planes of;;;derribaron aviones invasores de;;;;;;;X
+PROVAAOTHERREP_5;%s;;;%s;;;;;;;X
+PROVAAOTHERREP_6;%s;;;%s;;;;;;;X
+PROVAAOTHERREP_LOG;;;;;;;;;;;X
+PROVAAOTHERREP_BTN1;OK;;;Aceptar;;;;;;;X
+PROVAAOTHERREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ATTRLOSSWEREP_SETUP;When one of our units is damaged by attrition;;;Cuando una de nuestras unidades sufra daños por desgaste.;;;;;;;X
+ATTRLOSSWEREP_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+ATTRLOSSWEREP_1;Attrition Report;;;Informe de desgaste;;;;;;;X
+ATTRLOSSWEREP_2;%t,;;;%t,;;;;;;;X
+ATTRLOSSWEREP_3;%s;;;%s;;;;;;;X
+ATTRLOSSWEREP_4;currently located at;;;desplegada actualmente en;;;;;;;X
+ATTRLOSSWEREP_5;%s;;;%s;;;;;;;X
+ATTRLOSSWEREP_6;is taking attrition damage!\n%s;;;¡está sufriendo pérdidas por desgaste!\n%s;;;;;;;X
+ATTRLOSSWEREP_LOG;;;;;;;;;;;X
+ATTRLOSSWEREP_BTN1;OK;;;Aceptar;;;;;;;X
+ATTRLOSSWEREP_BTN2;Select;;;Seleccionar;;;;;;;X
+##;;;;;;;;;;;X
+ATTRLOSSBIGWEREP_SETUP;When one of our units is damaged by severe attrition;;;Cuando una de nuestras unidades sufra desgaste severo.;;;;;;;X
+ATTRLOSSBIGWEREP_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+ATTRLOSSBIGWEREP_1;Attrition Report;;;Informe de desgaste;;;;;;;X
+ATTRLOSSBIGWEREP_2;%t,;;;%t,;;;;;;;X
+ATTRLOSSBIGWEREP_3;%s;;;%s;;;;;;;X
+ATTRLOSSBIGWEREP_4;currently located at;;;desplegada actualmente en;;;;;;;X
+ATTRLOSSBIGWEREP_5;%s;;;%s;;;;;;;X
+ATTRLOSSBIGWEREP_6;is taking severe attrition damage!\n%s;;;¡está sufriendo graves pérdidas por desgaste severo!\n%s;;;;;;;X
+ATTRLOSSBIGWEREP_LOG;;;;;;;;;;;X
+ATTRLOSSBIGWEREP_BTN1;OK;;;Aceptar;;;;;;;X
+ATTRLOSSBIGWEREP_BTN2;Select;;;Seleccionar;;;;;;;X
+##;;;;;;;;;;;X
+LOSTONSHIPWEREP_SETUP;When one of our land units is lost after losing its transport ship;;;Cuando una de nuestras unidades terrestres perezca al hundirse su buque de transporte.;;;;;;;X
+LOSTONSHIPWEREP_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+LOSTONSHIPWEREP_1;Land Division Lost!;;;¡División terrestre perdida!;;;;;;;X
+LOSTONSHIPWEREP_2;%t,;;;%t,;;;;;;;X
+LOSTONSHIPWEREP_3;%s;;;%s;;;;;;;X
+LOSTONSHIPWEREP_4;lost a division together with its transport ships at;;;perdió una división junto con sus buques de transporte en;;;;;;;X
+LOSTONSHIPWEREP_5;%s;;;%s;;;;;;;X
+LOSTONSHIPWEREP_6;%s;;;%s;;;;;;;X
+LOSTONSHIPWEREP_LOG;;;;;;;;;;;X
+LOSTONSHIPWEREP_BTN1;OK;;;Aceptar;;;;;;;X
+LOSTONSHIPWEREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+WSTRBOMBREP_SETUP;When we have losses while bombing a province;;;Cuando suframos bajas al bombardear una provincia.;;;;;;;X
+WSTRBOMBREP_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+WSTRBOMBREP_1;Bombing Losses Report;;;Informe de bajas en bombardeo;;;;;;;X
+WSTRBOMBREP_2;%t, our Air Force received damage on the bombing run against;;;%t, nuestra Fuerza Aérea ha sufrido daños durante la incursión de bombardeo contra;;;;;;;X
+WSTRBOMBREP_3;%s;;;%s;;;;;;;X
+WSTRBOMBREP_4;at;;;en;;;;;;;X
+WSTRBOMBREP_5;%s;;;%s;;;;;;;X
+WSTRBOMBREP_6;%s;;;%s;;;;;;;X
+WSTRBOMBREP_LOG;;;;;;;;;;;X
+WSTRBOMBREP_BTN1;OK;;;Aceptar;;;;;;;X
+WSTRBOMBREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TSTRBOMBREP_SETUP;When another nation has losses while bombing a province;;;Cuando otra nación sufra bajas al bombardear una provincia.;;;;;;;X
+TSTRBOMBREP_HEADER;INTELLIGENCE BRIEFING%s\nConcerning;;;PARTE DE INTELIGENCIA%s\nRelativo a:;;;;;;;X
+TSTRBOMBREP_1;%s;;;%s;;;;;;;X
+TSTRBOMBREP_2;%t, their bombers received damage on the bombing run against;;;%t, sus bombarderos sufrieron daños durante la incursión de bombardeo contra;;;;;;;X
+TSTRBOMBREP_3;%s;;;%s;;;;;;;X
+TSTRBOMBREP_4;at;;;en;;;;;;;X
+TSTRBOMBREP_5;%s;;;%s;;;;;;;X
+TSTRBOMBREP_6;%s;;;%s;;;;;;;X
+TSTRBOMBREP_LOG;;;;;;;;;;;X
+TSTRBOMBREP_BTN1;OK;;;Aceptar;;;;;;;X
+TSTRBOMBREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+TSTRBOMBUSREP_SETUP;When we inflict losses to enemy bombers attacking our province;;;Cuando inflijamos bajas a bombarderos enemigos que atacan nuestra provincia.;;;;;;;X
+TSTRBOMBUSREP_HEADER;ARMY BRIEFING%s;;;PARTE DE DEFENSA ANTIAÉREA%s;;;;;;;X
+TSTRBOMBUSREP_1;AA Defence Report;;;Informe de defensa antiaérea;;;;;;;X
+TSTRBOMBUSREP_2;%t, our brave men defending;;;%t, nuestros valientes defensores de;;;;;;;X
+TSTRBOMBUSREP_3;%s;;;%s;;;;;;;X
+TSTRBOMBUSREP_4;managed to shot down invading bombers from;;;lograron derribar bombarderos invasores procedentes de;;;;;;;X
+TSTRBOMBUSREP_5;%s;;;%s;;;;;;;X
+TSTRBOMBUSREP_6;%s;;;%s;;;;;;;X
+TSTRBOMBUSREP_LOG;;;;;;;;;;;X
+TSTRBOMBUSREP_BTN1;OK;;;Aceptar;;;;;;;X
+TSTRBOMBUSREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+ARMYDESTROYREP_SETUP;When one of your armies is destroyed by the enemy;;;Cuando uno de sus ejércitos sea destruido por el enemigo.;;;;;;;X
+ARMYDESTROYREP_HEADER;ARMY BRIEFING%s;;;PARTE DEL EJÉRCITO DE TIERRA%s;;;;;;;X
+ARMYDESTROYREP_1;Disaster!;;;¡Desastre militar!;;;;;;;X
+ARMYDESTROYREP_2;%t,;;;%t,;;;;;;;X
+ARMYDESTROYREP_3;%s;;;%s;;;;;;;X
+ARMYDESTROYREP_4;has been completely annihilated by the enemy in;;;ha sido completamente aniquilado por el enemigo en;;;;;;;X
+ARMYDESTROYREP_5;%s;;;%s;;;;;;;X
+ARMYDESTROYREP_6;%s;;;%s;;;;;;;X
+ARMYDESTROYREP_LOG;%s has been completely annihilated in %s!;;;¡%s ha sido completamente aniquilado en %s!;;;;;;;X
+ARMYDESTROYREP_BTN1;OK;;;Aceptar;;;;;;;X
+ARMYDESTROYREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NAVYDESTROYREP_SETUP;When one of your fleets is destroyed by the enemy;;;Cuando una de sus flotas sea destruida por el enemigo.;;;;;;;X
+NAVYDESTROYREP_HEADER;NAVAL BRIEFING%s;;;PARTE DE LA ARMADA%s;;;;;;;X
+NAVYDESTROYREP_1;Disaster!;;;¡Desastre naval!;;;;;;;X
+NAVYDESTROYREP_2;%t,;;;%t,;;;;;;;X
+NAVYDESTROYREP_3;%s;;;%s;;;;;;;X
+NAVYDESTROYREP_4;has been completely annihilated by the enemy in;;;ha sido completamente destruida por el enemigo en;;;;;;;X
+NAVYDESTROYREP_5;%s;;;%s;;;;;;;X
+NAVYDESTROYREP_6;%s;;;%s;;;;;;;X
+NAVYDESTROYREP_LOG;%s has been completely annihilated in %s!;;;¡%s ha sido completamente destruida en %s!;;;;;;;X
+NAVYDESTROYREP_BTN1;OK;;;Aceptar;;;;;;;X
+NAVYDESTROYREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+AIRDESTROYREP_SETUP;When one of your airunits is destroyed by the enemy;;;Cuando una de sus unidades aéreas sea destruida por el enemigo.;;;;;;;X
+AIRDESTROYREP_HEADER;AIR FORCE BRIEFING%s;;;PARTE DE LA FUERZA AÉREA%s;;;;;;;X
+AIRDESTROYREP_1;Disaster!;;;¡Desastre aéreo!;;;;;;;X
+AIRDESTROYREP_2;%t,;;;%t,;;;;;;;X
+AIRDESTROYREP_3;%s;;;%s;;;;;;;X
+AIRDESTROYREP_4;has been completely annihilated by the enemy in;;;ha sido completamente aniquilada por el enemigo en;;;;;;;X
+AIRDESTROYREP_5;%s;;;%s;;;;;;;X
+AIRDESTROYREP_6;%s;;;%s;;;;;;;X
+AIRDESTROYREP_LOG;%s has been completely annihilated in %s!;;;¡%s ha sido completamente aniquilada en %s!;;;;;;;X
+AIRDESTROYREP_BTN1;OK;;;Aceptar;;;;;;;X
+AIRDESTROYREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+UNITDESTROYWEREP_SETUP;When we destroy an enemy unit;;;Cuando destruyamos una unidad enemiga.;;;;;;;X
+UNITDESTROYWEREP_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+UNITDESTROYWEREP_1;Success!;;;¡Victoria!;;;;;;;X
+UNITDESTROYWEREP_2;%t, we destroyed\n§W%s§§\nfrom;;;%t, hemos destruido a:\n§W%s§§\nperteneciente a:;;;;;;;X
+UNITDESTROYWEREP_3;%s;;;%s;;;;;;;X
+UNITDESTROYWEREP_4;in ;;;en;;;;;;;X
+UNITDESTROYWEREP_5;%s;;;%s;;;;;;;X
+UNITDESTROYWEREP_6;%s;;;%s;;;;;;;X
+UNITDESTROYWEREP_LOG;We destroyed %s (%s) in %s!;;;¡Hemos destruido a %s (%s) en %s!;;;;;;;X
+UNITDESTROYWEREP_BTN1;OK;;;Aceptar;;;;;;;X
+UNITDESTROYWEREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+UNITDESTROYOTHERREP_SETUP;When other country destroys an enemy unit;;;Cuando otro país destruya una unidad enemiga.;;;;;;;X
+UNITDESTROYOTHERREP_HEADER;INTELLIGENCE BRIEFING%s\nConcerning;;;PARTE DE INTELIGENCIA%s\nRelativo a:;;;;;;;X
+UNITDESTROYOTHERREP_1;%s;;;%s;;;;;;;X
+UNITDESTROYOTHERREP_2;%t, they destroyed an unit from;;;%t, destruyeron una unidad de;;;;;;;X
+UNITDESTROYOTHERREP_3;%s;;;%s;;;;;;;X
+UNITDESTROYOTHERREP_4;in ;;;en;;;;;;;X
+UNITDESTROYOTHERREP_5;%s;;;%s;;;;;;;X
+UNITDESTROYOTHERREP_6;%s;;;%s;;;;;;;X
+UNITDESTROYOTHERREP_LOG;;;;;;;;;;;X
+UNITDESTROYOTHERREP_BTN1;OK;;;Aceptar;;;;;;;X
+UNITDESTROYOTHERREP_BTN2;Goto;;;Ir allí;;;;;;;X
+##;;;;;;;;;;;X
+NUKEDBYNEUTRALREP_SETUP;When one of our units is damaged by a nuclear bomb of neutral country;;;Cuando una de nuestras unidades sufra daños por un ataque nuclear de un país neutral.;;;;;;;X
+NUKEDBYNEUTRALREP_HEADER;GENERAL STAFF BRIEFING%s;;;PARTE DEL ESTADO MAYOR%s;;;;;;;X
+NUKEDBYNEUTRALREP_1;Nuclear Attack\nLosses Report;;;Informe de pérdidas\npor ataque nuclear;;;;;;;X
+NUKEDBYNEUTRALREP_2;%t,;;;%t,;;;;;;;X
+NUKEDBYNEUTRALREP_3;%s;;;%s;;;;;;;X
+NUKEDBYNEUTRALREP_4;currently located at;;;desplegada actualmente en;;;;;;;X
+NUKEDBYNEUTRALREP_5;%s;;;%s;;;;;;;X
+NUKEDBYNEUTRALREP_6;has been damaged by a nuclear bomb dropped against\n§W%s§§\n%s;;;ha sufrido daños colaterales a causa de una bomba nuclear lanzada contra\n§W%s§§\n%s;;;;;;;X
+NUKEDBYNEUTRALREP_LOG;%s has been damaged by a nuclear bomb in %s.;;;%s ha sufrido daños por una bomba nuclear en %s.;;;;;;;X
+NUKEDBYNEUTRALREP_BTN1;OK;;;Aceptar;;;;;;;X
+NUKEDBYNEUTRALREP_BTN2;Goto;;;Ir allí;;;;;;;X
+#EOF;;;;;;;;;;;X

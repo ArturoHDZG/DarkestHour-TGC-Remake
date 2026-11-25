@@ -1,0 +1,620 @@
+# ============================================================================
+# File: events/SOV/SOV_82-91.txt (18 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [223332] SOV | 1982 | Death of Yuri Andropov (Muerte de Yuri Andrópov)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223332
+	country = SOV
+	name = EVT_SOV_223332_NAME
+	desc = EVT_SOV_223332_DESC
+	picture = "nwo/empty"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1982 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1984 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 30324 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223379] SOV | 1982 | UN Resolution on the Falkland Islands (Resolución de la ONU sobre las Islas Malvinas)
+# Triggered by event 207062 in events/AI/REB_AI_55-00.txt
+# Trigger event 207063 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223379
+	country = SOV
+	name = EVT_SHARED_00966_NAME
+	desc = EVT_SHARED_00966_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 99
+		command = { type = setflag which = un_falklands_veto }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 1
+		trigger = {
+			NOT = { flag = un_falklands_veto }
+			NOT = { alliance = { country = ARG } }
+		}
+		command = { type = money value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223333] SOV | 1985 | Death of Konstantin Chernenko (Muerte de Konstantín Chernenko)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223333
+	country = SOV
+	name = EVT_SOV_223333_NAME
+	desc = EVT_SOV_223333_DESC
+	picture = "nwo/mikhail_gorbachev"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1985 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = EVT_SOV_223333_A
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 30342 }
+		command = { type = headofgovernment which = 30343 }
+	}
+	action = {
+		name = EVT_SOV_223333_B
+		ai_chance = 1
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 30345 }
+		command = { type = headofgovernment which = 30343 }
+		command = { type = industrial_modifier which = total value = -20 }
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329775] SOV | 1986 | The Afghan Quagmire (El atolladero afgano)
+# Triggered by event 329772 in events/SOV/SOV_56-81.txt
+# Triggered by event 314009 in events/Minors/UPS.txt
+# Trigger event 314009 in events/Minors/UPS.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329775
+	persistent = yes
+	country = SOV
+	name = EVT_SOV_329775_NAME
+	desc = EVT_SOV_329775_DESC
+	picture = "nwo/soviet_withdrawal_from_afghanistan"
+	style = 1
+	trigger = {
+		war = { country = UPS country = AFG }
+		event = 329772
+		NOT = { event = 314009 }
+	}
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_WITHDRAW
+		ai_chance = 60
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = -10 }
+		command = { type = trigger which = 314009 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 40
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223337] SOV | 1986 | The Chernobyl Disaster (La catástrofe de Chernóbil)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223337
+	country = SOV
+	name = EVT_SOV_223337_NAME
+	desc = EVT_SOV_223337_DESC
+	picture = "nwo/chernobyl"
+	style = 1
+	trigger = {
+		random = 50
+		control = { province = 607 data = -1 }
+	}
+	date = { day = 0 month = february year = 1986 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223338] SOV | 1988 | Economic Strain of Reforms (Dificultades económicas de las reformas)
+# Triggered by event 223336 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223338
+	country = SOV
+	name = EVT_SOV_223338_NAME
+	desc = EVT_SOV_223338_DESC
+	picture = "nwo/perestroika"
+	style = 1
+	trigger = {
+		random = 80
+		event = 223336
+	}
+	date = { day = 0 month = february year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { type = dissent value = 5 }
+		command = { type = industrial_modifier which = total value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223340] SOV | 1988 | Internal Resistance to Hardline Turn (Resistencia interna al giro ortodoxo)
+# Triggered by event 223339 in events/SOV/SOV_82-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223340
+	country = SOV
+	persistent = yes
+	one_action = yes
+	name = EVT_SOV_223340_NAME
+	desc = EVT_SOV_223340_DESC
+	picture = "nwo/ussr_protests"
+	style = 1
+	trigger = {
+		event = 223339
+		NOT = { flag = autumn_of_nations }
+		NOT = { flag = soviet_control_cee_0 flag = soviet_control_cee_1 }
+	}
+	date = { day = 0 month = february year = 1988 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = EVT_SOV_223340_A
+		ai_chance = 90
+		command = { type = dissent value = 20 }
+		command = { type = relation which = USA value = -50 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = FRA value = -20 }
+		command = { type = relation which = DFR value = -20 }
+	}
+	action = {
+		name = EVT_SOV_223340_B
+		ai_chance = 10
+		command = { type = setflag which = raise_soviet_bloc_coherence }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223341] SOV | 1988 | The Hardline Policy Buckles (Fracaso del retorno ortodoxo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223341
+	country = SOV
+	name = EVT_SOV_223341_NAME
+	desc = EVT_SOV_223341_DESC
+	picture = "nwo/ussr_protests"
+	style = 1
+	trigger = {
+		NOT = { flag = autumn_of_nations }
+		dissent = 50
+	}
+	date = { day = 0 month = february year = 1988 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 30342 }
+		command = { type = setflag which = autumn_of_nations }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223339] SOV | 1988 | The Sinatra Doctrine (La Doctrina Sinatra)
+# Triggered by event 223336 in events/SOV/SOV_Decisions.txt
+# Trigger event 223340 in events/SOV/SOV_82-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223339
+	country = SOV
+	name = EVT_SOV_223339_NAME
+	desc = EVT_SOV_223339_DESC
+	picture = "nwo/usa_ussr_thaw"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				headofstate = 30342
+				OR = { flag = soviet_control_cee_2 flag = soviet_control_cee_3 flag = soviet_control_cee_4 flag = soviet_control_cee_5 flag = soviet_control_cee_6 }
+				event = 223336
+			}
+			AND = {
+				headofstate = 30342
+				OR = { flag = soviet_control_cee_3 flag = soviet_control_cee_4 flag = soviet_control_cee_5 flag = soviet_control_cee_6 }
+				NOT = { event = 223336 }
+			}
+			AND = {
+				NOT = { headofstate = 30342 }
+				OR = { flag = soviet_control_cee_4 flag = soviet_control_cee_5 flag = soviet_control_cee_6 }
+			}
+		}
+	}
+	date = { day = 0 month = july year = 1988 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 98
+		command = { type = setflag which = autumn_of_nations }
+		command = { type = dissent value = -5 }
+		command = { type = belligerence value = -100 }
+		command = { type = relation which = USA value = 150 }
+		command = { type = relation which = ENG value = 100 }
+		command = { type = relation which = FRA value = 100 }
+		command = { type = relation which = DFR value = 100 }
+	}
+	action = {
+		name = EVT_SOV_223339_A
+		ai_chance = 2
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223242] SOV | 1990 | Lost Name Event (Nombre de evento perdido)
+# Triggered by event 223241 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223242
+	country = SOV
+	name = LOST_NAME
+	desc = LOST_DESC
+	picture = "nwo/wind_of_change"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+		NOT = { event = 223241 }
+	}
+    date = { day = 0 month = january year = 1990 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = LOST_OPTION
+		command = { type = end_guarantee which = SOV where = U10 }
+		command = { type = end_guarantee which = SOV where = U11 }
+		command = { type = end_guarantee which = SOV where = U12 }
+		command = { type = end_guarantee which = SOV where = U13 }
+		command = { type = end_guarantee which = SOV where = U14 }
+		command = { type = end_guarantee which = SOV where = U15 }
+		command = { type = end_guarantee which = SOV where = U16 }
+		command = { type = end_guarantee which = SOV where = U17 }
+		command = { type = end_guarantee which = SOV where = U18 }
+		command = { type = end_guarantee which = SOV where = U19 }
+		command = { type = end_guarantee which = SOV where = U20 }
+		command = { type = end_guarantee which = SOV where = U21 }
+		command = { type = end_guarantee which = SOV where = U22 }
+		command = { type = end_guarantee which = SOV where = U25 }
+		command = { type = end_guarantee which = SOV where = U26 }
+		command = { type = end_guarantee which = SOV where = U27 }
+		command = { type = end_guarantee which = SOV where = U28 }
+		command = { type = end_guarantee which = SOV where = U29 }
+		command = { type = end_guarantee which = SOV where = U30 }
+		command = { type = end_guarantee which = SOV where = U31 }
+		command = { type = end_guarantee which = SOV where = U32 }
+		command = { type = end_guarantee which = SOV where = U33 }
+		command = { type = end_guarantee which = SOV where = U34 }
+		command = { type = end_guarantee which = SOV where = U35 }
+		command = { type = end_guarantee which = SOV where = DDR }
+		command = { type = setflag which = depuppetize_warsaw_pact }
+        command = { type = setflag which = dissolve_warsaw_pact }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223342] SOV | 1990 | The Baltic Way (La Vía Báltica)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223342
+	country = SOV
+	name = EVT_SOV_223342_NAME
+	desc = EVT_SOV_223342_DESC
+	picture = "nwo/baltic_way"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+		OR = {
+			control = { province = 258 data = -1 }
+			control = { province = 264 data = -1 }
+			control = { province = 270 data = -1 }
+		}
+	}
+	date = { day = 0 month = march year = 1990 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = removecore which = 258 }
+		command = { type = removecore which = 262 }
+		command = { type = removecore which = 260 }
+		command = { type = removecore which = 259 }
+		command = { type = removecore which = 263 }
+		command = { type = independence which = LIT value = 0 }
+		command = { type = make_puppet which = LIT }
+		command = { type = removecore which = 268 }
+		command = { type = removecore which = 269 }
+		command = { type = removecore which = 267 }
+		command = { type = removecore which = 266 }
+		command = { type = removecore which = 265 }
+		command = { type = removecore which = 264 }
+		command = { type = independence which = LAT value = 0 }
+		command = { type = make_puppet which = LAT }
+		command = { type = removecore which = 273 }
+		command = { type = removecore which = 272 }
+		command = { type = removecore which = 274 }
+		command = { type = removecore which = 270 }
+		command = { type = removecore which = 271 }
+		command = { type = removecore which = 275 }
+		command = { type = independence which = EST value = 0 }
+		command = { type = make_puppet which = EST }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329783] SOV | 1990 | German Reunification (Reunificación alemana)
+# Triggered by event 137019 in events/Minors/DDR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329783
+	country = SOV
+	name = EVT_SOV_329783_NAME
+	desc = EVT_SOV_329783_DESC
+	picture = "nwo/united_germany"
+	style = 1
+	trigger = {
+		event = 137019
+		flag = autumn_of_nations
+		exists = DFR
+		exists = DDR
+		flag = cold_war
+		NOT = { war = { country = DDR country = DFR } }
+	}
+	date = { day = 1 month = august year = 1990 }
+	offset = 7
+	deathdate = { day = 29 month = august year = 1990 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		command = { type = dissent value = -3 }
+		command = { type = relation which = DFR value = 50 }
+	}
+	action = {
+		name = ACTION_NOT_NOW
+		ai_chance = 5
+		command = { type = dissent value = 1 }
+		command = { type = relation which = DFR value = -100 }
+		command = { type = sleepevent which = 329780 }
+		command = { type = sleepevent which = 329781 }
+		command = { type = sleepevent which = 329782 }
+		command = { type = sleepevent which = 329783 }
+		command = { type = sleepevent which = 329784 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223343] SOV | 1990 | The Parade of Sovereignties (El Desfile de Soberanías)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223343
+	country = SOV
+	name = EVT_SOV_223343_NAME
+	desc = EVT_SOV_223343_DESC
+	picture = "nwo/wind_of_change"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+		atwar = no
+	}
+	date = { day = 0 month = september year = 1990 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = end_mastery which = LIT }
+		command = { type = end_mastery which = LAT }
+		command = { type = end_mastery which = EST }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223334] SOV | 1991 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223334
+	country = SOV
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 16 month = august year = 1991 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 30342 }
+		command = { type = headofgovernment which = 30344 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223380] SOV | 1991 | UN Resolution on the Invasion of Kuwait (Resolución de la ONU sobre la Invasión de Kuwait)
+# Triggered by event 207064 in events/AI/REB_AI_55-00.txt
+# Trigger event 207065 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223380
+	country = SOV
+	name = EVT_SHARED_00967_NAME
+	desc = EVT_SHARED_00967_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		trigger = {
+			NOT = { flag = un_desertstorm_veto }
+			NOT = { alliance = { country = IRQ } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 5
+		command = { type = setflag which = un_desertstorm_veto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223335] SOV | 1991 | The August Coup of 1991 (El golpe de Estado de agosto de 1991)
+# Trigger event 223344 in events/SOV/SOV_82-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223335
+	country = SOV
+	name = EVT_SOV_223335_NAME
+	desc = EVT_SOV_223335_DESC
+	picture = "nwo/august_coup"
+	style = 1
+	trigger = {
+		government = communist
+		flag = autumn_of_nations
+	}
+	date = { day = 17 month = august year = 1991 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_SOV_223335_A
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 30342 }
+		command = { type = headofgovernment which = 30346 }
+		command = { type = sleepevent which = 223344 }
+	}
+	action = {
+		name = EVT_SOV_223335_B
+		ai_chance = 2
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 30345 }
+		command = { type = headofgovernment which = 30344 }
+		command = { type = dissent value = 20 }
+		command = { type = industrial_modifier which = total value = -10 }
+		command = { type = clrflag which = autumn_of_nations }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223344] SOV | 1991 | Civil Resistance in Moscow (Resistencia popular al golpe)
+# Triggered by event 223335 in events/SOV/SOV_82-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223344
+	country = SOV
+	name = EVT_SOV_223344_NAME
+	desc = EVT_SOV_223344_DESC
+	picture = "nwo/august_coup"
+	style = 1
+	trigger = {
+		NOT = { flag = autumn_of_nations }
+		atwar = no
+		event = 223335
+		headofstate = 30345
+	}
+	date = { day = 0 month = september year = 1991 }
+	offset = 30
+	deathdate = { day = 29 month = october year = 1991 }
+	action = {
+		name = EVT_SOV_223344_A
+		ai_chance = 95
+		command = { type = dissent value = 40 }
+	}
+	action = {
+		name = EVT_SOV_223344_B
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+		command = { type = setflag which = autumn_of_nations }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223345] SOV | 1991 | The Belavezha Accords (Los Acuerdos de Belavezha)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223345
+	country = SOV
+	name = EVT_SOV_223345_NAME
+	desc = EVT_SOV_223345_DESC
+	picture = "nwo/belavezha_accords"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+		atwar = no
+	}
+	date = { day = 0 month = december year = 1991 }
+	offset = 12
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -25 }
+		command = { type = independence which = UKR value = 1 }
+		command = { type = independence which = BLR value = 1 }
+		command = { type = independence which = GEO value = 1 }
+		command = { type = independence which = ARM value = 1 }
+		command = { type = independence which = AZB value = 1 }
+		command = { type = independence which = TRK value = 1 }
+		command = { type = independence which = UZB value = 1 }
+		command = { type = independence which = KYG value = 1 }
+		command = { type = independence which = TAJ value = 1 }
+		command = { type = independence which = KAZ value = 1 }
+		command = { type = independence which = RUS value = 1 }
+		command = { type = alliance which = RUS }
+	}
+}

@@ -1,0 +1,587 @@
+# ============================================================================
+# THE GRAND CAMPAIGN REMAKE: COLD WAR HISTORICAL DIRECTOR (1945-1991)
+# Includes Belavezha Accords (Master Final Event Dec 1991), Pax Sovietica, and WW3
+# ============================================================================
+
+# ============================================================================
+# MASTER DECISION: THE DESTINY OF THE COLD WAR (1945-1991)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231880] ALL (Human Player) | 1945 | Master Decision: The Destiny of the Cold War
+# ----------------------------------------------------------------------------
+event = {
+	id = 231880
+	random = no
+	decision = {
+		year = 1945
+	}
+	decision_trigger = {
+		year = 1945
+	}
+	trigger = {
+		ai = no
+	}
+	name = "EVT_231880_NAME"
+	desc = "EVT_231880_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	decision_picture = "GLOBAL/decision_wargames"
+	date = { day = 1 month = september year = 1945 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = "EVT_231880_A"
+		command = { }
+	}
+	action = {
+		name = "EVT_231880_B"
+		command = { type = setflag which = force_cold_war_historical }
+	}
+	action = {
+		name = "EVT_231880_C"
+		command = { type = setflag which = force_cold_war_soviet_victory }
+	}
+	action = {
+		name = "EVT_231880_D"
+		command = { type = setflag which = force_cold_war_ww3 }
+	}
+}
+
+
+# ============================================================================
+# BRANCH 1: HISTORICAL COLD WAR RAIL (1945-1991)
+# Culminates in Fall of Berlin Wall (1989), Reunification (1990), and Belavezha (1991)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231881] USA | 1947 | Truman Doctrine & Marshall Plan
+# ----------------------------------------------------------------------------
+event = {
+	id = 231881
+	country = USA
+	trigger = {
+		flag = force_cold_war_historical
+		exists = USA
+	}
+	name = "EVT_231881_NAME"
+	desc = "EVT_231881_DESC"
+	style = 2
+	picture = "nwo/marshall_plan"
+	date = { day = 12 month = march year = 1947 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = -500 }
+		command = { type = supplies value = -1000 }
+		command = { trigger = { exists = FRA } type = relation which = FRA value = 30 }
+		command = { trigger = { exists = ENG } type = relation which = ENG value = 30 }
+		command = { trigger = { exists = ITA } type = relation which = ITA value = 30 }
+		command = { trigger = { exists = DFR } type = relation which = DFR value = 30 }
+		command = { trigger = { exists = SOV } type = relation which = SOV value = -40 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231882] USA | 1948 | The Berlin Blockade & The Berlin Airlift
+# ----------------------------------------------------------------------------
+event = {
+	id = 231882
+	country = USA
+	trigger = {
+		flag = force_cold_war_historical
+		exists = USA
+		exists = SOV
+	}
+	name = "EVT_231882_NAME"
+	desc = "EVT_231882_DESC"
+	style = 2
+	picture = "nwo/berlin_airlift"
+	date = { day = 24 month = june year = 1948 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = supplies value = -800 }
+		command = { type = dissent value = -3 }
+		command = { trigger = { exists = DFR } type = relation which = DFR value = 40 }
+		command = { trigger = { exists = SOV } type = relation which = SOV value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231883] USA | 1949 | Formation of NATO: Transatlantic Security
+# ----------------------------------------------------------------------------
+event = {
+	id = 231883
+	country = USA
+	trigger = {
+		flag = force_cold_war_historical
+		exists = USA
+	}
+	name = "EVT_231883_NAME"
+	desc = "EVT_231883_DESC"
+	style = 2
+	picture = "nwo/nato"
+	date = { day = 4 month = april year = 1949 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { exists = ENG } type = alliance which = ENG }
+		command = { trigger = { exists = FRA } type = alliance which = FRA }
+		command = { trigger = { exists = CAN } type = alliance which = CAN }
+		command = { trigger = { exists = ITA } type = alliance which = ITA }
+		command = { trigger = { exists = BEL } type = alliance which = BEL }
+		command = { trigger = { exists = HOL } type = alliance which = HOL }
+		command = { trigger = { exists = NOR } type = alliance which = NOR }
+		command = { trigger = { exists = DEN } type = alliance which = DEN }
+		command = { trigger = { exists = POR } type = alliance which = POR }
+		command = { type = setflag which = NATO_Formed }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231884] SOV | 1955 | Warsaw Pact: The Socialist Counterbalance
+# ----------------------------------------------------------------------------
+event = {
+	id = 231884
+	country = SOV
+	trigger = {
+		flag = force_cold_war_historical
+		exists = SOV
+	}
+	name = "EVT_231884_NAME"
+	desc = "EVT_231884_DESC"
+	style = 2
+	picture = "nwo/warsaw_pact"
+	date = { day = 14 month = may year = 1955 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { exists = POL } type = alliance which = POL }
+		command = { trigger = { exists = DDR } type = alliance which = DDR }
+		command = { trigger = { exists = CZE } type = alliance which = CZE }
+		command = { trigger = { exists = HUN } type = alliance which = HUN }
+		command = { trigger = { exists = ROM } type = alliance which = ROM }
+		command = { trigger = { exists = BUL } type = alliance which = BUL }
+		command = { type = setflag which = WarsawPact_Formed }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231885] USA | 1962 | Cuban Missile Crisis: At the Brink of Nuclear War
+# ----------------------------------------------------------------------------
+event = {
+	id = 231885
+	country = USA
+	trigger = {
+		flag = force_cold_war_historical
+		exists = USA
+		exists = SOV
+	}
+	name = "EVT_231885_NAME"
+	desc = "EVT_231885_DESC"
+	style = 2
+	picture = "nwo/cuban_missile_crisis_discussion"
+	date = { day = 16 month = october year = 1962 }
+	offset = 1
+	deathdate = { day = 15 month = november year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { trigger = { exists = SOV } type = relation which = SOV value = 15 }
+		command = { type = setflag which = CubanMissiles_Resolved }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231886] USA | 1965 | Escalation in Southeast Asia: Vietnam War
+# ----------------------------------------------------------------------------
+event = {
+	id = 231886
+	country = USA
+	trigger = {
+		flag = force_cold_war_historical
+		exists = USA
+	}
+	name = "EVT_231886_NAME"
+	desc = "EVT_231886_DESC"
+	style = 2
+	picture = "nwo/vietnam_war"
+	date = { day = 8 month = march year = 1965 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = supplies value = -1500 }
+		command = { type = manpowerpool value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231887] SOV | 1979 | Soviet Intervention in Afghanistan
+# ----------------------------------------------------------------------------
+event = {
+	id = 231887
+	country = SOV
+	trigger = {
+		flag = force_cold_war_historical
+		exists = SOV
+	}
+	name = "EVT_231887_NAME"
+	desc = "EVT_231887_DESC"
+	style = 2
+	picture = "nwo/soviet_intervention_in_afghanistan"
+	date = { day = 25 month = december year = 1979 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = supplies value = -1200 }
+		command = { type = manpowerpool value = -40 }
+		command = { trigger = { exists = USA } type = relation which = USA value = -40 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231888] DFR | 1989 | Fall of the Berlin Wall: The Iron Curtain Crumbles
+# ----------------------------------------------------------------------------
+event = {
+	id = 231888
+	country = DFR
+	trigger = {
+		flag = force_cold_war_historical
+		exists = DFR
+		exists = DDR
+	}
+	name = "EVT_231888_NAME"
+	desc = "EVT_231888_DESC"
+	style = 2
+	picture = "nwo/fall_of_berlin_wall"
+	date = { day = 9 month = november year = 1989 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -15 }
+		command = { type = relation which = DDR value = 100 }
+		command = { type = setflag which = BerlinWall_Fallen }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231889] DFR | 1990 | German Reunification: Two Plus Four Treaty
+# ----------------------------------------------------------------------------
+event = {
+	id = 231889
+	country = DFR
+	trigger = {
+		flag = force_cold_war_historical
+		flag = BerlinWall_Fallen
+		exists = DFR
+		exists = DDR
+	}
+	name = "EVT_231889_NAME"
+	desc = "EVT_231889_DESC"
+	style = 2
+	picture = "nwo/reunification"
+	date = { day = 3 month = october year = 1990 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = DDR value = 1 }
+		command = { type = dissent value = -10 }
+		command = { type = setflag which = Germany_Reunified }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231890] USA | 1991 | Operation Desert Storm: Liberation of Kuwait
+# ----------------------------------------------------------------------------
+event = {
+	id = 231890
+	country = USA
+	trigger = {
+		flag = force_cold_war_historical
+		exists = USA
+	}
+	name = "EVT_231890_NAME"
+	desc = "EVT_231890_DESC"
+	style = 2
+	picture = "nwo/invasion_of_kuwait"
+	date = { day = 17 month = january year = 1991 }
+	offset = 1
+	deathdate = { day = 28 month = february year = 1991 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { trigger = { exists = IRQ } type = relation which = IRQ value = -100 }
+		command = { trigger = { exists = SAU } type = relation which = SAU value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231891] SOV | 1991 | MASTER FINAL EVENT: Belavezha Accords & Dissolution of the USSR
+# ----------------------------------------------------------------------------
+event = {
+	id = 231891
+	country = SOV
+	trigger = {
+		flag = force_cold_war_historical
+		exists = SOV
+	}
+	name = "EVT_231891_NAME"
+	desc = "EVT_231891_DESC"
+	style = 2
+	picture = "nwo/belavezha_accords"
+	date = { day = 25 month = december year = 1991 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1991 }
+	action = {
+		name = "EVT_231891_A"
+		command = { type = setflag which = autumn_of_nations }
+		command = { type = independence which = UKR value = 1 }
+		command = { type = independence which = BLR value = 1 }
+		command = { type = independence which = GEO value = 1 }
+		command = { type = independence which = ARM value = 1 }
+		command = { type = independence which = AZB value = 1 }
+		command = { type = independence which = TRK value = 1 }
+		command = { type = independence which = UZB value = 1 }
+		command = { type = independence which = KYG value = 1 }
+		command = { type = independence which = TAJ value = 1 }
+		command = { type = independence which = KAZ value = 1 }
+		command = { type = independence which = EST value = 1 }
+		command = { type = independence which = LAT value = 1 }
+		command = { type = independence which = LIT value = 1 }
+		command = { type = independence which = RUS value = 1 }
+		command = { trigger = { war = { country = SOV country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = SOV country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = SOV country = FRA } } type = peace which = FRA value = 1 }
+		command = { trigger = { war = { country = SOV country = DFR } } type = peace which = DFR value = 1 }
+		command = { type = dissent value = -30 }
+		command = { type = trigger which = 211063 }
+		command = { type = setflag which = USSR_Dissolved_1991 }
+	}
+}
+
+
+# ============================================================================
+# BRANCH 2: PAX SOVIETICA & US DISSOLUTION (ALTERNATIVE COLD WAR)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231892] DDR | 1975 | Fall of Bonn & Socialist Reunification of Germany
+# ----------------------------------------------------------------------------
+event = {
+	id = 231892
+	country = DDR
+	trigger = {
+		flag = force_cold_war_soviet_victory
+		exists = DDR
+		exists = DFR
+	}
+	name = "EVT_231892_NAME"
+	desc = "EVT_231892_DESC"
+	style = 2
+	picture = "nwo/fall_of_berlin_wall"
+	date = { day = 1 month = may year = 1975 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1976 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = DFR value = 1 }
+		command = { type = dissent value = -20 }
+		command = { type = alliance which = SOV }
+		command = { type = setflag which = Socialist_Germany_Reunited }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231893] USA | 1980 | Economic Collapse and Great Civil Strikes in America
+# ----------------------------------------------------------------------------
+event = {
+	id = 231893
+	country = USA
+	trigger = {
+		flag = force_cold_war_soviet_victory
+		exists = USA
+	}
+	name = "EVT_231893_NAME"
+	desc = "EVT_231893_DESC"
+	style = 2
+	picture = "GLOBAL/strike"
+	date = { day = 15 month = october year = 1980 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1981 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 30 }
+		command = { type = industrial_modifier which = total value = -30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231894] USA | 1982 | Second American Civil War: Dissolution of the Union
+# ----------------------------------------------------------------------------
+event = {
+	id = 231894
+	country = USA
+	trigger = {
+		flag = force_cold_war_soviet_victory
+		exists = USA
+	}
+	name = "EVT_231894_NAME"
+	desc = "EVT_231894_DESC"
+	style = 2
+	picture = "nwo/usa_divided"
+	date = { day = 4 month = july year = 1982 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1983 }
+	action = {
+		name = "EVT_231894_A"
+		command = { type = leave_alliance }
+		command = { type = independence which = CAL value = 1 }
+		command = { type = independence which = TEX value = 1 }
+		command = { type = independence which = CSA value = 1 }
+		command = { type = independence which = GLD value = 1 }
+		command = { type = dissent value = -15 }
+		command = { type = setflag which = USA_Partitioned_ColdWar }
+	}
+	action = {
+		name = "EVT_231894_B"
+		command = { type = leave_alliance }
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 240020 }
+		command = { type = headofgovernment which = 240033 }
+		command = { trigger = { exists = SOV } type = alliance which = SOV }
+		command = { type = dissent value = -25 }
+		command = { type = setflag which = Communist_USA_Formed }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231895] SOV | 1991 | Moscow World Peace Treaty: The Pax Sovietica
+# ----------------------------------------------------------------------------
+event = {
+	id = 231895
+	country = SOV
+	trigger = {
+		flag = force_cold_war_soviet_victory
+		exists = SOV
+	}
+	name = "EVT_231895_NAME"
+	desc = "EVT_231895_DESC"
+	style = 2
+	picture = "nwo/soviet_liberation_of_europe"
+	date = { day = 25 month = december year = 1991 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1991 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -30 }
+		command = { type = industrial_modifier which = total value = 25 }
+		command = { type = setflag which = Pax_Sovietica_Master }
+	}
+}
+
+
+# ============================================================================
+# BRANCH 3: THIRD WORLD WAR (TGM) - TOTAL CONFRONTATION
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231896] USA | 1962 | Outbreak of World War III: The Nuclear Abyss
+# ----------------------------------------------------------------------------
+event = {
+	id = 231896
+	country = USA
+	trigger = {
+		flag = force_cold_war_ww3
+		exists = USA
+		exists = SOV
+		NOT = { war = { country = USA country = SOV } }
+	}
+	name = "EVT_231896_NAME"
+	desc = "EVT_231896_DESC"
+	style = 2
+	picture = "nwo/atomic_bomb"
+	date = { day = 27 month = october year = 1962 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = war which = SOV }
+		command = { type = dissent value = 15 }
+		command = { type = setflag which = WW3_Erupted }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231897] USA | 1965-1990 | Allied Victory in World War III: Surrender of Moscow
+# ----------------------------------------------------------------------------
+event = {
+	id = 231897
+	country = USA
+	trigger = {
+		flag = force_cold_war_ww3
+		flag = WW3_Erupted
+		war = { country = USA country = SOV }
+		lost_national = { country = SOV value = 35 }
+	}
+	name = "EVT_231897_NAME"
+	desc = "EVT_231897_DESC"
+	style = 2
+	picture = "nwo/defeat_of_ussr"
+	date = { day = 1 month = january year = 1963 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1995 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peace which = SOV value = 1 }
+		command = { trigger = { exists = POL } type = make_puppet which = POL }
+		command = { trigger = { exists = CZE } type = make_puppet which = CZE }
+		command = { trigger = { exists = HUN } type = make_puppet which = HUN }
+		command = { trigger = { exists = ROM } type = make_puppet which = ROM }
+		command = { trigger = { exists = BUL } type = make_puppet which = BUL }
+		command = { type = dissent value = -25 }
+		command = { type = setflag which = WW3_Allied_Victory }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231898] SOV | 1965-1990 | Soviet Victory in World War III: Global Liberation
+# ----------------------------------------------------------------------------
+event = {
+	id = 231898
+	country = SOV
+	trigger = {
+		flag = force_cold_war_ww3
+		flag = WW3_Erupted
+		war = { country = SOV country = USA }
+		lost_national = { country = USA value = 35 }
+	}
+	name = "EVT_231898_NAME"
+	desc = "EVT_231898_DESC"
+	style = 2
+	picture = "nwo/soviet_liberation_of_europe"
+	date = { day = 1 month = january year = 1963 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1995 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peace which = USA value = 1 }
+		command = { trigger = { exists = DFR } type = inherit which = DFR value = 1 }
+		command = { trigger = { exists = FRA } type = make_puppet which = FRA }
+		command = { trigger = { exists = ENG } type = make_puppet which = ENG }
+		command = { trigger = { exists = ITA } type = make_puppet which = ITA }
+		command = { type = dissent value = -25 }
+		command = { type = setflag which = WW3_Soviet_Victory }
+	}
+}

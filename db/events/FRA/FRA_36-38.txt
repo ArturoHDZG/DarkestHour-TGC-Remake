@@ -1,0 +1,1358 @@
+# ============================================================================
+# File: events/FRA/FRA_36-38.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [147212] FRA | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 147211 in events/FRA/FRA_31-36.txt
+# Triggered by event 246001 in events/Minors/U11.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 147212
+   country = FRA
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U11 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [147239] FRA | 1936 | A call for help by Yugoslavia (Una llamada de ayuda por parte de Yugoslavia)
+# Triggered by event 217023 in events/Minors/SER.txt
+# Trigger event 217025 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147239
+	country = FRA
+	name = "EVT_SHARED_01049_NAME"
+	desc = LOST_DESC
+	style = 2
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = guarantee which = FRA where = SER }
+		command = { type = trigger which = 217025 }
+	}
+	action = {
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		ai_chance = 0
+		command = { type = relation which = SER value = -40 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147270] FRA | 1936 | Greek Annexation of Northern Epirus (Anexión griega del Epiro Septentrional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147270
+	country = FRA
+	name = "EVT_FRA_147270_NAME"
+	desc = "EVT_FRA_147270_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GRE value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147298] FRA | 1936 | Koltchak denounces Janin behavior (Koltchak denuncia el comportamiento de Janin)
+# Trigger event 310006 in events/Minors/UER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147298
+	country = FRA
+	name = EVT_FRA_147298_NAME
+	desc = LOST_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+	name = EVT_FRA_147298_A
+	ai_chance = 85
+	command = { type = relation which = UER value = -100 }
+	command = { type = trigger which = 310006 }
+	}
+	action_b = {
+		name = EVT_FRA_147298_B
+		ai_chance = 15
+		command = { type = relation which = UER value = 50 }
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147351] FRA | 1936 | Leading The Army? (¿Liderando el ejército?)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147351
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01088_NAME"
+	desc = "EVT_SHARED_01099_DESC"
+	action_a = {
+		ai_chance = 70
+		name = "EVT_SHARED_01099_A"
+		command = { type = chiefofarmy which = 5134 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_01099_B"
+		command = { type = chiefofarmy which = 5135 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147352] FRA | 1936 | Leading the Navy? (¿Liderando la Armada?)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147352
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01089_NAME"
+	desc = "EVT_SHARED_01100_DESC"
+	action_a = {
+		ai_chance = 70
+		name = "EVT_SHARED_01100_A"
+		command = { type = chiefofnavy which = 5143 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_01099_A"
+		command = { type = chiefofnavy which = 5142 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147353] FRA | 1936 | Leading the Airforce? (¿Liderando la Fuerza Aérea?)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147353
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01090_NAME"
+	desc = "EVT_SHARED_01101_DESC"
+	action_a = {
+		ai_chance = 70
+		name = "EVT_SHARED_01101_A"
+		command = { type = chiefofair which = 5152 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_01100_A"
+		command = { type = chiefofair which = 5153 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329091] FRA | 1936 | Gearing Up for War (Preparativos de guerra)
+# Triggered by event 150033 in events/GER/GER_Decisions.txt
+# Triggered by event 150034 in events/GER/GER_Decisions.txt
+# Triggered by event 150038 in events/GER/GER_Decisions.txt
+# Triggered by event 150047 in events/GER/GER_Decisions.txt
+# Triggered by event 329113 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329091
+	random = no
+	country = FRA
+	persistent = yes
+	name = EVT_SHARED_00392_NAME
+	desc = EVT_SHARED_00392_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = {
+			war = { country = GER country = FRA }
+		}
+	}
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = peacetime_ic_mod value = 12 }
+		command = { type = manpowerpool value = 15 }
+		command = { trigger = {
+				exists = LUX
+				NOT = { guarantee = { country = FRA country = LUX } }
+				NOT = { war = { country = FRA country = LUX } }
+				NOT = { alliance = { country = GER country = LUX } }
+				NOT = { alliance = { country = FRA country = LUX } }
+				NOT = { participant = { country = LUX value = 2 }  }
+				NOT = { ispuppet = LUX }
+				NOT = { atwar = LUX }
+			} type = guarantee which = FRA where = LUX }
+		command = { trigger = { event = 150034 ai = yes } type = ai which = "switch/low_construction_factor.ai" }
+		command = { trigger = { event = 150034 NOT = { event = 150038 } } type = songs which = ChamberlainMunichConference.txt }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329095] FRA | 1936 | The Riom Trial (El juicio de Riom)
+# Triggered by event 147025 in events/FRA/FRA_31-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329095
+	random = no
+	country = FRA
+	style = 2
+	trigger = {
+		random = 1
+		event = 147025
+		NOT = { alliance = { country = FRA country = ENG } }
+		NOT = { policy = { type = democratic value = 4 } }
+		}
+	date = { day = 0 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	name = EVT_FRA_329095_NAME
+	desc = EVT_FRA_329095_DESC
+	picture = "GLOBAL/petain"
+	action = { name = ACTION_NAME_OK
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = dissent value = 5 }
+		command = { type = sleepteam which = 5018 }
+		command = { type = sleepteam which = 5020 }
+		command = { type = sleepteam which = 5022 }
+		command = { type = sleepteam which = 5028 }
+		command = { type = sleepteam which = 5029 }
+		command = { type = sleepminister which = 5112 }
+		command = { type = sleepminister which = 5101 }
+		command = { type = sleepminister which = 5097 }
+		command = { type = sleepminister which = 5025 }
+		command = { type = sleepminister which = 5026 }
+		command = { type = sleepminister which = 5169 }
+		command = { type = sleepminister which = 5171 }
+		command = { type = sleepminister which = 5175 }
+		command = { type = sleepminister which = 5119 }
+		command = { type = sleepminister which = 5179 }
+		command = { type = sleepminister which = 5177 }
+		command = { type = sleepminister which = 5164 }
+		command = { type = sleepminister which = 5148 }
+		command = { type = sleepminister which = 5107 }
+		command = { type = sleepminister which = 5066 }
+		command = { type = sleepminister which = 5085 }
+		command = { type = sleepminister which = 5063 }
+		command = { type = sleepminister which = 5053 }
+		command = { type = sleepminister which = 5030 }
+		command = { type = sleepminister which = 5183 }
+		command = { type = sleepminister which = 5184 }
+		command = { type = sleepminister which = 5040 }
+		command = { type = sleepleader which = 24222 }
+		command = { type = sleepleader which = 24218 }
+		command = { type = sleepleader which = 24204 }
+		command = { type = sleepleader which = 24150 }
+		command = { type = sleepleader which = 24113 }
+		command = { type = sleepleader which = 24099 }
+		command = { type = sleepleader which = 24080 }
+		command = { type = sleepleader which = 24012 }
+		command = { type = sleepleader which = 24006 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329098] FRA | 1936 | New Caledonia and Antilles Join (Adhesión de Nueva Caledonia y las Antillas)
+# Triggered by event 147026 in events/FRA/FRA_31-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329098
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		exists = U01
+		event = 147026
+		OR = {
+			NOT = { region = { region = "South Solomon Islands" country = U01 } }
+			NOT = { region = { region = "American Pacific" country = U01 } }
+			NOT = { area = { area = "Antilles" country = U01 } }
+			NOT = { control = { province = 2000 data = U01 } }
+			region = { region = "South Solomon Islands" country = FRA }
+			region = { region = "American Pacific" country = FRA }
+			area = { area = "Antilles" country = FRA }
+			control = { province = 2000 data = FRA }
+		}
+		OR = {
+			random = 1
+			AND = { year = 1941 random = 3 }
+			AND = { year = 1942 random = 5 }
+			AND = { year = 1943 random = 7 }
+			AND = { year = 1944 random = 10 }
+			AND = { year = 1945 random = 15 }
+			AND = { year = 1946 random = 20 }
+			AND = { dissent = 25 random = 30 }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_FRA_329098_NAME"
+	desc = "EVT_FRA_329098_DESC"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secederegion which = U01 value = "South Solomon Islands" }
+		command = { type = secederegion which = U01 value = "American Pacific" }
+		command = { type = secedearea which = U01 value = "Antilles" }
+		command = { type = secedeprovince which = U01 value = 2000 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329099] FRA | 1936 | Sub-Saharan Africa Joins (Adhesión del África subsahariana)
+# Triggered by event 147026 in events/FRA/FRA_31-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329099
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		exists = U01
+		event = 147026
+		OR = {
+			NOT = { region = { region = "West Africa" country = U01 } }
+			NOT = { control = { province = 833 data = U01 } }
+			NOT = { control = { province = 513 data = U01 } }
+			NOT = { control = { province = 2173 data = U01 } }
+			region = { region = "West Africa" country = FRA }
+			control = { province = 833 data = FRA }
+			control = { province = 513 data = FRA }
+			control = { province = 2173 data = FRA }
+		}
+		OR = {
+			random = 1
+			AND = { year = 1941 random = 3 }
+			AND = { year = 1942 random = 5 }
+			AND = { year = 1943 random = 7 }
+			AND = { year = 1944 random = 10 }
+			AND = { year = 1945 random = 15 }
+			AND = { year = 1946 random = 20 }
+			AND = { dissent = 25 random = 30 }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_FRA_329099_NAME"
+	desc = "EVT_FRA_329099_DESC"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = U01 value = 833 }
+		command = { type = secedeprovince which = U01 value = 922 }
+		command = { type = secederegion which = U01 value = "West Africa" }
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329100] FRA | 1936 | Syria and Lebanon Join (Adhesión de Siria y Líbano)
+# Triggered by event 147026 in events/FRA/FRA_31-36.txt
+# Trigger event 236001 in events/Minors/U01.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329100
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		exists = U01
+		event = 147026
+		exists = U04
+		NOT = { war = { country = U04 country = U01 } }
+		OR = {
+			NOT = { area = { area = "Lebanon_Syria" country = U01 } }
+			area = { area = "Lebanon_Syria" country = FRA }
+		}
+		OR = {
+			random = 1
+			AND = { year = 1941 random = 3 }
+			AND = { year = 1942 random = 5 }
+			AND = { year = 1943 random = 7 }
+			AND = { year = 1944 random = 10 }
+			AND = { year = 1945 random = 15 }
+			AND = { year = 1946 random = 20 }
+			AND = { dissent = 25 random = 30 }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_SHARED_00524_NAME"
+	desc = "EVT_SHARED_00524_DESC"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 236001 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329101] FRA | 1936 | Madagascar Joins Free France (Adhesión de Madagascar)
+# Triggered by event 147026 in events/FRA/FRA_31-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329101
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		exists = U01
+		event = 147026
+		OR = {
+			NOT = { area = { area = "Madagascar" country = U01 } }
+			area = { area = "Madagascar" country = FRA }
+		}
+		OR = {
+			random = 1
+			AND = { year = 1941 random = 3 }
+			AND = { year = 1942 random = 5 }
+			AND = { year = 1943 random = 7 }
+			AND = { year = 1944 random = 10 }
+			AND = { year = 1945 random = 15 }
+			AND = { year = 1946 random = 20 }
+			AND = { dissent = 25 random = 30 }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_FRA_329101_NAME"
+	desc = "EVT_FRA_329101_DESC"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = U01 value = "Madagascar" }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329102] FRA | 1936 | French Military Command over Spain Ends (Fin del control militar francés en España)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329102
+	random = no
+	country = FRA
+	trigger = {
+		military_control = { country = SPR }
+		local_flag = military_control
+		OR = {
+			alliance = { country = FRA country = SPA }
+			alliance = { country = FRA country = SPR }
+			NOT = { war = { country = SPA country = SPR } }
+			NOT = { ai = SPR }
+		}
+	}
+	name = "EVT_FRA_329102_NAME"
+	desc = "EVT_SHARED_00209_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type =  military_control which = FRA where = SPR }
+		command	= { type = local_clrflag which = military_control }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147038] FRA | 1936 | Iron Route Interdicted (Baltic Closed) (Ruta del hierro cortada (Báltico cerrado))
+# ----------------------------------------------------------------------------
+event = {
+	id = 147038
+	random = no
+	country = FRA
+	name = EVT_SHARED_00615_NAME
+	desc = EVT_SHARED_00615_DESC
+	style = 2
+	picture = "GLOBAL/narvik"
+	trigger = {
+		control = { province = 495 data = FRA }
+		war = { country = GER country = FRA }
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1950 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = supplies value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329145] FRA | 1936 | Downfall of the Laval Government in France (Caída del gobierno de Laval en Francia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329145
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			war = { country = ITA country = ETH }
+			}
+	date = { day = 21 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 25 month = december year = 1936 }
+	name = "EVT_FRA_329145_NAME"
+	desc = "EVT_FRA_329145_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 5002 }
+		command = { type = foreignminister which = 5003 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330122] FRA | 1936 | British Reassurance to France and Belgium (Garantías diplomáticas británicas a Francia y Bélgica)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330122
+	random = no
+	country = FRA
+	trigger = {
+			NOT = { war = { country = FRA } }
+			}
+	date = { day = 02 month = april year = 1936 }
+	offset = 1
+	deathdate = { day = 04 month = april year = 1936 }
+	name = "EVT_SHARED_01156_NAME"
+	desc = "EVT_SHARED_01156_DESC"
+	style = 2
+	picture = "GLOBAL/british_reassurance_to_france_and_belgium"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ENG value = 05 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147041] FRA | 1936 | First Popular Front Government (Primer gobierno del Frente Popular)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147041
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 04 month = june year = 1936 }
+	name = "EVT_FRA_147041_NAME"
+	desc = "EVT_FRA_147041_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -2 }
+		command = { type = headofgovernment which = 5016 }
+		command = { type = gain_tech which = 1250 }
+		command = { type = gain_tech which = 1380 }
+		command = { type = manpowerpool value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147010] FRA | 1936 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147010
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FRA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = june year = 1936 }
+	action_a = {
+		ai_chance = 100
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 5001 }
+		command = { type = headofgovernment which = 5016 }
+		command = { type = foreignminister which = 5034 }
+		command = { type = armamentminister which = 5004 }
+		command = { type = ministerofsecurity which = 5104 }
+		}
+	action_b = {
+		ai_chance = 0
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5158 }
+		command = { type = headofgovernment which = 5023 }
+		command = { type = foreignminister which = 5039 }
+		command = { type = armamentminister which = 5060 }
+		command = { type = ministerofsecurity which = 5091 }
+		command = { type = ministerofintelligence which = 5111 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [147042] FRA | 1936 | Reorganization of the Bank of France (Reorganización del Banco de Francia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147042
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 11 month = june year = 1936 }
+	name = "EVT_FRA_147042_NAME"
+	desc = "EVT_FRA_147042_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = money value = 150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147043] FRA | 1936 | Suppression of Fascists in France (Supresión de los fascistas en Francia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147043
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 29 month = june year = 1936 }
+	name = "EVT_FRA_147043_NAME"
+	desc = "EVT_FRA_147043_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = ITA value = -10 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329093] FRA | 1936 | Spanish Civil War: French Combat Lessons (Guerra civil española: Experiencia francesa)
+# Triggered by event 225014 in events/Minors/SPR.txt
+# Triggered by event 225018 in events/Minors/SPR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329093
+	random = no
+	country = FRA
+	trigger = {
+		government = democratic
+		event = 225014
+		event = 225018
+		NOT = {
+			OR = {
+			war = { country = FRA country = SPA }
+			war = { country = FRA country = SPR }
+			war = { country = FRA country = SOV }
+			war = { country = FRA country = GER }
+			war = { country = FRA country = ENG }
+			war = { country = FRA country = ITA }
+			}
+		}
+	}
+	name = "EVT_SHARED_00206_NAME"
+	desc = "EVT_SHARED_00206_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 18 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = relation which = SPR value = 20 }
+		command = { type = manpowerpool value = 8 }
+		command = { type = dissent value = -1 }
+		command = { type = gain_tech which = -2 }
+		command = { type = gain_tech which = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329094] FRA | 1936 | Spanish Civil War: French Combat Lessons (Guerra civil española: Experiencia francesa)
+# Triggered by event 225014 in events/Minors/SPR.txt
+# Triggered by event 224018 in events/Minors/SPA.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329094
+	random = no
+	country = FRA
+	trigger = {
+		government = democratic
+		event = 225014
+		event = 224018
+		NOT = {
+			OR = {
+			war = { country = FRA country = SPA }
+			war = { country = FRA country = SPR }
+			war = { country = FRA country = SOV }
+			war = { country = FRA country = GER }
+			war = { country = FRA country = ENG }
+			war = { country = FRA country = ITA }
+			}
+		}
+	}
+	name = "EVT_SHARED_00206_NAME"
+	desc = "EVT_SHARED_00206_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 18 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = manpowerpool value = 3 }
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { type = gain_tech which = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147044] FRA | 1936 | Franco-Syrian Treaty of Friendship and Alliance (Tratado franco-sirio de amistad y alianza)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147044
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 08 month = august year = 1936 }
+	name = "EVT_FRA_147044_NAME"
+	desc = "EVT_FRA_147044_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = U04 value = 30 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147045] FRA | 1936 | Franco-Lebanese Treaty (Tratado franco-libanés)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147045
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 12 month = november year = 1936 }
+	name = "EVT_FRA_147045_NAME"
+	desc = "EVT_FRA_147045_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = U04 value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147049] FRA | 1937 | Belgium Withdrawal from the Locarno Pact (La retirada de Bélgica del Pacto de Locarno)
+# Triggered by event 143048 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147049
+	random = no
+	country = FRA
+	name = "EVT_SHARED_00636_NAME"
+	desc = "EVT_SHARED_00636_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = BEL value = -10 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147052] FRA | 1937 | Nyon Conference (Conferencia de Nyon)
+# Triggered by event 143049 in events/ENG/ENG_36-38.txt
+# Trigger event 166019 in events/ITA/ITA_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147052
+	random = no
+	country = FRA
+	name = "EVT_SHARED_00638_NAME"
+	desc = "EVT_SHARED_00638_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = gain_tech which = 8970 }
+		command = { type = trigger which = 166019 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147055] FRA | 1937 | Beginning of the Alexandretta Crisis (Inicio de la crisis de Alejandreta)
+# Triggered by event 235006 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147055
+	random = no
+	country = FRA
+	name = "EVT_SHARED_00639_NAME"
+	desc = "EVT_SHARED_00639_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = TUR value = -30 }
+		command = { type = relation which = U04 value = 20 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147071] FRA | 1937 | Benito Mussolini's visit to Tobruk (La visita de Benito Mussolini a Tobruk)
+# Triggered by event 329154 in events/ITA/ITA_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147071
+	random = no
+	country = FRA
+	name = "EVT_SHARED_00652_NAME"
+	desc = "EVT_SHARED_00652_DESC"
+	style = 2
+	picture = "GLOBAL/mussolini"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ITA value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147046] FRA | 1937 | Franco-Turkish Agreement on Alexandretta (Acuerdo franco-turco en Alejandreta)
+# Trigger event 235005 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147046
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 23 month = january year = 1937 }
+	name = "EVT_SHARED_00635_NAME"
+	desc = "EVT_SHARED_00635_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+		command = { type = relation which = TUR value = 5 }
+		command = { type = trigger which = 235005 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147047] FRA | 1937 | French Defense Plan (Plan de defensa francés)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147047
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 20 month = february year = 1937 }
+	name = "EVT_FRA_147047_NAME"
+	desc = "EVT_FRA_147047_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { type = gain_tech which = 14030 }
+		command = { type = gain_tech which = 1990 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147048] FRA | 1937 | French Social Reform Holiday (Reforma social francesa de vacaciones)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147048
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 02 month = march year = 1937 }
+	name = "EVT_FRA_147048_NAME"
+	desc = "EVT_FRA_147048_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147050] FRA | 1937 | Kurdish Insurrection in Syria (La insurrección kurda en Siria)
+# Trigger event 239005 in events/Minors/U04.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147050
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 02 month = july year = 1937 }
+	name = "EVT_SHARED_00637_NAME"
+	desc = "EVT_SHARED_00637_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = gain_tech which = 9090 }
+		command = { type = trigger which = 239005 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147051] FRA | 1937 | Nationalist Uprising in French Morocco (Levantamiento nacionalista en el Marruecos francés)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147051
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 12 month = september year = 1937 }
+	name = "EVT_FRA_147051_NAME"
+	desc = "EVT_FRA_147051_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147053] FRA | 1937 | Discovery of Royalist Plot in France (Descubrimiento del complot realista en Francia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147053
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 17 month = november year = 1937 }
+	name = "EVT_FRA_147053_NAME"
+	desc = "EVT_FRA_147053_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -2 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147054] FRA | 1937 | French Official Visit to Eastern Europe (Visita oficial francesa a Europa del Este)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147054
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 01 month = december year = 1937 }
+	name = "EVT_FRA_147054_NAME"
+	desc = "EVT_FRA_147054_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = YUG value = 15 }
+		command = { type = relation which = POL value = 15 }
+		command = { type = relation which = ROM value = 15 }
+		command = { type = relation which = CZE value = 15 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147056] FRA | 1937 | Franco-Syrian Convention (Convenio franco-sirio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147056
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 15 month = december year = 1937 }
+	name = "EVT_FRA_147056_NAME"
+	desc = "EVT_FRA_147056_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = U04 value = 20 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147031] FRA | 1938 | Proclamation of the Hatay State (Proclamación del Estado de Hatay)
+# Triggered by event 239000 in events/Minors/U04.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147031
+	random = no
+	country = FRA
+	name = EVT_SHARED_00528_NAME
+	desc = EVT_SHARED_00528_DESC
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = guarantee which = FRA where = U39 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147060] FRA | 1938 | British State Visit to France (Visita de Estado Británico a Francia)
+# Triggered by event 143050 in events/ENG/ENG_38-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147060
+	random = no
+	country = FRA
+	name = "EVT_SHARED_00641_NAME"
+	desc = "EVT_SHARED_00641_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ENG value = 15 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147061] FRA | 1938 | Anglo-French Loan to Bulgaria (Préstamo anglo-francés a Bulgaria)
+# Triggered by event 143051 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147061
+	random = no
+	country = FRA
+	name = "EVT_SHARED_00642_NAME"
+	desc = "EVT_SHARED_00642_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = BUL value = 20 }
+		command = { type = money value = -50 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147063] FRA | 1938 | Anglo-French Conference in London (Conferencia anglo-francesa en Londres)
+# Triggered by event 143052 in events/ENG/ENG_38-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147063
+	random = no
+	country = FRA
+	name = "EVT_SHARED_00643_NAME"
+	desc = "EVT_SHARED_00643_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = 15 }
+		command = { type = relation which = CZE value = -5 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147066] FRA | 1938 | Iranian Severance of Relations with France (Ruptura iraní de las relaciones con Francia)
+# Triggered by event 201002 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147066
+	random = no
+	country = FRA
+	name = "EVT_SHARED_00647_NAME"
+	desc = "EVT_SHARED_00647_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = PER value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147057] FRA | 1938 | New Popular Front Government in France (Nuevo gobierno del Frente Popular en Francia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147057
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 12 month = march year = 1938 }
+	name = "EVT_FRA_147057_NAME"
+	desc = "EVT_FRA_147057_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147058] FRA | 1938 | New French Government (Nuevo gobierno francés)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147058
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 09 month = april year = 1938 }
+	name = "EVT_FRA_147058_NAME"
+	desc = "EVT_FRA_147058_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -2 }
+		command = { type = headofgovernment which = 5020 }
+		command = { type = money value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147011] FRA | 1938 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147011
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FRA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = june year = 1938 }
+	action_a = {
+		ai_chance = 80
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 5001 }
+		command = { type = headofgovernment which = 5020 }
+		command = { type = foreignminister which = 5035 }
+		command = { type = armamentminister which = 5056 }
+		command = { type = ministerofsecurity which = 5088 }
+		command = { type = ministerofintelligence which = 5108 }
+		}
+	action_b = {
+		ai_chance = 20
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5001 }
+		command = { type = headofgovernment which = 5023 }
+		command = { type = foreignminister which = 5048 }
+		command = { type = armamentminister which = 5078 }
+		command = { type = ministerofsecurity which = 5103 }
+		command = { type = ministerofintelligence which = 5122 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [147059] FRA | 1938 | Franco-Turkish Agreement on Alexandretta (Acuerdo franco-turco en Alejandreta)
+# Trigger event 235007 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147059
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 02 month = july year = 1938 }
+	name = "EVT_SHARED_00640_NAME"
+	desc = "EVT_SHARED_00640_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		command = { type = relation which = TUR value = 15 }
+		command = { type = trigger which = 235007 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147062] FRA | 1938 | French Military Mobilization (Movilización militar francesa)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147062
+	random = no
+	country = FRA
+	trigger = {
+			exists = FRA
+			}
+	date = { day = 06 month = september year = 1938 }
+	name = "EVT_FRA_147062_NAME"
+	desc = "EVT_FRA_147062_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = -10 }
+		command = { type = manpowerpool value = 10 }
+		command = { type = gain_tech which = 6110 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [147065] FRA | 1938 | French General Strike (Huelga general francesa)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147065
+	random = no
+	country = FRA
+	trigger = {
+		exists = FRA
+			}
+	date = { day = 29 month = november year = 1938 }
+	name = "EVT_FRA_147065_NAME"
+	desc = "EVT_FRA_147065_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent  value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329146] FRA | 1938 | Franco-Italian Crisis (Crisis franco-italiana)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329146
+	random = no
+	country = FRA
+	trigger = {
+		NOT = { war = { country = FRA country = ITA } }
+			}
+	date = { day = 01 month = december year = 1938 }
+	name = "EVT_SHARED_00645_NAME"
+	desc = "EVT_SHARED_00645_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent  value = -1 }
+		command = { type = relation which = ITA value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329149] FRA | 1938 | Italian Invalidation of Treaty of 1935 with France (Anulación italiana del Tratado de 1935 con Francia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329149
+	random = no
+	country = FRA
+	trigger = {
+		NOT = { war = { country = FRA country = ITA } }
+			}
+	date = { day = 16 month = december year = 1938 }
+	name = "EVT_SHARED_00646_NAME"
+	desc = "EVT_SHARED_00646_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 100
+		command = { type = relation which = ITA value = -10 }
+	}
+}

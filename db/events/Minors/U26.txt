@@ -1,0 +1,127 @@
+# ============================================================================
+# File: events/Minors/U26.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [261001] U26 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 261002 in events/Minors/U26.txt
+# Trigger event 216043 in events/Minors/SCH.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 261001
+   country = U26
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = SCH
+            NOT = { ai = SCH }
+            NOT = { ai = U26 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = SCH
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = SCH } }
+      command = { type = country which = SCH }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = SCH
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U26 }
+               control = { province = 392 data = -1 }
+            }
+         }
+         type = trigger which = 261002
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = SCH }
+               NOT = { control = { province = 392 data = -1 } }
+            }
+         }
+         type = trigger which = 216043
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = SCH
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [261002] U26 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 216042 in events/Minors/SCH.txt
+# Triggered by event 261001 in events/Minors/U26.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 261002
+   country = U26
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = SCH value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [261000] U26 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 261000
+	country = U26
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 945001 }
+		command = { type = headofgovernment which = 945002 }
+		command = { type = foreignminister which = 945003 }
+		command = { type = armamentminister which = 945004 }
+		command = { type = ministerofintelligence which = 945005 }
+		command = { type = chiefofstaff which = 945006 }
+		command = { type = chiefofarmy which = 945007 }
+		command = { type = chiefofnavy which = 945008 }
+		command = { type = chiefofair which = 945009 }
+	}
+}

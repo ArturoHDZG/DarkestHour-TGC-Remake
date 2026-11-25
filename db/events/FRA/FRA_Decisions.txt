@@ -1,0 +1,1115 @@
+# ============================================================================
+# File: events/FRA/FRA_Decisions.txt (21 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [147033] FRA | 1914 | Offensive Chit Prepared (Reserva Logística Ofensiva lista)
+# Trigger event 147034 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147033
+	random = no
+	country = FRA
+	decision = { atwar = yes }
+	decision_trigger = { supplies = 2000 }
+	trigger = {
+		lost_national = { country = FRA value = 10 }
+		atwar = yes
+		OR = {
+			ai = yes
+			supplies = 2000
+		}
+	}
+	name = "EVT_SHARED_00460_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GLOBAL/ww1_offensive"
+	decision_picture = "GLOBAL/decision_german_mobilization"
+	date = { day = 1 month = january year = 1914 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_VICTORY"
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { trigger = { ai = yes } type = morale which = land value = 20 }
+		command = { type = speed which = land value = 2 }
+		command = { type = morale which = naval value = 10 }
+		command = { type = morale which = air value = 10 }
+		command = { type = counterattack value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = encirclement value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = sce_frequency value = 0.3 }
+		command = { type = attrition_mod value = 2 }
+		command = { type = trickleback_mod value = 5 }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+		command = { trigger = { ai = no } type = event which = 147034 where = -1 when = 30 }
+		command = { trigger = { ai = yes } type = event which = 147034 where = -1 when = 120 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147259] FRA | 1914 | Collapse of Ottoman Positions (Retroceso otomano en el Egeo)
+# Triggered by event 196003 in events/Minors/OTT.txt
+# Triggered by event 147280 in events/FRA/FRA_14-14.txt
+# Triggered by event 147281 in events/FRA/FRA_14-31.txt
+# Trigger event 152014 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147259
+	country = FRA
+	decision = {
+		exists = GRE
+		war = { country = FRA  country = U09 }
+		event = 196003
+		NOT = {
+			alliance = { country = FRA country = GRE }
+			alliance = { country = U09 country = GRE }
+			war = { country = FRA country = OTT }
+			event = 147280
+			event = 147281
+		}
+	}
+	decision_trigger = {
+		control = { province = 55 data = -3 }
+	}
+	trigger = {
+		random = 25
+		exists = GRE
+		war = { country = FRA  country = U09 }
+		event = 196003
+		NOT = {
+			alliance = { country = FRA country = GRE }
+			alliance = { country = U09 country = GRE }
+			war = { country = FRA country = OTT }
+			event = 147280
+			event = 147281
+		}
+		control = { province = 55 data = -3 }
+	}
+	name = "EVT_FRA_147259_NAME"
+	desc = "EVT_FRA_147259_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		ai_chance = 95
+		name = "EVT_FRA_147259_A"
+		command = { type = trigger which = 152014 }
+	}
+	action_b = { trigger = { ai = yes }
+		ai_chance = 5
+		name = "ACTION_NAME_NEUTRAL"
+		command = { }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [147260] FRA | 1914 | Negotiations with Greece (Negociaciones con Grecia)
+# Triggered by event 211006 in events/Minors/RUS_14-14.txt
+# Triggered by event 147280 in events/FRA/FRA_14-14.txt
+# Triggered by event 147281 in events/FRA/FRA_14-31.txt
+# Triggered by event 143189 in events/ENG/ENG_Decisions.txt
+# Trigger event 152017 in events/GRE/GRE_14-33.txt
+# Trigger event 152016 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 147260
+   country = FRA
+	decision = {
+		exists = GRE
+		event = 211006
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = GRE country = U09 }
+			alliance = { country = GRE country = FRA }
+			event = 147280
+			event = 147281
+		}
+	}
+	decision_trigger = {
+		exists = SER
+		relation = { which = GRE value = 60 }
+		control = { province = 55 data = -3 }
+	}
+	trigger = {
+		event = 211006
+		exists = GRE
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = GRE country = U09 }
+			alliance = { country = GRE country = FRA }
+			event = 147280
+			event = 147281
+		}
+		exists = SER
+		OR = {
+			random = 8
+			AND = {
+				event = 143189
+				random = 18
+			}
+			AND = {
+				NOT = { war = { country = OTT country = FRA } }
+				random = 23
+			}
+			AND = {
+				event = 143189
+				NOT = { war = { country = OTT country = FRA } }
+				random = 32
+			}
+		}
+	}
+   name = "EVT_FRA_147260_NAME"
+   desc = "EVT_FRA_147260_DESC"
+   style = 2
+	picture = "GLOBAL/news_paper"
+   date = { day = 1 month = january year = 1914 }
+   offset = 15
+   deathdate = { day = 29 month = december year = 1925 }
+   action = {
+      name = "ACTION_NAME_ACCEPT"
+	  command = { trigger = { NOT = { alliance = { country = U08 country = BUL } } } type = trigger which = 152017 }
+	  command = { trigger = { alliance = { country = U08 country = BUL } }  type = trigger which = 152016 }
+   }
+   action = { trigger = { ai = yes }
+      name = "ACTION_NAME_REFUSE"
+	  ai_chance = 0
+      command = {  }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [147265] FRA | 1914 | Allied Demand for Greek Demobilization (Exigencia aliada de desmovilización a Grecia)
+# Triggered by event 152023 in events/GRE/GRE_14-33.txt
+# Triggered by event 147280 in events/FRA/FRA_14-14.txt
+# Triggered by event 147281 in events/FRA/FRA_14-31.txt
+# Trigger event 152025 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147265
+	country = FRA
+	decision = {
+		exists = GRE
+		event = 152023
+		flag = greece_mobilized
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = GRE country = FRA }
+			alliance = { country = GRE country = U09 }
+			event = 147280
+			event = 147281
+		}
+	}
+	decision_trigger = { }
+	trigger = {
+		random = 5
+		exists = GRE
+		event = 152023
+		flag = greece_mobilized
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = GRE country = FRA }
+			alliance = { country = GRE country = U09 }
+			event = 147280
+			event = 147281
+		}
+	}
+   name = "EVT_FRA_147265_NAME"
+   desc = "EVT_FRA_147265_DESC"
+   style = 2
+	picture = "GLOBAL/news_paper"
+   date = { day = 1 month = january year = 1914 }
+   offset = 15
+   deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "EVT_FRA_147265_A"
+		ai_chance = 100
+		command = { type = relation which = GRE value = -5 }
+		command = { type = trigger which = 152025 }
+	}
+	action_b = { trigger = { ai = yes }
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		ai_chance = 0
+		command = { type = relation which = GRE value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147272] FRA | 1914 | Covert Operation against Tatoi Palace (Operación clandestina en el palacio de Tatoi)
+# Triggered by event 147280 in events/FRA/FRA_14-14.txt
+# Triggered by event 147281 in events/FRA/FRA_14-31.txt
+# Trigger event 152029 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147272
+	country = FRA
+	decision = {
+		exists = GRE
+		flag = entente_hostility
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = GRE country = FRA }
+			alliance = { country = GRE country = U09 }
+			event = 147280
+			event = 147281
+		}
+	}
+	decision_trigger = { }
+	trigger = {
+		random = 20
+		exists = GRE
+		flag = entente_hostility
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = GRE country = FRA }
+			alliance = { country = GRE country = U09 }
+			event = 147280
+			event = 147281
+		}
+	}
+	name = "EVT_FRA_147272_NAME"
+	desc = "EVT_FRA_147272_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = trigger which = 152029 }
+	}
+	action_b = { trigger = { ai = yes }
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 0
+		command = { type = relation which = GRE value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147273] FRA | 1914 | Renewed Ultimatum for Greek Demobilization (Nuevo ultimátum de desmovilización a Grecia)
+# Triggered by event 152030 in events/GRE/GRE_14-33.txt
+# Triggered by event 147280 in events/FRA/FRA_14-14.txt
+# Triggered by event 147281 in events/FRA/FRA_14-31.txt
+# Trigger event 152031 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147273
+	country = FRA
+	decision = {
+		exists = GRE
+		flag = entente_hostility
+		flag = greece_mobilized
+		event = 152030
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = GRE country = FRA }
+			alliance = { country = GRE country = U09 }
+			event = 147280
+			event = 147281
+		}
+	}
+	decision_trigger = { }
+	trigger = {
+		random = 15
+		exists = GRE
+		flag = entente_hostility
+		flag = greece_mobilized
+		event = 152030
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = GRE country = FRA }
+			alliance = { country = GRE country = U09 }
+			event = 147280
+			event = 147281
+		}
+	}
+	name = "EVT_FRA_147273_NAME"
+	desc = "EVT_FRA_147273_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "EVT_FRA_147273_A"
+		ai_chance = 100
+		command = { type = trigger which = 152031  }
+	}
+	action_b = { trigger = { ai = yes }
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		ai_chance = 0
+		command = { type = relation which = GRE value = 5 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [147276] FRA | 1914 | Allied Ultimatum to the Greek Monarchy (Ultimátum aliado a la monarquía griega)
+# Triggered by event 211036 in events/Minors/RUS_14-14.txt
+# Triggered by event 147275 in events/FRA/FRA_14-14.txt
+# Triggered by event 147280 in events/FRA/FRA_14-14.txt
+# Triggered by event 147281 in events/FRA/FRA_14-31.txt
+# Trigger event 152033 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147276
+	country = FRA
+	decision = {
+		exists = GRE
+		flag = entente_hostility
+		flag = greece_mobilized
+		event = 211036
+		event = 147275
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = GRE country = FRA }
+			alliance = { country = GRE country = U09 }
+			event = 147280
+			event = 147281
+		}
+	}
+	decision_trigger = { }
+	trigger = {
+		random = 25
+		exists = GRE
+		flag = entente_hostility
+		flag = greece_mobilized
+		event = 211036
+		event = 147275
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = GRE country = FRA }
+			alliance = { country = GRE country = U09 }
+			event = 147280
+			event = 147281
+		}
+	}
+	name = "EVT_FRA_147276_NAME"
+	desc = "EVT_FRA_147276_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "EVT_FRA_147276_A"
+		ai_chance = 100
+		command = { type = trigger which = 152033  }
+	}
+	action_b = { trigger = { ai = yes }
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		ai_chance = 0
+		command = { type = relation which = GRE value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147297] FRA | 1915 | Formation of the Briand Government (Formación del gobierno de Aristide Briand)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147297
+	country = FRA
+	decision = { headofgovernment = 5292 }
+	decision_trigger = { }
+	trigger = {
+		month = 9
+		headofgovernment = 5292
+	}
+	date = { day = 1 month = january year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1915 }
+	name = "EVT_FRA_147297_NAME"
+	desc = "EVT_FRA_147297_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 5283 }
+		command = { type = foreignminister which = 5274 }
+		command = { type = armamentminister which = 5328 }
+		command = { type = ministerofsecurity which = 5343 }
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147254] FRA | 1915 | The Secret Treaty of London (El Tratado secreto de Londres)
+# Triggered by event 147280 in events/FRA/FRA_14-14.txt
+# Triggered by event 147281 in events/FRA/FRA_14-31.txt
+# Triggered by event 166110 in events/ITA/ITA_14-20.txt
+# Trigger event 166099 in events/ITA/ITA_14-20.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147254
+	country = FRA
+	decision = {
+		exists = ITA
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = ITA country = U09 }
+			alliance = { country = ITA country = FRA }
+			event = 147280
+			event = 147281
+			event = 166110
+		}
+		year = 1915
+	}
+	decision_trigger = {
+		relation = { which = ITA value = 50 }
+		control = { province = 55 data = -3 }
+	}
+	trigger = {
+		random = 10
+		exists = ITA
+		year = 1915
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = ITA country = U09 }
+			alliance = { country = ITA country = FRA }
+			event = 147280
+			event = 147281
+			event = 166110
+		}
+		control = { province = 55 data = -3 }
+	}
+	name = "EVT_FRA_147254_NAME"
+	desc = "EVT_FRA_147254_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = february year = 1915 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1917 }
+	action = {
+		name = "EVT_FRA_147254_A"
+		ai_chance = 100
+		command = { type = trigger which = 166099 }
+	}
+	action = { trigger = { ai = yes }
+		name = "EVT_FRA_147254_B"
+		ai_chance = 0
+		command = {  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147256] FRA | 1915 | Russian Breakthrough into Hungary (Ruptura rusa en el frente húngaro)
+# Triggered by event 147280 in events/FRA/FRA_14-14.txt
+# Triggered by event 147281 in events/FRA/FRA_14-31.txt
+# Triggered by event 209064 in events/Minors/ROM_14-36.txt
+# Trigger event 209062 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147256
+	country = FRA
+	decision = {
+		exists = ROM
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = FRA country = ROM }
+			alliance = { country = RUS country = ROM }
+			alliance = { country = U09 country = ROM }
+			event = 147280
+			event = 147281
+			event = 209064
+		}
+		OR = {
+			control = { province = 212 data = RUS }
+			control = { province = 213 data = RUS }
+			control = { province = 214 data = RUS }
+			control = { province = 292 data = RUS }
+      AND = {
+				year = 1916
+				month = 7
+        control = { province = 305 data = RUS }
+				control = { province = 306 data = RUS }
+			}
+		}
+	}
+	decision_trigger = {
+		control = { province = 55 data = -3 }
+	}
+	trigger = {
+		random = 25
+		war = { country = FRA  country = U09 }
+		exists = ROM
+		NOT = {
+			alliance = { country = FRA country = ROM }
+			alliance = { country = RUS country = ROM }
+			alliance = { country = U09 country = ROM }
+			event = 147280
+			event = 147281
+			event = 209064
+		}
+		OR = {
+			control = { province = 212 data = RUS }
+			control = { province = 213 data = RUS }
+			control = { province = 214 data = RUS }
+			control = { province = 292 data = RUS }
+      AND = {
+				year = 1916
+				month = 7
+        control = { province = 305 data = RUS }
+				control = { province = 306 data = RUS }
+			}
+		}
+		control = { province = 55 data = -3 }
+	}
+	name = "EVT_FRA_147256_NAME"
+	desc = "EVT_FRA_147256_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1915 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "ACTION_NAME_JOIN_ALLIANCE"
+		ai_chance= 90
+		command = { type = trigger which = 209062 }
+	}
+	action_b = { trigger = { ai = yes }
+		name = "EVT_FRA_147256_A"
+		ai_chance = 10
+		command = {  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147258] FRA | 1916 | Russian Conquest of Galicia (Ocupación rusa de Galitzia)
+# Triggered by event 147280 in events/FRA/FRA_14-14.txt
+# Triggered by event 147281 in events/FRA/FRA_14-31.txt
+# Triggered by event 209064 in events/Minors/ROM_14-36.txt
+# Trigger event 209063 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147258
+	country = FRA
+	decision = {
+		exists = ROM
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = FRA country = ROM }
+			alliance = { country = RUS country = ROM }
+			alliance = { country = U09 country = ROM }
+			event = 147280
+			event = 147281
+			event = 209064
+		}
+		OR = {
+			control = { province = 235 data = RUS }
+			control = { province = 237 data = RUS }
+			control = { province = 239 data = RUS }
+			control = { province = 240 data = RUS }
+			control = { province = 242 data = RUS }
+			control = { province = 300 data = RUS }
+		}
+	}
+	decision_trigger = {
+		control = { province = 55 data = -3 }
+	}
+	trigger = {
+		random = 15
+		exists = ROM
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = FRA country = ROM }
+			alliance = { country = RUS country = ROM }
+			alliance = { country = U09 country = ROM }
+			event = 147280
+			event = 147281
+			event = 209064
+		}
+		OR = {
+			control = { province = 235 data = RUS }
+			control = { province = 237 data = RUS }
+			control = { province = 239 data = RUS }
+			control = { province = 240 data = RUS }
+			control = { province = 242 data = RUS }
+			control = { province = 300 data = RUS }
+		}
+		control = { province = 55 data = -3 }
+	}
+   name = "EVT_FRA_147258_NAME"
+   desc = "EVT_FRA_147258_DESC"
+   style = 2
+	picture = "GLOBAL/news_paper"
+   date = { day = 1 month = january year = 1916 }
+   offset = 5
+   deathdate = { day = 29 month = december year = 1925 }
+   action_a = { trigger = { ai = yes }
+		name = "EVT_FRA_147258_A"
+		ai_chance= 95
+		command = { type = trigger which = 209063 }
+   }
+   action_b = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 5
+		command = {  }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [147299] FRA | 1917 | Foch Appointed Allied Supreme Commander (Foch nombrado Comandante Supremo Aliado)
+# Trigger event 147330 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147299
+	country = FRA
+	decision = {
+		war = { country = FRA country = U08 }
+		alliance = { country = FRA country = ENG }
+		ai = ENG
+	}
+	decision_trigger = { NOT = { incabinet = 5249 } }
+	trigger = {
+		ai = no
+		war = { country = FRA country = U08 }
+		alliance = { country = FRA country = ENG }
+		NOT = { incabinet = 5249 }
+	}
+	date = { day = 1 month = january year = 1917 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1919 }
+	name = "EVT_FRA_147299_NAME"
+	desc = "EVT_FRA_147299_DESC"
+	style = 2
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	picture = "GLOBAL/ww1_offensive"
+	action = {
+	name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 5249 }
+		command = { trigger = { ai = ENG } type = military_control which = FRA where = ENG value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147300] FRA | 1917 | Georges Clemenceau Appointed Prime Minister (Clemenceau nombrado presidente del Consejo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147300
+	country = FRA
+	decision = {
+		war = { country = FRA country = U08 }
+	}
+	decision_trigger = { NOT = { incabinet = 5287 } }
+	trigger = {
+		random = 10
+		war = { country = FRA country = U08 }
+		alliance = { country = FRA country = ENG }
+		NOT = { incabinet = 5287 }
+	}
+	date = { day = 1 month = january year = 1917 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1919 }
+	name = "EVT_FRA_147300_NAME"
+	desc = "EVT_FRA_147300_DESC"
+	style = 2
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 5287 }
+		command = { type = armamentminister which = 5340 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147000] FRA | 1933 | National Economic Recovery Policy (Plan de reactivación económica nacional)
+# Trigger event 147001 in events/FRA/FRA_31-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147000
+	random = no
+	country = FRA
+	decision = {
+	}
+	decision_trigger = {
+			money = 500
+	}
+	trigger = {
+			random = 10
+	}
+	name = "EVT_SHARED_00189_NAME"
+	desc = "EVT_SHARED_00189_DESC"
+	style = 2
+	picture = "GLOBAL/new_deal"
+	decision_picture = "GLOBAL/decision_new_deal"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -2 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { trigger = { ai = no } type = money value = -500 }
+		command = { type = domestic which = free_market value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147008] FRA | 1933 | The Franco-Soviet Mutual Assistance Treaty (Tratado de Asistencia Mutua Franco-Soviético)
+# Triggered by event 150008 in events/GER/GER_Decisions.txt
+# Trigger event 223002 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147008
+	random = no
+	country = FRA
+	decision = {
+		event = 150008
+		atwar = no
+		not = { exists = DDR }
+	}
+	decision_trigger = {
+		relation = { which = SOV value = 50 }
+	}
+	trigger = {
+		event = 150008
+		atwar = no
+		not = { exists = DDR }
+	}
+	style = 2
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1938 }
+	picture = "GLOBAL/news_paper"
+	decision_picture = "GLOBAL/decision_anticominternpact"
+	name = "EVT_SHARED_00200_NAME"
+	desc = "EVT_SHARED_00200_DESC"
+	action = {
+		name = "ACTION_NAME_SIGN"
+		command = { type = money value = -30 }
+		command = { type = trigger which = 223002 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329385] FRA | 1933 | Proscription of the French Communist Party (Ilegalización del Partido Comunista Francés)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329385
+	random = no
+	country = FRA
+	decision = {
+		war = { country = GER country = FRA }
+		government = democratic
+	}
+	decision_trigger = { }
+	trigger = {
+		war = { country = GER country = FRA }
+		government = democratic
+		random = 60
+	}
+	name = "EVT_FRA_329385_NAME"
+	desc = "EVT_FRA_329385_DESC"
+	style = 2
+	picture = "FRA/thorez"
+	decision_picture = "GLOBAL/decision_fireside_chat"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { type = relation which = SOV value = -30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329092] FRA | 1936 | Spanish Civil War: Intervention (Guerra civil española: Intervención)
+# Triggered by event 225010 in events/Minors/SPR.txt
+# Trigger event 324121 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 225014 in events/Minors/SPR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329092
+	random = no
+	country = FRA
+	decision = {
+		war = { country = SPA country = SPR }
+		event = 225010
+		NOT = {
+			OR = {
+			alliance = { country = FRA country = SPR }
+			alliance = { country = ENG country = SPR }
+			war = { country = FRA country = SPR }
+			war = { country = FRA country = GER }
+			war = { country = FRA country = ENG }
+			war = { country = FRA country = USA }
+			war = { country = FRA country = ITA }
+			war = { country = FRA country = FIN }
+			government = fascist
+			}
+		}
+	        }
+	decision_trigger = {
+		manpower = 15
+		supplies = 2500
+		money = 200
+	}
+	trigger = {
+		war = { country = SPA country = SPR }
+		event = 225010
+		NOT = {
+			OR = {
+				alliance = { country = FRA country = SPR }
+				alliance = { country = ENG country = SPR }
+				war = { country = FRA country = SPR }
+				war = { country = FRA country = GER }
+				war = { country = FRA country = ENG }
+				war = { country = FRA country = USA }
+				war = { country = FRA country = ITA }
+				war = { country = FRA country = FIN }
+				government = fascist
+			}
+		}
+	}
+	name = "EVT_SHARED_00203_NAME"
+	desc = "EVT_SHARED_00203_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 19 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+			trigger = {
+			ai = yes
+		}
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 97
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = relation which = SPR value = -20 }
+		command = { type = relation which = SPA value = 5 }
+		command = { type = relation which = SOV value = -5 }
+	}
+	action_b = {
+		ai_chance = 3
+		name = "EVT_SHARED_00203_A"
+		command = { type = dissent value = 5 }
+		command = { type = money value = -200 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = supplies value = -2500 }
+		command = { type = trigger which = 225014 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SPR value = 20 }
+		command = { type = relation which = SPA value = -15 }
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = ITA value = -5 }
+		command = { type = non_aggression which = FRA where = SPR }
+		command	= { type = setflag which = SCW_allied_intervention }
+	}
+		action = {
+			trigger = {
+			ai = no
+		}
+		ai_chance = 3
+		name = EVT_SHARED_00204_A
+		command = { type = dissent value = 7 }
+		command = { type = money value = -200 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = supplies value = -2500 }
+		command = { type = trigger which = 225014 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SPR value = 20 }
+		command = { type = relation which = SPA value = -15 }
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = ITA value = -5 }
+		command = { type = non_aggression which = FRA where = SPR }
+		command	= { type = setflag which = SCW_allied_intervention }
+		command = { type = military_control which = FRA where = SPR value = 1 }
+		command	= { type = local_setflag which = military_control }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147092] FRA | 1939 | The Saar Protectorate (El Protectorado del Sarre)
+# Triggered by event 259000 in events/Minors/U24.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147092
+	random = no
+	country = FRA
+	name = EVT_SHARED_00774_NAME
+	desc = EVT_SHARED_00774_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		event = { id = 259000 days = 100 }
+		NOT = { atwar = SOV }
+}
+	decision_trigger = {
+ 		event = { id = 259000 days = 100 }
+		NOT = { atwar = SOV }
+	}
+	trigger = {
+		control = { province = 127 data = FRA }
+		event = 259000
+		  OR = {
+          AND = { random = 2 event = { id = 259000 days = 100 } }
+          AND = { random = 10 event = { id = 259000 days = 200 } }
+          AND = { random = 50 event = { id = 259000 days = 300 } }
+          }
+	}
+	date = { day = 0 month = january year = 1939 }
+  	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 95
+		command = { type = independence which = U23 value = 1 when = 1 }
+		command = { type = make_puppet which = U23 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147030] FRA | 1940 | Relocate National Capital (Traslado de la capital)
+# Triggered by event 236003 in events/Minors/U01_Decisions.txt
+# Triggered by event 329285 in events/FRA/FRA_39-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147030
+	random = no
+	country = FRA
+	name = "EVT_SHARED_00526_NAME"
+	desc = "EVT_SHARED_00526_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		event = 236003
+		NOT = { capital = { province = 55 data = FRA } }
+		NOT = { event = 329285 }
+	}
+	decision_trigger = {
+      	control = { province = 55 data = FRA }
+      	owned = { province = 55 data = FRA }
+	}
+	trigger = {
+		event = 236003
+		NOT = { capital = { province = 55 data = FRA } }
+		control = { province = 55 data = FRA }
+		owned = { province = 55 data = FRA }
+		NOT = { event = 329285 }
+	}
+	date = { day = 2 month = january year = 1940 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 55 }
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330033] FRA | 1947 | French Reinforcements in Indochina (Refuerzos franceses en Indochina)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330033
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_330033_NAME
+	desc = EVT_FRA_330033_DESC
+	picture = "nwo/french_in_south_vietnam"
+	decision_picture = "nwo/d_french_in_south_vietnam"
+	style = 1
+	decision = {
+		war = { country = U72 country = VIE }
+		puppet = { country = VIE country = FRA }
+		OR = {
+			flag = french_full_support_in_vietnam
+			flag = french_limited_support_in_vietnam
+		}
+	}
+	trigger = {
+		war = { country = U72 country = VIE }
+		puppet = { country = VIE country = FRA }
+		OR = {
+			flag = french_full_support_in_vietnam
+			flag = french_limited_support_in_vietnam
+		}
+	}
+	date = { day = 1 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = EVT_FRA_330033_A
+		ai_chance = 1
+		trigger = { flag = french_limited_support_in_vietnam }
+		command = { type = clrflag which = french_limited_support_in_vietnam }
+		command = { type = setflag which = french_full_support_in_vietnam }
+		command = { type = manpowerpool value = -40 }
+		command = { type = supplies value = -2000 }
+		command = { type = money value = -500 }
+		command = { type = dissent value = 2 }
+	}
+	action = {
+		name = EVT_FRA_330033_B
+		ai_chance = 2
+		command = { trigger = { flag = french_full_support_in_vietnam } type = clrflag which = french_full_support_in_vietnam }
+		command = { trigger = { flag = french_full_support_in_vietnam } type = setflag which = french_limited_support_in_vietnam }
+		command = { trigger = { flag = french_full_support_in_vietnam } type = manpowerpool value = 10 }
+		command = { trigger = { flag = french_full_support_in_vietnam } type = supplies value = 500 }
+		command = { trigger = { flag = french_full_support_in_vietnam } type = money value = 100 }
+		command = { trigger = { flag = french_full_support_in_vietnam } type = dissent value = -2 }
+		command = { trigger = { flag = french_limited_support_in_vietnam } type = clrflag which = french_full_support_in_vietnam }
+		command = { trigger = { flag = french_limited_support_in_vietnam } type = clrflag which = french_limited_support_in_vietnam }
+		command = { trigger = { flag = french_limited_support_in_vietnam } type = manpowerpool value = 10 }
+		command = { trigger = { flag = french_limited_support_in_vietnam } type = supplies value = 500 }
+		command = { trigger = { flag = french_limited_support_in_vietnam } type = money value = 100 }
+		command = { trigger = { flag = french_limited_support_in_vietnam } type = end_mastery which = VIE }
+		command = { trigger = { flag = french_limited_support_in_vietnam } type = dissent value = 12 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		trigger = { ai = yes }
+		ai_chance = 97
+		command = { type = money value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147210] FRA | 1962 | Crisis of the Fourth Republic (Crisis de la Cuarta República)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147210
+	country = FRA
+	name = EVT_FRA_147210_NAME
+	desc = EVT_FRA_147210_DESC
+	picture = "nwo/de_gaulle_fifth_republic"
+	decision_picture = "nwo/d_de_gaulle_fifth_republic"
+	style = 1
+	decision = {
+		government = democratic
+		flag = cold_war
+		headofstate = 5404
+	}
+	trigger = {
+		government = democratic
+		flag = cold_war
+		headofstate = 5404
+	}
+	date = { day = 1 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = EVT_FRA_147210_A
+		ai_chance = 98
+		command = { type = dissent value = -10 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = defense_lobby value = -2 }
+		command = { type = headofstate which = 5404 }
+	}
+	action_b = {
+		name = EVT_FRA_147210_B
+		ai_chance = 2
+		trigger = { ai = yes }
+		command = { type = dissent value = 1 }
+	}
+}

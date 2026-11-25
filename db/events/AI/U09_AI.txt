@@ -1,0 +1,178 @@
+# ============================================================================
+# File: events/AI/U09_AI.txt (6 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [244004] U09 | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 244004
+	random = no
+	country = U09
+	persistent = yes
+	trigger = {
+		ai = yes
+		NOT = { flag = U09_1914StartupDone }
+		war = { country = SER country = U09 }
+		war = { country = RUS country = U09 }
+		NOT = { war = { country = U09 country = U08 } }
+		NOT = { war = { country = U09 country = ITA } }
+		NOT = { alliance = { country = U09  country = ITA } }
+		NOT = { ai = U08 }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a =
+		{
+			ai_chance = 70
+			command = { type = setflag which = U09_1914StartupDone }
+			command = { type = ai which = "switch/U09_1914Conrad_setup.ai" }
+			command = { type = setflag which = U09_1914Conrad }
+		}
+	action_b =
+		{
+			ai_chance = 18
+			command = { type = setflag which = U09_1914Prinz }
+			command = { type = ai which = "switch/U09_1914Prinz_setup.ai" }
+			command = { type = setflag which = U09_1914StartupDone }
+		}
+	action_c = {
+			ai_chance = 12
+			command = { type = setflag which = U09_1914Koenig }
+			command = { type = ai which = "switch/U09_1914Koenig_setup.ai" }
+			command = { type = setflag which = U09_1914StartupDone }
+			}
+}
+
+# ----------------------------------------------------------------------------
+# [244005] U09 | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 244005
+	random = no
+	country = U09
+	persistent = yes
+	trigger = {
+		ai = yes
+		NOT = { flag = U09_1914StartupDone }
+		war = { country = SER country = U09 }
+		NOT	= { war = { country = RUS country = U09 }}
+		NOT = { war = { country = U09 country = U08 } }
+		NOT = { war = { country = U09 country = ITA } }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a =
+		{
+			ai_chance = 100
+			command = { type = ai which = "switch/U09_1914BalkanOnly_setup.ai" }
+			command = { type = setflag which = U09_1914BalkanOnly }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [244006] U09 | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 244006
+	random = no
+	country = U09
+	persistent = yes
+	trigger = {
+		ai = yes
+		NOT = { flag = U09_1914ITAWar }
+		flag = U09_1914StartupDone
+		OR = {
+				war = { country = ITA country = U09 }
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a =
+		{
+			ai_chance = 100
+			command = { type = ai which = "switch/U09_1914ITA.ai" }
+			command = { type = setflag which = U09_1914ITAWar }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329567] U09 | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329567
+	random = no
+	country = U09
+	persistent = no
+	trigger = {
+			ai = U08
+			ai = U09
+			alliance = { country = U08 country = U09 }
+			}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		command = { type = ai which = "switch/U09_1914ExpForcesToGER.ai" }
+		command = { type = ai which = "switch/U09_garrison.ai" }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [244007] U09 | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 244007
+	random = no
+	country = U09
+	trigger = { ai = yes atwar = yes }
+	name = "AI_EVENT"
+	date = { day = 29 month = january year = 1914 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+        	command = { trigger = { control = { province = 402 data = U09 } } type = activate_division which = 14000 value = 1001 where = 402 when = 0 }
+        	command = { trigger = { control = { province = 402 data = U09 } } type = activate_division which = 14000 value = 1002 where = 402 when = 0 }
+        	command = { trigger = { control = { province = 401 data = U09 } } type = activate_division which = 14000 value = 1003 where = 401 when = 0 }
+        	command = { trigger = { control = { province = 401 data = U09 } } type = activate_division which = 14000 value = 1004 where = 401 when = 0 }
+        	command = { trigger = { control = { province = 401 data = U09 } } type = activate_division which = 14000 value = 1005 where = 401 when = 0 }
+        	command = { trigger = { control = { province = 403 data = U09 } } type = activate_division which = 14000 value = 1006 where = 403 when = 0 }
+        	command = { trigger = { control = { province = 191 data = U09 } } type = activate_division which = 14000 value = 1007 where = 191 when = 0 }
+        	command = { trigger = { control = { province = 191 data = U09 } } type = activate_division which = 14000 value = 1008 where = 191 when = 0 }
+        	command = { trigger = { control = { province = 191 data = U09 } } type = activate_division which = 14000 value = 1009 where = 191 when = 0 }
+        	command = { trigger = { control = { province = 402 data = U09 } } type = activate_division which = 14000 value = 1010 where = 402 when = 0 }
+        	command = { trigger = { control = { province = 403 data = U09 } } type = activate_division which = 14000 value = 1011 where = 403 when = 0 }
+        	command = { trigger = { control = { province = 403 data = U09 } } type = activate_division which = 14000 value = 1012 where = 403 when = 0 }
+			command = { type = construct which = land_fort where = 401 value = 1 }
+			command = { type = construct which = land_fort where = 402 value = 3 }
+			command = { type = construct which = land_fort where = 191 value = 1 }
+			command = { type = construct which = land_fort where = 403 value = 1 }
+			command = { type = construct which = land_fort where = 404 value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244008] U09 | 1920 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 244008
+	name = "AI_EVENT"
+	country = U09
+	trigger = {
+		ai = yes
+		flag = no_war_1933
+	}
+	date = { day = 2 month = june year = 1920 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = ai which = "AAR/wars/no_war.ai" }
+	}
+}

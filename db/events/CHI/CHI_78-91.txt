@@ -1,0 +1,299 @@
+# ============================================================================
+# File: events/CHI/CHI_78-91.txt (9 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [124185] CHI | 1978 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124185
+	country = CHI
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1978 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1983 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 55506 }
+		command = { type = headofgovernment which = 55501 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124236] CHI | 1982 | UN Resolution on the Falkland Islands (Resolución de la ONU sobre las Islas Malvinas)
+# Triggered by event 207062 in events/AI/REB_AI_55-00.txt
+# Trigger event 207063 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124236
+	country = CHI
+	name = EVT_SHARED_00966_NAME
+	desc = EVT_SHARED_00966_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 80
+		trigger = {
+			NOT = { flag = un_falklands_veto }
+			NOT = { alliance = { country = ARG } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 20
+		command = { type = setflag which = un_falklands_veto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124186] CHI | 1984 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124186
+	country = CHI
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1984 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 55502 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124187] CHI | 1988 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124187
+	country = CHI
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 55503 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124188] CHI | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124188
+	country = CHI
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 55504 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124189] CHI | 1990 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124189
+	country = CHI
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 55505 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329778] CHI | 1990 | Mainland Organizes Elections (Comicios en China Continental)
+# Triggered by event 123078 in events/Minors/CHC_62-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329778
+	country = CHI
+	name = EVT_CHI_329778_NAME
+	desc = EVT_CHI_329778_DESC
+	picture = "nwo/democratic_china"
+	trigger = {
+		NOT = { war = { country = CHI country = CHC } }
+		event = 123078
+		exists = CHC
+	}
+	date = { day = 1 month = february year = 1990 }
+	offset = 30
+	deathdate = { day = 29 month = february year = 1990 }
+	action = {
+		name = EVT_CHI_329778_A
+		ai_chance = 70
+		command = { type = dissent value = 5 }
+		command = { type = relation which = CHC value = 100 }
+		command = { type = sleepevent which = 324423 }
+	}
+	action = {
+		name = EVT_CHI_329778_B
+		ai_chance = 20
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = relation which = CHC value = 200 }
+		command = { type = sleepevent which = 124173 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_DEMANDS
+		ai_chance = 10
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = relation which = CHC value = -50 }
+		command = { type = sleepevent which = 124173 }
+		command = { type = sleepevent which = 324423 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124173] CHI | 1990 | Chinese Reunification Debate (Debate de reunificación)
+# Triggered by event 123079 in events/Minors/CHC_62-91.txt
+# Trigger event 324422 in events/GLOBAL/MULTI_48-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124173
+	country = CHI
+	name = EVT_CHI_124173_NAME
+	desc = EVT_CHI_124173_DESC
+	picture = "nwo/united_china"
+	trigger = {
+		atwar = no
+		event = 123079
+	}
+	date = { day = 1 month = april year = 1990 }
+	offset = 30
+	deathdate = { day = 29 month = april year = 1990 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 70
+		trigger = { exists = UCH NOT = { exists = CHC } NOT = { non_aggression = { country = UCH country = CHI } } }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = EVT_CHI_124173_A
+		ai_chance = 30
+		trigger = { exists = UCH NOT = { exists = CHC } NOT = { non_aggression = { country = UCH country = CHI } } }
+		command = { type = dissent value = 5 }
+		command = { type = relation which = CHC value = -200 }
+		command = { type = sleepevent which = 324422 }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 90
+		trigger = { exists = UCH NOT = { exists = CHC } non_aggression = { country = UCH country = CHI } }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = EVT_CHI_124173_A
+		ai_chance = 10
+		trigger = { exists = UCH NOT = { exists = CHC } non_aggression = { country = UCH country = CHI } }
+		command = { type = dissent value = 10 }
+		command = { type = relation which = CHC value = -200 }
+		command = { type = sleepevent which = 324422 }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 10
+		trigger = { exists = CHC NOT = { exists = UCH } }
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		name = EVT_CHI_124173_A
+		ai_chance = 90
+		trigger = { exists = CHC NOT = { exists = UCH } }
+		command = { type = dissent value = 5 }
+		command = { type = relation which = CHC value = -200 }
+		command = { type = sleepevent which = 324422 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124237] CHI | 1991 | UN Resolution on the Invasion of Kuwait (Resolución de la ONU sobre la Invasión de Kuwait)
+# Triggered by event 207064 in events/AI/REB_AI_55-00.txt
+# Trigger event 207065 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124237
+	country = CHI
+	name = EVT_SHARED_00967_NAME
+	desc = EVT_SHARED_00967_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 99
+		trigger = {
+			NOT = { flag = un_desertstorm_veto }
+			NOT = { alliance = { country = IRQ } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 1
+		command = { type = setflag which = un_desertstorm_veto }
+	}
+}

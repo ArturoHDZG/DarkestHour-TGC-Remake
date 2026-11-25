@@ -1,0 +1,873 @@
+# ============================================================================
+# File: events/GLOBAL/WWII_Historical_Director.txt
+# Master Director for Historical Interwar & World War II Scripting
+# Enforces exact historical timeline when triggered by event 231036
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231830] ITA | 1922 | March on Rome: Benito Mussolini in Power (La Marcha sobre Roma)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231830
+	country = ITA
+	trigger = {
+		flag = force_interwar_geopolitics
+		exists = ITA
+		NOT = { headofgovernment = 3002 }
+	}
+	name = "EVT_SHARED_00832_NAME"
+	desc = "EVT_SHARED_00832_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = october year = 1922 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofgovernment which = 3002 }
+		command = { type = setflag which = Mussolini_In_Power }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231831] SPA | 1931 | Proclamation of the Second Spanish Republic (Proclamación de la Segunda República)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231831
+	country = SPA
+	trigger = {
+		flag = force_interwar_geopolitics
+		exists = SPA
+		NOT = { exists = SPR }
+	}
+	name = "EVT_SPA_224039_NAME"
+	desc = "EVT_SPA_224039_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 14 month = april year = 1931 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1933 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = country which = SPR }
+		command = { type = dissent value = 5 }
+		command = { type = headofstate which = 255001 }
+		command = { type = headofgovernment which = 255001 }
+		command = { type = setflag which = Spanish_Republic_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231832] U08 | 1933 | Hitler Appointed Chancellor: Rise of the Third Reich (Adolf Hitler nombrado Canciller)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231832
+	country = U08
+	trigger = {
+		flag = force_interwar_geopolitics
+		exists = U08
+		NOT = { exists = GER }
+	}
+	name = "EVT_GER_150226_NAME"
+	desc = "EVT_GER_150226_DESC"
+	style = 2
+	picture = "GER/hitler_chancellor"
+	date = { day = 30 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 30 month = april year = 1933 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = country which = GER }
+		command = { type = flag_ext where = GER which = "" }
+		command = { type = domestic which = democratic value = -4 }
+		command = { type = domestic which = political_left value = -5 }
+		command = { type = headofstate which = 268 }
+		command = { type = headofgovernment which = 22 }
+		command = { type = foreignminister which = 3 }
+		command = { type = ministerofsecurity which = 5 }
+		command = { type = ministerofintelligence which = 6 }
+		command = { type = armamentminister which = 4 }
+		command = { type = chiefofstaff which = 7 }
+		command = { type = chiefofarmy which = 8 }
+		command = { type = chiefofnavy which = 9 }
+		command = { type = chiefofair which = 10 }
+		command = { type = setflag which = Hitler_In_Power }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231833] SPR | 1936 | Outbreak of the Spanish Civil War (Estallido de la Guerra Civil Española)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231833
+	country = SPR
+	trigger = {
+		flag = force_interwar_geopolitics
+		exists = SPR
+		NOT = { exists = SPA }
+		NOT = { event = 225010 }
+	}
+	name = "EVT_SPR_225010_NAME"
+	desc = "EVT_SPR_225010_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 17 month = july year = 1936 }
+	offset = 1
+	deathdate = { day = 31 month = august year = 1936 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 225010 }
+		command = { type = setflag which = SCW_Started }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231834] JAP | 1937 | Marco Polo Bridge: War in the Pacific Begins (Incidente del Puente de Marco Polo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231834
+	country = JAP
+	trigger = {
+		flag = force_interwar_geopolitics
+		exists = JAP
+		exists = CHI
+		NOT = { war = { country = JAP country = CHI } }
+	}
+	name = "EVT_SHARED_00196_NAME"
+	desc = "EVT_SHARED_00196_DESC"
+	style = 2
+	picture = "GLOBAL/ccip_npw"
+	date = { day = 7 month = july year = 1937 }
+	offset = 1
+	deathdate = { day = 31 month = august year = 1937 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = war which = CHI }
+		command = { trigger = { exists = CYN } type = war which = CYN }
+		command = { trigger = { exists = CXB } type = war which = CXB }
+		command = { trigger = { exists = CGX } type = war which = CGX }
+		command = { trigger = { exists = CSX } type = war which = CSX }
+		command = { type = setflag which = SinoJapaneseWar_Started }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231835] GER | 1938 | The Anschluss of Austria (El Anschluss de Austria)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231835
+	country = GER
+	trigger = {
+		flag = force_ww2_outbreak
+		exists = GER
+		exists = AUS
+		NOT = { war = { country = GER country = AUS } }
+		NOT = { event = 150033 }
+	}
+	name = "EVT_GER_150033_NAME"
+	desc = "EVT_GER_150033_DESC"
+	style = 2
+	picture = "GLOBAL/anschluss"
+	date = { day = 12 month = march year = 1938 }
+	offset = 1
+	deathdate = { day = 30 month = april year = 1938 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 150033 }
+		command = { trigger = { exists = AUS } type = inherit which = AUS }
+		command = { type = setflag which = Anschluss_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231836] GER | 1938 | The Munich Agreement: Cession of the Sudetenland (Los Acuerdos de Múnich)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231836
+	country = GER
+	trigger = {
+		flag = force_ww2_outbreak
+		exists = GER
+		exists = CZE
+		NOT = { war = { country = GER country = CZE } }
+		NOT = { event = 150034 }
+	}
+	name = "EVT_GER_150034_NAME"
+	desc = "EVT_GER_150034_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 30 month = september year = 1938 }
+	offset = 1
+	deathdate = { day = 31 month = october year = 1938 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 150034 }
+		command = { type = setflag which = Munich_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231837] GER | 1939 | End of Czechoslovakia: Protectorate of Bohemia-Moravia (Fin de Checoslovaquia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231837
+	country = GER
+	trigger = {
+		flag = force_ww2_outbreak
+		exists = GER
+		exists = CZE
+		NOT = { war = { country = GER country = CZE } }
+		NOT = { event = 150039 }
+	}
+	name = "EVT_GER_150039_NAME"
+	desc = "EVT_GER_150039_DESC"
+	style = 2
+	picture = "GLOBAL/munich"
+	date = { day = 15 month = march year = 1939 }
+	offset = 1
+	deathdate = { day = 30 month = april year = 1939 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 150039 }
+		command = { type = setflag which = Czech_Annexed }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231838] SOV | 1939 | The Molotov-Ribbentrop Pact (El Pacto Mólotov-Ribbentrop)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231838
+	country = SOV
+	trigger = {
+		flag = force_ww2_outbreak
+		exists = GER
+		exists = SOV
+		NOT = { war = { country = GER country = SOV } }
+		NOT = { event = 223086 }
+	}
+	name = "EVT_SOV_223086_NAME"
+	desc = "EVT_SOV_223086_DESC"
+	style = 2
+	picture = "GER/decision_mrpact"
+	date = { day = 23 month = august year = 1939 }
+	offset = 1
+	deathdate = { day = 31 month = august year = 1939 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 223086 }
+		command = { type = setflag which = Molotov_Ribbentrop_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231839] GER | 1939 | Danzig or War: Outbreak of World War II (Danzig o la Guerra: Estallido de la SGM)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231839
+	country = GER
+	trigger = {
+		flag = force_ww2_outbreak
+		exists = GER
+		exists = POL
+		NOT = { war = { country = GER country = POL } }
+	}
+	name = "EVT_GER_150058_NAME"
+	desc = "EVT_GER_150058_DESC"
+	style = 2
+	picture = "GLOBAL/poland_invasion"
+	date = { day = 1 month = september year = 1939 }
+	offset = 1
+	deathdate = { day = 10 month = september year = 1939 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = war which = POL }
+		command = { trigger = { exists = U06 } type = inherit which = U06 value = 1 }
+		command = { trigger = { exists = ENG NOT = { war = { country = GER country = ENG } } } type = war which = ENG }
+		command = { trigger = { exists = FRA NOT = { war = { country = GER country = FRA } } } type = war which = FRA }
+		command = { trigger = { exists = CAN NOT = { war = { country = GER country = CAN } } } type = war which = CAN }
+		command = { trigger = { exists = AST NOT = { war = { country = GER country = AST } } } type = war which = AST }
+		command = { trigger = { exists = NZL NOT = { war = { country = GER country = NZL } } } type = war which = NZL }
+		command = { trigger = { exists = SAF NOT = { war = { country = GER country = SAF } } } type = war which = SAF }
+		command = { type = setflag which = WWII_Outbreak_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231840] FRA | 1940 | The Fall of France: Armistice of Compiègne (La Caída de Francia: Régimen de Vichy)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231840
+	country = FRA
+	trigger = {
+		flag = force_ww2_outbreak
+		exists = FRA
+		exists = GER
+		war = { country = GER country = FRA }
+		NOT = { event = 147021 }
+	}
+	name = "EVT_FRA_147021_NAME"
+	desc = "EVT_FRA_147021_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 22 month = june year = 1940 }
+	offset = 1
+	deathdate = { day = 31 month = july year = 1940 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 147021 }
+		command = { type = setflag which = FallOfFrance_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231841] GER | 1941 | Deployment of the Deutsches Afrika-Korps (Despliegue del Deutsches Afrika-Korps)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231841
+	country = GER
+	trigger = {
+		flag = force_ww2_global_war
+		exists = GER
+		exists = ITA
+		war = { country = GER country = ENG }
+		NOT = { event = 329417 }
+	}
+	name = "EVT_GER_329417_NAME"
+	desc = "EVT_SHARED_00318_DESC"
+	style = 2
+	picture = "GER/deutsches_afrika_korps"
+	date = { day = 12 month = february year = 1941 }
+	offset = 1
+	deathdate = { day = 30 month = april year = 1941 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = add_corps which = "Deutsches Afrika-Korps" value = land when = 229 where = 750 }
+		command = { type = add_division value = motorized when = 1 where = sp_artillery }
+		command = { type = add_division value = armor when = 0 where = sp_artillery }
+		command = { type = add_corps which = "Afrika-Korps Transport" value = naval when = 377 where = 377 }
+		command = { type = add_division value = transport when = 2 }
+		command = { type = setflag which = AfrikaKorps_Deployed }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231842] GER | 1941 | Operation Barbarossa: Axis Invades the USSR (Operación Barbarroja)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231842
+	country = GER
+	trigger = {
+		flag = force_ww2_global_war
+		exists = GER
+		exists = SOV
+		NOT = { war = { country = GER country = SOV } }
+	}
+	name = "EVT_GER_150062_NAME"
+	desc = "EVT_GER_150062_DESC"
+	style = 2
+	picture = "GER/decision_barbarossa"
+	date = { day = 22 month = june year = 1941 }
+	offset = 1
+	deathdate = { day = 15 month = july year = 1941 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = war which = SOV }
+		command = { trigger = { exists = ITA alliance = { country = GER country = ITA } } type = war which = SOV }
+		command = { trigger = { exists = ROM alliance = { country = GER country = ROM } } type = war which = SOV }
+		command = { trigger = { exists = HUN alliance = { country = GER country = HUN } } type = war which = SOV }
+		command = { trigger = { exists = FIN alliance = { country = GER country = FIN } } type = war which = SOV }
+		command = { type = trigger which = 329550 } # Great Patriotic War for SOV
+		command = { type = setflag which = Barbarossa_Started }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231843] JAP | 1941 | Attack on Pearl Harbor & US Enters WWII (Ataque a Pearl Harbor)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231843
+	country = JAP
+	trigger = {
+		flag = force_ww2_global_war
+		exists = JAP
+		exists = USA
+		NOT = { war = { country = JAP country = USA } }
+	}
+	name = "EVT_SHARED_00800_NAME"
+	desc = "EVT_SHARED_00800_DESC"
+	style = 2
+	picture = "GLOBAL/pearl_harbor"
+	date = { day = 7 month = december year = 1941 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1941 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = war which = USA }
+		command = { trigger = { exists = ENG NOT = { war = { country = JAP country = ENG } } } type = war which = ENG }
+		command = { trigger = { exists = PHI NOT = { war = { country = JAP country = PHI } } } type = war which = PHI }
+		command = { trigger = { exists = GER } type = event which = 329438 where = GER when = 1 } # Germany declares war on USA
+		command = { trigger = { exists = ITA } type = event which = 166048 where = ITA when = 1 } # Italy declares war on USA
+		command = { type = trigger which = 316057 } # Pearl Harbor reaction in USA
+		command = { type = setflag which = PearlHarbor_Done }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231845] USA | 1944 | Operation Overlord: Allied Landing in Normandy (Desembarco de Normandía / Día D)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231845
+	country = USA
+	trigger = {
+		flag = force_ww2_total_outcome
+		exists = USA
+		exists = GER
+		OR = {
+			war = { country = USA country = GER }
+			war = { country = ENG country = GER }
+		}
+		NOT = { control = { province = 53 data = USA } }
+	}
+	name = "EVT_SHARED_00788_NAME"
+	desc = "EVT_SHARED_00788_DESC"
+	style = 2
+	picture = "GLOBAL/dday"
+	date = { day = 6 month = june year = 1944 }
+	offset = 1
+	deathdate = { day = 31 month = july year = 1944 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = secedeprovince which = USA value = 53 }
+		command = { type = secedeprovince which = USA value = 54 }
+		command = { type = control which = USA value = 53 }
+		command = { type = control which = USA value = 54 }
+		command = { type = add_corps which = "Allied Expeditionary Force" value = land when = 60136 where = 53 }
+		command = { type = add_division value = armor when = 2 where = sp_artillery }
+		command = { type = add_division value = motorized when = 2 where = tank_destroyer }
+		command = { type = add_division value = infantry when = 4 where = artillery }
+		command = { type = supplies value = 5000 where = 53 }
+		command = { type = oilpool value = 2000 where = 53 }
+		command = { type = setflag which = DDay_Executed }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231846] GER | 1945 | Fall of the Third Reich & Unconditional Surrender (Capitulación del Tercer Reich)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231846
+	country = GER
+	trigger = {
+		flag = force_ww2_total_outcome
+		exists = GER
+		OR = {
+			war = { country = GER country = SOV }
+			war = { country = GER country = USA }
+			war = { country = GER country = ENG }
+		}
+		NOT = { event = 329787 }
+	}
+	name = "EVT_GER_329787_NAME"
+	desc = "EVT_GER_329787_DESC"
+	style = 2
+	picture = "nwo/fall_of_third_reich"
+	date = { day = 8 month = may year = 1945 }
+	offset = 1
+	deathdate = { day = 30 month = june year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { trigger = { war = { country = GER country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = GER country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = GER country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = GER country = FRA } } type = peace which = FRA value = 1 }
+		command = { trigger = { war = { country = GER country = POL } } type = peace which = POL value = 1 }
+		command = { type = setflag which = ThirdReich_Fallen }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231847] SOV | 1945 | Partition of Germany & Genesis of the Cold War (Partición de Alemania y Guerra Fría)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231847
+	country = SOV
+	trigger = {
+		flag = force_ww2_total_outcome
+		flag = ThirdReich_Fallen
+		NOT = { exists = DFR }
+	}
+	name = "EVT_SHARED_01100_NAME"
+	desc = "EVT_SHARED_01100_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 15 month = june year = 1945 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { exists = DFR } } type = independence which = DFR value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = DDR } } type = independence which = DDR value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = AUS } } type = independence which = AUS value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = CZE } } type = independence which = CZE value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = POL } } type = independence which = POL value = 1 when = 1 }
+		command = { type = setflag which = ColdWar_Established }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231848] JAP | 1945 | Unconditional Surrender of Japan: End of World War II (Rendición de Japón: Fin de la SGM)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231848
+	country = JAP
+	trigger = {
+		flag = force_ww2_total_outcome
+		exists = JAP
+		OR = {
+			war = { country = JAP country = USA }
+			war = { country = JAP country = ENG }
+			war = { country = JAP country = SOV }
+			war = { country = JAP country = CHI }
+		}
+	}
+	name = "EVT_JAP_167030_NAME"
+	desc = "EVT_JAP_167030_DESC"
+	style = 2
+	picture = "nwo/japanese_surrender"
+	date = { day = 15 month = august year = 1945 }
+	offset = 1
+	deathdate = { day = 30 month = september year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { trigger = { war = { country = JAP country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = JAP country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = JAP country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = JAP country = CHI } } type = peace which = CHI value = 1 }
+		command = { type = setflag which = Japan_Surrender_Done }
+	}
+}
+
+
+# ============================================================================
+# MASTER DECISION & DIVERGENCE: DESTINY OF WORLD WAR II (1939-1945)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231870] ALL (Human Player) | 1939 | Master Decision: The Destiny of World War II
+# ----------------------------------------------------------------------------
+event = {
+	id = 231870
+	random = no
+	decision = {
+		year = 1939
+	}
+	decision_trigger = {
+		year = 1939
+	}
+	trigger = {
+		ai = no
+	}
+	name = "EVT_231870_NAME"
+	desc = "EVT_231870_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	decision_picture = "GLOBAL/decision_wargames"
+	date = { day = 1 month = september year = 1939 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1945 }
+	action = {
+		name = "EVT_231870_A"
+		command = { }
+	}
+	action = {
+		name = "EVT_231870_B"
+		command = { type = setflag which = force_ww2_historical_victory }
+	}
+	action = {
+		name = "EVT_231870_C"
+		command = { type = setflag which = force_axis_victory_highcastle }
+	}
+}
+
+
+# ============================================================================
+# BRANCH 1: HISTORICAL ALLIED VICTORY & POSTWAR PARTITION (1945)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231871] GER | 1945 | Fall of Berlin and Unconditional Surrender of the Third Reich
+# ----------------------------------------------------------------------------
+event = {
+	id = 231871
+	country = GER
+	trigger = {
+		flag = force_ww2_historical_victory
+		exists = GER
+		OR = {
+			war = { country = GER country = SOV }
+			war = { country = GER country = USA }
+			war = { country = GER country = ENG }
+		}
+	}
+	name = "EVT_231871_NAME"
+	desc = "EVT_231871_DESC"
+	style = 2
+	picture = "nwo/fall_of_third_reich"
+	date = { day = 8 month = may year = 1945 }
+	offset = 1
+	deathdate = { day = 30 month = june year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { trigger = { war = { country = GER country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = GER country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = GER country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = GER country = FRA } } type = peace which = FRA value = 1 }
+		command = { trigger = { war = { country = GER country = POL } } type = peace which = POL value = 1 }
+		command = { type = setflag which = ThirdReich_Fallen_Perfection }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231872] SOV | 1945 | Four Allied Occupation Zones & Oder-Neisse Line
+# ----------------------------------------------------------------------------
+event = {
+	id = 231872
+	country = SOV
+	trigger = {
+		flag = force_ww2_historical_victory
+		flag = ThirdReich_Fallen_Perfection
+		NOT = { exists = DFR }
+	}
+	name = "EVT_231872_NAME"
+	desc = "EVT_231872_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 15 month = june year = 1945 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = SOV value = 63 }
+		command = { trigger = { exists = POL } type = secedeprovince which = POL value = 207 }
+		command = { trigger = { exists = POL } type = secedeprovince which = POL value = 218 }
+		command = { trigger = { exists = POL } type = secedeprovince which = POL value = 225 }
+		command = { trigger = { NOT = { exists = DFR } } type = independence which = DFR value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = DDR } } type = independence which = DDR value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = AUS } } type = independence which = AUS value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = CZE } } type = independence which = CZE value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = POL } } type = independence which = POL value = 1 when = 1 }
+		command = { type = setflag which = ColdWar_Established }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231873] USA | 1945 | Manhattan Project: Atomic Bombings of Hiroshima and Nagasaki
+# ----------------------------------------------------------------------------
+event = {
+	id = 231873
+	country = USA
+	trigger = {
+		flag = force_ww2_historical_victory
+		exists = USA
+		exists = JAP
+		war = { country = USA country = JAP }
+	}
+	name = "EVT_231873_NAME"
+	desc = "EVT_231873_DESC"
+	style = 2
+	picture = "nwo/japanese_surrender"
+	date = { day = 6 month = august year = 1945 }
+	offset = 1
+	deathdate = { day = 15 month = august year = 1945 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = trigger which = 231874 }
+		command = { type = setflag which = Atomic_Bombs_Dropped }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231874] SOV | 1945 | Operation August Storm: Soviet Liberation of Manchuria
+# ----------------------------------------------------------------------------
+event = {
+	id = 231874
+	country = SOV
+	trigger = {
+		flag = force_ww2_historical_victory
+		exists = SOV
+		exists = JAP
+	}
+	name = "EVT_231874_NAME"
+	desc = "EVT_231874_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 9 month = august year = 1945 }
+	offset = 1
+	deathdate = { day = 20 month = august year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = SOV value = 1542 }
+		command = { type = secedeprovince which = SOV value = 1543 }
+		command = { trigger = { exists = CHI exists = MAN } type = trigger which = 231875 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231875] JAP | 1945 | Unconditional Surrender of Japan and Korean Partition
+# ----------------------------------------------------------------------------
+event = {
+	id = 231875
+	country = JAP
+	trigger = {
+		flag = force_ww2_historical_victory
+		exists = JAP
+	}
+	name = "EVT_231875_NAME"
+	desc = "EVT_231875_DESC"
+	style = 2
+	picture = "nwo/japanese_surrender"
+	date = { day = 15 month = august year = 1945 }
+	offset = 1
+	deathdate = { day = 2 month = september year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { trigger = { war = { country = JAP country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = JAP country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = JAP country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = JAP country = CHI } } type = peace which = CHI value = 1 }
+		command = { trigger = { NOT = { exists = KOR } } type = independence which = KOR value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = PRK } } type = independence which = PRK value = 1 when = 1 }
+		command = { type = setflag which = Japan_Surrender_Done }
+		command = { type = setflag which = WWII_Historically_Ended }
+	}
+}
+
+
+# ============================================================================
+# BRANCH 2: AXIS TOTAL VICTORY (THE MAN IN THE HIGH CASTLE)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231876] GER | 1943 | Peace of the Urals: Dividing the Soviet Lebensraum
+# ----------------------------------------------------------------------------
+event = {
+	id = 231876
+	country = GER
+	trigger = {
+		flag = force_axis_victory_highcastle
+		exists = GER
+		exists = SOV
+		war = { country = GER country = SOV }
+	}
+	name = "EVT_231876_NAME"
+	desc = "EVT_231876_DESC"
+	style = 2
+	picture = "nwo/lebensraum_policy"
+	date = { day = 15 month = october year = 1943 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = peace which = SOV value = 1 }
+		command = { type = dissent value = -15 }
+		command = { type = money value = 3000 }
+		command = { type = setflag which = Lebensraum_Secured }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231877] GER | 1944 | Fall of the United Kingdom: Dissolution of the Empire
+# ----------------------------------------------------------------------------
+event = {
+	id = 231877
+	country = GER
+	trigger = {
+		flag = force_axis_victory_highcastle
+		flag = Lebensraum_Secured
+		exists = GER
+		exists = ENG
+		war = { country = GER country = ENG }
+	}
+	name = "EVT_231877_NAME"
+	desc = "EVT_231877_DESC"
+	style = 2
+	picture = "nwo/hitler_dows_usa"
+	date = { day = 10 month = june year = 1944 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = peace which = ENG value = 1 }
+		command = { trigger = { NOT = { exists = SCO } } type = independence which = SCO value = 1 when = 1 }
+		command = { type = dissent value = -10 }
+		command = { type = setflag which = British_Empire_Fallen }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231878] USA | 1945 | Partition of the United States (The Man in the High Castle)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231878
+	country = USA
+	trigger = {
+		flag = force_axis_victory_highcastle
+		flag = British_Empire_Fallen
+		exists = USA
+	}
+	name = "EVT_231878_NAME"
+	desc = "EVT_231878_DESC"
+	style = 2
+	picture = "nwo/usa_divided"
+	date = { day = 4 month = july year = 1945 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { war = { country = USA country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = USA country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { NOT = { exists = TEX } } type = independence which = TEX value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = CAL } } type = independence which = CAL value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = CSA } } type = independence which = CSA value = 1 when = 1 }
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = set_domestic which = defense_lobby value = 9 }
+		command = { type = setflag which = USA_Divided_HighCastle }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231879] GER | 1947 | The Axis Cold War: German-Japanese Nuclear Rivalry
+# ----------------------------------------------------------------------------
+event = {
+	id = 231879
+	country = GER
+	trigger = {
+		flag = USA_Divided_HighCastle
+		exists = GER
+		exists = JAP
+		NOT = { war = { country = GER country = JAP } }
+	}
+	name = "EVT_231879_NAME"
+	desc = "EVT_231879_DESC"
+	style = 2
+	picture = "GLOBAL/additionaltreaty"
+	date = { day = 1 month = january year = 1947 }
+	offset = 30
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = JAP value = -60 }
+		command = { type = research_mod value = 5 }
+		command = { type = setflag which = Axis_Cold_War_Active }
+	}
+}

@@ -1,0 +1,2952 @@
+# ============================================================================
+# File: events/SOV/SOV_Decisions.txt (58 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [223013] SOV | 1914 | Winter Offensive Chit (Reserva Ofensiva de Invierno)
+# Trigger event 223014 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223013
+	random = no
+	country = SOV
+	decision = { atwar = yes month = 11 }
+	decision_trigger = { supplies = 10000 }
+	trigger = {
+		atwar = yes month = 11
+		OR = {
+			ai = yes
+			supplies = 10000
+		}
+		OR = {
+			lost_national = { country = SOV value = 30 }
+			AND = {
+				war = { country = GER country = SOV }
+				OR = { lost_national = { country = GER value = 10 } NOT = { ai = GER } }
+			}
+		}
+	}
+	name = "EVT_SOV_223013_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	decision_picture = "SOV/decision_grand_offensive3"
+	date = { day = 1 month = january year = 1914 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = "ACTION_NAME_VICTORY"
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { trigger = { ai = yes } type = morale which = land value = 10 }
+		command = { type = morale which = naval value = 10 }
+		command = { type = morale which = air value = 10 }
+		command = { type = speed which = land value = 2 }
+		command = { type = counterattack value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = encirclement value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = sce_frequency value = 0.3 }
+		command = { type = attrition_mod value = 2 }
+		command = { type = trickleback_mod value = 5 }
+	  	command = { type = frozen_move which = land value = 13 }
+      		command = { type = frozen_attack which = land value = 13 }
+	  	command = { type = snow_move which = land value = 13 }
+      		command = { type = snow_attack which = land value = 13 }
+		command = { trigger = { ai = no } type = supplies value = -10000 }
+		command = { type = event which = 223014 where = -1 when = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223144] SOV | 1915 | War communism - phase one (Comunismo de guerra: fase uno)
+# Triggered by event 223143 in events/SOV/SOV_14-33.txt
+# Trigger event 223145 in events/SOV/SOV_Decisions.txt
+# Trigger event 223146 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223144
+	country = SOV
+	decision = {
+		event = 223143
+	}
+	decision_trigger = {
+		NOT = { dissent = 10 }
+	}
+	trigger = {
+		event = 223143
+		NOT = { dissent = 10 }
+	}
+	name = EVT_SOV_223144_NAME
+	desc = EVT_SOV_223144_DESC
+	style = 1
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { type = industrial_modifier which = supplies value = 10 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = dissent value = -35 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223149] SOV | 1915 | Creation of the Red Army (Creación del Ejército Rojo)
+# Triggered by event 223139 in events/SOV/SOV_14-33.txt
+# Trigger event 223150 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223149
+	country = SOV
+	decision = {
+		event = 223139
+	}
+	decision_trigger = {
+		supplies = 50
+		event = { id = 223139 days = 45 }
+		NOT = { dissent = 70
+			event = 223149 }
+	}
+	trigger = {
+		event = 223139
+		event = { id = 223139 days = 45 }
+		NOT = { dissent = 70
+			event = 223149 }
+		supplies = 50
+	}
+	name = EVT_SOV_223149_NAME
+	desc = EVT_SOV_223149_DESC
+	style = 1
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no } type = supplies value = -50 }
+		command = { type = morale which = land value = 10 }
+		command = { type = max_organization which = land value = 10 }
+		command = { trigger = { technology = { country = SOV value = 1010 } } type = activate_unit_type which = infantry }
+		command = { trigger = { technology = { country = SOV value = 1010 } } type = activate_unit_type which = garrison }
+		command = { trigger = { technology = { country = SOV value = 13060 } } type = activate_unit_type which = cavalry }
+		command = { trigger = { technology = { country = SOV value = 1160 } } type = activate_unit_type which = bergsjaeger }
+		command = { trigger = { technology = { country = SOV value = 1560 } } type = activate_unit_type which = marine }
+		command = { trigger = { technology = { country = SOV value = 1670 } } type = activate_unit_type which = paratrooper }
+		command = { type = add_division which = "6th Red Guards" value = infantry when = 3 }
+		command = { type = add_division which = "7th Red Guards" value = infantry when = 3 }
+		command = { type = add_division which = "8th Red Guards" value = infantry when = 3 }
+		command = { type = add_division which = "9th Red Guards" value = infantry when = 3 }
+		command = { type = add_division which = "10th Red Guards" value = infantry when = 3 }
+		command = { type = dissent value = -35 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223150] SOV | 1915 | Order No. 228 (Orden n.º 228)
+# Triggered by event 223149 in events/SOV/SOV_Decisions.txt
+# Trigger event 223151 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223150
+	country = SOV
+	decision = {
+		event = 223149
+	}
+	decision_trigger = {
+		incabinet = 30108
+		NOT = { dissent = 15 }
+	}
+	trigger = {
+		event = 223149
+		incabinet = 30108
+		NOT = { dissent = 15 }
+	}
+	name = "EVT_SOV_223150_NAME"
+	desc = "EVT_SOV_223150_DESC"
+	style = 1
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = morale which = land value = 10 }
+		command = { type = max_organization which = land value = 10 }
+		command = { type = wakeleader which = 30482 }
+		command = { type = wakeleader which = 30569 }
+		command = { type = wakeleader which = 30731 }
+		command = { type = wakeleader which = 30765 }
+		command = { type = wakeleader which = 30784 }
+		command = { type = wakeleader which = 30795 }
+		command = { type = wakeleader which = 30796 }
+		command = { type = wakeleader which = 30797 }
+		command = { type = wakeleader which = 30798 }
+		command = { type = wakeleader which = 30799 }
+		command = { type = wakeleader which = 30800 }
+		command = { type = wakeleader which = 30801 }
+		command = { type = wakeleader which = 30802 }
+		command = { type = wakeleader which = 30803 }
+		command = { type = wakeleader which = 30804 }
+		command = { type = wakeleader which = 30805 }
+		command = { type = wakeleader which = 30806 }
+		command = { type = wakeleader which = 30807 }
+		command = { type = wakeleader which = 30808 }
+		command = { type = wakeleader which = 30809 }
+		command = { type = wakeleader which = 30810 }
+		command = { type = wakeleader which = 30811 }
+		command = { type = wakeleader which = 30812 }
+		command = { type = wakeleader which = 30813 }
+		command = { type = wakeleader which = 30814 }
+		command = { type = wakeleader which = 30815 }
+		command = { type = wakeleader which = 30816 }
+		command = { type = wakeleader which = 30817 }
+		command = { type = wakeleader which = 30818 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223151] SOV | 1915 | Mass levy (Levas masivas)
+# Triggered by event 223150 in events/SOV/SOV_Decisions.txt
+# Trigger event 223152 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223151
+	country = SOV
+	decision = {
+		event = 223150
+	}
+	decision_trigger = {
+		money = 200
+		supplies = 500
+		NOT = { dissent = 15 }
+	}
+	trigger = {
+		event = 223150
+		NOT = { dissent = 15 }
+		supplies = 500
+	}
+	name = "EVT_SOV_223151_NAME"
+	desc = "EVT_SOV_223151_DESC"
+	style = 1
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { trigger = { ai = no } type = money  value = -200 }
+		command = { type = supplies value = -500 }
+		command = { trigger = { local_flag = removedMOB7 } type = manpowerpool value = 15 when = 1 }
+		command = { trigger = { local_flag = removedMOB8 } type = manpowerpool value = 80 when = 1 }
+		command = { trigger = { local_flag = removedMOB7 } type = local_clrflag which = removedMOB7 }
+		command = { trigger = { local_flag = removedMOB8 } type = local_clrflag which = removedMOB8 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223157] SOV | 1915 | Foundation of USSR (Fundación de la URSS)
+# Trigger event 223398 in events/SOV/SOV_14-33.txt
+# Trigger event 223399 in events/AI/SOV_AI_14-41.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223157
+	country = SOV
+	decision = {
+		atwar = no
+	}
+	decision_trigger = {
+		NOT = { exists = UER }
+		NOT = { exists = UTC }
+		NOT = { exists = UGS }
+		NOT = { exists = UPE }
+		control = { province = 572 data = -1 }
+		control = { province = 553 data = -1 }
+		control = { province = 663 data = -1 }
+		control = { province = 672 data = -1 }
+		control = { province = 1138 data = -1 }
+		control = { province = 1191 data = -1 }
+	}
+	trigger = {
+		atwar = no
+		NOT = { exists = UER }
+		NOT = { exists = UTC }
+		NOT = { exists = UGS }
+		NOT = { exists = UPE }
+		control = { province = 572 data = -1 }
+		control = { province = 553 data = -1 }
+		control = { province = 663 data = -1 }
+		control = { province = 672 data = -1 }
+		control = { province = 1138 data = -1 }
+		control = { province = 1191 data = -1 }
+	}
+	name = "EVT_SOV_223157_NAME"
+	desc = "EVT_SOV_223157_DESC"
+	style = 1
+	picture = "GLOBAL/spread_revolution"
+	decision_picture = "GLOBAL/decision_spread_revolution"
+	date = { day = 1 month = january year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = name where = SOV }
+		command = { type = flag_ext where = SOV }
+		command = { type = addcore which = 617 }
+		command = { type = addcore which = 608 }
+		command = { type = addcore which = 613 }
+		command = { type = addcore which = 610 }
+		command = { type = addcore which = 612 }
+		command = { type = addcore which = 611 }
+		command = { type = addcore which = 606 }
+		command = { type = addcore which = 605 }
+		command = { type = addcore which = 637 }
+		command = { type = addcore which = 640 }
+		command = { type = addcore which = 641 }
+		command = { type = addcore which = 619 }
+		command = { type = addcore which = 620 }
+		command = { type = addcore which = 626 }
+		command = { type = addcore which = 622 }
+		command = { type = addcore which = 616 }
+		command = { type = addcore which = 635 }
+		command = { type = addcore which = 627 }
+		command = { type = addcore which = 628 }
+		command = { type = addcore which = 609 }
+		command = { type = addcore which = 629 }
+		command = { type = addcore which = 636 }
+		command = { type = addcore which = 630 }
+		command = { type = addcore which = 623 }
+		command = { type = addcore which = 624 }
+		command = { type = addcore which = 607 }
+		command = { type = addcore which = 638 }
+		command = { type = addcore which = 639 }
+		command = { type = addcore which = 631 }
+		command = { type = addcore which = 632 }
+		command = { type = addcore which = 615 }
+		command = { type = addcore which = 625 }
+		command = { type = addcore which = 618 }
+		command = { type = addcore which = 614 }
+		command = { type = addcore which = 621 }
+		command = { type = addcore which = 633 }
+		command = { type = addcore which = 634 }
+		command = { type = addcore which = 707 }
+		command = { type = addcore which = 708 }
+		command = { type = addcore which = 709 }
+		command = { type = addcore which = 710 }
+		command = { type = addcore which = 711 }
+		command = { type = addcore which = 712 }
+		command = { type = addcore which = 713 }
+		command = { type = addcore which = 714 }
+		command = { type = addcore which = 599 }
+		command = { type = addcore which = 594 }
+		command = { type = addcore which = 595 }
+		command = { type = addcore which = 591 }
+		command = { type = addcore which = 600 }
+		command = { type = addcore which = 596 }
+		command = { type = addcore which = 597 }
+		command = { type = addcore which = 601 }
+		command = { type = addcore which = 598 }
+		command = { type = addcore which = 590 }
+		command = { type = addcore which = 592 }
+		command = { type = addcore which = 593 }
+		command = { type = addcore which = 248 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146029] SOV | 1915 | Support the revolutionaries in Finland? (¿Apoyar a los revolucionarios finlandeses?)
+# Triggered by event 146028 in events/Minors/FIN_14-51.txt
+# Trigger event 255001 in events/Minors/U20.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146029
+	random = no
+	country = SOV
+	trigger = {
+		event = 146028
+		exists = U20
+		exists = FIN
+		war = { country = U20 country = FIN }
+		NOT = { war = { country = SOV country = FIN } }
+		NOT = { war = { country = SOV country = U20 } }
+	}
+	decision_trigger = {
+		event = 146028
+		exists = U20
+		exists = FIN
+		war = { country = U20 country = FIN }
+		NOT = { war = { country = SOV country = FIN } }
+		NOT = { war = { country = SOV country = U20 } }
+		supplies = 500
+	}
+	name = "EVT_SOV_146029_NAME"
+	desc = "EVT_SOV_146029_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	decision_picture = "GLOBAL/decision_spread_revolution"
+	date = { day = 0 month = june year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		ai_chance = 97
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no } type = supplies value = -500 }
+		command = { type = manpowerpool value = -7 }
+		command = { type = relation which = U20 value = 50 }
+		command = { type = trigger which = 255001 }
+	}
+	action = {
+		ai_chance = 3
+		name = "ACTION_NAME_REFUSE"
+		command = { type = dissent value = 1 }
+		command = { type = relation which = U20 value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223145] SOV | 1916 | Prodrazvyorstka (Prodrazvyorstka (Requisición agrícola))
+# Triggered by event 223144 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223145
+	country = SOV
+	decision = {
+		event = 223144
+	}
+	decision_trigger = {
+		NOT = { dissent = 10 }
+	}
+	trigger = {
+		event = 223144
+		NOT = { dissent = 10 }
+	}
+	name = EVT_SOV_223145_NAME
+	desc = EVT_SOV_223145_DESC
+	style = 1
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1916 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = industrial_modifier which = supplies value = 15 }
+		command = { type = domestic which = free_market value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223158] SOV | 1916 | Seek a soft peace with Germany (Buscar una paz moderada con Alemania)
+# Trigger event 243018 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223158
+	country = SOV
+	decision = {
+		war = { country = U08 country = SOV }
+	}
+	decision_trigger = {
+		NOT = { control = { province = 247 data = -1 } }
+		NOT = { control = { province = 269 data = -1 } }
+		NOT = { control = { province = 232 data = -1 } }
+		NOT = { control = { province = 258 data = -1 } }
+		NOT = { control = { province = 243 data = -1 } }
+		OR = {
+			control = { province = 617 data = -1 }
+			control = { province = 601 data = -1 }
+			control = { province = 599 data = -1 }
+			control = { province = 566 data = -1 }
+			control = { province = 274 data = -1 }
+		}
+	}
+	trigger = {
+		war = { country = U08 country = SOV }
+		NOT = { control = { province = 247 data = -1 } }
+		NOT = { control = { province = 269 data = -1 } }
+		NOT = { control = { province = 232 data = -1 } }
+		NOT = { control = { province = 258 data = -1 } }
+		NOT = { control = { province = 243 data = -1 } }
+		OR = {
+			control = { province = 617 data = -1 }
+			control = { province = 601 data = -1 }
+			control = { province = 599 data = -1 }
+			control = { province = 566 data = -1 }
+			control = { province = 274 data = -1 }
+		}
+	}
+	name = "EVT_SHARED_00107_NAME"
+	desc = "EVT_SHARED_00107_DESC"
+	style = 1
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1916 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -2 }
+		command = { type = trigger which = 243018 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223161] SOV | 1916 | Seek peace with Germany at any cost (Buscar la paz a cualquier precio)
+# Trigger event 243020 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223161
+	country = SOV
+	decision = {
+		war = { country = U08 country = SOV }
+	}
+	decision_trigger = {
+		lost_national = { country = SOV value = 10 }
+	}
+	trigger = {
+		lost_national = { country = SOV value = 10 }
+	}
+	name = "EVT_SOV_223161_NAME"
+	desc = "EVT_SHARED_00108_DESC"
+	style = 1
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1916 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 243020 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223146] SOV | 1917 | War communism - phase two (Comunismo de guerra: fase dos)
+# Triggered by event 223144 in events/SOV/SOV_Decisions.txt
+# Trigger event 223147 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223146
+	country = SOV
+	decision = {
+		event = 223144
+	}
+	decision_trigger = {
+		NOT = { dissent = 10 }
+		control = { province = 572 data = -3 }
+		control = { province = 553 data = -3 }
+		control = { province = 663 data = -3 }
+		control = { province = 672 data = -3 }
+	}
+	trigger = {
+		event = 223144
+		NOT = { dissent = 10 }
+		control = { province = 572 data = -3 }
+		control = { province = 553 data = -3 }
+		control = { province = 663 data = -3 }
+		control = { province = 672 data = -3 }
+	}
+	name = EVT_SOV_223146_NAME
+	desc = EVT_SOV_223146_DESC
+	style = 1
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1917 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { type = industrial_modifier which = supplies value = 10 }
+		command = { type = domestic which = free_market value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223147] SOV | 1918 | War communism - phase three (Comunismo de guerra: fase tres)
+# Triggered by event 223146 in events/SOV/SOV_Decisions.txt
+# Trigger event 223148 in events/SOV/SOV_Decisions.txt
+# Trigger event 223154 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223147
+	country = SOV
+	decision = {
+		event = 223146
+	}
+	decision_trigger = {
+		NOT = { dissent = 10 }
+		control = { province = 572 data = -3 }
+		control = { province = 553 data = -3 }
+		control = { province = 663 data = -3 }
+		control = { province = 672 data = -3 }
+	}
+	trigger = {
+		event = 223146
+		NOT = { dissent = 10 }
+		control = { province = 572 data = -3 }
+		control = { province = 553 data = -3 }
+		control = { province = 663 data = -3 }
+		control = { province = 672 data = -3 }
+	}
+	name = EVT_SOV_223147_NAME
+	desc = EVT_SOV_223147_DESC
+	style = 1
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1918 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = industrial_modifier which = total value = 20 }
+		command = { type = industrial_modifier which = supplies value = 15 }
+		command = { type = domestic which = free_market value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223148] SOV | 1918 | New Economic Policy (NEP) (Nueva Política Económica (NEP))
+# Triggered by event 223147 in events/SOV/SOV_Decisions.txt
+# Triggered by event 223154 in events/SOV/SOV_14-33.txt
+# Triggered by event 223155 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223148
+	country = SOV
+	decision = {
+		event = 223147
+		event = 223154
+		headofgovernment = 30097
+	}
+	decision_trigger = {
+		headofgovernment = 30097
+	}
+	trigger = {
+		event = 223147
+		event = 223155
+		headofgovernment = 30097
+	}
+	name = EVT_SOV_223148_NAME
+	desc = EVT_SOV_223148_DESC
+	style = 1
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1918 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = money value = 1000 }
+		command = { type = domestic which = free_market value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231146] SOV | 1932 | Alliance with DDR (Alianza con la Alemania Oriental)
+# Trigger event 137030 in events/Minors/DDR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 231146
+	random = no
+	country = SOV
+	decision = {
+		exists = DDR
+		NOT = { alliance = { country = SOV country = DDR } }
+		NOT = { ispuppet = SOV }
+		OR = {
+			NOT = { ispuppet = DDR }
+			puppet = { country = DDR country = SOV }
+		}
+	}
+	decision_trigger = {
+		relation = { which = DDR value = 100 }
+	}
+	trigger = {
+		exists = DDR
+		random = 50
+		NOT = { alliance = { country = SOV country = DDR } }
+		NOT = { ispuppet = SOV }
+		OR = {
+			NOT = { ispuppet = DDR }
+			puppet = { country = DDR country = SOV }
+		}
+	}
+	date = { day = 1 month = january year = 1932 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1964 }
+	name = "EVT_SOV_231146_NAME"
+	desc = "EVT_SOV_231146_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision_picture = "GLOBAL/decision_anticominternpact"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 137030 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223056] SOV | 1933 | Construct the Stalin Line (Construcción de la Línea Stalin)
+# Trigger event 223057 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223056
+	random = no
+	country = SOV
+	decision = { atwar = no technology = 5070 technology = 5090 headofstate = 30002 }
+	decision_trigger = { metal = 20000 money = 1000 }
+	trigger = { atwar = no technology = 5070 technology = 5090 headofstate = 30002 random = 5 }
+	date = { day = 1 month = january year = 1933 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	name = EVT_SOV_223056_NAME
+	desc = EVT_SHARED_00314_DESC
+	style = 2
+	picture = "GLOBAL/westwall"
+	decision_picture = "GLOBAL/decision_westwall"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = relation which = POL value = -20 }
+		command = { trigger = { ai = no } type = money value = -1000 }
+		command = { trigger = { ai = no } type = metalpool value = -20000 }
+		command = { type = event which = 223057 where = -1 when = 400 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223058] SOV | 1933 | The Second Five-Year Plan (El Segundo Plan Quinquenal soviético)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223058
+	random = no
+	country = SOV
+	decision = { atwar = no	}
+	decision_trigger = { }
+	trigger = { atwar = no random = 20 }
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1933 }
+	name = EVT_SOV_223058_NAME
+	desc = EVT_SOV_223058_DESC
+	style = 2
+	picture = "SOV/stalin_5yplan"
+	decision_picture = "SOV/decision_stalin_5yplan"
+	action = {
+		ai_chance = 100
+		name = EVT_SHARED_00317_A
+		command = { type = building_prod_mod which = ic value = 10 }
+		command = { trigger = { ai = no } type = dissent value = 3 }
+	}
+	action = {
+		ai_chance = 0
+		name = EVT_SOV_223058_A
+		command = { type = dissent value = -5 }
+		command = { type = money value = 150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329378] SOV | 1933 | Soviet-American Military Conference (Conferencia militar soviético-estadounidense)
+# Triggered by event 329722 in events/AI/USA_AI.txt
+# Trigger event 329722 in events/AI/USA_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329378
+	random = no
+	country = SOV
+	decision = {
+		ai = no ai = USA
+		war = { country = SOV country = GER }
+		war = { country = USA country = GER }
+		war = { country = ENG country = GER }
+		not = {
+			war = { country = ENG country = SOV }
+			war = { country = USA country = SOV }
+		}
+	}
+	decision_trigger = { }
+	trigger = { ai = no ai = USA }
+	name = EVT_SOV_329378_NAME
+	desc = EVT_SHARED_00295_DESC
+	style = 2
+	picture = "GLOBAL/dday"
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	date = { day = 0 month = january year = 1933 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+	trigger = {
+		NOT = { event = 329722 }
+		OR = {
+			control = { province = 55 data = -2 }
+			control = { province = 52 data = -2 }
+			control = { province = 104 data = -2 }
+		}
+	}
+		command = { type = trigger which = 329722 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329426] SOV | 1933 | Train Soviet Ski Divisions (Instrucción de brigadas de esquiadores del Ejército Rojo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329426
+	random = no
+	country = SOV
+	decision = { war = { country = GER } technology = 1110 }
+	decision_trigger = { supplies = 1000 }
+	trigger = {
+		war = { country = GER } technology = 1110
+		random = 20
+	}
+	name = EVT_SOV_329426_NAME
+	desc = EVT_SOV_329426_DESC
+	style = 2
+	picture = "SOV/ski_infantry"
+	decision_picture = "SOV/decision_ski_infantry"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = build_division which = bergsjaeger when = 5 cost = 0.1 where = 100 }
+		command = { type = build_division which = bergsjaeger when = 5 cost = 0.1 where = 100 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223190] SOV | 1933 | Soviet Intervention in Xinjiang (Intervención soviética en Sinkiang)
+# Triggered by event 220000 in events/Minors/SIK.txt
+# Trigger event 220001 in events/Minors/SIK.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223190
+	random = no
+	country = SOV
+	decision = {
+		event = 220000
+		exists = UPE
+		exists = SIK
+	}
+	decision_trigger = {
+		supplies = 1000
+	}
+	trigger = {
+		event = 220000
+		exists = UPE
+		exists = SIK
+		random = 30
+	}
+	name = EVT_SHARED_00169_NAME
+	desc = EVT_SOV_223190_DESC
+	picture = "GLOBAL/spread_revolution"
+	style = 2
+	date = { day = 0 month = 6 year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1935 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_ACCEPT
+		command = { type = trigger which =  220001 }
+		command = { type = relation which = UPE value = -20 }
+		command = { type = relation which = SIK value = 20 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_DECLINE
+		command = { type = sleepevent which = 223190 }
+		command = { type = sleepevent which = 220001 }
+		command = { type = sleepevent which = 324316 }
+		command = { type = sleepevent which = 124141 }
+		command = { type = sleepevent which = 223191 }
+		command = { type = sleepevent which = 324317 }
+		command = { type = sleepevent which = 220002 }
+		command = { type = sleepevent which = 124142 }
+		command = { type = sleepevent which = 324318 }
+		command = { type = sleepevent which = 123019 }
+		command = { type = sleepevent which = 223192 }
+		command = { type = sleepevent which = 324319 }
+		command = { type = sleepevent which = 124143 }
+		command = { type = sleepevent which = 124144 }
+		command = { type = sleepevent which = 167124 }
+		command = { type = sleepevent which = 324321 }
+		command = { type = sleepevent which = 123020 }
+		command = { type = sleepevent which = 324322 }
+		command = { type = sleepevent which = 124145 }
+		command = { type = sleepevent which = 124146 }
+		command = { type = sleepevent which = 324320 }
+		command = { type = sleepevent which = 124147 }
+		command = { type = relation which = SIK value = -20 }
+		command = { type = relation which = UPE value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223003] SOV | 1933 | Soviet-Italian Non-Aggression Pact (Pacto de no agresión italo-soviético)
+# Trigger event 166005 in events/ITA/ITA_20-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223003
+	random = no
+	country = SOV
+	decision = {
+		atwar = no
+		not = { exists = DDR }
+	}
+	decision_trigger = {
+		relation = { which = ITA value = -100 }
+	}
+	trigger = {
+		atwar = no
+		not = { exists = DDR }
+	}
+	style = 2
+	date = { day = 1 month = september year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1935 }
+	picture = "GLOBAL/news_paper"
+	decision_picture = "GLOBAL/decision_anticominternpact"
+	name = "EVT_SHARED_00202_NAME"
+	desc = "EVT_SHARED_00202_DESC"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = -30 }
+		command = { type = trigger which = 166005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223103] SOV | 1936 | Creation of the GKO (Creación del GKO)
+# Trigger event 223104 in events/SOV/SOV_Decisions.txt
+# Trigger event 223105 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223103
+	random = no
+	country = SOV
+	save_date = yes
+	decision = {
+		atwar = yes
+	}
+	decision_trigger = {
+		atwar = yes
+		lost_national = { country = SOV value = 3 }
+	}
+	trigger = {
+		lost_national = { country = SOV value = 3 }
+		atwar = yes
+	}
+	name = "EVT_SOV_223103_NAME"
+	desc = "EVT_SOV_223103_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { headofgovernment = 30016 } type = headofgovernment which = 30144 }
+		command = { }
+  }
+}
+
+# ----------------------------------------------------------------------------
+# [223104] SOV | 1936 | Industrial Evacuation: Ukraine (Evacuación industrial: Ucrania)
+# Triggered by event 223103 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223104
+	random = no
+	country = SOV
+	decision = {
+		event = { id = 223103 days = 10 }
+		atwar = yes
+		region = { region = Ukraine country = SOV value = 20 }
+		lost_national = { country = SOV value = 1 }
+	}
+	decision_trigger = {
+		lost_national = { country = SOV value = 3 }
+	}
+	trigger = {
+		event = { id = 223103 days = 10 }
+		lost_national = { country = SOV value = 3 }
+		atwar = yes
+	}
+	name = "EVT_SOV_223104_NAME"
+	desc = "EVT_SOV_223104_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { trigger = { control = { province = 631 data = SOV } } type = construct which = ic where = 631 value = -1 }
+		command = { trigger = { control = { province = 631 data = SOV } } type = construct which = ic where = 1142 value = 1 }
+		command = { trigger = { control = { province = 644 data = SOV } } type = construct which = ic where = 644 value = -4 }
+		command = { trigger = { control = { province = 644 data = SOV } } type = construct which = ic where = 1142 value = 4 }
+		command = { trigger = { control = { province = 627 data = SOV } } type = construct which = ic where = 627 value = -1 }
+		command = { trigger = { control = { province = 627 data = SOV } } type = construct which = ic where = 1138 value = 1 }
+		command = { trigger = { control = { province = 626 data = SOV } } type = construct which = ic where = 626 value = -1 }
+		command = { trigger = { control = { province = 626 data = SOV } } type = construct which = ic where = 1138 value = 1 }
+		command = { trigger = { control = { province = 691 data = SOV } } type = construct which = ic where = 691 value = -1 }
+		command = { trigger = { control = { province = 691 data = SOV } } type = construct which = ic where = 1138 value = 1 }
+		command = { trigger = { control = { province = 641 data = SOV } } type = construct which = ic where = 641 value = -1 }
+		command = { trigger = { control = { province = 641 data = SOV } } type = construct which = ic where = 1138 value = 1 }
+		command = { trigger = { control = { province = 606 data = SOV } } type = construct which = ic where = 606 value = -1 }
+		command = { trigger = { control = { province = 606 data = SOV } } type = construct which = ic where = 1138 value = 1 }
+		command = { trigger = { control = { province = 622 data = SOV } } type = construct which = ic where = 622 value = -1 }
+		command = { trigger = { control = { province = 622 data = SOV } } type = construct which = ic where = 1151 value = 1 }
+		command = { trigger = { control = { province = 636 data = SOV } } type = construct which = ic where = 636 value = -1 }
+		command = { trigger = { control = { province = 636 data = SOV } } type = construct which = ic where = 1137 value = 1 }
+		command = { trigger = { control = { province = 617 data = SOV } } type = construct which = ic where = 617 value = -6 }
+		command = { trigger = { control = { province = 617 data = SOV } } type = construct which = ic where = 1137 value = 5 }
+		command = { trigger = { control = { province = 617 data = SOV } } type = construct which = ic where = 501 value = 1 }
+		command = { trigger = { control = { province = 553 data = SOV } } type = construct which = ic where = 553 value = -6 }
+		command = { trigger = { control = { province = 553 data = SOV } } type = construct which = ic where = 1130 value = 5 }
+		command = { trigger = { control = { province = 553 data = SOV } } type = construct which = ic where = 501 value = 1 }
+		command = { trigger = { control = { province = 626 data = SOV } } type = province_keypoints which = 626 value = -1 }
+		command = { trigger = { control = { province = 641 data = SOV } } type = province_keypoints which = 641 value = -1 }
+		command = { trigger = { control = { province = 641 data = SOV } } type = province_keypoints which = 1138 value = 1 }
+		command = { trigger = { control = { province = 636 data = SOV } } type = province_keypoints which = 1137 value = 1 }
+		command = { trigger = { control = { province = 553 data = SOV } } type = province_keypoints which = 501 value = 1 }
+		command = { trigger = { control = { province = 553 data = SOV } } type = province_keypoints which = 553 value = -1 }
+		command = { type = domestic which = free_market value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223105] SOV | 1936 | Industrial Evacuation: Western Sector (Evacuación industrial: Sector occidental)
+# Triggered by event 223103 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223105
+	random = no
+	country = SOV
+	decision = {
+		event = { id = 223103 days = 10 }
+		atwar = yes
+		region = { region = "Baltic States" country = SOV value = 20 }
+	}
+	decision_trigger = {
+		lost_national = { country = SOV value = 3 }
+	}
+	trigger = {
+		event = { id = 223103 days = 10 }
+		atwar = yes
+		lost_national = { country = SOV value = 3 }
+	}
+	name = "EVT_SOV_223105_NAME"
+	desc = "EVT_SOV_223105_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { control = { province = 599 data = SOV } } type = construct which = ic where = 599 value = -1 }
+		command = { trigger = { control = { province = 599 data = SOV } } type = construct which = ic where = 498 value = 1 }
+		command = { trigger = { control = { province = 264 data = SOV } } type = construct which = ic where = 264 value = -3 }
+		command = { trigger = { control = { province = 264 data = SOV } } type = construct which = ic where = 498 value = 3 }
+		command = { trigger = { control = { province = 597 data = SOV } } type = construct which = ic where = 597 value = -1 }
+		command = { trigger = { control = { province = 597 data = SOV } } type = construct which = ic where = 498 value = 1 }
+		command = { trigger = { control = { province = 270 data = SOV } } type = construct which = ic where = 270 value = -3 }
+		command = { trigger = { control = { province = 270 data = SOV } } type = construct which = ic where = 1158 value = 3 }
+		command = { trigger = { control = { province = 612 data = SOV } } type = construct which = ic where = 612 value = -2 }
+		command = { trigger = { control = { province = 612 data = SOV } } type = construct which = ic where = 1158 value = 2 }
+		command = { trigger = { control = { province = 628 data = SOV } } type = construct which = ic where = 628 value = -1 }
+		command = { trigger = { control = { province = 628 data = SOV } } type = construct which = ic where = 506 value = 1 }
+		command = { trigger = { control = { province = 590 data = SOV } } type = construct which = ic where = 590 value = -1 }
+		command = { trigger = { control = { province = 590 data = SOV } } type = construct which = ic where = 506 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329542] SOV | 1936 | Scorched Earth: Dnieper Dam (Tierra quemada: Presa del Dniéper)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329542
+	random = no
+	country = SOV
+	name = EVT_SOV_329542_NAME
+	desc = EVT_SOV_329542_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		war = { country = SOV country = GER }
+		OR = {
+			control = { province = 622 data = GER }
+			control = { province = 628 data = GER }
+		}
+	}
+	decision_trigger = {
+		OR = {
+			control = { province = 627 data = SOV }
+			control = { province = 632 data = SOV }
+		}
+	}
+	trigger = {
+		war = { country = SOV country = GER }
+		OR = {
+			control = { province = 622 data = GER }
+			control = { province = 628 data = GER }
+		}
+		OR = {
+			control = { province = 627 data = SOV }
+			control = { province = 632 data = SOV }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = ic where = 627 value = -2 }
+		command = { type = construct which = ic where = 632 value = -2 }
+		command = { type = construct which = infrastructure where = 627 value = -25 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329543] SOV | 1936 | Enemy at the Gates (El enemigo a las puertas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329543
+	random = no
+	country = SOV
+	decision = {
+		war = { country = GER country = SOV }
+		control = { province = 572 data = SOV }
+		OR = {
+			lost_national = { country = SOV value = 10 }
+			NOT = { land_percentage = { country = GER value = 0.5 } }
+		}
+		OR = {
+			control = { province = 567 data = GER }
+			control = { province = 568 data = GER }
+			control = { province = 570 data = GER }
+			control = { province = 571 data = GER }
+			control = { province = 678 data = GER }
+		}
+	}
+	decision_trigger = {
+		control = { province = 572 data = SOV }
+		control = { province = 668 data = SOV }
+	}
+	trigger = {
+		war = { country = GER country = SOV }
+		control = { province = 572 data = SOV }
+		control = { province = 668 data = SOV }
+		OR = {
+			lost_national = { country = SOV value = 10 }
+			NOT = { land_percentage = { country = GER value = 0.5 } }
+		}
+		OR = {
+			control = { province = 567 data = GER }
+			control = { province = 568 data = GER }
+			control = { province = 570 data = GER }
+			control = { province = 571 data = GER }
+			control = { province = 678 data = GER }
+		}
+	}
+	name = EVT_SHARED_00155_NAME
+	desc = EVT_SOV_329543_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 50
+		command = { type = relation which = ENG value = 25 }
+		command = { type = dissent value = -5 }
+		command = { type = local_setflag which = SOVMoscow }
+	}
+	action = {
+		name = EVT_SOV_329543_A
+		ai_chance = 50
+		command = { type = capital which = 668 }
+		command = { type = relation which = ENG value = -15 }
+		command = { type = construct which = infrastructure where = 572 value = -40 }
+		command = { type = construct which = ic where = 572 value = -5 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329550] SOV | 1936 | The Great Patriotic War (La Gran Guerra Patria)
+# Trigger event 223188 in events/AI/SOV_AI_14-41.txt
+# ----------------------------------------------------------------------------
+event = {
+    id = 329550
+    random = no
+    country = SOV
+    style = 2
+	picture = "GLOBAL/news_paper"
+    decision = {
+        OR = {
+            war = { country = SOV country = GER }
+            war = { country = SOV country = JAP }
+            war = { country = SOV country = CHI }
+            war = { country = SOV country = ENG }
+            war = { country = SOV country = USA }
+            war = { country = SOV country = FRA }
+        }
+    }
+    decision_trigger = { lost_national = { country = SOV value = 15 } }
+    trigger = {
+        OR = {
+            AND = {
+                year = 1942
+                month = 5
+                atwar = SOV
+            }
+            lost_national = { country = SOV value = 15 }
+            AND = {
+                ai = yes
+                OR = {
+                    war = { country = SOV country = GER }
+                    war = { country = SOV country = JAP }
+                    war = { country = SOV country = CHI }
+                    war = { country = SOV country = ENG }
+                    war = { country = SOV country = USA }
+                    war = { country = SOV country = FRA }
+                }
+            }
+        }
+    }
+    date = { day = 0 month = january year = 1936 }
+    offset = 7
+    deathdate = { day = 29 month = december year = 1990 }
+    name = EVT_SOV_329550_NAME
+    desc = EVT_SOV_329550_DESC
+    action = {
+        name = ACTION_NAME_OK
+        command = { type = wartime_ic_mod value = 25 }
+        command = { type = peacetime_ic_mod value = 30 }
+        command = { trigger = {
+                        NOT = { domestic = { type = democratic value = 2 } }
+                        domestic = { type = political_left value = 10 }
+                    } type = domestic which = political_left value = -1 }
+        command = { type = songs which = StalinJuly1941.txt }
+        command = { trigger = { exists = GER NOT = { ai = GER } ai = yes difficulty = 3 } type = trigger which = 223188 }
+    }
+}
+
+# ----------------------------------------------------------------------------
+# [223114] SOV | 1936 | Soviet Invasion of Poland (Invasión soviética de Polonia)
+# Triggered by event 150048 in events/GER/GER_33-36.txt
+# Triggered by event 150051 in events/GER/GER_38-40.txt
+# Triggered by event 329503 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223114
+	random = no
+	country = SOV
+	decision = {
+		OR = {
+			control = { province = 230 data = GER }
+			control = { province = 229 data = GER }
+			control = { province = 231 data = GER }
+			control = { province = 223 data = GER }
+			control = { province = 234 data = GER }
+			control = { province = 228 data = GER }
+			control = { province = 243 data = GER }
+		}
+		OR = {
+			event = 150048
+			event = 150051
+		}
+	}
+	decision_trigger = {
+		war = { country = POL country = GER }
+		NOT = { alliance = { country = POL country = ENG } }
+	}
+	trigger = {
+		OR = {
+			control = { province = 230 data = GER }
+			control = { province = 229 data = GER }
+			control = { province = 231 data = GER }
+			control = { province = 223 data = GER }
+			control = { province = 234 data = GER }
+			control = { province = 228 data = GER }
+			control = { province = 243 data = GER }
+		}
+		OR = {
+			random = 10
+			OR = {
+				random = 20
+				event = 329503
+				war = { country = ENG country = GER }
+			}
+		}
+		OR = {
+			event = 150048
+			event = 150051
+		}
+		war = { country = POL country = GER }
+		NOT = { alliance = { country = POL country = ENG } }
+		OR = {
+			NOT = { guarantee = { country = ENG country = POL } }
+			NOT = { ai = ENG }
+		}
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 8
+	deathdate = { day = 29 month = december year = 1963 }
+	name = EVT_SHARED_00140_NAME
+	desc = EVT_SHARED_00140_DESC
+	style = 2
+	picture = "GLOBAL/poland_invasion"
+	action = {
+		name = ACTION_NAME_FIGHT
+		command = { type = war which = POL }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329538] SOV | 1936 | The Winter War (La Guerra de Invierno)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# Trigger event 146037 in events/AI/FIN_AI.txt
+# Trigger event 146012 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329538
+	random = no
+	country = SOV
+	decision = {
+		exists = FIN
+		NOT = {
+			exists = POL
+			war = { country = JAP country = SOV }
+			war = { country = FIN country = SOV }
+			war = { country = GER country = SOV }
+			participant = { country = FIN value = 1 }
+			participant = { country = FIN value = 2 }
+			alliance = { country = FIN country = SOV }
+			control = { province = 517 data = SOV }
+			control = { province = 532 data = SOV }
+			control = { province = 531 data = SOV }
+			ispuppet = FIN
+			ispuppet = SOV
+			event = 223096
+		}
+	}
+	decision_trigger = {
+		NOT = { control = { province = 517 data = SOV } }
+		NOT = { control = { province = 532 data = SOV } }
+		NOT = { control = { province = 531 data = SOV } }
+	}
+	trigger = {
+ 		month = 10
+		exists = FIN
+		NOT = {
+			exists = POL
+			war = { country = JAP country = SOV }
+			war = { country = FIN country = SOV }
+			war = { country = GER country = SOV }
+			participant = { country = FIN value = 1 }
+			participant = { country = FIN value = 2 }
+			alliance = { country = FIN country = SOV }
+			control = { province = 517 data = SOV }
+			control = { province = 532 data = SOV }
+			control = { province = 531 data = SOV }
+			ispuppet = FIN
+			ispuppet = SOV
+			event = 223096
+		}
+	}
+	name = "EVT_SOV_329538_NAME"
+	desc = "EVT_SOV_329538_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 13 month = january year = 1936 }
+	offset = 6
+	deathdate = { day = 28 month = january year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = FIN value = -10 }
+		command = { type = relation which = SWE value = -5 }
+		command = { type = relation which = NOR value = -5 }
+		command = { type = trigger which = 146012 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329541] SOV | 1936 | Spanish Civil War: Foreign Intervention (Guerra civil española: Intervención militar)
+# Triggered by event 225010 in events/Minors/SPR.txt
+# Trigger event 225012 in events/Minors/SPR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329541
+	random = no
+	country = SOV
+	decision = {
+		war = { country = SPA country = SPR }
+		event = 225010
+		NOT = {
+			OR = {
+				alliance = { country = SOV country = SPR }
+				alliance = { country = ENG country = SPR }
+				war = { country = SOV country = SPR }
+				war = { country = SOV country = GER }
+				war = { country = SOV country = ENG }
+				war = { country = SOV country = USA }
+				war = { country = SOV country = ITA }
+				war = { country = SOV country = FIN }
+				government = fascist
+			}
+		}
+	}
+	decision_trigger = {
+		manpower = 10
+		supplies = 1000
+		money = 200
+	}
+	trigger = {
+		war = { country = SPA country = SPR }
+		event = 225010
+		NOT = {
+			OR = {
+				alliance = { country = SOV country = SPR }
+				alliance = { country = ENG country = SPR }
+				war = { country = SOV country = SPR }
+				war = { country = SOV country = GER }
+				war = { country = SOV country = ENG }
+				war = { country = SOV country = USA }
+				war = { country = SOV country = ITA }
+				war = { country = SOV country = FIN }
+				government = fascist
+			}
+		}
+	}
+	name = "EVT_SOV_329541_NAME"
+	desc = "EVT_SOV_329541_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 19 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 100
+		name = "ACTION_NAME_SEND_AID"
+		command = { type = manpowerpool value = -10 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { trigger = { ai = no } type = money value = -200 }
+		command = { type = relation which = SPR value = 20 }
+		command = { type = relation which = SPA value = -15 }
+		command = { type = relation which = GER value = -5 }
+		command = { type = relation which = ITA value = -5 }
+		command = { type = relation which = ENG value = -5 }
+		command = { type = relation which = FRA value = -5 }
+		command = { type = relation which = POR value = -10 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = belligerence which = SOV value = 1 }
+		command = { type = trigger which = 225012 }
+	}
+	action = {
+		ai_chance = 0
+		name = "EVT_SOV_329541_A"
+		command = { type = manpowerpool value = -10 }
+		command = { type = supplies value = -2000 }
+		command = { type = money value = -400 }
+		command = { type = relation which = SPR value = 20 }
+		command = { type = relation which = SPA value = -15 }
+		command = { type = relation which = GER value = -5 }
+		command = { type = relation which = ITA value = -5 }
+		command = { type = relation which = ENG value = -5 }
+		command = { type = relation which = FRA value = -5 }
+		command = { type = relation which = POR value = -10 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = belligerence which = SOV value = 1 }
+		command = { type = trigger which = 225012 }
+		command = { trigger = { ai = no } type = military_control which = SOV where = SPR value = 1 }
+		command	= { type = local_setflag which = military_control }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223090] SOV | 1937 | Ultimatum over Bessarabia (Ultimátum sobre Besarabia)
+# Triggered by event 223088 in events/SOV/SOV_33-36.txt
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# Triggered by event 150048 in events/GER/GER_33-36.txt
+# Trigger event 209011 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223090
+	random = no
+	country = SOV
+	decision = {
+		event = 223088
+		NOT = { event = 223096 }
+		exists = ROM
+		NOT = {
+			war = { country = ROM country = SOV }
+			war = { country = GER country = SOV }
+			alliance = { country = SOV country = ROM }
+		}
+		NOT = {
+			control = { province = 304 }
+			control = { province = 306 }
+			control = { province = 303 }
+			control = { province = 305 }
+		}
+		OR = {
+			owned = { province = 304 data = ROM }
+			owned = { province = 306 data = ROM }
+			owned = { province = 303 data = ROM }
+			owned = { province = 305 data = ROM }
+		}
+	}
+	decision_trigger = {
+		event = { id = 150048 days = 305 }
+	}
+	trigger = {
+		exists = ROM
+		event = 223088
+		NOT = { event = 223096 }
+		event = { id = 150048 days = 305 }
+		NOT = {
+			OR = {
+				war = { country = ROM country = SOV }
+				war = { country = GER country = SOV }
+				alliance = { country = SOV country = ROM }
+			}
+		}
+		NOT = {
+			control = { province = 304 }
+			control = { province = 306 }
+			control = { province = 303 }
+			control = { province = 305 }
+		}
+		OR = {
+			owned = { province = 304 data = ROM }
+			owned = { province = 306 data = ROM }
+			owned = { province = 303 data = ROM }
+			owned = { province = 305 data = ROM }
+		}
+	}
+	name = "EVT_SOV_223090_NAME"
+	desc = "EVT_SOV_223090_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1937 }
+	offset = 30
+	deathdate = { day = 0 month = january year = 1965 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ROM value = -10 }
+		command = { type = trigger which = 209011 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329028] SOV | 1937 | Operation Zet: Soviet Aid to China (Operación Zet: Ayuda soviética a China)
+# Trigger event 124007 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329028
+	random = no
+	country = SOV
+	name = EVT_SOV_329028_NAME
+	desc = EVT_SOV_329028_DESC
+	style = 2
+	picture = "GLOBAL/ccip_ccpsov"
+	decision = {
+		war = { country = CHI country = JAP }
+		NOT = { war = { country = CHI country = SOV } }
+	}
+	decision_trigger = {
+		war = { country = CHI country = JAP }
+		NOT = { war = { country = CHI country = SOV } }
+		supplies = 1000
+	}
+	trigger = {
+		war = { country = CHI country = JAP }
+		NOT = { war = { country = CHI country = SOV } }
+		random = 10
+	}
+	date = { day = 0 month = january year = 1937 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1940 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = non_aggression which = CHI where = SOV }
+		command = { type = manpowerpool value = -5 }
+		command = { type = money value = -500 }
+		command = { type = supplies value = -1500 }
+		command = { type = oilpool value = -250 }
+		command = { type = trigger which = 124007 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223059] SOV | 1938 | The Third Five-Year Plan (El Tercer Plan Quinquenal soviético)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223059
+	random = no
+	country = SOV
+	decision = { atwar = no	}
+	decision_trigger = { }
+	trigger = { atwar = no random = 20 }
+	date = { day = 1 month = january year = 1938 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1938 }
+	name = EVT_SOV_223059_NAME
+	desc = EVT_SOV_223059_DESC
+	style = 2
+	picture = "SOV/stalin_5yplan"
+	decision_picture = "SOV/decision_stalin_5yplan"
+	action = {
+		ai_chance = 20
+		name = EVT_SHARED_00317_A
+		command = { type = building_prod_mod which = ic value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 2 }
+	}
+	action = {
+		ai_chance = 50
+		name = EVT_SOV_223059_A
+    		command = { type = build_time which = armor when = on_upgrade where = relative value = -5 }
+      		command = { type = build_time which = light_armor when = on_upgrade where = relative value = -5 }
+		command = { trigger = { ai = no } type = dissent value = 2 }
+	}
+	action = {
+		ai_chance = 30
+		name = EVT_SOV_223059_B
+    		command = { type = build_time which = air when = on_upgrade where = relative value = -5 }
+		command = { trigger = { ai = no } type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223036] SOV | 1939 | Proclamation of the GDR (Proclamación de la RDA)
+# Triggered by event 260000 in events/Minors/U25.txt
+# Trigger event 260001 in events/Minors/U25.txt
+# Trigger event 223037 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223036
+	random = no
+	country = SOV
+	name = EVT_SHARED_00775_NAME
+	desc = EVT_SHARED_00775_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		event = { id = 260000 days = 60 }
+	}
+	decision_trigger = {
+ 		event = { id = 260000 days = 120 }
+		OR ={
+		NOT = { atwar = USA }
+		NOT = { atwar = FRA }
+		NOT = { atwar = ENG }
+}
+	}
+	trigger = {
+		event = 260000
+		OR = {
+          AND = { random = 2 event = { id = 260000 days = 200 } }
+          AND = { random = 10 event = { id = 260000 days = 800 } }
+          AND = { random = 50 event = { id = 260000 days = 1590 } }
+          }
+	}
+	date = { day = 0 month = january year = 1939 }
+  	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { owned = { province = 182 data = -1 } } type = addclaim which = 182 }
+		command = { trigger = { owned = { province = 184 data = -1 } } type = addclaim which = 184 }
+		command = { trigger = { owned = { province = 261 data = -1 } } type = addclaim which = 261 }
+		command = { type = independence which = DDR value = 1 when = 0 }
+		command = { type = secederegion which = DDR value = Germany }
+		command = { type = make_puppet which = DDR }
+		command = { trigger = { exists = U25 } type = trigger which = 260001 }
+		command = { trigger = { NOT = { exists = U25 } } type = trigger which = 223037 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223038] SOV | 1939 | Austrian Independence Restored (Restauración de la independencia austríaca)
+# Triggered by event 260000 in events/Minors/U25.txt
+# Trigger event 260002 in events/Minors/U25.txt
+# Trigger event 260003 in events/Minors/U25.txt
+# Trigger event 223039 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223038
+	random = no
+	country = SOV
+	name = EVT_SHARED_00777_NAME
+	desc = EVT_SHARED_00777_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = {
+		event = { id = 260000 days = 90 }
+	}
+	decision_trigger = {
+ 		event = { id = 260000 days = 160 }
+		OR ={
+		NOT = { atwar = USA }
+		NOT = { atwar = FRA }
+		NOT = { atwar = ENG }
+}
+	}
+	trigger = {
+		event = 260000
+		OR = {
+          AND = { random = 1 event = { id = 260000 days = 900 }  }
+          AND = { random = 10 event = { id = 260000 days = 1800 }  }
+          AND = { random = 50 event = { id = 260000 days = 3650 }  }
+          }
+	}
+	date = { day = 0 month = january year = 1939 }
+  	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_YES"
+		ai_chance = 95
+		command = { type = independence which = AUS value = 1 when = 1 }
+		command = { type = secederegion which = AUS value = Austria }
+		command = { type = trigger which = 260002 }
+	}
+	action = {
+		trigger = {
+			NOT = { area = { area = Austria country = -3 data = 1 value = 100 } }
+		}
+		name = "EVT_SOV_223038_A"
+		ai_chance = 5
+		command = { type = independence which = U16 value = 1 when = 0 }
+		command = { type = secederegion which = U16 value = Austria }
+		command = { type = make_puppet which = U16 }
+		command = { trigger = { exists = U25 } type = trigger which = 260003 }
+		command = { trigger = { NOT = { exists = U25 } } type = trigger which = 223039 }
+	}
+	action = {
+		trigger = {
+			area = { area = Austria country = -3 data = 1 value = 100 }
+		}
+		name = "EVT_SOV_223038_A"
+		ai_chance = 1805
+		command = { type = independence which = U16 value = 1 when = 0 }
+		command = { type = secederegion which = U16 value = Austria }
+		command = { type = make_puppet which = U16 }
+		command = { trigger = { exists = U25 } type = trigger which = 260003 }
+		command = { trigger = { NOT = { exists = U25 } } type = trigger which = 223039 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329088] SOV | 1939 | Soviet Union imposes Estonia to sign a treaty of mutual assistance (La Unión Soviética impone a Estonia firmar un tratado de asistencia mutua)
+# Triggered by event 223088 in events/SOV/SOV_33-36.txt
+# Trigger event 144003 in events/Minors/EST.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329088
+	random = no
+	country = SOV
+	decision = {
+		event = 223088
+		exists = EST
+		NOT = {
+			war = { country = EST country = SOV }
+			war = { country = GER country = SOV }
+			alliance = { country = SOV country = EST }
+		}
+		NOT = {
+			control = { province = 270 }
+			control = { province = 271 }
+			control = { province = 272 }
+			control = { province = 273 }
+			control = { province = 274 }
+			control = { province = 275 }
+		}
+	}
+	trigger = {
+		exists = EST
+		event = 223088
+		NOT = {
+			OR = {
+				war = { country = EST country = SOV }
+				war = { country = GER country = SOV }
+				alliance = { country = SOV country = EST }
+			}
+		}
+		NOT = {
+			control = { province = 270 }
+			control = { province = 271 }
+			control = { province = 272 }
+			control = { province = 273 }
+			control = { province = 274 }
+			control = { province = 275 }
+		}
+	}
+	name = "EVT_SOV_329088_NAME"
+	desc = "EVT_SOV_329088_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	date = { day = 27 month = september year = 1939  }
+	offset = 1
+	deathdate = { day = 1 month = january year = 1940 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = EST value = -10 }
+		command = { type = trigger which = 144003 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329330] SOV | 1939 | Soviet Union imposes Latvia to sign treaty of mutual assistance (La Unión Soviética impone a Letonia firmar un tratado de asistencia mutua)
+# Triggered by event 223088 in events/SOV/SOV_33-36.txt
+# Trigger event 174012 in events/Minors/LAT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329330
+	random = no
+	country = SOV
+	decision = {
+		event = 223088
+		exists = LAT
+		NOT = {
+			war = { country = LAT country = SOV }
+			war = { country = GER country = SOV }
+			alliance = { country = SOV country = LAT }
+		}
+		NOT = {
+			control = { province = 264 }
+			control = { province = 265 }
+			control = { province = 266 }
+			control = { province = 267 }
+			control = { province = 268 }
+			control = { province = 269 }
+		}
+	}
+	trigger = {
+		exists = LAT
+		event = 223088
+		NOT = {
+			OR = {
+				war = { country = LAT country = SOV }
+				war = { country = GER country = SOV }
+				alliance = { country = SOV country = LAT }
+			}
+		}
+		NOT = {
+			control = { province = 264 }
+			control = { province = 265 }
+			control = { province = 266 }
+			control = { province = 267 }
+			control = { province = 268 }
+			control = { province = 269 }
+		}
+	}
+	name = "EVT_SOV_329330_NAME"
+	desc = "EVT_SOV_329330_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	date = { day = 1 month = october year = 1939  }
+	offset = 1
+	deathdate = { day = 1 month = january year = 1940 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = LAT value = -10 }
+		command = { type = trigger which = 174012 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329338] SOV | 1939 | Soviet Union imposes Lithuania to sign treaty of mutual assistance (La Unión Soviética impone a Lituania firmar un tratado de asistencia mutua)
+# Triggered by event 223088 in events/SOV/SOV_33-36.txt
+# Trigger event 178003 in events/Minors/LIT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329338
+	random = no
+	country = SOV
+	decision = {
+		event = 223088
+		exists = LIT
+		NOT = {
+			war = { country = LIT country = SOV }
+			war = { country = GER country = SOV }
+			alliance = { country = SOV country = LIT }
+		}
+		NOT = {
+			control = { province = 259 }
+			control = { province = 260 }
+			control = { province = 262 }
+			control = { province = 263 }
+		}
+	}
+	trigger = {
+		exists = LIT
+		event = 223088
+		NOT = {
+			OR = {
+				war = { country = LIT country = SOV }
+				war = { country = GER country = SOV }
+				alliance = { country = SOV country = LIT }
+			}
+		}
+		NOT = {
+			control = { province = 259 }
+			control = { province = 260 }
+			control = { province = 262 }
+			control = { province = 263 }
+		}
+	}
+	name = "EVT_SOV_329338_NAME"
+	desc = "EVT_SOV_329338_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	date = { day = 9 month = october year = 1939  }
+	offset = 1
+	deathdate = { day = 1 month = january year = 1940 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = LIT value = -10 }
+		command = { type = trigger which = 178003 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223250] SOV | 1940 | Supreme Commander Order #20 (Orden n.º 20 del Comandante Supremo)
+# Triggered by event 329856 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329857 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329858 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329859 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329860 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329861 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329862 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329863 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329864 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329865 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329866 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329867 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329868 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329869 in events/AI/REB_AI_14-52.txt
+# Triggered by event 329870 in events/AI/REB_AI_14-52.txt
+# Trigger event 223266 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223250
+	country = SOV
+	save_date = yes
+	name = EVT_SOV_223250_NAME
+	desc = EVT_SOV_223250_DESC
+	picture = "nwo/hero_cities"
+	decision_picture = "nwo/d_hero_cities"
+	style = 1
+	trigger = {
+		flag = cold_war
+		OR = {
+			event = 329856
+			event = 329857
+			event = 329858
+			event = 329859
+			event = 329860
+			event = 329861
+			event = 329862
+			event = 329863
+			event = 329864
+			event = 329865
+			event = 329866
+			event = 329867
+			event = 329868
+			event = 329869
+			event = 329870
+		}
+	}
+	decision = {
+		flag = cold_war
+		OR = {
+			event = 329856
+			event = 329857
+			event = 329858
+			event = 329859
+			event = 329860
+			event = 329861
+			event = 329862
+			event = 329863
+			event = 329864
+			event = 329865
+			event = 329866
+			event = 329867
+			event = 329868
+			event = 329869
+			event = 329870
+		}
+	}
+	date = { day = 1 month = january year = 1940 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = -100 }
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329089] SOV | 1940 | Soviet Union pressures for a SU-friendly goverment (Las Unión Soviética presiona por un gobierno amigable con la URSS)
+# Triggered by event 144004 in events/Minors/EST.txt
+# Trigger event 144005 in events/Minors/EST.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329089
+	random = no
+	country = SOV
+	decision = {
+		event = 144004
+		exists = EST
+		NOT = {
+			war = { country = EST country = SOV }
+			war = { country = GER country = SOV }
+			alliance = { country = SOV country = EST }
+		}
+		NOT = {
+			control = { province = 270 }
+			control = { province = 271 }
+			control = { province = 272 }
+			control = { province = 273 }
+			control = { province = 274 }
+			control = { province = 275 }
+		}
+	}
+	trigger = {
+		exists = EST
+		event = 144004
+		NOT = {
+			OR = {
+				war = { country = EST country = SOV }
+				war = { country = GER country = SOV }
+				alliance = { country = SOV country = EST }
+			}
+		}
+		NOT = {
+			control = { province = 270 }
+			control = { province = 271 }
+			control = { province = 272 }
+			control = { province = 273 }
+			control = { province = 274 }
+			control = { province = 275 }
+		}
+	}
+	name = "EVT_SHARED_00231_NAME"
+	desc = "EVT_SOV_329089_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	date = { day = 13 month = june year = 1940  }
+	offset = 1
+	deathdate = { day = 1 month = december year = 1940 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = EST value = -50 }
+		command = { type = trigger which = 144005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329339] SOV | 1940 | Soviet Union pressures for a SU-friendly goverment (Las Unión Soviética presiona por un gobierno amigable con la URSS)
+# Triggered by event 178004 in events/Minors/LIT.txt
+# Trigger event 178005 in events/Minors/LIT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329339
+	random = no
+	country = SOV
+	decision = {
+		event = 178004
+		exists = LIT
+		NOT = {
+			war = { country = LIT country = SOV }
+			war = { country = GER country = SOV }
+			alliance = { country = SOV country = LIT }
+		}
+		NOT = {
+			control = { province = 259 }
+			control = { province = 260 }
+			control = { province = 262 }
+			control = { province = 263 }
+		}
+	}
+	trigger = {
+		exists = LIT
+		event = 178004
+		NOT = {
+			OR = {
+				war = { country = LIT country = SOV }
+				war = { country = GER country = SOV }
+				alliance = { country = SOV country = LIT }
+			}
+		}
+		NOT = {
+			control = { province = 259 }
+			control = { province = 260 }
+			control = { province = 262 }
+			control = { province = 263 }
+		}
+	}
+	name = "EVT_SHARED_00231_NAME"
+	desc = "EVT_SOV_329339_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	date = { day = 14 month = june year = 1940  }
+	offset = 1
+	deathdate = { day = 1 month = december year = 1940 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = LIT value = -50 }
+		command = { type = trigger which = 178005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329331] SOV | 1940 | Soviet Union pressures for a SU-friendly goverment (Las Unión Soviética presiona por un gobierno amigable con la URSS)
+# Triggered by event 174013 in events/Minors/LAT.txt
+# Trigger event 174015 in events/Minors/LAT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329331
+	random = no
+	country = SOV
+	decision = {
+		event = 174013
+		exists = LAT
+		NOT = {
+			war = { country = LAT country = SOV }
+			war = { country = GER country = SOV }
+			alliance = { country = SOV country = LAT }
+		}
+		NOT = {
+			control = { province = 264 }
+			control = { province = 265 }
+			control = { province = 266 }
+			control = { province = 267 }
+			control = { province = 268 }
+			control = { province = 269 }
+		}
+	}
+	trigger = {
+		exists = LAT
+		event = 174013
+		NOT = {
+			OR = {
+				war = { country = LAT country = SOV }
+				war = { country = GER country = SOV }
+				alliance = { country = SOV country = LAT }
+			}
+		}
+		NOT = {
+			control = { province = 264 }
+			control = { province = 265 }
+			control = { province = 266 }
+			control = { province = 267 }
+			control = { province = 268 }
+			control = { province = 269 }
+		}
+	}
+	name = "EVT_SHARED_00231_NAME"
+	desc = "EVT_SOV_329331_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	date = { day = 16 month = june year = 1940  }
+	offset = 1
+	deathdate = { day = 1 month = december year = 1940 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = LAT value = -50 }
+		command = { type = trigger which = 174015 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329340] SOV | 1940 | Soviet Union annex Lithuania (La Unión Soviética se anexiona Lituania)
+# Triggered by event 223050 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329340
+	random = no
+	country = SOV
+	decision = {
+		event = 223050
+		exists = LIT
+		NOT = {
+			war = { country = LIT country = SOV }
+			war = { country = GER country = SOV }
+		}
+		NOT = {
+			control = { province = 259 }
+			control = { province = 260 }
+			control = { province = 262 }
+			control = { province = 263 }
+		}
+	}
+	trigger = {
+		exists = LIT
+		event = 223050
+		NOT = {
+			OR = {
+				war = { country = LIT country = SOV }
+				war = { country = GER country = SOV }
+			}
+		}
+		NOT = {
+			control = { province = 259 }
+			control = { province = 260 }
+			control = { province = 262 }
+			control = { province = 263 }
+		}
+	}
+	name = "EVT_SOV_329340_NAME"
+	desc = "EVT_SOV_329340_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	date = { day = 2 month = august year = 1940  }
+	offset = 1
+	deathdate = { day = 1 month = december year = 1940 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = addcore which = 258 }
+		command = { type = addcore which = 259 }
+		command = { type = addcore which = 260 }
+		command = { type = addcore which = 262 }
+		command = { type = addcore which = 263 }
+		command = { type = inherit which = LIT }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329332] SOV | 1940 | Soviet Union annex Latvia (La Unión Soviética se anexiona Letonia)
+# Triggered by event 223044 in events/SOV/SOV_38-40.txt
+# Trigger event 223012 in events/SOV/SOV_40-43.txt
+# Trigger event 223045 in events/SOV/SOV_40-43.txt
+# Trigger event 223052 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329332
+	random = no
+	country = SOV
+	decision = {
+		event = 223044
+		exists = LAT
+		NOT = {
+			war = { country = LAT country = SOV }
+			war = { country = GER country = SOV }
+		}
+		NOT = {
+			control = { province = 264 }
+			control = { province = 265 }
+			control = { province = 266 }
+			control = { province = 267 }
+			control = { province = 268 }
+			control = { province = 269 }
+		}
+	}
+	trigger = {
+		exists = LAT
+		event = 223044
+		NOT = {
+			OR = {
+				war = { country = LAT country = SOV }
+				war = { country = GER country = SOV }
+			}
+		}
+		NOT = {
+			control = { province = 264 }
+			control = { province = 265 }
+			control = { province = 266 }
+			control = { province = 267 }
+			control = { province = 268 }
+			control = { province = 269 }
+		}
+	}
+	name = "EVT_SOV_329332_NAME"
+	desc = "EVT_SOV_329332_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	date = { day = 4 month = august year = 1940  }
+	offset = 1
+	deathdate = { day = 1 month = december year = 1940 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = addcore which = 264 }
+		command = { type = addcore which = 265 }
+		command = { type = addcore which = 266 }
+		command = { type = addcore which = 267 }
+		command = { type = addcore which = 268 }
+		command = { type = addcore which = 269 }
+		command = { type = inherit which = LAT }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329090] SOV | 1940 | Soviet Union annex Estonia (La Unión Soviética se anexiona Estonia)
+# Triggered by event 223011 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329090
+	random = no
+	country = SOV
+	decision = {
+		event = 223011
+		exists = EST
+		NOT = {
+			war = { country = EST country = SOV }
+			war = { country = GER country = SOV }
+		}
+		NOT = {
+			control = { province = 270 }
+			control = { province = 271 }
+			control = { province = 272 }
+			control = { province = 273 }
+			control = { province = 274 }
+			control = { province = 275 }
+		}
+	}
+	trigger = {
+		exists = EST
+		event = 223011
+		NOT = {
+			OR = {
+				war = { country = EST country = SOV }
+				war = { country = GER country = SOV }
+			}
+		}
+		NOT = {
+			control = { province = 270 }
+			control = { province = 271 }
+			control = { province = 272 }
+			control = { province = 273 }
+			control = { province = 274 }
+			control = { province = 275 }
+		}
+	}
+	name = "EVT_SOV_329090_NAME"
+	desc = "EVT_SOV_329090_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	date = { day = 5 month = august year = 1940  }
+	offset = 1
+	deathdate = { day = 1 month = december year = 1940 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = addcore which = 270 }
+		command = { type = addcore which = 271 }
+		command = { type = addcore which = 272 }
+		command = { type = addcore which = 273 }
+		command = { type = addcore which = 274 }
+		command = { type = addcore which = 275 }
+		command = { type = inherit which = EST }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329753] SOV | 1945 | Ideological Autonomy of the CPC (Autonomía ideológica del PCCh)
+# Trigger event 123046 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329753
+	country = SOV
+	name = "EVT_SOV_329753_NAME"
+	desc = "EVT_SOV_329753_DESC"
+	picture = "nwo/mao_with_stalin"
+	decision_picture = "nwo/d_mao_with_stalin"
+	style = 1
+	decision = {
+		flag = cold_war_pacific
+		puppet = { country = CHC country = SOV }
+	}
+	trigger = {
+		flag = cold_war_pacific
+		puppet = { country = CHC country = SOV }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 98
+		command = { type = trigger which = 123046 }
+		command = { type = dissent value = -5 }
+		command = { type = belligerence value = -15 }
+		command = { type = relation which = CHC value = 150 }
+	}
+	action = {
+		name = EVT_SOV_329753_A
+		ai_chance = 2
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 15 }
+		command = { type = relation which = CHC value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329768] SOV | 1945 | Conclusion of Intervention in China (Fin de la intervención soviética en China)
+# Triggered by event 123028 in events/Minors/CHC_30-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329768
+	random = no
+	country = SOV
+	name = "EVT_SOV_329768_NAME"
+	desc = "EVT_SOV_329768_DESC"
+	picture = "nwo/failed_intervention"
+	style = 1
+	decision = {
+		flag = CHI_won_civil_war
+		war = { country = CHI }
+		NOT = { war = { country = USA } }
+		event = 123028
+	}
+	trigger = {
+		flag = CHI_won_civil_war
+		war = { country = CHI }
+		NOT = { war = { country = USA } }
+		event = 123028
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peace which = CHI value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329925] SOV | 1945 | Nationalist China Allies with USA (China se alía con EE. UU.)
+# Triggered by event 124191 in events/CHI/CHI_37-45.txt
+# Trigger event 124195 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329925
+	country = SOV
+	name = EVT_SOV_329925_NAME
+	desc = EVT_SOV_329925_DESC
+	picture = "nwo/kmt_unitedstates"
+	decision_picture = "nwo/d_kmt_unitedstates"
+	style = 1
+	decision = {
+		event = 124191
+		alliance = { country = CHI country = USA }
+		flag = CHI_won_civil_war
+	}
+	trigger = {
+		event = 124191
+		alliance = { country = CHI country = USA }
+		exists = MON
+		puppet = { country = MON country = SOV }
+		ai = MON
+		flag = CHI_won_civil_war
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 70
+		command = { type = trigger which = 124195 }
+		command = { type = belligerence value = 20 }
+	}
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 30
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329926] SOV | 1945 | Rebuilding Communist Resistance (Resurgimiento comunista en China)
+# Triggered by event 124195 in events/CHI/CHI_37-45.txt
+# Trigger event 185019 in events/Minors/MON.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329926
+	country = SOV
+	name = EVT_SOV_329926_NAME
+	desc = EVT_SOV_329926_DESC
+	picture = "nwo/new_chinese_soviet"
+	decision_picture = "nwo/d_new_chinese_soviet"
+	style = 1
+	decision = {
+		event = 124195
+		alliance = { country = CHI country = USA }
+		exists = MON
+		puppet = { country = MON country = SOV }
+		alliance = { country = MON country = SOV }
+		ai = MON
+	}
+	trigger = {
+		event = 124195
+		alliance = { country = CHI country = USA }
+		exists = MON
+		puppet = { country = MON country = SOV }
+		alliance = { country = MON country = SOV }
+		ai = MON
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_SOV_329926_A
+		ai_chance = 95
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+	action = {
+		name = EVT_SOV_329926_B
+		ai_chance = 5
+		command = { type = trigger which = 185019 }
+		command = { type = dissent value = 15 }
+		command = { type = belligerence value = 20 }
+		command = { type = supplies value = -10000 }
+		command = { type = money value = -2000 }
+		command = { type = demobilize which = land when = 0 where = 0 value = -30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223326] SOV | 1946 | The Internal Troops of the MVD (Las Tropas del Interior del MVD)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223326
+	country = SOV
+	name = EVT_SOV_223326_NAME
+	desc = EVT_SOV_223326_DESC
+	picture = "nwo/internal_troops"
+	decision_picture = "nwo/d_internal_troops"
+	style = 1
+	trigger = {
+		flag = cold_war
+		dissent = 10
+		NOT = { dissent = 20 }
+	}
+	decision = {
+		flag = cold_war
+		NOT = { dissent = 20 }
+	}
+	decision_trigger = {
+		flag = cold_war
+		dissent = 10
+		NOT = { dissent = 20 }
+	}
+	date = { day = 1 month = april year = 1946 }
+	offset = 1080
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = EVT_SOV_223326_A
+		ai_chance = 70
+		command = { type = manpower value = -150 when = on_upgrade }
+		command = { type = dissent value = -7 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 30
+		trigger = { ai = yes }
+		command = { type = money value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223323] SOV | 1948 | The Leningrad Affair (El caso de Leningrado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223323
+	country = SOV
+	name = EVT_SOV_223323_NAME
+	desc = EVT_SOV_223323_DESC
+	picture = "nwo/leningrad_monument"
+	decision_picture = "nwo/d_leningrad_monument"
+	style = 1
+	trigger = {
+		NOT = { domestic = { type = freedom value = 2 } }
+		dissent = 3
+	}
+	decision = {
+		NOT = { domestic = { type = freedom value = 2 } }
+	}
+	decision_trigger = {
+		NOT = { domestic = { type = freedom value = 2 } }
+		dissent = 3
+	}
+	date = { day = 1 month = april year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = EVT_SOV_223323_A
+		ai_chance = 80
+		command = { type = dissent value = -3 }
+		command = { type = domestic which = freedom value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 20
+		trigger = { ai = yes }
+		command = { type = money value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223324] SOV | 1949 | Purge of the Jewish Anti-Fascist Committee (Disolución del Comité Antifascista Judío)
+# Trigger event 223327 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223324
+	country = SOV
+	name = EVT_SOV_223324_NAME
+	desc = EVT_SOV_223324_DESC
+	picture = "nwo/jewish_antifacist_committee"
+	decision_picture = "nwo/d_jewish_antifacist_committee"
+	style = 1
+	trigger = {
+		NOT = { domestic = { type = freedom value = 2 } }
+		dissent = 3
+	}
+	decision = {
+		NOT = { domestic = { type = freedom value = 2 } }
+	}
+	decision_trigger = {
+		NOT = { domestic = { type = freedom value = 2 } }
+		dissent = 3
+	}
+	date = { day = 1 month = april year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 80
+		command = { type = dissent value = -3 }
+		command = { type = domestic which = freedom value = -1 }
+	}
+	action = {
+		name = EVT_SOV_223324_A
+		ai_chance = 20
+		trigger = { ai = yes }
+		command = { type = money value = 10 }
+		command = { type = sleepevent which = 223327 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223204] SOV | 1950 | Soviet Boycott of the Security Council (Boicot soviético al Consejo de Seguridad)
+# Trigger event 316195 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223204
+	country = SOV
+	name = EVT_SOV_223204_NAME
+	desc = EVT_SOV_223204_DESC
+	picture = "nwo/soviet_boycott_of_unsc"
+	decision_picture = "nwo/d_soviet_boycott_of_unsc"
+	style = 1
+	decision = {
+		exists = CHC
+		exists = CHI
+		NOT = { exists = UCH }
+		flag = CHC_won_civil_war
+		NOT = { flag = CHC_in_UNSC }
+	}
+	trigger = {
+		exists = CHC
+		exists = CHI
+		NOT = { exists = UCH }
+		flag = CHC_won_civil_war
+		NOT = { flag = CHC_in_UNSC }
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 30
+	deathdate = { day = 29 month = july year = 1950 }
+	action = {
+		name = EVT_SOV_223204_A
+		ai_chance = 95
+		command = { type = trigger which = 316195 }
+		command = { type = setflag which = un_soviet_boycott }
+	}
+	action = {
+		name = EVT_SOV_223204_B
+		ai_chance = 5
+		trigger = { ai = yes }
+		command = { type = money value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223205] SOV | 1950 | End of the Security Council Boycott (Fin del boicot al Consejo de Seguridad)
+# ----------------------------------------------------------------------------
+event = {
+	id = 223205
+	country = SOV
+	name = EVT_SOV_223205_NAME
+	desc = EVT_SOV_223205_DESC
+	picture = "nwo/soviet_boycott_of_unsc"
+	decision_picture = "nwo/d_soviet_boycott_of_unsc"
+	style = 1
+	decision = {
+		flag = un_soviet_boycott
+	}
+	trigger = {
+		flag = un_soviet_boycott
+	}
+	date = { day = 0 month = september year = 1950 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_SOV_223205_A
+		ai_chance = 100
+		command = { type = clrflag which = un_soviet_boycott }
+	}
+	action = {
+		name = EVT_SOV_223205_B
+		ai_chance = 0
+		trigger = { ai = yes }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223294] SOV | 1952 | The Stalin Note (La Nota de Stalin)
+# Trigger event 143334 in events/ENG/ENG_43-54.txt
+# Trigger event 147215 in events/FRA/FRA_48-59.txt
+# Trigger event 223295 in events/SOV/SOV_47-56.txt
+# Trigger event 223296 in events/SOV/SOV_47-56.txt
+# Trigger event 316250 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223294
+	country = SOV
+	name = EVT_SOV_223294_NAME
+	desc = EVT_SOV_223294_DESC
+	picture = "nwo/stalin_note"
+	decision_picture = "nwo/d_stalin_note"
+	style = 1
+	trigger = {
+		exists = DFR
+		exists = DDR
+		flag = cold_war
+		ai = DDR
+	}
+	decision = {
+		exists = DFR
+		exists = DDR
+		flag = cold_war
+		ai = DDR
+	}
+	date = { day = 10 month = march year = 1952 }
+	offset = 7
+	deathdate = { day = 29 month = march year = 1952 }
+	action = {
+		name = EVT_SOV_223294_A
+		ai_chance = 70
+		command = { type = relation which = DFR value = 30 }
+		command = { type = belligerence value = -5 }
+	}
+	action = {
+		name = EVT_SOV_223294_B
+		trigger = { ai = yes }
+		ai_chance = 30
+		command = { type = money value = 1 }
+		command = { type = sleepevent which = 316250 }
+		command = { type = sleepevent which = 143334 }
+		command = { type = sleepevent which = 147215 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223327] SOV | 1952 | The Doctors' Plot (El complot de los médicos)
+# Triggered by event 223324 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223327
+	country = SOV
+	name = EVT_SOV_223327_NAME
+	desc = EVT_SOV_223327_DESC
+	picture = "nwo/doctors_plot"
+	decision_picture = "nwo/d_doctors_plot"
+	style = 1
+	trigger = {
+		NOT = { domestic = { type = freedom value = 2 } }
+		dissent = 3
+		event = 223324
+	}
+	decision = {
+		NOT = { domestic = { type = freedom value = 2 } }
+		event = 223324
+	}
+	decision_trigger = {
+		NOT = { domestic = { type = freedom value = 2 } }
+		dissent = 3
+		event = 223324
+	}
+	date = { day = 1 month = december year = 1952 }
+	offset = 90
+	deathdate = { day = 29 month = february year = 1953 }
+	action = {
+		name = EVT_SOV_223327_A
+		ai_chance = 80
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = freedom value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 20
+		trigger = { ai = yes }
+		command = { type = money value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223309] SOV | 1953 | The German Question Under Beria (La propuesta sobre Alemania de Beria)
+# Triggered by event 223308 in events/SOV/SOV_47-56.txt
+# Trigger event 139046 in events/Minors/DFR.txt
+# Trigger event 137029 in events/Minors/DDR.txt
+# Trigger event 316253 in events/USA/USA_48-61.txt
+# Trigger event 143337 in events/ENG/ENG_43-54.txt
+# Trigger event 147216 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223309
+	country = SOV
+	name = EVT_SOV_223309_NAME
+	desc = EVT_SOV_223309_DESC
+	picture = "nwo/united_germany"
+	decision_picture = "nwo/d_united_germany"
+	style = 1
+	decision = {
+		flag = cold_war
+		exists = DFR
+		exists = DDR
+		event = 223308
+	}
+	trigger = {
+		flag = cold_war
+		exists = DFR
+		exists = DDR
+		event = 223308
+	}
+	date = { day = 1 month = september year = 1953 }
+	offset = 180
+	deathdate = { day = 29 month = march year = 1954 }
+	action = {
+		name = EVT_SOV_223309_A
+		ai_chance = 80
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = trigger which = 139046 }
+		command = { type = trigger which = 137029 }
+		command = { type = trigger which = 316253 }
+		command = { type = trigger which = 143337 }
+		command = { type = trigger which = 147216 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 20
+		trigger = { ai = yes }
+		command = { type = money value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223199] SOV | 1961 | The Berlin Refugee Exodus (El éxodo de refugiados por Berlín)
+# Trigger event 316189 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223199
+	country = SOV
+	name = EVT_SOV_223199_NAME
+	desc = EVT_SOV_223199_DESC
+	picture = "nwo/khrushchev_ulbricht"
+	decision_picture = "nwo/d_checkpoint_charlie"
+	style = 1
+	decision = {
+		flag = cold_war
+		exists = DDR
+		exists = DFR
+		control = { province = 163 data = DDR }
+		flag = divided_berlin
+	}
+	trigger = {
+		flag = cold_war
+		exists = DDR
+		exists = DFR
+		control = { province = 163 data = DDR }
+		flag = divided_berlin
+	}
+	date = { day = 4 month = june year = 1961 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ULTIMATUM
+		ai_chance = 85
+		command = { type = belligerence value = 5 }
+	}
+	action = {
+		name = EVT_SOV_223199_A
+		trigger = { ai = no }
+		ai_chance = 15
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = DDR value = -50 }
+		command = { type = dissent value = 5 }
+		command = { type = sleepevent which = 316189 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [223336] SOV | 1986 | Perestroika and Glasnost (Perestroika y Glásnost)
+# Trigger event 223338 in events/SOV/SOV_82-91.txt
+# Trigger event 223339 in events/SOV/SOV_82-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 223336
+	country = SOV
+	name = EVT_SOV_223336_NAME
+	desc = EVT_SOV_223336_DESC
+	picture = "nwo/perestroika"
+	style = 1
+	decision = {
+		headofstate = 30342
+		atwar = no
+	}
+	trigger = {
+		headofstate = 30342
+		atwar = no
+	}
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = freedom value = 3 }
+		command = { type = industrial_modifier which = total value = 5 }
+	}
+}

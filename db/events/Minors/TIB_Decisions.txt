@@ -1,0 +1,332 @@
+# ============================================================================
+# File: events/Minors/TIB_Decisions.txt (6 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [232013] TIB | 1914 | Seek British Assistance (Buscar ayuda británica)
+# Trigger event 143420 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232013
+	random = no
+	country = TIB
+	decision = {
+		or = {
+			exists = UCH
+			exists = CXB
+			exists = CYN
+			exists = CHI
+		}
+	}
+	decision_trigger = {
+		relation = { which = ENG value = 50 }
+	}
+	trigger = {
+		or = {
+			exists = UCH
+			exists = CXB
+			exists = CYN
+			exists = CHI
+		}
+		relation = { which = ENG value = 50 }
+		random = 10
+	}
+	name = "EVT_SHARED_01071_NAME"
+	desc = "EVT_TIB_232013_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	date = { day = 5 month = july year = 1914 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 143420 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232014] TIB | 1914 | Tibetan-Nepal War (Guerra Tibetano-Nepalí)
+# Trigger event 143421 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232014
+	random = no
+	country = TIB
+	decision = {
+		flag = 133027003
+		not = { control = { province = 1457 data = TIB } }
+	}
+	decision_trigger = {
+		supplies = 250
+		exists = NEP
+		atwar = no
+	}
+	trigger = {
+		flag = 133027003
+		supplies = 250
+		exists = NEP
+		random = 10
+		not = { control = { province = 1457 data = TIB } }
+		atwar = no
+	}
+	name = "EVT_TIB_232014_NAME"
+	desc = "EVT_TIB_232014_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	date = { day = 5 month = july year = 1914 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		ai_chance = 80
+		name = "ACTION_NAME_YES"
+		command = { type = trigger which = 143421 }
+		command = { type = addclaim which = 1457 }
+		command = { type = belligerence which = TIB value = 10 }
+	}
+	action = {
+		trigger = {
+			ai = yes
+		}
+		ai_chance = 20
+		name = "EVT_SHARED_01072_A"
+		command = { type = relation which = ENG value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232015] TIB | 1914 | Tibetan-Bhutan War (Guerra Tibetano-Butanesa)
+# Trigger event 143422 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232015
+	random = no
+	country = TIB
+	decision = {
+		flag = 133027004
+		not = { control = { province = 1456 data = TIB } }
+	}
+	decision_trigger = {
+		supplies = 250
+		exists = BHU
+		atwar = no
+	}
+	trigger = {
+		flag = 133027004
+		supplies = 250
+		exists = BHU
+		random = 10
+		not = { control = { province = 1456 data = TIB } }
+		atwar = no
+	}
+	name = "EVT_TIB_232015_NAME"
+	desc = "EVT_TIB_232015_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	date = { day = 5 month = july year = 1914 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		ai_chance = 80
+		name = "ACTION_NAME_YES"
+		command = { type = trigger which = 143422 }
+		command = { type = addclaim which = 1456 }
+		command = { type = belligerence which = TIB value = 10 }
+	}
+	action = {
+		trigger = {
+			ai = yes
+		}
+		ai_chance = 20
+		name = "EVT_SHARED_01072_A"
+		command = { type = relation which = ENG value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232017] TIB | 1914 | Reclaim Qinghai (Reclamar Qinghai)
+# Triggered by event 232016 in events/Minors/TIB_Decisions.txt
+# Trigger event 133003 in events/Minors/CXB.txt
+# Trigger event 134007 in events/Minors/CYN.txt
+# Trigger event 124251 in events/CHI/CHI_13-33.txt
+# Trigger event 309047 in events/Minors/UCH.txt
+# Trigger event 232018 in events/Minors/TIB_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232017
+	random = no
+	country = TIB
+	decision = {
+		event = { id = 232016 days = 4320 }
+		not = { control = { province = 1294 data = TIB } }
+		not = { control = { province = 1293 data = TIB } }
+		not = { control = { province = 1292 data = TIB } }
+		not = { control = { province = 1262 data = TIB } }
+		not = { control = { province = 1284 data = TIB } }
+		not = { control = { province = 1283 data = TIB } }
+	}
+	decision_trigger = {
+		supplies = 250
+		or = {
+			exists = UCH
+			exists = CXB
+			exists = CYN
+			exists = CHI
+		}
+		atwar = no
+	}
+	trigger = {
+		event = { id = 232016 days = 3600 }
+		not = { control = { province = 1294 data = TIB } }
+		not = { control = { province = 1293 data = TIB } }
+		not = { control = { province = 1292 data = TIB } }
+		not = { control = { province = 1262 data = TIB } }
+		not = { control = { province = 1284 data = TIB } }
+		not = { control = { province = 1283 data = TIB } }
+		random = 10
+		or = {
+			exists = UCH
+			exists = CXB
+			exists = CYN
+			exists = CHI
+		}
+		supplies = 250
+		atwar = no
+	}
+	name = "EVT_TIB_232017_NAME"
+	desc = "EVT_TIB_232017_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	date = { day = 5 month = july year = 1914 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = "ACTION_NAME_YES"
+		ai_chance = 95
+		command = { type = secedeprovince which = TIB value = 1285 when = 2 }
+		command = { type = secedeprovince which = TIB value = 1290 when = 2 }
+		command = { type = belligerence which = TIB value = 10 }
+		command = { type = trigger which = 133003 }
+		command = { type = trigger which = 134007 }
+		command = { type = trigger which = 124251 }
+		command = { type = trigger which = 309047 }
+	}
+	action = {
+		trigger = {
+			ai = yes
+		}
+		ai_chance = 5
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		command = { type = sleepevent which = 232018 }
+		command = { type = sleepevent which = 143423 }
+		command = { type = sleepevent which = 232019 }
+		command = { type = sleepevent which = 133003 }
+		command = { type = sleepevent which = 134007 }
+		command = { type = sleepevent which = 124251 }
+		command = { type = sleepevent which = 309047 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232018] TIB | 1914 | Seek British Assistance (Buscar ayuda británica)
+# Triggered by event 232017 in events/Minors/TIB_Decisions.txt
+# Trigger event 143423 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232018
+	random = no
+	country = TIB
+	decision = {
+		atwar = yes
+		event = 232017
+		lost_national = { value = 30 }
+	}
+	decision_trigger = {
+		relation = { which = ENG value = 50 }
+	}
+	trigger = {
+		atwar = yes
+		event = 232017
+		lost_national = { value = 30 }
+		relation = { which = ENG value = 50 }
+		random = 40
+	}
+	name = "EVT_SHARED_01071_NAME"
+	desc = "EVT_TIB_232018_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	date = { day = 5 month = july year = 1914 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 143423 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232016] TIB | 1915 | Reclaim Xikang (Reclamar Xikang)
+# Trigger event 231143 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 232017 in events/Minors/TIB_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232016
+	random = no
+	country = TIB
+	save_date = yes
+	decision = {
+		flag = 133027007
+		not = { control = { province = 1290 data = TIB } }
+		not = { control = { province = 1285 data = TIB } }
+	}
+	decision_trigger = {
+		supplies = 250
+		or = {
+			exists = UCH
+			exists = CXB
+			exists = CYN
+			exists = CHI
+		}
+		atwar = no
+	}
+	trigger = {
+		flag = 133027007
+		supplies = 250
+		random = 2
+		or = {
+			exists = UCH
+			exists = CXB
+			exists = CYN
+			exists = CHI
+		}
+		not = { control = { province = 1290 data = TIB } }
+		not = { control = { province = 1285 data = TIB } }
+		atwar = no
+	}
+	name = "EVT_TIB_232016_NAME"
+	desc = "EVT_TIB_232016_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	date = { day = 5 month = january year = 1915 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		ai_chance = 99
+		name = "ACTION_NAME_YES"
+		command = { type = secedeprovince which = TIB value = 1285 when = 2 }
+		command = { type = secedeprovince which = TIB value = 1290 when = 2 }
+		command = { type = belligerence which = TIB value = 10 }
+		command = { trigger = { exists = CYN } type = event which = 231143 where = CYN when = 3 }
+		command = { trigger = { exists = CXB } type = event which = 231143 where = CXB when = 3 }
+		command = { trigger = { exists = CHI } type = event which = 231143 where = CHI when = 3 }
+		command = { trigger = { exists = UCH } type = event which = 231143 where = UCH when = 3 }
+	}
+	action = {
+		trigger = {
+			ai = yes
+		}
+		ai_chance = 1
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		command = { type = sleepevent which = 232017 }
+	}
+}

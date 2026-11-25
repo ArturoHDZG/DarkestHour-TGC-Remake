@@ -1,0 +1,47 @@
+# ============================================================================
+# File: events/Minors/SPA_Decisions.txt (1 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [224033] SPA | 1945 | Axis Evacuation Routes (Acogida de exiliados del Eje)
+# Trigger event 224034 in events/Minors/SPA.txt
+# Trigger event 224035 in events/Minors/SPA.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 224033
+	country = SPA
+	name = EVT_SPA_224033_NAME
+	desc = EVT_SPA_224033_DESC
+	picture = "nwo/german_refugees"
+	decision_picture = "nwo/d_german_refugees"
+	style = 1
+	trigger = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	decision = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	decision_trigger = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 98
+		command = { type = belligerence value = 5 }
+		command = { type = domestic which = political_left value = -1 }
+	}
+	action = {
+		name = EVT_SPA_224033_A
+		ai_chance = 2
+		trigger = { ai = yes }
+		command = { type = sleepevent which = 224034 }
+		command = { type = sleepevent which = 224035 }
+	}
+}

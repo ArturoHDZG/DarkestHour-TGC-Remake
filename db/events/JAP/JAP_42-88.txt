@@ -1,0 +1,1945 @@
+# ============================================================================
+# File: events/JAP/JAP_42-88.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [167353] JAP | 1942 | The Imperial Rule Assistance Young Men's Corps (La Regla Imperial de Asistencia al Cuerpo de Hombres Jóvenes)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167353
+	random = no
+	country = JAP
+	trigger = {
+		atwar = yes
+		random = 25
+	}
+	date = { day = 1 month = june year = 1942 }
+	offset = 30
+	deathdate = { day = 1 month = january year = 1953 }
+	name = "EVT_JAP_167353_NAME"
+	desc = "EVT_JAP_167353_DESC"
+	style = 2
+	picture = "JAP/jap_53"
+	action_a = {
+		name = "EVT_JAP_167353_A"
+		command = { type = manpowerpool value = -40 }
+		command = { type = money value = -400 }
+		command = { type = add_division which = "1.Div Imperial Youth Corps" value = infantry when = -1 where = police }
+		command = { type = add_division which = "2.Div Imperial Youth Corps" value = infantry when = -1 where = police }
+		}
+	action_b = {
+		name = "EVT_JAP_167353_B"
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [167362] JAP | 1942 | Tani Masayuki the new foreign minister (Tani Masayuki el nuevo ministro de relaciones exteriores)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167362
+	random = no
+	country = JAP
+	date = { day = 27 month = september year = 1942 }
+	name = "EVT_JAP_167362_NAME"
+	desc = "EVT_JAP_167362_DESC"
+	style = 2
+	picture = "JAP/jap_34"
+	action_a = {
+		name = "EVT_JAP_167362_A"
+		command = { type = foreignminister which = 50049 }
+		command = { type = dissent value = -1 }
+		}
+	action_b = {
+		name = "EVT_JAP_167362_B"
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [330131] JAP | 1942 | Tripartite Pact Joint Commissions (Comisiones Conjuntas del Pacto Tripartito)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330131
+	random = no
+	country = JAP
+	trigger = {
+		war = { country = JAP }
+		war = { country = GER }
+		exists = ITA
+	}
+	date = { day = 19 month = december year = 1942 }
+	offset = 1
+	deathdate = { day = 21 month = december year = 1942 }
+	name = "EVT_JAP_330131_NAME"
+	desc = "EVT_JAP_330131_DESC"
+	style = 2
+	picture = "GLOBAL/tripartite_pact_joint_commissions"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ITA value = 10 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = gain_tech which = 2160 }
+		command = { type = gain_tech which = 2340 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330151] JAP | 1943 | The I-400-Class Submarine Carriers (Submarinos portaaviones de la clase I-400)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330151
+	random = no
+	country = JAP
+	trigger = {
+			war = { country = JAP }
+				}
+	name = "EVT_JAP_330151_NAME"
+	desc = "EVT_JAP_330151_DESC"
+	style = 2
+	picture = "GLOBAL/i400"
+	date = { day = 1 month = january year = 1943 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1943 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { technology = 3680 } } type = gain_tech which = 3710 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329291] JAP | 1943 | Atomic Strike: Capital Devastated (Ataque nuclear sobre la capital)
+# Trigger event 329292 in events/JAP/JAP_42-88.txt
+# ----------------------------------------------------------------------------
+event = {
+       id = 329291
+       random = no
+       name = "EVT_SHARED_00772_NAME"
+       desc = "EVT_SHARED_00772_DESC"
+       style = 2
+	picture = "GLOBAL/nuke"
+       country = JAP
+       trigger = {
+          nuked = { country = JAP data = -1 where = 1552 }
+          }
+       date = { day = 6 month = march year = 1943 }
+       offset = 9
+       deathdate = { day = 29 month = december year = 1963 }
+       action
+       = {
+       name = ACTION_NAME_OK
+       command = { type =   capital which = 1558 }
+       command = { type =    dissent value = -1}
+          }
+    }
+
+# ----------------------------------------------------------------------------
+# [329292] JAP | 1943 | Atomic Strike: Capital Devastated (Ataque nuclear sobre la capital)
+# Triggered by event 329291 in events/JAP/JAP_42-88.txt
+# ----------------------------------------------------------------------------
+event = {
+       id = 329292
+       random = no
+       name = "EVT_SHARED_00772_NAME"
+       desc = "EVT_SHARED_00772_DESC"
+       style = 2
+	picture = "GLOBAL/nuke"
+       country = JAP
+       trigger = {
+          event = 329291
+          nuked = { country = JAP data = -1 where = 1558 }
+          }
+       date = { day = 6 month = march year = 1943 }
+       offset = 9
+       deathdate = { day = 29 month = december year = 1963 }
+       action
+       = {
+       name = ACTION_NAME_OK
+       command = { type =   capital which = 1557 }
+       command = { type =    dissent value = -1}
+          }
+    }
+
+# ----------------------------------------------------------------------------
+# [330096] JAP | 1943 | Death of Admiral Isoroku Yamamoto (Muerte del Almirante Isoroku Yamamoto)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330096
+	random = no
+	country = JAP
+	trigger = {
+			war = { country = USA country = JAP }
+ 			NOT = {
+			control = { province = 1590 data = JAP }
+			control = { province = 1593 data = JAP }
+				 }
+			}
+	name = "EVT_JAP_330096_NAME"
+	desc = "EVT_JAP_330096_DESC"
+	style = 2
+	picture = "GLOBAL/minister_died"
+	date = { day = 18 month = april year = 1943 }
+	offset = 30
+	deathdate = { day = 18 month = april year = 1950 }
+	action = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = dissent value = 1 }
+		command = { type = sleepminister which = 50010 }
+		command = { type = sleepminister which = 50167 }
+		command = { type = sleepleader which = 101296 }
+		command = { type = sleepteam which = 50017 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167366] JAP | 1943 | The F-Go Project (El proyecto 'F-Go')
+# ----------------------------------------------------------------------------
+event = {
+	id = 167366
+	random = no
+	country = JAP
+	trigger = {
+		atwar = yes
+		control = { province = 1552 data = JAP }
+	}
+	date = { day = 1 month = june year = 1943 }
+	offset = 40
+	deathdate = { day = 1 month = january year = 1944 }
+	name = "EVT_JAP_167366_NAME"
+	desc = "EVT_JAP_167366_DESC"
+	style = 2
+	picture = "JAP/jap_67"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		command = { type = manpowerpool value = -15 }
+		command = { type = money value = -500 }
+		command = { type = gain_tech which = 5530 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		command = { }
+	}
+	}
+
+# ----------------------------------------------------------------------------
+# [330134] JAP | 1943 | Tripartite Pact Joint Commissions (Comisiones Conjuntas del Pacto Tripartito)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330134
+	random = no
+	country = JAP
+	trigger = {
+		war = { country = JAP }
+		war = { country = GER }
+	}
+	date = { day = 19 month = december year = 1943 }
+	offset = 1
+	deathdate = { day = 21 month = december year = 1943 }
+	name = "EVT_JAP_330134_NAME"
+	desc = "EVT_JAP_330134_DESC"
+	style = 2
+	picture = "GLOBAL/tripartite_pact_joint_commissions"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ITA value = 10 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = gain_tech which = 4160 }
+		command = { type = gain_tech which = 2090 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167183] JAP | 1944 | Time of Peace (Tiempos de paz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167183
+	persistent = yes
+	country = JAP
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = -55 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167184] JAP | 1944 | Time of War (Estado de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167184
+	random = no
+	persistent = yes
+	country = JAP
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 55 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329042] JAP | 1944 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329042
+	random = no
+	country = JAP
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		lost_vp = { country = JAP value = 20 }
+		lost_national = { country = JAP value = 20 }
+		war = { country = JAP country = USA }
+		random = 5
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = january year = 1944 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1944 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 50001 }
+		command = { type = headofgovernment which = 50023 }
+		command = { type = foreignminister which = 50050 }
+		command = { type = armamentminister which = 50073 }
+		command = { type = ministerofsecurity which = 50105 }
+		command = { type = ministerofintelligence which = 50124 }
+		command = { type = chiefofstaff which = 50135 }
+		command = { type = chiefofarmy which = 50144 }
+		command = { type = chiefofnavy which = 50147 }
+		command = { type = chiefofair which = 50164 }
+		command = { type = dissent value = -1 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_WAR"
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [167363] JAP | 1944 | The Kuniaki Koiso Cabinet (El gabinete de Kuniaki Koiso)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167363
+	random = no
+	country = JAP
+	date = { day = 18 month = july year = 1944 }
+	name = "EVT_JAP_167363_NAME"
+	desc = "EVT_JAP_167363_DESC"
+	style = 2
+	picture = "JAP/jap_63"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { type = headofgovernment which = 50023 }
+		command = { type = ministerofintelligence which = 50124 }
+		command = { type = foreignminister which = 50050 }
+		command = { type = chiefofarmy which = 50144 }
+		command = { type = ministerofsecurity which = 50105 }
+		command = { type = chiefofstaff which = 50133 }
+		command = { type = chiefofnavy which = 50150 }
+		command = { type = chiefofair which = 50164 }
+		command = { type = armamentminister which = 50066 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [167056] JAP | 1944 | Giretsu Kuteitai Airborne Commando Unit (Comandos aerotransportados Giretsu Kuteitai)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167056
+	random = no
+	country = JAP
+	trigger = {
+		   control = { province = 1552 data = JAP }
+		   war = { country = JAP country = USA }
+}
+	name = "EVT_JAP_167056_NAME"
+	desc = "EVT_JAP_167056_DESC"
+	style = 2
+	picture = "JAP/giretsu_kuteitai_airborne_commando_unit"
+	date = { day = 1 month = august year = 1944 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = activate_division which = 13016 value = 53 when = 0 }
+		command = { type = manpowerpool value = -9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330137] JAP | 1944 | Tripartite Pact Joint Commissions (Comisiones Conjuntas del Pacto Tripartito)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330137
+	random = no
+	country = JAP
+	trigger = {
+		war = { country = JAP }
+		war = { country = GER }
+	}
+	date = { day = 19 month = december year = 1944 }
+	offset = 1
+	deathdate = { day = 21 month = december year = 1944 }
+	name = "EVT_JAP_330137_NAME"
+	desc = "EVT_JAP_330137_DESC"
+	style = 2
+	picture = "GLOBAL/tripartite_pact_joint_commissions"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ITA value = 10 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = gain_tech which = 2060 }
+		command = { type = gain_tech which = 22930 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167151] JAP | 1945 | Colonial Claims Debate (Reclamaciones coloniales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167151
+	country = JAP
+	name = EVT_SHARED_00888_NAME
+	desc = EVT_SHARED_00888_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 0 month = january year = 1945 }
+  	offset = 90
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 100
+		command = { type = removeclaim which = 1665 }
+		command = { type = removeclaim which = 1666 }
+		command = { type = removeclaim which = 1667 }
+		command = { type = removeclaim which = 1668 }
+		command = { type = removeclaim which = 1669 }
+		command = { type = removeclaim which = 1670 }
+		command = { type = removeclaim which = 1671 }
+		command = { type = removeclaim which = 1672 }
+		command = { type = removeclaim which = 1674 }
+		command = { type = removeclaim which = 1675 }
+		command = { type = removeclaim which = 1676 }
+		command = { type = removeclaim which = 1677 }
+		command = { type = removeclaim which = 1681 }
+		command = { type = removeclaim which = 1684 }
+		command = { type = removeclaim which = 1685 }
+		command = { type = removeclaim which = 1686 }
+		command = { type = removeclaim which = 1219 }
+		command = { type = removeclaim which = 1216 }
+		command = { type = removeclaim which = 1235 }
+		command = { type = removeclaim which = 1236 }
+		command = { type = removeclaim which = 1245 }
+		command = { type = removeclaim which = 1683 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167153] JAP | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167153
+	country = JAP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50031 }
+		command = { type = foreignminister which = 50051 }
+		command = { type = armamentminister which = 50077 }
+		command = { type = ministerofsecurity which = 50107 }
+		command = { type = ministerofintelligence which = 50125 }
+		command = { type = chiefofstaff which = 50136 }
+		command = { type = chiefofarmy which = 50137 }
+		command = { type = chiefofnavy which = 50145 }
+		command = { type = chiefofair which = 50151 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167154] JAP | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167154
+	country = JAP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50018 }
+		command = { type = foreignminister which = 50050 }
+		command = { type = armamentminister which = 50074 }
+		command = { type = ministerofsecurity which = 50104 }
+		command = { type = ministerofintelligence which = 50124 }
+		command = { type = chiefofstaff which = 50134 }
+		command = { type = chiefofarmy which = 50143 }
+		command = { type = chiefofnavy which = 50147 }
+		command = { type = chiefofair which = 50163 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167180] JAP | 1945 | The Destruction of Hiroshima (Devastación atómica de Hiroshima)
+# Triggered by event 316240 in events/USA/USA_Decisions.txt
+# Trigger event 316241 in events/USA/USA_Decisions.txt
+# Trigger event 316242 in events/USA/USA_Decisions.txt
+# Trigger event 329983 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167180
+	country = JAP
+	name = EVT_JAP_167180_NAME
+	desc = EVT_JAP_167180_DESC
+	picture = "nwo/hiroshima_nuke"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330177] JAP | 1945 | The Kantaro Suzuki Cabinet (El gabinete de Kantaro Suzuki)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330177
+	random = no
+	country = JAP
+	trigger = {
+		war = { country = JAP country = USA }
+		NOT = { control = { province = 1560 data = JAP } }
+		NOT = { control = { province = 1561 data = JAP } }
+	}
+	date = { day = 7 month = april year = 1945 }
+	name = "EVT_JAP_330177_NAME"
+	desc = "EVT_JAP_330177_DESC"
+	style = 2
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -2 }
+		command = { type = headofgovernment which = 50017 }
+		command = { type = foreignminister which = 50048 }
+		command = { type = ministerofintelligence which = 50119 }
+		command = { type = chiefofarmy which = 50141 }
+		command = { type = ministerofsecurity which = 50097 }
+		command = { type = chiefofstaff which = 50132 }
+		command = { type = chiefofnavy which = 50147 }
+		command = { type = chiefofair which = 50165 }
+		command = { type = armamentminister which = 50068 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [167349] JAP | 1945 | The Bankruptcy of 'banana money' (La quiebra del 'dinero bananero')
+# Triggered by event 167348 in events/JAP/JAP_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167349
+	random = no
+	country = JAP
+	trigger = {
+		event = 167348
+		random = 25
+	}
+	date = { day = 6 month = july year = 1945 }
+	offset = 10
+	deathdate = { day = 1 month = january year = 1953 }
+	name = "EVT_JAP_167349_NAME"
+	desc = "EVT_JAP_167349_DESC"
+	style = 2
+	picture = "JAP/jap_49"
+	action_a = {
+		name = "ACTION_NAME_HORRIBLE"
+		command = { type = dissent value = 4 }
+		command = { type = free_money value = -1 }
+		command = { type = money value = -2500 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [167361] JAP | 1945 | The Bankruptcy of Japanese military yen (La quiebra del yen militar japonés)
+# Triggered by event 167360 in events/JAP/JAP_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167361
+	random = no
+	country = JAP
+	trigger = {
+		event = 167360
+		random = 25
+	}
+	date = { day = 6 month = september year = 1945 }
+	offset = 10
+	deathdate = { day = 1 month = january year = 1953 }
+	name = "EVT_JAP_167361_NAME"
+	desc = "EVT_JAP_167361_DESC"
+	style = 2
+	picture = "JAP/jap_61"
+	action_a = {
+		name = "ACTION_NAME_HORRIBLE"
+		command = { type = free_money value = -1 }
+		command = { type = money value = -2500 }
+		command = { type = dissent value = 4 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [167155] JAP | 1946 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167155
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50028 }
+		command = { type = foreignminister which = 50038 }
+		command = { type = armamentminister which = 50061 }
+		command = { type = ministerofsecurity which = 50085 }
+		command = { type = ministerofintelligence which = 50113 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50025 }
+		command = { type = foreignminister which = 50033 }
+		command = { type = armamentminister which = 50053 }
+		command = { type = ministerofsecurity which = 50080 }
+		command = { type = ministerofintelligence which = 50109 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167156] JAP | 1947 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167156
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50029 }
+		command = { type = foreignminister which = 50038 }
+		command = { type = armamentminister which = 50061 }
+		command = { type = ministerofsecurity which = 50085 }
+		command = { type = ministerofintelligence which = 50113 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50025 }
+		command = { type = foreignminister which = 50033 }
+		command = { type = armamentminister which = 50053 }
+		command = { type = ministerofsecurity which = 50080 }
+		command = { type = ministerofintelligence which = 50109 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167177] JAP | 1947 | The Postwar Constitution (La Constitución de posguerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167177
+	country = JAP
+	name = EVT_JAP_167177_NAME
+	desc = EVT_JAP_167177_DESC
+	picture = "nwo/japanese_constitution_1947"
+	style = 1
+	trigger = {
+		government = democratic
+		flag = cold_war_pacific
+	}
+	date = { day = 3 month = may year = 1947 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = democratic value = 2 }
+		command = { type = domestic which = freedom value = 3 }
+		command = { type = domestic which = free_market value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167157] JAP | 1948 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167157
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50025 }
+		command = { type = foreignminister which = 50033 }
+		command = { type = armamentminister which = 50053 }
+		command = { type = ministerofsecurity which = 50080 }
+		command = { type = ministerofintelligence which = 50109 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = 2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50029 }
+		command = { type = foreignminister which = 50038 }
+		command = { type = armamentminister which = 50061 }
+		command = { type = ministerofsecurity which = 50085 }
+		command = { type = ministerofintelligence which = 50113 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167158] JAP | 1949 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167158
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50029 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50025 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167159] JAP | 1952 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167159
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50029 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50025 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167178] JAP | 1952 | End of Allied Occupation (Fin de la ocupación aliada)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167178
+	country = JAP
+	name = EVT_JAP_167178_NAME
+	desc = EVT_JAP_167178_DESC
+	picture = "nwo/macarthur_with_hirohito"
+	style = 1
+	trigger = {
+		government = democratic
+		flag = cold_war_pacific
+	}
+	date = { day = 28 month = april year = 1952 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+		command = { type = guarantee which = USA where = JAP }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167160] JAP | 1953 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167160
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50029 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50025 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167161] JAP | 1954 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167161
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50030 }
+		command = { type = foreignminister which = 50050 }
+		command = { type = armamentminister which = 50187 }
+		command = { type = ministerofsecurity which = 50196 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50025 }
+		command = { type = foreignminister which = 50180 }
+		command = { type = armamentminister which = 50054 }
+		command = { type = ministerofsecurity which = 50080 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167007] JAP | 1954 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167007
+	random = no
+	country = JAP
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = JAP }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 18 month = december year = 1954 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 50173 }
+		command = { type = headofgovernment which = 50030 }
+		command = { type = foreignminister which = 50050 }
+		command = { type = armamentminister which = 50187 }
+		command = { type = ministerofsecurity which = 50196 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 50172 }
+		command = { type = headofgovernment which = 50025 }
+		command = { type = foreignminister which = 50180 }
+		command = { type = armamentminister which = 50054 }
+		command = { type = ministerofsecurity which = 50080 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [167162] JAP | 1956 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167162
+	country = JAP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		headofgovernment = 50030
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50176 }
+		command = { type = foreignminister which = 50181 }
+		command = { type = armamentminister which = 50185 }
+		command = { type = ministerofsecurity which = 50196 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167163] JAP | 1957 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167163
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50177 }
+		command = { type = foreignminister which = 50182 }
+		command = { type = armamentminister which = 50187 }
+		command = { type = ministerofsecurity which = 50197 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50025 }
+		command = { type = foreignminister which = 50180 }
+		command = { type = armamentminister which = 50191 }
+		command = { type = ministerofsecurity which = 50198 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167009] JAP | 1957 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167009
+	random = no
+	country = JAP
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = JAP }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 18 month = february year = 1957 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 50173 }
+		command = { type = headofgovernment which = 50177 }
+		command = { type = foreignminister which = 50182 }
+		command = { type = armamentminister which = 50187 }
+		command = { type = ministerofsecurity which = 50197 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 50172 }
+		command = { type = headofgovernment which = 50025 }
+		command = { type = foreignminister which = 50180 }
+		command = { type = armamentminister which = 50191 }
+		command = { type = ministerofsecurity which = 50198 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [167164] JAP | 1960 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167164
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50178 }
+		command = { type = foreignminister which = 50183 }
+		command = { type = armamentminister which = 50189 }
+		command = { type = ministerofsecurity which = 50197 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50179 }
+		command = { type = foreignminister which = 50180 }
+		command = { type = armamentminister which = 50192 }
+		command = { type = ministerofsecurity which = 50199 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329907] JAP | 1960 | US-Japan Security Treaty (Tratado de Seguridad Japón-EE. UU.)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329907
+	country = JAP
+	name = EVT_JAP_329907_NAME
+	desc = EVT_JAP_329907_DESC
+	picture = "nwo/american_japanese_treaty"
+	style = 1
+	trigger = {
+		government = democratic
+		flag = cold_war_pacific
+		exists = USA
+		NOT = { war = { country = USA } }
+	}
+	date = { day = 1 month = january year = 1960 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 95
+		command = { type = relation which = USA value = 100 }
+		command = { type = guarantee which = USA where = JAP }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = dissent value = 15 }
+		command = { type = end_access which = USA }
+		command = { type = relation which = USA value = -150 }
+		command = { type = end_guarantee which = USA where = JAP }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167010] JAP | 1960 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167010
+	random = no
+	country = JAP
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = JAP }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 18 month = july year = 1960 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 50173 }
+		command = { type = headofgovernment which = 50178 }
+		command = { type = foreignminister which = 50183 }
+		command = { type = armamentminister which = 50189 }
+		command = { type = ministerofsecurity which = 50197 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 50172 }
+		command = { type = headofgovernment which = 50179 }
+		command = { type = foreignminister which = 50180 }
+		command = { type = armamentminister which = 50192 }
+		command = { type = ministerofsecurity which = 50199 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [167165] JAP | 1963 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167165
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50178 }
+		command = { type = foreignminister which = 50183 }
+		command = { type = armamentminister which = 50189 }
+		command = { type = ministerofsecurity which = 50197 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50179 }
+		command = { type = foreignminister which = 50180 }
+		command = { type = armamentminister which = 50192 }
+		command = { type = ministerofsecurity which = 50199 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167166] JAP | 1964 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167166
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1964 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1968 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50405 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50404 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167167] JAP | 1969 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167167
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1969 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50405 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50406 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167168] JAP | 1972 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167168
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50407 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50406 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167179] JAP | 1972 | The Reversion of Okinawa (La devolución de Okinawa)
+# Triggered by event 329908 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167179
+	country = JAP
+	name = EVT_JAP_167179_NAME
+	desc = EVT_JAP_167179_DESC
+	picture = "nwo/okinawa"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167169] JAP | 1974 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167169
+	country = JAP
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 50408 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167170] JAP | 1976 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167170
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1976 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50409 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50406 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167171] JAP | 1979 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167171
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1979 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50411 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50410 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167172] JAP | 1980 | General Elections (Elecciones generales)
+# Triggered by event 167192 in events/JAP/JAP_36-36.txt
+# Triggered by event 167193 in events/JAP/JAP_36-36.txt
+# Triggered by event 167194 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 167172
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50412 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { trigger = { NOT = { event = 167192 event = 167193 event = 167194 } } type = headofstate which = 50001 }
+		command = { trigger = { event = 167192 } type = headofstate which = 50402 }
+		command = { trigger = { event = 167193 } type = headofstate which = 50012 }
+		command = { trigger = { event = 167194 } type = headofstate which = 50403 }
+		command = { type = headofgovernment which = 50410 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167173] JAP | 1983 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167173
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1983 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 50418 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 50413 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167174] JAP | 1987 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167174
+	country = JAP
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1987 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 50414 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 50413 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [167175] JAP | 1988 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 167175
+	country = JAP
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 50001 }
+		command = { type = sleepminister which = 50172 }
+		command = { type = sleepminister which = 50173 }
+		command = { type = sleepminister which = 50283 }
+		command = { type = sleepminister which = 50284 }
+		command = { type = sleepminister which = 50285 }
+		command = { type = headofstate which = 50417 }
+	}
+}

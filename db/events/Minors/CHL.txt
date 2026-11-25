@@ -1,0 +1,664 @@
+# ============================================================================
+# File: events/Minors/CHL.txt (16 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [125021] CHL | 1914 | Death of Luis Uribe (Muerte de Luis Uribe)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125021
+	country = CHL
+	random = no
+	trigger = {
+		exists = CHL
+	}
+	name = "EVT_CHL_125021_NAME"
+	desc = "EVT_CHL_125021_DESC"
+	style = 2
+	picture = "Minors/luisuribe"
+	date = { day = 15 month = july year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [125001] CHL | 1938 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125001
+	random = no
+	country = CHL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = CHI }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = june year = 1938 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 210011 }
+		command = { type = headofgovernment which = 210019 }
+		command = { type = foreignminister which = 210030 }
+		command = { type = armamentminister which = 210048 }
+		command = { type = ministerofsecurity which = 210069 }
+		command = { type = ministerofintelligence which = 210084 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 210136 }
+		command = { type = headofgovernment which = 210137 }
+		command = { type = foreignminister which = 210038 }
+		command = { type = armamentminister which = 210056 }
+		command = { type = ministerofsecurity which = 210075 }
+		command = { type = ministerofintelligence which = 210089 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [125005] CHL | 1938 | Failed Coup in Chile (Golpe fallido en Chile)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125005
+	random = no
+	country = CHL
+	trigger = {
+			exists = CHL
+			}
+	date = { day = 29 month = september year = 1938 }
+	name = "EVT_SHARED_00692_NAME"
+	desc = "EVT_SHARED_00692_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = -20 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329519] CHL | 1940 | Diplomatic Talks: Chile (Negociaciones con Chile)
+# Triggered by event 329517 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329519
+	random = no
+	country = CHL
+	trigger = {
+		random = 5
+		event = 329517
+		alliance = { country = BRA country = ENG }
+		alliance = { country = USA country = ENG }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = CHL country = SOV } }
+		NOT = { alliance = { country = CHL country = ENG } }
+		NOT = { alliance = { country = CHL country = GER } }
+		NOT = { alliance = { country = CHL country = JAP } }
+		NOT = { war = { country = CHL country = ENG } }
+		NOT = { ispuppet = yes }
+	}
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_CHL_329519_NAME
+	desc = EVT_SHARED_00416_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = { trigger = { NOT = { army = 3 } }
+		ai_chance = 20
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } alliance = { country = ARG country = GER } }
+		ai_chance = 40
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 3 NOT = { army = 5 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 60
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } alliance = { country = ARG country = GER } }
+		ai_chance = 80
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 5 NOT = { army = 10 } NOT = { alliance = { country = ARG country = GER } } }
+		ai_chance = 200
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = { trigger = { army = 10 }
+		ai_chance = 900
+		name = ACTION_NAME_WAR
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = {
+		ai_chance = 20
+		name = ACTION_NAME_NEUTRAL
+		command = { type = relation which = ENG value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [125000] CHL | 1941 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125000
+	random = no
+	country = CHL
+	style = 2
+	trigger = {
+		minister = 210011
+		}
+	date = { year = 1941 month = november day = 25 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 210011 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [125002] CHL | 1942 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125002
+	random = no
+	country = CHL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = CHI }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = june year = 1942 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 210012 }
+		command = { type = headofgovernment which = 210020 }
+		command = { type = foreignminister which = 210035 }
+		command = { type = armamentminister which = 210052 }
+		command = { type = ministerofsecurity which = 210071 }
+		command = { type = ministerofintelligence which = 210086 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 210015 }
+		command = { type = headofgovernment which = 210025 }
+		command = { type = foreignminister which = 210040 }
+		command = { type = armamentminister which = 210062 }
+		command = { type = ministerofsecurity which = 210089 }
+		command = { type = ministerofintelligence which = 210094 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [125012] CHL | 1946 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125012
+	country = CHL
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 210013 }
+		command = { type = headofgovernment which = 210021 }
+		command = { type = foreignminister which = 210046 }
+		command = { type = armamentminister which = 210068 }
+		command = { type = ministerofsecurity which = 210072 }
+		command = { type = ministerofintelligence which = 210088 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 210300 }
+		command = { type = headofgovernment which = 210301 }
+		command = { type = foreignminister which = 210037 }
+		command = { type = armamentminister which = 210061 }
+		command = { type = ministerofsecurity which = 210078 }
+		command = { type = ministerofintelligence which = 210093 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [125003] CHL | 1946 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125003
+	random = no
+	country = CHL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = CHI }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = june year = 1946 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 210013 }
+		command = { type = headofgovernment which = 210021 }
+		command = { type = foreignminister which = 210037 }
+		command = { type = armamentminister which = 210054 }
+		command = { type = ministerofsecurity which = 210072 }
+		command = { type = ministerofintelligence which = 210088 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 210014 }
+		command = { type = headofgovernment which = 210130 }
+		command = { type = foreignminister which = 210043 }
+		command = { type = armamentminister which = 210061 }
+		command = { type = ministerofsecurity which = 210078 }
+		command = { type = ministerofintelligence which = 210093 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [125013] CHL | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125013
+	country = CHL
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 210014 }
+		command = { type = headofgovernment which = 210138 }
+		command = { type = foreignminister which = 210043 }
+		command = { type = armamentminister which = 210061 }
+		command = { type = ministerofsecurity which = 210077 }
+		command = { type = ministerofintelligence which = 210093 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 210013 }
+		command = { type = headofgovernment which = 210021 }
+		command = { type = foreignminister which = 210037 }
+		command = { type = armamentminister which = 210054 }
+		command = { type = ministerofsecurity which = 210083 }
+		command = { type = ministerofintelligence which = 210088 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [125004] CHL | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125004
+	random = no
+	country = CHL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = CHI }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = november year = 1952 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 210014 }
+		command = { type = headofgovernment which = 210138 }
+		command = { type = foreignminister which = 210043 }
+		command = { type = armamentminister which = 210061 }
+		command = { type = ministerofsecurity which = 210077 }
+		command = { type = ministerofintelligence which = 210093 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 210013 }
+		command = { type = headofgovernment which = 210021 }
+		command = { type = foreignminister which = 210037 }
+		command = { type = armamentminister which = 210054 }
+		command = { type = ministerofsecurity which = 210083 }
+		command = { type = ministerofintelligence which = 210088 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [125014] CHL | 1958 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125014
+	country = CHL
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 210302 }
+		command = { type = headofgovernment which = 210138 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 210018 }
+		command = { type = headofgovernment which = 210029 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [125015] CHL | 1964 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125015
+	country = CHL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1964 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1969 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 210303 }
+		command = { type = headofgovernment which = 210304 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 210018 }
+		command = { type = headofgovernment which = 210029 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [125016] CHL | 1970 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125016
+	country = CHL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1970 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 210018 }
+		command = { type = headofgovernment which = 210029 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 211202 }
+		command = { type = headofgovernment which = 210138 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [125017] CHL | 1973 | Regime of Augusto Pinochet (Régimen de Augusto Pinochet)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125017
+	country = CHL
+	one_action = yes
+	name = EVT_CHL_125017_NAME
+	desc = EVT_CHL_125017_DESC
+	picture = "nwo/augusto_pinochet"
+	style = 1
+	date = { day = 0 month = january year = 1973 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = EVT_CHL_125017_A
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 210305 }
+		command = { type = headofgovernment which = 210306 }
+	}
+	action = {
+		name = EVT_CHL_125017_B
+		ai_chance = 2
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 210018 }
+		command = { type = headofgovernment which = 210029 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [125020] CHL | 1988 | Chilean Return to Democracy (Transición democrática chilena)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125020
+	country = CHL
+	name = EVT_CHL_125020_NAME
+	desc = EVT_CHL_125020_DESC
+	picture = "nwo/augusto_pinochet"
+	style = 1
+	trigger = {
+		headofstate = 210305
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+	}
+	action = {
+		name = EVT_CHL_125020_A
+		ai_chance = 15
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [125018] CHL | 1990 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 125018
+	country = CHL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 210307 }
+		command = { type = headofgovernment which = 210308 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 210309 }
+		command = { type = headofgovernment which = 210310 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}

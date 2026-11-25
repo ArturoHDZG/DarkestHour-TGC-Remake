@@ -1,0 +1,131 @@
+# ============================================================================
+# File: events/AI/MEX_AI.txt (6 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [183021] MEX | 1920 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 183021
+        random = no
+        country = MEX
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = december year = 1920 }
+	action_a = {
+		command = { type = headofstate which = 170202 }
+		command = { type = dissent value = -1 }
+		command = { type = headofgovernment which = 170206 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [183022] MEX | 1924 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 183022
+        random = no
+        country = MEX
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = december year = 1924 }
+	action_a = {
+		command = { type = headofstate which = 170203 }
+		command = { type = dissent value = -1 }
+		command = { type = headofgovernment which = 170207 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [183023] MEX | 1932 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 183023
+        random = no
+        country = MEX
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = september year = 1932 }
+	action_a = {
+		command = { type = headofstate which = 170283 }
+		command = { type = dissent value = -1 }
+		command = { type = headofgovernment which = 170284 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [183018] MEX | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 183018
+	random = no
+	country = MEX
+	persistent = yes
+	trigger = {
+		ai = yes
+		flag = DDay
+		NOT = { local_flag = MEXDDay }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_setflag which = MEXDDay }
+		command = { type = ai which = "switch/Minor_DDay_USA.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [183019] MEX | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 183019
+	random = no
+	country = MEX
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = yes
+		NOT = { flag = DDay }
+		local_flag = MEXDDay
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = MEXDDay }
+		command = { type = ai which = "switch/Minor_DDay_Retrack.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [183020] MEX | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 183020
+	random = no
+	country = MEX
+	trigger = {
+		ai = yes
+		OR = {
+			atwar = yes
+			atwar = GER
+			atwar = ENG
+			atwar = FRA
+			atwar = USA
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/Minor_Gear_Up.ai" }
+	}
+}

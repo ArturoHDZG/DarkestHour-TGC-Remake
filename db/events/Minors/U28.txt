@@ -1,0 +1,417 @@
+# ============================================================================
+# File: events/Minors/U28.txt (12 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [263007] U28 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 263008 in events/Minors/U28.txt
+# Trigger event 101035 in events/Minors/ALB.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 263007
+   country = U28
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = ALB
+            NOT = { ai = ALB }
+            NOT = { ai = U28 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = ALB
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = ALB } }
+      command = { type = country which = ALB }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = ALB
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U28 }
+               control = { province = 359 data = -1 }
+            }
+         }
+         type = trigger which = 263008
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = ALB }
+               NOT = { control = { province = 359 data = -1 } }
+            }
+         }
+         type = trigger which = 101035
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = ALB
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [263008] U28 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 101034 in events/Minors/ALB.txt
+# Triggered by event 263007 in events/Minors/U28.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 263008
+   country = U28
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = ALB value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [263000] U28 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 263000
+	country = U28
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 955001 }
+		command = { type = headofgovernment which = 955006 }
+		command = { type = foreignminister which = 955009 }
+		command = { type = armamentminister which = 955013 }
+		command = { type = ministerofsecurity which = 955019 }
+		command = { type = ministerofintelligence which = 955023 }
+		command = { type = chiefofstaff which = 955026 }
+		command = { type = chiefofarmy which = 955030 }
+		command = { type = chiefofnavy which = 955033 }
+		command = { type = chiefofair which = 955038 }
+		command = { type = flag_ext where = U28 which = _1946 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [263004] U28 | 1945 | The Kosovo Question (La cuestión de Kosovo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 263004
+	country = U28
+	name = EVT_U28_263004_NAME
+	desc = EVT_U28_263004_DESC
+	picture = "nwo/albanian_kosovo"
+	style = 1
+	trigger = {
+		exists = U27
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = EVT_U28_263004_A
+		ai_chance = 95
+		command = { type = removecore which = 329 }
+		command = { type = removecore which = 334 }
+		command = { type = relation which = U27 value = 100 }
+	}
+	action = {
+		name = EVT_U28_263004_B
+		ai_chance = 5
+		command = { type = relation which = U27 value = -100 }
+		command = { type = sleepevent which = 262036 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [263009] U28 | 1946 | Yugoslav-Albanian Treaty of Friendship (Tratado de amistad yugoslavo-albanés)
+# Triggered by event 262036 in events/Minors/U27.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 263009
+	country = U28
+	name = EVT_U28_263009_NAME
+	desc = EVT_U28_263009_DESC
+	picture = "nwo/united_balkans"
+	style = 1
+	trigger = {
+		event = 262036
+		exists = U27
+		NOT = { flag = tito_stalin_split }
+	}
+	date = { day = 1 month = july year = 1946 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = U27 value = 100 }
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329994] U28 | 1948 | The Soviet-Yugoslav Rift in Albania (Cisma soviético-yugoslavo en Albania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329994
+	country = U28
+	name = EVT_U28_329994_NAME
+	desc = EVT_U28_329994_DESC
+	picture = "nwo/united_balkans"
+	style = 1
+	trigger = {
+		flag = tito_stalin_split
+		exists = U27
+		puppet = { country = U28 country = U27 }
+	}
+	date = { day = 1 month = july year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_U28_329994_A
+		ai_chance = 95
+		command = { type = relation which = SOV value = 100 }
+		command = { type = relation which = U27 value = -200 }
+		command = { type = end_puppet }
+		command = { type = sleepevent which = 262037 }
+		command = { type = industrial_modifier which = total value = -5 }
+		command = { type = dissent value = -2 }
+	}
+	action = {
+		name = EVT_U28_329994_B
+		ai_chance = 5
+		command = { type = leave_alliance }
+		command = { type = alliance which = U27 }
+		command = { type = relation which = U27 value = 100 }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = sleepminister which = 955003 }
+		command = { type = sleepminister which = 955011 }
+		command = { type = sleepminister which = 955032 }
+		command = { type = sleepminister which = 955035 }
+		command = { type = sleepleader which = 955007 }
+		command = { type = headofstate which = 955001 }
+		command = { type = headofgovernment which = 955100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [263010] U28 | 1950 | Albania Accedes to Yugoslavia (Albania se integra en Yugoslavia)
+# Triggered by event 223373 in events/SOV/SOV_47-56.txt
+# Trigger event 262038 in events/Minors/U27.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 263010
+	country = U28
+	name = EVT_U28_263010_NAME
+	desc = EVT_U28_263010_DESC
+	picture = "nwo/albania_in_yugoslavia"
+	style = 1
+	trigger = {
+		NOT = { flag = tito_stalin_split }
+		event = 223373
+	}
+	date = { day = 1 month = july year = 1950 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_SURRENDER_GAMEOVER
+		ai_chance = 95
+		command = { type = trigger which = 262038 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 5
+		command = { type = relation which = SOV value = -200 }
+		command = { type = relation which = U27 value = -200 }
+		command = { type = dissent value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [263001] U28 | 1954 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 263001
+	country = U28
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 955003 }
+		command = { type = headofgovernment which = 955100 }
+		command = { type = flag_ext where = U28 which = "" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [263005] U28 | 1958 | The Sino-Albanian Alliance (La alianza sino-albanesa)
+# Triggered by event 223322 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 263005
+	country = U28
+	name = EVT_U28_263005_NAME
+	desc = EVT_U28_263005_DESC
+	picture = "nwo/hoxha_tito"
+	style = 1
+	trigger = {
+		event = 223322
+		exists = CHC
+		flag = cold_war
+	}
+	date = { day = 1 month = july year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		command = { type = leave_alliance }
+		command = { type = end_puppet }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = relation which = CHC value = 200 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { type = dissent value = -2 }
+	}
+	action = {
+		name = EVT_U28_263005_A
+		ai_chance = 5
+		command = { type = dissent value = 5 }
+		command = { type = industrial_modifier which = total value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [263006] U28 | 1967 | Hoxha's Isolationist Policies (Políticas aislacionistas de Hoxha)
+# ----------------------------------------------------------------------------
+event = {
+	id = 263006
+	country = U28
+	name = EVT_U28_263006_NAME
+	desc = EVT_U28_263006_DESC
+	picture = "nwo/enver_hoxha"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 1 month = july year = 1967 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = freedom value = -3 }
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 5
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [263002] U28 | 1981 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 263002
+	country = U28
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1984 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 955101 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [263003] U28 | 1985 | Death of Enver Hoxha (Muerte de Enver Hoxha)
+# ----------------------------------------------------------------------------
+event = {
+	id = 263003
+	country = U28
+	name = EVT_U28_263003_NAME
+	desc = EVT_U28_263003_DESC
+	picture = "nwo/enver_hoxha"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1985 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = sleepminister which = 955003 }
+		command = { type = sleepminister which = 955006 }
+		command = { type = sleepminister which = 955011 }
+		command = { type = sleepminister which = 955032 }
+		command = { type = sleepminister which = 955035 }
+		command = { type = headofstate which = 955102 }
+		command = { type = end_puppet }
+		command = { type = leave_alliance }
+	}
+}

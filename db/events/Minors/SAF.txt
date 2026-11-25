@@ -1,0 +1,1274 @@
+# ============================================================================
+# File: events/Minors/SAF.txt (38 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [212023] SAF | 1914 | Peace with the Central Powers (Paz con las Potencias Centrales)
+# Triggered by event 243004 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 212023
+	country = SAF
+	name = "EVT_SHARED_00055_NAME"
+	desc = "EVT_SHARED_00055_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = U08 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212014] SAF | 1933 | British Commonwealth Air Training Plan (Plan de entrenamiento aéreo de la Commonwealth británica)
+# Triggered by event 329021 in events/ENG/ENG_25-34.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 212014
+         random = no
+         country = saf
+         trigger = {
+         }
+         name = "EVT_SHARED_00791_NAME"
+         desc = "EVT_SHARED_00791_DESC"
+         style = 2
+	picture = "Minors/british_commonwealth_air_training_plan_3"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = {  }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329496] SAF | 1933 | Join the Allies (Unirse a los Aliados)
+# Trigger event 329497 in events/Minors/SAF.txt
+# ----------------------------------------------------------------------------
+event = {
+        id = 329496
+        random = no
+        country = SAF
+        trigger = {
+			war = { country = ENG  country = GER }
+			NOT = { war = { country = SAF country = ENG }  }
+			NOT = { alliance = { country = SAF country = ENG }  }
+		}
+        name = "ACTION_NAME_JOIN_ALLIES"
+        desc = "EVT_SHARED_00469_DESC"
+        style = 2
+        date = { day = 1 month = january year = 1933 }
+        offset = 3
+        deathdate = { day = 29 month = december year = 1947 }
+	picture = "Minors/commonwealth"
+        action_a = {
+            name = "EVT_SHARED_00469_A"
+            ai_chance = 100
+            command = { type = domestic which = freedom value = 1 }
+            command = { type = domestic which = democratic value = 1 }
+            command = { type = domestic which = defense_lobby value = 1 }
+            command = { type = domestic which = interventionism value = 1 }
+            command = { type = sleepevent which = 324000 }
+            command = { type = set_relation which = ENG value = 200 }
+            command = { type = alliance which = ENG }
+            command = { type = dissent value = -50 }
+        }
+        action_b = {
+            name = "EVT_SHARED_00469_B"
+            command = { type = dissent value = 25 }
+            command = { type = domestic which = interventionism value = -2 }
+            command = { type = domestic which = defense_lobby value = -2 }
+            command = { type = relation which = eng value = -150 }
+            command = { type = relation which = ger value = 50 }
+            ai_chance = 0
+        }
+}
+
+# ----------------------------------------------------------------------------
+# [212013] SAF | 1933 | Southwest African Political Instability (Inestabilidad política en el suroeste de África)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212013
+	random = no
+	country = SAF
+	trigger = {
+			exists = GER
+			}
+	date = { day = 01 month = august year = 1933 }
+	name = "EVT_SHARED_00702_NAME"
+	desc = "EVT_SHARED_00702_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = relation which = HOL value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212019] SAF | 1934 | The Jonker (El 'Jonker')
+# ----------------------------------------------------------------------------
+event = {
+         id = 212019
+         random = no
+         country = saf
+         trigger = {
+                   exists = saf
+         }
+         name = "EVT_SAF_212019_NAME"
+         desc = "EVT_SAF_212019_DESC"
+         style = 2
+         date = { day = 17 month = january year = 1934 }
+	picture = "Minors/the_jonker"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = -1 }
+                  command = { type = add_prov_resource which = 873 value = 4 where = rare_materials }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [212018] SAF | 1934 | South African Airways
+# ----------------------------------------------------------------------------
+event = {
+         id = 212018
+         random = no
+         country = saf
+         trigger = {
+                   exists = saf
+         }
+         name = "EVT_SAF_212018_NAME"
+         desc = "EVT_SAF_212018_DESC"
+         style = 2
+         date = { day = 1 month = february year = 1934 }
+	picture = "Minors/south_african_airways"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = -1 }
+                  command = { type = industrial_modifier which = supplies value = 2 }
+                  command = { type = tc_mod value = 10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [212016] SAF | 1934 | Foreign Political Activity in SA (Actividad política extranjera en Sudáfrica)
+# ----------------------------------------------------------------------------
+event = {
+         id = 212016
+         random = no
+         country = saf
+         trigger = {
+                   NOT = {
+                            government = fascist
+                   }
+         }
+         name = "EVT_SAF_212016_NAME"
+         desc = "EVT_SAF_212016_DESC"
+         style = 2
+         date = { day = 9 month = july year = 1934 }
+	picture = "Minors/foreign_political_activity_in_sa"
+           action_a = {
+                  name = "ACTION_NAME_REFUSE"
+                  ai_chance = 90
+                  command = { type = dissent value = -1 }
+                  command = { type = domestic which = political_left value = -1 }
+                  command = { type = relation which = ger value = -10 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_ACCEPT"
+                  ai_chance = 10
+                  command = { type = relation which = ger value = 30 }
+                  command = { type = dissent value = 2 }
+                  command = { type = domestic which = freedom value = 1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [212017] SAF | 1934 | United Party (Partido Unido)
+# ----------------------------------------------------------------------------
+event = {
+         id = 212017
+         random = no
+         country = saf
+         trigger = {
+                   government = democratic
+         }
+         name = "EVT_SAF_212017_NAME"
+         desc = "EVT_SAF_212017_DESC"
+         style = 2
+         date = { day = 5 month = december year = 1934 }
+	picture = "Minors/united_party"
+           action_a = {
+                  name = "ACTION_NAME_GOOD"
+                  ai_chance = 97
+                  command = { type = domestic which = democratic value = 1 }
+                  command = { type = dissent value = -4 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 3
+                  command = { type = dissent value = 1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329087] SAF | 1936 | The 1939 Neutrality Crisis (La crisis de la neutralidad de 1939)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329087
+	random = no
+	country = SAF
+	trigger = {
+		alliance = { country = ENG  country = SAF }
+		war = { country = SAF country = GER }
+		NOT = { ispuppet = SAF }
+	}
+	name = "EVT_SAF_329087_NAME"
+	desc = "EVT_SAF_329087_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	date = { day = 1 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1947 }
+	action_a = {
+		name = "EVT_SAF_329087_A"
+		ai_chance = 85
+		command = { type = headofgovernment which = 425019 }
+		command = { type = foreignminister which = 425024 }
+		command = { type = armamentminister which = 425032 }
+		command = { type = ministerofsecurity which = 425048 }
+		command = { type = ministerofintelligence which = 425053 }
+		command = { type = dissent value = 5 }
+	}
+	action_b = {
+		name = "EVT_SAF_329087_B"
+		ai_chance = 15
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = GER value = 1 }
+		command = { type = headofgovernment which = 425002 }
+		command = { type = foreignminister which = 425003 }
+		command = { type = relation which = ENG value = -250 }
+		command = { type = relation which = CAN value = -200 }
+		command = { type = relation which = AST value = -200 }
+		command = { type = relation which = NZL value = -200 }
+		command = { type = relation which = USA value = -50 }
+		command = { type = relation which = FRA value = -100 }
+		command = { type = relation which = GER value = 100 }
+		command = { type = end_trades which = SAF where = ENG }
+		command = { type = end_trades which = SAF where = CAN }
+		command = { type = end_trades which = SAF where = AST }
+		command = { type = end_trades which = SAF where = NZL }
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212020] SAF | 1936 | Trackless trams in Cape Town (Tranvías sin rieles en Ciudad del Cabo)
+# ----------------------------------------------------------------------------
+event = {
+         id = 212020
+         random = no
+         country = saf
+         trigger = {
+                   exists = saf
+         }
+         name = "EVT_SAF_212020_NAME"
+         desc = "EVT_SAF_212020_DESC"
+         style = 2
+         date = { day = 17 month = february year = 1936 }
+	picture = "Minors/trackless_trams_in_cape_town"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = -1 }
+                  command = { type = tc_mod value = 10 }
+                  command = { type = construct which = infrastructure where = 880 value = 20 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [212021] SAF | 1936 | Representation of Natives Act, 1936 (Ley de representación de los nativos de 1936)
+# ----------------------------------------------------------------------------
+event = {
+         id = 212021
+         random = no
+         country = saf
+         trigger = {
+                   government = democratic
+         }
+         name = "EVT_SAF_212021_NAME"
+         desc = "EVT_SAF_212021_DESC"
+         style = 2
+         date = { day = 5 month = july year = 1936 }
+	picture = "Minors/representation_of_natives_act_1936"
+           action_a = {
+                  name = "ACTION_NAME_GOOD"
+                  ai_chance = 97
+                  command = { type = domestic which = democratic value = -1 }
+                  command = { type = dissent value = 4 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 3
+                  command = { type = domestic which = democratic value = 1 }
+                  command = { type = dissent value = -1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [212022] SAF | 1936 | The Schlesinger African Air Race (La carrera aérea africana de Schlesinger)
+# ----------------------------------------------------------------------------
+event = {
+         id = 212022
+         random = no
+         country = saf
+         trigger = {
+                   exists = saf
+         }
+         name = "EVT_SAF_212022_NAME"
+         desc = "EVT_SAF_212022_DESC"
+         style = 2
+         date = { day = 1 month = september year = 1936 }
+	picture = "Minors/the_schlesinger_african_air_race"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = -1 }
+                  command = { type = industrial_modifier which = supplies value = 1 }
+                  command = { type = tc_mod value = 5 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [212012] SAF | 1937 | New German Party in Southwest Africa (Nuevo partido alemán en el suroeste de África)
+# Triggered by event 329203 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 212012
+	random = no
+	country = SAF
+	name = "EVT_SHARED_00686_NAME"
+	desc = "EVT_SHARED_00686_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [212000] SAF | 1937 | Minister Resigns (Dimisión de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212000
+	random = no
+	country = SAF
+	style = 2
+	trigger = {
+		minister = 425001
+		}
+	date = { year = 1937 month = april day = 5 }
+	name = "EVT_SHARED_00500_NAME"
+	desc = "EVT_SHARED_00500_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 425001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329497] SAF | 1938 | The mobilization schemes (Los esquemas de movilización)
+# Triggered by event 329496 in events/Minors/SAF.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329497
+         random = no
+         country = saf
+         trigger = {
+                   alliance = { country = saf country = eng }
+                   event = 329496
+         }
+         name = "EVT_SAF_329497_NAME"
+         desc = "EVT_SAF_329497_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1938 }
+         offset = 30
+         deathdate = { day = 29 month = december year = 1944 }
+	picture = "Minors/the_mobilization_schemes"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = add_division which = "2rd SA Infantry Div." value = infantry when = 0 }
+                  command = { type = add_division which = "3rd SA Infantry Div." value = infantry when = 0 }
+                  command = { type = add_division which = "6rd SA Armoured Infantry Div." value = armor when = 0 }
+                  command = { type = manpowerpool value = -20 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [212005] SAF | 1938 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212005
+	random = no
+	country = SAF
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SAF }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = october year = 1938 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 425012 }
+		command = { type = headofgovernment which = 425019 }
+		command = { type = foreignminister which = 425024 }
+		command = { type = armamentminister which = 425032 }
+		command = { type = ministerofsecurity which = 425045 }
+		command = { type = ministerofintelligence which = 425006 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 425013 }
+		command = { type = headofgovernment which = 425018 }
+		command = { type = foreignminister which = 425022 }
+		command = { type = armamentminister which = 425030 }
+		command = { type = ministerofsecurity which = 425047 }
+		command = { type = ministerofintelligence which = 425052 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [212015] SAF | 1940 | British Commonwealth Air Training Plan (Plan de entrenamiento aéreo de la Commonwealth británica)
+# Triggered by event 143006 in events/ENG/ENG_39-43.txt
+# Triggered by event 143007 in events/ENG/ENG_39-43.txt
+# Triggered by event 143008 in events/ENG/ENG_39-43.txt
+# Triggered by event 143009 in events/ENG/ENG_39-43.txt
+# Triggered by event 143010 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 212015
+         random = no
+         country = saf
+         trigger = {
+         }
+         name = "EVT_SHARED_00791_NAME"
+         desc = "EVT_SHARED_00791_DESC"
+         style = 2
+          persistent = yes
+	picture = "Minors/british_commonwealth_air_training_plan_3"
+           action_a = {
+                  name = ACTION_NAME_OK
+                 command = { type = build_time which = air when = on_upgrade where = relative value = -5 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [212002] SAF | 1942 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212002
+	random = no
+	country = SAF
+	style = 2
+	trigger = {
+		minister = 425002
+		}
+	date = { year = 1942 month = november day = 21 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 425002 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [212001] SAF | 1943 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212001
+	random = no
+	country = SAF
+	style = 2
+	trigger = {
+		minister = 425012
+		}
+	date = { year = 1943 month = july day = 17 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 425012 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [212006] SAF | 1944 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212006
+	random = no
+	country = SAF
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SAF }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = october year = 1944 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 425014 }
+		command = { type = headofgovernment which = 425018 }
+		command = { type = foreignminister which = 425028 }
+		command = { type = armamentminister which = 425040 }
+		command = { type = ministerofsecurity which = 425050 }
+		command = { type = ministerofintelligence which = 425056 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 425015 }
+		command = { type = headofgovernment which = 425019 }
+		command = { type = foreignminister which = 425025 }
+		command = { type = armamentminister which = 425036 }
+		command = { type = ministerofsecurity which = 425048 }
+		command = { type = ministerofintelligence which = 425006 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [212040] SAF | 1946 | New Governor-General (Nuevo gobernador general)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212040
+	country = SAF
+	name = EVT_SHARED_00868_NAME
+	desc = EVT_SHARED_00868_DESC
+	picture = "nwo/governor_general"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 425017 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212007] SAF | 1947 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212007
+	random = no
+	country = SAF
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SAF }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = october year = 1947 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 425016 }
+		command = { type = headofgovernment which = 425019 }
+		command = { type = foreignminister which = 425025 }
+		command = { type = armamentminister which = 425036 }
+		command = { type = ministerofsecurity which = 425048 }
+		command = { type = ministerofintelligence which = 425006 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 425017 }
+		command = { type = headofgovernment which = 425018 }
+		command = { type = foreignminister which = 425028 }
+		command = { type = armamentminister which = 425041 }
+		command = { type = ministerofsecurity which = 425051 }
+		command = { type = ministerofintelligence which = 425057 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [212041] SAF | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212041
+	country = SAF
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofgovernment which = 425018 }
+		command = { type = foreignminister which = 425028 }
+		command = { type = armamentminister which = 425080 }
+		command = { type = ministerofsecurity which = 425046 }
+		command = { type = ministerofintelligence which = 425057 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 425019 }
+		command = { type = foreignminister which = 425024 }
+		command = { type = armamentminister which = 425079 }
+		command = { type = ministerofsecurity which = 425081 }
+		command = { type = ministerofintelligence which = 425057 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212048] SAF | 1948 | Apartheid
+# ----------------------------------------------------------------------------
+event = {
+	id = 212048
+	country = SAF
+	name = EVT_SAF_212048_NAME
+	desc = LOST_DESC
+	picture = "nwo/apartheid"
+	style = 1
+	trigger = {
+		OR = {
+			ideology = social_conservative
+			ideology = paternal_autocrat
+			ideology = fascist
+			ideology = nazi
+		}
+		headofgovernment = 425018
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_UNFORTUNATE
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = freedom value = -4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212008] SAF | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212008
+	random = no
+	country = SAF
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SAF }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = june year = 1948 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 425017 }
+		command = { type = headofgovernment which = 425018 }
+		command = { type = foreignminister which = 425028 }
+		command = { type = armamentminister which = 425080 }
+		command = { type = ministerofsecurity which = 425046 }
+		command = { type = ministerofintelligence which = 425057 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 425016 }
+		command = { type = headofgovernment which = 425019 }
+		command = { type = foreignminister which = 425024 }
+		command = { type = armamentminister which = 425079 }
+		command = { type = ministerofsecurity which = 425081 }
+		command = { type = ministerofintelligence which = 425057 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [212042] SAF | 1950 | Death of Jan Smuts (Muerte de Jan Smuts)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212042
+	country = SAF
+	name = EVT_SAF_212042_NAME
+	desc = EVT_SAF_212042_DESC
+	picture = "nwo/death"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+		headofgovernment = 425019
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 425005 }
+		command = { type = sleepminister which = 425006 }
+		command = { type = sleepminister which = 425008 }
+		command = { type = sleepminister which = 425019 }
+		command = { type = sleepminister which = 425024 }
+		command = { type = sleepminister which = 425079 }
+		command = { type = sleepminister which = 425096 }
+		command = { type = sleepminister which = 425115 }
+		command = { type = headofgovernment which = 425018 }
+		command = { type = sleepteam which = 425008 }
+		command = { type = sleepminister which = 425027 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212004] SAF | 1950 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212004
+	random = no
+	country = SAF
+	style = 2
+	trigger = {
+		leader = 425027
+		}
+	date = { day = 11 month = september year = 1950 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepteam which = 425007 }
+		command = { type = sleepminister which = 425027 }
+		command = { type = sleepminister which = 425005 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [212043] SAF | 1951 | New Governor-General (Nuevo gobernador general)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212043
+	country = SAF
+	name = EVT_SHARED_00868_NAME
+	desc = EVT_SHARED_00868_DESC
+	picture = "nwo/governor_general"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 425077 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212003] SAF | 1951 | Minister Resigns (Dimisión de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212003
+	random = no
+	country = SAF
+	style = 2
+	trigger = {
+		OR = {
+			headofstate = 425016
+			headofstate = 425017
+		}
+	}
+	date = { day = 10 month = january year = 1951 }
+	name = "EVT_SHARED_00500_NAME"
+	desc = "EVT_SHARED_00500_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 425016 } type = headofstate which = 425077 }
+		command = { trigger = { headofstate = 425017 } type = headofstate which = 425078 }
+		command = { type = sleepminister which = 425016 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [212044] SAF | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212044
+	country = SAF
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofgovernment which = 425018 }
+		command = { type = foreignminister which = 425021 }
+		command = { type = armamentminister which = 425088 }
+		command = { type = ministerofsecurity which = 425046 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 425200 }
+		command = { type = foreignminister which = 425087 }
+		command = { type = armamentminister which = 425036 }
+		command = { type = ministerofsecurity which = 425045 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212009] SAF | 1954 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212009
+	random = no
+	country = SAF
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SAF }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = november year = 1954 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 425078 }
+		command = { type = headofgovernment which = 425084 }
+		command = { type = foreignminister which = 425021 }
+		command = { type = armamentminister which = 425088 }
+		command = { type = ministerofsecurity which = 425046 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 425077 }
+		command = { type = headofgovernment which = 425086 }
+		command = { type = foreignminister which = 425087 }
+		command = { type = armamentminister which = 425036 }
+		command = { type = ministerofsecurity which = 425045 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [212045] SAF | 1958 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212045
+	country = SAF
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -15 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofgovernment which = 425084 }
+		command = { type = foreignminister which = 425021 }
+		command = { type = armamentminister which = 425089 }
+		command = { type = ministerofsecurity which = 425090 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 425086 }
+		command = { type = foreignminister which = 425087 }
+		command = { type = armamentminister which = 425036 }
+		command = { type = ministerofsecurity which = 425045 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212046] SAF | 1959 | New Governor-General (Nuevo gobernador general)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212046
+	country = SAF
+	name = EVT_SHARED_00868_NAME
+	desc = EVT_SHARED_00868_DESC
+	picture = "nwo/governor_general"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 425082 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212010] SAF | 1959 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212010
+	random = no
+	country = SAF
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SAF }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = november year = 1959 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 425082 }
+		command = { type = headofgovernment which = 425085 }
+		command = { type = foreignminister which = 425021 }
+		command = { type = armamentminister which = 425089 }
+		command = { type = ministerofsecurity which = 425090 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 425083 }
+		command = { type = headofgovernment which = 425086 }
+		command = { type = foreignminister which = 425087 }
+		command = { type = armamentminister which = 425036 }
+		command = { type = ministerofsecurity which = 425045 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [212039] SAF | 1960 | Self-rule of Namibia (Autogobierno de Namibia)
+# Trigger event 189000 in events/Minors/NAM.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 212039
+	country = SAF
+	persistent = yes
+	name = EVT_SAF_212039_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = NAM }
+		control = { province = 884 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 99
+		command = { type = dissent value = 4 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 1
+		command = { type = independence which = NAM value = 1 }
+		command = { type = make_puppet which = NAM }
+		command = { type = trigger which = 189000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212049] SAF | 1960 | Republican Referendum of 1960 (Referéndum republicano de 1960)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212049
+	country = SAF
+	name = EVT_SAF_212049_NAME
+	desc = LOST_DESC
+	picture = "nwo/south_african_referendum_1960"
+	style = 1
+	trigger = {
+		headofgovernment = 425085
+	}
+	date = { day = 1 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_SAF_212049_A
+		ai_chance = 75
+		command = { type = name where = SAF which = "SAF60" }
+		command = { type = relation which = ENG value = -10 }
+	}
+	action = {
+		name = EVT_SAF_212049_B
+		ai_chance = 25
+		command = { type = relation which = ENG value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212047] SAF | 1961 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212047
+	country = SAF
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofgovernment which = 425085 }
+		command = { type = foreignminister which = 425021 }
+		command = { type = armamentminister which = 425089 }
+		command = { type = ministerofsecurity which = 425091 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 425086 }
+		command = { type = foreignminister which = 425087 }
+		command = { type = armamentminister which = 425036 }
+		command = { type = ministerofsecurity which = 425092 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [212011] SAF | 1961 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 212011
+	random = no
+	country = SAF
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = SAF }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = november year = 1961 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 425082 }
+		command = { type = headofgovernment which = 425085 }
+		command = { type = foreignminister which = 425021 }
+		command = { type = armamentminister which = 425089 }
+		command = { type = ministerofsecurity which = 425091 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 425083 }
+		command = { type = headofgovernment which = 425086 }
+		command = { type = foreignminister which = 425087 }
+		command = { type = armamentminister which = 425036 }
+		command = { type = ministerofsecurity which = 425092 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}

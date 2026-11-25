@@ -1,0 +1,131 @@
+# ============================================================================
+# File: events/Minors/U03.txt (5 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [238005] U03 | 1933 | Japanese Coup de main in French Indochina. (Ataque sorpresa japonés en la indochina francesa)
+# Triggered by event 330153 in events/JAP/JAP_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 238005
+	random = no
+	country = U03
+	style = 2
+	name = "EVT_SHARED_01160_NAME"
+	desc = "EVT_SHARED_01160_DESC"
+	Picture = "Japan_conscription"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = country which = IDC }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = set_domestic which = free_market value = 4 }
+		command = { type = set_domestic which = freedom value = 1 }
+		command = { type = headofstate which = 480019 }
+		command = { type = headofgovernment which = 480027 }
+		command = { type = relation which = JAP value = 100 }
+		command = { type = dissent value = -2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [238000] U03 | 1936 | Demands on French Indochina (Demandas sobre la Indochina francesa)
+# Triggered by event 147027 in events/FRA/FRA_31-36.txt
+# Trigger event 167011 in events/JAP/JAP_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 238000
+	random = no
+	country = U03
+	name = "EVT_SHARED_00520_NAME"
+	desc = "EVT_SHARED_00520_DESC"
+	picture = "GLOBAL/petain"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+		command = { trigger = { OR = { government = { type = fascist country = JAP } ideology = { type = social_conservative country = JAP } } } type = headofstate which = 830203 }
+		command = { trigger = { OR = { government = { type = fascist country = JAP } ideology = { type = social_conservative country = JAP } } }  type = headofgovernment which = 830054 }
+		command = { trigger = { OR = { government = { type = fascist country = JAP } ideology = { type = social_conservative country = JAP } } }  type = ministerofintelligence which = 830122 }
+		command = { trigger = { OR = { government = { type = fascist country = JAP } ideology = { type = social_conservative country = JAP } } }  type = chiefofarmy which = 830164 }
+		command = { trigger = { OR = { government = { type = fascist country = JAP } ideology = { type = social_conservative country = JAP } } }  type = chiefofnavy which = 830180 }
+		command = { trigger = { control = { province = 1399 data = U03 } } type = add_corps which = "Saigon Boeitai" value = land where = 1399 }
+		command = { type = add_division which = "Dai 1 Indoshina Shubitai" value = garrison when = 3 }
+		command = { trigger = { control = { province = 1392 data = U03 } } type = add_corps which = "Indoshina Chuton Gun" value = land where = 1392 }
+		command = { type = add_division which = "Dai 2 Indoshina Shubitai" value = garrison when = 3 }
+		command = { type = add_division which = "Dai 3 Indoshina Shubitai" value = garrison when = 3 }
+		command = { trigger = { control = { province = 1404 data = U03 } } type = add_corps which = "Tai Chuton Gun" value = land where = 1404 }
+		command = { type = add_division which = "Dai 4 Indoshina Shubitai" value = garrison when = 3 }
+		command = { type = trigger which = 167011 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [238001] U03 | 1936 | Thailand Aligns with Japan (Tailandia se alía con Japón)
+# Triggered by event 167024 in events/JAP/JAP_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 238001
+	random = no
+	country = U03
+	name = "EVT_SHARED_00795_NAME"
+	desc = "EVT_SHARED_00795_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { trigger = { OR = { government = fascist ideology = social_conservative } } type = headofstate which = 830203 }
+		command = { trigger = { OR = { government = fascist ideology = social_conservative } } type = headofgovernment which = 830054 }
+		command = { trigger = { OR = { government = fascist ideology = social_conservative } } type = ministerofintelligence which = 830122 }
+		command = { trigger = { OR = { government = fascist ideology = social_conservative } } type = chiefofarmy which = 830164 }
+		command = { trigger = { OR = { government = fascist ideology = social_conservative } } type = chiefofnavy which = 830180 }
+  		command = { type = secedeprovince which = SIA value = 1402 when = 1 }
+  		command = { type = secedeprovince which = SIA value = 1391 when = 1 }
+  	}
+}
+
+# ----------------------------------------------------------------------------
+# [238002] U03 | 1950 | Dissolution of French Indochina (Disolución de la Indochina francesa)
+# ----------------------------------------------------------------------------
+event = {
+	id = 238002
+	country = U03
+	name = EVT_U03_238002_NAME
+	desc = EVT_U03_238002_DESC
+	picture = "nwo/french_vietnam"
+	style = 1
+	date = { day = 1 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_U03_238002_A
+		ai_chance = 100
+		command = { type = independence which = CMB value = 0 }
+		command = { type = independence which = LAO value = 0 }
+		command = { type = country which = VIE }
+	}
+	action = {
+		name = EVT_U03_238002_B
+		ai_chance = 0
+		command = { type = dissent value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [238004] U03 | 1963 | The Diem Regime Endures (El régimen de Di?m sobrevive)
+# Triggered by event 238003 in events/Minors/U03_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 238004
+	country = U03
+	name = EVT_U03_238004_NAME
+	desc = EVT_U03_238004_DESC
+	picture = "nwo/ngo_dinh_diem"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 25 }
+	}
+}

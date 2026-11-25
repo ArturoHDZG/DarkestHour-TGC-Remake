@@ -1,0 +1,527 @@
+# ============================================================================
+# File: events/Minors/POR.txt (17 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [204004] POR | 1916 | British Request for Portuguese Belligerence (Petición británica de entrada en guerra)
+# Triggered by event 143219 in events/ENG/ENG_Decisions.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 204004
+	country = POR
+	name = "EVT_POR_204004_NAME"
+	desc = "EVT_SHARED_00051_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = alliance which = ENG when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+	}
+	action = {
+		name = "ACTION_NAME_NEUTRAL"
+		command = { type = relation which = ENG value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [204002] POR | 1933 | German Diplomatic Pressure on Portugal (Presión diplomática alemana sobre Portugal)
+# Triggered by event 329406 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 204002
+	random = no
+	country = POR
+	name = EVT_POR_204002_NAME
+	desc = EVT_SHARED_00313_DESC
+  	style = 2
+	picture = "GLOBAL/hungary_axis"
+	action = {
+		name = ACTION_NAME_JOIN_AXIS
+		ai_chance = 100
+		command = { type = alliance which = GER when = 1 }
+		command = { type = relation which = GER value = 50 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 0
+		command = { type = relation which = GER value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329239] POR | 1935 | Portuguese Accept British Border Patrols (Portugueses aceptan patrullas fronterizas británicas)
+# Trigger event 143066 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329239
+	random = no
+	country = POR
+	trigger = {
+			war = { country = SPA country = SPR }
+			NOT = { war = { country = POR country = ENG } }
+			}
+	date = { day = 25 month = april year = 1935 }
+	offset = 1
+	deathdate = { day = 27 month = april year = 1938 }
+	name = "EVT_SHARED_00728_NAME"
+	desc = "EVT_SHARED_00728_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ENG value = 10 }
+		command = { type = relation which = SPA value = -10 }
+		command = { type = trigger which = 143066 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [204003] POR | 1936 | Fall of the Socialist Republic of Portugal (Caída de la República Socialista Portuguesa)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 204003
+	random = no
+	country = POR
+	name = "EVT_POR_204003_NAME"
+	desc = "EVT_POR_204003_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U15 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [204021] POR | 1936 | People's Republic Founded (República Popular)
+# Trigger event 204022 in events/Minors/POR.txt
+# Trigger event 250001 in events/Minors/U15.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 204021
+   country = POR
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U15
+            NOT = { ai = POR }
+            NOT = { ai = U15 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U15
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U15 } }
+      command = { type = country which = U15 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U15
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = POR }
+               control = { province = 481 data = -1 }
+            }
+         }
+         type = trigger which = 204022
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U15 }
+               NOT = { control = { province = 481 data = -1 } }
+            }
+         }
+         type = trigger which = 250001
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U15
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [204022] POR | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 204021 in events/Minors/POR.txt
+# Triggered by event 250000 in events/Minors/U15.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 204022
+   country = POR
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U15 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [329247] POR | 1939 | Anglo-Portuguese Agreement (Acuerdo anglo-portugués)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329247
+	random = no
+	country = POR
+	trigger = {
+		   NOT = { war = { country = POR country = ENG } }
+		    }
+	date = { day = 29 month = may year = 1939 }
+	name = "EVT_SHARED_00735_NAME"
+	desc = "EVT_SHARED_00735_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ENG value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [204001] POR | 1941 | Tungsten Fever in Iberia (Fiebre del wolframio en la Península Ibérica)
+# Triggered by event 329402 in events/GER/GER_33-33_2.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 204001
+	random = no
+	country = POR
+	trigger = { event = 329402 control = { province = 478 data = POR } war = { country = GER country = ENG } war = { country = GER country = SOV } NOT = { war = { country = POR country = GER } } random = 5 }
+	date = { day = 1 month = january year = 1941 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	name = EVT_SHARED_00310_NAME
+	desc = EVT_SHARED_00310_DESC
+	style = 2
+	picture = "GLOBAL/aramco"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = relation which = GER value = 50 }
+		command = { type = add_prov_resource which = 478 value = 3 where = rare_materials }
+		command = { type = construct which = infrastructure where = 478 value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [204024] POR | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 204024
+	country = POR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 20057 }
+		command = { type = headofgovernment which = 20051 }
+		command = { type = foreignminister which = 20059 }
+		command = { type = armamentminister which = 20029 }
+		command = { type = ministerofsecurity which = 20060 }
+		command = { type = ministerofintelligence which = 20061 }
+		command = { type = chiefofstaff which = 20062 }
+		command = { type = chiefofarmy which = 20063 }
+		command = { type = chiefofnavy which = 20064 }
+		command = { type = chiefofair which = 20065 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [204018] POR | 1945 | Colonial Claims Debate (Reclamaciones coloniales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 204018
+	country = POR
+	name = EVT_SHARED_00888_NAME
+	desc = EVT_SHARED_00888_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 0 month = january year = 1945 }
+  	offset = 90
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 100
+		command = { type = removeclaim which = 995 }
+		command = { type = removeclaim which = 992 }
+		command = { type = removeclaim which = 963 }
+		command = { type = removeclaim which = 912 }
+		command = { type = removeclaim which = 895 }
+		command = { type = removeclaim which = 890 }
+		command = { type = removeclaim which = 892 }
+		command = { type = removeclaim which = 887 }
+		command = { type = removeclaim which = 891 }
+		command = { type = removeclaim which = 888 }
+		command = { type = removeclaim which = 855 }
+		command = { type = removeclaim which = 856 }
+		command = { type = removeclaim which = 857 }
+		command = { type = removeclaim which = 858 }
+		command = { type = removeclaim which = 854 }
+		command = { type = removeclaim which = 853 }
+		command = { type = removeclaim which = 1617 }
+		command = { type = removeclaim which = 1372 }
+		command = { type = removeclaim which = 893 }
+		command = { type = removeclaim which = 994 }
+		command = { type = removeclaim which = 1513 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [204025] POR | 1951 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 204025
+	country = POR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = fascist
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 20066 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [204000] POR | 1951 | Minister Resigns (Dimisión de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 204000
+	random = no
+	country = POR
+	style = 2
+	trigger = {
+		headofstate = 20001
+		}
+	date = { day = 16 month = april year = 1951 }
+	name = "EVT_SHARED_00500_NAME"
+	desc = "EVT_SHARED_00500_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 20066 }
+		command = { type = sleepminister which = 20001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [204026] POR | 1958 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 204026
+	country = POR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = fascist
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 20200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [204027] POR | 1959 | Our stance on Goa issue (Nuestra postura sobre la cuestión de Goa)
+# ----------------------------------------------------------------------------
+event = {
+	id = 204027
+	country = POR
+	name = EVT_POR_204027_NAME
+	desc = LOST_DESC
+	picture = "nwo/portuguese_goa"
+	style = 1
+	trigger = {
+		exists = IND
+		control = { province = 1513 data = -1 }
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_POR_204027_A
+		ai_chance = 95
+		command = { type = dissent value = 5 }
+		command = { type = relation which = IND value = -100 }
+	}
+	action = {
+		name = EVT_POR_204027_B
+		ai_chance = 5
+		command = { type = dissent value = 15 }
+		command = { type = relation which = IND value = 100 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = secedeprovince which = IND value = 1513 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [204020] POR | 1960 | Self-rule of Mozambique (Autogobierno de Mozambique)
+# Trigger event 187000 in events/Minors/MOZ.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 204020
+	country = POR
+	persistent = yes
+	name = EVT_POR_204020_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = MOZ }
+		control = { province = 855 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 99
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 1
+		command = { type = independence which = MOZ value = 1 }
+		command = { type = make_puppet which = MOZ }
+		command = { type = trigger which = 187000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [204023] POR | 1961 | Assault on Portuguese Goa (Ataque armado a Goa)
+# Triggered by event 161048 in events/Minors/IND_Decisions.txt
+# Trigger event 161049 in events/Minors/IND_36-65.txt
+# Trigger event 161050 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 204023
+	country = POR
+	one_action = yes
+	name = EVT_POR_204023_NAME
+	desc = EVT_POR_204023_DESC
+	picture = "nwo/invasion_of_goa"
+	style = 1
+	trigger = {
+		event = 161048
+	}
+	date = { day = 18 month = december year = 1961 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_POR_204023_A
+		ai_chance = 95
+		command = { type = dissent value = 5 }
+		command = { type = secedeprovince which = IND value = 1513 }
+		command = { type = trigger which = 161049 }
+	}
+	action = {
+		name = EVT_POR_204023_B
+		ai_chance = 5
+		command = { type = dissent value = -3 }
+		command = { type = trigger which = 161050 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [204019] POR | 1974 | Independence of Angola (Independencia de Angola)
+# ----------------------------------------------------------------------------
+event = {
+	id = 204019
+	country = POR
+	persistent = yes
+	name = EVT_POR_204019_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = ANG }
+		control = { province = 895 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 75
+		command = { type = independence which = ANG value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 25
+		command = { type = dissent value = 5 }
+	}
+}

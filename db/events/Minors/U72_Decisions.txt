@@ -1,0 +1,154 @@
+# ============================================================================
+# File: events/Minors/U72_Decisions.txt (4 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [330029] U72 | 1946 | Outbreak of the First Indochina War (Estallido de la Guerra de Indochina)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330029
+	country = U72
+	persistent = yes
+	name = EVT_U72_330029_NAME
+	desc = EVT_U72_330029_DESC
+	picture = "nwo/first_indochina_war"
+	decision_picture = "nwo/d_first_indochina_war"
+	style = 1
+	decision = {
+		NOT = { war = { country = U72 country = VIE } }
+		exists = VIE
+		flag = cold_war_pacific
+	}
+	trigger = {
+		NOT = { war = { country = U72 country = VIE } }
+		exists = VIE
+		flag = cold_war_pacific
+	}
+	date = { day = 1 month = july year = 1946 }
+	offset = 120
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 25
+		command = { type = war which = VIE }
+	}
+	action = {
+		name = EVT_U72_330029_A
+		ai_chance = 75
+		trigger = { ai = yes }
+		command = { type = relation which = VIE value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330044] U72 | 1956 | Outbreak of the Vietnam War (Estallido de la Guerra de Vietnam)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330044
+	country = U72
+	persistent = yes
+	name = EVT_U72_330044_NAME
+	desc = EVT_U72_330044_DESC
+	picture = "nwo/second_indochina_war"
+	decision_picture = "nwo/d_second_indochina_war"
+	style = 1
+	decision = {
+		NOT = { war = { country = U72 country = VIE } }
+		exists = VIE
+		flag = cold_war_pacific
+	}
+	trigger = {
+		NOT = { war = { country = U72 country = VIE } }
+		exists = VIE
+		flag = cold_war_pacific
+	}
+	date = { day = 1 month = january year = 1956 }
+	offset = 120
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 25
+		command = { type = war which = VIE }
+	}
+	action = {
+		name = EVT_U72_330044_A
+		ai_chance = 75
+		trigger = { ai = yes }
+		command = { type = relation which = VIE value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330051] U72 | 1958 | The Third Party Congress in Hanoi (El III Congreso del Partido en Hanói)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330051
+	country = U72
+	name = EVT_U72_330051_NAME
+	desc = EVT_U72_330051_DESC
+	picture = "nwo/le_duan"
+	style = 1
+	decision = {
+		war = { country = U72 country = VIE }
+	}
+	trigger = {
+		war = { country = U72 country = VIE }
+	}
+	date = { day = 1 month = january year = 1958 }
+	offset = 720
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 85
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = EVT_U72_330051_A
+		ai_chance = 15
+		trigger = { ai = yes }
+		command = { type = domestic which = freedom value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330056] U72 | 1959 | The Ho Chi Minh Trail Logistics (La red logística de la Ruta Ho Chi Minh)
+# Trigger event 173018 in events/Minors/LAO.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 330056
+	country = U72
+	name = EVT_U72_330056_NAME
+	desc = EVT_U72_330056_DESC
+	picture = "nwo/ho_chi_minh_trail"
+	decision_picture = "nwo/d_ho_chi_minh_trail"
+	style = 1
+	decision = {
+		war = { country = U72 country = VIE }
+		exists = LAO
+		NOT = { war = { country = LAO } }
+	}
+	trigger = {
+		war = { country = U72 country = VIE }
+		exists = LAO
+		NOT = { war = { country = LAO } }
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_U72_330056_A
+		ai_chance = 99
+		command = { type = supplies value = -1000 }
+		command = { type = trigger which = 173018 }
+	}
+	action = {
+		name = EVT_U72_330056_B
+		ai_chance = 1
+		trigger = { ai = yes }
+		command = { type = money value = 1 }
+	}
+}

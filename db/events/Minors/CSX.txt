@@ -1,0 +1,178 @@
+# ============================================================================
+# File: events/Minors/CSX.txt (7 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [131002] CSX | 1930 | The Japanese Threat (La amenaza japonesa)
+# Triggered by event 124131 in events/CHI/CHI_13-33.txt
+# Trigger event 324314 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 131003 in events/Minors/CSX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 131002
+	random = no
+	country = CSX
+	name = EVT_CSX_131002_NAME
+	desc = EVT_CSX_131002_DESC
+	style = 2
+	picture = "Minors/ccip_taiyuan"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = CHC value = 5 }
+		command = { type = relation which = CHI value = -5 }
+		command = { trigger = { ai = yes } type = ai which = "switch/ferocity_yes.ai" }
+		command = { type = event which = 324314 where = CSX when = 3 }
+		command = { type = event which = 324314 where = CHC when = 3 }
+		command = { type = event which = 131003 where = CSX when = 720 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [131003] CSX | 1930 | Fortifications Finished (Fortificaciones completadas)
+# Triggered by event 131002 in events/Minors/CSX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 131003
+	random = no
+	country = CSX
+	style = 2
+	picture = "Minors/ccip_taiyuan"
+	name = EVT_CSX_131003_NAME
+	desc = EVT_CSX_131003_DESC
+	action = {
+		trigger = {
+			or = {
+				control = { province = 1252 data = CSX }
+				control = { province = 1251 data = CSX }
+				control = { province = 1250 data = CSX }
+			}
+		}
+		name = ACTION_NAME_GREAT
+		command = { trigger = { control = { province = 1252 data = CSX } } type = construct which = land_fort where = 1252 value = 4 }
+		command = { trigger = { control = { province = 1251 data = CSX } } type = construct which = land_fort where = 1251 value = 2 }
+		command = { trigger = { control = { province = 1250 data = CSX } } type = construct which = land_fort where = 1250 value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [131004] CSX | 1930 | The Drug Problem (El problema del contrabando de opio)
+# Triggered by event 124132 in events/Minors/MAN.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 131004
+	random = no
+	country = CSX
+	name = EVT_CSX_131004_NAME
+	desc = EVT_CSX_131004_DESC
+	style = 2
+	picture = "Minors/ccip_poppy"
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		command = { type = dissent value = 10 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = relation which = MAN value = 10 }
+	}
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		command = { type = dissent value = -10 }
+		command = { type = relation which = JAP value = -50 }
+		command = { type = relation which = MAN value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [131005] CSX | 1931 | 19th Army Defects (Deserción del 19.º Ejército de Ruta)
+# Triggered by event 123018 in events/Minors/CHC_30-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 131005
+	random = no
+	country = CSX
+	name = EVT_SHARED_00167_NAME
+	desc = EVT_CSX_131005_DESC
+	picture = "GLOBAL/ccip_fjsoviet"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				and = {
+					not = { relation = { which = CHC value = 150 } }
+					relation = { which = CHI value = -50 }
+					not = { war = { country = CHI country = CSX } }
+				}
+			}
+		}
+		name = ACTION_NAME_FIGHT
+		ai_chance = 20
+		command = { trigger = { ai = yes } type = ai which = "switch/ferocity_yes.ai" }
+		command = { trigger = { not = { war = { country = CHC country = CSX } } } type = war which = CHC }
+		command = { trigger = { not = { alliance = { country = CHI country = CSX } } } type = alliance which = CHI when = 2 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 80
+		command = { trigger = { alliance = { country = CHI country = CSX } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = CHC country = CSX } } type = peace which = CHC }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [131001] CSX | 1935 | The Chin-Doihara Agreement (El Acuerdo Chin-Doihara)
+# Triggered by event 124130 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 131001
+	country = CSX
+	name = EVT_SHARED_00161_NAME
+	desc = EVT_SHARED_00161_DESC
+	picture = "GLOBAL/ccip_mukden"
+        style = 2
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+        command = { type = relation which = CHI value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [131000] CSX | 1936 | Frontier Concessions to Japan (Cesiones fronterizas a Japón)
+# ----------------------------------------------------------------------------
+event = {
+	id = 131000
+	random = no
+	country = CSX
+	name = "EVT_SHARED_00491_NAME"
+	desc = "EVT_CSX_131000_DESC"
+	style = 2
+	picture = "GLOBAL/ccip_mukden"
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = JAP value = 1249 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [131006] CSX | 1942 | The Shanxi Difangjun (El Difangjun de Shanxi)
+# Triggered by event 329962 in events/CHI/CHI_37-45.txt
+# Trigger event 329741 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 131006
+	country = CSX
+	name = EVT_CSX_131006_NAME
+	desc = EVT_CSX_131006_DESC
+	picture = "nwo/difangjun"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_corps value = land where = 1283 }
+		command = { type = add_division which = militia when = 5 }
+		command = { type = add_division which = militia when = 5 }
+	}
+}

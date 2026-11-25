@@ -1,0 +1,1218 @@
+# ============================================================================
+# File: events/Minors/BUL.txt (34 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [118022] BUL | 1914 | Bulgaria Joins the Central Powers (Bulgaria se une a las Potencias Centrales)
+# Triggered by event 243097 in events/Minors/U08_Decisions.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 243098 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118022
+	country = BUL
+	name = "EVT_BUL_118022_NAME"
+	desc = "EVT_BUL_118022_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action_a = {
+		name = "ACTION_NAME_JOIN_CENTRAL"
+		ai_chance = 95
+		command = { type = alliance which = U08 when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+		command = { type = event which = 243098 where = U08 when = 1 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NEUTRAL"
+		ai_chance = 5
+		command = { type = relation which = U08 value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118023] BUL | 1914 | Alliance Proposal to Bulgaria (Propuesta de alianza a Bulgaria)
+# Triggered by event 243099 in events/Minors/U09_Decisions.txt
+# Triggered by event 244034 in events/Minors/U09_Decisions.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 243098 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118023
+	country = BUL
+	name = "EVT_BUL_118023_NAME"
+	desc = "EVT_BUL_118023_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action_a = {
+		trigger = { alliance = { country = U09 country = U08 } }
+		ai_chance = 100
+		name = "ACTION_NAME_ACCEPT"
+		command = { type = alliance which = U09 when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+		command = { type = event which = 243098 where = U08 when = 1 }
+	}
+	action_b = {
+		trigger = { alliance = { country = U09 country = U08 } }
+		ai_chance = 0
+		name = "ACTION_NAME_REFUSE"
+		command = { type = relation which = U08 value = -15 }
+	}
+	action_a = {
+		trigger = { NOT = { alliance = { country = U09 country = U08 } } }
+		ai_chance = 5
+		name = "ACTION_NAME_ACCEPT"
+		command = { type = alliance which = U09 when = 1 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+		command = { type = event which = 243098 where = U08 when = 1 }
+	}
+	action_b = {
+		trigger = { NOT = { alliance = { country = U09 country = U08 } } }
+		ai_chance = 95
+		name = "ACTION_NAME_REFUSE"
+		command = { type = relation which = U08 value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118024] BUL | 1914 | Bulgarian Armistice (Armisticio de Bulgaria)
+# Triggered by event 244037 in events/Minors/U09.txt
+# Triggered by event 324519 in events/GLOBAL/MULTI_14-32.txt
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Trigger event 118025 in events/Minors/BUL.txt
+# Trigger event 244034 in events/Minors/U09_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118024
+	country = BUL
+	trigger = {
+		random = 20
+		OR = {
+			war = { country = BUL country = RUS }
+			war = { country = BUL country = FRA }
+		}
+		OR = {
+			or = {
+				and = {
+					year = 1917
+					dissent = 10
+					or = {
+						not = { event = 244037 }
+						exists = SER
+					}
+					NOT = { ispuppet = SER }
+				}
+				dissent = 30
+			}
+			AND = {
+				lost_national = { value = 50 }
+				lost_ic = { value = 50 }
+			}
+			AND = {
+				lost_national = { value = 30 }
+				NOT = { control = { province = 321 data = -1 } }
+			}
+			AND = {
+				random = 50
+				ai = BUL
+				OR = {
+					event = 324519
+					event = 147311
+				}
+			}
+		}
+	}
+	name = "EVT_BUL_118024_NAME"
+	desc = "EVT_BUL_118024_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 28 month = june year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_SIGN"
+		command = { type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = BUL country = RUS } } type = peace which = RUS value = 1 }
+		command = { trigger = { war = { country = BUL country = FRA } } type = peace which = FRA value = 1 }
+		command = { trigger = { war = { country = BUL country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { ai = no} type = dissent value = 5 }
+		command = { type = removecore which = 307 }
+		command = { type = removecore which = 363 }
+		command = { type = removecore which = 370 }
+		command = { type = removecore which = 331 }
+		command = { type = removecore which = 328 }
+		command = { type = removecore which = 333 }
+		command = { type = removecore which = 364 }
+		command = { type = removecore which = 365 }
+		command = { type = removecore which = 366 }
+		command = { type = removecore which = 370 }
+		command = { type = removecore which = 310 }
+		command = { type = removeclaim which = 313 }
+		command = { type = removeclaim which = 334 }
+		command = { type = removeclaim which = 385 }
+		command = { type = demobilize which = hq when = 0 where = 0 value = 1 }
+		command = { type = demobilize which = land when = 0 where = 0 value = 5 }
+		command = { type = strength which = land when = 0 where = 0 value = 0.33 }
+		command = { type = strength which = air when = 0 where = 0 org = 0 value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118025] BUL | 1914 | The Treaty of Neuilly-sur-Seine (El Tratado de Neuilly-sur-Seine)
+# Triggered by event 118024 in events/Minors/BUL.txt
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Trigger event 231040 in events/GRE/GRE_14-33.txt
+# Trigger event 231042 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118025
+	country = BUL
+	trigger = {
+		random = 85
+		event = 118024
+		OR = {
+			NOT = { exists = U09 }
+			event = 147311
+		}
+	}
+	name = "EVT_BUL_118025_NAME"
+	desc = "EVT_BUL_118025_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 28 month = june year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { exists = ROM } } type = independence which = ROM value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = SER } } type = independence which = SER value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = ALB } } type = independence which = ALB value = 1 when = 1 }
+		command = { trigger = { NOT = { exists = GRE } } type = independence which = GRE value = 1 when = 1 }
+		command = { type = secederegion which = ROM value = "Romania" }
+		command = { type = secedeprovince which = ROM value = 307 }
+		command = { type = secedeprovince which = ROM value = 310 }
+		command = { type = secedeprovince which = ROM value = 313 }
+		command = { type = secedeprovince which = GRE value = 363 }
+		command = { type = secedeprovince which = GRE value = 370 }
+		command = { type = secedearea which = SER value = "East Serbia" }
+		command = { type = secedearea which = SER value = "Central Serbia" }
+		command = { type = secedearea which = ALB value = "Albania" }
+		command = { type = secedearea which = GRE value = "Thrace" }
+		command = { type = secedearea which = GRE value = "Attica" }
+		command = { type = secedearea which = GRE value = "Greek Island" }
+        command = { type = trade which = BUL where = SER money = -0.5 when = 2400 value = 1 }
+        command = { trigger = { alliance = { country = FRA country = GRE } } type = trade which = BUL where = GRE money = -0.5 when = 2400 value = 1 }
+        command = { type = trade which = BUL where = FRA money = -0.5 when = 3600 value = 1 }
+		command = { type = headofstate which = 95240 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+		command = { type = set_domestic which = interventionism value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329066] BUL | 1933 | Communist Coup Attempt (Intento de golpe de Estado comunista)
+# Triggered by event 329058 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329066
+	random = no
+	country = BUL
+	one_action = yes
+	trigger = {
+		event = 329058
+		random = 5
+		atwar = no
+		not = { alliance = { country = DDR } }
+		not = { war = { country = DDR } }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_SHARED_00197_NAME"
+	desc = "EVT_SHARED_00197_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	action = {
+		ai_chance = 80
+		name = "EVT_SHARED_00197_A"
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = dissent value = -5 }
+		command = { type = country which = U29 }
+		command = { type = set_relation which = DDR value = 200 }
+		command = { type = set_relation which = SOV value = 200 }
+		command = { type = alliance which = SOV when = 1 }
+	}
+	action = {
+		ai_chance = 20
+		name = "EVT_SHARED_00197_B"
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118008] BUL | 1934 | The 19 May coup d'etat. (El golpe de estado del 19 de mayo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 118008
+	random = no
+	country = BUL
+	trigger = {
+		exists = BUL
+		}
+	date = { day = 19 month = May year = 1934 }
+	name = "EVT_BUL_118008_NAME"
+	desc = "EVT_BUL_118008_DESC"
+	style = 2
+	Picture = "BUL01"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = headofstate which = 95001 }
+		command = { type = headofgovernment which = 95028 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [118014] BUL | 1935 | Bulgarian Workers Union. (Sindicato de Trabajadores de Bulgaria)
+# ----------------------------------------------------------------------------
+event = {
+	id = 118014
+	random = no
+	country = BUL
+	style = 2
+	trigger = {
+		exists = BUL
+		}
+	date = { day = 11 month = September year = 1935 }
+	name = "EVT_BUL_118014_NAME"
+	desc = "EVT_BUL_118014_DESC"
+	Picture = "strikesruspetro1"
+	action_a = {
+		name = "ACTION_NAME_AGREE"
+		ai_chance = 100
+		command = { type = manpowerpool value = 20 }
+		command = { type = supplies value = -100 }
+		command = { type = money value = -50 }
+		command = { type = dissent value = -2 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+		command = { type = manpowerpool value = -20 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [118009] BUL | 1935 | The Government of Georgi Kyoseivanov. (El Gobierno de Georgi Kyoseivanov)
+# ----------------------------------------------------------------------------
+event = {
+	id = 118009
+	random = no
+	country = BUL
+	trigger = {
+		exists = BUL
+		}
+	date = { day = 23 month = November year = 1935 }
+	name = "EVT_BUL_118009_NAME"
+	desc = "EVT_BUL_118009_DESC"
+	style = 2
+	Picture = "BUL02"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 95001 }
+		command = { type = headofgovernment which = 95002 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [118003] BUL | 1936 | Romanian Capitulation to Bulgaria (Rendición de Rumanía ante Bulgaria)
+# Triggered by event 209019 in events/Minors/ROM_36-44.txt
+# Trigger event 118000 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118003
+	random = no
+	country = BUL
+	name = "EVT_SHARED_00477_NAME"
+	desc = "EVT_SHARED_00478_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_HURRAH"
+		ai_chance = 100
+		command = { type = dissent value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118004] BUL | 1936 | Romanian Capitulation to Bulgaria (Rendición de Rumanía ante Bulgaria)
+# Triggered by event 209020 in events/Minors/ROM_36-44.txt
+# Triggered by event 209024 in events/Minors/ROM_36-44.txt
+# Trigger event 118000 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118004
+	random = no
+	country = BUL
+	name = "EVT_SHARED_00477_NAME"
+	desc = "EVT_SHARED_00478_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_HURRAH"
+		command = { type = dissent value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118007] BUL | 1936 | Bulgaria Switches Sides (Bulgaria cambia de bando)
+# Triggered by event 223031 in events/SOV/SOV_38-40.txt
+# Trigger event 223000 in events/SOV/SOV_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118007
+	random = no
+	country = BUL
+	name = "EVT_SHARED_00480_NAME"
+	desc = "EVT_BUL_118007_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = { exists = U29 }
+		random = 20
+		NOT = {
+			alliance = { country = ENG country = BUL }
+			alliance = { country = USA country = BUL }
+			alliance = { country = SOV country = BUL }
+			}
+		AND = {
+			OR = {
+				event = 223031
+				control = { province = 316 data = SOV }
+			}
+			OR = {
+				war = { country = BUL country = SOV }
+				alliance = { country = GER country = BUL }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1936 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = leave_alliance }
+		command = { type = peace which = SOV value = 1 }
+		command = { type = peace which = ENG value = 1 }
+		command = { type = peace which = USA value = 1 }
+		command = { type = peace which = FRA value = 1 }
+		command = { type = set_relation which = SOV value = 50 }
+		command = { type = set_relation which = GER value = -50 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = set_domestic which = freedom value = 3 }
+		command = { type = headofstate which = 95019 }
+		command = { type = headofgovernment which = 19060 }
+		command = { type = foreignminister which = 95029 }
+		command = { type = ministerofsecurity which = 95072 }
+		command = { type = armamentminister which = 95057 }
+		command = { type = ministerofintelligence which = 95082 }
+		command = { type = chiefofarmy which = 95104 }
+		command = { type = chiefofstaff which = 95092 }
+		command = { type = chiefofair which = 95117 }
+		command = { type = chiefofnavy which = 95110 }
+		command = { type = removeclaim which = 331 }
+		command = { type = removeclaim which = 334 }
+		command = { type = trigger which = 223000 }
+		}
+	action_b = {
+		name = "EVT_BUL_118007_A"
+		ai_chance = 2
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = defense_lobby value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118016] BUL | 1936 | Germany Aims at Aligning Bulgaria (Acercamiento diplomático alemán a Bulgaria)
+# Triggered by event 329136 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118016
+	random = no
+	country = BUL
+	name = EVT_BUL_118016_NAME
+	desc = EVT_SHARED_00619_DESC
+  	style = 2
+	picture = "GLOBAL/bulgaria_axis"
+	action_a = {
+		name = ACTION_NAME_JOIN_AXIS
+		ai_chance = 100
+		command = { type = alliance which = GER }
+		command = { type = relation which = GER value = 100 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 0
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118018] BUL | 1936 | Partition of Yugoslavia (Partición de Yugoslavia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 118018
+	random = no
+	country = BUL
+	name = "EVT_SHARED_00780_NAME"
+	desc = "EVT_SHARED_00780_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = { exists = YUG }
+		control = { province = 338 data = -3 }
+		participant = { country = BUL value = 2 }
+		OR = {
+			alliance = { country = BUL country = ITA }
+			alliance = { country = BUL country = HUN }
+			alliance = { country = BUL country = GER }
+		}
+	}
+    date = { day = 0 month = january year = 1936 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 100
+		name = "EVT_SHARED_00780_A"
+		command = { type = dissent value = -1 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 329 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 332 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 334 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 335 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 343 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 349 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 350 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 327 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 330 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 336 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 337 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 338 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 339 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 340 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 342 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 344 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 345 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 346 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 347 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 351 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 352 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 353 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 354 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 355 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 356 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 357 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 358 when = 1 }
+		command = { trigger = { alliance = { country = BUL country = HUN } } type = secedeprovince which = HUN value = 341 when = 1 }
+	}
+	action_b = {
+		ai_chance = 0
+		name = "EVT_SHARED_00780_B"
+		command = { type = dissent value = 5 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = relation which = ITA value = -25 }
+		command = { trigger = { alliance = { country = BUL country = HUN } } type = relation which = HUN value = -25 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = relation which = GER value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118020] BUL | 1936 | Fall of the People's Republic of Bulgaria (Caída de la República Popular de Bulgaria)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118020
+	random = no
+	country = BUL
+	name = "EVT_BUL_118020_NAME"
+	desc = "EVT_BUL_118020_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U29 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118046] BUL | 1936 | Partition of Greece (Partición de Grecia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 118046
+	random = no
+	country = BUL
+	name = "EVT_SHARED_00627_NAME"
+	desc = "EVT_SHARED_00627_DESC"
+	style = 2
+	picture = "GLOBAL/parthenon"
+	trigger = {
+		control = { province = 377 data = -3 }
+		participant = { country = BUL value = 2 }
+		OR = {
+			alliance = { country = BUL country = ITA }
+			alliance = { country = BUL country = GER }
+		}
+	}
+    date = { day = 1 month = january year = 1936 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 100
+		name = "EVT_SHARED_00627_A"
+		command = { type = dissent value = -1 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 367 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 368 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 369 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 371 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 372 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 373 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 374 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 375 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 376 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 380 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = secedeprovince which = ITA value = 381 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 377 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 382 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = secedeprovince which = GER value = 383 }
+	}
+	action_b = {
+		ai_chance = 0
+		name = "EVT_SHARED_00627_B"
+		command = { type = dissent value = 5 }
+		command = { trigger = { alliance = { country = BUL country = ITA } } type = relation which = ITA value = -25 }
+		command = { trigger = { alliance = { country = BUL country = GER } } type = relation which = GER value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118051] BUL | 1936 | People's Republic Founded (República Popular)
+# Trigger event 118052 in events/Minors/BUL.txt
+# Trigger event 264019 in events/Minors/U29.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 118051
+   country = BUL
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U29
+            NOT = { ai = BUL }
+            NOT = { ai = U29 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U29
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U29 } }
+      command = { type = country which = U29 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U29
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = BUL }
+               control = { province = 321 data = -1 }
+            }
+         }
+         type = trigger which = 118052
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U29 }
+               NOT = { control = { province = 321 data = -1 } }
+            }
+         }
+         type = trigger which = 264019
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U29
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [118052] BUL | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 118051 in events/Minors/BUL.txt
+# Triggered by event 264018 in events/Minors/U29.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 118052
+   country = BUL
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U29 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [118005] BUL | 1936 | Defeat of Bulgaria (Derrota de Bulgaria)
+# Triggered by event 329301 in events/Minors/HUN_14-38.txt
+# Trigger event 209021 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118005
+	random = no
+	country = BUL
+	name = "EVT_SHARED_00479_NAME"
+	desc = "EVT_SHARED_00479_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		event = 329301
+		control = { province = 321 data = ROM }
+		war = { country = BUL country = ROM }
+		NOT = {
+			war = { country = HUN country = ROM }
+		}
+		NOT = {
+			alliance = { country = BUL country = GER }
+			alliance = { country = ROM country = GER }
+		}
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = removecore which = 307 }
+		command = { type = peace which = ROM }
+		command = { type = dissent value = 20 }
+		command = { type = trigger which = 209021 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118006] BUL | 1936 | Defeat of Bulgaria (Derrota de Bulgaria)
+# Triggered by event 329301 in events/Minors/HUN_14-38.txt
+# Trigger event 209022 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118006
+	random = no
+	country = BUL
+	name = "EVT_SHARED_00479_NAME"
+	desc = "EVT_SHARED_00479_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		event = 329301
+		control = { province = 321 data = ROM }
+		war = { country = BUL country = ROM }
+		war = { country = HUN country = ROM }
+		NOT = {
+			alliance = { country = BUL country = GER }
+			alliance = { country = ROM country = GER }
+			alliance = { country = HUN country = GER }
+		}
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = peace which = ROM value = 1 }
+		command = { type = removecore which = 307 }
+		command = { type = dissent value = 20 }
+		command = { type = trigger which = 209022 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329013] BUL | 1936 | Hungarian-Bulgarian Military Alliance (Alianza militar búlgaro-húngara)
+# Triggered by event 329301 in events/Minors/HUN_14-38.txt
+# Trigger event 209018 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329013
+	random = no
+	country = BUL
+	trigger = {
+		event = 329301
+		war = { country = HUN country = ROM }
+		war = { country = BUL country = ROM }
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_BUL_329013_NAME"
+	desc = "EVT_BUL_329013_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = alliance which = HUN }
+		command = { type = relation which = HUN value = 50 }
+		command = { type = trigger which = 209018 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118021] BUL | 1937 | Yugoslav-Bulgarian pact of eternal friendship (Pacto yugoslavo-búlgaro de amistad eterna)
+# Triggered by event 323021 in events/Minors/YUG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118021
+	random = no
+	country = BUL
+	name = "EVT_SHARED_01184_NAME"
+	desc = "EVT_SHARED_01184_DESC"
+	style = 2
+	picture = "Minors/borismilan"
+        action_a = {
+		name = "ACTION_NAME_SIGN"
+		ai_chance = 97
+                command = { type = relation which = YUG value = 25 }
+                command = { type = dissent value = -2 }
+		command = { type = domestic which = defense_lobby value = -1 }
+                command = { type = non_aggression which = YUG where = BUL }
+        }
+        action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 3
+		command = { type = relation which = YUG value = -50 }
+                command = { type = domestic which = defense_lobby value = 1 }
+                command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118017] BUL | 1938 | Anglo-French Loan to Bulgaria (Préstamo anglo-francés a Bulgaria)
+# Trigger event 143051 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118017
+	random = no
+	country = BUL
+	trigger = {
+			exists = BUL
+			}
+	date = { day = 02 month = august year = 1938 }
+	name = "EVT_SHARED_00642_NAME"
+	desc = "EVT_SHARED_00642_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = FRA value = 20 }
+		command = { type = dissent value = -1 }
+		command = { type = money value = 1000 }
+		command = { type = trigger which = 143051 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [118001] BUL | 1940 | Romania Rejects Craiova Accord (Rumanía rechaza el tratado)
+# Triggered by event 209017 in events/Minors/ROM_36-44.txt
+# Trigger event 329301 in events/Minors/HUN_14-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118001
+	random = no
+	country = BUL
+	name = "EVT_BUL_118001_NAME"
+	desc = "EVT_BUL_118001_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 5
+		command = { type = leave_alliance }
+		command = { type = peace which = ENG value = 1 }
+		command = { type = end_guarantee which = SOV where = BUL }
+		command = { type = end_guarantee which = GER where = BUL }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = war which = ROM }
+	}
+	action_b = {
+		name = "ACTION_NAME_BACK_DOWN"
+		ai_chance = 95
+		command = { type = domestic which = defense_lobby value = -1 }
+		command = { type = dissent value = 5 }
+		command = { type = sleepevent which = 329301 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118002] BUL | 1940 | Bulgarian Claims on Dobruja (Reclamación búlgara sobre Dobruja)
+# Triggered by event 209017 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118002
+	random = no
+	country = BUL
+	name = "EVT_SHARED_00476_NAME"
+	desc = "EVT_BUL_118002_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = manpowerpool value =  15 }
+		command = { type = dissent value = -2 }
+		command = { type = sleepevent which = 329301 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118045] BUL | 1940 | Establishment of The Hellenic State. (Establecimiento del Estado Helénico)
+# Triggered by event 152085 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118045
+	random = no
+	country = BUL
+	name = "EVT_SHARED_00625_NAME"
+	desc = "EVT_SHARED_00625_DESC"
+	style = 2
+	picture = "GLOBAL/mussolini"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { alliance = { country = BUL country = GER } } } type = alliance which = GER }
+		command = { type = relation which = GRE value = 200 }
+		command = { type = removecore which = 366 where = -1 }
+		command = { type = removeclaim which = 366 where = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118010] BUL | 1940 | The Government of Bogdan Filov. (El gobierno de Bogdan Filov)
+# ----------------------------------------------------------------------------
+event = {
+	id = 118010
+	random = no
+	country = BUL
+	trigger = {
+		exists = BUL
+		}
+	date = { day = 16 month = February year = 1940 }
+	name = "EVT_BUL_118010_NAME"
+	desc = "EVT_BUL_118010_DESC"
+	style = 2
+	Picture = "BUL03"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 95001 }
+		command = { type = headofgovernment which = 95021 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [118000] BUL | 1940 | Bulgarian Claims on Dobruja (Reclamación búlgara sobre Dobruja)
+# Triggered by event 118003 in events/Minors/BUL.txt
+# Triggered by event 118004 in events/Minors/BUL.txt
+# Trigger event 209017 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118000
+	random = no
+	country = BUL
+	trigger = {
+		control = { province = 307 data = ROM }
+		NOT = {	war = { country = ROM country = BUL } }
+		NOT = {	puppet = { country = BUL country = SOV } }
+		NOT = {	puppet = { country = ROM country = SOV } }
+		NOT = {	event = 118003 }
+		NOT = {	event = 118004 }
+	}
+	name = "EVT_SHARED_00476_NAME"
+	desc = "EVT_SHARED_00476_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 7 month = september year = 1940 }
+	action_a = {
+		name = "EVT_BUL_118000_A"
+		ai_chance = 95
+		command = { type = trigger which = 209017 }
+		command = { type = relation which = ROM value = -50 }
+	}
+	action_b = {
+		name = "ACTION_NAME_BACK_DOWN"
+		ai_chance = 5
+		command = { type = relation which = ROM value = 25 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118015] BUL | 1943 | Death of Tsar Boris III (Muerte del zar Boris III)
+# ----------------------------------------------------------------------------
+event = {
+	id = 118015
+	random = no
+	country = BUL
+	style = 2
+	trigger = {
+		OR = {
+			headofstate = 95001
+			headofstate = 95012
+			headofstate = 95014
+		    }
+		}
+	date = { year = 1943 month = august day = 28 }
+	name = "EVT_BUL_118015_NAME"
+	desc = "EVT_BUL_118015_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { OR = { headofstate = 95001 headofstate = 95012 } } type = headofstate which = 95011 }
+		command = { trigger = { headofstate = 95014 } type = headofstate which = 95015 }
+		command = { type = sleepminister which = 95004 }
+		command = { type = sleepminister which = 95001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [118011] BUL | 1943 | The Government of Dobri Bozhilov. (El gobierno de Dobri Bozhilov)
+# ----------------------------------------------------------------------------
+event = {
+	id = 118011
+	random = no
+	country = BUL
+	trigger = {
+		exists = BUL
+		}
+	date = { day = 14 month = September year = 1943 }
+	name = "EVT_BUL_118011_NAME"
+	desc = "EVT_BUL_118011_DESC"
+	style = 2
+	Picture = "BUL04"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 95022 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [118012] BUL | 1943 | The 9 September coup d'etat. (El golpe de estado del 9 de septiembre)
+# ----------------------------------------------------------------------------
+event = {
+	id = 118012
+	random = no
+	country = BUL
+	trigger = {
+		exists = BUL
+		}
+	date = { day = 14 month = September year = 1943 }
+	name = "EVT_BUL_118012_NAME"
+	desc = "EVT_BUL_118012_DESC"
+	style = 2
+	Picture = "BUL05"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofgovernment which = 95028 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [118047] BUL | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118047
+	country = BUL
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 95011 }
+		command = { type = headofgovernment which = 95027 }
+		command = { type = foreignminister which = 95039 }
+		command = { type = armamentminister which = 95054 }
+		command = { type = ministerofsecurity which = 95070 }
+		command = { type = ministerofintelligence which = 95080 }
+		command = { type = chiefofstaff which = 95090 }
+		command = { type = chiefofarmy which = 95102 }
+		command = { type = chiefofnavy which = 95109 }
+		command = { type = chiefofair which = 95115 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118048] BUL | 1955 | Simeon II comes of age (Mayoría de edad de Simeón II)
+# Trigger event 118049 in events/Minors/BUL.txt
+# Trigger event 118050 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118048
+	country = BUL
+	name = EVT_BUL_118048_NAME
+	desc = EVT_BUL_118048_DESC
+	picture = "nwo/bulgarian_royal_palace"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+		OR = {
+			headofstate = 95011
+			headofstate = 95015
+			headofstate = 95017
+		}
+	}
+	date = { day = 0 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 95300 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118049] BUL | 1990 | General Elections (Elecciones generales)
+# Triggered by event 118048 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118049
+	country = BUL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { trigger = { NOT = { event = 118048 } } type = headofstate which = 95304 }
+		command = { type = headofgovernment which = 95319 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 118048 } } type = headofstate which = 95302 }
+		command = { trigger = { NOT = { event = 118048 } } type = headofgovernment which = 95303 }
+		command = { trigger = { event = 118048 } type = headofgovernment which = 95306 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [118050] BUL | 1991 | General Elections (Elecciones generales)
+# Triggered by event 118048 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 118050
+	country = BUL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { trigger = { NOT = { event = 118048 } } type = headofstate which = 95302 }
+		command = { type = headofgovernment which = 95307 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { trigger = { NOT = { event = 118048 } } type = headofstate which = 95304 }
+		command = { type = headofgovernment which = 95305 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}

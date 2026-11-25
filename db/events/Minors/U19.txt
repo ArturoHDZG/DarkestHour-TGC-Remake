@@ -1,0 +1,160 @@
+# ============================================================================
+# File: events/Minors/U19.txt (4 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [254002] U19 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 254003 in events/Minors/U19.txt
+# Trigger event 193015 in events/Minors/NOR.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 254002
+   country = U19
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = NOR
+            NOT = { ai = NOR }
+            NOT = { ai = U19 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = NOR
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = NOR } }
+      command = { type = country which = NOR }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = NOR
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U19 }
+               control = { province = 483 data = -1 }
+            }
+         }
+         type = trigger which = 254003
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = NOR }
+               NOT = { control = { province = 483 data = -1 } }
+            }
+         }
+         type = trigger which = 193015
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = NOR
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [254003] U19 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 193014 in events/Minors/NOR.txt
+# Triggered by event 254002 in events/Minors/U19.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 254003
+   country = U19
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = NOR value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [254000] U19 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 254000
+	country = U19
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 910011 }
+		command = { type = headofgovernment which = 910012 }
+		command = { type = foreignminister which = 910013 }
+		command = { type = armamentminister which = 910033 }
+		command = { type = ministerofsecurity which = 910015 }
+		command = { type = ministerofintelligence which = 910045 }
+		command = { type = chiefofstaff which = 910047 }
+		command = { type = chiefofarmy which = 910018 }
+		command = { type = chiefofnavy which = 910019 }
+		command = { type = chiefofair which = 910020 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [254001] U19 | 1951 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 254001
+	country = U19
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 910011 }
+		command = { type = headofgovernment which = 910058 }
+		command = { type = foreignminister which = 910013 }
+		command = { type = armamentminister which = 910059 }
+		command = { type = ministerofsecurity which = 910060 }
+		command = { type = ministerofintelligence which = 910045 }
+		command = { type = chiefofstaff which = 910047 }
+		command = { type = chiefofarmy which = 910018 }
+		command = { type = chiefofnavy which = 910019 }
+		command = { type = chiefofair which = 910020 }
+	}
+}

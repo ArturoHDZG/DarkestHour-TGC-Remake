@@ -1,0 +1,1062 @@
+# ============================================================================
+# File: events/Minors/PER.txt (32 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [201005] PER | 1914 | British Occupation of Southern Persia (Ocupación británica del sur de Persia)
+# Triggered by event 196039 in events/ENG/ENG_Decisions.txt
+# Trigger event 196041 in events/Minors/U02.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201005
+	country = PER
+	name = "EVT_PER_201005_NAME"
+	desc = "EVT_SHARED_00099_DESC"
+	style = 2
+	picture = "GLOBAL/baghdad_captured"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = relation which = ENG value = -15 }
+		command = { type = relation which = U02 value = -15 }
+		command = { type = secedeprovince which = U02 value = 1089 when = 1 }
+		command = { type = secedeprovince which = U02 value = 1090 when = 1 }
+		command = { type = secedeprovince which = U02 value = 1091 when = 1 }
+		command = { type = secedeprovince which = U02 value = 1093 when = 1 }
+		command = { type = addclaim which = 1089 where = U02 }
+		command = { type = addclaim which = 1090 where = U02 }
+		command = { type = addclaim which = 1091 where = U02 }
+		command = { type = addclaim which = 1093 where = U02 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201006] PER | 1914 | Russian Occupation of Northern Persia (Ocupación rusa del norte de Persia)
+# Triggered by event 196040 in events/Minors/RUS_Decisions.txt
+# Trigger event 324220 in events/GLOBAL/MULTI_14-32.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201006
+	country = PER
+	name = "EVT_PER_201006_NAME"
+	desc = "EVT_SHARED_00099_DESC"
+	style = 2
+	picture = "GLOBAL/baghdad_captured"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = relation which = RUS value = -15 }
+		command = { type = secedeprovince which = RUS value = 1080 when = 1 }
+		command = { type = secedeprovince which = RUS value = 1081 when = 1 }
+		command = { type = secedeprovince which = RUS value = 1082 when = 1 }
+		command = { type = secedeprovince which = RUS value = 1083 when = 1 }
+		command = { type = addclaim which = 1080 where = RUS }
+		command = { type = addclaim which = 1081 where = RUS }
+		command = { type = addclaim which = 1082 where = RUS }
+		command = { type = addclaim which = 1083 where = RUS }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201003] PER | 1933 | New Anglo-Persian Oil Company Concession (Nueva concesión a la 'Anglo-Persian Oil Company')
+# ----------------------------------------------------------------------------
+event = {
+	id = 201003
+	random = no
+	country = PER
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 28 month = may year = 1933 }
+	name = "EVT_SHARED_00746_NAME"
+	desc = "EVT_SHARED_00746_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = oilpool value = 500 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = money value = -5 }
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201004] PER | 1937 | Treaty of Saadabad (Tratado de Sa'dabad)
+# Trigger event 235009 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 201004
+         random = no
+         country = per
+         trigger = {
+                   NOT = {
+                            atwar = tur
+                            atwar = per
+                            atwar = irq
+                            atwar = afg
+                   }
+         }
+         name = "EVT_SHARED_00783_NAME"
+         desc = "EVT_SHARED_00783_DESC"
+         style = 2
+         date = { day = 9 month = july year = 1937 }
+	picture = "Minors/treaty_of_saadabad"
+           action_a = {
+                  name = "EVT_SHARED_00783_A"
+                  ai_chance = 95
+                  command = { type = dissent value = -1 }
+                  command = { type = domestic which = interventionism value = -1 }
+                  command = { type = non_aggression which = per where = tur }
+                  command = { type = non_aggression which = per where = irq }
+                  command = { type = non_aggression which = per where = afg }
+                  command = { type = relation which = tur value = 50 }
+                  command = { type = relation which = irq value = 50 }
+                  command = { type = relation which = afg value = 50 }
+                  command = { type = trigger which = 235009 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00783_B"
+                  ai_chance = 5
+                  command = { type = dissent value = 1 }
+                  command = { type = end_non_aggression which = per where = tur }
+                  command = { type = end_non_aggression which = per where = irq }
+                  command = { type = end_non_aggression which = per where = afg }
+                  command = { type = relation which = tur value = -10 }
+                  command = { type = relation which = irq value = -10 }
+                  command = { type = relation which = afg value = -10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329275] PER | 1938 | Democratic Restoration (Restauración democrática)
+# Trigger event 143106 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329275
+	random = no
+	country = PER
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		random = 25
+		lost_national = { country = SOV value = 5 }
+        	war = { country = GER country = ENG }
+        	war = { country = GER country = SOV }
+        	NOT = {
+			war = { country = ENG country = SOV }
+			alliance = { country = ENG country = PER }
+			alliance = { country = SOV country = PER }
+                	war = { country = PER country = ENG }
+                	war = { country = PER country = SOV }
+                	}
+            	}
+	name = "EVT_SHARED_00497_NAME"
+	desc = "EVT_SHARED_00497_DESC"
+	date = { day = 0 month = january year = 1938 }
+	offset = 17
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 90
+		command = { type = leave_alliance when = 1 }
+		command = { type = headofstate which = 150011 }
+		command = { type = headofgovernment which = 150015 }
+		command = { type = foreignminister which = 150028 }
+		command = { type = armamentminister which = 150043 }
+		command = { type = ministerofsecurity which = 150053 }
+		command = { type = ministerofintelligence which = 150064 }
+		command = { type = chiefofstaff which = 150071 }
+		command = { type = chiefofarmy which = 150077 }
+		command = { type = chiefofnavy which = 150082 }
+		command = { type = chiefofair which = 150087 }
+		command = { type = wakeminister which = 324269 }
+		command = { type = sleepteam which = 150006 }
+		command = { type = sleepteam which = 150009 }
+		command = { type = sleepteam which = 150005 }
+		command = { type = set_relation which = GER value = -50 }
+		command = { type = set_relation which = SOV value = 25 }
+		command = { type = set_relation which = ENG value = 100 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = set_domestic which = freedom value = 3 }
+		command = { type = set_domestic which = free_market value = 5 }
+		command = { type = set_domestic which = defense_lobby value = 5 }
+		command = { type = set_domestic which = interventionism value = 6 }
+		command = { type = dissent value = -3 }
+		command = { type = end_trades which = PER where = GER }
+		command = { type = secedeprovince which = SOV value = 1080 }
+		command = { type = secedeprovince which = SOV value = 1081 }
+		command = { type = secedeprovince which = SOV value = 1083 }
+		command = { type = trigger which = 143106 }
+		}
+	action_b = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 10
+		command = { type = dissent value = 15 }
+		command = { type = relation which = GER value = 25 }
+		command = { type = relation which = ENG value = -75 }
+		command = { type = relation which = SOV value = -75 }
+		command = { type = war which = SOV }
+		command = { type = war which = ENG }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [201002] PER | 1938 | Iranian Severance of Relations with France (Ruptura iraní de las relaciones con Francia)
+# Trigger event 147066 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201002
+	random = no
+	country = PER
+	trigger = {
+		exists = PER
+			}
+	date = { day = 27 month = december year = 1938 }
+	name = "EVT_SHARED_00647_NAME"
+	desc = "EVT_SHARED_00647_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = FRA value = -20 }
+		command = { type = trigger which = 147066 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201014] PER | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201014
+	country = PER
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 150012 }
+		command = { type = headofgovernment which = 150020 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201015] PER | 1946 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201015
+	country = PER
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 150012 }
+		command = { type = headofgovernment which = 150017 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201028] PER | 1946 | Western Isolation of Iran (Aislamiento diplomático de Irán)
+# Triggered by event 316225 in events/USA/USA_43-48.txt
+# Triggered by event 316226 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201028
+	country = PER
+	name = EVT_PER_201028_NAME
+	desc = EVT_PER_201028_DESC
+	picture = "nwo/iran_crisis_1946"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+		command = { type = leave_alliance }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201029] PER | 1946 | Allied Evacuation of Iran (Retirada aliada de Irán)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201029
+	country = PER
+	name = EVT_PER_201029_NAME
+	desc = EVT_PER_201029_DESC
+	picture = "nwo/mohammed_reza_pahlavi"
+	style = 1
+	trigger = {
+		flag = cold_war
+		ispuppet = yes
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+		command = { type = add_division value = infantry when = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201027] PER | 1946 | Iranian Reoccupation of Mahabad (Reocupación iraní de Mahabad)
+# Triggered by event 223272 in events/SOV/SOV_43-46.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201027
+	country = PER
+	name = EVT_PER_201027_NAME
+	desc = EVT_PER_201027_DESC
+	picture = "nwo/republic_of_mahabad"
+	style = 1
+	trigger = {
+		event = 223272
+		exists = KUR
+	}
+	date = { day = 0 month = march year = 1946 }
+	offset = 60
+	deathdate = { day = 29 month = september year = 1946 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 99
+		command = { type = war which = KUR }
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 1
+		command = { type = dissent value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201016] PER | 1948 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201016
+	country = PER
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 150012 }
+		command = { type = headofgovernment which = 150095 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201017] PER | 1949 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201017
+	country = PER
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 150012 }
+		command = { type = headofgovernment which = 150096 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201018] PER | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201018
+	country = PER
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 150012 }
+		command = { type = headofgovernment which = 150098 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201019] PER | 1951 | Premiership of Mohammad Mosaddegh (Mandato de Mohammad Mosaddegh)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201019
+	country = PER
+	name = EVT_PER_201019_NAME
+	desc = EVT_PER_201019_DESC
+	picture = "nwo/mohammed_mossadegh"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 150012 }
+		command = { type = headofgovernment which = 150100 }
+		command = { type = foreignminister which = 150102 }
+		command = { type = armamentminister which = 150048 }
+		command = { type = ministerofsecurity which = 150058 }
+		command = { type = ministerofintelligence which = 150068 }
+		command = { type = chiefofstaff which = 150074 }
+		command = { type = chiefofarmy which = 150105 }
+		command = { type = chiefofnavy which = 150084 }
+		command = { type = chiefofair which = 150104 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201009] PER | 1951 | Nationalization of Iranian Oil (Nacionalización del petróleo iraní)
+# Trigger event 143277 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201009
+	country = PER
+	name = EVT_PER_201009_NAME
+	desc = EVT_PER_201009_DESC
+	picture = "nwo/mohammed_mossadegh"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = march year = 1951 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 80
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = add_prov_resource which = 1089 value = 50 where = oil }
+		command = { type = add_prov_resource which = 1090 value = 20 where = oil }
+		command = { type = add_prov_resource which = 1091 value = 5 where = oil }
+		command = { type = relation which = ENG value = -100 }
+	}
+	action = {
+		name = EVT_PER_201009_A
+		ai_chance = 20
+		command = { type = dissent value = 15 }
+		command = { type = sleepevent which = 143277 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201000] PER | 1951 | Democratic Restoration (Restauración democrática)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201000
+	random = no
+	country = PER
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00497_NAME"
+	desc = "EVT_SHARED_00497_DESC"
+	date = { day = 1 month = september year = 1951 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 150011 }
+		command = { type = headofgovernment which = 150100 }
+		command = { type = foreignminister which = 150102 }
+		command = { type = armamentminister which = 150048 }
+		command = { type = ministerofsecurity which = 150058 }
+		command = { type = ministerofintelligence which = 150068 }
+		command = { type = chiefofstaff which = 150074 }
+		command = { type = chiefofarmy which = 150105 }
+		command = { type = chiefofnavy which = 150084 }
+		command = { type = chiefofair which = 150104 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [201010] PER | 1951 | Impact of the Abadan Blockade (Impacto del bloqueo sobre Irán)
+# Triggered by event 143277 in events/ENG/ENG_43-54.txt
+# Trigger event 201011 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201010
+	country = PER
+	one_action = yes
+	name = EVT_PER_201010_NAME
+	desc = EVT_PER_201010_DESC
+	picture = "nwo/abadan_crisis"
+	style = 1
+	trigger = {
+		event = 143277
+	}
+	date = { day = 0 month = november year = 1951 }
+	offset = 30
+	deathdate = { day = 29 month = february year = 1953 }
+	action = {
+		name = EVT_PER_201010_A
+		ai_chance = 80
+		command = { type = industrial_modifier which = total value = -10 }
+		command = { type = dissent value = 15 }
+	}
+	action = {
+		name = EVT_PER_201010_B
+		ai_chance = 20
+		command = { type = dissent value = 10 }
+		command = { type = sleepevent which = 201011 }
+		command = { type = sleepevent which = 201013 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201012] PER | 1952 | Soviet Economic Backing for Iran (Acuerdo comercial soviético con Irán)
+# Triggered by event 223195 in events/SOV/SOV_47-56.txt
+# Triggered by event 316180 in events/USA/USA_48-61.txt
+# Trigger event 201013 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201012
+	country = PER
+	name = EVT_PER_201012_NAME
+	desc = EVT_PER_201012_DESC
+	picture = "nwo/abadan_crisis"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { type = dissent value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201011] PER | 1952 | Iran Seeks International Assistance (Irán busca auxilio internacional)
+# Triggered by event 201010 in events/Minors/PER.txt
+# Trigger event 223194 in events/SOV/SOV_47-56.txt
+# Trigger event 201013 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201011
+	country = PER
+	name = EVT_PER_201011_NAME
+	desc = EVT_PER_201011_DESC
+	picture = "nwo/abadan_crisis"
+	style = 1
+	trigger = {
+		event = 201010
+	}
+	date = { day = 0 month = march year = 1952 }
+	offset = 30
+	deathdate = { day = 29 month = march year = 1953 }
+	action = {
+		name = EVT_PER_201011_A
+		ai_chance = 70
+		command = { type = dissent value = 15 }
+	}
+	action = {
+		name = EVT_PER_201011_B
+		ai_chance = 30
+		command = { type = trigger which = 223194 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201020] PER | 1953 | Operation Ajax and Shah's Return (Operación Ajax y regreso del Shah)
+# Triggered by event 201013 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201020
+	country = PER
+	name = EVT_PER_201020_NAME
+	desc = EVT_PER_201020_DESC
+	picture = "nwo/operation_ajax"
+	style = 1
+	trigger = {
+		event = 201013
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 150012 }
+		command = { type = headofgovernment which = 150101 }
+		command = { type = foreignminister which = 150031 }
+		command = { type = armamentminister which = 150047 }
+		command = { type = ministerofsecurity which = 150052 }
+		command = { type = ministerofintelligence which = 150065 }
+		command = { type = chiefofstaff which = 150103 }
+		command = { type = chiefofarmy which = 150105 }
+		command = { type = chiefofnavy which = 150083 }
+		command = { type = chiefofair which = 150104 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201013] PER | 1953 | Operation Ajax (Operación Ajax)
+# Triggered by event 201011 in events/Minors/PER.txt
+# Triggered by event 201012 in events/Minors/PER.txt
+# Trigger event 201020 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201013
+	country = PER
+	name = EVT_PER_201013_NAME
+	desc = EVT_PER_201013_DESC
+	picture = "nwo/operation_ajax"
+	style = 1
+	trigger = {
+		event = 201011
+		NOT = { event = 201012 }
+	}
+	date = { day = 0 month = june year = 1953 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = EVT_PER_201013_A
+		ai_chance = 95
+		command = { type = dissent value = 10 }
+		command = { type = add_prov_resource which = 1089 value = -50 where = oil }
+		command = { type = add_prov_resource which = 1090 value = -20 where = oil }
+		command = { type = add_prov_resource which = 1091 value = -5 where = oil }
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = sleepevent which = 143279 }
+		command = { type = trigger which = 201020 }
+	}
+	action = {
+		name = EVT_PER_201013_B
+		ai_chance = 5
+		command = { type = dissent value = -10 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { type = sleepevent which = 201020 }
+		command = { type = sleepevent which = 143278 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201001] PER | 1953 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201001
+	random = no
+	country = PER
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = july year = 1953 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 150012 }
+		command = { type = headofgovernment which = 150101 }
+		command = { type = foreignminister which = 150031 }
+		command = { type = armamentminister which = 150047 }
+		command = { type = ministerofsecurity which = 150052 }
+		command = { type = ministerofintelligence which = 150065 }
+		command = { type = chiefofstaff which = 150103 }
+		command = { type = chiefofarmy which = 150105 }
+		command = { type = chiefofnavy which = 150083 }
+		command = { type = chiefofair which = 150104 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [201021] PER | 1955 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201021
+	country = PER
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 150012 }
+		command = { type = headofgovernment which = 150099 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201022] PER | 1957 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201022
+	country = PER
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 150012 }
+		command = { type = headofgovernment which = 150200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201023] PER | 1960 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201023
+	country = PER
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 150012 }
+		command = { type = headofgovernment which = 150201 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201024] PER | 1961 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201024
+	country = PER
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 150011 }
+		command = { type = headofgovernment which = 150202 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201025] PER | 1962 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201025
+	country = PER
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 150011 }
+		command = { type = headofgovernment which = 150203 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201026] PER | 1963 | White Revolution (Revolución Blanca)
+# ----------------------------------------------------------------------------
+event = {
+	id = 201026
+	country = PER
+	name = EVT_PER_201026_NAME
+	desc = LOST_DESC
+	picture = "nwo/mohammed_reza_pahlavi"
+	style = 1
+	date = { day = 1 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = industrial_modifier which = total value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201030] PER | 1980 | Iran-Iraq War (Guerra Irán-Irak)
+# Triggered by event 164056 in events/Minors/IRQ_Decisions.txt
+# Trigger event 329896 in events/Minors/IRQ.txt
+# Trigger event 329897 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201030
+	country = PER
+	name = EVT_PER_201030_NAME
+	desc = EVT_PER_201030_DESC
+	picture = "nwo/qadisiyyah"
+	decision_picture = "nwo/d_qadisiyyah"
+	style = 1
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 98
+		command = { type = leave_alliance }
+		command = { type = war which = IRQ }
+		command = { type = dissent value = 30 }
+		command = { type = construct which = land_fort where = 1082 value = 5 }
+		command = { type = construct which = land_fort where = 1083 value = 5 }
+		command = { type = construct which = land_fort where = 1084 value = 5 }
+		command = { type = construct which = land_fort where = 1087 value = 5 }
+		command = { type = construct which = land_fort where = 1089 value = 5 }
+		command = { type = construct which = land_fort where = 1086 value = 5 }
+		command = { type = add_corps where = 1082 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_corps where = 1084 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_corps where = 1087 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_corps where = 1089 }
+		command = { type = add_division value = garrison when = 10 }
+		command = { type = add_division value = garrison when = 10 }
+	}
+	action = {
+		name = EVT_PER_201030_A
+		ai_chance = 1
+		command = { type = secedeprovince which = IRQ value = 1089 when = 1 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [201031] PER | 1981 | Iraqi Victory in the Gulf (Victoria iraquí en la guerra Irán-Irak)
+# Triggered by event 329896 in events/Minors/IRQ.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 201031
+	country = PER
+	name = EVT_PER_201031_NAME
+	desc = EVT_PER_201031_DESC
+	picture = "nwo/qadisiyyah_iraqi_victory"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 25 }
+		command = { type = secedeprovince which = IRQ value = 1089 }
+		command = { type = secedeprovince which = IRQ value = 1087 }
+		command = { type = secedeprovince which = IRQ value = 1084 }
+		command = { type = secedeprovince which = IRQ value = 1082 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329897] PER | 1981 | Iranian Victory in the Gulf (Victoria iraní en la guerra Irán-Irak)
+# Triggered by event 201030 in events/Minors/PER.txt
+# Trigger event 164059 in events/Minors/IRQ_Decisions.txt
+# Trigger event 164058 in events/Minors/IRQ.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329897
+	country = PER
+	name = EVT_PER_329897_NAME
+	desc = EVT_PER_329897_DESC
+	picture = "nwo/qadisiyyah_iranian_victory"
+	style = 1
+	trigger = {
+		event = 201030
+		OR = {
+			war = { country = IRQ country = PER }
+			NOT = { exists = IRQ }
+		}
+		area = { area = "Iraq" country = PER data = 1 value = 60 }
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 3
+	deathdate = { day = 29 month = august year = 1988 }
+	action = {
+		name = ACTION_NAME_VICTORY
+		command = { type = peace which = IRQ }
+		command = { trigger = { NOT = { exists = IRQ } } type = independence which = IRQ }
+		command = { type = dissent value = -30 }
+		command = { type = trigger which = 164058 }
+		command = { type = addclaim which = 1028 }
+		command = { type = addclaim which = 1035 }
+		command = { type = addclaim which = 1027 }
+		command = { type = addclaim which = 1036 }
+	}
+}

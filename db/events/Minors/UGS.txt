@@ -1,0 +1,74 @@
+# ============================================================================
+# File: events/Minors/UGS.txt (2 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [311007] UGS | 1914 | Janin and the Czechoslovak Legion (El general Janin y la Legión Checoslovaca)
+# ----------------------------------------------------------------------------
+event = {
+   id = 311007
+   country = UGS
+   persistent = yes
+	trigger = {
+		random = 8
+		exists = SOV
+		atwar = yes
+		NOT = { dissent = 25 }
+	}
+	name = "EVT_SHARED_00129_NAME"
+	desc = "EVT_SHARED_00129_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = june year = 1914 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { }
+		command = { trigger = { dissent = 20 } type = dissent value = 0.5 }
+		command = { trigger = { dissent = 10 NOT = { dissent = 20 } } type = dissent value = 1 }
+		command = { trigger = { NOT = { dissent = 10 } } type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [311000] UGS | 1914 | The Arkhangelsk Government Formed (Formación del gobierno de Arjánguelsk)
+# ----------------------------------------------------------------------------
+event = {
+	id = 311000
+	country = UGS
+	name = "EVT_UGS_311000_NAME"
+	desc = "EVT_UGS_311000_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 4 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = addcore which = 534 }
+		command = { type = addcore which = 535 }
+		command = { type = addcore which = 536 }
+		command = { type = addcore which = 537 }
+		command = { type = addcore which = 538 }
+		command = { type = addcore which = 540 }
+		command = { type = addcore which = 541 }
+		command = { type = addcore which = 542 }
+		command = { type = addcore which = 545 }
+		command = { type = addcore which = 546 }
+		command = { type = addcore which = 688 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = remove_units which = land where = REB when = 2 value = "Finland" }
+		command = { type = remove_units which = land where = REB when = 2 value = "White Sea Tundra" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Russia" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Northern Russia" }
+		command = { type = remove_units which = land where = REB when = 2 value = "Western Russia" }
+		command = { type = add_corps which = "Arkhangelsk front" value = land where = 542 }
+		command = { type = add_division which = "1st Division" value = infantry when = 3 }
+		command = { type = add_corps which = "Murmansk front" value = land where = 535 }
+		command = { type = add_division which = "2nd Division" value = infantry when = 3 }
+		command = { type = war which = SOV }
+	}
+}

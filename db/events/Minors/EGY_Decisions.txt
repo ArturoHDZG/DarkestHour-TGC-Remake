@@ -1,0 +1,352 @@
+# ============================================================================
+# File: events/Minors/EGY_Decisions.txt (7 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [142041] EGY | 1945 | Axis Evacuation Routes (Acogida de exiliados del Eje)
+# Trigger event 142042 in events/Minors/EGY_33-58.txt
+# Trigger event 142043 in events/Minors/EGY_33-58.txt
+# Trigger event 142044 in events/Minors/EGY_33-58.txt
+# Trigger event 142045 in events/Minors/EGY_33-58.txt
+# Trigger event 142046 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142041
+	country = EGY
+	name = EVT_EGY_142041_NAME
+	desc = EVT_EGY_142041_DESC
+	picture = "nwo/german_refugees"
+	decision_picture = "nwo/d_german_refugees"
+	style = 1
+	trigger = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	decision = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	decision_trigger = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 98
+		command = { type = belligerence value = 5 }
+		command = { type = domestic which = political_left value = -1 }
+	}
+	action = {
+		name = EVT_EGY_142041_A
+		ai_chance = 2
+		trigger = { ai = yes }
+		command = { type = sleepevent which = 142042 }
+		command = { type = sleepevent which = 142043 }
+		command = { type = sleepevent which = 142044 }
+		command = { type = sleepevent which = 142045 }
+		command = { type = sleepevent which = 142046 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142047] EGY | 1948 | Egypt Enters Arab-Israeli War (Egipto declara la guerra a Israel)
+# Triggered by event 165030 in events/Minors/ISR_Decisions.txt
+# Triggered by event 198004 in events/Minors/PAL_Decisions.txt
+# Trigger event 165032 in events/Minors/ISR.txt
+# Trigger event 165033 in events/Minors/ISR.txt
+# Trigger event 329898 in events/Minors/JOR_Decisions.txt
+# Trigger event 329899 in events/Minors/SYR_Decisions.txt
+# Trigger event 329900 in events/Minors/LEB_Decisions.txt
+# Trigger event 329901 in events/Minors/IRQ_Decisions.txt
+# Trigger event 329902 in events/Minors/SAU_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142047
+	country = EGY
+	save_date = yes
+	decision = {
+		OR = {
+			event = 165030
+			event = 198004
+		}
+		exists = ISR
+	}
+	trigger = {
+		OR = {
+			event = 165030
+			event = 198004
+		}
+		exists = ISR
+	}
+	name = EVT_EGY_142047_NAME
+	desc = EVT_EGY_142047_DESC
+	picture = "nwo/arab_israeli_war_1948"
+	style = 1
+	date = { day = 1 month = may year = 1948 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 97
+		command = { type = leave_alliance }
+		command = { type = end_puppet }
+		command = { type = war which = ISR }
+		command = { type = setflag which = arab_israeli_war_1948 }
+		command = { type = add_corps where = 789 }
+		command = { type = add_division value = infantry when = 13 }
+		command = { type = add_division value = infantry when = 13 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		trigger = { ai = yes }
+		ai_chance = 3
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142059] EGY | 1958 | Creation of the United Arab Republic (Creación de la República Árabe Unida)
+# Triggered by event 142020 in events/Minors/EGY_33-58.txt
+# Trigger event 228059 in events/Minors/SYR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142059
+	country = EGY
+	name = EVT_EGY_142059_NAME
+	desc = EVT_EGY_142059_DESC
+	picture = "nwo/united_arab_republic"
+	decision_picture = "nwo/d_united_arab_republic"
+	style = 1
+	trigger = {
+		event = 142020
+		flag = cold_war
+		atwar = no
+		NOT = { atwar = SYR }
+		exists = SYR
+		}
+	decision = {
+		event = 142020
+		flag = cold_war
+		atwar = no
+		NOT = { atwar = SYR }
+		exists = SYR
+		}
+	decision_trigger = {
+		event = 142020
+		flag = cold_war
+		atwar = no
+		NOT = { atwar = SYR }
+		exists = SYR
+		}
+	date = { day = 1 month = february year = 1958 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_EGY_142059_A
+		ai_chance = 90
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		trigger = { ai = yes }
+		ai_chance = 10
+		command = { type = dissent value = 1 }
+		command = { type = sleepevent which = 228059 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142061] EGY | 1958 | Invite Iraq to the United Arab Republic (Invitar a Irak a la República Árabe Unida)
+# Triggered by event 142060 in events/Minors/EGY_33-58.txt
+# Triggered by event 142020 in events/Minors/EGY_33-58.txt
+# Trigger event 164062 in events/Minors/IRQ.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142061
+	country = EGY
+	name = EVT_EGY_142061_NAME
+	desc = EVT_EGY_142061_DESC
+	picture = "nwo/united_arab_republic"
+	decision_picture = "nwo/d_united_arab_republic"
+	style = 1
+	trigger = {
+		event = 142060
+		flag = cold_war
+		atwar = no
+		NOT = { atwar = IRQ }
+		exists = IRQ
+		}
+	decision = {
+		event = 142020
+		flag = cold_war
+		atwar = no
+		NOT = { atwar = IRQ }
+		exists = IRQ
+		}
+	decision_trigger = {
+		event = 142060
+		flag = cold_war
+		atwar = no
+		NOT = { atwar = IRQ }
+		exists = IRQ
+		}
+	date = { day = 1 month = february year = 1958 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_EGY_142061_A
+		ai_chance = 99
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = EVT_EGY_142061_B
+		trigger = { ai = yes }
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { type = sleepevent which = 164062 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142063] EGY | 1958 | Invite Jordan to the United Arab Republic (Invitar a Jordania a la República Árabe Unida)
+# Triggered by event 142062 in events/Minors/EGY_33-58.txt
+# Triggered by event 142020 in events/Minors/EGY_33-58.txt
+# Trigger event 168056 in events/Minors/JOR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142063
+	country = EGY
+	name = EVT_EGY_142063_NAME
+	desc = EVT_EGY_142063_DESC
+	picture = "nwo/united_arab_republic"
+	decision_picture = "nwo/united_arab_republic"
+	style = 1
+	trigger = {
+		event = 142062
+		flag = cold_war
+		atwar = no
+		NOT = { atwar = JOR }
+		exists = JOR
+		}
+	decision = {
+		event = 142020
+		flag = cold_war
+		atwar = no
+		NOT = { atwar = JOR }
+		exists = JOR
+		}
+	decision_trigger = {
+		event = 142062
+		flag = cold_war
+		atwar = no
+		NOT = { atwar = JOR }
+		exists = JOR
+		}
+	date = { day = 1 month = february year = 1958 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_EGY_142063_A
+		ai_chance = 99
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		trigger = { ai = yes }
+		ai_chance = 1
+		command = { type = dissent value = 1 }
+		command = { type = sleepevent which = 168056 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142048] EGY | 1967 | Closure of the Straits of Tiran (Cierre de los Estrechos de Tirán)
+# Trigger event 165036 in events/Minors/ISR.txt
+# Trigger event 324446 in events/GLOBAL/MULTI_48-90.txt
+# Trigger event 329904 in events/Minors/ISR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142048
+	country = EGY
+	name = EVT_EGY_142048_NAME
+	desc = EVT_EGY_142048_DESC
+	picture = "nwo/six_day_war"
+	decision_picture = "nwo/d_six_day_war"
+	style = 1
+	trigger = {
+		atwar = no
+		exists = ISR
+	}
+	decision = {
+		atwar = no
+		exists = ISR
+	}
+	date = { day = 1 month = may year = 1967 }
+	offset = 30
+	deathdate = { day = 29 month = may year = 1967 }
+	action = {
+		name = EVT_EGY_142048_A
+		ai_chance = 90
+		command = { type = dissent value = -5 }
+		command = { type = belligerence value = 10 }
+		command = { type = domestic which = interventionism value = 2 }
+		command = { type = trigger which = 165036 }
+	}
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		trigger = { ai = yes }
+		ai_chance = 10
+		command = { type = money value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142051] EGY | 1973 | The Yom Kippur War (Guerra de Yom Kipur)
+# Trigger event 165039 in events/Minors/ISR.txt
+# Trigger event 228036 in events/Minors/SYR.txt
+# Trigger event 324447 in events/GLOBAL/MULTI_48-90.txt
+# Trigger event 329905 in events/Minors/ISR.txt
+# Trigger event 329906 in events/Minors/ISR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142051
+	country = EGY
+	name = EVT_EGY_142051_NAME
+	desc = EVT_EGY_142051_DESC
+	picture = "nwo/yom_kippur_war"
+	decision_picture = "nwo/d_yom_kippur_war"
+	style = 1
+	trigger = {
+		atwar = no
+		exists = ISR
+	}
+	decision = {
+		atwar = no
+		exists = ISR
+	}
+	date = { day = 1 month = october year = 1973 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 90
+		command = { type = leave_alliance }
+		command = { type = war which = ISR }
+		command = { type = dissent value = -5 }
+		command = { type = belligerence value = 5 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = trigger which = 165039 }
+		command = { type = trigger which = 228036 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		trigger = { ai = yes }
+		ai_chance = 10
+		command = { type = money value = 1 }
+	}
+}

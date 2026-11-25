@@ -1,0 +1,402 @@
+# ============================================================================
+# File: events/Minors/RUS_Decisions.txt (8 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [211000] RUS | 1914 | Offensive Chit Prepared (Reserva Logística Ofensiva lista)
+# Trigger event 211001 in events/Minors/RUS_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211000
+	random = no
+	country = RUS
+	decision = { atwar = yes }
+	decision_trigger = { supplies = 2000 }
+	trigger = {
+		lost_national = { country = RUS value = 10 }
+		atwar = yes
+		OR = {
+			ai = yes
+			supplies = 2000
+		}
+	}
+	name = "EVT_SHARED_00460_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GLOBAL/ww1_offensive"
+	decision_picture = "GLOBAL/decision_german_mobilization"
+	date = { day = 1 month = january year = 1914 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_VICTORY"
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { type = morale which = naval value = 10 }
+		command = { type = morale which = air value = 10 }
+		command = { type = speed which = land value = 2 }
+		command = { type = counterattack value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = encirclement value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = sce_frequency value = 0.3 }
+		command = { type = attrition_mod value = 2 }
+		command = { type = trickleback_mod value = 5 }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+		command = { trigger = { ai = no } type = event which = 211001 where = -1 when = 30 }
+		command = { trigger = { ai = yes } type = event which = 211001 where = -1 when = 120 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211037] RUS | 1914 | Covert Military Mobilization (Movilización militar encubierta)
+# Triggered by event 211038 in events/Minors/RUS_Decisions.txt
+# Triggered by event 211041 in events/Minors/RUS_Decisions.txt
+# Triggered by event 211039 in events/Minors/RUS_14-14.txt
+# Triggered by event 211042 in events/Minors/RUS_14-14.txt
+# Trigger event 147252 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211037
+	country = RUS
+	decision = {
+		flag = FTL_serbia_accepted
+		OR = {
+			event = 211038
+			alliance = { country = FRA country = RUS }
+		}
+		OR = {
+			event = 211041
+			alliance = { country = ENG country = RUS }
+		}
+	}
+	decision_trigger = { }
+	trigger = {
+		flag = FTL_serbia_accepted
+		year = 1915
+		OR = {
+			AND = {
+				OR = {
+					event = 211039
+					alliance = { country = FRA country = RUS }
+				}
+				OR = {
+					event = 211042
+					alliance = { country = ENG country = RUS }
+				}
+				random = 25
+			}
+			AND = {
+				OR = {
+					event = 211039
+					event = 211042
+					alliance = { country = FRA country = RUS }
+					alliance = { country = ENG country = RUS }
+				}
+				random = 10
+			}
+			AND = {
+				NOT = {
+					event = 211039
+					event = 211042
+					alliance = { country = FRA country = RUS }
+					alliance = { country = ENG country = RUS }
+				}
+				random = 4
+			}
+		}
+	}
+	name = "EVT_RUS_211037_NAME"
+	desc = "EVT_RUS_211037_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1915 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = setflag which = 1915_WWI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211038] RUS | 1914 | Secret Consultations with France (Consultas secretas con Francia)
+# Trigger event 211037 in events/Minors/RUS_Decisions.txt
+# Trigger event 147295 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211038
+	country = RUS
+	decision = {
+		flag = FTL_serbia_accepted
+		exists = FRA
+		NOT = { war = { country = FRA country = RUS } }
+		NOT = { alliance = { country = FRA country = RUS } }
+	}
+	decision_trigger = {
+		relation = { which = FRA value = 50 }
+	}
+	trigger = {
+		random = 25
+		flag = FTL_serbia_accepted
+		exists = FRA
+		NOT = { war = { country = FRA  country = RUS } }
+		NOT = { alliance = { country = FRA country = RUS } }
+	}
+	name = "EVT_RUS_211038_NAME"
+	desc = "EVT_RUS_211038_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1915 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 147295 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211041] RUS | 1914 | Secret Consultations with Britain (Consultas secretas con Gran Bretaña)
+# Trigger event 211037 in events/Minors/RUS_Decisions.txt
+# Trigger event 143212 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211041
+	country = RUS
+	decision = {
+		flag = FTL_serbia_accepted
+		exists = ENG
+		NOT = { war = { country = ENG  country = RUS } }
+		NOT = { alliance = { country = ENG country = RUS } }
+	}
+	decision_trigger = {
+		relation = { which = ENG value = 75 }
+	}
+	trigger = {
+		random = 25
+		flag = FTL_serbia_accepted
+		exists = ENG
+		NOT = { war = { country = ENG  country = RUS } }
+		NOT = { alliance = { country = ENG country = RUS } }
+	}
+	name = "EVT_RUS_211041_NAME"
+	desc = "EVT_RUS_211041_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1915 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 143212 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211046] RUS | 1914 | Operation Belgrade: Balkan Offensive (Operación Belgrado: Ofensiva en los Balcanes)
+# Triggered by event 211039 in events/Minors/RUS_14-14.txt
+# Triggered by event 211042 in events/Minors/RUS_14-14.txt
+# Trigger event 243094 in events/Minors/U08_Decisions.txt
+# Trigger event 217009 in events/Minors/SER.txt
+# Trigger event 243025 in events/AI/U08_AI.txt
+# Trigger event 211047 in events/Minors/RUS_Decisions.txt
+# Trigger event 231003 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231005 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231029 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 231031 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 324253 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 324254 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211046
+	country = RUS
+	decision = {
+		flag = 1915_WWI
+		exists = U09
+		NOT = { war = { country = U09 country = RUS } }
+		NOT = { alliance = { country = U09 country = RUS } }
+	}
+	decision_trigger = {
+		NOT = { year = 1917 }
+	}
+	trigger = {
+		random = 10
+		flag = 1915_WWI
+		exists = U09
+		NOT = { war = { country = U09 country = RUS } }
+		NOT = { alliance = { country = U09 country = RUS } }
+		NOT = { year = 1917 }
+		AND = {
+			month = 3
+			year = 1915
+		}
+	}
+	name = "EVT_RUS_211046_NAME"
+	desc = "EVT_RUS_211046_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1916 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = war which = U09 }
+		command = { type = trigger which = 243094 }
+		command = { trigger = { NOT = { year = 1916 } } type = belligerence value = 5 }
+		command = { trigger = { year = 1916 } type = belligerence value = 25 }
+		command = { trigger = { NOT = { ai = U08 } } type = clrflag which = 1915_WWI }
+		command = { type = clrflag which = FTL_serbia_accepted }
+		command = { trigger = { event = 211039 participant = { country = FRA value = 1 } alliance = { country = SER country = RUS } } type = event which = 217009 where = SER when = 2 }
+		command = { trigger = { event = 211039 participant = { country = FRA value = 1 } } type = alliance where = 2 when = 1 }
+		command = { trigger = { event = 211042 } type = alliance which = ENG when = 1 }
+		command = { trigger = { ai = U08 ai = U09 alliance = { country = FRA country = RUS } } type = trigger which = 243025 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211047] RUS | 1914 | Support Partisans in Serbia (Apoyo a los partisanos en Serbia)
+# Triggered by event 211046 in events/Minors/RUS_Decisions.txt
+# Trigger event 217006 in events/Minors/SER.txt
+# Trigger event 244032 in events/Minors/U09.txt
+# Trigger event 217007 in events/Minors/SER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211047
+	country = RUS
+	decision = {
+		OR= {
+			flag = 1915_WWI
+			AND = {
+				war = { country = U09 country = RUS }
+				event = 211046
+			}
+		}
+	}
+	decision_trigger = {
+		money = 250
+		supplies = 1000
+	}
+	trigger = {
+		random = 35
+		money = 250
+		supplies = 1000
+		OR= {
+			flag = 1915_WWI
+			AND = {
+				war = { country = U09 country = RUS }
+				event = 211046
+			}
+		}
+	}
+	name = "EVT_RUS_211047_NAME"
+	desc = "EVT_RUS_211047_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = june year = 1916 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = supplies value = -1000 }
+		command = { type = money value = -250 }
+		command = { type = trigger which = 217006 }
+		command = { type = trigger which = 244032 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [196040] RUS | 1914 | Occupy Northern Persia (Ocupar el norte de Persia)
+# Triggered by event 196025 in events/Minors/OTT.txt
+# Trigger event 201006 in events/Minors/PER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 196040
+	country = RUS
+	decision = {
+		war = { country = U08 country = RUS }
+		NOT = { war = { country = PER country = RUS } }
+		exists = PER
+		event = 196025
+	}
+	decision_trigger = {
+		war = { country = U08 country = RUS }
+		control = { province = 713 data = -3 }
+	}
+	trigger = {
+		war = { country = U08 country = RUS }
+		NOT = { war = { country = PER country = RUS } }
+		control = { province = 713 data = -3 }
+		exists = PER
+		event = 196025
+	}
+	name = "EVT_RUS_196040_NAME"
+	desc = "EVT_SHARED_00099_DESC"
+	style = 2
+	picture = "GLOBAL/persia"
+	decision_picture = "Minors/decision_persia"
+	date = { day = 28 month = july year = 1914 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1917 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = PER value = -15 }
+		command = { type = trigger which = 201006 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211004] RUS | 1916 | Declaration of War on the Ottoman Empire (Declaración de guerra al Imperio otomano)
+# Triggered by event 196003 in events/Minors/OTT.txt
+# Triggered by event 196004 in events/Minors/OTT.txt
+# Triggered by event 196005 in events/Minors/OTT.txt
+# Triggered by event 211054 in events/Minors/RUS_14-91.txt
+# Triggered by event 211019 in events/Minors/RUS_14-14.txt
+# Triggered by event 196020 in events/Minors/OTT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211004
+	country = RUS
+	decision = {
+		NOT = { event = 196003 }
+		NOT = { event = 196004 }
+		NOT = { event = 196005 }
+		NOT = { event = 211054 }
+		NOT = { event = 211019 }
+	}
+	decision_trigger = {
+		NOT = { atwar = OTT }
+		NOT = { ispuppet = OTT }
+		NOT = { dissent = 15 }
+		NOT = { participant = { country = OTT value = 1 } }
+		NOT = { participant = { country = OTT value = 2 } }
+	}
+	trigger = {
+		NOT = { event = 196020 }
+		NOT = { event = 196003 }
+		NOT = { event = 196004 }
+		NOT = { event = 196005 }
+		NOT = { event = 211054 }
+		NOT = { event = 211019 }
+		NOT = { atwar = OTT }
+		NOT = { ispuppet = OTT }
+		NOT = { dissent = 15 }
+		NOT = { participant = { country = OTT value = 1 } }
+		NOT = { participant = { country = OTT value = 2 } }
+		garrison = { country = -1 province = 708 type = land size = 6 area = 2 }
+	}
+	name = "EVT_RUS_211004_NAME"
+	desc = "EVT_RUS_211004_DESC"
+	style = 2
+	picture = "GLOBAL/russian_soldiers"
+	date = { day = 1 month = september year = 1916 }
+	offset = 181
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_WAR
+		command = { type = war which = OTT }
+	}
+}

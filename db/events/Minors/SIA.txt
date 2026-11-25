@@ -1,0 +1,625 @@
+# ============================================================================
+# File: events/Minors/SIA.txt (17 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [218010] SIA | 1917 | A New Flag (Una nueva bandera)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218010
+	country = SIA
+	name = "EVT_SHARED_00069_NAME"
+	desc = "EVT_SHARED_00069_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 27 month = september year = 1917 }
+	action_a = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = flag_ext where = SIA which = "" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [218004] SIA | 1935 | Head of State Resigns (Dimisión del Jefe de Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218004
+	random = no
+	country = SIA
+	style = 2
+	trigger = {
+		headofstate = 290102
+	}
+	date = { day = 1 month = march year = 1935 }
+	name = "EVT_SHARED_00507_NAME"
+	desc = "EVT_SHARED_00507_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 290001 }
+		command = { type = sleepminister which = 290102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [218009] SIA | 1936 | Japanese Ultimatum to Thailand (Ultimátum japonés a Tailandia)
+# Triggered by event 167023 in events/JAP/JAP_Decisions.txt
+# Trigger event 167024 in events/JAP/JAP_33-36.txt
+# Trigger event 167025 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 218009
+	random = no
+	country = SIA
+	name = "EVT_SIA_218009_NAME"
+	desc = "EVT_SIA_218009_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = trigger which = 167024 }
+		command = { type = alliance which = JAP when = 1 }
+		command = { type = addcore which = 1413 }
+		command = { type = addcore which = 1434 }
+		command = { type = addcore which = 1402 }
+		command = { type = addcore which = 1391 }
+		command = { type = relation which = JAP value = 20 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = relation which = ENG value = -25 }
+		command = { type = relation which = FRA value = -20 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 290001 }
+		command = { type = headofgovernment which = 290014 }
+		command = { type = foreignminister which = 290022 }
+		command = { type = armamentminister which = 290037 }
+		command = { type = ministerofsecurity which = 290050 }
+		command = { type = ministerofintelligence which = 290061 }
+		command = { type = chiefofstaff which = 290066 }
+		command = { type = chiefofarmy which = 290072 }
+		command = { type = chiefofnavy which = 290077 }
+		command = { type = chiefofair which = 290082 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE_PEACE"
+		ai_chance = 0
+		command = { type = relation which = JAP value = -15 }
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = FRA value = 15 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = trigger which = 167025 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [218000] SIA | 1939 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218000
+	random = no
+	country = SIA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		random = 5
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = january year = 1939 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1943 }
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 90
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 290087 }
+		command = { type = headofgovernment which = 290014 }
+		command = { type = foreignminister which = 290022 }
+		command = { type = armamentminister which = 290034 }
+		command = { type = ministerofsecurity which = 290050 }
+		command = { type = ministerofintelligence which = 290061 }
+		command = { type = chiefofstaff which = 290066 }
+		command = { type = chiefofarmy which = 290072 }
+		command = { type = chiefofnavy which = 290077 }
+		command = { type = chiefofair which = 290082 }
+		command = { type = dissent value = -1 }
+		}
+	action_b = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 10
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329322] SIA | 1939 | Thailand Sues for Peace (Tailandia solicita el armisticio)
+# Triggered by event 329328 in events/JAP/JAP_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329322
+	random = no
+	country = SIA
+	trigger = {
+		war = { country = SIA country = ENG }
+		OR = {
+			event = 329328
+			NOT = { exists = JAP }
+			AND = {
+				OR = {
+					control = { province = 1423 data = ENG }
+					control = { province = 1423 data = FRA }
+					control = { province = 1423 data = AST }
+					control = { province = 1423 data = NZL }
+					control = { province = 1423 data = USA }
+				}
+				OR = {
+					control = { province = 1424 data = ENG }
+					control = { province = 1424 data = FRA }
+					control = { province = 1424 data = AST }
+					control = { province = 1424 data = NZL }
+					control = { province = 1424 data = USA }
+				}
+			}
+		}
+	}
+	name = "EVT_SIA_329322_NAME"
+	desc = "EVT_SIA_329322_DESC"
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1939 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+		command = { type = leave_alliance when = 1 }
+		command = { type = access which = USA }
+		command = { type = access which = ENG }
+		command = { type = access which = FRA }
+		command = { type = access which = CAN }
+		command = { type = access which = AST }
+		command = { type = access which = NZL }
+		command = { type = access which = SAF }
+		command = { type = access which = PAN }
+		command = { type = access which = HOL }
+		command = { type = access which = U05 }
+		command = { type = access which = BEL }
+		command = { type = end_access which = JAP }
+		command = { type = military_control which = JAP where = SIA value = 0 }
+		command = { type = removecore which = 1413 }
+		command = { type = removecore which = 1434 }
+		command = { type = removecore which = 1402 }
+		command = { type = removecore which = 1391 }
+		command = { type = secedeprovince which = U03 value = 1402 when = 1 }
+		command = { type = secedeprovince which = U03 value = 1391 when = 1 }
+		command = { type = secedeprovince which = FRA value = 1402 when = 1 }
+		command = { type = secedeprovince which = FRA value = 1391 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329047] SIA | 1944 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329047
+	random = no
+	country = SIA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		atwar = yes
+		lost_national = { country = SIA value = 40 }
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = january year = 1944 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 290011 }
+		command = { type = headofgovernment which = 290015 }
+		command = { type = foreignminister which = 290026 }
+		command = { type = armamentminister which = 290041 }
+		command = { type = ministerofsecurity which = 290053 }
+		command = { type = ministerofintelligence which = 290063 }
+		command = { type = chiefofstaff which = 290067 }
+		command = { type = chiefofarmy which = 290073 }
+		command = { type = chiefofnavy which = 290078 }
+		command = { type = chiefofair which = 290083 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329048] SIA | 1945 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329048
+	random = no
+	country = SIA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		atwar = yes
+		lost_national = { country = SIA value = 60 }
+		minister = 290015
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = january year = 1945 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 290012 }
+		command = { type = headofgovernment which = 290016 }
+		command = { type = foreignminister which = 290027 }
+		command = { type = armamentminister which = 290042 }
+		command = { type = ministerofsecurity which = 290055 }
+		command = { type = ministerofintelligence which = 290064 }
+		command = { type = chiefofstaff which = 290068 }
+		command = { type = chiefofarmy which = 290074 }
+		command = { type = chiefofnavy which = 290079 }
+		command = { type = chiefofair which = 290084 }
+		command = { type = dissent value = -1 }
+		command = { type = sleepminister which = 290011 }
+		command = { type = sleepminister which = 290021 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [218001] SIA | 1946 | Popular Revolution Victorious! (¡Triunfo de la revolución!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218001
+	random = no
+	country = SIA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = no
+		}
+	name = "EVT_SHARED_00496_NAME"
+	desc = "EVT_SHARED_00496_DESC"
+	date = { day = 1 month = january year = 1946 }
+	offset = 5
+	deathdate = { day = 29 month = february year = 1946 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 290012 }
+		command = { type = headofgovernment which = 290017 }
+		command = { type = foreignminister which = 290028 }
+		command = { type = armamentminister which = 290043 }
+		command = { type = ministerofsecurity which = 290056 }
+		command = { type = ministerofintelligence which = 290064 }
+		command = { type = chiefofstaff which = 290068 }
+		command = { type = chiefofarmy which = 290074 }
+		command = { type = chiefofnavy which = 290079 }
+		command = { type = chiefofair which = 290084 }
+		command = { type = dissent value = -1 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_WAR"
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [218026] SIA | 1946 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324494 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 218026
+	country = SIA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 290019 }
+		command = { type = foreignminister which = 290031 }
+		command = { type = armamentminister which = 290048 }
+		command = { type = ministerofsecurity which = 290059 }
+		command = { type = ministerofintelligence which = 290064 }
+		command = { type = chiefofstaff which = 290071 }
+		command = { type = chiefofarmy which = 290076 }
+		command = { type = chiefofnavy which = 290081 }
+		command = { type = chiefofair which = 290086 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [218027] SIA | 1946 | Death of King Ananda Mahidol (Muerte de Rama VIII)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218027
+	country = SIA
+	name = EVT_SIA_218027_NAME
+	desc = EVT_SIA_218027_DESC
+	picture = "nwo/rama_viii"
+	style = 1
+	trigger = {
+		OR = {
+			headofstate = 290001
+			headofstate = 290012
+		}
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = sleepminister which = 290001 }
+		command = { type = sleepminister which = 290012 }
+		command = { type = sleepminister which = 290087 }
+		command = { type = headofstate which = 290013 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [218002] SIA | 1946 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218002
+	random = no
+	country = SIA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = no
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = march year = 1946 }
+	offset = 10
+	deathdate = { day = 29 month = july year = 1946 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 290013 }
+		command = { type = headofgovernment which = 290019 }
+		command = { type = foreignminister which = 290030 }
+		command = { type = armamentminister which = 290047 }
+		command = { type = ministerofsecurity which = 290057 }
+		command = { type = ministerofintelligence which = 290062 }
+		command = { type = chiefofstaff which = 290070 }
+		command = { type = chiefofarmy which = 290076 }
+		command = { type = chiefofnavy which = 290081 }
+		command = { type = chiefofair which = 290086 }
+		command = { type = dissent value = -1 }
+		command = { type = sleepminister which = 290001 }
+		command = { type = sleepminister which = 290015 }
+		command = { type = sleepminister which = 290016 }
+		command = { type = sleepminister which = 290019 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_WAR"
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [218003] SIA | 1946 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218003
+	random = no
+	country = SIA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		random = 5
+		atwar = no
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = august year = 1946 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1947 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 290013 }
+		command = { type = headofgovernment which = 290020 }
+		command = { type = foreignminister which = 290031 }
+		command = { type = armamentminister which = 290048 }
+		command = { type = ministerofsecurity which = 290058 }
+		command = { type = ministerofintelligence which = 290062 }
+		command = { type = chiefofstaff which = 290071 }
+		command = { type = chiefofarmy which = 290076 }
+		command = { type = chiefofnavy which = 290081 }
+		command = { type = chiefofair which = 290086 }
+		command = { type = dissent value = -1 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_WAR"
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [218028] SIA | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218028
+	country = SIA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 290013 }
+		command = { type = headofgovernment which = 290020 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [218029] SIA | 1948 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218029
+	country = SIA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 290013 }
+		command = { type = headofgovernment which = 290200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [218030] SIA | 1957 | Sarit Thanarat's 1957 Coup (Golpe de Estado de Sarit Thanarat)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218030
+	country = SIA
+	name = EVT_SIA_218030_NAME
+	desc = EVT_SIA_218030_DESC
+	picture = "nwo/sarit_thanarat"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 290013 }
+		command = { type = headofgovernment which = 290201 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [218031] SIA | 1958 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218031
+	country = SIA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 290013 }
+		command = { type = headofgovernment which = 290202 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [218032] SIA | 1959 | Sarit's Revolutionary Council (Segundo golpe de Sarit Thanarat)
+# ----------------------------------------------------------------------------
+event = {
+	id = 218032
+	country = SIA
+	name = EVT_SIA_218032_NAME
+	desc = EVT_SIA_218032_DESC
+	picture = "nwo/sarit_thanarat"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 290013 }
+		command = { type = headofgovernment which = 290203 }
+	}
+}

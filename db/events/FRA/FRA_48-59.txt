@@ -1,0 +1,2052 @@
+# ============================================================================
+# File: events/FRA/FRA_48-59.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [147220] FRA | 1948 | UN Resolution on the Greek Civil War (Resolución de la ONU sobre la Guerra Civil Griega)
+# Triggered by event 330003 in events/AI/REB_AI_14-52.txt
+# Trigger event 152211 in events/GRE/GRE_38-49.txt
+# Trigger event 152212 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147220
+	country = FRA
+	name = EVT_SHARED_00961_NAME
+	desc = EVT_SHARED_00961_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 80
+		trigger = {
+			NOT = { flag = un_gcw_interventionveto }
+			NOT = { war = { country = GRE } }
+			NOT = { alliance = { country = U33 } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 15
+		trigger = {
+			NOT = { war = { country = GRE } }
+			NOT = { alliance = { country = U33 } }
+		}
+		command = { type = setflag which = un_gcw_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 5
+		trigger = {
+			NOT = { alliance = { country = U33 } }
+		}
+		command = { type = setflag which = un_gcw_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147013] FRA | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147013
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FRA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = july year = 1948 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5024 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = armamentminister which = 5175 }
+		command = { type = ministerofsecurity which = 5094 }
+		command = { type = ministerofintelligence which = 5182 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5167 }
+		command = { type = foreignminister which = 5038 }
+		command = { type = armamentminister which = 5174 }
+		command = { type = ministerofsecurity which = 5085 }
+		command = { type = ministerofintelligence which = 5113 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [147014] FRA | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147014
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FRA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = september year = 1948 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5026 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = armamentminister which = 5176 }
+		command = { type = ministerofsecurity which = 5094 }
+		command = { type = ministerofintelligence which = 5113 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5167 }
+		command = { type = foreignminister which = 5038 }
+		command = { type = armamentminister which = 5174 }
+		command = { type = ministerofsecurity which = 5085 }
+		command = { type = ministerofintelligence which = 5113 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [147187] FRA | 1949 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147187
+	country = FRA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5022 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5094 }
+		command = { type = ministerofintelligence which = 5183 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5167 }
+		command = { type = foreignminister which = 5038 }
+		command = { type = armamentminister which = 5174 }
+		command = { type = ministerofsecurity which = 5085 }
+		command = { type = ministerofintelligence which = 5113 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330015] FRA | 1949 | UN Resolution on the Indonesian Revolution (Resolución de la ONU sobre la Revolución Indonesia)
+# Triggered by event 330012 in events/AI/REB_AI_14-52.txt
+# Trigger event 162042 in events/Minors/INO.txt
+# Trigger event 162043 in events/Minors/INO.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 330015
+	country = FRA
+	name = EVT_SHARED_00963_NAME
+	desc = EVT_SHARED_00963_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = EVT_SHARED_00963_A
+		ai_chance = 75
+		trigger = {
+			NOT = { war = { country = INO } }
+		}
+		command = { type = setflag which = un_indonesia_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 5
+		trigger = {
+			NOT = { alliance = { country = INO } }
+		}
+		command = { type = setflag which = un_indonesia_totalveto }
+	}
+	action = {
+		name = EVT_SHARED_00963_B
+		ai_chance = 20
+		trigger = {
+			NOT = { flag = un_indonesia_interventionveto }
+			NOT = { war = { country = INO } }
+			NOT = { alliance = { country = U05 } }
+			NOT = { alliance = { country = HOL } }
+		}
+		command = { type = money value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147015] FRA | 1949 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147015
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FRA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = october year = 1949 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5022 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5094 }
+		command = { type = ministerofintelligence which = 5183 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5167 }
+		command = { type = foreignminister which = 5038 }
+		command = { type = armamentminister which = 5174 }
+		command = { type = ministerofsecurity which = 5085 }
+		command = { type = ministerofintelligence which = 5113 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [147188] FRA | 1950 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147188
+	country = FRA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5168 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = ministerofsecurity which = 5085 }
+		command = { type = ministerofsecurity which = 5179 }
+		command = { type = ministerofintelligence which = 5183 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5167 }
+		command = { type = foreignminister which = 5038 }
+		command = { type = armamentminister which = 5174 }
+		command = { type = ministerofsecurity which = 5085 }
+		command = { type = ministerofintelligence which = 5113 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147221] FRA | 1950 | UN Resolution on the Korean War (Resolución de la ONU sobre la Guerra de Corea)
+# Triggered by event 330017 in events/AI/REB_AI_14-52.txt
+# Trigger event 170039 in events/Minors/KOR.txt
+# Trigger event 170040 in events/Minors/KOR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147221
+	country = FRA
+	name = EVT_SHARED_00964_NAME
+	desc = EVT_SHARED_00964_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 95
+		trigger = {
+			NOT = { flag = un_korea_interventionveto }
+			NOT = { war = { country = KOR } }
+			NOT = { alliance = { country = PRK } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 5
+		trigger = {
+			NOT = { war = { country = KOR } }
+			NOT = { alliance = { country = PRK } }
+		}
+		command = { type = setflag which = un_korea_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 0
+		command = { type = setflag which = un_korea_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147172] FRA | 1950 | The Schuman Declaration (La Declaración Schuman)
+# Trigger event 110058 in events/Minors/BEL.txt
+# Trigger event 139008 in events/Minors/DFR.txt
+# Trigger event 157033 in events/Minors/HOL_14-86.txt
+# Trigger event 166156 in events/ITA/ITA_40-50.txt
+# Trigger event 179010 in events/Minors/LUX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147172
+	country = FRA
+	name = EVT_FRA_147172_NAME
+	desc = EVT_FRA_147172_DESC
+	picture = "nwo/schuman_declaration"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		OR = {
+			exists = DFR
+			exists = ITA
+			exists = BEL
+			exists = HOL
+			exists = LUX
+		}
+		atwar = no
+	}
+	date = { day = 9 month = may year = 1950 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 85
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+		command = { type = domestic which = interventionism value = 2 }
+	}
+	action = {
+		name = EVT_FRA_147172_A
+		ai_chance = 10
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+		command = { type = sleepevent which = 139008 }
+		command = { type = sleepevent which = 166156 }
+		command = { type = sleepevent which = 110058 }
+		command = { type = sleepevent which = 157033 }
+		command = { type = sleepevent which = 179010 }
+		command = { type = sleepevent which = 147173 }
+		command = { type = sleepevent which = 147174 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = sleepevent which = 139008 }
+		command = { type = sleepevent which = 166156 }
+		command = { type = sleepevent which = 110058 }
+		command = { type = sleepevent which = 157033 }
+		command = { type = sleepevent which = 179010 }
+		command = { type = sleepevent which = 147173 }
+		command = { type = sleepevent which = 147174 }
+		command = { type = sleepevent which = 147178 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147016] FRA | 1950 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147016
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FRA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = july year = 1950 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5168 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = armamentminister which = 5085 }
+		command = { type = ministerofsecurity which = 5179 }
+		command = { type = ministerofintelligence which = 5183 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5167 }
+		command = { type = foreignminister which = 5038 }
+		command = { type = armamentminister which = 5174 }
+		command = { type = ministerofsecurity which = 5085 }
+		command = { type = ministerofintelligence which = 5113 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [147173] FRA | 1951 | Proclamation of the European Federation (Proclamación de la Federación Europea)
+# Triggered by event 139008 in events/Minors/DFR.txt
+# Triggered by event 166156 in events/ITA/ITA_40-50.txt
+# Triggered by event 110058 in events/Minors/BEL.txt
+# Triggered by event 157033 in events/Minors/HOL_14-86.txt
+# Trigger event 147180 in events/FRA/FRA_48-59.txt
+# Trigger event 139011 in events/Minors/DFR.txt
+# Trigger event 166159 in events/ITA/ITA_52-89.txt
+# Trigger event 110061 in events/Minors/BEL.txt
+# Trigger event 157036 in events/Minors/HOL_14-86.txt
+# Trigger event 147175 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147173
+	country = FRA
+	name = EVT_FRA_147173_NAME
+	desc = EVT_FRA_147173_DESC
+	picture = "nwo/european_federation"
+	trigger = {
+		flag = cold_war
+		government = democratic
+		event = 139008
+		event = 166156
+		event = 110058
+		event = 157033
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1951 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = DFR value = 100 }
+		command = { type = relation which = ITA value = 100 }
+		command = { type = relation which = BEL value = 100 }
+		command = { type = relation which = DFR value = 100 }
+		command = { type = make_puppet which = DFR }
+		command = { type = make_puppet which = ITA }
+		command = { type = make_puppet which = BEL }
+		command = { type = make_puppet which = DFR }
+		command = { type = sleepevent which = 147178 }
+		command = { type = trigger which = 147180 }
+		command = { type = trigger which = 139011 }
+		command = { type = trigger which = 166159 }
+		command = { type = trigger which = 110061 }
+		command = { type = trigger which = 157036 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147174] FRA | 1951 | Luxembourg Joins the European Federation (Luxemburgo se une a la Federación Europea)
+# Triggered by event 179010 in events/Minors/LUX.txt
+# Trigger event 179013 in events/Minors/LUX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147174
+	country = FRA
+	name = EVT_FRA_147174_NAME
+	desc = EVT_FRA_147174_DESC
+	picture = "nwo/european_federation"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		event = 179010
+		atwar = no
+		ai = LUX
+	}
+	date = { day = 1 month = january year = 1951 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = relation which = LUX value = 100 }
+		command = { type = make_puppet which = LUX }
+		command = { type = trigger which = 179013 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147189] FRA | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147189
+	country = FRA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5170 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5179 }
+		command = { type = ministerofintelligence which = 5185 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5169 }
+		command = { type = foreignminister which = 5033 }
+		command = { type = armamentminister which = 5177 }
+		command = { type = ministerofsecurity which = 5180 }
+		command = { type = ministerofintelligence which = 5184 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147190] FRA | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147190
+	country = FRA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5171 }
+		command = { type = foreignminister which = 5033 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5180 }
+		command = { type = ministerofintelligence which = 5184 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5170 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5179 }
+		command = { type = ministerofintelligence which = 5185 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330008] FRA | 1952 | UN Resolution on Eritrea (Resolución de la ONU sobre Eritrea)
+# Triggered by event 207059 in events/AI/REB_AI_14-52.txt
+# Trigger event 145015 in events/Minors/ETH.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 330008
+	country = FRA
+	name = EVT_SHARED_00962_NAME
+	desc = EVT_SHARED_00962_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 99
+		trigger = { NOT = { war = { country = ETH } } }
+		command = { type = money value = -1 }
+		command = { type = relation which = ETH value = 50 }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 1
+		trigger = { NOT = { alliance = { country = ETH } } }
+		command = { type = setflag which = un_eritrea_veto }
+		command = { type = relation which = ETH value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330039] FRA | 1952 | The Geneva Conference on Indochina (La Conferencia de Ginebra sobre Indochina)
+# Trigger event 285008 in events/Minors/U72.txt
+# Trigger event 320024 in events/Minors/VIE.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 330039
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_330039_NAME
+	desc = EVT_FRA_330039_DESC
+	picture = "nwo/geneva_conference"
+	style = 1
+	trigger = {
+		war = { country = U72 country = VIE }
+		puppet = { country = VIE country = FRA }
+	}
+	date = { day = 1 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 80
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 15 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 20
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = trigger which = 285008 }
+		command = { type = trigger which = 320024 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147017] FRA | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147017
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FRA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = february year = 1952 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5169 }
+		command = { type = foreignminister which = 5033 }
+		command = { type = armamentminister which = 5177 }
+		command = { type = ministerofsecurity which = 5180 }
+		command = { type = ministerofintelligence which = 5184 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5168 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = armamentminister which = 5085 }
+		command = { type = ministerofsecurity which = 5179 }
+		command = { type = ministerofintelligence which = 5183 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [147018] FRA | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147018
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FRA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = march year = 1952 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5170 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5179 }
+		command = { type = ministerofintelligence which = 5185 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5169 }
+		command = { type = foreignminister which = 5033 }
+		command = { type = armamentminister which = 5177 }
+		command = { type = ministerofsecurity which = 5180 }
+		command = { type = ministerofintelligence which = 5184 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [147215] FRA | 1952 | Western Response to the Stalin Note (Respuesta occidental a la Nota de Stalin)
+# Triggered by event 223294 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147215
+	country = FRA
+	name = EVT_FRA_147215_NAME
+	desc = EVT_FRA_147215_DESC
+	picture = "nwo/stalin_note"
+	style = 1
+	trigger = {
+		event = 223294
+		flag = cold_war
+	}
+	date = { day = 10 month = march year = 1952 }
+	offset = 7
+	deathdate = { day = 29 month = march year = 1952 }
+	action = {
+		name = EVT_FRA_147215_A
+		ai_chance = 50
+		command = { type = relation which = SOV value = -25 }
+		command = { type = relation which = DDR value = -25 }
+		command = { type = relation which = DFR value = 30 }
+		command = { type = belligerence value = -5 }
+		command = { type = sleepevent which = 223296 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 40
+		command = { type = relation which = SOV value = -75 }
+		command = { type = relation which = DDR value = -75 }
+		command = { type = sleepevent which = 223295 }
+		command = { type = sleepevent which = 223296 }
+		command = { type = sleepevent which = 316250 }
+		command = { type = sleepevent which = 143334 }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT_DEMANDS
+		ai_chance = 10
+		command = { type = relation which = SOV value = 50 }
+		command = { type = relation which = DDR value = 50 }
+		command = { type = relation which = DFR value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147178] FRA | 1952 | The Treaty of Paris (El Tratado de París)
+# Trigger event 110060 in events/Minors/BEL.txt
+# Trigger event 139010 in events/Minors/DFR.txt
+# Trigger event 157035 in events/Minors/HOL_14-86.txt
+# Trigger event 166158 in events/ITA/ITA_52-89.txt
+# Trigger event 179012 in events/Minors/LUX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147178
+	country = FRA
+	name = EVT_FRA_147178_NAME
+	desc = EVT_FRA_147178_DESC
+	picture = "nwo/european_coal_and_steel_community"
+	style = 1
+	trigger = {
+		flag = cold_war
+		OR = {
+			exists = DFR
+			exists = ITA
+			exists = BEL
+			exists = HOL
+			exists = LUX
+		}
+	}
+	date = { day = 23 month = july year = 1952 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = EVT_FRA_147178_A
+		ai_chance = 95
+		command = { type = energypool value = 20000 }
+		command = { type = metalpool value = 10000 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = relation which = DFR value = -50 }
+		command = { type = relation which = ITA value = -50 }
+		command = { type = relation which = BEL value = -50 }
+		command = { type = relation which = HOL value = -50 }
+		command = { type = relation which = LUX value = -50 }
+		command = { type = sleepevent which = 147179 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147019] FRA | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147019
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FRA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = january year = 1953 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5171 }
+		command = { type = foreignminister which = 5178 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5180 }
+		command = { type = ministerofintelligence which = 5184 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5170 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5179 }
+		command = { type = ministerofintelligence which = 5185 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [147158] FRA | 1953 | Self-rule of Morocco (Autonomía de Marruecos)
+# Trigger event 186000 in events/Minors/MOR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147158
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147158_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = MOR }
+		control = { province = 717 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 75
+		command = { type = independence which = MOR value = 1 }
+		command = { type = make_puppet which = MOR }
+		command = { type = trigger which = 186000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 25
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147191] FRA | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147191
+	country = FRA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5172 }
+		command = { type = foreignminister which = 5173 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5181 }
+		command = { type = ministerofintelligence which = 5186 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5171 }
+		command = { type = foreignminister which = 5033 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5180 }
+		command = { type = ministerofintelligence which = 5184 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+			command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147216] FRA | 1953 | Beria's Proposal (La propuesta de Beria)
+# Triggered by event 223309 in events/SOV/SOV_Decisions.txt
+# Trigger event 324491 in events/GLOBAL/MULTI_48-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147216
+	country = FRA
+	name = EVT_FRA_147216_NAME
+	desc = EVT_FRA_147216_DESC
+	picture = "nwo/united_germany"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 60
+		command = { type = relation which = SOV value = 100 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 40
+		command = { type = relation which = SOV value = -50 }
+		command = { type = sleepevent which = 324491 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147020] FRA | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147020
+	random = no
+	country = FRA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FRA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = july year = 1953 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5187 }
+		command = { type = headofgovernment which = 5172 }
+		command = { type = foreignminister which = 5178 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5181 }
+		command = { type = ministerofintelligence which = 5186 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5011 }
+		command = { type = headofgovernment which = 5171 }
+		command = { type = foreignminister which = 5178 }
+		command = { type = armamentminister which = 5071 }
+		command = { type = ministerofsecurity which = 5180 }
+		command = { type = ministerofintelligence which = 5184 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [147088] FRA | 1953 | Fate of Laos (El destino de Laos)
+# Trigger event 173000 in events/Minors/LAO.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147088
+	random = no
+	country = FRA
+	trigger = {
+		government = democratic
+		random = 8
+		control = { province = 1405 data = FRA }
+		atwar = no
+		NOT = {
+			exists = LAO
+			exists = GER
+		}
+	}
+	name = "EVT_FRA_147088_NAME"
+	desc = "EVT_SHARED_00769_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 22 month = october year = 1953 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 95
+		command = { type = independence which = LAO value = 1 }
+		command = { type = trigger which = 173000 }
+	}
+	action_b = {
+		name = "ACTION_NAME_SUPPRESS_REVOLT"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147192] FRA | 1954 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147192
+	country = FRA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5400 }
+		command = { type = headofgovernment which = 5407 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5400 }
+		command = { type = headofgovernment which = 5172 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147150] FRA | 1955 | Self-rule of Cameroon (Autogobierno de Camerún)
+# Trigger event 120023 in events/Minors/CAM.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147150
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147150_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = CAM }
+		control = { province = 909 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 90
+		command = { type = independence which = CAM value = 1 }
+		command = { type = make_puppet which = CAM }
+		command = { type = trigger which = 120023 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 10
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147175] FRA | 1955 | Britain and European Unification (Gran Bretaña y la unión europea)
+# Triggered by event 147173 in events/FRA/FRA_48-59.txt
+# Trigger event 110059 in events/Minors/BEL.txt
+# Trigger event 139009 in events/Minors/DFR.txt
+# Trigger event 157034 in events/Minors/HOL_14-86.txt
+# Trigger event 166157 in events/ITA/ITA_52-89.txt
+# Trigger event 179011 in events/Minors/LUX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147175
+	country = FRA
+	name = EVT_FRA_147175_NAME
+	desc = EVT_FRA_147175_DESC
+	picture = "nwo/united_states_of_europe"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		exists = DFR
+		exists = ITA
+		exists = BEL
+		exists = HOL
+		event = 147173
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 80
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+		command = { type = domestic which = interventionism value = 2 }
+	}
+	action = {
+		name = EVT_FRA_147175_A
+		ai_chance = 15
+		command = { type = sleepevent which = 139009 }
+		command = { type = sleepevent which = 166157 }
+		command = { type = sleepevent which = 110059 }
+		command = { type = sleepevent which = 157034 }
+		command = { type = sleepevent which = 179011 }
+		command = { type = sleepevent which = 147176 }
+		command = { type = sleepevent which = 147177 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = end_mastery which = DFR }
+		command = { type = end_mastery which = ITA }
+		command = { type = end_mastery which = BEL }
+		command = { type = end_mastery which = HOL }
+		command = { type = end_mastery which = LUX }
+		command = { type = relation which = DFR value = -100 }
+		command = { type = relation which = ITA value = -100 }
+		command = { type = relation which = BEL value = -100 }
+		command = { type = relation which = HOL value = -100 }
+		command = { type = relation which = LUX value = -100 }
+		command = { type = sleepevent which = 139009 }
+		command = { type = sleepevent which = 166157 }
+		command = { type = sleepevent which = 110059 }
+		command = { type = sleepevent which = 157034 }
+		command = { type = sleepevent which = 179011 }
+		command = { type = sleepevent which = 147176 }
+		command = { type = sleepevent which = 147177 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147176] FRA | 1955 | The United States of Europe (Los Estados Unidos de Europa)
+# Triggered by event 139009 in events/Minors/DFR.txt
+# Triggered by event 166157 in events/ITA/ITA_52-89.txt
+# Triggered by event 110059 in events/Minors/BEL.txt
+# Triggered by event 157034 in events/Minors/HOL_14-86.txt
+# Triggered by event 179011 in events/Minors/LUX.txt
+# Trigger event 147177 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147176
+	country = FRA
+	name = EVT_FRA_147176_NAME
+	desc = EVT_FRA_147176_DESC
+	picture = "nwo/united_states_of_europe"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 139009
+		event = 166157
+		event = 110059
+		event = 157034
+		event = 179011
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = DFR }
+		command = { type = inherit which = ITA }
+		command = { type = inherit which = BEL }
+		command = { type = inherit which = HOL }
+		command = { trigger = { puppet = { country = FRA country = LUX } } type = inherit which = LUX }
+		command = { type = trigger which = 147177 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147177] FRA | 1955 | The United States of Europe (Los Estados Unidos de Europa)
+# Triggered by event 147176 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147177
+	country = FRA
+	name = EVT_FRA_147177_NAME
+	desc = EVT_FRA_147177_DESC
+	picture = "nwo/united_states_of_europe"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = country which = UES }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147219] FRA | 1955 | UN Resolution on the Taiwan Strait (Resolución de la ONU sobre el Estrecho de Taiwán)
+# Triggered by event 330001 in events/AI/REB_AI_55-00.txt
+# Trigger event 124231 in events/CHI/CHI_45-75.txt
+# Trigger event 124232 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147219
+	country = FRA
+	name = EVT_SHARED_00960_NAME
+	desc = EVT_SHARED_00960_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 93
+		trigger = {
+			NOT = { flag = un_taiwan_interventionveto }
+			NOT = { war = { country = CHI } }
+			NOT = { alliance = { country = CHC } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 6
+		trigger = {
+			NOT = { war = { country = CHI } }
+			NOT = { alliance = { country = CHC } }
+		}
+		command = { type = setflag which = un_taiwan_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 1
+		trigger = {
+			NOT = { alliance = { country = CHI } }
+		}
+		command = { type = setflag which = un_taiwan_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147156] FRA | 1956 | Self-rule of Madagascar (Autogobierno de Madagascar)
+# Trigger event 180000 in events/Minors/MAD.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147156
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147156_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = MAD }
+		control = { province = 1001 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = MAD value = 1 }
+		command = { type = make_puppet which = MAD }
+		command = { type = trigger which = 180000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 20
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147160] FRA | 1956 | Independence of Tunisia (Independencia de Túnez)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147160
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147160_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = TUN }
+		control = { province = 747 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = TUN value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 20
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147193] FRA | 1956 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147193
+	country = FRA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 5400 }
+		command = { type = headofgovernment which = 5401 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5400 }
+		command = { type = headofgovernment which = 5172 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147222] FRA | 1956 | UN Resolution on the Hungarian Uprising (Resolución de la ONU sobre el Levantamiento Húngaro)
+# Triggered by event 207060 in events/AI/REB_AI_55-00.txt
+# Trigger event 207061 in events/AI/REB_AI_55-00.txt
+# Trigger event 248035 in events/Minors/U13.txt
+# Trigger event 329872 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147222
+	country = FRA
+	name = EVT_SHARED_00965_NAME
+	desc = EVT_SHARED_00965_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 95
+		trigger = {
+			NOT = { flag = un_hungary_interventionveto }
+			NOT = { war = { country = U13 } }
+			NOT = { alliance = { country = SOV } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 5
+		trigger = {
+			NOT = { war = { country = U13 } }
+			NOT = { alliance = { country = SOV } }
+		}
+		command = { type = setflag which = un_hungary_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 0
+		command = { type = setflag which = un_hungary_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330000] FRA | 1956 | UN Resolution on the Suez Crisis (Resolución de la ONU sobre la Guerra de Suez)
+# Triggered by event 329997 in events/AI/REB_AI_55-00.txt
+# Trigger event 142067 in events/Minors/EGY_33-58.txt
+# Trigger event 142068 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 330000
+	country = FRA
+	name = EVT_SHARED_00959_NAME
+	desc = EVT_SHARED_00959_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 90
+		trigger = {
+			NOT = { alliance = { country = EGY } }
+		}
+		command = { type = setflag which = un_suez_totalveto }
+	}
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 2
+		trigger = {
+			NOT = { flag = un_suez_interventionveto }
+			NOT = { war = { country = EGY } }
+			NOT = { alliance = { country = ISR } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 8
+		trigger = {
+			NOT = { war = { country = EGY } }
+			NOT = { alliance = { country = ISR } }
+		}
+		command = { type = setflag which = un_suez_interventionveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147194] FRA | 1957 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147194
+	country = FRA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 5402 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147179] FRA | 1957 | The Treaty of Rome (El Tratado de Roma)
+# Trigger event 110061 in events/Minors/BEL.txt
+# Trigger event 139011 in events/Minors/DFR.txt
+# Trigger event 147180 in events/FRA/FRA_48-59.txt
+# Trigger event 157036 in events/Minors/HOL_14-86.txt
+# Trigger event 166159 in events/ITA/ITA_52-89.txt
+# Trigger event 179013 in events/Minors/LUX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147179
+	country = FRA
+	name = EVT_FRA_147179_NAME
+	desc = EVT_FRA_147179_DESC
+	picture = "nwo/european_economic_community"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		OR = {
+			exists = DFR
+			exists = ITA
+			exists = BEL
+			exists = HOL
+			exists = LUX
+		}
+	}
+	date = { day = 25 month = march year = 1957 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 95
+		command = { type = relation which = DFR value = 200 }
+		command = { type = relation which = ITA value = 200 }
+		command = { type = relation which = BEL value = 200 }
+		command = { type = relation which = HOL value = 200 }
+		command = { type = relation which = LUX value = 200 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = relation which = DFR value = -50 }
+		command = { type = relation which = ITA value = -50 }
+		command = { type = relation which = BEL value = -50 }
+		command = { type = relation which = HOL value = -50 }
+		command = { type = relation which = LUX value = -50 }
+		command = { type = sleepevent which = 147180 }
+		command = { type = sleepevent which = 139011 }
+		command = { type = sleepevent which = 166159 }
+		command = { type = sleepevent which = 110061 }
+		command = { type = sleepevent which = 157036 }
+		command = { type = sleepevent which = 179013 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147180] FRA | 1957 | Common Market Growth (Crecimiento del Mercado Común)
+# Triggered by event 147173 in events/FRA/FRA_48-59.txt
+# Triggered by event 147179 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147180
+	country = FRA
+	name = EVT_FRA_147180_NAME
+	desc = EVT_FRA_147180_DESC
+	picture = "nwo/european_economic_community"
+	style = 1
+	trigger = {
+		event = 147179
+	}
+	date = { day = 25 month = march year = 1957 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 7 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147148] FRA | 1958 | Self-rule of Algeria (Autogobierno de Argelia)
+# Trigger event 102025 in events/Minors/ALG.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147148
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147148_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = ALG }
+		control = { province = 727 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 70
+		command = { type = dissent value = 5 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 30
+		command = { type = independence which = ALG value = 1 }
+		command = { type = make_puppet which = ALG }
+		command = { type = trigger which = 102025 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147153] FRA | 1958 | Independence of Guinea (Independencia de Guinea)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147153
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147153_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = GUI }
+		control = { province = 966 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 90
+		command = { type = independence which = GUI value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 10
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147167] FRA | 1958 | Self-rule of Ivory Coast (Autonomía de Costa de Marfil)
+# Trigger event 296000 in events/Minors/U88.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147167
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147167_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U88 }
+		control = { province = 962 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 85
+		command = { type = independence which = U88 value = 1 }
+		command = { type = make_puppet which = U88 }
+		command = { type = trigger which = 296000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147195] FRA | 1958 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147195
+	country = FRA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 5403 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147157] FRA | 1959 | Self-rule of Mali Federation (Autonomía de Malí)
+# Trigger event 181000 in events/Minors/MAL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147157
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147157_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = MAL }
+		control = { province = 976 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 90
+		command = { type = independence which = MAL value = 1 }
+		command = { type = make_puppet which = MAL }
+		command = { type = trigger which = 181000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 10
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147162] FRA | 1959 | Self-rule of Upper Volta (Autogobierno de Alto Volta)
+# Trigger event 289000 in events/Minors/U81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147162
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147162_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U81 }
+		control = { province = 957 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 85
+		command = { type = independence which = U81 value = 1 }
+		command = { type = make_puppet which = U81 }
+		command = { type = trigger which = 289000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147163] FRA | 1959 | Self-rule of Central Africa (Autonomía Centroafricana)
+# Trigger event 290013 in events/Minors/U82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147163
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147163_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U82 }
+		control = { province = 926 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 85
+		command = { type = independence which = U82 value = 1 }
+		command = { type = make_puppet which = U82 }
+		command = { type = trigger which = 290013 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147164] FRA | 1959 | Self-rule of Chad (Autogobierno del Chad)
+# Trigger event 292014 in events/Minors/U84.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147164
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147164_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U84 }
+		control = { province = 920 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 90
+		command = { type = independence which = U84 value = 1 }
+		command = { type = make_puppet which = U84 }
+		command = { type = trigger which = 292014 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 10
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147165] FRA | 1959 | Self-rule of Congo-Brazzaville (Autogobierno de Congo-Brazza)
+# Trigger event 293014 in events/Minors/U85.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147165
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147165_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U85 }
+		control = { province = 907 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 85
+		command = { type = independence which = U85 value = 1 }
+		command = { type = make_puppet which = U85 }
+		command = { type = trigger which = 293014 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147171] FRA | 1959 | Self-rule of Togo (Autogobierno de Togo)
+# Trigger event 307000 in events/Minors/U99.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147171
+	country = FRA
+	persistent = yes
+	name = EVT_FRA_147171_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U99 }
+		control = { province = 950 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 85
+		command = { type = independence which = U99 value = 1 }
+		command = { type = make_puppet which = U99 }
+		command = { type = trigger which = 307000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}

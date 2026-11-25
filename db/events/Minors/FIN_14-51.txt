@@ -1,0 +1,1873 @@
+# ============================================================================
+# File: events/Minors/FIN_14-51.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [146022] FIN | 1914 | Soviet Russia declared war upon us! (¡La Rusia soviética nos declara la guerra!)
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Triggered by event 223136 in events/SOV/SOV_14-33.txt
+# Trigger event 243006 in events/Minors/U08_14-14.txt
+# Trigger event 243007 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146022
+	random = no
+	country = FIN
+	name = "EVT_FIN_146022_NAME"
+	desc = "EVT_FIN_146022_DESC"
+	style = 2
+	picture = "GLOBAL/russian_soldiers"
+	trigger = {
+		ai = no
+		exists = U08
+		participant = { country = U08 value = 2 }
+		control = { province = 163 data = U08 }
+		NOT = {
+		event = 243101
+		event = 243107
+		event = 243116
+		lost_national = { country = U08 value = 30 }
+		war = { country = U08 country = FIN  }
+		}
+	}
+	action = {
+		name = "ACTION_NAME_JOIN_CENTRAL"
+		ai_chance = 50
+		command = { type = belligerence value = 5 }
+		command = { type = relation which = U08 value = 20 }
+		command = { type = trigger which = 243006 }
+ 		}
+	action = {
+		name = "ACTION_NAME_INTERVENE"
+		ai_chance = 50
+		command = { type = relation which = U08 value = 10 }
+		command = { type = trigger which = 243007 }
+		}
+		action = {
+			name = "ACTION_NAME_NO_NEED"
+			ai_chance = 0
+			command = { type = dissent value = 3 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [146023] FIN | 1914 | Finland joins the Central Powers (Finlandia se une a las Potencias Centrales)
+# Triggered by event 243006 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146023
+	country = FIN
+	name = "EVT_FIN_146023_NAME"
+	desc = "EVT_FIN_146023_DESC"
+	style = 2
+	picture = "Minors/baltic_sea_division"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -3 }
+		command = { type = alliance which = U08 }
+		command = { type = sleepevent which = 146031 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146024] FIN | 1914 | Germany sends men and materials (Llegada de tropas y suministros alemanes)
+# Triggered by event 243007 in events/Minors/U08_14-14.txt
+# Trigger event 146030 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146024
+	country = FIN
+	name = "EVT_SHARED_00060_NAME"
+	desc = "EVT_SHARED_00060_DESC"
+	style = 2
+	picture = "Minors/baltic_sea_division"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -1 }
+		command = { type = wakeleader which = 9723 }
+		command = { type = add_corps which = "Ostsee-Division" value = land when = 9723 where = 524 }
+		command = { type = add_division which = "Ostsee-Division" value = infantry when = 4 where = cavalry_brigade }
+		command = { type = sleepevent which = 146031 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146033] FIN | 1914 | Alliance with the German Empire? (¿Alianza con el Imperio Alemán?)
+# Triggered by event 146026 in events/Minors/FIN_14-51.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Trigger event 243006 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146033
+	random = no
+	country = FIN
+	trigger = {
+		participant = { country = U08 value = 2 }
+		NOT = {
+		event = 243101
+		event = 243107
+		event = 243116
+		lost_national = { country = U08 value = 30 }
+		control = { province = 163 data = U08 }
+			}
+		}
+	name = "EVT_FIN_146033_NAME"
+	desc = "EVT_FIN_146033_DESC"
+	style = 2
+	picture = "Minors/finnish_white_guards"
+	action = {
+		ai_chance = 100
+		name = "ACTION_NAME_JOIN_CENTRAL"
+		command = { type = belligerence value = 5 }
+		command = { type = relation which = U08 value = 20 }
+		command = { type = trigger which = 243006 }
+	}
+	action = {
+		ai_chance = 0
+		name = "ACTION_NAME_NO_NEED"
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231115] FIN | 1914 | We cant hold Karellia (No podemos retener Carelia)
+# ----------------------------------------------------------------------------
+event = {
+    id = 231115
+    country = fin
+    trigger = {
+        war = { country = SOV }
+		or = {
+			lost_national = { country = FIN value = 10 }
+		}
+    }
+    name = "EVT_FIN_231115_NAME"
+    Desc = "EVT_FIN_231115_DESC"
+	style = 2
+    date = { day = 5 month = june year = 1914 }
+    offset = 5
+    deathdate = { day = 10 month = january year = 1931 }
+    action = {
+        name = "EVT_FIN_231115_A"
+        ai_chance = 100
+        command = { type = peace which = SOV value = 0 }
+        command = { type = dissent value = 15 }
+    }
+    action = {
+        name = "EVT_FIN_231115_B"
+        ai_chance = 0
+        command = { type = dissent value = 5 }
+    }
+}
+
+# ----------------------------------------------------------------------------
+# [146021] FIN | 1915 | Finland's hard times (Tiempos dificiles en Finlandia)
+# Triggered by event 223135 in events/SOV/SOV_14-33.txt
+# Trigger event 223136 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146021
+	country = FIN
+	name = "EVT_FIN_146021_NAME"
+	desc = "EVT_FIN_146021_DESC"
+	style = 2
+	picture = "GLOBAL/finnish_senate_1917"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 145137 }
+		command = { type = headofgovernment which = 145142 }
+		command = { type = foreignminister which = 145149 }
+		command = { type = armamentminister which = 145164 }
+		command = { type = ministerofsecurity which = 145184 }
+		command = { type = ministerofintelligence which = 145194 }
+		command = { type = chiefofstaff which =  145200 }
+		command = { type = chiefofarmy which = 145210 }
+		command = { type = chiefofnavy which = 145216 }
+		command = { type = chiefofair which = 145219 }
+		command = { type = dissent value = 10 }
+		command = { type = event which = 223136 where = SOV when = 3 }
+		command = { type = manpowerpool value = 2 }
+		command = { type = build_division which = infantry when = 2 cost = 2.5 where = 60 }
+		command = { type = build_division which = infantry when = 2 cost = 2.5 where = 60 }
+		command = { type = remove_units which = land where = REB when = 2 value = "Finland" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146032] FIN | 1915 | Germany sends men and materials (Llegada de tropas y suministros alemanes)
+# Triggered by event 243008 in events/Minors/U08_14-18.txt
+# Trigger event 146030 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146032
+	country = FIN
+	name = "EVT_SHARED_00060_NAME"
+	desc = "EVT_SHARED_00060_DESC"
+	style = 2
+	picture = "Minors/baltic_sea_division"
+	action_a = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -1 }
+		command = { type = wakeleader which = 9723 }
+		command = { type = add_corps which = "Ostsee-Division" value = land when = 9723 where = 524 }
+		command = { type = add_division which = "Ostsee-Division" value = infantry when = 4 where = cavalry_brigade }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146025] FIN | 1915 | Announce Regency (Proclamar la Regencia)
+# Triggered by event 223141 in events/SOV/SOV_14-33.txt
+# Triggered by event 223142 in events/SOV/SOV_14-33.txt
+# Triggered by event 146030 in events/Minors/FIN_14-51.txt
+# Trigger event 146026 in events/Minors/FIN_14-51.txt
+# Trigger event 146027 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146025
+	random = no
+	country = FIN
+	trigger = {
+		event = 223141
+			OR = {
+			event = 223142
+			event = 146030
+			NOT = { war = { country = FIN country = SOV } }
+			NOT = { war = { country = FIN country = U08 } }
+			}
+		}
+	name = "EVT_FIN_146025_NAME"
+	desc = "EVT_FIN_146025_DESC"
+	style = 2
+	picture = "Minors/frederick_charles"
+	date = { day = 0 month = june year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = relation which = U08 value = 25 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 145138 }
+		command = { type = headofgovernment which = 145143 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146026] FIN | 1915 | Germany won the Great War (Alemania vence en la Gran Guerra)
+# Triggered by event 146025 in events/Minors/FIN_14-51.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Trigger event 146033 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146026
+	random = no
+	country = FIN
+	trigger = {
+		event = 146025
+		NOT = { ispuppet = FIN }
+		NOT = {
+			event = 243101
+			event = 243107
+			event = 243116
+			}
+		NOT = { war = { country = FIN country = SOV } }
+		NOT = { war = { country = U08 country = FIN } }
+		NOT = { war = { country = U08 country = FRA } }
+		NOT = { war = { country = U08 country = ENG } }
+		NOT = { war = { country = U08 country = RUS } }
+		NOT = { war = { country = U08 country = SOV } }
+		NOT = { war = { country = U08 country = ITA } }
+		NOT = { war = { country = U08 country = USA } }
+		NOT = { war = { country = U08 country = JAP } }
+		NOT = { alliance = { country = FIN country = U08 } }
+		NOT = { lost_national = { country = U08 value = 30 } }
+		control = { province = 163 data = U08 }
+	}
+	name = "EVT_FIN_146026_NAME"
+	desc = "EVT_FIN_146026_DESC"
+	style = 2
+	picture = "Minors/frederick_charles"
+	date = { day = 0 month = june year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 145140 }
+		command = { type = headofgovernment which = 145143 }
+		command = { type = relation which = U08 value = 50 }
+		command = {  type = event which = 146033 where = FIN when = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146027] FIN | 1915 | Germany lost the Great War (Alemania pierde la Gran Guerra)
+# Triggered by event 146025 in events/Minors/FIN_14-51.txt
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Trigger event 146018 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146027
+	random = no
+	country = FIN
+	trigger = {
+		NOT = { ispuppet = FIN }
+		event = 146025
+		event = 147311
+		NOT = { government = communist }
+	}
+	name = "EVT_FIN_146027_NAME"
+	desc = "EVT_FIN_146027_DESC"
+	style = 2
+	picture = "GLOBAL/finnish_senate_1917"
+	date = { day = 0 month = june year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 145138 }
+		command = { type = headofgovernment which = 145144 }
+		command = { trigger = { exists = U08 } type = relation which = U08 value = -20 }
+		command = { type = event which = 146018 where = FIN when = 180 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [146028] FIN | 1915 | Finnish Civil War (Guerra Civil Finlandesa)
+# Trigger event 255000 in events/Minors/U20.txt
+# Trigger event 146029 in events/SOV/SOV_Decisions.txt
+# Trigger event 146030 in events/Minors/FIN_14-51.txt
+# Trigger event 146031 in events/Minors/FIN_Decisions.txt
+# Trigger event 255002 in events/Minors/U20.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146028
+	random = no
+	country = FIN
+	trigger = {
+		exists = SOV
+		NOT = { war = { country = SOV country = FIN } }
+	}
+	name = "EVT_FIN_146028_NAME"
+	desc = "EVT_FIN_146028_DESC"
+	style = 2
+	picture = "GLOBAL/finnish_senate_1917"
+	date = { day = 0 month = june year = 1915 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 10 }
+		command = { type = independence which = U20 value = 1 when = 1 }
+		command = { type = secedeprovince which = U20 value = 512 when = 1 }
+		command = { type = secedeprovince which = U20 value = 524 when = 1 }
+		command = { type = secedeprovince which = U20 value = 525 when = 1 }
+		command = { type = secedeprovince which = U20 value = 527 when = 1 }
+		command = { type = secedeprovince which = U20 value = 529 when = 1 }
+		command = { type = secedeprovince which = U20 value = 531 when = 1 }
+		command = { type = secedeprovince which = U20 value = 530 when = 1 }
+		command = { type = trigger which = 255000 }
+		command = { type = add_corps which = "Hjalmarsonin osasto" value = land when = 145134 where = 528 }
+		command = { type = add_division which = "Hjalmarsonin osasto" value = infantry when = 3 where = artillery }
+		command = { type = add_corps which = "Linderin ryhm " value = land where = 521 }
+		command = { type = add_division which = "Linderin ryhm " value = infantry when = 3 where = artillery }
+		command = { type = add_corps which = "L nsiarmeijan_reservi" value = land when = 145123 where = 522 }
+		command = { type = add_division which = "L nsiarmeijan_reservi" value = infantry when = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146030] FIN | 1915 | Victory in the Finnish Civil War (Victoria de la Guardia Blanca en Finlandia)
+# Triggered by event 146028 in events/Minors/FIN_14-51.txt
+# Triggered by event 146024 in events/Minors/FIN_14-51.txt
+# Triggered by event 146032 in events/Minors/FIN_14-51.txt
+# Trigger event 146025 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146030
+	random = no
+	country = FIN
+	trigger = {
+		event = 146028
+		NOT = { exists = U20 }
+		control = { province = 525 data = -3 }
+		}
+	name = "EVT_SHARED_00061_NAME"
+	desc = "EVT_FIN_146030_DESC"
+	style = 2
+	picture = "Minors/finnish_civil_war_victory"
+	date = { day = 0 month = june year = 1915 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = SOV } type = relation which = SOV value = -20 }
+		command = { trigger = { OR = { event = 146024 event = 146032 } } type = sleepleader which = 9723 }
+		command = { trigger = { OR = { event = 146024 event = 146032 } } type = remove_division which = "Ostsee-Division" value = FIN }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146095] FIN | 1918 | Sweden Demands Åland Plebiscite (Suecia exige un referéndum en Åland)
+# Triggered by event 227063 in events/Minors/SWE_Decisions.txt
+# Trigger event 146096 in events/Minors/FIN_14-51.txt
+# Trigger event 146097 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146095
+	random = no
+	country = FIN
+	name = "EVT_FIN_146095_NAME"
+	desc = "EVT_FIN_146095_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	save_date = yes
+	action = {
+		ai_chance = 95
+		name = "ACTION_NAME_REFUSE"
+		command = { type = relation which = SWE value = -20 }
+		command = { type = trigger which = 146096 }
+	}
+	action = {
+		ai_chance = 5
+		name = "ACTION_NAME_ACCEPT"
+		trigger = { NOT = { flag = force_swe_historical } }
+		command = { type = relation which = SWE value = 100 }
+		command = { type = dissent value = 10 }
+		command = { type = secedeprovince which = SWE value = 526 }
+		command = { type = trigger which = 146097 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146096] FIN | 1918 | Finland Rejects the Plebiscite (Finlandia rechaza el referéndum)
+# Triggered by event 146095 in events/Minors/FIN_14-51.txt
+# Trigger event 227064 in events/Minors/SWE_14-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146096
+	random = no
+	country = FIN
+	name = "EVT_FIN_146096_NAME"
+	desc = "EVT_FIN_146096_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	save_date = yes
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = relation which = FIN value = -20 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146097] FIN | 1918 | Finland Accepts the Plebiscite (Finlandia acepta el referéndum)
+# Triggered by event 146095 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146097
+	random = no
+	country = FIN
+	name = "EVT_FIN_146097_NAME"
+	desc = "EVT_FIN_146097_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	save_date = yes
+	action = {
+		ai_chance = 100
+		name = "ACTION_NAME_GREAT"
+		command = { type = relation which = FIN value = 100 }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146034] FIN | 1919 | First Presidential Elections (Primeras elecciones presidenciales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146034
+	date = { day = 1 month = july year = 1919 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	random = no
+	country = FIN
+	trigger = {
+		NOT = { ispuppet = FIN }
+		NOT = { headofstate = 145140 }
+		NOT = { government = communist }
+		}
+	name = "EVT_FIN_146034_NAME"
+	desc = "EVT_FIN_146034_DESC"
+	style = 2
+	picture = "Minors/finnish_civil_war_victory"
+	action = {
+		ai_chance = 70
+		name = "EVT_FIN_146034_A"
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 145141 }
+		command = { type = headofgovernment which = 145146 }
+		command = { type = foreignminister which = 145151 }
+		command = { type = armamentminister which = 145167 }
+		command = { type = ministerofsecurity which = 145187 }
+	}
+	action = {
+		ai_chance = 30
+		name = "EVT_FIN_146034_B"
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 145138 }
+		command = { type = headofgovernment which = 145142 }
+		command = { type = foreignminister which = 145154 }
+		command = { type = armamentminister which = 145168 }
+		command = { type = ministerofsecurity which = 145185 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146094] FIN | 1921 | Second Soviet Finland war (Segunda Guerra Soviética de Finlandia)
+# Trigger event 223402 in events/SOV/SOV_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146094
+	country = fin
+	trigger = {
+		NOT = { atwar = FIN }
+		NOT = { ispuppet = FIN }
+		random = 20
+	}
+	name = "EVT_FIN_146094_NAME"
+	desc = "EVT_FIN_146094_DESC"
+	picture = "Minors/austrohunarmy_march"
+	style = 2
+	date = { day = 27 month = november year = 1921 }
+    offset = 30
+	deathdate = { day = 1 month = january year = 1925 }
+	action = {
+		name = "ACTION_NAME_NO"
+		ai_chance = 98
+		command = { type = relation which = SOV value = 10 }
+		command = { type =  dissent value = 1 }
+	}
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 2
+		command = { type = addclaim which = 538 }
+		command = { type = addclaim which = 541 }
+		command = { type = addclaim which = 537 }
+		command = { type = addclaim which = 540 }
+		command = { type = addclaim which = 536 }
+		command = { type = addclaim which = 534 }
+		command = { type = addclaim which = 535 }
+		command = { type = addclaim which = 539 }
+		command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+        command = { type = add_division value = militia when = 2 }
+		command = { type = add_division value = militia when = 2 }
+		command = { type = relation which = EST value = 50 }
+        command = { type = trigger which = 223402  }
+		command = { type = war which = SOV }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146009] FIN | 1933 | The Continuation War (La Guerra de Continuación)
+# Triggered by event 329368 in events/GER/GER_Decisions.txt
+# Trigger event 150323 in events/AI/GER_AI_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146009
+	random = no
+	country = FIN
+	name = "EVT_SHARED_00293_NAME"
+	desc = "EVT_SHARED_00293_DESC"
+	style = 2
+	picture = "GLOBAL/hitler_mannerheim"
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = GER }
+		command = { type = relation which = GER value = 30 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_NEUTRAL
+		command = { type = relation which = GER value = -30 }
+		command = { type = relation which = SOV value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146010] FIN | 1933 | Ski Infantry Troops (Infantería de esquiadores)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146010
+	random = no
+	country = FIN
+	trigger = {
+		technology = 1100
+		random = 10
+	}
+	name = EVT_FIN_146010_NAME
+	desc = EVT_FIN_146010_DESC
+	style = 2
+	picture = "Minors/finnish_ski_infantry"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+	  	command = { type = frozen_move which = infantry value = 2 }
+      		command = { type = frozen_attack which = infantry value = 3 }
+      		command = { type = frozen_defense which = infantry value = 4 }
+      		command = { type = snow_move which = infantry value = 2 }
+      		command = { type = snow_attack which = infantry value = 3 }
+      		command = { type = snow_defense which = infantry value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329063] FIN | 1933 | Communist Coup Attempt (Intento de golpe de Estado comunista)
+# Triggered by event 329058 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329063
+	random = no
+	country = FIN
+	one_action = yes
+	trigger = {
+		event = 329058
+		random = 5
+		atwar = no
+		not = { alliance = { country = DDR } }
+		not = { war = { country = DDR } }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "EVT_SHARED_00197_NAME"
+	desc = "EVT_SHARED_00197_DESC"
+	style = 2
+	picture = "GLOBAL/spread_revolution"
+	action = {
+		ai_chance = 80
+		name = "EVT_SHARED_00197_A"
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = dissent value = -5 }
+		command = { type = country which = U20 }
+		command = { type = set_relation which = DDR value = 200 }
+		command = { type = set_relation which = SOV value = 200 }
+		command = { type = alliance which = SOV when = 1 }
+	}
+	action = {
+		ai_chance = 20
+		name = "EVT_SHARED_00197_B"
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146012] FIN | 1936 | The Winter War (La Guerra de Invierno)
+# Triggered by event 329538 in events/SOV/SOV_Decisions.txt
+# Trigger event 223094 in events/SOV/SOV_36-38.txt
+# Trigger event 236015 in events/GLOBAL/ALL_26-36.txt
+# Trigger event 146063 in events/AI/FIN_AI.txt
+# Trigger event 223095 in events/SOV/SOV_36-38.txt
+# Trigger event 324293 in events/AI/MULTI_AI.txt
+# Trigger event 329615 in events/AI/FIN_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146012
+	random = no
+	country = FIN
+	name = "EVT_FIN_146012_NAME"
+	desc = "EVT_FIN_146012_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "EVT_FIN_146012_A"
+		ai_chance = 100
+		command = { type = trigger which = 223094 }
+		command = { type = chiefofstaff which = 145102 }
+		command = { type = chiefofarmy which = 145107 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = relation which = SWE value = 5 }
+		command = { type = relation which = NOR value = 5 }
+		command = { trigger = { ai = yes NOT = { local_flag = MOB7 } NOT = { local_flag = demob } } type = local_setflag which = do_not_demob }
+		command = { trigger = { ai = yes NOT = { local_flag = MOB7 } NOT = { local_flag = demob } } type = trigger which = 236015 }
+		command = { trigger = { ai = yes NOT = { local_flag = MOB7 } NOT = { local_flag = demob } } type = event which = 146063 where = FIN when = 360 }
+	}
+	action_b = {
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		ai_chance = 0
+		command = { type = secedeprovince which = SOV value = 531 }
+		command = { type = secedeprovince which = SOV value = 532 }
+		command = { type = secedeprovince which = SOV value = 530 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = relation which = SOV value = 25 }
+		command = { type = relation which = GER value = -15 }
+		command = { type = relation which = SWE value = -10 }
+		command = { type = trigger which = 223095 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146013] FIN | 1936 | Swedish Military Aid (Ayuda militar sueca)
+# Triggered by event 329540 in events/Minors/SWE_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146013
+	random = no
+	country = FIN
+	name = "EVT_FIN_146013_NAME"
+	desc = "EVT_FIN_146013_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = add_division value = infantry when = 9 }
+		command = { type = supplies value = 1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146014] FIN | 1936 | Swedish Intervention Proposed (Debate sobre la intervención sueca)
+# Triggered by event 329540 in events/Minors/SWE_Decisions.txt
+# Trigger event 329545 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146014
+	random = no
+	country = FIN
+	name = "EVT_FIN_146014_NAME"
+	desc = "EVT_FIN_146014_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = access which = SWE }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146015] FIN | 1936 | Conclusion of the Winter War (Fin de la Guerra de Invierno)
+# Triggered by event 223098 in events/SOV/SOV_36-38.txt
+# Trigger event 223099 in events/SOV/SOV_36-38.txt
+# Trigger event 223100 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146015
+	random = no
+	country = FIN
+	name = "EVT_FIN_146015_NAME"
+	desc = "EVT_FIN_146015_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		ai_chance = 100
+		command = { trigger = { exists = U20 war = { country = FIN country = U20 } } type = inherit which = U20 }
+		command = { type = secedeprovince which = SOV value = 531 }
+		command = { type = secedeprovince which = SOV value = 532 }
+		command = { type = secedeprovince which = SOV value = 530 }
+		command = { type = secedeprovince which = SOV value = 519 }
+		command = { type = domestic which = political_left value = -2 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = relation which = SOV value = -25 }
+		command = { type = relation which = GER value = 50 }
+		command = { type = dissent value = 10 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = peace which = SOV }
+		command = { type = domestic which = interventionism value = 6 }
+		command = { type = trigger which = 223099 }
+	}
+	action_b = {
+		name = "ACTION_NAME_REFUSE_PEACE"
+		ai_chance = 0
+		command = { type = trigger which = 223100 }
+		command = { type = domestic which = political_left value = -4 }
+		command = { type = domestic which = democratic value = 2 }
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = relation which = GER value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146016] FIN | 1936 | Triumph of Greater Finland (Nacimiento de la Gran Finlandia)
+# Triggered by event 150354 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146016
+	random = no
+	country = FIN
+	name = "EVT_FIN_146016_NAME"
+	desc = "EVT_FIN_146016_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = dissent value = -10 }
+		command = { type = addclaim which = 535 }
+		command = { type = addclaim which = 534 }
+		command = { type = addclaim which = 541 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146017] FIN | 1936 | Fall of the Finnish Democratic Republic (Disolución de la República Democrática Finlandesa)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146017
+	random = no
+	country = FIN
+	name = "EVT_FIN_146017_NAME"
+	desc = "EVT_FIN_146017_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U20 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146090] FIN | 1936 | People's Republic Founded (República Popular)
+# Trigger event 146091 in events/Minors/FIN_14-51.txt
+# Trigger event 255006 in events/Minors/U20.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 146090
+   country = FIN
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U20
+            NOT = { ai = FIN }
+            NOT = { ai = U20 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U20
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U20 } }
+      command = { type = country which = U20 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U20
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = FIN }
+               control = { province = 525 data = -1 }
+            }
+         }
+         type = trigger which = 146091
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U20 }
+               NOT = { control = { province = 525 data = -1 } }
+            }
+         }
+         type = trigger which = 255006
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U20
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [146091] FIN | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 146090 in events/Minors/FIN_14-51.txt
+# Triggered by event 255005 in events/Minors/U20.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 146091
+   country = FIN
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U20 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [329539] FIN | 1936 | Finnish Reaction to the Pact (Reacción finlandesa al pacto)
+# Triggered by event 223086 in events/SOV/SOV_33-36.txt
+# Trigger event 236015 in events/GLOBAL/ALL_26-36.txt
+# Trigger event 146063 in events/AI/FIN_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329539
+	random = no
+	country = FIN
+	trigger = {
+		NOT = { alliance = { country = SOV country = FIN } }
+	}
+	name = "EVT_FIN_329539_NAME"
+	desc = "EVT_FIN_329539_DESC"
+	style = 2
+	picture = "GLOBAL/mol_rib"
+	action = {
+		ai_chance = 100
+		name = "EVT_FIN_329539_A"
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = belligerence value = 5 }
+		command = { type = relation which = SOV value = -10 }
+		command = { trigger = { control = { province = 528 data = FIN } } type = activate_division which = 32000 value = 400 where = 528 when = 0 }
+		command = { trigger = { control = { province = 526 data = FIN } } type = activate_division which = 32000 value = 401 where = 526 when = 0 }
+		command = { trigger = { control = { province = 514 data = FIN } } type = activate_division which = 32000 value = 402 where = 514 when = 0 }
+		command = { trigger = { control = { province = 532 data = FIN } } type = activate_division which = 32000 value = 403 where = 532 when = 0 }
+		command = { trigger = { control = { province = 531 data = FIN } } type = activate_division which = 32000 value = 404 where = 531 when = 0 }
+		command = { trigger = { control = { province = 531 data = FIN } } type = activate_division which = 32000 value = 405 where = 531 when = 0 }
+		command = { trigger = { control = { province = 531 data = FIN } } type = activate_division which = 32000 value = 406 where = 531 when = 0 }
+		command = { trigger = { control = { province = 531 data = FIN } } type = activate_division which = 32000 value = 407 where = 531 when = 0 }
+		command = { trigger = { control = { province = 531 data = FIN } } type = activate_division which = 32000 value = 408 where = 531 when = 0 }
+		command = { trigger = { ai = yes NOT = { local_flag = MOB7 } NOT = { local_flag = demob } } type = local_setflag which = do_not_demob }
+		command = { trigger = { ai = yes NOT = { local_flag = MOB7 } NOT = { local_flag = demob } } type = trigger which = 236015 }
+		command = { trigger = { ai = yes NOT = { local_flag = MOB7 } NOT = { local_flag = demob } } type = event which = 146063 where = FIN when = 360 }
+		}
+	action = {
+		ai_chance = 0
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = SOV value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146002] FIN | 1936 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146002
+	random = no
+	country = FIN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FIN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = october year = 1936 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 145013 }
+		command = { type = headofgovernment which = 145024 }
+		command = { type = foreignminister which = 145040 }
+		command = { type = armamentminister which = 145055 }
+		command = { type = ministerofintelligence which = 145006 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 145001 }
+		command = { type = headofgovernment which = 145002 }
+		command = { type = foreignminister which = 145045 }
+		command = { type = armamentminister which = 145060 }
+		command = { type = ministerofsecurity which = 145081 }
+		command = { type = ministerofintelligence which = 145093 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [146011] FIN | 1938 | Lotta Svärd Auxiliary Corps (Cuerpo auxiliar Lotta Svärd)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146011
+	random = no
+	country = FIN
+	trigger = { NOT = { government = communist } }
+	name = "EVT_FIN_146011_NAME"
+	desc = "EVT_FIN_146011_DESC"
+	style = 2
+	picture = "Minors/lotta"
+	date = { day = 0 month = november  year = 1938 }
+	action_a = {
+		name = "ACTION_NAME_GREAT"
+		command = { trigger = { ai = FIN } type = ai which = "switch/FIN_reinforce.ai" }
+		command = { type = manpowerpool value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146064] FIN | 1939 | Neutrality Preserved (Preservación de la neutralidad)
+# Triggered by event 329787 in events/GER/GER_38-40.txt
+# Triggered by event 329788 in events/GLOBAL/ALL_36-40.txt
+# Triggered by event 146084 in events/Minors/FIN_51-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146064
+	country = FIN
+	name = EVT_SHARED_00897_NAME
+	desc = EVT_SHARED_00897_DESC
+	picture = "nwo/out_of_war"
+	style = 1
+	trigger = {
+		flag = der_untergang
+		OR = {
+			event = { id = 329787 days = 3 }
+			event = { id = 329788 days = 3 }
+		}
+		NOT = {
+			alliance = { country = ENG }
+			alliance = { country = USA }
+			alliance = { country = SOV }
+			NOT = { event = 146084 }
+		}
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = out_of_war }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146093] FIN | 1939 | Bitter Peace Negotiations with Finland (Negociaciones de la Paz Amarga con Finlandia)
+# Triggered by event 150504 in events/GER/GER_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146093
+	country = FIN
+	name = EVT_FIN_146093_NAME
+	desc = EVT_FIN_146093_DESC
+	picture = "nwo/finnish_gains_in_ussr"
+	style = 1
+	action = {
+		name = EVT_FIN_146093_A
+		trigger = {
+			OR = {
+				control = { province = 187 data = -1 }
+				control = { province = 175 data = -1 }
+				control = { province = 154 data = -1 }
+			}
+		}
+		command = { type = dissent value = -5 }
+		command = { type = sleepevent which = 150509 }
+		command = { type = sleepevent which = 150510 }
+	}
+	action = {
+		name = EVT_FIN_146093_B
+		trigger = {
+			NOT = {
+				control = { province = 187 data = -1 }
+				control = { province = 175 data = -1 }
+				control = { province = 154 data = -1 }
+			}
+		}
+		command = { type = dissent value = -3 }
+		command = { type = sleepevent which = 150508 }
+		command = { type = sleepevent which = 150510 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146003] FIN | 1939 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146003
+	random = no
+	country = FIN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FIN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = december year = 1939 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 145015 }
+		command = { type = headofgovernment which = 145028 }
+		command = { type = foreignminister which = 145038 }
+		command = { type = armamentminister which = 145062 }
+		command = { type = ministerofsecurity which = 145071 }
+		command = { type = ministerofintelligence which = 145089 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 145121 }
+		command = { type = headofgovernment which = 145025 }
+		command = { type = foreignminister which = 145042 }
+		command = { type = armamentminister which = 145056 }
+		command = { type = ministerofintelligence which = 145006 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [146000] FIN | 1940 | General Officer Retires (Paso a retiro de un general)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146000
+	random = no
+	country = FIN
+	style = 2
+	trigger = {
+		minister = 145015
+		}
+	date = { year = 1940 month = august day = 27 }
+	name = "EVT_SHARED_00503_NAME"
+	desc = "EVT_SHARED_00503_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 145015 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [146008] FIN | 1941 | Changing Allegiances (Cambio de bando)
+# Trigger event 223032 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146008
+	random = no
+	country = FIN
+	name = EVT_FIN_146008_NAME
+	desc = EVT_FIN_146008_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = { exists = U20 }
+		war = { country = FIN country = SOV }
+		control = { province = 531 data = SOV }
+		OR = {
+			control = { province = 525 data = SOV }
+			control = { province = 521 data = SOV }
+		}
+		OR = {
+			control = { province = 524 data = SOV }
+			control = { province = 527 data = SOV }
+		}
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 97
+		name = ACTION_NAME_JOIN_COMINTERN
+		command = { type = end_puppet }
+		command = { type = trigger which = 223032 }
+	}
+	action_b = {
+		ai_chance = 3
+		name = ACTION_NAME_JOIN_AXIS
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = defense_lobby value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146018] FIN | 1941 | Offer Separate Peace to the USSR (Proponer paz por separado a la URSS)
+# Triggered by event 146027 in events/Minors/FIN_14-51.txt
+# Trigger event 223116 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146018
+	random = no
+	country = FIN
+	name = EVT_FIN_146018_NAME
+	desc = EVT_SHARED_00440_DESC
+	style = 2
+	picture = "GLOBAL/finnish_reinforcements"
+	trigger = {
+		NOT = { exists = U20 }
+		war = { country = GER country = SOV }
+		war = { country = FIN country = SOV }
+		OR = {
+			control = { province = 525 data = SOV }
+			control = { province = 521 data = SOV }
+			control = { province = 524 data = SOV }
+			control = { province = 527 data = SOV }
+		}
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 97
+		name = ACTION_NAME_DEFEAT
+		command = { trigger = { puppet = { country = FIN country = GER } } type = end_puppet }
+		command = { type = set_relation which = SOV value = 0 }
+		command = { type = set_relation which = GER value = -50 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = set_domestic which = defense_lobby value = 3 }
+		command = { type = set_domestic which = interventionism value = 2 }
+		command = { type = headofstate which = 145011 }
+		command = { type = headofgovernment which = 145031 }
+		command = { type = foreignminister which = 145046 }
+		command = { type = armamentminister which = 145065 }
+		command = { type = ministerofsecurity which = 145084 }
+		command = { type = ministerofintelligence which = 145096 }
+		command = { type = chiefofstaff which = 145102 }
+		command = { type = chiefofarmy which = 145107 }
+		command = { type = chiefofnavy which = 145111 }
+		command = { type = chiefofair which = 145115 }
+		command = { type = trigger which = 223116 }
+	}
+	action_b = {
+		ai_chance = 3
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = defense_lobby value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146020] FIN | 1941 | germany is a friend (Alemania es un amigo)
+# Triggered by event 150062 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146020
+	random = no
+	country = FIN
+	name = "EVT_FIN_146020_NAME"
+	desc = "EVT_FIN_146020_DESC"
+	style = 2
+	picture = "GLOBAL/finnish_reinforcements"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = ai which = "switch/FIN_Fix_Barba.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146089] FIN | 1941 | The Moscow Armistice (El Armisticio de Moscú)
+# Triggered by event 223116 in events/SOV/SOV_40-43.txt
+# Triggered by event 223244 in events/SOV/SOV_43-46.txt
+# Trigger event 329837 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146089
+	country = FIN
+	name = EVT_FIN_146089_NAME
+	desc = EVT_FIN_146089_DESC
+	picture = "nwo/finnish_continuation_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 100
+		command = { type = leave_alliance }
+		command = { type = peace which = SOV value = 1 }
+		command = { type = end_puppet }
+		command = { type = secedeprovince which = SOV value = 517 when = 1 }
+		command = { type = secedeprovince which = SOV value = 519 when = 1 }
+		command = { type = secedeprovince which = SOV value = 530 when = 1 }
+		command = { type = secedeprovince which = SOV value = 531 when = 1 }
+		command = { type = secedeprovince which = SOV value = 532 when = 1 }
+		command = { type = access which = SOV }
+		command = { type = set_relation which = SOV value = 0 }
+		command = { type = set_relation which = GER value = -300 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = set_domestic which = defense_lobby value = 3 }
+		command = { type = set_domestic which = interventionism value = 1 }
+		command = { type = war which = GER }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_DEMANDS
+		ai_chance = 0
+		command = { type = dissent value = 20 }
+		command = { type = sleepevent which = 329837 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146004] FIN | 1943 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146004
+	random = no
+	country = FIN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FIN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = march year = 1943 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 145017 }
+		command = { type = headofgovernment which = 145033 }
+		command = { type = foreignminister which = 145046 }
+		command = { type = armamentminister which = 145064 }
+		command = { type = ministerofsecurity which = 145084 }
+		command = { type = ministerofintelligence which = 145095 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 145014 }
+		command = { type = headofgovernment which = 145026 }
+		command = { type = foreignminister which = 145043 }
+		command = { type = armamentminister which = 145057 }
+		command = { type = ministerofsecurity which = 145077 }
+		command = { type = ministerofintelligence which = 145092 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [146065] FIN | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146065
+	country = FIN
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 145011 }
+		command = { type = headofgovernment which = 145031 }
+		command = { type = foreignminister which = 145044 }
+		command = { type = armamentminister which = 145053 }
+		command = { type = ministerofsecurity which = 145073 }
+		command = { type = ministerofintelligence which = 145096 }
+		command = { type = chiefofstaff which = 145102 }
+		command = { type = chiefofarmy which = 145107 }
+		command = { type = chiefofnavy which = 145110 }
+		command = { type = chiefofair which = 145114 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146066] FIN | 1945 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146066
+	country = FIN
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 145011 }
+		command = { type = headofgovernment which = 145031 }
+		command = { type = foreignminister which = 145044 }
+		command = { type = armamentminister which = 145059 }
+		command = { type = ministerofsecurity which = 145080 }
+		command = { type = ministerofintelligence which = 145092 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 145011 }
+		command = { type = headofgovernment which = 145123 }
+		command = { type = foreignminister which = 145044 }
+		command = { type = armamentminister which = 145053 }
+		command = { type = ministerofsecurity which = 145073 }
+		command = { type = ministerofintelligence which = 145090 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146067] FIN | 1946 | Paasikivi Elected President (Paasikivi elegido presidente)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146067
+	country = FIN
+	name = "EVT_FIN_146067_NAME"
+	desc = "EVT_FIN_146067_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 145012 }
+		command = { type = headofgovernment which = 145023 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146005] FIN | 1946 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146005
+	random = no
+	country = FIN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FIN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = march year = 1946 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 145012 }
+		command = { type = headofgovernment which = 145023 }
+		command = { type = foreignminister which = 145039 }
+		command = { type = armamentminister which = 145054 }
+		command = { type = ministerofsecurity which = 145074 }
+		command = { type = ministerofintelligence which = 145090 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 145018 }
+		command = { type = headofgovernment which = 145027 }
+		command = { type = foreignminister which = 145044 }
+		command = { type = armamentminister which = 145059 }
+		command = { type = ministerofsecurity which = 145080 }
+		command = { type = ministerofintelligence which = 145092 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [146068] FIN | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146068
+	country = FIN
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 145012 }
+		command = { type = headofgovernment which = 145123 }
+		command = { type = foreignminister which = 145044 }
+		command = { type = armamentminister which = 145124 }
+		command = { type = ministerofsecurity which = 145125 }
+		command = { type = ministerofintelligence which = 145090 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 145012 }
+		command = { type = headofgovernment which = 145023 }
+		command = { type = foreignminister which = 145044 }
+		command = { type = armamentminister which = 145066 }
+		command = { type = ministerofsecurity which = 145080 }
+		command = { type = ministerofintelligence which = 145090 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329837] FIN | 1948 | Finno-Soviet YYA Treaty (Tratado YYA fino-soviético)
+# Triggered by event 146089 in events/Minors/FIN_14-51.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329837
+	country = FIN
+	name = EVT_FIN_329837_NAME
+	desc = EVT_FIN_329837_DESC
+	picture = "nwo/yya_treaty"
+	style = 1
+	trigger = {
+		government = democratic
+		exists = SOV
+		event = 146089
+		NOT = { war = { country = FIN country = SOV } }
+	}
+	date = { day = 6 month = april year = 1948 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 90
+		command = { type = leave_alliance }
+		command = { type = dissent value = -5 }
+		command = { type = set_relation which = SOV value = 100 }
+		command = { type = set_relation which = USA value = 0 }
+		command = { type = set_relation which = ENG value = 0 }
+		command = { type = non_aggression which = SOV where = FIN }
+		command = { type = guarantee which = SOV where = FIN }
+		command = { type = access which = SOV }
+		command = { type = sleepevent which = 146092 }
+	}
+	action = {
+		name = ACTION_NAME_DONT_SIGN
+		ai_chance = 10
+		command = { type = leave_alliance }
+		command = { type = dissent value = 30 }
+		command = { type = set_relation which = SOV value = -200 }
+		command = { type = end_non_aggression which = SOV where = FIN }
+		command = { type = end_guarantee which = SOV where = FIN }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146006] FIN | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146006
+	random = no
+	country = FIN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FIN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = july year = 1948 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 145012 }
+		command = { type = headofgovernment which = 145123 }
+		command = { type = foreignminister which = 145044 }
+		command = { type = armamentminister which = 145124 }
+		command = { type = ministerofsecurity which = 145125 }
+		command = { type = ministerofintelligence which = 145090 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 145012 }
+		command = { type = headofgovernment which = 145023 }
+		command = { type = foreignminister which = 145044 }
+		command = { type = armamentminister which = 145054 }
+		command = { type = ministerofsecurity which = 145074 }
+		command = { type = ministerofintelligence which = 145090 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [146092] FIN | 1949 | The Marshall Plan (El Plan Marshall)
+# Triggered by event 146075 in events/Minors/FIN_51-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 146092
+	country = FIN
+	name = EVT_SHARED_00933_NAME
+	desc = EVT_SHARED_00933_DESC
+	picture = "nwo/marshall_plan"
+	style = 1
+	trigger = {
+		flag = cold_war
+		OR = {
+			flag = marshall_plan_for_all
+			AND = {
+				OR = {
+					flag = marshall_plan_west_only
+					flag = marshall_plan_west_plus_two
+				}
+				NOT = { event = 146075 }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1949 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = relation which = USA value = 100 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = free_market value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [146007] FIN | 1950 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146007
+	random = no
+	country = FIN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = FIN }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = march year = 1950 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 145018 }
+		command = { type = headofgovernment which = 145022 }
+		command = { type = foreignminister which = 145126 }
+		command = { type = armamentminister which = 145129 }
+		command = { type = ministerofsecurity which = 145071 }
+		command = { type = ministerofintelligence which = 145096 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 145012 }
+		command = { type = headofgovernment which = 145123 }
+		command = { type = foreignminister which = 145044 }
+		command = { type = armamentminister which = 145124 }
+		command = { type = ministerofsecurity which = 145125 }
+		command = { type = ministerofintelligence which = 145090 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [146069] FIN | 1951 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 146069
+	country = FIN
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 145012 }
+		command = { type = headofgovernment which = 145022 }
+		command = { type = foreignminister which = 145126 }
+		command = { type = armamentminister which = 145129 }
+		command = { type = ministerofsecurity which = 145071 }
+		command = { type = ministerofintelligence which = 145096 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 145012 }
+		command = { type = headofgovernment which = 145123 }
+		command = { type = foreignminister which = 145044 }
+		command = { type = armamentminister which = 145124 }
+		command = { type = ministerofsecurity which = 145125 }
+		command = { type = ministerofintelligence which = 145090 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}

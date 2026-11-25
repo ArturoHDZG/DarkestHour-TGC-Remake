@@ -1,0 +1,286 @@
+# ============================================================================
+# File: events/Minors/REB.txt (5 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [207068] REB | 1922 | Reinforcing our authority (Reforzando nuestra autoridad)
+# Triggered by event 163054 in events/Minors/IRE_14-59.txt
+# Trigger event 163055 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+id = 207068
+random = no
+country = REB
+style = 2
+	picture = "GLOBAL/scw"
+name = "EVT_REB_207068_NAME"
+desc = "EVT_REB_207068_DESC"
+action_a = {
+name = "ACTION_NAME_GOOD"
+command = { type = remove_division which = -1 value = REB	}
+command = { type = remove_division which = -1 value = REB	}
+command = { type = remove_division which = -1 value = REB	}
+command = { type = remove_division which = -1 value = REB	}
+command = { type = remove_division which = -1 value = REB	}
+command = { type = control which = IRE value = 30 }
+command = { type = control which = IRE value = 31 }
+command = { type = control which = IRE value = 32 }
+command = { type = control which = IRE value = 33 }
+command = { type = control which = IRE value = 34 }
+command = { type = trigger which = 163055 }
+}
+}
+
+# ----------------------------------------------------------------------------
+# [207066] REB | 1938 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 207066
+	country = REB
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		NOT = { exists = GER }
+	}
+	date = { day = 0 month = january year = 1938 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1938 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = sleepevent which = 329787 }
+		command = { type = sleepevent which = 329788 }
+		command = { type = sleepevent which = 329939 }
+		command = { type = sleepevent which = 329940 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [207036] REB | 1945 | Post-War Crisis Subsided (Fin de las turbulencias)
+# Triggered by event 124203 in events/CHI/CHI_37-45.txt
+# Triggered by event 124198 in events/CHI/CHI_Decisions.txt
+# Triggered by event 124199 in events/CHI/CHI_Decisions.txt
+# Triggered by event 124200 in events/CHI/CHI_Decisions.txt
+# Triggered by event 124201 in events/CHI/CHI_Decisions.txt
+# Triggered by event 124202 in events/CHI/CHI_Decisions.txt
+# Trigger event 124203 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 207036
+	country = REB
+	persistent = yes
+	name = EVT_REB_207036_NAME
+	desc = EVT_REB_207036_DESC
+	picture = "nwo/kmt_end_of_instability"
+	style = 1
+	trigger = {
+		exists = CHI
+		flag = CHI_won_civil_war
+		NOT = { event = 124203 }
+		OR = {
+			AND = { event = 124198 random = 1 }
+			AND = { event = 124199 random = 1 }
+			AND = { event = 124200 random = 1 }
+			AND = { event = 124201 random = 1 }
+			AND = { event = 124202 random = 3 }
+			random = 1
+		}
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 124203 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330043] REB | 1955 | Outcome of the Vietnamese Elections (Resultado de las elecciones de Vietnam)
+# Triggered by event 330041 in events/Minors/U72.txt
+# Triggered by event 330042 in events/Minors/U72.txt
+# Trigger event 320027 in events/Minors/VIE.txt
+# Trigger event 285010 in events/Minors/U72.txt
+# Trigger event 320029 in events/Minors/VIE.txt
+# Trigger event 285012 in events/Minors/U72.txt
+# Trigger event 320031 in events/Minors/VIE.txt
+# Trigger event 285014 in events/Minors/U72.txt
+# Trigger event 320033 in events/Minors/VIE.txt
+# Trigger event 285016 in events/Minors/U72.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 330043
+	country = REB
+	name = EVT_REB_330043_NAME
+	desc = EVT_REB_330043_DESC
+	picture = "nwo/vietnam_elections"
+	style = 1
+	trigger = {
+		NOT = { war = { country = U72 country = VIE } }
+		event = 330041
+		event = 330042
+		exists = VIE
+		exists = U72
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_REB_330043_A
+		ai_chance = 80
+		trigger = {
+			flag = vietnamese_elections_rigged_by_U72
+			flag = vietnamese_elections_rigged_by_VIE
+		}
+		command = { type = trigger which = 320027 }
+	}
+	action = {
+		name = EVT_REB_330043_B
+		ai_chance = 20
+		trigger = {
+			flag = vietnamese_elections_rigged_by_U72
+			flag = vietnamese_elections_rigged_by_VIE
+		}
+		command = { type = trigger which = 285010 }
+	}
+	action = {
+		name = EVT_REB_330043_A
+		ai_chance = 99
+		trigger = {
+			flag = vietnamese_elections_rigged_by_U72
+			NOT = { flag = vietnamese_elections_rigged_by_VIE }
+		}
+		command = { type = trigger which = 320029 }
+	}
+	action = {
+		name = EVT_REB_330043_B
+		ai_chance = 1
+		trigger = {
+			flag = vietnamese_elections_rigged_by_U72
+			NOT = { flag = vietnamese_elections_rigged_by_VIE }
+		}
+		command = { type = trigger which = 285012 }
+	}
+	action = {
+		name = EVT_REB_330043_A
+		ai_chance = 4
+		trigger = {
+			NOT = { flag = vietnamese_elections_rigged_by_U72 }
+			flag = vietnamese_elections_rigged_by_VIE
+		}
+		command = { type = trigger which = 320031 }
+	}
+	action = {
+		name = EVT_REB_330043_B
+		ai_chance = 96
+		trigger = {
+			NOT = { flag = vietnamese_elections_rigged_by_U72 }
+			flag = vietnamese_elections_rigged_by_VIE
+		}
+		command = { type = trigger which = 285014 }
+	}
+	action = {
+		name = EVT_REB_330043_A
+		ai_chance = 55
+		trigger = {
+			NOT = { flag = vietnamese_elections_rigged_by_U72 }
+			NOT = { flag = vietnamese_elections_rigged_by_VIE }
+		}
+		command = { type = trigger which = 320033 }
+	}
+	action = {
+		name = EVT_REB_330043_B
+		ai_chance = 45
+		trigger = {
+			NOT = { flag = vietnamese_elections_rigged_by_U72 }
+			NOT = { flag = vietnamese_elections_rigged_by_VIE }
+		}
+		command = { type = trigger which = 285016 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [207034] REB | 1956 | US Unilateral Move in Hungary (Intervención unilateral de EE. UU. en Hungría)
+# Triggered by event 223267 in events/SOV/SOV_56-81.txt
+# Triggered by event 248016 in events/Minors/U13.txt
+# Triggered by event 223269 in events/SOV/SOV_47-56.txt
+# Triggered by event 248032 in events/Minors/U13.txt
+# Triggered by event 223268 in events/SOV/SOV_47-56.txt
+# Triggered by event 207061 in events/AI/REB_AI_55-00.txt
+# Triggered by event 248035 in events/Minors/U13.txt
+# Trigger event 223269 in events/SOV/SOV_47-56.txt
+# Trigger event 248032 in events/Minors/U13.txt
+# Trigger event 248016 in events/Minors/U13.txt
+# Trigger event 223268 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 207034
+	country = REB
+	name = EVT_SHARED_00917_NAME
+	desc = EVT_SHARED_00917_DESC
+	picture = "nwo/allied_intervention"
+	style = 1
+	trigger = {
+		event = 223267
+		flag = cold_war
+		NOT = {
+			event = 248016
+			event = 223269
+			event = 248032
+			event = 223268
+		}
+	}
+	date = { day = 29 month = october year = 1956 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 199
+		trigger = {
+			NOT = {
+				event = 207061
+				event = 248035
+			}
+		}
+		command = { type = trigger which = 223269 }
+		command = { type = trigger which = 248032 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 1
+		trigger = {
+			NOT = {
+				event = 207061
+				event = 248035
+			}
+		}
+		command = { type = trigger which = 248016 }
+		command = { type = trigger which = 223268 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 95
+		trigger = {
+			OR = {
+				event = 207061
+				event = 248035
+			}
+		}
+		command = { type = trigger which = 223269 }
+		command = { type = trigger which = 248032 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 5
+		trigger = {
+			OR = {
+				event = 207061
+				event = 248035
+			}
+		}
+		command = { type = trigger which = 248016 }
+		command = { type = trigger which = 223268 }
+	}
+}

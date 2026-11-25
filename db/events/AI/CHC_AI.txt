@@ -1,0 +1,422 @@
+# ============================================================================
+# File: events/AI/CHC_AI.txt (10 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [123002] CHC | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 123002
+	random = no
+	country = CHC
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = no
+		NOT = { local_flag = UPGPeace }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 6
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = ai which = "switch/Minor_Upg_Peace.ai" }
+		command = { type = local_setflag which = UPGPeace }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123003] CHC | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 123003
+	random = no
+	country = CHC
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = yes
+		local_flag = UPGPeace
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 6
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = ai which = "switch/Minor_Upg_War.ai" }
+		command = { type = local_clrflag which = UPGPeace }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123004] CHC | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 123004
+	random = no
+	country = CHC
+	persistent = yes
+	trigger = {
+		ai = yes
+		NOT = { local_flag = CHCAttackJAP }
+		war = { country = JAP }
+		OR = {
+			war = { country = JAP country = SOV }
+			lost_national = { country = CHI value = 40 }
+			lost_national = { country = CHC value = 1 }
+		}
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = ai which = "switch/CHC_Attack_JAP.ai" }
+		command = { type = local_setflag which = CHCAttackJAP }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329581] CHC | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329581
+	random = no
+	country = CHC
+	trigger = {
+		ai = yes
+		war = { country = JAP }
+		alliance = { country = CHC }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = ai which = "switch/ferocity_yes.ai" }
+		command = { type = ai which = "switch/CHC_atwar_JAP.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329582] CHC | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329582
+	random = no
+	country = CHC
+	persistent = yes
+	trigger = {
+		ai = yes
+		local_flag = CHCAttackJAP
+		NOT = { war = { country = JAP } }
+		NOT = { war = { country = JAP country = SOV } }
+		NOT = { lost_national = { country = CHI value = 40 } }
+		NOT = { lost_national = { country = CHC value = 1 } }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = ai which = "switch/CHC_Defend_JAP.ai" }
+		command = { type = local_clrflag which = CHCAttackJAP }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329583] CHC | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329583
+	random = no
+	country = CHC
+	trigger = {
+		ai = yes
+		war = { country = JAP }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = ai which = "switch/CHC_Defend_JAP.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329584] CHC | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329584
+	random = no
+	country = CHC
+	trigger = {
+		ai = yes
+		OR = {
+			war = { country = MAN }
+			war = { country = MEN }
+		}
+		NOT = { war = { country = JAP } }
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1970 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = 	peace which = MEN }
+		command = { type = 	peace which = MAN }
+		command = { trigger = { non_aggression = { country = CHC country = JAP } } type = non_aggression which = CHC where = MEN }
+		command = { trigger = { non_aggression = { country = CHC country = JAP } } type = non_aggression which = CHC where = MAN }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123091] CHC | 1944 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 123091
+	country = CHC
+	name = "AI_EVENT"
+	trigger = {
+		ai = yes
+		flag = cold_war_pacific
+		NOT = { local_flag = block_demobilization }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = block_demobilization }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123092] CHC | 1944 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 123092
+	country = CHC
+	name = "AI_EVENT"
+	trigger = {
+		ai = yes
+		flag = cold_war_pacific
+		local_flag = block_demobilization
+		OR = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_clrflag which = block_demobilization }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123022] CHC | 1945 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 123022
+	country = CHC
+	persistent = yes
+	name = "AI_EVENT"
+	trigger = {
+		ai = yes
+		NOT = { exists = GER }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1945 }
+			year = 1945	NOT = { year = 1950 }
+			NOT = { war = { country = CHI country = CHC } }
+			NOT = { OR = { flag = CHC_won_civil_war flag = CHI_won_civil_war } }
+			}
+		command = { type = ai which = Generic/default_1945.ai }
+		command = { type = ai which = Generic/default_asia_1945.ai }
+		command = { type = ai which = Majors/CHC/CHC_1945.ai }
+		command = { type = local_setflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1947 }
+		command = { type = local_clrflag which = ai_1949 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+		command = { type = local_clrflag which = ai_1950_ww3 }
+		command = { type = local_clrflag which = ai_1960_ww3 }
+		command = { type = local_clrflag which = ai_1970_ww3 }
+		command = { type = local_clrflag which = ai_1980_ww3 }
+		command = { type = local_clrflag which = ai_1990_ww3 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1945 }
+			year = 1945	NOT = { year = 1950 }
+			war = { country = CHI country = CHC }
+			NOT = { OR = { flag = CHC_won_civil_war flag = CHI_won_civil_war } }
+			}
+		command = { type = ai which = Generic/default_1945.ai }
+		command = { type = ai which = Generic/default_asia_1945.ai }
+		command = { type = ai which = Majors/CHC/CHC_1947.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_setflag which = ai_1947 }
+		command = { type = local_clrflag which = ai_1949 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+		command = { type = local_clrflag which = ai_1950_ww3 }
+		command = { type = local_clrflag which = ai_1960_ww3 }
+		command = { type = local_clrflag which = ai_1970_ww3 }
+		command = { type = local_clrflag which = ai_1980_ww3 }
+		command = { type = local_clrflag which = ai_1990_ww3 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1945 }
+			year = 1945	NOT = { year = 1950 }
+			NOT = { war = { country = CHI country = CHC } }
+			flag = CHC_won_civil_war
+			}
+		command = { type = ai which = Generic/default_1945.ai }
+		command = { type = ai which = Generic/default_asia_1945.ai }
+		command = { type = ai which = Majors/CHC/CHC_1949.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1947 }
+		command = { type = local_setflag which = ai_1949 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+		command = { type = local_clrflag which = ai_1950_ww3 }
+		command = { type = local_clrflag which = ai_1960_ww3 }
+		command = { type = local_clrflag which = ai_1970_ww3 }
+		command = { type = local_clrflag which = ai_1980_ww3 }
+		command = { type = local_clrflag which = ai_1990_ww3 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1950_ww3 }
+			year = 1950	NOT = { year = 1960 }
+			OR = { flag = CHC_won_civil_war flag = CHI_won_civil_war }
+			flag = ww3
+			}
+		command = { type = ai which = Generic/default_1950.ai }
+		command = { type = ai which = Generic/default_asia_1950.ai }
+		command = { type = ai which = Majors/CHC/CHC_WW3_1950.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1947 }
+		command = { type = local_clrflag which = ai_1949 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+		command = { type = local_setflag which = ai_1950_ww3 }
+		command = { type = local_clrflag which = ai_1960_ww3 }
+		command = { type = local_clrflag which = ai_1970_ww3 }
+		command = { type = local_clrflag which = ai_1980_ww3 }
+		command = { type = local_clrflag which = ai_1990_ww3 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1950 }
+			year = 1950	NOT = { year = 1960 }
+			OR = { flag = CHC_won_civil_war flag = CHI_won_civil_war }
+			NOT = { flag = ww3 }
+			}
+		command = { type = ai which = Generic/default_1950.ai }
+		command = { type = ai which = Generic/default_asia_1950.ai }
+		command = { type = ai which = Majors/CHC/CHC_1950.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1947 }
+		command = { type = local_clrflag which = ai_1949 }
+		command = { type = local_setflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+		command = { type = local_clrflag which = ai_1950_ww3 }
+		command = { type = local_clrflag which = ai_1960_ww3 }
+		command = { type = local_clrflag which = ai_1970_ww3 }
+		command = { type = local_clrflag which = ai_1980_ww3 }
+		command = { type = local_clrflag which = ai_1990_ww3 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1960 }
+			year = 1960	NOT = { year = 1970 }
+			}
+		command = { type = ai which = Generic/default_1960.ai }
+		command = { type = ai which = Generic/default_asia_1960.ai }
+		command = { trigger = { NOT = { flag = ww3 } } type = ai which = Majors/CHC/CHC_1960.ai }
+		command = { trigger = { flag = ww3 } type = ai which = Majors/CHC/CHC_WW3_1960.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1947 }
+		command = { type = local_clrflag which = ai_1949 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_setflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1970 }
+			year = 1970	NOT = { year = 1980 }
+			}
+		command = { type = ai which = Generic/default_1970.ai }
+		command = { type = ai which = Generic/default_asia_1970.ai }
+		command = { trigger = { NOT = { flag = ww3 } } type = ai which = Majors/CHC/CHC_1970.ai }
+		command = { trigger = { flag = ww3 } type = ai which = Majors/CHC/CHC_WW3_1970.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1947 }
+		command = { type = local_clrflag which = ai_1949 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_setflag which = ai_1970 }
+		command = { type = local_clrflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = {
+			NOT = { local_flag = ai_1980 }
+			year = 1980	NOT = { year = 1990 }
+			}
+		command = { type = ai which = Generic/default_1980.ai }
+		command = { type = ai which = Generic/default_asia_1980.ai }
+		command = { trigger = { NOT = { flag = ww3 } } type = ai which = Majors/CHC/CHC_1980.ai }
+		command = { trigger = { flag = ww3 } type = ai which = Majors/CHC/CHC_WW3_1980.ai }
+		command = { type = local_clrflag which = ai_1945 }
+		command = { type = local_clrflag which = ai_1947 }
+		command = { type = local_clrflag which = ai_1949 }
+		command = { type = local_clrflag which = ai_1950 }
+		command = { type = local_clrflag which = ai_1960 }
+		command = { type = local_clrflag which = ai_1970 }
+		command = { type = local_setflag which = ai_1980 }
+		command = { type = local_clrflag which = ai_1990 }
+	}
+}

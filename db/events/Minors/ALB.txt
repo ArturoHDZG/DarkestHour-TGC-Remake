@@ -1,0 +1,724 @@
+# ============================================================================
+# File: events/Minors/ALB.txt (24 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [101016] ALB | 1914 | Serbian Army Transit across Albania? (¿Permitir la retirada serbia por Albania?)
+# Triggered by event 217004 in events/Minors/SER_Decisions.txt
+# Trigger event 217005 in events/Minors/SER.txt
+# Trigger event 147269 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 101016
+   country = ALB
+   name = "EVT_ALB_101016_NAME"
+   desc = "EVT_ALB_101016_DESC"
+   style = 2
+	picture = "GLOBAL/foreign_volunteers"
+   action_a = {
+      name = "ACTION_NAME_ACCEPT"
+	  ai_chance = 50
+      command = { type = trigger which = 217005 }
+      command = { trigger = { war = { country = FRA country = U09 } } type = trigger which = 147269 }
+   }
+   action_b = {
+      name = "ACTION_NAME_REFUSE"
+	  ai_chance = 50
+	  command = { type = dissent value = -5 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [101005] ALB | 1933 | Albania closes the Italian schools (Albania cierra las escuelas italianas)
+# Trigger event 166002 in events/ITA/ITA_20-34.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 101005
+         random = no
+         country = ALB
+         trigger = {
+                   exists = ALB
+         }
+         name = "EVT_SHARED_00466_NAME"
+         desc = "EVT_SHARED_00466_DESC"
+         style = 2
+	picture = "GLOBAL/albania_closes_the_italian_schools"
+         date = { day = 15 month = june year = 1933 }
+           action_a = {
+                  name = "ACTION_NAME_ACCEPT"
+                  ai_chance = 100
+                  command = { type = relation which = ITA value = -25 }
+                  command = { type = end_puppet }
+                  command = { type = trigger which = 166002 }
+                  command = { type = dissent value = -2 }
+        }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 0
+                  command = { type = relation which = ITA value = 10 }
+                  command = { type = dissent value = 2 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [101002] ALB | 1934 | Trade agreements with Greece and Yugoslavia. (Acuerdos comerciales con Grecia y Yugoslavia)
+# Trigger event 152000 in events/GRE/GRE_33-38.txt
+# Trigger event 323000 in events/Minors/YUG.txt
+# Trigger event 166000 in events/ITA/ITA_20-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 101002
+	random = no
+	country = ALB
+	style = 2
+	trigger = {
+		exists = ALB
+		}
+	date = { day = 9 month = June year = 1934 }
+	name = "EVT_ALB_101002_NAME"
+	desc = "EVT_SHARED_00463_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	action_a = {
+		name = "ACTION_NAME_SIGN"
+		ai_chance = 100
+		command = { type = relation which = GRE value = 25 }
+		command = { type = relation which = YUG value = 25 }
+		command = { type = trigger which = 152000 }
+                command = { type = trigger which = 323000 }
+                command = { type = trigger which = 166000 }
+                command = { type = metalpool value = 500 }
+                command = { type = money value = 500 }
+		command = { type = supplies value = 200 }
+		command = { type = dissent value = -3 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 0
+		command = { type = relation which = ITA value = -50 }
+		command = { type = dissent value = 3 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [101000] ALB | 1935 | The Government of Mehdi Frasheri (El gobierno de Mehdi Frasheri)
+# ----------------------------------------------------------------------------
+event = {
+	id = 101000
+	random = no
+	country = ALB
+	trigger = {
+		exists = ALB
+		}
+	date = { day = 22 month = October year = 1935 }
+	name = "EVT_ALB_101000_NAME"
+	desc = "EVT_ALB_101000_DESC"
+	style = 2
+	Picture = "ALB1"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 285001 }
+		command = { type = headofgovernment which = 285024 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [101003] ALB | 1936 | A new agreement with the Albanian king. (Un nuevo acuerdo con el rey albanés)
+# Triggered by event 166001 in events/ITA/ITA_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 101003
+	random = no
+	country = ALB
+	name = "EVT_SHARED_00465_NAME"
+	desc = "EVT_SHARED_00465_DESC"
+	style = 2
+	picture = "GLOBAL/a_new_agreement_with_the_albanian"
+	action_a = {
+		name = "ACTION_NAME_SIGN"
+		ai_chance = 100
+                command = { type = relation which = ITA value = 50 }
+                command = { type = metalpool value = 500 }
+                command = { type = money value = 500 }
+		command = { type = supplies value = 200 }
+		command = { type = dissent value = -3 }
+        }
+        action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 0
+		command = { type = relation which = ITA value = -50 }
+                command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [101009] ALB | 1936 | Italian Ultimatum to Albania (Ultimátum italiano a Albania)
+# Triggered by event 329000 in events/ITA/ITA_Decisions.txt
+# Trigger event 166003 in events/ITA/ITA_34-36.txt
+# Trigger event 166004 in events/ITA/ITA_34-36.txt
+# Trigger event 329534 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 101009
+	random = no
+	country = ALB
+	name = "EVT_ALB_101009_NAME"
+	desc = "EVT_ALB_101009_DESC"
+	style = 2
+	picture = "GLOBAL/mussolini"
+	action_a = {
+		name = "ACTION_NAME_NEVER"
+		ai_chance = 98
+		command = { trigger = { puppet = { country = ALB country = ITA } } type = end_puppet }
+		command = { trigger = { access = { country = -1 country = ITA }	 } type = end_access which = ITA }
+		command = { type = remove_division which = -1 }
+		command = { type = remove_division which = -1 }
+		command = { type = remove_division which = -1 }
+		command = { type = remove_division which = -1 }
+		command = { type = trigger which = 166003 }
+	}
+	action_b = {
+		name = "ACTION_NAME_SURRENDER_GAMEOVER"
+		ai_chance = 2
+		command = { type = trigger which = 166004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [101015] ALB | 1936 | Fall of the People's Republic of Albania (Caída de la República Popular de Albania)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 101015
+	random = no
+	country = ALB
+	name = "EVT_ALB_101015_NAME"
+	desc = "EVT_ALB_101015_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U28 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [101017] ALB | 1936 | Annexation of Northern Epirus Proclaimed (Anexión proclamada de Epiro Septentrional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 101017
+	country = ALB
+	name = "EVT_ALB_101017_NAME"
+	desc = "EVT_ALB_101017_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = secedeprovince which = GRE value = 360 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [101034] ALB | 1936 | People's Republic Founded (República Popular)
+# Trigger event 101035 in events/Minors/ALB.txt
+# Trigger event 263008 in events/Minors/U28.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 101034
+   country = ALB
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U28
+            NOT = { ai = ALB }
+            NOT = { ai = U28 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U28
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U28 } }
+      command = { type = country which = U28 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U28
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = ALB }
+               control = { province = 359 data = -1 }
+            }
+         }
+         type = trigger which = 101035
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U28 }
+               NOT = { control = { province = 359 data = -1 } }
+            }
+         }
+         type = trigger which = 263008
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U28
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [101035] ALB | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 101034 in events/Minors/ALB.txt
+# Triggered by event 263007 in events/Minors/U28.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 101035
+   country = ALB
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U28 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [101004] ALB | 1936 | Muslim Insurrection in Southern Albania (Insurrección musulmana en el sur de Albania)
+# ----------------------------------------------------------------------------
+event = {
+         id = 101004
+         random = no
+         country = ALB
+         trigger = {
+                   exists = ALB
+         }
+         name = "EVT_ALB_101004_NAME"
+         desc = "EVT_ALB_101004_DESC"
+         style = 2
+	picture = "Minors/muslim_insurrection_in_southern_albania"
+         date = { day = 15 month = January year = 1936 }
+           action_a = {
+                  name = "ACTION_NAME_CURSES"
+                  command = { type = dissent value = 2 }
+                  command = { type = money value = -10 }
+                  command = { type = manpowerpool value = -5 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [101007] ALB | 1936 | General strike at Kucove oil fields. (Huelga general en los campos petroleros de Kucove)
+# ----------------------------------------------------------------------------
+event = {
+         id = 101007
+         random = no
+         country = ALB
+         trigger = {
+                   exists = ALB
+         }
+         name = "EVT_ALB_101007_NAME"
+         desc = "EVT_ALB_101007_DESC"
+         style = 2
+	picture = "GLOBAL/strike"
+         date = { day = 11 month = February year = 1936 }
+           action_a = {
+                  name = "ACTION_NAME_CURSES"
+                  command = { type = dissent value = 2 }
+                  command = { type = money value = -10 }
+                  command = { type = manpowerpool value = -2 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [101001] ALB | 1936 | The Government of Kostaq Kota (El Gobierno de Kostaq Kota)
+# ----------------------------------------------------------------------------
+event = {
+	id = 101001
+	random = no
+	country = ALB
+	trigger = {
+		exists = ALB
+		}
+	date = { day = 9 month = November year = 1936 }
+	name = "EVT_ALB_101001_NAME"
+	desc = "EVT_ALB_101001_DESC"
+	style = 2
+	Picture = "ALB2"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 285001 }
+		command = { type = headofgovernment which = 285022 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [101010] ALB | 1937 | Establishment of the Italian regime (Establecimiento del régimen italiano)
+# Triggered by event 329001 in events/ITA/ITA_36-40.txt
+# Trigger event 101011 in events/Minors/ALB.txt
+# Trigger event 101012 in events/Minors/ALB.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 101010
+         random = no
+         country = ALB
+         name = "EVT_ALB_101010_NAME"
+         desc = "EVT_ALB_101010_DESC"
+         style = 2
+	picture = "GLOBAL/albania_yields_to_italian_demands"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = flag_ext where = ALB which = _kig }
+                  command = { type = relation which = ITA value = 200 }
+                  command = { type = set_domestic which = democratic value = 2 }
+                  command = { type = set_domestic which = political_left value = 3 }
+                  command = { type = set_domestic which = free_market value = 7 }
+                  command = { type = set_domestic which = freedom value = 3 }
+                  command = { type = headofstate which = 285249 }
+                  command = { type = headofgovernment which = 285028 }
+                  command = { type = sleepminister which = 285001 }
+                  command = { type = sleepminister which = 285006 }
+                  command = { type = sleepminister which = 285023 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329035] ALB | 1939 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329035
+	random = no
+	country = ALB
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		puppet = { country = ALB country = ITA }
+		random = 5
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = january year = 1939 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1941 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 285017 }
+		command = { type = headofgovernment which = 285028 }
+		command = { type = foreignminister which = 285041 }
+		command = { type = armamentminister which = 285060 }
+		command = { type = ministerofsecurity which = 285080 }
+		command = { type = ministerofintelligence which = 285097 }
+		command = { type = chiefofstaff which = 285007 }
+		command = { type = chiefofarmy which = 285124 }
+		command = { type = chiefofnavy which = 285136 }
+		command = { type = chiefofair which = 285146 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [101008] ALB | 1939 | Discovery of Driza oil field. (Descubrimiento del yacimiento petrolífero de Driza)
+# ----------------------------------------------------------------------------
+event = {
+         id = 101008
+         random = no
+         country = ALB
+         trigger = {
+                   exists = ALB
+         }
+         name = "EVT_ALB_101008_NAME"
+         desc = "EVT_ALB_101008_DESC"
+         style = 2
+	picture = "Minors/oil_mosul"
+         date = { day = 11 month = February year = 1939 }
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = -2 }
+                  command = { type = oilpool value = 2 where = 362 }
+                  command = { type = manpowerpool value = 5 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [101011] ALB | 1941 | The Government of Mustafa Merlika. (El gobierno de Mustafa Merlika)
+# Triggered by event 101010 in events/Minors/ALB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 101011
+	random = no
+	country = ALB
+	trigger = {
+		event = 101010
+		}
+	date = { day = 4 month = December year = 1941 }
+	name = "EVT_ALB_101011_NAME"
+	desc = "EVT_ALB_101011_DESC"
+	style = 2
+	Picture = "elections1938"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 285249 }
+		command = { type = headofgovernment which = 285027 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329036] ALB | 1942 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329036
+	random = no
+	country = ALB
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		puppet = { country = ALB country = ITA }
+		atwar = ITA
+		random = 5
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = january year = 1942 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1943 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 285018 }
+		command = { type = headofgovernment which = 285029 }
+		command = { type = foreignminister which = 285043 }
+		command = { type = armamentminister which = 285062 }
+		command = { type = ministerofsecurity which = 285082 }
+		command = { type = ministerofintelligence which = 285098 }
+		command = { type = chiefofstaff which = 285113 }
+		command = { type = chiefofarmy which = 285125 }
+		command = { type = chiefofnavy which = 285137 }
+		command = { type = chiefofair which = 285149 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [101012] ALB | 1943 | The Government of Eqrem Libohova. (El gobierno de Eqrem Libohova)
+# Triggered by event 101010 in events/Minors/ALB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 101012
+	random = no
+	country = ALB
+	trigger = {
+		event = 101010
+	}
+	date = { day = 19 month = January year = 1943 }
+	name = "EVT_ALB_101012_NAME"
+	desc = "EVT_ALB_101012_DESC"
+	style = 2
+	Picture = "elections1935"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 285249 }
+		command = { type = headofgovernment which = 285029 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [101029] ALB | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 101029
+	country = ALB
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 285014 }
+		command = { type = headofgovernment which = 285026 }
+		command = { type = foreignminister which = 285040 }
+		command = { type = armamentminister which = 285059 }
+		command = { type = ministerofsecurity which = 285078 }
+		command = { type = ministerofintelligence which = 285095 }
+		command = { type = chiefofstaff which = 285110 }
+		command = { type = chiefofarmy which = 285123 }
+		command = { type = chiefofnavy which = 285135 }
+		command = { type = chiefofair which = 285145 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [101033] ALB | 1945 | Claims over Kosovo (Reclamaciones de Kosovo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 101033
+	country = ALB
+	name = "EVT_ALB_101033_NAME"
+	desc = "EVT_ALB_101033_DESC"
+	picture = "nwo/kosovo_claims"
+	style = 1
+	trigger = {
+		NOT = { owned = { province = 329 data = -1 } }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 1000
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = "ACTION_NAME_BACK_DOWN"
+		ai_chance = 60
+		command = { type = removecore which = 329 }
+		command = { type = relation which = YUG value = 100 }
+	}
+	action = {
+		name = "EVT_ALB_101033_A"
+		ai_chance = 40
+		command = { type = relation which = YUG value = -100 }
+		command = { type = belligerence value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [101030] ALB | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 101030
+	country = ALB
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 285300 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [101031] ALB | 1990 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 101031
+	country = ALB
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 285301 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [101032] ALB | 1991 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 101032
+	country = ALB
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 285302 }
+	}
+}

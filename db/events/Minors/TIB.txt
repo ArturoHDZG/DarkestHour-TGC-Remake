@@ -1,0 +1,442 @@
+# ============================================================================
+# File: events/Minors/TIB.txt (15 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [232019] TIB | 1914 | British Intervention (Intervención británica)
+# Triggered by event 143423 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232019
+	random = no
+	country = TIB
+	one_action = yes
+	name = "EVT_TIB_232019_NAME"
+	desc = "EVT_TIB_232019_DESC"
+	picture = "GLOBAL/ccip_tib"
+	style = 2
+	action = {
+		ai_chance = 80
+		name = "EVT_TIB_232019_A"
+		command = { type = peace which = UCH }
+		command = { type = peace which = CHI }
+		command = { type = peace which = CYN }
+		command = { type = peace which = CXB }
+		command = { type = relation which = UCH value = -50 }
+		command = { type = relation which = CHI value = -50 }
+		command = { type = relation which = CYN value = -50 }
+		command = { type = relation which = CXB value = -50 }
+		command = { trigger = { exists = CXB } type = secedeprovince which = CXB value = 1285 when = 2 }
+		command = { trigger = { exists = CYN } type = secedeprovince which = CYN value = 1290 when = 2 }
+		command = { trigger = { not = { exists = CXB } exists = CHI } type = secedeprovince which = CHI value = 1285 when = 2 }
+		command = { trigger = { not = { exists = CXB } exists = CHI } type = secedeprovince which = CHI value = 1290 when = 2 }
+		command = { trigger = { not = { exists = CXB exists = CHI } exists = UCH } type = secedeprovince which = UCH value = 1285 when = 2 }
+		command = { trigger = { not = { exists = CXB exists = CHI } exists = UCH } type = secedeprovince which = UCH value = 1290 when = 2 }
+		command = { type = removeclaim which = 1293 }
+		command = { type = removeclaim which = 1292 }
+		command = { type = removeclaim which = 1284 }
+		command = { type = removeclaim which = 1283 }
+		command = { type = removeclaim which = 1262 }
+	}
+	action = {
+		ai_chance = 20
+		name = "EVT_TIB_232019_B"
+		command = { type = relation which = UCH value = 20 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = relation which = CYN value = 20 }
+		command = { type = relation which = CXB value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232012] TIB | 1914 | Simla Accord (Acuerdo de Simla)
+# ----------------------------------------------------------------------------
+event = {
+	id = 232012
+	country = TIB
+	random = no
+	trigger = {
+		exists = ENG
+	}
+	name = "EVT_SHARED_01050_NAME"
+	desc = "EVT_SHARED_01050_DESC"
+	style = 2
+	picture = "GLOBAL/simlaaccord"
+	date = { day = 2 month = july year = 1914}
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ENG value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232000] TIB | 1933 | Death of the Head of State (Muerte del Jefe del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 232000
+	random = no
+	country = TIB
+	style = 2
+	trigger = {
+		headofstate = 440075
+	}
+	date = { day = 16 month = december year = 1933 }
+	name = "EVT_SHARED_00501_NAME"
+	desc = "EVT_SHARED_00501_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 440087 }
+		command = { type = sleepminister which = 440075 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232001] TIB | 1935 | Head of State Resigns (Dimisión del Jefe de Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 232001
+	random = no
+	country = TIB
+	style = 2
+	trigger = {
+		headofstate = 440087
+		or = {
+			AND = { year = 1935 random = 1 }
+			AND = { year = 1936 random = 2 }
+			AND = { year = 1937 random = 5 }
+			AND = { year = 1938 random = 10 }
+			year = 1939
+		}
+	}
+	date = { day = 5 month = july year = 1935 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1939 }
+	name = "EVT_SHARED_00507_NAME"
+	desc = "EVT_SHARED_00507_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 440001 }
+		command = { type = sleepminister which = 440087 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232005] TIB | 1941 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 232005
+	country = TIB
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1941 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 440011 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232006] TIB | 1951 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 232006
+	country = TIB
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 440200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232007] TIB | 1951 | Chinese Incursion into Tibet (Incursión militar en el Tíbet)
+# Triggered by event 123100 in events/Minors/CHC_45-62.txt
+# Trigger event 123101 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232007
+	country = TIB
+	name = EVT_TIB_232007_NAME
+	desc = EVT_TIB_232007_DESC
+	picture = "nwo/dalai_lama_with_mao"
+	style = 1
+	trigger = {
+		event = 123100
+		exists = CHC
+		NOT = { ispuppet = TIB }
+	}
+	date = { day = 21 month = may year = 1951 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_TIB_232007_A
+		ai_chance = 98
+		command = { type = leave_alliance }
+		command = { type = dissent value = 5 }
+		command = { type = relation which = CHC value = 100 }
+		command = { type = access which = CHC }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 2
+		command = { type = leave_alliance }
+		command = { type = war which = CHC }
+		command = { type = sleepevent which = 123101 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232010] TIB | 1955 | Nationalist Demands on Tibet (Ultimátum chino al Tíbet)
+# Triggered by event 124226 in events/CHI/CHI_45-75.txt
+# Trigger event 124227 in events/CHI/CHI_45-75.txt
+# Trigger event 232011 in events/Minors/TIB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232010
+	country = TIB
+	save_date = yes
+	name = EVT_TIB_232010_NAME
+	desc = EVT_TIB_232010_DESC
+	picture = "nwo/tibet"
+	style = 1
+	action = {
+		name = ACTION_NAME_LEAVE_ALLIANCE
+		ai_chance = 75
+		command = { type = leave_alliance }
+		command = { type = war which = CHI }
+	}
+	action = {
+		name = EVT_TIB_232010_A
+		ai_chance = 25
+		command = { type = trigger which = 124227 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232008] TIB | 1959 | The Tibet Autonomous Region (Región Autónoma del Tíbet)
+# Triggered by event 123102 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232008
+	country = TIB
+	name = EVT_TIB_232008_NAME
+	desc = EVT_TIB_232008_DESC
+	picture = "nwo/destroyed_temple"
+	style = 1
+	trigger = {
+		event = 123102
+	}
+	date = { day = 1 month = march year = 1959 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = name where = TIB which = "TIB59" }
+		command = { type = set_domestic which = freedom value = 2 }
+		command = { type = set_domestic which = free_market value = 3 }
+		command = { type = headofstate which = 440201 }
+		command = { type = headofgovernment which = 440202 }
+		command = { type = foreignminister which = 440018 }
+		command = { type = armamentminister which = 440027 }
+		command = { type = ministerofsecurity which = 440036 }
+		command = { type = ministerofintelligence which = 440040 }
+		command = { type = chiefofstaff which = 440044 }
+		command = { type = chiefofarmy which = 440049 }
+		command = { type = chiefofnavy which = 440051 }
+		command = { type = chiefofair which = 440054 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329990] TIB | 1959 | The 1959 Tibetan Uprising (Rebelión tibetana de 1959)
+# Triggered by event 123101 in events/Minors/CHC_45-62.txt
+# Trigger event 232009 in events/Minors/TIB.txt
+# Trigger event 123102 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329990
+	country = TIB
+	save_date = yes
+	name = EVT_TIB_329990_NAME
+	desc = EVT_TIB_329990_DESC
+	picture = "nwo/tibetan_rebellion"
+	style = 1
+	trigger = {
+		OR = {
+			puppet = { country = TIB country = CHC }
+			event = 123101
+		}
+	}
+	date = { day = 1 month = march year = 1959 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 90
+		command = { type = end_puppet }
+		command = { type = war which = CHC }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT_DEMANDS
+		ai_chance = 10
+		command = { type = dissent value = 50 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = trigger which = 123102 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329992] TIB | 1959 | CIA Training at Camp Hale (Instrucción clandestina en Camp Hale)
+# Triggered by event 329991 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329992
+	country = TIB
+	name = EVT_TIB_329992_NAME
+	desc = EVT_TIB_329992_DESC
+	picture = "nwo/camp_hale"
+	style = 1
+	trigger = {
+		war = { country = CHC country = TIB }
+		event = 329991
+	}
+	date = { day = 1 month = march year = 1959 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_division value = bergsjaeger when = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232009] TIB | 1960 | Tibetan Victory Over China (Victoria tibetana sobre China)
+# Triggered by event 329990 in events/Minors/TIB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232009
+	country = TIB
+	name = EVT_TIB_232009_NAME
+	desc = EVT_TIB_232009_DESC
+	picture = "nwo/dalai_lama"
+	style = 1
+	trigger = {
+		event = { id = 329990 days = 60 }
+		war = { country = CHC country = TIB }
+		control = { province = 1289 data = -1 }
+	}
+	date = { day = 1 month = january year = 1960 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peace which = CHC }
+		command = { type = dissent value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232011] TIB | 1960 | Nationalist Defeat in Tibet (Derrota nacionalista en el Tíbet)
+# Triggered by event 232010 in events/Minors/TIB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232011
+	country = TIB
+	name = EVT_TIB_232011_NAME
+	desc = EVT_TIB_232011_DESC
+	picture = "nwo/dalai_lama"
+	style = 1
+	trigger = {
+		event = { id = 232010 days = 180 }
+		war = { country = CHI country = TIB }
+		control = { province = 1289 data = -1 }
+	}
+	date = { day = 1 month = january year = 1960 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peace which = CHI }
+		command = { type = dissent value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232003] TIB | 1962 | Tibet Restores Independence (El Tíbet recupera su independencia)
+# Triggered by event 161059 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232003
+	country = TIB
+	name = EVT_TIB_232003_NAME
+	desc = EVT_TIB_232003_DESC
+	picture = "nwo/free_tibet"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 161059
+	}
+	date = { day = 0 month = november year = 1962 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = access which = IND }
+		command = { type = headofstate which = 440001 }
+		command = { type = headofgovernment which = 440200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [232004] TIB | 1962 | Tibet Restores Independence (El Tíbet recupera su independencia)
+# Triggered by event 161062 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 232004
+	country = TIB
+	name = EVT_TIB_232004_NAME
+	desc = EVT_TIB_232004_DESC
+	picture = "nwo/free_tibet"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 161062
+	}
+	date = { day = 0 month = november year = 1962 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = access which = IND }
+		command = { type = headofstate which = 440001 }
+		command = { type = headofgovernment which = 440200 }
+	}
+}

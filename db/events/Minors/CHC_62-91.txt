@@ -1,0 +1,940 @@
+# ============================================================================
+# File: events/Minors/CHC_62-91.txt (25 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329951] CHC | 1962 | Decisive Chinese Breakthrough in India (Ruptura china en el frente indio)
+# Triggered by event 329946 in events/Minors/CHC_45-62.txt
+# Trigger event 123066 in events/Minors/CHC_62-91.txt
+# Trigger event 161058 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329951
+	country = CHC
+	name = EVT_CHC_329951_NAME
+	desc = EVT_CHC_329951_DESC
+	picture = "nwo/sino_indian_war"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 329946
+		war = { country = IND country = CHC }
+		OR = {
+			control = { province = 1535 data = -1 }
+			control = { province = 1531 data = -1 }
+			control = { province = 1463 data = -1 }
+			control = { province = 1460 data = -1 }
+			control = { province = 1464 data = -1 }
+			control = { province = 1446 data = -1 }
+			control = { province = 1442 data = -1 }
+		}
+	}
+	date = { day = 0 month = november year = 1962 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_CHC_329951_A
+		ai_chance = 98
+		command = { type = peace which = IND }
+		command = { type = trigger which = 161058 }
+		command = { type = sleepevent which = 329947 }
+		command = { type = sleepevent which = 329949 }
+		command = { type = sleepevent which = 329950 }
+		command = { type = sleepevent which = 329951 }
+		command = { type = sleepevent which = 329952 }
+	}
+	action = {
+		name = EVT_CHC_329951_B
+		ai_chance = 2
+		command = { type = dissent value = 25 }
+		command = { type = belligerence value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123055] CHC | 1963 | Statesman's Birthday (Cumpleaños de Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123055
+	country = CHC
+	name = "EVT_SHARED_00806_NAME"
+	desc = "EVT_SHARED_00806_DESC"
+	picture = "nwo/birthday"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 51304 }
+		command = { type = headofgovernment which = 51305 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123056] CHC | 1963 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123056
+	country = CHC
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = foreignminister which = 51056 }
+		command = { type = armamentminister which = 51057 }
+		command = { type = ministerofsecurity which = 51129 }
+		command = { type = ministerofintelligence which = 51062 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123066] CHC | 1963 | Sino-Soviet Split (Ruptura sino-soviética)
+# Triggered by event 223322 in events/SOV/SOV_56-81.txt
+# Triggered by event 223325 in events/SOV/SOV_56-81.txt
+# Triggered by event 223232 in events/SOV/SOV_56-81.txt
+# Triggered by event 329949 in events/Minors/CHC_45-62.txt
+# Triggered by event 329951 in events/Minors/CHC_62-91.txt
+# Trigger event 223214 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123066
+	country = CHC
+	name = EVT_CHC_123066_NAME
+	desc = EVT_CHC_123066_DESC
+	picture = "nwo/mao_with_khrushchev"
+	style = 1
+	trigger = {
+		government = communist
+		flag = CHC_won_civil_war
+		flag = cold_war
+		exists = SOV
+		event = 223322
+	}
+	date = { day = 1 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_CHC_123066_A
+		ai_chance = 50
+		trigger = {
+			NOT = {
+				event = 223325
+				event = 223232
+				event = 329949 event = 329951
+			}
+		}
+		command = { trigger = { alliance = { country = CHC country = SOV } } type = leave_alliance }
+		command = { type = end_access which = SOV }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = setflag which = sino_soviet_split }
+	}
+	action = {
+		name = EVT_CHC_123066_A
+		ai_chance = 60
+		trigger = {
+			event = 223325
+			NOT = {
+				event = 223232
+				event = 329949 event = 329951
+			}
+		}
+		command = { trigger = { alliance = { country = CHC country = SOV } } type = leave_alliance }
+		command = { type = end_access which = SOV }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = setflag which = sino_soviet_split }
+	}
+	action = {
+		name = EVT_CHC_123066_A
+		ai_chance = 75
+		trigger = {
+			event = 223232
+			NOT = {
+				event = 223325
+				event = 329949 event = 329951
+			}
+		}
+		command = { trigger = { alliance = { country = CHC country = SOV } } type = leave_alliance }
+		command = { type = end_access which = SOV }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = setflag which = sino_soviet_split }
+	}
+	action = {
+		name = EVT_CHC_123066_A
+		ai_chance = 65
+		trigger = {
+			OR = { event = 329949 event = 329951 }
+			NOT = {
+				event = 223325
+				event = 223232
+			}
+		}
+		command = { trigger = { alliance = { country = CHC country = SOV } } type = leave_alliance }
+		command = { type = end_access which = SOV }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = setflag which = sino_soviet_split }
+	}
+	action = {
+		name = EVT_CHC_123066_A
+		ai_chance = 85
+		trigger = {
+			NOT = { event = 329949 event = 329951 }
+			AND = {
+				event = 223325
+				event = 223232
+			}
+		}
+		command = { trigger = { alliance = { country = CHC country = SOV } } type = leave_alliance }
+		command = { type = end_access which = SOV }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = setflag which = sino_soviet_split }
+	}
+	action = {
+		name = EVT_CHC_123066_A
+		ai_chance = 90
+		trigger = {
+			NOT = { event = 223325 }
+			AND = {
+				OR = { event = 329949 event = 329951 }
+				event = 223232
+			}
+		}
+		command = { trigger = { alliance = { country = CHC country = SOV } } type = leave_alliance }
+		command = { type = end_access which = SOV }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = setflag which = sino_soviet_split }
+	}
+	action = {
+		name = EVT_CHC_123066_A
+		ai_chance = 75
+		trigger = {
+			NOT = { event = 223232 }
+			AND = {
+				OR = { event = 329949 event = 329951 }
+				event = 223325
+			}
+		}
+		command = { trigger = { alliance = { country = CHC country = SOV } } type = leave_alliance }
+		command = { type = end_access which = SOV }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = setflag which = sino_soviet_split }
+	}
+	action = {
+		name = EVT_CHC_123066_A
+		ai_chance = 100
+		trigger = {
+			event = 223232
+			OR = { event = 329949 event = 329951 }
+			event = 223325
+		}
+		command = { trigger = { alliance = { country = CHC country = SOV } } type = leave_alliance }
+		command = { type = end_access which = SOV }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = setflag which = sino_soviet_split }
+	}
+	action = {
+		name = ACTION_NAME_OFFER_PEACE
+		ai_chance = 8
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = EVT_CHC_123066_B
+		ai_chance = 2
+		command = { type = dissent value = 3 }
+		command = { type = trigger which = 223214 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123112] CHC | 1964 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123112
+	country = CHC
+	persistent = yes
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			NOT = { headofstate = 51304 }
+			NOT = { headofgovernment = 51305 }
+		}
+	}
+	date = { day = 0 month = january year = 1964 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 51304 }
+		command = { type = headofgovernment which = 51305 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123067] CHC | 1966 | The Cultural Revolution (La Revolución Cultural)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123067
+	country = CHC
+	name = EVT_CHC_123067_NAME
+	desc = EVT_CHC_123067_DESC
+	picture = "nwo/cultural_revolution"
+	style = 1
+	trigger = {
+		atwar = no
+		OR = {
+			headofstate = 51001
+			headofstate = 51300
+			headofstate = 51302
+			headofstate = 51304
+		}
+	}
+	date = { day = 1 month = january year = 1966 }
+	offset = 720
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = -20 }
+		command = { type = dissent value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123068] CHC | 1968 | Sino-Soviet Border Tensions (Tensiones fronterizas chino-soviéticas)
+# Trigger event 329776 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123068
+	country = CHC
+	name = EVT_CHC_123068_NAME
+	desc = EVT_CHC_123068_DESC
+	picture = "nwo/sino_soviet_border_conflict"
+	style = 1
+	trigger = {
+		atwar = no
+		exists = SOV
+		flag = cold_war
+		flag = sino_soviet_split
+	}
+	date = { day = 1 month = january year = 1968 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1968 }
+	action = {
+		name = EVT_CHC_123068_A
+		ai_chance = 95
+		command = { type = dissent value = -8 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = addcore which = 1104 }
+		command = { type = addclaim which = 1191 }
+		command = { type = addclaim which = 1192 }
+		command = { type = addclaim which = 1193 }
+		command = { type = addclaim which = 1194 }
+		command = { type = addclaim which = 1195 }
+		command = { type = addclaim which = 1196 }
+		command = { type = addclaim which = 1190 }
+		command = { type = addclaim which = 1185 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 5
+		command = { type = dissent value = 5 }
+		command = { type = sleepevent which = 329776 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123069] CHC | 1969 | Sino-Soviet Border Success (Éxito fronterizo con la URSS)
+# Triggered by event 329777 in events/AI/REB_AI_55-00.txt
+# Trigger event 223215 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123069
+	country = CHC
+	name = EVT_CHC_123069_NAME
+	desc = EVT_CHC_123069_DESC
+	picture = "nwo/sino_soviet_border_conflict"
+	style = 1
+	action = {
+		name = EVT_CHC_123069_A
+		ai_chance = 95
+		command = { type = dissent value = -8 }
+		command = { trigger = { control = { province = 1104 data = SOV } } type = secedeprovince which = CHC value = 1104 when = 2 }
+		command = { type = removeclaim which = 1191 }
+		command = { type = removeclaim which = 1192 }
+		command = { type = removeclaim which = 1193 }
+		command = { type = removeclaim which = 1194 }
+		command = { type = removeclaim which = 1195 }
+		command = { type = removeclaim which = 1196 }
+		command = { type = removeclaim which = 1190 }
+		command = { type = removeclaim which = 1185 }
+	}
+	action = {
+		name = EVT_CHC_123069_B
+		ai_chance = 5
+		command = { type = trigger which = 223215 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123070] CHC | 1969 | Border Standoff Eased (Tregua fronteriza con la URSS)
+# Triggered by event 329777 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123070
+	country = CHC
+	name = EVT_CHC_123070_NAME
+	desc = EVT_CHC_123070_DESC
+	picture = "nwo/sino_soviet_border_conflict"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = removeclaim which = 1191 }
+		command = { type = removeclaim which = 1192 }
+		command = { type = removeclaim which = 1193 }
+		command = { type = removeclaim which = 1194 }
+		command = { type = removeclaim which = 1195 }
+		command = { type = removeclaim which = 1196 }
+		command = { type = removeclaim which = 1190 }
+		command = { type = removeclaim which = 1185 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123071] CHC | 1969 | Border Crisis Deteriorates (Crisis fronteriza agravada)
+# Triggered by event 223217 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123071
+	country = CHC
+	name = EVT_CHC_123071_NAME
+	desc = EVT_CHC_123071_DESC
+	picture = "nwo/sino_soviet_border_conflict"
+	style = 1
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 55
+		command = { type = war which = SOV }
+	}
+	action = {
+		name = EVT_CHC_123071_A
+		ai_chance = 45
+		command = { type = dissent value = 20 }
+		command = { type = secedeprovince which = SOV value = 1200 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1201 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1197 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1202 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1204 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1205 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1212 when = 1 }
+		command = { type = removeclaim which = 1191 }
+		command = { type = removeclaim which = 1192 }
+		command = { type = removeclaim which = 1193 }
+		command = { type = removeclaim which = 1194 }
+		command = { type = removeclaim which = 1195 }
+		command = { type = removeclaim which = 1196 }
+		command = { type = removeclaim which = 1190 }
+		command = { type = removeclaim which = 1185 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123081] CHC | 1971 | UN Recognizes Beijing (Reconocimiento de la RPC en la ONU)
+# Triggered by event 329779 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123081
+	country = CHC
+	name = EVT_CHC_123081_NAME
+	desc = EVT_CHC_123081_DESC
+	picture = "nwo/communist_china_in_unsc"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = setflag which = CHC_in_UNSC }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123057] CHC | 1976 | Death of Mao Zedong (Muerte de Mao Zedong)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123057
+	country = CHC
+	name = EVT_CHC_123057_NAME
+	desc = EVT_CHC_123057_DESC
+	picture = "nwo/mao_zedong_death"
+	style = 1
+	date = { day = 0 month = january year = 1976 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1976 }
+	action = {
+		name = ACTION_NAME_MOURN
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 51311 }
+		command = { type = headofgovernment which = 51312 }
+		command = { type = sleepminister which = 51001 }
+		command = { type = sleepminister which = 51002 }
+		command = { type = sleepminister which = 51031 }
+		command = { type = sleepminister which = 51177 }
+		command = { type = sleepminister which = 51182 }
+		command = { type = sleepminister which = 51300 }
+		command = { type = sleepminister which = 51301 }
+		command = { type = sleepminister which = 51302 }
+		command = { type = sleepminister which = 51303 }
+		command = { type = sleepminister which = 51304 }
+		command = { type = sleepminister which = 51305 }
+		command = { type = headofstate which = 51311 }
+		command = { type = headofgovernment which = 51312 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123113] CHC | 1977 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123113
+	country = CHC
+	persistent = yes
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			NOT = { headofstate = 51311 }
+			NOT = { headofgovernment = 51312 }
+		}
+	}
+	date = { day = 0 month = january year = 1977 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1977 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 51311 }
+		command = { type = headofgovernment which = 51312 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123058] CHC | 1978 | Succession for Leadership (Pugna por el liderazgo supremo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123058
+	country = CHC
+	name = EVT_CHC_123058_NAME
+	desc = EVT_CHC_123058_DESC
+	picture = "nwo/deng_xiaoping"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1978 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1979 }
+	action = {
+		name = EVT_CHC_123058_A
+		ai_chance = 95
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 51313 }
+		command = { type = sleepminister which = 51185 }
+		command = { type = sleepminister which = 51311 }
+		command = { type = sleepminister which = 51326 }
+		command = { type = sleepminister which = 51327 }
+	}
+	action = {
+		name = EVT_CHC_123058_B
+		ai_chance = 4
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = dissent value = 10 }
+		command = { type = sleepminister which = 51313 }
+		command = { type = sleepminister which = 51185 }
+		command = { type = sleepminister which = 51326 }
+		command = { type = sleepminister which = 51327 }
+	}
+	action = {
+		name = EVT_CHC_123058_C
+		ai_chance = 1
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = dissent value = 20 }
+		command = { type = sleepminister which = 51313 }
+		command = { type = ministerofsecurity which = 51185 }
+		command = { type = sleepminister which = 51311 }
+		command = { type = sleepminister which = 51312 }
+		command = { type = headofstate which = 51326 }
+		command = { type = headofgovernment which = 51327 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123072] CHC | 1978 | Post-Cultural Rev Recovery (Recuperación económica china)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123072
+	country = CHC
+	name = EVT_CHC_123072_NAME
+	desc = EVT_CHC_123072_DESC
+	picture = "nwo/chinese_economy"
+	style = 1
+	trigger = {
+		atwar = no
+	}
+	date = { day = 1 month = june year = 1978 }
+	offset = 720
+	deathdate = { day = 29 month = december year = 1984 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123114] CHC | 1979 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123114
+	country = CHC
+	persistent = yes
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		domestic = { type = democratic value = 3 }
+		domestic = { type = political_left value = 8 }
+		OR = {
+			NOT = { headofstate = 51313 }
+			NOT = { headofgovernment = 51312 }
+		}
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1979 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 51313 }
+		command = { type = headofgovernment which = 51312 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123059] CHC | 1980 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123059
+	country = CHC
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+		headofstate = 51313
+	}
+	date = { day = 0 month = january year = 1980 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 51314 }
+		command = { type = sleepminister which = 51312 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123110] CHC | 1982 | UN Resolution on the Falkland Islands (Resolución de la ONU sobre las Islas Malvinas)
+# Triggered by event 207062 in events/AI/REB_AI_55-00.txt
+# Trigger event 207063 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123110
+	country = CHC
+	name = EVT_SHARED_00966_NAME
+	desc = EVT_SHARED_00966_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 98
+		command = { type = setflag which = un_falklands_veto }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 2
+		trigger = {
+			NOT = { flag = un_falklands_veto }
+			NOT = { alliance = { country = ARG } }
+		}
+		command = { type = money value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123060] CHC | 1987 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123060
+	country = CHC
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+		headofstate = 51313
+	}
+	date = { day = 0 month = january year = 1987 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 51315 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123075] CHC | 1989 | Tiananmen Square Protests (Protestas de Tiananmen)
+# Trigger event 123076 in events/Minors/CHC_62-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123075
+	country = CHC
+	name = EVT_CHC_123075_NAME
+	desc = EVT_CHC_123075_DESC
+	picture = "nwo/tiananmen_square_protests"
+	trigger = {
+		atwar = no
+		government = communist
+	}
+	date = { day = 1 month = may year = 1989 }
+	offset = 30
+	deathdate = { day = 29 month = may year = 1989 }
+	action = {
+		name = EVT_CHC_123075_A
+		ai_chance = 75
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = freedom value = 2 }
+	}
+	action = {
+		name = EVT_CHC_123075_B
+		ai_chance = 25
+		command = { type = dissent value = 5 }
+		command = { type = sleepevent which = 123076 }
+		command = { type = sleepevent which = 123077 }
+		command = { type = sleepevent which = 123078 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123076] CHC | 1989 | Tiananmen Crisis Deepens (Crisis en Tiananmen)
+# Triggered by event 123075 in events/Minors/CHC_62-91.txt
+# Trigger event 123077 in events/Minors/CHC_62-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123076
+	country = CHC
+	name = EVT_CHC_123076_NAME
+	desc = EVT_CHC_123076_DESC
+	picture = "nwo/tiananmen_square_massacre"
+	trigger = {
+		atwar = no
+		government = communist
+		event = 123075
+		random = 95
+	}
+	date = { day = 1 month = july year = 1989 }
+	offset = 30
+	deathdate = { day = 29 month = july year = 1989 }
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 75
+		command = { type = dissent value = 10 }
+		command = { type = sleepevent which = 123077 }
+		command = { type = sleepevent which = 123078 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = freedom value = -3 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 25
+		command = { type = dissent value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123077] CHC | 1989 | Protesters Demand Reform (Exigencias de reformas)
+# Triggered by event 123076 in events/Minors/CHC_62-91.txt
+# Trigger event 123078 in events/Minors/CHC_62-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123077
+	country = CHC
+	name = EVT_CHC_123077_NAME
+	desc = EVT_CHC_123077_DESC
+	picture = "nwo/tiananmen_square_massacre"
+	trigger = {
+		atwar = no
+		government = communist
+		event = 123076
+		random = 90
+	}
+	date = { day = 1 month = september year = 1989 }
+	offset = 30
+	deathdate = { day = 29 month = september year = 1989 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 80
+		command = { type = dissent value = 15 }
+		command = { type = sleepevent which = 123078 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = freedom value = -3 }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 20
+		command = { type = dissent value = 30 }
+		command = { type = domestic which = free_market value = 3 }
+		command = { type = domestic which = freedom value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123078] CHC | 1989 | Calls for Multi-Party Rule (Exigencia de elecciones)
+# Triggered by event 123077 in events/Minors/CHC_62-91.txt
+# Trigger event 123079 in events/Minors/CHC_62-91.txt
+# Trigger event 329778 in events/CHI/CHI_78-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123078
+	country = CHC
+	name = EVT_CHC_123078_NAME
+	desc = EVT_CHC_123078_DESC
+	picture = "nwo/tiananmen_square_massacre"
+	trigger = {
+		atwar = no
+		government = communist
+		event = 123077
+		random = 85
+	}
+	date = { day = 1 month = december year = 1989 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = EVT_CHC_123078_A
+		ai_chance = 90
+		command = { type = dissent value = 25 }
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = domestic which = freedom value = -5 }
+		command = { type = domestic which = free_market value = -4 }
+		command = { type = sleepevent which = 329778 }
+	}
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 10
+		command = { type = dissent value = 40 }
+		command = { type = domestic which = democratic value = 4 }
+		command = { type = domestic which = freedom value = 4 }
+		command = { type = domestic which = political_left value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123079] CHC | 1990 | Democratic Elections of 1990 (Elecciones de 1990 en China)
+# Triggered by event 123078 in events/Minors/CHC_62-91.txt
+# Trigger event 124173 in events/CHI/CHI_78-91.txt
+# Trigger event 324423 in events/GLOBAL/MULTI_48-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123079
+	country = CHC
+	name = EVT_CHC_123079_NAME
+	desc = EVT_CHC_123079_DESC
+	picture = "nwo/democratic_china"
+	trigger = {
+		atwar = no
+		event = 123078
+	}
+	date = { day = 1 month = march year = 1990 }
+	offset = 30
+	deathdate = { day = 29 month = march year = 1990 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 80
+		command = { type = dissent value = -10 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = country which = UCH }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -5 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = non_aggression which = CHC where = CHI }
+		command = { type = country which = UCH }
+	}
+	action = {
+		name = EVT_CHC_123079_A
+		ai_chance = 5
+		command = { type = dissent value = -30 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 51313 }
+		command = { type = headofgovernment which = 51315 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123111] CHC | 1991 | UN Resolution on the Invasion of Kuwait (Resolución de la ONU sobre la Invasión de Kuwait)
+# Triggered by event 207064 in events/AI/REB_AI_55-00.txt
+# Trigger event 207065 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123111
+	country = CHC
+	name = EVT_SHARED_00967_NAME
+	desc = EVT_SHARED_00967_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		trigger = {
+			NOT = { flag = un_desertstorm_veto }
+			NOT = { alliance = { country = IRQ } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 5
+		command = { type = setflag which = un_desertstorm_veto }
+	}
+}

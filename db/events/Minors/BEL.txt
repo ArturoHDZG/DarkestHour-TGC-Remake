@@ -1,0 +1,1923 @@
+# ============================================================================
+# File: events/Minors/BEL.txt (49 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [110064] BEL | 1914 | Germany Annexes Wallonia and the Congo (Alemania anexiona Valonia y el Congo)
+# Triggered by event 243084 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110064
+	country = BEL
+	name = "EVT_BEL_110064_NAME"
+	desc = "EVT_BEL_110064_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = secedeprovince which = U08 value = 108 }
+		command = { type = secedeprovince which = U08 value = 111 }
+		command = { type = secederegion which = U08 value = "Central Africa" }
+		command = { type = removeclaim which = 894 }
+		command = { type = removeclaim which = 897 }
+		command = { type = removeclaim which = 898 }
+		command = { type = removeclaim which = 899 }
+		command = { type = removeclaim which = 901 }
+		command = { type = removeclaim which = 902 }
+		command = { type = removeclaim which = 903 }
+		command = { type = removeclaim which = 904 }
+		command = { type = removeclaim which = 905 }
+		command = { type = removeclaim which = 906 }
+		command = { type = demobilize which = land when = 0 where = 0 value = 5 }
+		command = { type = strength which = land when = 0 where = 0 value = 0.33 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110065] BEL | 1914 | Germany Annexes the Congo (Alemania anexiona el Congo)
+# Triggered by event 243084 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110065
+	country = BEL
+	name = "EVT_BEL_110065_NAME"
+	desc = "EVT_BEL_110065_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { type = secederegion which = U08 value = "Central Africa" }
+		command = { type = removeclaim which = 894 }
+		command = { type = removeclaim which = 897 }
+		command = { type = removeclaim which = 898 }
+		command = { type = removeclaim which = 899 }
+		command = { type = removeclaim which = 901 }
+		command = { type = removeclaim which = 902 }
+		command = { type = removeclaim which = 903 }
+		command = { type = removeclaim which = 904 }
+		command = { type = removeclaim which = 905 }
+		command = { type = removeclaim which = 906 }
+		command = { type = demobilize which = land when = 0 where = 0 value = 5 }
+		command = { type = strength which = land when = 0 where = 0 value = 0.33 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110003] BEL | 1934 | Death of the Head of State (Muerte del Jefe del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110003
+	random = no
+	country = BEL
+	style = 2
+	trigger = {
+		headofstate = 70187
+	}
+	date = { day = 16 month = february year = 1934 }
+	name = "EVT_SHARED_00501_NAME"
+	desc = "EVT_SHARED_00501_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 70187 }
+		command = { type = headofstate which = 70001 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110008] BEL | 1936 | Belgium Leaves the Allied Coalition (Bélgica abandona la alianza militar)
+# Triggered by event 329113 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110008
+	random = no
+	country = BEL
+	name = "EVT_BEL_110008_NAME"
+	desc = "EVT_BEL_110008_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110011] BEL | 1936 | Fall of the People's Republic of Belgium (Caída de la República Popular de Bélgica)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110011
+	random = no
+	country = BEL
+	name = "EVT_BEL_110011_NAME"
+	desc = "EVT_BEL_110011_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U17 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110062] BEL | 1936 | People's Republic Founded (República Popular)
+# Trigger event 110063 in events/Minors/BEL.txt
+# Trigger event 252002 in events/Minors/U17.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 110062
+   country = BEL
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U17
+            NOT = { ai = BEL }
+            NOT = { ai = U17 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U17
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U17 } }
+      command = { type = country which = U17 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U17
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = BEL }
+               control = { province = 116 data = -1 }
+            }
+         }
+         type = trigger which = 110063
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U17 }
+               NOT = { control = { province = 116 data = -1 } }
+            }
+         }
+         type = trigger which = 252002
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U17
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [110063] BEL | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 110062 in events/Minors/BEL.txt
+# Triggered by event 252001 in events/Minors/U17.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 110063
+   country = BEL
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U17 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [329510] BEL | 1936 | Capitulation of Belgium (Capitulación de Bélgica)
+# Trigger event 110010 in events/Minors/BEL.txt
+# Trigger event 143156 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329510
+	random = no
+	country = BEL
+	trigger = {
+		random = 35
+		war = { country = GER country = BEL }
+		NOT = {
+			control = { province = 115 data = BEL }
+			control = { province = 108 data = BEL }
+			control = { province = 117 data = BEL }
+			control = { province = 116 data = BEL }
+			control = { province = 112 data = BEL }
+			control = { province = 111 data = BEL }
+			control = { province = 113 data = BEL }
+			control = { province = 114 data = BEL }
+		}
+	}
+	name = "EVT_SHARED_00397_NAME"
+	desc = "EVT_SHARED_00397_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 3
+	deathdate = { day = 0 month = december year = 1946 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 70001 }
+		command = { type = headofgovernment which = 70017 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70034 }
+		command = { type = ministerofsecurity which = 70053 }
+		command = { type = ministerofintelligence which = 70064 }
+		command = { type = secedearea which = GER value = Flanders when = 1 }
+		command = { type = secedearea which = GER value = Wallonia when = 1 }
+		command = { type = trigger which = 143156 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110010] BEL | 1936 | Government Returns to Brussels (El gobierno regresa a Bruselas)
+# Triggered by event 329569 in events/AI/BEL_AI.txt
+# Triggered by event 329510 in events/Minors/BEL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110010
+	random = no
+	country = BEL
+	name = "EVT_BEL_110010_NAME"
+	desc = "EVT_BEL_110010_DESC"
+  style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = { exists = GER }
+		owned = { province = 116 data = BEL }
+		control = { province = 116 data = BEL }
+		OR = {
+			event = 329569
+			event = 329510
+		}
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = capital which = 116 }
+		command = { type = addcore which = 114 }
+		command = { type = addcore which = 115 }
+		command = { type = addcore which = 116 }
+		command = { type = addcore which = 112 }
+		command = { type = addcore which = 113 }
+		command = { type = addcore which = 108 }
+		command = { type = addcore which = 117 }
+		command = { type = addcore which = 111 }
+		command = { type = removecore which = 894 }
+		command = { type = removecore which = 901 }
+		command = { type = removecore which = 899 }
+		command = { type = removecore which = 897 }
+		command = { type = removecore which = 898 }
+		command = { type = removecore which = 902 }
+		command = { type = removecore which = 906 }
+		command = { type = removecore which = 904 }
+		command = { type = removecore which = 903 }
+		command = { type = removecore which = 905 }
+		command = { type = removecore which = 846 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329512] BEL | 1936 | German Aggression on the Border (Agresión alemana en las fronteras)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329512
+	random = no
+	country = BEL
+	name = EVT_SHARED_00398_NAME
+	desc = EVT_SHARED_00398_DESC
+ 	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		OR  = { war = { country = HOL country = GER }
+			war = { country = LUX country = GER }
+		       }
+		NOT = { alliance = { country = BEL country = ENG } }
+		NOT = { alliance = { country = BEL country = GER } }
+		NOT = { alliance = { country = BEL country = SOV } }
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_JOIN_ALLIANCE
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = GER value = -100 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_NEUTRAL
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330123] BEL | 1936 | British Reassurance to France and Belgium (Garantías diplomáticas británicas a Francia y Bélgica)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330123
+	random = no
+	country = BEL
+	trigger = {
+			NOT = { war = { country = BEL } }
+			}
+	date = { day = 01 month = april year = 1936 }
+	offset = 1
+	deathdate = { day = 03 month = april year = 1936 }
+	name = "EVT_SHARED_01156_NAME"
+	desc = "EVT_SHARED_01156_DESC"
+	style = 2
+	picture = "GLOBAL/british_reassurance_to_france_and_belgium"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = relation which = ENG value = 05 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110009] BEL | 1937 | Belgium Withdrawal from the Locarno Pact (La retirada de Bélgica del Pacto de Locarno)
+# Trigger event 143048 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110009
+	random = no
+	country = BEL
+	trigger = {
+			exists = BEL
+			}
+	date = { day = 22 month = april year = 1937 }
+	name = "EVT_SHARED_00636_NAME"
+	desc = "EVT_SHARED_00636_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		command = { type = relation which = FRA value = -10 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = trigger which = 143048 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [110004] BEL | 1937 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110004
+	random = no
+	country = BEL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = BEL }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = june year = 1937 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 70001 }
+		command = { type = headofgovernment which = 70016 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70033 }
+		command = { type = ministerofsecurity which = 70050 }
+		command = { type = ministerofintelligence which = 70064 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 70114 }
+		command = { type = headofgovernment which = 70014 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70033 }
+		command = { type = ministerofsecurity which = 70048 }
+		command = { type = ministerofintelligence which = 70063 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329214] BEL | 1938 | Fall of Boulogne (Caída de Boulogne)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329214
+	random = no
+	country = BEL
+	trigger = {
+			war = { country = GER country = BEL }
+			control = { province = 49 data = GER }
+			}
+	date = { day = 01 month = january year = 1938 }
+	offset = 10
+	deathdate = { day = 21 month = september year = 1945 }
+	name = "EVT_SHARED_00709_NAME"
+	desc = "EVT_SHARED_00709_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+			command = { type = dissent value = 2 }
+			command = { type = supplies value = -700 }
+			command = { type = oilpool value = -300 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110055] BEL | 1939 | Soviet Occupation of Brussels (Ocupación soviética de Bruselas)
+# Triggered by event 207017 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110055
+	country = BEL
+	name = EVT_BEL_110055_NAME
+	desc = EVT_BEL_110055_DESC
+	picture = "nwo/communists_march"
+	style = 1
+	trigger = {
+		flag = der_untergang
+		event = { id = 207017 days = 3 }
+		NOT = {
+			OR = {
+				area = { area = "Flanders" country = -3 value = 50 }
+				area = { area = "Wallonia" country = -3 value = 50 }
+			}
+		}
+	}
+	date = { day = 0 month = january year = 1939 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 80
+		command = { type = leave_alliance }
+		command = { type = peace which = JAP value = 0 }
+		command = { type = peace which = MAN value = 0 }
+		command = { type = peace which = MEN value = 0 }
+		command = { trigger = { NOT = { exists = CON } } type = country which = CON }
+	}
+	action = {
+		ai_chance = 20
+		name = EVT_BEL_110055_A
+		command = { type = leave_alliance }
+		command = { type = peace which = JAP value = 0 }
+		command = { type = peace which = MAN value = 0 }
+		command = { type = peace which = MEN value = 0 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = set_domestic which = freedom value = 2 }
+		command = { type = set_domestic which = free_market value = 2 }
+		command = { type = set_domestic which = defense_lobby value = 6 }
+		command = { type = set_domestic which = interventionism value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110000] BEL | 1944 | Leopold III: The Controversial Monarch (Leopoldo III: El rey de la discordia)
+# Triggered by event 324290 in events/AI/MULTI_AI.txt
+# Trigger event 110001 in events/Minors/BEL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110000
+	random = no
+	country = BEL
+	style = 2
+	trigger = {
+		event = 324290
+		OR = {
+			headofstate = 70001
+			headofstate = 70087
+			headofstate = 70114
+		     }
+		government = democratic
+		}
+	date = { day = 0 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1953 }
+	name = "EVT_BEL_110000_NAME"
+	desc = "EVT_BEL_110000_DESC"
+	picture = "Minors/leopold_iii"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { OR = { headofstate = 70001
+									   headofstate = 70087 } } type = headofstate which = 70012 }
+		command = { trigger = { headofstate = 70114 } type = headofstate which = 70115 }
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [110033] BEL | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110033
+	country = BEL
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 70020 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70042 }
+		command = { type = ministerofsecurity which = 70060 }
+		command = { type = ministerofintelligence which = 70069 }
+		command = { type = chiefofstaff which = 70076 }
+		command = { type = chiefofarmy which = 70082 }
+		command = { type = chiefofnavy which = 70009 }
+		command = { type = chiefofair which = 70085 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110053] BEL | 1945 | Colonial Claims Debate (Reclamaciones coloniales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110053
+	country = BEL
+	name = EVT_SHARED_00888_NAME
+	desc = EVT_SHARED_00888_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 0 month = january year = 1945 }
+  	offset = 90
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 100
+		command = { type = removeclaim which = 894 }
+		command = { type = removeclaim which = 901 }
+		command = { type = removeclaim which = 904 }
+		command = { type = removeclaim which = 903 }
+		command = { type = removeclaim which = 905 }
+		command = { type = removeclaim which = 906 }
+		command = { type = removeclaim which = 902 }
+		command = { type = removeclaim which = 898 }
+		command = { type = removeclaim which = 897 }
+		command = { type = removeclaim which = 899 }
+		command = { type = removeclaim which = 846 }
+		command = { type = removeclaim which = 847 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110034] BEL | 1946 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110034
+	country = BEL
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70014 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70041 }
+		command = { type = ministerofsecurity which = 70150 }
+		command = { type = ministerofintelligence which = 70072 }
+		command = { type = chiefofstaff which = 70301 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70021 }
+		command = { type = foreignminister which = 70032 }
+		command = { type = armamentminister which = 70045 }
+		command = { type = ministerofsecurity which = 70060 }
+		command = { type = ministerofintelligence which = 70071 }
+		command = { type = chiefofstaff which = 70301 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110005] BEL | 1947 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110005
+	random = no
+	country = BEL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = BEL }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = march year = 1947 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 70115 }
+		command = { type = headofgovernment which = 70014 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70041 }
+		command = { type = ministerofsecurity which = 70150 }
+		command = { type = ministerofintelligence which = 70072 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 70012 }
+		command = { type = headofgovernment which = 70021 }
+		command = { type = foreignminister which = 70032 }
+		command = { type = armamentminister which = 70045 }
+		command = { type = ministerofsecurity which = 70060 }
+		command = { type = ministerofintelligence which = 70071 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [110035] BEL | 1949 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110035
+	country = BEL
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70021 }
+		command = { type = foreignminister which = 70003 }
+		command = { type = armamentminister which = 70142 }
+		command = { type = ministerofsecurity which = 70144 }
+		command = { type = ministerofintelligence which = 70070 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70014 }
+		command = { type = foreignminister which = 70028 }
+		command = { type = armamentminister which = 70141 }
+		command = { type = ministerofsecurity which = 70150 }
+		command = { type = ministerofintelligence which = 70072 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110001] BEL | 1950 | The Royal Question (La cuestión real)
+# Triggered by event 324290 in events/AI/MULTI_AI.txt
+# Triggered by event 110000 in events/Minors/BEL.txt
+# Trigger event 110002 in events/Minors/BEL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110001
+	random = no
+	country = BEL
+	style = 2
+	trigger = {
+		event = 324290
+		event = 110000
+		OR = {
+			headofstate = 70012
+			headofstate = 70115
+			}
+		government = democratic
+		NOT = {
+			ispuppet = BEL
+		      }
+		}
+	date = { day = 0 month = january year = 1950 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1953 }
+	name = "EVT_SHARED_00505_NAME"
+	desc = "EVT_SHARED_00505_DESC"
+	picture = "nwo/koningskwestie"
+	action_a = {
+		ai_chance = 85
+		name = "ACTION_NAME_ACCEPT"
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 70001 }
+		command = { type = headofgovernment which = 70139 }
+		command = { type = foreignminister which = 70003 }
+		command = { type = armamentminister which = 70151 }
+		command = { type = ministerofsecurity which = 70144 }
+		command = { type = ministerofintelligence which = 70071 }
+		command = { type = sleepminister which = 70012 }
+		command = { type = dissent value = 7 }
+		}
+	action_b = {
+		ai_chance = 14
+		name = "EVT_BEL_110001_A"
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 70136 }
+		command = { type = headofgovernment which = 70014 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70148 }
+		command = { type = ministerofsecurity which = 70055 }
+		command = { type = ministerofintelligence which = 70069 }
+		command = { type = sleepminister which = 70001 }
+		command = { type = sleepminister which = 70012 }
+		command = { type = dissent value = 7 }
+		}
+	action_c = {
+		ai_chance = 1
+		name = "EVT_BEL_110001_B"
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 70013 }
+		command = { type = headofgovernment which = 70022 }
+		command = { type = foreignminister which = 70031 }
+		command = { type = armamentminister which = 70040 }
+		command = { type = ministerofsecurity which = 70108 }
+		command = { type = ministerofintelligence which = 70109 }
+		command = { type = sleepminister which = 70001 }
+		command = { type = sleepminister which = 70012 }
+		command = { type = dissent value = 20 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [110002] BEL | 1950 | The Royal Question (La cuestión real)
+# Triggered by event 110001 in events/Minors/BEL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110002
+	random = no
+	country = BEL
+	style = 2
+	trigger = {
+		event = 110001
+		headofstate = 70001
+		government = democratic
+		random = 30
+		}
+	date = { day = 0 month = january year = 1950 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1953 }
+	name = "EVT_SHARED_00505_NAME"
+	desc = "EVT_SHARED_00505_DESC"
+	picture = "Minors/baudouin"
+	action_a = {
+		ai_chance = 100
+		name = "EVT_BEL_110002_A"
+		command = { type = headofstate which = 70137 }
+		command = { type = sleepminister which = 70001 }
+		command = { type = dissent value = -5 }
+		}
+	action_b = {
+		ai_chance = 0
+		name = "EVT_BEL_110002_B"
+		command = { type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [110036] BEL | 1950 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110036
+	country = BEL
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70139 }
+		command = { type = foreignminister which = 70003 }
+		command = { type = armamentminister which = 70041 }
+		command = { type = ministerofsecurity which = 70143 }
+		command = { type = ministerofintelligence which = 70071 }
+		command = { type = chiefofstaff which = 70302 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70014 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70041 }
+		command = { type = ministerofsecurity which = 70150 }
+		command = { type = ministerofintelligence which = 70072 }
+		command = { type = chiefofstaff which = 70302 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110006] BEL | 1950 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110006
+	random = no
+	country = BEL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = BEL }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = june year = 1950 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 70115 }
+		command = { type = headofgovernment which = 70138 }
+		command = { type = foreignminister which = 70003 }
+		command = { type = armamentminister which = 70041 }
+		command = { type = ministerofsecurity which = 70143 }
+		command = { type = ministerofintelligence which = 70071 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 70115 }
+		command = { type = headofgovernment which = 70014 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70041 }
+		command = { type = ministerofsecurity which = 70150 }
+		command = { type = ministerofintelligence which = 70072 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [110058] BEL | 1950 | European Federation Proposal (Propuesta de Federación Europea)
+# Triggered by event 147172 in events/FRA/FRA_48-59.txt
+# Trigger event 147173 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110058
+	country = BEL
+	name = EVT_BEL_110058_NAME
+	desc = EVT_BEL_110058_DESC
+	picture = "nwo/schuman_declaration"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		event = 147172
+		atwar = no
+	}
+	date = { day = 1 month = july year = 1950 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = EVT_BEL_110058_A
+		ai_chance = 50
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+		command = { type = sleepevent which = 147173 }
+		command = { type = sleepevent which = 147174 }
+	}
+	action = {
+		name = EVT_BEL_110058_B
+		ai_chance = 45
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+		command = { type = domestic which = interventionism value = 2 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = sleepevent which = 147173 }
+		command = { type = sleepevent which = 147174 }
+		command = { type = sleepevent which = 110060 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110038] BEL | 1951 | The Royal Question (La Cuestión Real belga)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110038
+	country = BEL
+	name = "EVT_BEL_110038_NAME"
+	desc = "EVT_BEL_110038_DESC"
+	picture = "nwo/koningskwestie"
+	style = 1
+	trigger = {
+		government = democratic
+		OR = {
+			headofstate = 70012
+			headofstate = 70115
+		}
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1951 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = "EVT_BEL_110038_A"
+		ai_chance = 80
+		command = { type = dissent value = 5 }
+		command = { type = headofstate which = 70137 }
+	}
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 10
+		command = { type = dissent value = 30 }
+		command = { type = headofstate which = 70087 }
+	}
+	action = {
+		name = "EVT_BEL_110038_B"
+		ai_chance = 10
+		command = { type = dissent value = 15 }
+		command = { type = headofstate which = 70012 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110007] BEL | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110007
+	random = no
+	country = BEL
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = BEL }
+		OR = {
+			headofstate = 70136
+			headofstate = 70137
+			}
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = january year = 1952 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 70137 }
+		command = { type = headofgovernment which = 70140 }
+		command = { type = foreignminister which = 70003 }
+		command = { type = armamentminister which = 70090 }
+		command = { type = ministerofsecurity which = 70145 }
+		command = { type = ministerofintelligence which = 70071 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 70136 }
+		command = { type = headofgovernment which = 70014 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70041 }
+		command = { type = ministerofsecurity which = 70150 }
+		command = { type = ministerofintelligence which = 70072 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [110037] BEL | 1952 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110037
+	country = BEL
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70140 }
+		command = { type = foreignminister which = 70003 }
+		command = { type = armamentminister which = 70090 }
+		command = { type = ministerofsecurity which = 70145 }
+		command = { type = ministerofintelligence which = 70071 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70014 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70041 }
+		command = { type = ministerofsecurity which = 70150 }
+		command = { type = ministerofintelligence which = 70072 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110060] BEL | 1952 | The European Coal and Steel Community (Comunidad Europea del Carbón y del Acero)
+# Triggered by event 147178 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110060
+	country = BEL
+	name = EVT_BEL_110060_NAME
+	desc = EVT_BEL_110060_DESC
+	picture = "nwo/european_coal_and_steel_community"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 147178
+	}
+	date = { day = 23 month = july year = 1952 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 95
+		command = { type = energypool value = 20000 }
+		command = { type = metalpool value = 10000 }
+	}
+	action = {
+		name = ACTION_NAME_DONT_SIGN
+		ai_chance = 5
+		command = { type = relation which = FRA value = -50 }
+		command = { type = relation which = ITA value = -50 }
+		command = { type = relation which = DFR value = -50 }
+		command = { type = relation which = HOL value = -50 }
+		command = { type = relation which = LUX value = -50 }
+		command = { type = sleepevent which = 147179 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110039] BEL | 1954 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110039
+	country = BEL
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70020 }
+		command = { type = foreignminister which = 70023 }
+		command = { type = armamentminister which = 70148 }
+		command = { type = ministerofsecurity which = 70150 }
+		command = { type = ministerofintelligence which = 70072 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70140 }
+		command = { type = foreignminister which = 70032 }
+		command = { type = armamentminister which = 70147 }
+		command = { type = ministerofsecurity which = 70145 }
+		command = { type = ministerofintelligence which = 70071 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110059] BEL | 1955 | Britain and European Unification (Gran Bretaña y la unión europea)
+# Triggered by event 147175 in events/FRA/FRA_48-59.txt
+# Trigger event 147176 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110059
+	country = BEL
+	name = EVT_BEL_110059_NAME
+	desc = EVT_BEL_110059_DESC
+	picture = "nwo/united_states_of_europe"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		event = 147175
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_SURRENDER_GAMEOVER
+		ai_chance = 80
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = ITA value = 50 }
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+	}
+	action = {
+		name = EVT_BEL_110059_A
+		ai_chance = 15
+		command = { type = sleepevent which = 147176 }
+		command = { type = sleepevent which = 147177 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = end_puppet }
+		command = { type = sleepevent which = 166157 }
+		command = { type = sleepevent which = 139009 }
+		command = { type = sleepevent which = 157034 }
+		command = { type = sleepevent which = 179011 }
+		command = { type = sleepevent which = 147176 }
+		command = { type = sleepevent which = 147177 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110061] BEL | 1957 | Common Market Growth (Crecimiento del Mercado Común)
+# Triggered by event 147179 in events/FRA/FRA_48-59.txt
+# Triggered by event 147173 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110061
+	country = BEL
+	name = EVT_BEL_110061_NAME
+	desc = EVT_BEL_110061_DESC
+	picture = "nwo/european_economic_community"
+	style = 1
+	trigger = {
+		event = 147179
+	}
+	date = { day = 25 month = march year = 1957 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 7 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110040] BEL | 1958 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110040
+	country = BEL
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70021 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70014 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110057] BEL | 1959 | Self-rule of Rwanda (Autogobierno de Ruanda)
+# Trigger event 303000 in events/Minors/U95.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110057
+	country = BEL
+	persistent = yes
+	name = EVT_BEL_110057_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U95 }
+		control = { province = 846 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 90
+		command = { type = independence which = U95 value = 1 }
+		command = { type = make_puppet which = U95 }
+		command = { type = trigger which = 303000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 10
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110056] BEL | 1960 | Independence of the Congo (Independencia del Congo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110056
+	country = BEL
+	persistent = yes
+	name = EVT_BEL_110056_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = CON }
+		control = { province = 899 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 95
+		command = { type = independence which = CON value = 1 }
+		command = { type = removecore which = 904 }
+		command = { type = removecore which = 903 }
+		command = { type = removecore which = 905 }
+		command = { type = removecore which = 906 }
+		command = { type = removecore which = 901 }
+		command = { type = removecore which = 894 }
+		command = { type = removecore which = 902 }
+		command = { type = removecore which = 898 }
+		command = { type = removecore which = 897 }
+		command = { type = removecore which = 899 }
+		command = { type = removecore which = 890 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 5
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110054] BEL | 1960 | Belgian Support for Katanga (Apoyo belga a Katanga)
+# Trigger event 128023 in events/Minors/CON.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 110054
+	random = no
+	country = BEL
+	name = EVT_BEL_110054_NAME
+	desc = EVT_BEL_110054_DESC
+	picture = "nwo/congo_crisis"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = CON
+	}
+	date = { day = 1 month = september year = 1960 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = EVT_BEL_110054_A
+		ai_chance = 90
+		command = { type = money value = -200 }
+		command = { type = trigger which = 128023 }
+	}
+	action = {
+		ai_chance = 10
+		name = EVT_BEL_110054_B
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = sleepevent which = 128023 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110041] BEL | 1961 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110041
+	country = BEL
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70300 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70014 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110042] BEL | 1965 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110042
+	country = BEL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70304 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70303 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110043] BEL | 1966 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110043
+	country = BEL
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+		headofgovernment = 70304
+	}
+	date = { day = 0 month = january year = 1966 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1967 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 70305 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110044] BEL | 1968 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110044
+	country = BEL
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+		headofgovernment = 70305
+	}
+	date = { day = 0 month = january year = 1968 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 70021 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110045] BEL | 1971 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110045
+	country = BEL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70021 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70303 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110046] BEL | 1973 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110046
+	country = BEL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1973 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70306 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70307 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110047] BEL | 1974 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110047
+	country = BEL
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+		headofgovernment = 70306
+		random = 50
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 70308 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110048] BEL | 1979 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110048
+	country = BEL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70307 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70309 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110049] BEL | 1981 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110049
+	country = BEL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1984 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70307 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70310 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110050] BEL | 1985 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110050
+	country = BEL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1985 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70307 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70309 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110051] BEL | 1987 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110051
+	country = BEL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1987 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70307 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70311 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [110052] BEL | 1991 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 110052
+	country = BEL
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofgovernment which = 70307 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 70311 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}

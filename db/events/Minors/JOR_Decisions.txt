@@ -1,0 +1,129 @@
+# ============================================================================
+# File: events/Minors/JOR_Decisions.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329898] JOR | 1948 | Transjordan Enters Arab-Israeli War (Transjordania declara la guerra a Israel)
+# Triggered by event 142047 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329898
+	country = JOR
+	decision = {
+		event = 142047
+		war = { country = EGY country = ISR }
+	}
+	trigger = {
+		event = 142047
+		war = { country = EGY country = ISR }
+	}
+	name = EVT_SHARED_00928_NAME
+	desc = EVT_SHARED_00928_DESC
+	picture = "nwo/arab_israeli_war_1948"
+	style = 1
+	date = { day = 1 month = june year = 1948 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 97
+		command = { type = leave_alliance }
+		command = { type = alliance which = EGY }
+		command = { type = add_corps where = 1023 }
+		command = { type = add_division value = infantry when = 13 }
+		command = { type = add_corps where = 1026 }
+		command = { type = add_division value = infantry when = 13 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		trigger = { ai = yes }
+		ai_chance = 3
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [168020] JOR | 1948 | Jordanian Annexation of the West Bank (Anexión jordana de Cisjordania)
+# Triggered by event 165032 in events/Minors/ISR.txt
+# Triggered by event 165033 in events/Minors/ISR.txt
+# Triggered by event 329903 in events/Minors/JOR_Decisions.txt
+# Trigger event 329903 in events/Minors/JOR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 168020
+	country = JOR
+	decision = {
+		NOT = { exists = PAL }
+		OR = {
+			event = 165032
+			event = 165033
+		}
+		NOT = { event = 329903 }
+	}
+	trigger = {
+		NOT = { exists = PAL }
+		OR = {
+			event = 165032
+			event = 165033
+		}
+		NOT = { event = 329903 }
+	}
+	name = EVT_SHARED_00929_NAME
+	desc = EVT_SHARED_00929_DESC
+	picture = "nwo/king_abdullah"
+	style = 1
+	date = { day = 1 month = november year = 1948 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = PAL value = 1 }
+		command = { type = addclaim which = 1172 }
+		command = { type = addclaim which = 1013 }
+		command = { type = name where = JOR which = "JOR49" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329903] JOR | 1948 | Jordanian Annexation of the West Bank (Anexión jordana de Cisjordania)
+# Triggered by event 168020 in events/Minors/JOR_Decisions.txt
+# Trigger event 168020 in events/Minors/JOR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329903
+	country = JOR
+	decision = {
+		OR = {
+			exists = PAL
+			war = { country = JOR country = ISR }
+		}
+		ai = PAL
+		war = { country = ISR country = PAL }
+		NOT = { event = 168020 }
+	}
+	trigger = {
+		OR = {
+			exists = PAL
+			war = { country = JOR country = ISR }
+		}
+		ai = PAL
+		war = { country = ISR country = PAL }
+		NOT = { event = 168020 }
+	}
+	name = EVT_SHARED_00929_NAME
+	desc = EVT_SHARED_00929_DESC
+	picture = "nwo/king_abdullah"
+	style = 1
+	date = { day = 1 month = november year = 1948 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = PAL value = 1 }
+		command = { type = addclaim which = 1172 }
+		command = { type = addclaim which = 1013 }
+		command = { type = name where = JOR which = "JOR49" }
+	}
+}

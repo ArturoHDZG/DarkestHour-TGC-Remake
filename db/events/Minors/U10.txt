@@ -1,0 +1,128 @@
+# ============================================================================
+# File: events/Minors/U10.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [245001] U10 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 245002 in events/Minors/U10.txt
+# Trigger event 157038 in events/Minors/HOL_14-86.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 245001
+   country = U10
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = HOL
+            NOT = { ai = HOL }
+            NOT = { ai = U10 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = HOL
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = HOL } }
+      command = { type = country which = HOL }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = HOL
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U10 }
+               control = { province = 122 data = -1 }
+            }
+         }
+         type = trigger which = 245002
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = HOL }
+               NOT = { control = { province = 122 data = -1 } }
+            }
+         }
+         type = trigger which = 157038
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = HOL
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [245002] U10 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 157037 in events/Minors/HOL_14-86.txt
+# Triggered by event 245001 in events/Minors/U10.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 245002
+   country = U10
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = HOL value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [245000] U10 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 245000
+	country = U10
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 865003 }
+		command = { type = headofgovernment which = 865007 }
+		command = { type = foreignminister which = 865016 }
+		command = { type = armamentminister which = 865026 }
+		command = { type = ministerofsecurity which = 865033 }
+		command = { type = ministerofintelligence which = 865041 }
+		command = { type = chiefofstaff which = 865044 }
+		command = { type = chiefofarmy which = 865048 }
+		command = { type = chiefofnavy which = 865050 }
+		command = { type = chiefofair which = 865053 }
+	}
+}

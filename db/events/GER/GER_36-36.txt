@@ -1,0 +1,1759 @@
+# ============================================================================
+# File: events/GER/GER_36-36.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [150139] GER | 1936 | Denmark Accedes to Demands (Dinamarca acepta las exigencias)
+# Triggered by event 329274 in events/Minors/DEN.txt
+# Trigger event 150395 in events/GER/GER_41-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150139
+	random = no
+	country = GER
+	name = EVT_GER_150139_NAME
+	desc = EVT_SHARED_00758_DESC
+	style = 2
+	picture = "GLOBAL/fall_weserubung"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = DEN }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150140] GER | 1936 | Partition of Yugoslavia (Partición de Yugoslavia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150140
+	random = no
+	country = GER
+	name = "EVT_SHARED_00780_NAME"
+	desc = "EVT_SHARED_00780_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = { exists = YUG }
+		control = { province = 338 data = -3 }
+		participant = { country = GER value = 2 }
+		OR = {
+			alliance = { country = GER country = ITA }
+			alliance = { country = GER country = HUN }
+			alliance = { country = GER country = BUL }
+		}
+	}
+    date = { day = 0 month = january year = 1936 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 100
+		name = "EVT_SHARED_00780_A"
+		command = { type = dissent value = -1 }
+		command = { trigger = { NOT= { claims = { province = 346 data = GER } } } type = addclaim which = 346 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 329 when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 332 when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 334 when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 335 when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 343 when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 349 when = 1 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 350 when = 1 }
+		command = { trigger = { alliance = { country = GER country = HUN } } type = secedeprovince which = HUN value = 341 when = 1 }
+		command = { trigger = { alliance = { country = GER country = BUL } } type = secedeprovince which = BUL value = 328 when = 1 }
+		command = { trigger = { alliance = { country = GER country = BUL } } type = secedeprovince which = BUL value = 331 when = 1 }
+		command = { trigger = { alliance = { country = GER country = BUL } } type = secedeprovince which = BUL value = 333 when = 1 }
+	}
+	action_b = {
+		ai_chance = 0
+		name = "EVT_SHARED_00780_B"
+		command = { type = dissent value = 5 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = relation which = ITA value = -25 }
+		command = { trigger = { alliance = { country = GER country = HUN } } type = relation which = HUN value = -25 }
+		command = { trigger = { alliance = { country = GER country = BUL } } type = relation which = BUL value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150145] GER | 1936 | Italy Enters the Axis Coalition (Italia se une al Eje)
+# Triggered by event 166060 in events/ITA/ITA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150145
+	random = no
+	country = GER
+	name = EVT_GER_150145_NAME
+	desc = EVT_GER_150145_DESC
+  	style = 2
+	picture = "GLOBAL/pact_of_steel"
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_ACCEPT
+		command = { type = alliance which = ITA when = 1 }
+		command = { type = relation which = ITA value = 50 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_REFUSE
+		command = { type = dissent value = 5 }
+		command = { type = relation which = ITA value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150146] GER | 1936 | Collapse of the Italian Regime (Colapso del régimen italiano)
+# Triggered by event 329315 in events/ITA/ITA_34-36.txt
+# Trigger event 210000 in events/Minors/RSI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150146
+	random = no
+	country = GER
+	name = EVT_SHARED_00793_NAME
+	desc = EVT_SHARED_00793_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		trigger = { ai = ITA }
+		name = ACTION_NAME_OK
+		command = { type = addcore which = 401 }
+		command = { type = addcore which = 402 }
+		command = { type = addclaim which = 394 }
+		command = { type = addclaim which = 405 }
+		command = { type = addclaim which = 404 }
+		command = { type = addclaim which = 403 }
+		command = { type = addclaim which = 406 }
+		command = { type = inherit which = ITA }
+		command = { type = independence which = RSI value = 1 when = 0 }
+		command = { type = make_puppet which = RSI }
+		command = { type = alliance which = RSI when = 1 }
+		command = { type = trigger which = 210000 }
+	}
+	action = {
+		trigger = { NOT = { ai = ITA } NOT = { alliance = { country = GER country = RSI } } }
+		name = ACTION_NAME_OK
+		command = { type = addcore which = 401 }
+		command = { type = addcore which = 402 }
+		command = { type = make_puppet which = ITA }
+		command = { type = alliance which = ITA when = 1 }
+		command = { type = coup_nation which = ITA }
+	}
+	action = {
+		trigger = { NOT = { ai = ITA } alliance = { country = GER country = RSI } }
+		name = ACTION_NAME_OK
+		command = { type = addcore which = 401 }
+		command = { type = addcore which = 402 }
+		command = { type = secederegion which = RSI value = "Italy" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150147] GER | 1936 | Recognition of Manchukuo (Reconocimiento de Manchukuo)
+# Triggered by event 167033 in events/JAP/JAP_36-37.txt
+# Trigger event 167015 in events/JAP/JAP_33-36.txt
+# Trigger event 124001 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150147
+	random = no
+	country = GER
+	name = "EVT_GER_150147_NAME"
+	desc = "EVT_GER_150147_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		ai_chance = 100
+		name = "EVT_GER_150147_A"
+		command = { type = relation which = JAP value = 25 }
+		command = { type = relation which = MAN value = 20 }
+		command = { type = relation which = CHI value = -15 }
+		command = { type = end_trades which = GER where = CHI }
+		command = { type = wakeleader which = 292 }
+		command = { type = trigger which = 167015 }
+		command = { type = trigger which = 124001 }
+	}
+	action = {
+		ai_chance = 0
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		command = { type = relation which = JAP value = -15 }
+		command = { type = relation which = MAN value = -20 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = setflag which = NO_JAP_Anti_comintern_pact }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150148] GER | 1936 | Anti-Comintern Pact Rejected (Pacto Antikomintern rechazado)
+# Triggered by event 167033 in events/JAP/JAP_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150148
+	random = no
+	country = GER
+	name = "EVT_GER_150148_NAME"
+	desc = "EVT_GER_150148_DESC"
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+		command = { type = relation which = JAP value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150172] GER | 1936 | Papal Encyclical 'Mit brennender Sorge' (Encíclica papal «Mit brennender Sorge»)
+# Triggered by event 150171 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150172
+	random = no
+	country = GER
+	trigger = { event = 150171 ideology = nazi random = 20 }
+	name = "EVT_GER_150172_NAME"
+	desc = "EVT_GER_150172_DESC"
+	style = 2
+	picture = "GER/mit_brennender_sorge"
+	date = { day = 1 month = january year = 1936 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1937 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150237] GER | 1936 | 1936 Max Schmeling vs Joe Louis (El combate Schmeling vs. Louis de 1936)
+# Trigger event 150238 in events/GER/GER_37-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150237
+	random = no
+	country = GER
+	trigger = { ideology = nazi atwar = no random = 20 }
+	date = { day = 1 month = january year = 1936 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1936 }
+	name = EVT_GER_150237_NAME
+	desc = EVT_GER_150237_DESC
+	style = 2
+	picture = "GER/boxe"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { type = relation which = USA value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150324] GER | 1936 | German Mobilization: 2nd Wave (Movilización alemana: 2.ª oleada)
+# Trigger event 150325 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150324
+	random = no
+	country = GER
+	name = EVT_GER_150324_NAME
+	desc = EVT_SHARED_00351_DESC
+	style = 2
+	picture = "GER/mobi_2"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = manpowerpool value = 15 when = 1 }
+		command = { type = event which = 150325 where = -1 when = 60 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150325] GER | 1936 | German Mobilization: 3rd Wave (Movilización alemana: 3.ª oleada)
+# Triggered by event 150324 in events/GER/GER_36-36.txt
+# Trigger event 150326 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150325
+	random = no
+	country = GER
+	name = EVT_GER_150325_NAME
+	desc = EVT_SHARED_00351_DESC
+	style = 2
+	picture = "GER/mobi_3"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = manpowerpool value = 10 when = 1 }
+		command = { type = event which = 150326 where = -1 when = 60 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150326] GER | 1936 | German Mobilization: 4th Wave (Movilización alemana: 4.ª oleada)
+# Triggered by event 150325 in events/GER/GER_36-36.txt
+# Trigger event 150327 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150326
+	random = no
+	country = GER
+	name = EVT_GER_150326_NAME
+	desc = EVT_SHARED_00351_DESC
+	style = 2
+	picture = "GER/mobi_4"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = manpowerpool value = 10 when = 1 }
+		command = { type = event which = 150327 where = -1 when = 150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150327] GER | 1936 | German Mobilization: 5th Wave (Movilización alemana: 5.ª oleada)
+# Triggered by event 150326 in events/GER/GER_36-36.txt
+# Trigger event 150328 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150327
+	random = no
+	country = GER
+	name = EVT_GER_150327_NAME
+	desc = EVT_SHARED_00351_DESC
+	style = 2
+	picture = "GER/mobi_5"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = manpowerpool value = 10 when = 1 }
+		command = { type = event which = 150328 where = -1 when = 300 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150328] GER | 1936 | German Mobilization: 6th Wave (Movilización alemana: 6.ª oleada)
+# Triggered by event 150327 in events/GER/GER_36-36.txt
+# Trigger event 150329 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150328
+	random = no
+	country = GER
+	name = EVT_GER_150328_NAME
+	desc = EVT_SHARED_00351_DESC
+	style = 2
+	picture = "GER/mobi_6"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = manpowerpool value = 3 when = 1 }
+		command = { type = event which = 150329 where = -1 when = 150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150329] GER | 1936 | German Mobilization: 7th Wave (Movilización alemana: 7.ª oleada)
+# Triggered by event 150328 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150329
+	random = no
+	country = GER
+	name = EVT_GER_150329_NAME
+	desc = EVT_SHARED_00351_DESC
+	style = 2
+	picture = "GER/mobi_7"
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = manpowerpool value = 2 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150345] GER | 1936 | Capitulation of Belgium (Capitulación de Bélgica)
+# Triggered by event 143156 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150345
+	random = no
+	country = GER
+	name = "EVT_SHARED_00397_NAME"
+	desc = "EVT_SHARED_00397_DESC"
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { technology = 3810 NOT = { technology = 3820 } } type = add_division which = "Belgian Transports Fleet" value = transport when = 0 }
+		command = { trigger = { technology = 3820 NOT = { technology = 3830 } } type = add_division which = "Belgian Transports Fleet" value = transport when = 1 }
+		command = { trigger = { technology = 3830 NOT = { technology = 3840 } } type = add_division which = "Belgian Transports Fleet" value = transport when = 2 }
+		command = { trigger = { technology = 3840 NOT = { technology = 3850 } } type = add_division which = "Belgian Transports Fleet" value = transport when = 3 }
+		command = { trigger = { technology = 3850 NOT = { technology = 3860 } } type = add_division which = "Belgian Transports Fleet" value = transport when = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150350] GER | 1936 | Egypt Inquires on Axis Entry (Egipto solicita entrar en el Eje)
+# Triggered by event 329536 in events/Minors/EGY_33-58.txt
+# Trigger event 142009 in events/Minors/EGY_33-58.txt
+# Trigger event 142010 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150350
+	random = no
+	country = GER
+	style = 2
+	name = EVT_GER_150350_NAME
+	desc = EVT_GER_150350_DESC
+	picture = "GLOBAL/afrika_korps"
+	action_a = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		command = { type = trigger which = 142009 }
+		command = { type = make_puppet which = EGY }
+		command = { type = set_relation which = EGY value = 100 }
+		command = { type = dissent value = -1 }
+		}
+	action_b = {
+		name = EVT_GER_150350_A
+		ai_chance = 5
+		command = { type = trigger which = 142010 }
+		command = { type = relation which = EGY value = -50 }
+		command = { type = dissent value = 5 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [150351] GER | 1936 | US Capitulation: German Terms (Capitulación de EE. UU.: Términos alemanes)
+# Triggered by event 316134 in events/USA/USA_33-36.txt
+# Trigger event 316135 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 150351
+   random = no
+   country = GER
+   name = EVT_SHARED_00432_NAME
+   desc = EVT_SHARED_00432_DESC
+   style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		ai_chance = 5
+		name = ACTION_NAME_KEEP_CURRENT
+		command = { type = setflag which = GERpeace }
+		command = { type = trigger which = 316135 }
+	}
+	action = {
+		trigger = {
+			OR = {
+				control = { province = 1783 data = USA }
+				control = { province = 1 data = USA }
+				control = { province = 3 data = USA }
+			}
+		}
+		ai_chance = 50
+		name = EVT_GER_150351_A
+		command = { type = setflag which = GERclaim0 }
+		command = { type = trigger which = 316135 }
+	}
+	action = {
+		ai_chance = 50
+		name = EVT_GER_150351_B
+		command = { type = setflag which = GERclaim1 }
+		command = { type = trigger which = 316135 }
+	}
+	action = {
+		trigger = {
+			OR = {
+				area = { area = "Florida" country = GER }
+				area = { area = "Maryland_Delaware" country = GER }
+				area = { area = "New York" country = GER }
+				area = { area = "Massachussets" country = GER }
+				area = { area = "South Carolina" country = GER }
+				area = { area = "Virginia" country = GER }
+			}
+		}
+		ai_chance = 75
+		name = EVT_GER_150351_C
+		command = { type = setflag which = GERclaim2 }
+		command = { type = trigger which = 316135 }
+	}
+	action = {
+		ai_chance = 1
+		name = EVT_GER_150351_D
+		command = { type = sleepevent which = 316135 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150352] GER | 1936 | German-American Cold War (Guerra fría germano-estadounidense)
+# Triggered by event 316136 in events/USA/USA_33-36.txt
+# Trigger event 316137 in events/USA/USA_33-36.txt
+# Trigger event 316138 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150352
+	random = no
+	country = GER
+	name = EVT_SHARED_00433_NAME
+	desc = EVT_SHARED_00433_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		ai_chance = 100
+		name = EVT_GER_150352_A
+		command = { type = dissent value = -20 }
+		command = { type = trigger which = 316137 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_NO_NEED
+		command = { type = sleepevent which = 316138 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150353] GER | 1936 | German-American Cold War (Guerra fría germano-estadounidense)
+# Triggered by event 316137 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150353
+	random = no
+	country = GER
+	name = EVT_SHARED_00433_NAME
+	desc = EVT_SHARED_00433_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = peace which = USA value = 0 }
+		command = { type = non_aggression which = USA where = GER }
+		command = { type = belligerence value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150354] GER | 1936 | Soviet Armistice Request (Petición soviética de paz)
+# Triggered by event 329544 in events/SOV/SOV_36-38.txt
+# Trigger event 209057 in events/Minors/ROM_36-44.txt
+# Trigger event 146016 in events/Minors/FIN_14-51.txt
+# Trigger event 223096 in events/SOV/SOV_36-38.txt
+# Trigger event 150473 in events/AI/GER_AI_33-36.txt
+# Trigger event 329700 in events/AI/SOV_AI_14-41.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150354
+	random = no
+	country = GER
+	name = "EVT_SHARED_00235_NAME"
+	desc = "EVT_GER_150354_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_ACCEPT_PEACE"
+		ai_chance = 100
+		command = { type = dissent value = -10 }
+		command = { trigger = { alliance = { country = GER country = ROM } } type = trigger which = 209057 }
+		command = { trigger = { alliance = { country = GER country = FIN } } type = trigger which = 146016 }
+		command = { type = event which = 223096 where = SOV when = 1 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE_PEACE"
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+		command = { type = sleepevent which = 223096 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150355] GER | 1936 | Total Victory in the East (Victoria total en el Este)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# Trigger event 150071 in events/GER/GER_Decisions.txt
+# Trigger event 150072 in events/GER/GER_33-36.txt
+# Trigger event 329318 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150355
+	random = no
+	country = GER
+	name = "EVT_GER_150355_NAME"
+	desc = "EVT_GER_150355_DESC"
+	style = 2
+	picture = "GLOBAL/anschluss"
+	action = {
+		ai_chance = 50
+		name = "ACTION_NAME_GREAT"
+		command = { trigger = { OR = {
+									flag = Tur_Georgia
+									flag = Tur_Armenia_Azer
+									flag = Tur_Kaukasus
+								}
+					} type = trigger which = 150072 }
+		command = { type = belligerence which = GER value = -50 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secederegion which = ROM value = "Romania" }
+		command = { trigger = { control = { province = 626 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 626 }
+		command = { trigger = { control = { province = 625 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 625 }
+		command = { trigger = { control = { province = 620 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 620 }
+		command = { trigger = { control = { province = 619 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 619 }
+		command = { trigger = { control = { province = 300 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 300 }
+		command = { trigger = { control = { province = 302 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 302 }
+		command = { trigger = { control = { province = 303 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 303 }
+		command = { trigger = { control = { province = 304 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 304 }
+		command = { trigger = { control = { province = 305 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 305 }
+		command = { trigger = { control = { province = 306 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 306 }
+		command = { trigger = { control = { province = 621 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 621 }
+		command = { trigger = { alliance = { country = FIN country = GER } } type = secederegion which = FIN value = "Finland" }
+		command = { trigger = { control = { province = 535 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 535 }
+		command = { trigger = { control = { province = 534 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 534 }
+		command = { trigger = { control = { province = 541 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 541 }
+		command = { trigger = { control = { province = 517 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 517 }
+		command = { trigger = { control = { province = 519 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 519 }
+		command = { trigger = { control = { province = 536 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 536 }
+		command = { trigger = { control = { province = 537 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 537 }
+		command = { trigger = { control = { province = 540 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 540 }
+		command = { trigger = { control = { province = 538 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 538 }
+		command = { trigger = { control = { province = 532 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 532 }
+		command = { trigger = { control = { province = 539 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 539 }
+		command = { trigger = { control = { province = 531 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 531 }
+		command = { trigger = { control = { province = 530 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 530 }
+	}
+	action = {  trigger = { ai = yes }
+		ai_chance = 50
+		name = "ACTION_NAME_GREAT"
+		command = { type = belligerence which = GER value = -50 }
+		command = { trigger = { alliance = { country = ROM country = GER } } type = secederegion which = ROM value = "Romania" }
+		command = { trigger = { control = { province = 626 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 626 }
+		command = { trigger = { control = { province = 625 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 625 }
+		command = { trigger = { control = { province = 620 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 620 }
+		command = { trigger = { control = { province = 619 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 619 }
+		command = { trigger = { control = { province = 300 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 300 }
+		command = { trigger = { control = { province = 302 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 302 }
+		command = { trigger = { control = { province = 303 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 303 }
+		command = { trigger = { control = { province = 304 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 304 }
+		command = { trigger = { control = { province = 305 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 305 }
+		command = { trigger = { control = { province = 306 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 306 }
+		command = { trigger = { control = { province = 621 data = GER } alliance = { country = ROM country = GER } } type = secedeprovince which = ROM value = 621 }
+		command = { trigger = { alliance = { country = FIN country = GER } } type = secederegion which = FIN value = "Finland" }
+		command = { trigger = { control = { province = 535 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 535 }
+		command = { trigger = { control = { province = 534 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 534 }
+		command = { trigger = { control = { province = 541 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 541 }
+		command = { trigger = { control = { province = 517 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 517 }
+		command = { trigger = { control = { province = 519 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 519 }
+		command = { trigger = { control = { province = 536 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 536 }
+		command = { trigger = { control = { province = 537 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 537 }
+		command = { trigger = { control = { province = 540 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 540 }
+		command = { trigger = { control = { province = 538 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 538 }
+		command = { trigger = { control = { province = 532 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 532 }
+		command = { trigger = { control = { province = 539 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 539 }
+		command = { trigger = { control = { province = 531 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 531 }
+		command = { trigger = { control = { province = 530 data = GER } alliance = { country = FIN country = GER } } type = secedeprovince which = FIN value = 530 }
+		command = { trigger = { ai = yes } type = ai which = "switch/GER_Bitter_Peace.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150389] GER | 1936 | The French Resistance (La Résistance) (La Resistencia Francesa (La Résistance))
+# ----------------------------------------------------------------------------
+event = {
+	id = 150389
+	random = no
+	country = GER
+	trigger = {
+		control = { province = 55 data = GER }
+		war = { country = GER country = SOV }
+		war = { country = GER country = USA }
+	}
+	name = "EVT_GER_150389_NAME"
+	desc = "EVT_GER_150389_DESC"
+	style = 2
+	picture = "GLOBAL/the_french_resistance_la_r_sistance"
+	date = { day = 1 month = january year = 1936 }
+	offset = 75
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = province_revoltrisk which = 96 value = 12 }
+		command = { type = province_revoltrisk which = 95 value = 13 }
+		command = { type = province_revoltrisk which = 106 value = 13 }
+		command = { type = province_revoltrisk which = 97 value = 13 }
+		command = { type = province_revoltrisk which = 64 value = 13 }
+		command = { type = province_revoltrisk which = 54 value = 15 }
+		command = { type = province_revoltrisk which = 99 value = 12 }
+		command = { type = province_revoltrisk which = 100 value = 12 }
+		command = { type = province_revoltrisk which = 102 value = 12 }
+		command = { type = province_revoltrisk which = 101 value = 10 }
+		command = { type = province_revoltrisk which = 103 value = 10 }
+		command = { type = province_revoltrisk which = 51 value = 16 }
+		command = { type = province_revoltrisk which = 52 value = 9 }
+		command = { type = province_revoltrisk which = 49 value = 11 }
+		command = { type = province_revoltrisk which = 53 value = 12 }
+		command = { type = province_revoltrisk which = 50 value = 14 }
+		command = { type = province_revoltrisk which = 56 value = 12 }
+		command = { type = province_revoltrisk which = 55 value = 23 }
+		command = { type = province_revoltrisk which = 60 value = 12 }
+		command = { type = province_revoltrisk which = 66 value = 14 }
+		command = { type = province_revoltrisk which = 42 value = 15 }
+		command = { type = province_revoltrisk which = 43 value = 11 }
+		command = { type = province_revoltrisk which = 44 value = 8 }
+		command = { type = province_revoltrisk which = 46 value = 10 }
+		command = { type = province_revoltrisk which = 47 value = 11 }
+		command = { type = province_revoltrisk which = 48 value = 11 }
+		command = { type = province_revoltrisk which = 45 value = 12 }
+		command = { type = province_revoltrisk which = 37 value = 11 }
+		command = { type = province_revoltrisk which = 38 value = 13 }
+		command = { type = province_revoltrisk which = 41 value = 13 }
+		command = { type = province_revoltrisk which = 39 value = 4 }
+		command = { type = province_revoltrisk which = 40 value = 12 }
+		command = { type = province_revoltrisk which = 59 value = 14 }
+		command = { type = province_revoltrisk which = 58 value = 11 }
+		command = { type = province_revoltrisk which = 57 value = 5 }
+		command = { type = province_revoltrisk which = 62 value = 13 }
+		command = { type = province_revoltrisk which = 61 value = 13 }
+		command = { type = province_revoltrisk which = 65 value = 14 }
+		command = { type = province_revoltrisk which = 63 value = 15 }
+		command = { type = province_revoltrisk which = 69 value = 11 }
+		command = { type = province_revoltrisk which = 70 value = 7 }
+		command = { type = province_revoltrisk which = 68 value = 12 }
+		command = { type = province_revoltrisk which = 67 value = 13 }
+		command = { type = province_revoltrisk which = 114 value = 11 }
+		command = { type = province_revoltrisk which = 123 value = 12 }
+		command = { type = province_revoltrisk which = 125 value = 12 }
+		command = { type = province_revoltrisk which = 122 value = 10 }
+		command = { type = province_revoltrisk which = 118 value = 12 }
+		command = { type = province_revoltrisk which = 120 value = 12 }
+		command = { type = province_revoltrisk which = 121 value = 12 }
+		command = { type = province_revoltrisk which = 115 value = 11 }
+		command = { type = province_revoltrisk which = 117 value = 11 }
+		command = { type = province_revoltrisk which = 116 value = 19 }
+		command = { type = province_revoltrisk which = 112 value = 6 }
+		command = { type = province_revoltrisk which = 113 value = 14 }
+		command = { type = province_revoltrisk which = 110 value = 11 }
+		command = { type = province_revoltrisk which = 111 value = 13 }
+		command = { type = province_revoltrisk which = 119 value = 13 }
+		command = { type = province_revoltrisk which = 124 value = 12 }
+		command = { type = province_revoltrisk which = 108 value = 8 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150390] GER | 1936 | Liberation Decreases French Resistance Activity (Descenso de la resistencia tras la liberación aliada)
+# ----------------------------------------------------------------------------
+event = {
+	id = 150390
+	random = no
+	country = GER
+	trigger = {
+		NOT = { control = { province = 55 data = GER } }
+	}
+	name = "EVT_GER_150390_NAME"
+	desc = "EVT_GER_150390_DESC"
+	style = 2
+	date = { day = 1 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1999 }
+	picture = "GLOBAL/the_french_resistance_la_r_sistance"
+	action_a = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = province_revoltrisk which = 96 value = 0 }
+		command = { type = province_revoltrisk which = 95 value = 0 }
+		command = { type = province_revoltrisk which = 106 value = 0 }
+		command = { type = province_revoltrisk which = 97 value = 0 }
+		command = { type = province_revoltrisk which = 64 value = 0 }
+		command = { type = province_revoltrisk which = 54 value = 0 }
+		command = { type = province_revoltrisk which = 99 value = 0 }
+		command = { type = province_revoltrisk which = 100 value = 0 }
+		command = { type = province_revoltrisk which = 102 value = 0 }
+		command = { type = province_revoltrisk which = 101 value = 0 }
+		command = { type = province_revoltrisk which = 103 value = 0 }
+		command = { type = province_revoltrisk which = 51 value = 0 }
+		command = { type = province_revoltrisk which = 52 value = 0 }
+		command = { type = province_revoltrisk which = 49 value = 0 }
+		command = { type = province_revoltrisk which = 53 value = 0 }
+		command = { type = province_revoltrisk which = 50 value = 0 }
+		command = { type = province_revoltrisk which = 56 value = 0 }
+		command = { type = province_revoltrisk which = 55 value = 0 }
+		command = { type = province_revoltrisk which = 60 value = 0 }
+		command = { type = province_revoltrisk which = 66 value = 0 }
+		command = { type = province_revoltrisk which = 42 value = 0 }
+		command = { type = province_revoltrisk which = 43 value = 0 }
+		command = { type = province_revoltrisk which = 44 value = 0 }
+		command = { type = province_revoltrisk which = 46 value = 0 }
+		command = { type = province_revoltrisk which = 47 value = 0 }
+		command = { type = province_revoltrisk which = 48 value = 0 }
+		command = { type = province_revoltrisk which = 45 value = 0 }
+		command = { type = province_revoltrisk which = 37 value = 0 }
+		command = { type = province_revoltrisk which = 38 value = 0 }
+		command = { type = province_revoltrisk which = 41 value = 0 }
+		command = { type = province_revoltrisk which = 39 value = 0 }
+		command = { type = province_revoltrisk which = 40 value = 0 }
+		command = { type = province_revoltrisk which = 59 value = 0 }
+		command = { type = province_revoltrisk which = 58 value = 0 }
+		command = { type = province_revoltrisk which = 57 value = 0 }
+		command = { type = province_revoltrisk which = 62 value = 0 }
+		command = { type = province_revoltrisk which = 61 value = 0 }
+		command = { type = province_revoltrisk which = 65 value = 0 }
+		command = { type = province_revoltrisk which = 63 value = 0 }
+		command = { type = province_revoltrisk which = 69 value = 0 }
+		command = { type = province_revoltrisk which = 70 value = 0 }
+		command = { type = province_revoltrisk which = 68 value = 0 }
+		command = { type = province_revoltrisk which = 67 value = 0 }
+		command = { type = province_revoltrisk which = 114 value = 0 }
+		command = { type = province_revoltrisk which = 123 value = 0 }
+		command = { type = province_revoltrisk which = 125 value = 0 }
+		command = { type = province_revoltrisk which = 122 value = 0 }
+		command = { type = province_revoltrisk which = 118 value = 0 }
+		command = { type = province_revoltrisk which = 120 value = 0 }
+		command = { type = province_revoltrisk which = 121 value = 0 }
+		command = { type = province_revoltrisk which = 115 value = 0 }
+		command = { type = province_revoltrisk which = 117 value = 0 }
+		command = { type = province_revoltrisk which = 116 value = 0 }
+		command = { type = province_revoltrisk which = 112 value = 0 }
+		command = { type = province_revoltrisk which = 113 value = 0 }
+		command = { type = province_revoltrisk which = 110 value = 0 }
+		command = { type = province_revoltrisk which = 111 value = 0 }
+		command = { type = province_revoltrisk which = 119 value = 0 }
+		command = { type = province_revoltrisk which = 124 value = 0 }
+		command = { type = province_revoltrisk which = 108 value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150494] GER | 1936 | Sino-German Cooperation Pact (Pacto de Cooperación sino-alemán)
+# Triggered by event 124121 in events/CHI/CHI_33-37.txt
+# Trigger event 124122 in events/CHI/CHI_33-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150494
+	random = no
+	country = GER
+	picture = "GLOBAL/ccip_wjw"
+	style = 2
+	name = EVT_SHARED_00142_NAME
+	desc = EVT_GER_150494_DESC
+	action = {
+		trigger = {
+            or = {
+                headofstate = 1
+                headofgovernment = 22
+            }
+		}
+		name = ACTION_NAME_YES
+		ai_chance = 50
+		command = { type = relation which = CHI value = 100 }
+		command = { type = relation which = JAP value = -25 }
+		command = { type = trade which = GER where = CHI supplies = -2 money = 0.75 value = 1 }
+		command = { type = trade which = GER where = CHI supplies = -2 money = 0.75 value = 1 }
+		command = { type = trade which = GER where = CHI supplies = -7.5 rare_materials = 20 value = 1 }
+		command = { type = trade which = GER where = CHI supplies = -7.5 rare_materials = 20 value = 1 }
+		command = { trigger = { not = { year = 1933 } } type = event which = 124122 where = CHI when = 120 }
+		command = { trigger = { year = 1933 } type = event which = 124122 where = CHI when = 0 }
+	}
+	action = {
+		trigger = {
+            or = {
+                ai = no
+                not = {
+					headofstate = 1
+					headofgovernment = 22
+                }
+            }
+		}
+        ai_chance = 50
+		name = ACTION_NAME_NO
+		command = { type = relation which = JAP value = 25 }
+		command = { type = relation which = CHI value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150496] GER | 1936 | Partition of Greece (Partición de Grecia)
+# Trigger event 329728 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150496
+	random = no
+	country = GER
+	name = "EVT_SHARED_00627_NAME"
+	desc = "EVT_SHARED_00627_DESC"
+	style = 2
+	picture = "GLOBAL/parthenon"
+	trigger = {
+		control = { province = 377 data = -3 }
+		participant = { country = GER value = 2 }
+		OR = {
+			alliance = { country = GER country = ITA }
+			alliance = { country = GER country = BUL }
+		}
+	}
+    date = { day = 1 month = january year = 1936 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 100
+		name = "EVT_SHARED_00627_A"
+		command = { type = dissent value = -1 }
+		command = { trigger = { NOT = { claims = { province = 377 data = GER } } } type = addclaim which = 377 }
+		command = { trigger = { NOT = { claims = { province = 382 data = GER } } } type = addclaim which = 382 }
+		command = { trigger = { NOT = { claims = { province = 383 data = GER } } } type = addclaim which = 383 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 367 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 368 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 369 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 371 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 372 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 373 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 374 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 375 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 376 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 380 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = secedeprovince which = ITA value = 381 }
+		command = { trigger = { alliance = { country = GER country = BUL } } type = secedeprovince which = BUL value = 363 }
+		command = { trigger = { alliance = { country = GER country = BUL } } type = secedeprovince which = BUL value = 364 }
+		command = { trigger = { alliance = { country = GER country = BUL } } type = secedeprovince which = BUL value = 365 }
+		command = { trigger = { alliance = { country = GER country = BUL } } type = secedeprovince which = BUL value = 366 }
+		command = { trigger = { alliance = { country = GER country = BUL } } type = secedeprovince which = BUL value = 370 }
+	}
+	action_b = {
+		ai_chance = 0
+		name = "EVT_SHARED_00627_B"
+		command = { type = dissent value = 5 }
+		command = { trigger = { alliance = { country = GER country = ITA } } type = relation which = ITA value = -25 }
+		command = { trigger = { alliance = { country = GER country = BUL } } type = relation which = BUL value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150498] GER | 1936 | The Olympic Flame debut,1936. (El debut de la llama olímpica en 1936)
+# Triggered by event 152162 in events/GRE/GRE_33-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150498
+	random = no
+	country = GER
+	style = 2
+	name = "EVT_SHARED_00629_NAME"
+	desc = "EVT_SHARED_00629_DESC"
+	Picture = "GeorgEdward"
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { type = relation which = GRE value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [150499] GER | 1936 | Joseph Goebbels official visit to Greece. (Visita oficial de Joseph Goebbels a Grecia)
+# Triggered by event 152164 in events/GRE/GRE_33-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150499
+	random = no
+	country = GER
+	style = 2
+	name = "EVT_SHARED_00631_NAME"
+	desc = "EVT_SHARED_00631_DESC"
+	Picture = "GoebbelsGreece"
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = construct which = ic where = -1 value = -1 }
+		command = { type = relation which = GRE value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [150500] GER | 1936 | German Protectorate over India (Protectorado alemán sobre la India)
+# Triggered by event 237037 in events/Minors/U02.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150500
+	country = GER
+	name = EVT_GER_150500_NAME
+	desc = EVT_GER_150500_DESC
+	picture = "nwo/british_raj_surrender"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		command = { type = peace which = IND value = 1 }
+		command = { type = make_puppet which = IND }
+		command = { type = peace which = PAK value = 1 }
+		command = { type = make_puppet which = PAK }
+		command = { type = peace which = U80 value = 1 }
+		command = { type = make_puppet which = U80 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 5
+		command = { type = war which = IND }
+		command = { type = war which = PAK }
+		command = { type = war which = U80 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150505] GER | 1936 | Romania Receives Transnistria (Rumania recibe Transnistria)
+# Triggered by event 223355 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150505
+	country = GER
+	name = EVT_GER_150505_NAME
+	desc = EVT_GER_150505_DESC
+	picture = "nwo/romanian_gains_in_ussr"
+	style = 1
+	trigger = {
+		flag = the_bitter_peace
+		event = { id = 223355 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = ROM value = 615 when = 1 }
+		command = { type = secedeprovince which = ROM value = 622 when = 1 }
+		command = { type = secedeprovince which = ROM value = 627 when = 1 }
+		command = { type = secedeprovince which = ROM value = 628 when = 1 }
+		command = { type = secedearea which = ROM value = "Odessa" when = 1 }
+		command = { type = secederegion which = ROM value = "Romania" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150506] GER | 1936 | Romania Receives Bessarabia and Borderlands (Rumania recupera Besarabia y zonas limítrofes)
+# Triggered by event 223355 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150506
+	country = GER
+	name = EVT_GER_150506_NAME
+	desc = EVT_GER_150506_DESC
+	picture = "nwo/romanian_gains_in_ussr"
+	style = 1
+	trigger = {
+		flag = the_bitter_peace
+		event = { id = 223355 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = ROM value = "Odessa" when = 1 }
+		command = { type = secederegion which = ROM value = "Romania" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150507] GER | 1936 | Romania Recovers Bessarabia (Rumania recupera Besarabia)
+# Triggered by event 223355 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150507
+	country = GER
+	name = EVT_GER_150507_NAME
+	desc = EVT_GER_150507_DESC
+	picture = "nwo/romanian_gains_in_ussr"
+	style = 1
+	trigger = {
+		flag = the_bitter_peace
+		event = { id = 223355 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secederegion which = ROM value = "Romania" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150508] GER | 1936 | Finland Receives East Karelia (Finlandia proclama la Gran Finlandia)
+# Triggered by event 223355 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150508
+	country = GER
+	name = EVT_GER_150508_NAME
+	desc = EVT_GER_150508_DESC
+	picture = "nwo/finnish_gains_in_ussr"
+	style = 1
+	trigger = {
+		flag = the_bitter_peace
+		event = { id = 223355 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = FIN value = "Kola" when = 1 }
+		command = { type = secedearea which = FIN value = "Petrozavodsk" when = 1 }
+		command = { type = secedeprovince which = FIN value = 538 when = 1 }
+		command = { type = secedeprovince which = FIN value = 539 when = 1 }
+		command = { type = secedeprovince which = FIN value = 540 when = 1 }
+		command = { type = secederegion which = FIN value = "Finland" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150509] GER | 1936 | Finland Recovers Karelia (Finlandia recupera Carelia)
+# Triggered by event 223355 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150509
+	country = GER
+	name = EVT_GER_150509_NAME
+	desc = EVT_GER_150509_DESC
+	picture = "nwo/finnish_gains_in_ussr"
+	style = 1
+	trigger = {
+		flag = the_bitter_peace
+		event = { id = 223355 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = FIN value = 538 when = 1 }
+		command = { type = secedeprovince which = FIN value = 539 when = 1 }
+		command = { type = secedeprovince which = FIN value = 540 when = 1 }
+		command = { type = secederegion which = FIN value = "Finland" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150510] GER | 1936 | Finland Receives Lost Territories (Finlandia recupera sus fronteras históricas)
+# Triggered by event 223355 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150510
+	country = GER
+	name = EVT_GER_150510_NAME
+	desc = EVT_GER_150510_DESC
+	picture = "nwo/finnish_gains_in_ussr"
+	style = 1
+	trigger = {
+		flag = the_bitter_peace
+		event = { id = 223355 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secederegion which = FIN value = "Finland" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150511] GER | 1936 | Turkey Expands into the Caucasus (Turquía se expande en el Cáucaso)
+# Triggered by event 223355 in events/SOV/SOV_36-38.txt
+# Triggered by event 235025 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150511
+	country = GER
+	name = EVT_GER_150511_NAME
+	desc = EVT_GER_150511_DESC
+	picture = "nwo/turkish_gains_in_ussr"
+	style = 1
+	trigger = {
+		flag = the_bitter_peace
+		event = { id = 223355 days = 3 }
+		event = 235025
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = TUR value = "Georgia" when = 1 }
+		command = { type = secedeprovince which = TUR value = 711 when = 1 }
+		command = { type = secedeprovince which = TUR value = 714 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150512] GER | 1936 | Reichskommissariats Established in the East (Creación de los Reichskommissariats en el Este)
+# Triggered by event 223355 in events/SOV/SOV_36-38.txt
+# Trigger event 223359 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150512
+	country = GER
+	save_date = yes
+	name = EVT_GER_150512_NAME
+	desc = EVT_GER_150512_DESC
+	picture = "nwo/alfred_rosenberg"
+	style = 1
+	trigger = {
+		flag = the_bitter_peace
+		event = { id = 223355 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = LIT value = 1 }
+		command = { type = independence which = LAT value = 1 }
+		command = { type = independence which = EST value = 1 }
+		command = { type = independence which = U40 value = 1 }
+		command = { type = independence which = U44 value = 1 }
+		command = { type = independence which = U45 value = 1 }
+		command = { type = independence which = U46 value = 1 }
+		command = { type = independence which = U47 value = 1 }
+		command = { type = independence which = U48 value = 1 }
+		command = { type = independence which = U41 value = 1 }
+		command = { type = independence which = U42 value = 1 }
+		command = { type = independence which = U43 value = 1 }
+		command = { type = make_puppet which = LIT }
+		command = { type = make_puppet which = LAT }
+		command = { type = make_puppet which = EST }
+		command = { type = make_puppet which = U40 }
+		command = { type = make_puppet which = U44 }
+		command = { type = make_puppet which = U45 }
+		command = { type = make_puppet which = U46 }
+		command = { type = make_puppet which = U47 }
+		command = { type = make_puppet which = U48 }
+		command = { type = make_puppet which = U41 }
+		command = { type = make_puppet which = U42 }
+		command = { type = make_puppet which = U43 }
+		command = { type = alliance which = LIT }
+		command = { type = alliance which = LAT }
+		command = { type = alliance which = EST }
+		command = { type = alliance which = U40 }
+		command = { type = alliance which = U44 }
+		command = { type = alliance which = U45 }
+		command = { type = alliance which = U46 }
+		command = { type = alliance which = U47 }
+		command = { type = alliance which = U48 }
+		command = { type = alliance which = U41 }
+		command = { type = alliance which = U42 }
+		command = { type = alliance which = U43 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150513] GER | 1936 | Direct Annexation of the East (Anexión directa de los territorios del Este)
+# Triggered by event 223355 in events/SOV/SOV_36-38.txt
+# Trigger event 223359 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150513
+	country = GER
+	save_date = yes
+	name = EVT_GER_150513_NAME
+	desc = EVT_GER_150513_DESC
+	picture = "nwo/germany_to_the_urals"
+	style = 1
+	trigger = {
+		flag = the_bitter_peace
+		event = { id = 223355 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 80
+		command = { type = independence which = LIT value = 1 }
+		command = { type = independence which = LAT value = 1 }
+		command = { type = independence which = EST value = 1 }
+		command = { type = make_puppet which = LIT }
+		command = { type = make_puppet which = LAT }
+		command = { type = make_puppet which = EST }
+		command = { type = alliance which = LIT }
+		command = { type = alliance which = LAT }
+		command = { type = alliance which = EST }
+		command = { type = dissent value = 40 }
+		command = { type = belligerence value = 100 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 20
+		command = { type = dissent value = 45 }
+		command = { type = belligerence value = 110 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150514] GER | 1936 | Protectorates Established in the East (Creación de protectorados en el Este)
+# Triggered by event 223355 in events/SOV/SOV_36-38.txt
+# Trigger event 223359 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150514
+	country = GER
+	save_date = yes
+	name = EVT_GER_150514_NAME
+	desc = EVT_GER_150514_DESC
+	picture = "nwo/russian_liberation_army"
+	style = 1
+	trigger = {
+		flag = the_bitter_peace
+		event = { id = 223355 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = LIT value = 1 }
+		command = { type = independence which = LAT value = 1 }
+		command = { type = independence which = EST value = 1 }
+		command = { type = independence which = BLR value = 1 }
+		command = { type = independence which = UKR value = 1 }
+		command = { type = independence which = AZB value = 1 }
+		command = { type = independence which = GEO value = 1 }
+		command = { type = independence which = ARM value = 1 }
+		command = { type = independence which = RUS value = 1 }
+		command = { type = make_puppet which = BLR }
+		command = { type = make_puppet which = UKR }
+		command = { type = make_puppet which = AZB }
+		command = { type = make_puppet which = GEO }
+		command = { type = make_puppet which = ARM }
+		command = { type = make_puppet which = RUS }
+		command = { type = alliance which = BLR }
+		command = { type = alliance which = UKR }
+		command = { type = alliance which = AZB }
+		command = { type = alliance which = GEO }
+		command = { type = alliance which = ARM }
+		command = { type = alliance which = RUS }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150515] GER | 1936 | Terms of the British Capitulation (Términos de la capitulación británica)
+# Triggered by event 143340 in events/ENG/ENG_34-36.txt
+# Trigger event 143340 in events/ENG/ENG_34-36.txt
+# Trigger event 143341 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150515
+	country = GER
+	name = EVT_GER_150515_NAME
+	desc = EVT_GER_150515_DESC
+	picture = "nwo/aircrafts_over_westminster"
+	style = 1
+	action = {
+		ai_chance = 60
+		name = EVT_GER_150515_A
+		command = { type = dissent value = -3 }
+		command = { type = belligerence value = 15 }
+		command = { type = setflag which = isolation_of_uk }
+		command = { type = trigger which = 143341 }
+	}
+	action = {
+		ai_chance = 25
+		name = EVT_GER_150515_B
+		command = { type = dissent value = 3 }
+		command = { type = setflag which = dissolution_of_uk }
+		command = { type = trigger which = 143341 }
+	}
+	action = {
+		ai_chance = 15
+		name = EVT_GER_150515_C
+		command = { type = belligerence value = 50 }
+		command = { type = dissent value = 15 }
+		command = { type = setflag which = annexation_of_uk }
+		command = { type = trigger which = 143341 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = dissent value = 10 }
+		command = { type = clrflag which = the_crumbling_empire }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150516] GER | 1936 | Postwar Order in Great Britain (Orden de posguerra en Gran Bretaña)
+# Triggered by event 143342 in events/ENG/ENG_34-36.txt
+# Trigger event 143345 in events/ENG/ENG_34-36.txt
+# Trigger event 143346 in events/ENG/ENG_34-36.txt
+# Trigger event 143347 in events/ENG/ENG_34-36.txt
+# Trigger event 150519 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150516
+	country = GER
+	save_date = yes
+	name = EVT_GER_150516_NAME
+	desc = EVT_GER_150516_DESC
+	picture = "nwo/foggy_london"
+	style = 1
+	trigger = {
+		flag = the_crumbling_empire
+		OR = {
+			flag = isolation_of_uk
+			flag = dissolution_of_uk
+		}
+		event = { id = 143342 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_GER_150516_A
+		ai_chance = 55
+		command = { type = set_relation which = ENG value = -50 }
+		command = { type = trigger which = 143345 }
+	}
+	action = {
+		name = EVT_GER_150516_B
+		ai_chance = 35
+		command = { type = set_relation which = ENG value = 100 }
+		command = { type = trigger which = 143346 }
+	}
+	action = {
+		name = EVT_GER_150516_C
+		ai_chance = 10
+		command = { type = belligerence value = 25 }
+		command = { type = set_relation which = ENG value = 100 }
+		command = { type = make_puppet which = ENG }
+		command = { type = trigger which = 143347 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150517] GER | 1936 | The Dissolution of the United Kingdom (Disolución del Reino Unido)
+# Triggered by event 143342 in events/ENG/ENG_34-36.txt
+# Trigger event 150518 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150517
+	country = GER
+	name = EVT_GER_150517_NAME
+	desc = EVT_GER_150517_DESC
+	picture = "nwo/dark_westminster"
+	style = 1
+	trigger = {
+		flag = the_crumbling_empire
+		flag = annexation_of_uk
+		event = { id = 143342 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = ENG }
+		command = { type = trigger which = 150518 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150518] GER | 1936 | Proclamation of Scottish Independence (Proclamación de independencia de Escocia)
+# Triggered by event 150517 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150518
+	country = GER
+	name = EVT_GER_150518_NAME
+	desc = EVT_GER_150518_DESC
+	picture = "nwo/independence_of_scotland"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = SCO value = 0 }
+		command = { type = independence which = U73 value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150519] GER | 1936 | German Hegemony over Europe (Hegemonía alemana en Europa)
+# Triggered by event 150516 in events/GER/GER_36-36.txt
+# Trigger event 329978 in events/JAP/JAP_36-36.txt
+# Trigger event 329979 in events/Minors/IRE_14-59.txt
+# Trigger event 329980 in events/ITA/ITA_34-36.txt
+# Trigger event 329981 in events/Minors/SPA.txt
+# Trigger event 207053 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150519
+	country = GER
+	save_date = yes
+	name = EVT_GER_150519_NAME
+	desc = EVT_GER_150519_DESC
+	picture = "nwo/hitler_final_victory"
+	style = 1
+	trigger = {
+		flag = the_crumbling_empire
+		OR  = {
+			event = { id = 150516 days = 30 }
+			NOT = { exists = ENG }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = make_puppet which = U73 }
+		command = { type = alliance which = U73 }
+		command = { type = make_puppet which = SCO }
+		command = { type = alliance which = SCO }
+		command = { type = make_puppet which = JOR }
+		command = { type = alliance which = JOR }
+		command = { type = make_puppet which = PAL }
+		command = { type = alliance which = PAL }
+		command = { type = make_puppet which = IRQ }
+		command = { type = alliance which = IRQ }
+		command = { type = make_puppet which = OMN }
+		command = { type = alliance which = OMN }
+		command = { type = make_puppet which = YEM }
+		command = { type = alliance which = YEM }
+		command = { type = trigger which = 329978 }
+		command = { type = trigger which = 329979 }
+		command = { type = trigger which = 329980 }
+		command = { type = trigger which = 329981 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150520] GER | 1936 | Partition of the United States (Partición de los Estados Unidos)
+# Triggered by event 329987 in events/USA/USA_36-38.txt
+# Trigger event 316269 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150520
+	country = GER
+	name = EVT_GER_150520_NAME
+	desc = EVT_GER_150520_DESC
+	picture = "nwo/hitler_dows_usa"
+	style = 1
+	action = {
+		ai_chance = 25
+		name = ACTION_NAME_ACCEPT
+		command = { type = dissent value = 5 }
+		command = { type = setflag which = isolation_of_usa }
+	}
+	action = {
+		ai_chance = 60
+		name = EVT_GER_150520_A
+		command = { type = dissent value = -3 }
+		command = { type = belligerence value = 5 }
+		command = { type = setflag which = dissolution_of_usa }
+	}
+	action = {
+		ai_chance = 15
+		name = EVT_GER_150520_B
+		command = { type = dissent value = 25 }
+		command = { type = belligerence value = 25 }
+		command = { type = setflag which = annexation_of_usa }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = dissent value = 25 }
+		command = { type = clrflag which = the_lost_hope }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150521] GER | 1936 | Postwar Governance in America (Gobierno de posguerra en Norteamérica)
+# Triggered by event 316270 in events/USA/USA_36-38.txt
+# Trigger event 316276 in events/USA/USA_36-38.txt
+# Trigger event 316277 in events/USA/USA_36-38.txt
+# Trigger event 316278 in events/USA/USA_36-38.txt
+# Trigger event 150523 in events/GER/GER_36-36.txt
+# Trigger event 167198 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150521
+	country = GER
+	save_date = yes
+	name = EVT_GER_150521_NAME
+	desc = EVT_GER_150521_DESC
+	picture = "nwo/us_congress"
+	style = 1
+	trigger = {
+		flag = the_lost_hope
+		flag = isolation_of_usa
+		flag = german_victory_over_usa
+		event = { id = 316270 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_SHARED_00956_A
+		ai_chance = 60
+		command = { type = set_relation which = USA value = 50 }
+		command = { type = trigger which = 316276 }
+	}
+	action = {
+		name = EVT_GER_150521_A
+		ai_chance = 20
+		command = { type = belligerence value = 25 }
+		command = { type = set_relation which = USA value = 100 }
+		command = { type = trigger which = 316277 }
+	}
+	action = {
+		name = EVT_SHARED_00956_B
+		ai_chance = 20
+		command = { type = set_relation which = USA value = -100 }
+		command = { type = trigger which = 316278 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150522] GER | 1936 | Annexation of the United States (Anexión de los Estados Unidos)
+# Triggered by event 316270 in events/USA/USA_36-38.txt
+# Trigger event 324495 in events/GLOBAL/MULTI_32-39.txt
+# Trigger event 150523 in events/GER/GER_36-36.txt
+# Trigger event 167198 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150522
+	country = GER
+	save_date = yes
+	name = EVT_GER_150522_NAME
+	desc = EVT_GER_150522_DESC
+	picture = "nwo/liberty_statue_in_fog"
+	style = 1
+	trigger = {
+		flag = the_lost_hope
+		flag = annexation_of_usa
+		flag = german_victory_over_usa
+		event = { id = 316270 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = USA }
+		command = { type = event which = 324495 where = GER when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [150523] GER | 1936 | Axis Sphere of Influence in America (Esfera de influencia en Norteamérica)
+# Triggered by event 150521 in events/GER/GER_36-36.txt
+# Triggered by event 167196 in events/JAP/JAP_36-36.txt
+# Triggered by event 316279 in events/USA/USA_36-38.txt
+# Triggered by event 150522 in events/GER/GER_36-36.txt
+# Triggered by event 167197 in events/JAP/JAP_36-36.txt
+# Trigger event 207057 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 150523
+	country = GER
+	save_date = yes
+	name = EVT_GER_150523_NAME
+	desc = EVT_GER_150523_DESC
+	picture = "nwo/hitler_final_victory"
+	style = 1
+	trigger = {
+		flag = the_lost_hope
+		OR = {
+			event = { id = 150521 days = 30 }
+			event = { id = 167196 days = 30 }
+			event = { id = 316279 days = 30 }
+			event = { id = 150522 days = 30 }
+			event = { id = 167197 days = 30 }
+		}
+		flag = german_victory_over_usa
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { flag = dissolution_of_usa } type = make_puppet which = USA }
+		command = { type = alliance which = USA }
+		command = { type = make_puppet which = CSA }
+		command = { type = alliance which = CSA }
+		command = { type = make_puppet which = TEX }
+		command = { type = alliance which = TEX }
+		command = { type = make_puppet which = CAL }
+		command = { type = alliance which = CAL }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [321019] GER | 1936 | Dutch Flood Barriers and Inundation Defenses (Presas y defensas de inundación holandesas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 321019
+	random = no
+	country = GER
+        trigger = {
+		ai = no
+		war = { country = GER country = HOL }
+	}
+	name = "EVT_SHARED_00456_NAME"
+	desc = "EVT_GER_321019_DESC"
+	style = 2
+	picture = "GER/dutch_flood_barriers_and_inundation_defenses"
+	date = { day = 1 month = january year = 1936 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329122] GER | 1936 | Relinquish Control: Finland (Cese de mando sobre Finlandia)
+# Triggered by event 329121 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329122
+	random = no
+	country = GER
+	trigger = {
+		ai = no
+		event = 329121
+		military_control = { country = FIN }
+		local_flag = military_control_FIN
+		OR = {
+			alliance = { country = GER country = SOV }
+			alliance = { country = GER country = FIN }
+			NOT = { war = { country = FIN country = SOV } }
+			NOT = { ai = FIN }
+		}
+	}
+	name = "EVT_GER_329122_NAME"
+	desc = "EVT_SHARED_00209_DESC"
+	style = 2
+	picture = "GLOBAL/hitler_mannerheim"
+	date = { day = 1 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type =  military_control which = GER where = FIN }
+		command	= { type = local_clrflag which = military_control_FIN }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329123] GER | 1936 | Relinquish Control: Spain (Cese de mando sobre España)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329123
+	random = no
+	country = GER
+	trigger = {
+		military_control = { country = SPA }
+		local_flag = military_control_SPA
+		OR = {
+			alliance = { country = GER country = SPA }
+			alliance = { country = GER country = SPR }
+			NOT = { war = { country = SPA country = SPR } }
+			NOT = { ai = SPA }
+		}
+	}
+	name = "EVT_SHARED_00208_NAME"
+	desc = "EVT_SHARED_00209_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 1 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type =  military_control which = GER where = SPA }
+		command	= { type = local_clrflag which = military_control_SPA }
+	}
+}

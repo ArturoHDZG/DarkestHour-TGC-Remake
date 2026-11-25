@@ -1,0 +1,116 @@
+# ============================================================================
+# File: events/Minors/SER_Decisions.txt (2 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [217004] SER | 1914 | Evacuate the Army through Albania? (¿Evacuar al ejército por Albania?)
+# Trigger event 101016 in events/Minors/ALB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217004
+	country = SER
+	decision = {
+		exists = ALB
+		lost_VP = { value = 50 }
+		lost_IC = { value = 50 }
+		OR = {
+			control = { province = 329 data = -3 }
+			control = { province = 333 data = -3 }
+			control = { province = 334 data = -3 }
+			control = { province = 335 data = -3 }
+			control = { province = 332 data = -3 }
+		}
+		NOT = {
+			control = { province = 338 data = -3 }
+			control = { province = 330 data = -3 }
+			war = { country = SER country = ALB }
+			alliance = { country = SER country = ALB }
+		}
+	}
+	decision_trigger = {
+		OR = {
+			control = { province = 329 data = -3 }
+			control = { province = 333 data = -3 }
+			control = { province = 334 data = -3 }
+			control = { province = 335 data = -3 }
+			control = { province = 332 data = -3 }
+		}
+	}
+	trigger = {
+		exists = ALB
+		lost_VP = { value = 50 }
+		lost_IC = { value = 50 }
+		OR = {
+			control = { province = 329 data = -3 }
+			control = { province = 333 data = -3 }
+			control = { province = 334 data = -3 }
+			control = { province = 335 data = -3 }
+			control = { province = 332 data = -3 }
+			}
+		NOT = {
+			control = { province = 338 data = -3 }
+			control = { province = 330 data = -3 }
+			war = { country = SER country = ALB }
+			alliance = { country = SER country = ALB }
+		}
+	}
+	name = "EVT_SER_217004_NAME"
+	desc = "EVT_SER_217004_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "ACTION_NAME_WITHDRAW"
+		command = { type = trigger which = 101016 }
+	}
+	action_b = { trigger = { ai = yes }
+		name = "ACTION_NAME_REFUSE_PEACE"
+		command = {  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [217007] SER | 1914 | Defy Austro-Hungarian Rule (Romper el mandato austrohúngaro)
+# Triggered by event 217006 in events/Minors/SER.txt
+# Triggered by event 211047 in events/Minors/RUS_Decisions.txt
+# Trigger event 217009 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 217007
+	country = SER
+	decision = {
+		event = 217006
+		ispuppet = SER
+	}
+	decision_trigger = {
+		event = 211047
+		army = 8
+	}
+	trigger = {
+		event = 217006
+		ispuppet = SER
+		event = 211047
+		army = 8
+	}
+	name = "EVT_SER_217007_NAME"
+	desc = "EVT_SER_217007_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = june year = 1916 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+		command = { type = end_access which = U08 }
+		command = { type = end_access which = U09 }
+		command = { type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = SER country = RUS } } type = event which = 217009 where = SER when = 2 }
+		command = { trigger = { war = { country = SER country = RUS } } type = peace which = RUS value = 1 }
+		command = { type = alliance which = RUS when = 1 }
+		command = { type = dissent value = -20 }
+	}
+}

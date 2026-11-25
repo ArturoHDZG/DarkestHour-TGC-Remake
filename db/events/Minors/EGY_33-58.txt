@@ -1,0 +1,1584 @@
+# ============================================================================
+# File: events/Minors/EGY_33-58.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [142040] EGY | 1933 | Formation of National Army (Creación del ejército)
+# ----------------------------------------------------------------------------
+event = {
+	id = 142040
+	country = EGY
+	name = EVT_SHARED_00916_NAME
+	desc = EVT_SHARED_00916_DESC
+	picture = "nwo/foundation_of_army"
+	style = 1
+	date = { day = 1 month = january year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+		command = { type = add_division value = infantry when = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329086] EGY | 1933 | Join the Allies (Unirse a los Aliados)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329086
+         random = no
+         country = egy
+         trigger = {
+		war = { country =eng  country = ger }
+		NOT = { war = { country = egy country = ENG }  }
+		NOT = { alliance = { country = egy country = eng }  }
+         }
+         name = "ACTION_NAME_JOIN_ALLIES"
+         desc = "EVT_SHARED_00469_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1933 }
+         offset = 3
+         deathdate = { day = 29 month = december year = 1947 }
+	picture = "Minors/commonwealth"
+           action_a = {
+                  name = "EVT_SHARED_00469_A"
+                  ai_chance = 100
+                  command = { type = domestic which = freedom value = 1 }
+                  command = { type = domestic which = democratic value = 1 }
+                  command = { type = domestic which = defense_lobby value = 1 }
+                  command = { type = domestic which = interventionism value = 1 }
+                  command = { type = sleepevent which = 324000 }
+                  command = { type = set_relation which = ENG value = 200 }
+                  command = { type = alliance which = ENG }
+                  command = { type = dissent value = -50 }
+           }
+           action_b = {
+                  name = "EVT_SHARED_00469_B"
+                  command = { type = dissent value = 25 }
+                  command = { type = domestic which = interventionism value = -2 }
+                  command = { type = domestic which = defense_lobby value = -2 }
+                  command = { type = relation which = eng value = -150 }
+                  command = { type = relation which = ger value = 50 }
+                  ai_chance = 0
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329080] EGY | 1935 | Nationalist Uprising in Egypt (Levantamiento nacionalista en Egipto)
+# Trigger event 329081 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329080
+         random = no
+         country = egy
+         trigger = {
+                   puppet = { country = egy country = eng }
+         }
+         name = "EVT_EGY_329080_NAME"
+         desc = "EVT_EGY_329080_DESC"
+         style = 2
+         date = { day = 1 month = november year = 1935 }
+         offset = 1
+         deathdate = { day = 1 month = january year = 1936 }
+	picture = "Minors/nationalist_uprising_in_egypt"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = dissent value = 2 }
+                  command = { type = revolt which = 796 }
+                  command = { type = relation which = eng value = -20 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329081] EGY | 1935 | Restoration of Constitution of 1923 (Restauración de la Constitución de 1923)
+# Triggered by event 329080 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329081
+         random = no
+         country = egy
+         trigger = {
+                   event = 329080
+                   puppet = { country = egy country = eng }
+         }
+         name = "EVT_EGY_329081_NAME"
+         desc = "EVT_EGY_329081_DESC"
+         style = 2
+         date = { day = 1 month = december year = 1935 }
+         offset = 20
+         deathdate = { day = 29 month = january year = 1936 }
+	picture = "Minors/restoration_of_constitution_of_1923"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = relation which = eng value = -30 }
+                  command = { type = dissent value = -3 }
+                  command = { type = domestic which = political_left value = 1 }
+                  command = { type = domestic which = democratic value = 1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [142007] EGY | 1936 | Anglo-Egyptian Treaty Signed (Tratado anglo-egipcio firmado)
+# Triggered by event 143179 in events/ENG/ENG_34-36.txt
+# Trigger event 329532 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142007
+	random = no
+	country = EGY
+	style = 2
+	name = EVT_EGY_142007_NAME
+	desc = EVT_EGY_142007_DESC
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_HURRAH
+		command = { type = dissent value = -3 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [142008] EGY | 1936 | Britain Rejects the Treaty (Tratado rechazado por Gran Bretaña)
+# Triggered by event 143179 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142008
+	random = no
+	country = EGY
+	style = 2
+	name = EVT_EGY_142008_NAME
+	desc = EVT_EGY_142008_DESC
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_ACCEPT_DEMANDS
+		ai_chance = 90
+		command = { type = relation which = ENG value = -15 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = dissent value = 10 }
+		command = { type = sleepevent which = 329532 }
+		}
+	action_b = {
+		name = ACTION_NAME_WAR
+		ai_chance = 10
+		command = { type = end_puppet }
+		command = { type = leave_alliance when = 1 }
+		command = { type = war which = ENG }
+		command = { type = add_division value = militia when = 4 }
+		command = { type = add_division value = militia when = 4 }
+		command = { type = add_division value = militia when = 4 }
+		command = { type = sleepevent which = 329532 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [142009] EGY | 1936 | Egypt Switches Sides (Egipto cambia de bando)
+# Triggered by event 150350 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142009
+	random = no
+	country = EGY
+	style = 2
+	name = EVT_EGY_142009_NAME
+	desc = EVT_EGY_142009_DESC
+	picture = "GLOBAL/afrika_korps"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = war which = ENG }
+		command = { type = relation which = GER value = 10 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [142010] EGY | 1936 | Axis Rejects Peace Terms (El Eje rechaza negociar la paz)
+# Triggered by event 150350 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142010
+	random = no
+	country = EGY
+	style = 2
+	name = EVT_EGY_142010_NAME
+	desc = EVT_EGY_142010_DESC
+	picture = "GLOBAL/afrika_korps"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_division value = militia when = 4 }
+		command = { type = dissent value = 10 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = alliance which = ENG when = 1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329277] EGY | 1936 | Proclamation of Israel (Proclamación del Estado de Israel)
+# Triggered by event 165001 in events/Minors/ISR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329277
+	random = no
+	country = EGY
+	trigger = {
+		NOT = {
+			ispuppet = EGY
+			alliance = { country = EGY country = ENG }
+			alliance = { country = EGY country = USA }
+			alliance = { country = EGY country = GER }
+			alliance = { country = EGY country = SOV }
+			}
+		OR = {
+			event = 165001
+			AND = {
+				country = ISR
+				NOT = {
+					ispuppet = ISR
+					alliance = { country = ISR country = ENG }
+					alliance = { country = ISR country = USA }
+					alliance = { country = ISR country = GER }
+					alliance = { country = ISR country = SOV }
+					}
+				}
+			}
+		}
+	name = "EVT_SHARED_00767_NAME"
+	desc = "EVT_SHARED_00771_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 80
+		name = "ACTION_NAME_WAR"
+		command = { type = belligerence which = EGY value = 10 }
+		command = { type = set_relation which = JOR value = 150 }
+ 		command = { type = set_relation which = LEB value = 150 }
+		command = { type = set_relation which = SYR value = 150 }
+		command = { type = set_relation which = IRQ value = 100 }
+		command = { type = war which = ISR }
+		}
+	action_b = {
+		ai_chance = 20
+		name = "ACTION_NAME_NEUTRAL"
+		command = { type = set_relation which = JOR value = -50 }
+ 		command = { type = set_relation which = LEB value = -50 }
+		command = { type = set_relation which = SYR value = -50 }
+		command = { type = set_relation which = IRQ value = -50 }
+		command = { type = set_relation which = ISR value = 75 }
+		command = { type = set_relation which = ENG value = 75 }
+		command = { type = set_relation which = USA value = 75 }
+		command = { type = set_relation which = FRA value = 75 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329533] EGY | 1936 | Egyptian Independence (Independencia de Egipto)
+# Triggered by event 329532 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329533
+	random = no
+	country = EGY
+	style = 2
+	trigger = {
+		NOT = {
+			puppet = { country = EGY country = ENG }
+			event = 329532
+			}
+		}
+	date = { day = 0 month = january year = 1936 }
+	offset = 2
+	deathdate = { day = 0 month = january year = 2000 }
+	name = EVT_EGY_329533_NAME
+	desc = EVT_EGY_329533_DESC
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_HURRAH
+		command = { type = domestic which = defense_lobby value = -4 }
+		command = { type = manpowerpool value = 50 }
+		command = { type = sleepevent which = 329532 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329534] EGY | 1936 | Rising Threat in North Africa (Tensión militar en el Norte de África)
+# Triggered by event 101009 in events/Minors/ALB.txt
+# Triggered by event 136005 in events/Minors/CZE_14-53.txt
+# Trigger event 143180 in events/AI/ENG_AI_33-45.txt
+# Trigger event 329535 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329534
+	random = no
+	country = EGY
+	style = 2
+	save_date = yes
+	trigger = {
+		alliance = { country = EGY country = ENG }
+			OR = {
+				event = 101009
+				event = 136005
+				war = { country = ENG country = GER }
+				war = { country = ENG country = ITA }
+			}
+		}
+	date = { day = 0 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 0 month = january year = 2000 }
+	name = EVT_EGY_329534_NAME
+	desc = EVT_EGY_329534_DESC
+	picture = "GLOBAL/north_africa_war"
+	action_a = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 100
+		command = {  type = dissent value = 5 }
+		command = { type = secedearea which = ENG value = "Sidi Barrani" }
+		command = { type = secedearea which = ENG value = "El Alamein" }
+		command = { type = secedearea which = ENG value = "Western Desert" }
+		command = { type = secedearea which = ENG value = "Nile Valley" }
+		command = { type = secedearea which = ENG value = "Suez Channel Area" }
+		command = { type = secedearea which = ENG value = "Palestine" }
+		command = { type = secedearea which = ENG value = "Qattara" }
+		command = { type = secedeprovince which = ENG value = 786 }
+		command = { type = secedeprovince which = ENG value = 788 }
+		command = { type = secedeprovince which = ENG value = 789 }
+		command = { type = secedeprovince which = ENG value = 790 }
+		command = { trigger = { ai = ENG } type = trigger which = 143180 }
+		}
+	action_b = {
+		name = ACTION_NAME_MOBILIZE
+		ai_chance = 0
+		command = {  type = dissent value = 5 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329536] EGY | 1936 | Crisis in Egypt (Descalabro aliado en el desierto)
+# Trigger event 150350 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329536
+	random = no
+	country = EGY
+	style = 2
+	trigger = {
+		war = { country = GER country = EGY }
+			OR = {
+				control = { province = 789 data = GER }
+				control = { province = 787 data = GER }
+				control = { province = 900 data = GER }
+				control = { province = 789 data = ITA }
+				control = { province = 787 data = ITA }
+				control = { province = 900 data = ITA }
+			}
+		}
+	date = { day = 0 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 0 month = january year = 2000 }
+	name = EVT_EGY_329536_NAME
+	desc = EVT_EGY_329536_DESC
+	picture = "GLOBAL/afrika_korps"
+	action_a = {
+		name = ACTION_NAME_JOIN_AXIS
+		ai_chance = 95
+		command = { type = trigger which = 150350 }
+		command = { type = dissent value = 15 }
+		command = { type = leave_alliance when = 1 }
+		command = { type = end_puppet }
+		}
+	action_b = {
+		name = EVT_EGY_329536_A
+		ai_chance = 5
+		command = { type = relation which = ENG value = 10 }
+		command = { type = relation which = GER value = -10 }
+		command = { type = dissent value = 25 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [142006] EGY | 1936 | Death of King Fuad I (Fallecimiento del rey Fuad I)
+# ----------------------------------------------------------------------------
+event = {
+        id = 142006
+        random = no
+        country = EGY
+        style = 2
+        trigger = {
+            headofstate = 340001
+            }
+        date = { day = 27 month = april year = 1936 }
+        offset = 2
+        deathdate = { day = 0 month = january year = 2000 }
+        name = EVT_EGY_142006_NAME
+        desc = EVT_EGY_142006_DESC
+	picture = "GLOBAL/minister_died"
+        action_a = {
+            name = ACTION_NAME_MOURN
+            command = { type = headofstate which = 340011 }
+            command = { type = sleepminister which = 340001 }
+            }
+        }
+
+# ----------------------------------------------------------------------------
+# [142001] EGY | 1936 | National Elections in Egypt (Elecciones nacionales en Egipto)
+# ----------------------------------------------------------------------------
+event = {
+         id = 142001
+         random = no
+         country = egy
+         trigger = {
+         }
+         name = "EVT_EGY_142001_NAME"
+         desc = "EVT_EGY_142001_DESC"
+         style = 2
+         date = { day = 2 month = may year = 1936 }
+	picture = "Minors/national_elections_in_egypt"
+           action_a = {
+                  name = "EVT_EGY_142001_A"
+                  ai_chance = 90
+                  command = { type = dissent value = -1 }
+                  command = { type = headofgovernment which = 340014 }
+           }
+           action_b = {
+                  name = "EVT_EGY_142001_B"
+                  ai_chance = 10
+                  command = { type = dissent value = 1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329083] EGY | 1936 | Region of Hejaz (Región de Hiyaz)
+# ----------------------------------------------------------------------------
+event = {
+         id = 329083
+         random = no
+         country = egy
+         trigger = {
+                   NOT = {
+                            war = { country = egy country = sau }
+                   }
+         }
+         name = "EVT_EGY_329083_NAME"
+         desc = "EVT_EGY_329083_DESC"
+         style = 2
+         date = { day = 7 month = may year = 1936 }
+	picture = "Minors/region_of_hejaz"
+           action_a = {
+                  name = "EVT_EGY_329083_A"
+                  ai_chance = 90
+                  command = { type = relation which = sau value = 50 }
+                  command = { type = dissent value = 2 }
+           }
+           action_b = {
+                  name = "EVT_EGY_329083_B"
+                  ai_chance = 10
+                  command = { type = relation which = sau value = -70 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329531] EGY | 1936 | Anglo-Egyptian Treaty of 1936 (Tratado anglo-egipcio de 1936)
+# Trigger event 143179 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329531
+	random = no
+	country = EGY
+	style = 2
+	trigger = {
+		puppet = { country = EGY country = ENG }
+		}
+	date = { day = 0 month = june year = 1936 }
+	offset = 100
+	deathdate = { day = 0 month = september year = 1936 }
+	name = EVT_EGY_329531_NAME
+	desc = EVT_EGY_329531_DESC
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = EVT_EGY_329531_A
+		ai_chance = 100
+		command = { type = trigger which = 143179 }
+		command = { type = relation which = ENG value = 10 }
+		}
+	action_b = {
+		name = EVT_EGY_329531_B
+		ai_chance = 0
+		command = { type = manpowerpool value = -10 }
+		command = { type = relation which = ENG value = -10 }
+		command = {  type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329532] EGY | 1936 | Ratification of the Treaty (Ratificación del tratado anglo-egipcio)
+# Triggered by event 142007 in events/Minors/EGY_33-58.txt
+# Trigger event 329533 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329532
+	random = no
+	country = EGY
+	style = 2
+	trigger = {
+		event = 142007
+		puppet = { country = EGY country = ENG }
+		}
+	date = { day = 29 month = november year = 1936 }
+	offset = 29
+	deathdate = { day = 0 month = january year = 2000 }
+	name = EVT_EGY_329532_NAME
+	desc = EVT_EGY_329532_DESC
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_HURRAH
+		command = { type = end_puppet }
+		command = { type = domestic which = defense_lobby value = -4 }
+		command = { type = add_division which = "2nd Egyptian Infantry" value = infantry when = 8 }
+		command = { type = relation which = ENG value = 5 }
+		command = { type = manpowerpool value = 50 }
+		command = { type = dissent value = -3 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [142002] EGY | 1937 | British Military Mission to Egypt (Misión militar británica a Egipto)
+# Triggered by event 329082 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 142002
+         random = no
+         country = egy
+         name = "EVT_SHARED_00508_NAME"
+         desc = "EVT_SHARED_00508_DESC"
+         style = 2
+	picture = "GLOBAL/british_military_mission_to_egypt"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = add_division  value = infantry when = 1 }
+                  command = { type = add_division  value = militia when = 1 }
+                  command = { type = gain_tech which = 1080 }
+                  command = { type = gain_tech which = 1230 }
+                  command = { type = money value = 30 }
+                  command = { type = manpowerpool value = 20 }
+                  command = { type = relation which = eng value = 10 }
+                  command = { type = belligerence which = egy value = 2 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [142069] EGY | 1937 | Joining the League of Nations (Entrar en la Sociedad)
+# Triggered by event 324498 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 231025 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142069
+	persistent = no
+	country = EGY
+	trigger = {
+		AND = { NOT = {
+		atwar = yes
+		OR = { event = 324498
+				local_flag = { which = league_of_nations when = 1 value = 1 }
+						}
+					}
+				}
+			}
+	name = "EVT_SHARED_01023_NAME"
+	desc = "EVT_SHARED_01023_DESC"
+	picture = "GLOBAL/aar_lon"
+	style = 2
+	date = { day = 1 month = january year = 1937 }
+	deathdate = { day = 1 month = january year = 1945 }
+	offset = 10
+	action = {
+		name = "EVT_SHARED_01023_A"
+		ai_chance = 100
+		command = { type = local_setflag which = league_of_nations }
+		command = { type = dissent value = -10 }
+		command = { type = 	relation which = ENG value = 50 }
+		command = { type = 	relation which = FRA value = 50 }
+		command = { type = 	relation which = ITA value = 50 }
+		command = { type = 	relation which = JAP value = 50 }
+		command = { type = 	relation which = USA value = 50 }
+		command = { trigger = { local_flag = disarm_army_10 } type = demobilize which = land when = 0 where = 0 value = 10 }
+		command = { trigger = { local_flag = disarm_army_25 } type = demobilize which = land when = 0 where = 0 value = 25 }
+		command = { trigger = { local_flag = disarm_army_50 } type = demobilize which = land when = 0 where = 0 value = 50 }
+		command = { trigger = { local_flag = disarm_army_75 } type = demobilize which = land when = 0 where = 0 value = 75 }
+		command = { type = event which = 231025 where = -1 when = 0 }
+	}
+	action ={
+		name = "EVT_SHARED_01023_B"
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = 	relation which = ENG value = -50 }
+		command = { type = 	relation which = FRA value = -50 }
+		command = { type = 	relation which = ITA value = -50 }
+		command = { type = 	relation which = JAP value = -50 }
+		command = { type = 	relation which = USA value = -50 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [142004] EGY | 1937 | King Farouk of Egypt Dismissal of Wafd Government (Despidos del Gobierno de Wafd por el Rey Farouk de Egipto)
+# ----------------------------------------------------------------------------
+event = {
+         id = 142004
+         random = no
+         country = egy
+         trigger = {
+                   headofstate = 340011
+         }
+         name = "EVT_EGY_142004_NAME"
+         desc = "EVT_EGY_142004_DESC"
+         style = 2
+         date = { day = 29 month = december year = 1937 }
+	picture = "Minors/king_farouk_of_egypt_dismissal_of"
+           action_a = {
+                  name = "ACTION_NAME_DO_NOT_INTERVENE"
+                  ai_chance = 5
+                  command = { type = domestic which = democratic value = 1 }
+                  command = { type = domestic which = freedom value = 1 }
+           }
+           action_b = {
+                  name = "EVT_EGY_142004_A"
+                  ai_chance = 95
+                  command = { type = headofgovernment which = 340017 }
+                  command = { type = domestic which = freedom value = -1 }
+                  command = { type = dissent value = 1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [142003] EGY | 1938 | Egyptian Armament Program (Programa de armamento egipcio)
+# ----------------------------------------------------------------------------
+event = {
+         id = 142003
+         random = no
+         country = egy
+         trigger = {
+                   atwar = no
+         }
+         name = "EVT_EGY_142003_NAME"
+         desc = "EVT_EGY_142003_DESC"
+         style = 2
+         date = { day = 19 month = november year = 1938 }
+	picture = "Minors/egyptian_armament_program"
+           action_a = {
+                  name = "ACTION_NAME_ACCEPT"
+                  ai_chance = 90
+                  command = { type = dissent value = 1 }
+                  command = { type = domestic which = professional_army value = 1 }
+                  command = { type = supplies value = -1200 }
+                  command = { type = oilpool value = -1200 }
+                  command = { type = metalpool value = -3000 }
+                  command = { type = energypool value = -4000 }
+                  command = { type = rarematerialspool value = -750 }
+                  command = { type = money value = -70 }
+                  command = { type = manpowerpool value = 70 }
+                  command = { type = build_time which = land when = on_upgrade where = relative value = -20 }
+                  command = { type = build_cost which = land when = on_upgrade where = relative value = -20 }
+                  command = { type = build_time which = air when = on_upgrade where = relative value = -20 }
+                  command = { type = build_cost which = air when = on_upgrade where = relative value = -20 }
+                  command = { type = build_division which = infantry }
+                  command = { type = build_division which = infantry }
+                  command = { type = build_division which = infantry }
+                  command = { type = build_division which = militia }
+                  command = { type = build_division which = interceptor }
+                  command = { type = build_division which = interceptor }
+                  command = { type = build_division which = cas }
+                  command = { type = build_time which = land when = on_upgrade where = relative value = 20 }
+                  command = { type = build_cost which = land when = on_upgrade where = relative value = 20 }
+                  command = { type = build_time which = air when = on_upgrade where = relative value = 20 }
+                  command = { type = build_cost which = air when = on_upgrade where = relative value = 20 }
+                  command = { type = belligerence which = egy value = 7 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 10
+                  command = { type = dissent value = -2 }
+                  command = { type = relation which = ita value = 20 }
+                  command = { type = domestic which = professional_army value = -1 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329084] EGY | 1943 | Relations with the USSR (Relaciones con la URSS)
+# Trigger event 329085 in events/SOV/SOV_43-46.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329084
+         random = no
+         country = egy
+         trigger = {
+                   war = { country = ger country = sov }
+                   war = { country = ger country = egy }
+                   NOT = {
+                            war = { country = sov country = egy }
+                   }
+         }
+         name = "EVT_SHARED_00509_NAME"
+         desc = "EVT_SHARED_00509_DESC"
+         style = 2
+         date = { day = 1 month = june year = 1943 }
+	picture = "GLOBAL/stalin"
+           action_a = {
+                  name = "ACTION_NAME_ACCEPT"
+                  ai_chance = 90
+                  command = { type = relation which = sov value = 10 }
+                  command = { type = trigger which = 329085 }
+           }
+           action_b = {
+                  name = "EVT_EGY_329084_A"
+                  ai_chance = 10
+                  command = { type = relation which = sov value = -15 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [142015] EGY | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 142015
+	country = EGY
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 340011 }
+		command = { type = headofgovernment which = 340016 }
+		command = { type = foreignminister which = 340033 }
+		command = { type = armamentminister which = 340047 }
+		command = { type = ministerofsecurity which = 340061 }
+		command = { type = ministerofintelligence which = 340072 }
+		command = { type = chiefofstaff which = 340078 }
+		command = { type = chiefofarmy which = 340083 }
+		command = { type = chiefofnavy which = 340087 }
+		command = { type = chiefofair which = 340093 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142039] EGY | 1945 | Colonial Military Bases (Bases militares coloniales)
+# Triggered by event 143289 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142039
+	country = EGY
+	name = EVT_SHARED_00874_NAME
+	desc = EVT_SHARED_00874_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = access which = ENG }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142042] EGY | 1945 | Wilhelm Voss in Egypt (Wilhelm Voss en Egipto)
+# Triggered by event 142041 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142042
+	country = EGY
+	name = EVT_EGY_142042_NAME
+	desc = EVT_EGY_142042_DESC
+	picture = "nwo/wilhelm_voss"
+	style = 1
+	trigger = {
+		event = 142041
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = research_mod value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142043] EGY | 1945 | Rolf Engel in Egypt (Rolf Engel en Egipto)
+# Triggered by event 142041 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142043
+	country = EGY
+	name = EVT_EGY_142043_NAME
+	desc = EVT_EGY_142043_DESC
+	picture = "nwo/rolf_engel"
+	style = 1
+	trigger = {
+		event = 142041
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = -200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142044] EGY | 1945 | Wilhelm Fahrmbacher in Egypt (Wilhelm Fahrmbacher en Egipto)
+# Triggered by event 142041 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142044
+	country = EGY
+	name = EVT_EGY_142044_NAME
+	desc = EVT_EGY_142044_DESC
+	picture = "nwo/wilhelm_fahrmbacher"
+	style = 1
+	trigger = {
+		event = 142041
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = research_mod value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142045] EGY | 1945 | Ferdinand Brandner in Egypt (Ferdinand Brandner en Egipto)
+# Triggered by event 142041 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142045
+	country = EGY
+	name = EVT_EGY_142045_NAME
+	desc = EVT_EGY_142045_DESC
+	picture = "nwo/ferdinand_brandner"
+	style = 1
+	trigger = {
+		event = 142041
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = research_mod value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142046] EGY | 1945 | Willy Messerschmitt in Egypt (Willy Messerschmitt en Egipto)
+# Triggered by event 142041 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142046
+	country = EGY
+	name = EVT_EGY_142046_NAME
+	desc = EVT_EGY_142046_DESC
+	picture = "nwo/willy_messerschmitt"
+	style = 1
+	trigger = {
+		event = 142041
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = research_mod value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142005] EGY | 1946 | Egyptian Autonomy (Autonomía de Egipto)
+# Triggered by event 143107 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142005
+	random = no
+	country = EGY
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		}
+	name = "EVT_EGY_142005_NAME"
+	desc = "EVT_SHARED_00763_DESC"
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 340011 }
+		command = { type = headofgovernment which = 340016 }
+		command = { type = foreignminister which = 340033 }
+		command = { type = armamentminister which = 340047 }
+		command = { type = ministerofsecurity which = 340061 }
+		command = { type = ministerofintelligence which = 340072 }
+		command = { type = chiefofstaff which = 340078 }
+		command = { type = chiefofarmy which = 340083 }
+		command = { type = chiefofnavy which = 340087 }
+		command = { type = chiefofair which = 340093 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [142016] EGY | 1946 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 142016
+	country = EGY
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 340011 }
+		command = { type = headofgovernment which = 340021 }
+		command = { type = foreignminister which = 340039 }
+		command = { type = ministerofsecurity which = 340070 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142017] EGY | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 142017
+	country = EGY
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 340011 }
+		command = { type = headofgovernment which = 340016 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142018] EGY | 1949 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 142018
+	country = EGY
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 340011 }
+		command = { type = headofgovernment which = 340019 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142019] EGY | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 142019
+	country = EGY
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 340011 }
+		command = { type = headofgovernment which = 340024 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142020] EGY | 1952 | Egyptian Revolution of 1952 (Revolución egipcia de 1952)
+# Trigger event 142059 in events/Minors/EGY_Decisions.txt
+# Trigger event 142061 in events/Minors/EGY_Decisions.txt
+# Trigger event 142063 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142020
+	country = EGY
+	name = "EVT_EGY_142020_NAME"
+	desc = "EVT_EGY_142020_DESC"
+	picture = "nwo/nasser_revolution_1952"
+	style = 1
+	date = { day = 0 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = end_puppet }
+		command = { type = end_access which = ENG }
+		command = { type = headofstate which = 340200 }
+		command = { type = headofgovernment which = 340101 }
+		command = { type = foreignminister which = 340043 }
+		command = { type = armamentminister which = 340102 }
+		command = { type = ministerofsecurity which = 340103 }
+		command = { type = ministerofintelligence which = 340077 }
+		command = { type = chiefofstaff which = 340104 }
+		command = { type = chiefofarmy which = 340105 }
+		command = { type = chiefofnavy which = 340091 }
+		command = { type = chiefofair which = 340106 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329809] EGY | 1952 | Full Sovereignty Achieved (Independencia total)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329809
+	country = EGY
+	name = EVT_SHARED_00908_NAME
+	desc = EVT_SHARED_00908_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		puppet = { country = EGY country = ENG }
+		flag = cold_war
+		NOT = { atwar = ENG }
+	}
+	date = { day = 1 month = january year = 1952 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = end_puppet }
+		command = { type = end_access which = ENG }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142000] EGY | 1952 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 142000
+	random = no
+	country = EGY
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		OR = {
+			dissent = 8
+			AND = {
+				random = 5
+				ai = yes
+				}
+			AND = {
+				NOT = {
+					dissent = 8
+					}
+				dissent = 4
+				random = 5
+				}
+			}
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = july year = 1952 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 98
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 340099 }
+		command = { type = headofgovernment which = 340101 }
+		command = { type = foreignminister which = 340043 }
+		command = { type = armamentminister which = 340102 }
+		command = { type = ministerofsecurity which = 340103 }
+		command = { type = ministerofintelligence which = 340077 }
+		command = { type = chiefofstaff which = 340104 }
+		command = { type = chiefofarmy which = 340105 }
+		command = { type = chiefofnavy which = 340091 }
+		command = { type = chiefofair which = 340106 }
+		command = { type = dissent value = 3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 2
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [142021] EGY | 1953 | Deposition of Fuad II (Deposición de Fuad II)
+# ----------------------------------------------------------------------------
+event = {
+	id = 142021
+	country = EGY
+	name = "EVT_EGY_142021_NAME"
+	desc = "EVT_EGY_142021_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = flag_ext where = EGY which = _republic }
+		command = { type = headofstate which = 340099 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142022] EGY | 1954 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 142022
+	country = EGY
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 340153 }
+		command = { type = headofgovernment which = 340152 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142056] EGY | 1956 | Soviet Material Aid to Egypt (Asistencia militar soviética a Egipto)
+# Triggered by event 329965 in events/SOV/SOV_56-81.txt
+# Triggered by event 329968 in events/Minors/ISR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142056
+	country = EGY
+	name = EVT_EGY_142056_NAME
+	desc = EVT_EGY_142056_DESC
+	picture = "nwo/nasser_in_crowd"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_division value = infantry when = 14 }
+		command = { type = add_division value = infantry when = 14 }
+		command = { type = add_division value = infantry when = 14 }
+		command = { type = supplies value = 3000 }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142057] EGY | 1956 | Egyptian Triumph at Suez (Victoria política egipcia en Suez)
+# Triggered by event 329968 in events/Minors/ISR.txt
+# Trigger event 143350 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142057
+	random = no
+	country = EGY
+	name = EVT_EGY_142057_NAME
+	desc = EVT_EGY_142057_DESC
+	picture = "nwo/egypt_wins_suez_war"
+	style = 1
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142058] EGY | 1956 | Defeat in the Suez War (Derrota en la Guerra de Suez)
+# Triggered by event 329969 in events/Minors/ISR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142058
+	random = no
+	country = EGY
+	name = EVT_EGY_142058_NAME
+	desc = EVT_EGY_142058_DESC
+	picture = "nwo/egypt_loses_suez_war"
+	style = 1
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 20 }
+		command = { type = flag_ext where = EGY }
+		command = { type = headofstate which = 340200 }
+		command = { type = headofgovernment which = 340014 }
+		command = { type = foreignminister which = 340032 }
+		command = { type = armamentminister which = 340052 }
+		command = { type = ministerofsecurity which = 340067 }
+		command = { type = ministerofintelligence which = 340077 }
+		command = { type = chiefofstaff which = 340080 }
+		command = { type = chiefofarmy which = 340085 }
+		command = { type = chiefofnavy which = 340091 }
+		command = { type = chiefofair which = 340093 }
+		command = { type = secedeprovince which = ISR value = 1009 when = 1 }
+		command = { type = secedeprovince which = ISR value = 1004 when = 1 }
+		command = { type = secedeprovince which = ISR value = 1005 when = 1 }
+		command = { type = secedeprovince which = ISR value = 1006 when = 1 }
+		command = { type = secedeprovince which = ISR value = 1007 when = 1 }
+		command = { type = secedeprovince which = ENG value = 700 when = 1 }
+		command = { type = set_relation which = ENG value = 100 }
+		command = { type = set_relation which = FRA value = 100 }
+		command = { type = set_relation which = ISR value = 50 }
+		command = { type = set_relation which = SOV value = -150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142055] EGY | 1956 | Financing the Aswan High Dam (Financiación de la presa de Asuán)
+# Trigger event 143338 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142055
+	country = EGY
+	name = EVT_EGY_142055_NAME
+	desc = EVT_EGY_142055_DESC
+	picture = "nwo/aswan_dam"
+	style = 1
+	date = { day = 1 month = may year = 1956 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		trigger = { flag = cold_war }
+		command = { type = construct which = ic where = 795 value = 4 }
+		command = { type = construct which = infrastructure where = 795 value = 40 }
+		command = { type = add_prov_resource which = 795 value = 30 where = energy }
+		command = { type = relation which = USA value = -100 }
+		command = { type = relation which = ENG value = -100 }
+		command = { type = relation which = SOV value = 100 }
+		command = { type = addcore which = 900 }
+	}
+	action = {
+		name = EVT_EGY_142055_A
+		ai_chance = 5
+		command = { type = construct which = ic where = 795 value = 2 }
+		command = { type = construct which = infrastructure where = 795 value = 20 }
+		command = { type = add_prov_resource which = 795 value = 15 where = energy }
+		command = { type = relation which = USA value = 100 }
+		command = { type = relation which = ENG value = 100 }
+		command = { type = sleepevent which = 143338 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142067] EGY | 1956 | United Nations Intervenes at Suez (La ONU interviene en el conflicto de Suez)
+# Triggered by event 329998 in events/USA/USA_48-61.txt
+# Triggered by event 329999 in events/ENG/ENG_55-82.txt
+# Triggered by event 330000 in events/FRA/FRA_48-59.txt
+# Triggered by event 124230 in events/CHI/CHI_45-75.txt
+# Triggered by event 123105 in events/Minors/CHC_45-62.txt
+# Triggered by event 223375 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142067
+	country = EGY
+	name = EVT_EGY_142067_NAME
+	desc = EVT_EGY_142067_DESC
+	picture = "nwo/united_nations_intervention"
+	style = 1
+	trigger = {
+		OR = {
+			NOT = { exists = USA }
+			event = 329998
+		}
+		OR = {
+			NOT = { exists = ENG }
+			event = 329999
+		}
+		OR = {
+			NOT = { exists = FRA }
+			event = 330000
+		}
+		OR = {
+			NOT = { exists = CHI }
+			flag = CHC_in_UNSC
+			event = 124230
+		}
+		OR = {
+			NOT = { exists = CHC }
+			NOT = { flag = CHC_in_UNSC }
+			event = 123105
+		}
+		OR = {
+			NOT = { exists = SOV }
+			event = 223375
+			flag = un_soviet_boycott
+		}
+		NOT = { flag = un_suez_totalveto }
+		NOT = { flag = un_suez_interventionveto }
+	}
+	date = { day = 1 month = september year = 1956 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = 2500 }
+		command = { type = supplies value = 10000 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+		command = { type = add_division value = motorized when = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142068] EGY | 1956 | United Nations Extends Aid in Suez (La ONU aprueba asistencia humanitaria en Suez)
+# Triggered by event 329998 in events/USA/USA_48-61.txt
+# Triggered by event 329999 in events/ENG/ENG_55-82.txt
+# Triggered by event 330000 in events/FRA/FRA_48-59.txt
+# Triggered by event 124230 in events/CHI/CHI_45-75.txt
+# Triggered by event 123105 in events/Minors/CHC_45-62.txt
+# Triggered by event 223375 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142068
+	country = EGY
+	name = EVT_EGY_142068_NAME
+	desc = EVT_EGY_142068_DESC
+	picture = "nwo/united_nations"
+	style = 1
+	trigger = {
+		OR = {
+			NOT = { exists = USA }
+			event = 329998
+		}
+		OR = {
+			NOT = { exists = ENG }
+			event = 329999
+		}
+		OR = {
+			NOT = { exists = FRA }
+			event = 330000
+		}
+		OR = {
+			NOT = { exists = CHI }
+			flag = CHC_in_UNSC
+			event = 124230
+		}
+		OR = {
+			NOT = { exists = CHC }
+			NOT = { flag = CHC_in_UNSC }
+			event = 123105
+		}
+		OR = {
+			NOT = { exists = SOV }
+			event = 223375
+			flag = un_soviet_boycott
+		}
+		NOT = { flag = un_suez_totalveto }
+		flag = un_suez_interventionveto
+	}
+	date = { day = 1 month = september year = 1956 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = 2500 }
+		command = { type = supplies value = 10000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329963] EGY | 1956 | The Suez Crisis Erupts (Estallido de la Crisis de Suez)
+# Triggered by event 165044 in events/Minors/ISR.txt
+# Triggered by event 165045 in events/Minors/ISR.txt
+# Trigger event 329964 in events/USA/USA_48-61.txt
+# Trigger event 329968 in events/Minors/ISR.txt
+# Trigger event 329969 in events/Minors/ISR.txt
+# Trigger event 329997 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329963
+	country = EGY
+	name = EVT_EGY_329963_NAME
+	desc = EVT_EGY_329963_DESC
+	picture = "nwo/nasser_in_crowd"
+	style = 1
+	trigger = {
+		war = { country = EGY country = ISR }
+			OR = {
+				event = 165044
+				event = 165045
+			}
+		}
+	date = { day = 1 month = november year = 1956 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = add_corps when = 789 }
+		command = { type = add_division value = infantry when = 14 }
+		command = { type = add_division value = infantry when = 14 }
+		command = { type = add_division value = infantry when = 14 }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142060] EGY | 1958 | Syria Merges with Egypt (Siria se integra en la RAU)
+# Triggered by event 228059 in events/Minors/SYR.txt
+# Trigger event 142061 in events/Minors/EGY_Decisions.txt
+# Trigger event 142066 in events/Minors/EGY_61-86.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142060
+	country = EGY
+	name = EVT_EGY_142060_NAME
+	desc = EVT_EGY_142060_DESC
+	picture = "nwo/united_arab_republic"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = inherit which = SYR value = 1 }
+		command = { type = flag_ext where = EGY which = _uar }
+		command = { type = name where = EGY which = "EGY58" }
+		command = { type = addcore which = 1016 }
+		command = { type = addcore which = 1020 }
+		command = { type = addcore which = 1017 }
+		command = { type = addcore which = 1021 }
+		command = { type = addcore which = 1014 }
+		command = { type = addcore which = 1015 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142062] EGY | 1958 | Iraq Joins the United Arab Republic (Irak se integra en la RAU)
+# Triggered by event 164062 in events/Minors/IRQ.txt
+# Trigger event 142063 in events/Minors/EGY_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142062
+	country = EGY
+	name = EVT_EGY_142062_NAME
+	desc = EVT_EGY_142062_DESC
+	picture = "nwo/united_arab_republic"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = inherit which = IRQ value = 1 }
+		command = { type = addcore which = 1030 }
+		command = { type = addcore which = 1033 }
+		command = { type = addcore which = 1029 }
+		command = { type = addcore which = 1027 }
+		command = { type = addcore which = 1034 }
+		command = { type = addcore which = 1036 }
+		command = { type = addcore which = 1035 }
+		command = { type = addcore which = 1037 }
+		command = { type = addcore which = 1031 }
+		command = { type = addcore which = 1028 }
+		command = { type = addcore which = 1032 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142064] EGY | 1958 | Jordan Joins the United Arab Republic (Jordania se integra en la RAU)
+# Triggered by event 168056 in events/Minors/JOR.txt
+# Triggered by event 176071 in events/Minors/LEB_33-84.txt
+# Triggered by event 198005 in events/Minors/PAL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142064
+	country = EGY
+	name = EVT_EGY_142064_NAME
+	desc = EVT_EGY_142064_DESC
+	picture = "nwo/united_arab_republic"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = inherit which = JOR value = 1 }
+		command = { type = addcore which = 1025 }
+		command = { type = addcore which = 1026 }
+		command = { type = addcore which = 1022 }
+		command = { type = addcore which = 1024 }
+		command = { type = addcore which = 1023 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [142065] EGY | 1958 | Consolidation of the Pan-Arab Federation (Consolidación de la Federación Panárabe)
+# Triggered by event 142036 in events/Minors/EGY_61-86.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 142065
+	country = EGY
+	name = EVT_EGY_142065_NAME
+	desc = EVT_EGY_142065_DESC
+	picture = "nwo/nasser_diplomacy"
+	decision_picture = "nwo/nasser_diplomacy"
+	style = 1
+	trigger = {
+		event = 142036
+		flag = cold_war
+		atwar = no
+		}
+	date = { day = 1 month = february year = 1958 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 100
+		command = { type = dissent value = -5 }
+		command = { type = country which = ARA }
+		command = { type = headofstate which = 560051 }
+		command = { type = headofgovernment which = 560016 }
+		command = { type = foreignminister which = 560071 }
+		command = { type = armamentminister which = 560074 }
+		command = { type = ministerofsecurity which = 560072 }
+		command = { type = ministerofintelligence which = 560069 }
+		command = { type = chiefofstaff which = 560079 }
+		command = { type = chiefofarmy which = 560075 }
+		command = { type = chiefofnavy which = 560095 }
+		command = { type = chiefofair which = 560062 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		trigger = { ai = yes }
+		ai_chance = 0
+		command = { type = dissent value = 1 }
+	}
+}

@@ -1,0 +1,1137 @@
+# ============================================================================
+# File: events/Minors/DDR.txt (32 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [137030] DDR | 1932 | Alliance Proposition from Stalin (Propuesta de Alianza de Stalin)
+# Triggered by event 231146 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137030
+	random = no
+	country = DDR
+	name = "EVT_DDR_137030_NAME"
+	desc = "EVT_DDR_137030_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_YES"
+		command = { type = leave_alliance }
+		command = { type = alliance which = SOV }
+	}
+	action_b = {
+	ai_chance = 0
+	    name = "ACTION_NAME_NO"
+		command = { type = dissent value = 5}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137031] DDR | 1932 | First Meeting of the Volkskammer (Primera sesión del Volkskammer)
+# Trigger event 137032 in events/Minors/DDR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137031
+	random = no
+	country = DDR
+        trigger = { headofstate = 507131 }
+	name= "EVT_DDR_137031_NAME"
+        desc ="EVT_DDR_137031_DESC"
+        style = 2
+	picture = "Minors/volkskammer"
+        date = { day = 1 month = 1 year = 1932 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+        action = {
+                  name = "EVT_DDR_137031_A"
+                  ai_chance = 30
+                  command = { type = headofgovernment which = 507002}
+                  command = { type = dissent value = -5}
+                  command = { type = trigger which = 137032}
+                  }
+        action = {
+                  name = "EVT_DDR_137031_B"
+                  ai_chance = 70
+                  command = { type = headofgovernment which = 507022 }
+                  command = { type = dissent value = 5 }
+                  command = { type = domestic which = political_left value = 2 }
+                  command = { type = domestic which = democratic value = -3 }
+                  command = { type = trigger which = 137032}
+                  }
+       }
+
+# ----------------------------------------------------------------------------
+# [137032] DDR | 1932 | The Foreign Policy of the DDR (La política exterior de la RDA)
+# Triggered by event 137031 in events/Minors/DDR.txt
+# Trigger event 137033 in events/Minors/DDR.txt
+# Trigger event 137034 in events/Minors/DDR.txt
+# ----------------------------------------------------------------------------
+event =  {
+         id = 137032
+         random = no
+	 country = DDR
+	 save_date = yes
+         name = "EVT_DDR_137032_NAME"
+         desc = "EVT_DDR_137032_DESC"
+         style = 2
+	picture = "Minors/volkskammer"
+         action = {
+                   name = "EVT_DDR_137032_A"
+                   ai_chance = 20
+                   command = { type = foreignminister which = 507003}
+                   command = { type = dissent value = 5}
+                   command = { type = domestic which = political_left value = -2 }
+                   command = { type = relation which = SOV value = -30 }
+                   command = { type = relation which = FRA value = 30 }
+                   command = { type = relation which = ENG value = 30 }
+                   command = { type = relation which = USA value = 30 }
+                   }
+         action = {
+                   name = "EVT_DDR_137032_B"
+                   ai_chance = 60
+                   command = { type = foreignminister which = 507029}
+                   command = { type = dissent value = -5}
+                   command = { type = domestic which = political_left value = 1 }
+                   command = { type = relation which = SOV value = 30 }
+                   command = { type = relation which = FRA value = -30 }
+                   command = { type = relation which = ENG value = -30 }
+                   command = { type = relation which = USA value = -30 }
+                   }
+         action = {
+                   name = "EVT_DDR_137032_C"
+                   ai_chance = 20
+                   command = { type = foreignminister which = 507030}
+                   command = { type = dissent value = -10}
+                   command = { type = domestic which = political_left value = -1 }
+                   command = { type = relation which = SOV value = -10 }
+                   command = { type = relation which = FRA value = 10 }
+                   command = { type = relation which = ENG value = 10 }
+                   command = { type = relation which = USA value = 10 }
+                   }
+     }
+
+# ----------------------------------------------------------------------------
+# [137033] DDR | 1932 | The first 5-year plan (El Primer Plan Quinquenal)
+# Triggered by event 137032 in events/Minors/DDR.txt
+# Trigger event 137035 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event =  {
+         id = 137033
+         random = no
+	 country = DDR
+         save_date = yes
+         name = "EVT_DDR_137033_NAME"
+         desc = "EVT_DDR_137033_DESC"
+         trigger = {event = {id = 137032 days = 3}}
+         date = { day = 1 month = 1 year = 1932 }
+	 offset = 1
+	 deathdate = { day = 29 month = december year = 1964 }
+         style = 2
+	picture = "GLOBAL/six_year_plan"
+         action = {
+                   name = "EVT_DDR_137033_A"
+                   ai_chance = 40
+                   command = { type = armamentminister which = 507038}
+                   command = { type = dissent value = -5}
+                   command = { type = gain_tech which = 5030 }
+                   command = { type = gain_tech which = 5070 }
+                   command = { type = construct which = ic where = -4 value = 2 }
+                   command = { type = construct which = ic where = -4 value = 2 }
+                   command = { type = construct which = ic where = -4 value = 2 }
+                   command = { type = construct which = ic where = -4 value = 1 }
+                   command = { type = construct which = ic where = -4 value = 1 }
+                   command = { type = waketeam which = 625014 }
+                   }
+          action = {
+                    name = "EVT_DDR_137033_B"
+                    ai_chance = 40
+                    command = { type = armamentminister which = 507039}
+                    command = { type = dissent value = 5}
+                    command = { type = gain_tech which = 1100 }
+                    command = { type = gain_tech which = 2030 }
+                    command = { type = construct which = ic where = -4 value = 2 }
+                    command = { type = construct which = ic where = -4 value = 2 }
+                    command = { type = add_division value = infantry when = 7 }
+                    command = { type = add_division value = infantry when = 7 }
+                    command = { type = add_division value = infantry when = 7 }
+                    command = { type = waketeam which = 625015 }
+                    }
+          action = {
+                    name = "EVT_DDR_137033_C"
+                    ai_chance = 20
+                    command = { type = armamentminister which = 507004}
+                    command = { type = dissent value = 2}
+                    command = { type = gain_tech which = 5320 }
+                    command = { type = gain_tech which = 5410 }
+                    command = { type = construct which = ic where = -4 value = 2 }
+                    command = { type = construct which = ic where = -4 value = 2 }
+                    command = { type = research_mod value = 5}
+                    command = { type = waketeam which = 625013 }
+                    }
+}
+
+# ----------------------------------------------------------------------------
+# [137034] DDR | 1932 | Ministerium für Staatssicherheit ('Ministerium für Staatssicherheit')
+# Triggered by event 137032 in events/Minors/DDR.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 137034
+         random = no
+	 country = DDR
+         name = "EVT_DDR_137034_NAME"
+         desc = "EVT_DDR_137034_DESC"
+         trigger = {event = {id = 137032 days = 60}}
+         date = { day = 1 month = 1 year = 1932 }
+	 offset = 1
+	 deathdate = { day = 29 month = december year = 1964 }
+         style = 2
+	picture = "Minors/stasi_logo"
+         action = {
+                   name = "EVT_DDR_137034_A"
+                   ai_chance = 20
+                   command = { type = ministerofsecurity which = 507059}
+                   command = { type = ministerofintelligence which = 507071}
+                   command = { type = dissent value = -2}
+                   command = { type = intelligence which = us value = 1 }
+                   command = { type = intelligence which = them value = -1 }
+                   command = { type = waketeam which = 6251000 }
+                   }
+          action = {
+                    name = "EVT_DDR_137034_B"
+                    ai_chance = 30
+                    command = { type = ministerofsecurity which = 507057}
+                    command = { type = ministerofintelligence which = 507006}
+                    command = { type = dissent value = 2}
+                    command = { type = morale which = land value = 5 }
+                    command = { type = max_organization which = land value = 5 }
+                    command = { type = waketeam which = 6251000 }
+                    }
+          action = {
+                    name = "EVT_DDR_137034_C"
+                    ai_chance = 50
+                    command = { type = ministerofsecurity which = 507051}
+                    command = { type = ministerofintelligence which = 507068}
+                    command = { type = dissent value = -5}
+                    command = { type = waketeam which = 6251000 }
+                     }
+      }
+
+# ----------------------------------------------------------------------------
+# [137036] DDR | 1932 | The Reichswehr Officers (Los oficiales del Reichswehr)
+# Triggered by event 137035 in events/Minors/DDR_Decisions.txt
+# Trigger event 137037 in events/Minors/DDR.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 137036
+         random = no
+	 country = DDR
+         save_date = yes
+         trigger = {event = {id = 137035 days = 1} }
+         date = { day = 15 month = 8 year = 1932 }
+	 offset = 1
+	 deathdate = { day = 29 month = december year = 1964 }
+         name = "EVT_DDR_137036_NAME"
+         desc = "EVT_DDR_137036_DESC"
+         style = 2
+	picture = "GLOBAL/wehrmacht"
+         action = {
+                   name = "EVT_DDR_137036_A"
+                   command = { type = dissent value = 5}
+                   command = { type = sleepleader which = 507901}
+                   command = { type = sleepleader which = 507902}
+                   command = { type = sleepleader which = 507903}
+                   command = { type = sleepleader which = 507904}
+                   command = { type = sleepleader which = 507905}
+                   command = { type = sleepleader which = 507906}
+                   command = { type = sleepleader which = 507907}
+                   command = { type = sleepleader which = 507908}
+                   command = { type = sleepleader which = 507909}
+                   command = { type = sleepleader which = 507910}
+                    }
+         action = {
+                   name = "EVT_DDR_137036_B"
+                   command = { type = dissent value = -2}
+                   command = { type = sleepleader which = 507906}
+                   command = { type = sleepleader which = 507907}
+                   command = { type = sleepleader which = 507908}
+                   command = { type = sleepleader which = 507909}
+                   command = { type = sleepleader which = 507910}
+                   command = { type = max_organization which = land value = -2 }
+                  }
+        action = {
+                  name = "ACTION_NAME_ACCEPT"
+                  command = { type = dissent value = 5}
+                  command = { type = max_organization which = land value = -5 }
+                  command = { type = morale which = land value = -2 }
+                 }
+}
+
+# ----------------------------------------------------------------------------
+# [137037] DDR | 1932 | Handling the Roter Frontkampferbund (Manejo del 'Roter Frontkampferbund')
+# Triggered by event 137036 in events/Minors/DDR.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 137037
+         random = no
+	 country = DDR
+         save_date = yes
+         trigger = {event = {id = 137036 days = 1} }
+         date = { day = 15 month = 8 year = 1932 }
+	 offset = 1
+	 deathdate = { day = 29 month = december year = 1964 }
+         name = "EVT_DDR_137037_NAME"
+         desc = "EVT_DDR_137037_DESC"
+         style = 1
+	picture = "Minors/rotfront"
+         action = {
+                   name = "EVT_DDR_137037_A"
+                   ai_chance = 0
+                   command = { type = dissent value = 3}
+                   command = { type = sleepleader which = 507001}
+                   command = { type = sleepleader which = 507912}
+                   command = { type = sleepleader which = 507913}
+                   command = { type = sleepleader which = 507914}
+                   command = { type = sleepleader which = 507915}
+                   command = { type = sleepleader which = 507916}
+                   command = { type = sleepleader which = 507917}
+                   command = { type = sleepleader which = 507918}
+                   command = { type = sleepleader which = 507919}
+                   command = { type = sleepleader which = 507920}
+                   command = { type = manpowerpool value = 30}
+                    }
+         action = {
+                   name = "EVT_DDR_137037_B"
+                   ai_chance = 80
+                   command = { type = dissent value = 5}
+                   command = { type = sleepleader which = 507912}
+                   command = { type = sleepleader which = 507914}
+                   command = { type = sleepleader which = 507916}
+                   command = { type = sleepleader which = 507918}
+                   command = { type = sleepleader which = 507919}
+                   command = { type = manpowerpool value = 15 }
+                   command = { type = add_corps which = "Rotfront" value = land where = 163}
+                   command = { type = add_division which = "Division 'Karl Marx'" value = infantry when = 8}
+                   command = { type = add_division which = "Division 'Friedrich Engels'" value = militia when = 4}
+                  }
+        action = {
+                  name = "EVT_DDR_137037_C"
+                  ai_chance = 20
+                  command = { type = dissent value = 2}
+                  command = { type = max_organization which = land value = -3 }
+                  command = { type = add_corps which = "Rotfront" value = land where = 163}
+                  command = { type = add_division which = "Division 'Karl Marx'" value = militia when = 4}
+                  command = { type = add_division which = "Division 'Friedrich Engels'" value = militia when = 4}
+                  command = { type = add_division which = "Division 'Karl Liebknecht'" value = militia when = 4}
+                  command = { type = add_division which = "Division 'Rosa Luxemburg'" value = militia when = 4}
+                 }
+}
+
+# ----------------------------------------------------------------------------
+# [137001] DDR | 1933 | Construction of the Reichsautobahn Network (Construcción de la red de autopistas (Reichsautobahn))
+# Triggered by event 137000 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137001
+	random = no
+	country = DDR
+	trigger = {
+		event = 137000
+		OR = {
+			random = 5
+			AND = {
+				random = 50
+				year = 1935
+			}
+		}
+		OR = {
+			ai = yes
+			money = 200
+		}
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1964 }
+	name = "EVT_SHARED_00191_NAME"
+	desc = "EVT_SHARED_00196_DESC"
+	style = 2
+	picture = "GLOBAL/autobahn"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { type = construct which = infrastructure where = 138 value = 10 }
+		command = { type = construct which = infrastructure where = 139 value = 20 }
+		command = { trigger = { ai = no } type = money value = -200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137002] DDR | 1933 | Construction of the Reichsautobahn Network (Construcción de la red de autopistas (Reichsautobahn))
+# Triggered by event 137000 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137002
+	random = no
+	country = DDR
+	trigger = {
+		event = 137000
+		OR = {
+			random = 2
+			AND = {
+				random = 40
+				year = 1935
+			}
+		}
+		OR = {
+			ai = yes
+			money = 200
+		}
+	}
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1964 }
+	name = "EVT_SHARED_00191_NAME"
+	desc = "EVT_SHARED_00196_DESC"
+	style = 2
+	picture = "GLOBAL/autobahn"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { trigger = { ai = no } type = money value = -500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137003] DDR | 1933 | Unemployment Drops to 5 Percent (El desempleo desciende al 5 por ciento)
+# Triggered by event 137000 in events/Minors/DDR_Decisions.txt
+# Trigger event 329058 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137003
+	random = no
+	country = DDR
+	trigger = {
+			event = 137000
+			random = 5
+	}
+	name = "EVT_SHARED_00193_NAME"
+	desc = "EVT_SHARED_00184_DESC"
+	style = 2
+	picture = "GLOBAL/unemployment_rate"
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = dissent value = -2 }
+		command = { type = industrial_modifier which = total value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137027] DDR | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Triggered by event 137017 in events/Minors/DDR.txt
+# Trigger event 137028 in events/Minors/DDR.txt
+# Trigger event 139038 in events/Minors/DFR.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 137027
+   country = DDR
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = DFR
+            NOT = { ai = DFR }
+            NOT = { ai = DDR }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = DFR
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+	  NOT = { event = 137017 }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = DFR } }
+      command = { type = country which = DFR }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = DFR
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = DDR }
+               control = { province = 131 data = -1 }
+            }
+         }
+         type = trigger which = 137028
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = DFR }
+               NOT = { control = { province = 131 data = -1 } }
+            }
+         }
+         type = trigger which = 139038
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = DFR
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [137028] DDR | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 137027 in events/Minors/DDR.txt
+# Triggered by event 139037 in events/Minors/DFR.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 137028
+   country = DDR
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = DFR value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [329074] DDR | 1936 | Relinquish Control: Spain (Cese de mando sobre España)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329074
+	random = no
+	country = DDR
+	trigger = {
+		military_control = { country = SPR }
+		local_flag = military_control
+		OR = {
+			alliance = { country = DDR country = SPA }
+			alliance = { country = DDR country = SPR }
+			NOT = { war = { country = SPA country = SPR } }
+			NOT = { ai = SPR }
+		}
+	}
+	name = "EVT_SHARED_00208_NAME"
+	desc = "EVT_SHARED_00209_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1936 }
+	offset = 16
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = military_control which = DDR where = SPR }
+		command = { type = local_clrflag which = military_control }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137005] DDR | 1936 | Spanish Civil War: French Combat Lessons (Guerra civil española: Experiencia francesa)
+# Triggered by event 225000 in events/Minors/SPR.txt
+# Triggered by event 225018 in events/Minors/SPR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137005
+	random = no
+	country = DDR
+	trigger = {
+		NOT = { government = fascist }
+		event = 225000
+		event = 225018
+		NOT = { war = { country = DDR country = SPA } }
+		NOT = { war = { country = DDR country = SPR } }
+		NOT = { war = { country = DDR country = ENG } }
+		NOT = { war = { country = DDR country = FRA } }
+		NOT = { war = { country = DDR country = USA } }
+		NOT = { war = { country = DDR country = ITA } }
+		NOT = { war = { country = DDR country = POL } }
+		NOT = { war = { country = DDR country = SOV } }
+	}
+	name = "EVT_SHARED_00206_NAME"
+	desc = "EVT_SHARED_00207_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 18 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = relation which = SPR value = 20 }
+		command = { type = manpowerpool value = 8 }
+		command = { type = dissent value = -1 }
+		command = { type = gain_tech which = -2 }
+		command = { type = gain_tech which = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137006] DDR | 1936 | Spanish Civil War: French Combat Lessons (Guerra civil española: Experiencia francesa)
+# Triggered by event 225000 in events/Minors/SPR.txt
+# Triggered by event 224018 in events/Minors/SPA.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137006
+	random = no
+	country = DDR
+	trigger = {
+		NOT = { government = fascist }
+		event = 225000
+		event = 224018
+		NOT = { war = { country = DDR country = SPA } }
+		NOT = { war = { country = DDR country = SPR } }
+		NOT = { war = { country = DDR country = ENG } }
+		NOT = { war = { country = DDR country = FRA } }
+		NOT = { war = { country = DDR country = USA } }
+		NOT = { war = { country = DDR country = ITA } }
+		NOT = { war = { country = DDR country = POL } }
+		NOT = { war = { country = DDR country = SOV } }
+	}
+	name = "EVT_SHARED_00206_NAME"
+	desc = "EVT_SHARED_00207_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 18 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = manpowerpool value = 3 }
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { type = gain_tech which = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137009] DDR | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137009
+	country = DDR
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 507013 }
+		command = { type = headofgovernment which = 507002 }
+		command = { type = foreignminister which = 507003 }
+		command = { type = armamentminister which = 507038 }
+		command = { type = ministerofsecurity which = 507005 }
+		command = { type = ministerofintelligence which = 507006 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137007] DDR | 1949 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137007
+	random = no
+	country = DDR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = communist
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = october year = 1949 }
+	offset = 2
+	deathdate = { day = 1 month = november year = 1952 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 625034 }
+		command = { type = headofgovernment which = 625002 }
+		command = { type = foreignminister which = 625003 }
+		command = { type = armamentminister which = 625004 }
+		command = { type = ministerofsecurity which = 625005 }
+		command = { type = ministerofintelligence which = 625006 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [137010] DDR | 1950 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137010
+	country = DDR
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 507014 }
+		command = { type = foreignminister which = 507003 }
+		command = { type = armamentminister which = 507043 }
+		command = { type = ministerofsecurity which = 507057 }
+		command = { type = ministerofintelligence which = 507069 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137024] DDR | 1950 | Treaty of Zgorzelec (Tratado de Zgorzelec)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137024
+	country = DDR
+	name = EVT_DDR_137024_NAME
+	desc = EVT_DDR_137024_DESC
+	picture = "nwo/treaty_of_zgorzelec"
+	style = 1
+	trigger = {
+		exists = U32
+	}
+	date = { day = 6 month = july year = 1950 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = removeclaim which = 155 }
+		command = { type = removeclaim which = 158 }
+		command = { type = removeclaim which = 159 }
+		command = { type = removeclaim which = 161 }
+		command = { type = removeclaim which = 164 }
+		command = { type = removeclaim which = 165 }
+		command = { type = removeclaim which = 166 }
+		command = { type = removeclaim which = 167 }
+		command = { type = removeclaim which = 168 }
+		command = { type = removeclaim which = 181 }
+		command = { type = removeclaim which = 182 }
+		command = { type = removeclaim which = 183 }
+		command = { type = removeclaim which = 184 }
+		command = { type = removeclaim which = 185 }
+		command = { type = relation which = SOV value = 50 }
+		command = { type = relation which = U32 value = 150 }
+		command = { type = belligerence value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137025] DDR | 1952 | East German Brain Drain (Fuga de cerebros en la RDA)
+# Triggered by event 137022 in events/Minors/DDR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137025
+	country = DDR
+	persistent = yes
+	name = EVT_DDR_137025_NAME
+	desc = EVT_DDR_137025_DESC
+	picture = "nwo/flight_to_west_germany"
+	style = 1
+	trigger = {
+		control = { province = 163 data = -1 }
+		exists = DFR
+		NOT = { event = 137022 }
+	}
+	date = { day = 1 month = january year = 1952 }
+	offset = 720
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_HORRIBLE
+		command = { type = dissent value = 10 }
+		command = { type = industrial_modifier which = total value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137029] DDR | 1953 | Beria's Proposal (La propuesta de Beria)
+# Triggered by event 223309 in events/SOV/SOV_Decisions.txt
+# Trigger event 324491 in events/GLOBAL/MULTI_48-90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137029
+	country = DDR
+	name = EVT_DDR_137029_NAME
+	desc = EVT_DDR_137029_DESC
+	picture = "nwo/united_germany"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 50
+		command = { type = dissent value = 5 }
+		command = { type = relation which = DFR value = 100 }
+		command = { type = relation which = SOV value = 50 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 50
+		trigger = { NOT = { puppet = { country = DDR country = SOV } } }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = sleepevent which = 324491 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137021] DDR | 1953 | East German Uprising of 1953 (Levantamiento obrero de 1953)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137021
+	country = DDR
+	one_action = yes
+	name = EVT_DDR_137021_NAME
+	desc = EVT_DDR_137021_DESC
+	picture = "nwo/east_german_uprising_1953"
+	style = 1
+	date = { day = 16 month = june year = 1953 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = EVT_DDR_137021_A
+		ai_chance = 70
+		command = { type = dissent value = 8 }
+	}
+	action = {
+		name = EVT_DDR_137021_B
+		ai_chance = 20
+		command = { type = dissent value = 4 }
+	}
+	action = {
+		name = EVT_DDR_137021_C
+		ai_chance = 10
+		command = { type = dissent value = 16 }
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137011] DDR | 1955 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137011
+	country = DDR
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = foreignminister which = 507031 }
+		command = { type = armamentminister which = 507044 }
+		command = { type = ministerofsecurity which = 507060 }
+		command = { type = ministerofintelligence which = 507072 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137012] DDR | 1960 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137012
+	country = DDR
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 507014 }
+		command = { type = headofgovernment which = 507002 }
+		command = { type = foreignminister which = 507031 }
+		command = { type = armamentminister which = 507045 }
+		command = { type = ministerofsecurity which = 507061 }
+		command = { type = ministerofintelligence which = 507073 }
+		command = { type = flag_ext where = DDR which = _1959 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137023] DDR | 1961 | The New Economic System (El Nuevo Sistema Económico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137023
+	country = DDR
+	name = EVT_DDR_137023_NAME
+	desc = EVT_DDR_137023_DESC
+	picture = "nwo/east_german_industry"
+	style = 1
+	date = { day = 1 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 8 }
+		command = { type = money value = 500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137013] DDR | 1964 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137013
+	country = DDR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1964 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 507122 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137014] DDR | 1971 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137014
+	country = DDR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 507121 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137015] DDR | 1973 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 223200 in events/SOV/SOV_56-81.txt
+# Trigger event 316190 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137015
+	country = DDR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1973 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 507024 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137016] DDR | 1976 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137016
+	country = DDR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1976 }
+	offset = 360
+	deathdate = { day = 29 month = september year = 1989 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 507122 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137017] DDR | 1989 | Dismissal of Erich Honecker (Destitución de Honecker)
+# Trigger event 137027 in events/Minors/DDR.txt
+# Trigger event 139037 in events/Minors/DFR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137017
+	country = DDR
+	name = EVT_DDR_137017_NAME
+	desc = EVT_DDR_137017_DESC
+	picture = "nwo/fall_of_honecker"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+	}
+	date = { day = 0 month = october year = 1989 }
+	offset = 30
+	deathdate = { day = 29 month = november year = 1989 }
+	action = {
+		name = ACTION_NAME_GOOD
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 507018 }
+		command = { type = headofgovernment which = 507025 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137018] DDR | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 137018
+	country = DDR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+	}
+	date = { day = 0 month = december year = 1989 }
+	offset = 30
+	deathdate = { day = 29 month = march year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 507019 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [137019] DDR | 1990 | 1990 East German Elections (Elecciones libres en la RDA)
+# Triggered by event 137026 in events/Minors/DDR_Decisions.txt
+# Trigger event 329780 in events/USA/USA_61-91.txt
+# Trigger event 329781 in events/ENG/ENG_82-91.txt
+# Trigger event 329782 in events/FRA/FRA_59-91.txt
+# Trigger event 329783 in events/SOV/SOV_82-91.txt
+# Trigger event 329784 in events/Minors/DFR_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 137019
+	country = DDR
+	name = EVT_DDR_137019_NAME
+	desc = EVT_DDR_137019_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		flag = autumn_of_nations
+		event = 137026
+	}
+	date = { day = 0 month = april year = 1990 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_DDR_137019_A
+		ai_chance = 95
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 507020 }
+		command = { type = headofgovernment which = 507026 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 5
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 507120 }
+		command = { type = headofgovernment which = 507025 }
+		command = { type = sleepevent which = 329780 }
+	}
+}

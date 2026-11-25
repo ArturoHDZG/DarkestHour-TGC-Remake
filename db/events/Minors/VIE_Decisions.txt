@@ -1,0 +1,150 @@
+# ============================================================================
+# File: events/Minors/VIE_Decisions.txt (4 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [330030] VIE | 1946 | Outbreak of the First Indochina War (Estallido de la Guerra de Indochina)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330030
+	country = VIE
+	persistent = yes
+	name = EVT_VIE_330030_NAME
+	desc = EVT_VIE_330030_DESC
+	picture = "nwo/first_indochina_war"
+	decision_picture = "nwo/d_first_indochina_war"
+	style = 1
+	decision = {
+		NOT = { war = { country = U72 country = VIE } }
+		exists = U72
+		flag = cold_war_pacific
+	}
+	trigger = {
+		NOT = { war = { country = U72 country = VIE } }
+		exists = U72
+		flag = cold_war_pacific
+	}
+	date = { day = 1 month = july year = 1946 }
+	offset = 120
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 25
+		command = { type = war which = U72 }
+	}
+	action = {
+		name = EVT_VIE_330030_A
+		ai_chance = 75
+		trigger = { ai = yes }
+		command = { type = relation which = U72 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330045] VIE | 1956 | Outbreak of the Vietnam War (Estallido de la Guerra de Vietnam)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330045
+	country = VIE
+	persistent = yes
+	name = EVT_VIE_330045_NAME
+	desc = EVT_VIE_330045_DESC
+	picture = "nwo/second_indochina_war"
+	decision_picture = "nwo/d_second_indochina_war"
+	style = 1
+	decision = {
+		NOT = { war = { country = U72 country = VIE } }
+		exists = U72
+		flag = cold_war_pacific
+	}
+	trigger = {
+		NOT = { war = { country = U72 country = VIE } }
+		exists = U72
+		flag = cold_war_pacific
+	}
+	date = { day = 1 month = january year = 1956 }
+	offset = 120
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 25
+		command = { type = war which = U72 }
+	}
+	action = {
+		name = EVT_VIE_330045_A
+		ai_chance = 75
+		trigger = { ai = yes }
+		command = { type = relation which = U72 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330050] VIE | 1957 | The Strategic Hamlet Program (El Programa de Aldeas Estratégicas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330050
+	country = VIE
+	name = EVT_VIE_330050_NAME
+	desc = EVT_VIE_330050_DESC
+	picture = "nwo/strategic_hamlet_program"
+	decision_picture = "nwo/d_strategic_hamlet_program"
+	style = 1
+	decision = {
+		war = { country = U72 country = VIE }
+	}
+	trigger = {
+		war = { country = U72 country = VIE }
+	}
+	date = { day = 1 month = january year = 1957 }
+	offset = 720
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 85
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = dissent value = -5 }
+		command = { type = supplies value = -400 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 15
+		trigger = { ai = yes }
+		command = { type = money value = 200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330052] VIE | 1958 | The 1963 Coup Against Ngo Dinh Diem (El golpe de Estado contra Ngô Ðình Di?m)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330052
+	country = VIE
+	one_action = yes
+	name = EVT_VIE_330052_NAME
+	desc = EVT_VIE_330052_DESC
+	picture = "nwo/ngo_dinh_diem_dead"
+	style = 1
+	decision = {
+		war = { country = U72 country = VIE }
+	}
+	trigger = {
+		war = { country = U72 country = VIE }
+	}
+	date = { day = 1 month = january year = 1958 }
+	offset = 720
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_VIE_330052_A
+		ai_chance = 85
+		command = { type = remove_division which = -1 }
+		command = { type = remove_division which = -1 }
+		command = { type = remove_division which = -1 }
+		command = { type = dissent value = 10 }
+	}
+	action = {
+		name = EVT_VIE_330052_B
+		ai_chance = 15
+		command = { type = dissent value = 20 }
+	}
+}

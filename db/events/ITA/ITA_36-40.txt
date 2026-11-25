@@ -1,0 +1,1486 @@
+# ============================================================================
+# File: events/ITA/ITA_36-40.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329313] ITA | 1936 | Return of the CTV (Regreso del Corpo Truppe Volontarie)
+# Triggered by event 224017 in events/Minors/SPA.txt
+# Triggered by event 225018 in events/Minors/SPR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329313
+	random = no
+	country = ITA
+	trigger = {
+		government = fascist
+		event = 224017
+		event = 225018
+		NOT = {
+			OR = {
+			war = { country = ITA country = SPA }
+			war = { country = ITA country = SPR }
+			war = { country = ITA country = SOV }
+			war = { country = ITA country = ENG }
+			war = { country = ITA country = USA }
+			}
+		}
+	}
+	name = "EVT_SHARED_00792_NAME"
+	desc = "EVT_SHARED_00792_DESC"
+	style = 2
+	picture = "GLOBAL/corpo_truppe_volontarie"
+	date = { day = 18 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = manpowerpool value = 5 }
+		command = { trigger = { ai = no} type = dissent value = 1 }
+		command = { type = gain_tech which = 2330 }
+        	command = { trigger = { exists = SPA } type = end_trades which = ITA where = SPA }
+		command = { type = ministerofintelligence which = 25006 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166023] ITA | 1936 | Vienna Conference (Conferencia de Viena)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166023
+	random = no
+	country = ITA
+	trigger = {
+			exists = ITA
+			}
+	date = { day = 08 month = november year = 1936 }
+	name = "EVT_SHARED_00663_NAME"
+	desc = "EVT_SHARED_00663_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = AUS value = 20 }
+		command = { type = relation which = HUN value = 20 }
+		command = { type = domestic which = defense_lobby value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166024] ITA | 1936 | Recognition of the Nationalist Spanish Government (Reconocimiento del gobierno nacionalista español)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166024
+	random = no
+	country = ITA
+	trigger = {
+			exists = ITA
+			exists = SPA
+			}
+	date = { day = 18 month = november year = 1936 }
+	offset = 1
+	deathdate = { day = 20 month = november year = 1938 }
+	name = "EVT_SHARED_00664_NAME"
+	desc = "EVT_ITA_166024_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = SPA value = 40 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166019] ITA | 1937 | Nyon Conference (Conferencia de Nyon)
+# Triggered by event 147052 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166019
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00638_NAME"
+	desc = "EVT_SHARED_00638_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = FRA value = -15 }
+		command = { type = relation which = ENG value = -15 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166053] ITA | 1937 | Germans and Italians Withdrawal from Spanish Neutrality Patrol (Los alemanes e italianos se retiran de la Patrulla de Neutralidad Española)
+# Triggered by event 329202 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166053
+	random = no
+	country = ITA
+	name = "EVT_ITA_166053_NAME"
+	desc = "EVT_ITA_166053_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = SPR value = -10 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166065] ITA | 1937 | Assassination Attempt on Viceroy Rodolfo Graziani (Atentado contra el virrey Rodolfo Graziani)
+# Triggered by event 166063 in events/ITA/ITA_Decisions.txt
+# Trigger event 166066 in events/ITA/ITA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166065
+	random = no
+	country = ITA
+	trigger = {
+		event = 166063
+		control = { province = 825 data = -3 }
+		random = 50
+	}
+   	name = EVT_ITA_166065_NAME
+	desc = EVT_ITA_166065_DESC
+	style = 2
+	picture = "ITA/graziani"
+	date = { day = 1 month = january year = 1937 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 2 }
+		command = { trigger = { control = { province = 815 data = -3 } } type = province_revoltrisk which = 815 value = 10 }
+		command = { trigger = { control = { province = 816 data = -3 } } type = province_revoltrisk which = 816 value = 10 }
+		command = { trigger = { control = { province = 817 data = -3 } } type = province_revoltrisk which = 817 value = 10 }
+		command = { trigger = { control = { province = 836 data = -3 } } type = province_revoltrisk which = 836 value = 10 }
+		command = { trigger = { control = { province = 837 data = -3 } } type = province_revoltrisk which = 837 value = 10 }
+		command = { trigger = { control = { province = 838 data = -3 } } type = province_revoltrisk which = 838 value = 10 }
+		command = { trigger = { control = { province = 822 data = -3 } } type = province_revoltrisk which = 822 value = 10 }
+		command = { trigger = { control = { province = 823 data = -3 } } type = province_revoltrisk which = 823 value = 10 }
+		command = { trigger = { control = { province = 820 data = -3 } } type = province_revoltrisk which = 820 value = 10 }
+		command = { trigger = { control = { province = 825 data = -3 } } type = province_revoltrisk which = 825 value = 10 }
+		command = { trigger = { control = { province = 829 data = -3 } } type = province_revoltrisk which = 829 value = 10 }
+		command = { trigger = { control = { province = 830 data = -3 } } type = province_revoltrisk which = 830 value = 10 }
+		command = { trigger = { control = { province = 819 data = -3 } } type = province_revoltrisk which = 819 value = 10 }
+		command = { trigger = { control = { province = 821 data = -3 } } type = province_revoltrisk which = 821 value = 10 }
+		command = { trigger = { control = { province = 818 data = -3 } } type = province_revoltrisk which = 818 value = 10 }
+		command = { trigger = { control = { province = 828 data = -3 } } type = province_revoltrisk which = 828 value = 10 }
+		command = { trigger = { control = { province = 831 data = -3 } } type = province_revoltrisk which = 831 value = 10 }
+		command = { trigger = { control = { province = 826 data = -3 } } type = province_revoltrisk which = 826 value = 10 }
+		command = { trigger = { control = { province = 827 data = -3 } } type = province_revoltrisk which = 827 value = 10 }
+		command = { trigger = { control = { province = 824 data = -3 } } type = province_revoltrisk which = 824 value = 10 }
+		command = { trigger = { control = { province = 834 data = -3 } } type = province_revoltrisk which = 834 value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166075] ITA | 1937 | Great Britain Capitulates (Gran Bretaña capitula)
+# Triggered by event 150347 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166075
+	random = no
+	name = "EVT_SHARED_00400_NAME"
+	desc = "EVT_SHARED_00403_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	country = ITA
+	action = {
+		name = "ACTION_NAME_YES"
+		command = { type = secederegion which = U73 value = "England" }
+		command = { trigger = { NOT = { flag = highdem } } type = secederegion which = U73 value = "Scotland" }
+		command = { trigger = { flag = highdem } type = secederegion which = SCO value = "Scotland" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166076] ITA | 1937 | Great Britain Capitulates (Gran Bretaña capitula)
+# Triggered by event 143159 in events/ENG/ENG_36-38.txt
+# Trigger event 143160 in events/ENG/ENG_36-38.txt
+# Trigger event 150348 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166076
+	random = no
+	name = "EVT_SHARED_00400_NAME"
+	desc = "EVT_SHARED_00402_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	country = ITA
+	action = {
+		name = "ACTION_NAME_OFFER_PEACE"
+		ai_chance = 5
+		command = { type = setflag which = whitepeace}
+		command = { type = independence which = U73 value = 1 }
+		command = { type = make_puppet which = U73 }
+		command = { type = secederegion which = U73 value = "England"}
+		command = { type = secederegion which = U73 value = "Scotland"}
+		command = { type = trigger which = 143160 }
+		command = { trigger = { alliance = { country = GER country = ITA }}type = trigger which = 150348 }
+	}
+	action = {
+		trigger = {
+			OR = {
+				area = { area = "East England" country = ITA }
+				area = { area = "West England" country = ITA }
+				area = { area = "North England" country = ITA }
+				area = { area = "South Scotland" country = ITA }
+				AND = {
+					control = { province = 5 data = ITA }
+					control = { province = 6 data = ITA }
+					control = { province = 7 data = ITA }
+					control = { province = 8 data = ITA }
+				}
+			}
+		}
+		name = "EVT_SHARED_00402_A"
+		ai_chance = 85
+		command = { type = setflag which = lightdem}
+		command = { type = addclaim which = 20 }
+		command = { type = addclaim which = 23 }
+		command = { type = independence which = U73 value = 1 }
+		command = { type = make_puppet which = U73 }
+		command = { type = secedearea which = U73 value = "North England" }
+		command = { type = secedearea which = U73 value = "East England" }
+		command = { type = secedeprovince which = U73 value = 19 }
+		command = { type = secedeprovince which = U73 value = 24 }
+		command = { type = secedeprovince which = U73 value = 22 }
+		command = { type = secedeprovince which = U73 value = 21 }
+		command = { type = trigger which = 143160 }
+		command = { trigger = { alliance = { country = GER country = ITA }}type = trigger which = 150348 }
+	}
+	action = {
+		trigger = {
+			OR = {
+				AND = {
+					area = { area = "South Scotland" country = ITA }
+					control = { province = 13 data = ITA }
+					control = { province = 14 data = ITA }
+					control = { province = 5 data = ITA }
+					control = { province = 6 data = ITA }
+					control = { province = 7 data = ITA }
+					control = { province = 8 data = ITA }
+				}
+				AND = {
+					area = { area = "East England" country = ITA }
+					area = { area = "West England" country = ITA }
+					control = { province = 15 data = ITA }
+					control = { province = 17 data = ITA }
+					control = { province = 18 data = ITA }
+					control = { province = 16 data = ITA }
+				}
+			}
+		}
+		name = "EVT_SHARED_00402_B"
+		ai_chance = 65
+		command = { type = setflag which = meddem}
+		command = { type = addclaim which = 20 }
+		command = { type = addclaim which = 23 }
+		command = { type = addclaim which = 26 }
+		command = { type = addclaim which = 27 }
+		command = { type = independence which = U73 value = 1 }
+		command = { type = make_puppet which = U73 }
+		command = { type = secedearea which = U73 value = "North England"}
+		command = { type = secedeprovince which = U73 value = 24 }
+		command = { type = secedeprovince which = U73 value = 22 }
+		command = { type = secedeprovince which = U73 value = 28 }
+		command = { type = secedeprovince which = U73 value = 25 }
+		command = { type = secedeprovince which = U73 value = 29 }
+		command = { type = secedeprovince which = U73 value = 21 }
+		command = { type = trigger which = 143160 }
+		command = { trigger = { alliance = { country = GER country = ITA }}type = trigger which = 150348 }
+	}
+	action = {
+		trigger = {
+			area = { area = "East England" country = ITA }
+			area = { area = "West England" country = ITA }
+			area = { area = "North England" country = ITA }
+			area = { area = "South Scotland" country = ITA }
+			control = { province = 5 data = ITA }
+			control = { province = 6 data = ITA }
+			control = { province = 7 data = ITA }
+			control = { province = 8 data = ITA }
+		}
+		name = "EVT_SHARED_00402_C"
+		ai_chance = 55
+		command = { type = setflag which = highdem}
+		command = { type = addclaim which = 20 }
+		command = { type = addclaim which = 23 }
+		command = { type = addclaim which = 26 }
+		command = { type = addclaim which = 27 }
+		command = { type = independence which = U73 value = 1 }
+		command = { type = make_puppet which = U73 }
+		command = { type = secedearea which = U73 value = "North England"}
+		command = { type = secedeprovince which = U73 value = 24 }
+		command = { type = secedeprovince which = U73 value = 22 }
+		command = { type = secedeprovince which = U73 value = 28 }
+		command = { type = secedeprovince which = U73 value = 29 }
+		command = { type = secedeprovince which = U73 value = 21 }
+		command = { type = independence which = SCO value = 1 }
+		command = { type = make_puppet which = SCO }
+		command = { type = secederegion which = SCO value = Scotland}
+		command = { type = trigger which = 143160 }
+		command = { trigger = { alliance = { country = GER country = ITA }}type = trigger which = 150348 }
+	}
+	action = {
+		name = "EVT_SHARED_00402_D"
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166077] ITA | 1937 | Great Britain Capitulates (Gran Bretaña capitula)
+# Triggered by event 143162 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166077
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00400_NAME"
+	desc = "EVT_SHARED_00404_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		trigger = { flag = whitepeace}
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = make_puppet which = U73 }
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secedeprovince which = U73 value = 4 }
+		command = { type = secedeprovince which = U73 value = 5 }
+		command = { type = secedeprovince which = U73 value = 6 }
+		command = { type = secedeprovince which = U73 value = 7 }
+		command = { type = secedeprovince which = U73 value = 8 }
+		command = { type = secedeprovince which = U73 value = 9 }
+		command = { type = secedeprovince which = U73 value = 10 }
+		command = { type = secedeprovince which = U73 value = 11 }
+		command = { type = secedeprovince which = U73 value = 12 }
+		command = { type = secederegion which = U73 value = Ireland}
+		command = { type = clrflag which = whitepeace}
+	}
+	action = {
+		trigger = { flag = lightdem}
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = make_puppet which = U73 }
+		command = { type = secedearea which = U73 value = "North England"}
+		command = { type = secedearea which = U73 value = "East England"}
+		command = { type = secedeprovince which = U73 value = 19 }
+		command = { type = secedeprovince which = U73 value = 21 }
+		command = { type = secedeprovince which = U73 value = 22 }
+		command = { type = secedeprovince which = U73 value = 24 }
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secedeprovince which = U73 value = 4 }
+		command = { type = secedeprovince which = U73 value = 5 }
+		command = { type = secedeprovince which = U73 value = 6 }
+		command = { type = secedeprovince which = U73 value = 7 }
+		command = { type = secedeprovince which = U73 value = 8 }
+		command = { type = secedeprovince which = U73 value = 9 }
+		command = { type = secedeprovince which = U73 value = 10 }
+		command = { type = secedeprovince which = U73 value = 11 }
+		command = { type = secedeprovince which = U73 value = 12 }
+		command = { type = secederegion which = U73 value = Ireland}
+		command = { type = clrflag which = lightdem}
+	}
+	action = {
+		trigger = { flag = meddem}
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = make_puppet which = U73 }
+		command = { type = secedearea which = U73 value = "North England"}
+		command = { type = secedeprovince which = U73 value = 19 }
+		command = { type = secedeprovince which = U73 value = 21 }
+		command = { type = secedeprovince which = U73 value = 22 }
+		command = { type = secedeprovince which = U73 value = 24 }
+		command = { type = secedeprovince which = U73 value = 25 }
+		command = { type = secedeprovince which = U73 value = 28 }
+		command = { type = secedeprovince which = U73 value = 29 }
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secedeprovince which = U73 value = 4 }
+		command = { type = secedeprovince which = U73 value = 5 }
+		command = { type = secedeprovince which = U73 value = 6 }
+		command = { type = secedeprovince which = U73 value = 7 }
+		command = { type = secedeprovince which = U73 value = 8 }
+		command = { type = secedeprovince which = U73 value = 9 }
+		command = { type = secedeprovince which = U73 value = 10 }
+		command = { type = secedeprovince which = U73 value = 11 }
+		command = { type = secedeprovince which = U73 value = 12 }
+		command = { type = secederegion which = U73 value = Ireland}
+		command = { type = clrflag which = meddem}
+	}
+	action = {
+		trigger = { flag = highdem}
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = make_puppet which = U73 }
+		command = { type = secedearea which = U73 value = "North England"}
+		command = { type = secedeprovince which = U73 value = 19 }
+		command = { type = secedeprovince which = U73 value = 21 }
+		command = { type = secedeprovince which = U73 value = 22 }
+		command = { type = secedeprovince which = U73 value = 24 }
+		command = { type = secedeprovince which = U73 value = 25 }
+		command = { type = secedeprovince which = U73 value = 28 }
+		command = { type = secedeprovince which = U73 value = 29 }
+		command = { type = secederegion which = SCO value = Scotland}
+		command = { type = secedeprovince which = U73 value = 4 }
+		command = { type = secedeprovince which = U73 value = 5 }
+		command = { type = secedeprovince which = U73 value = 6 }
+		command = { type = secedeprovince which = U73 value = 7 }
+		command = { type = secedeprovince which = U73 value = 8 }
+		command = { type = secedeprovince which = U73 value = 9 }
+		command = { type = secedeprovince which = U73 value = 10 }
+		command = { type = secedeprovince which = U73 value = 11 }
+		command = { type = secedeprovince which = U73 value = 12 }
+		command = { type = secederegion which = IRE value = Ireland}
+		command = { type = clrflag which = highdem}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166081] ITA | 1937 | Mussolini's State Visit to Germany (Visita de Estado de Mussolini a Alemania)
+# Triggered by event 150384 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166081
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00445_NAME"
+	desc = "EVT_SHARED_00445_DESC"
+	style = 2
+	picture = "GLOBAL/mussolini_s_state_visit_to_germany"
+	action_a = {
+		 name = ACTION_NAME_OK
+		command = { type = relation which = GER value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166083] ITA | 1937 | Construction of the Coastal Via Balbia in Libya (Construcción de la Vía Balbia en Libia)
+# Triggered by event 166082 in events/ITA/ITA_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166083
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00447_NAME"
+	desc = "EVT_SHARED_00448_DESC"
+	style = 2
+	picture = "ITA/construction_of_the_coastal_via_balbia"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = construct which = infrastructure where = 752 value = 20 }
+		command = { type = construct which = infrastructure where = 750 value = 20 }
+		command = { type = construct which = infrastructure where = 757 value = 20 }
+		command = { type = construct which = infrastructure where = 756 value = 20 }
+		command = { type = construct which = infrastructure where = 759 value = 20 }
+		command = { type = construct which = infrastructure where = 762 value = 20 }
+		command = { type = construct which = infrastructure where = 763 value = 20 }
+		command = { type = construct which = infrastructure where = 761 value = 20 }
+		command = { type = construct which = infrastructure where = 764 value = 20 }
+		command = { type = construct which = infrastructure where = 768 value = 20 }
+		command = { type = construct which = infrastructure where = 767 value = 20 }
+		command = { type = construct which = infrastructure where = 765 value = 20 }
+		command = { type = construct which = infrastructure where = 771 value = 20 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166085] ITA | 1937 | Construction of the Coastal Via Balbia in Libya (Construcción de la Vía Balbia en Libia)
+# Triggered by event 166084 in events/ITA/ITA_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166085
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00447_NAME"
+	desc = "EVT_SHARED_00448_DESC"
+	style = 2
+	picture = "ITA/construction_of_the_coastal_via_balbia_2"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = construct which = infrastructure where = 781 value = 20 }
+		command = { type = construct which = infrastructure where = 780 value = 20 }
+		command = { type = construct which = infrastructure where = 785 value = 20 }
+		command = { type = construct which = infrastructure where = 784 value = 20 }
+		command = { type = construct which = infrastructure where = 783 value = 20 }
+		command = { type = construct which = infrastructure where = 789 value = 20 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329001] ITA | 1937 | The end of Italo-Albanian war. (El fin de la guerra italo-albanesa)
+# Triggered by event 166003 in events/ITA/ITA_34-36.txt
+# Trigger event 101010 in events/Minors/ALB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329001
+	random = no
+	country = ITA
+	style = 2
+	trigger = {
+		war = { country = ITA country = ALB }
+		event = 166003
+		}
+	date = { day = 1 month = january year = 1937 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1965 }
+	name = "EVT_ITA_329001_NAME"
+	desc = "EVT_ITA_329001_DESC"
+	Picture = "ALB7"
+	action_a = {
+		name = "EVT_ITA_329001_A"
+		ai_chance = 100
+		command = { type = inherit which = ALB }
+		command = { type = dissent value = -5 }
+		command = { type = relation which = YUG value = -5 }
+		command = { type = relation which = GRE value = -10 }
+		command = { type = ai which = "switch/ITA_invasion_off.ai" }
+		command = { type = local_clrflag which = ITAalbania }
+	}
+	action_b = {
+		name = "EVT_ITA_329001_B"
+		ai_chance = 0
+		command = { type = peace which = ALB value = 1 }
+		command = { type = removeclaim which = 359 where = -1 }
+		command = { type = removeclaim which = 360 where = -1 }
+		command = { type = removeclaim which = 361 where = -1 }
+		command = { type = removeclaim which = 362 where = -1 }
+		command = { type = removeclaim which = 329 where = -1 }
+		command = { type = removeclaim which = 334 where = -1 }
+		command = { type = relation which = YUG value = -5 }
+		command = { type = relation which = GRE value = -5 }
+		command = { type = make_puppet which = ALB }
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 101010 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329167] ITA | 1937 | Anglo-Italian Mediterranean Treaty (Tratado mediterráneo anglo-italiano)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329167
+	random = no
+	country = ITA
+	trigger = {
+			NOT = { war = { country = ITA country = ENG } }
+			}
+	date = { day = 01 month = january year = 1937 }
+	name = "EVT_ITA_329167_NAME"
+	desc = "EVT_ITA_329167_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ENG value = 5 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166025] ITA | 1937 | Assassination Attempt of Italian Viceroy in East Africa (Intento de asesinato del virrey italiano en África oriental)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166025
+	random = no
+	country = ITA
+	trigger = {
+			NOT = { exists = ETH }
+			}
+	date = { day = 18 month = february year = 1937 }
+	offset = 1
+	deathdate = { day = 20 month = february year = 1938 }
+	name = "EVT_ITA_166025_NAME"
+	desc = "EVT_ITA_166025_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_CURSES"
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166026] ITA | 1937 | Capture of Ethiopian Resistance Leader by the Italians (Captura del líder de la resistencia etíope por los italianos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166026
+	random = no
+	country = ITA
+	trigger = {
+			exists = ITA
+			}
+	date = { day = 29 month = february year = 1937 }
+	name = "EVT_ITA_166026_NAME"
+	desc = "EVT_ITA_166026_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+		command = { type = dissent value = -2 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166082] ITA | 1937 | Construction of the Coastal Via Balbia in Libya (Construcción de la Vía Balbia en Libia)
+# Trigger event 166083 in events/ITA/ITA_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166082
+	random = no
+	country = ITA
+	trigger = {
+		control = { province = 752 data = ITA }
+		control = { province = 750 data = ITA }
+		control = { province = 757 data = ITA }
+		control = { province = 756 data = ITA }
+		control = { province = 759 data = ITA }
+		control = { province = 762 data = ITA }
+		control = { province = 763 data = ITA }
+		control = { province = 761 data = ITA }
+		control = { province = 764 data = ITA }
+		control = { province = 768 data = ITA }
+		control = { province = 767 data = ITA }
+		control = { province = 765 data = ITA }
+		control = { province = 771 data = ITA }
+	}
+	name = "EVT_SHARED_00447_NAME"
+	desc = "EVT_ITA_166082_DESC"
+	style = 2
+	picture = "ITA/construction_of_the_coastal_via_balbia"
+	date = { day = 12 month = march year = 1937 }
+	offset = 45
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 99
+		command = { trigger = { ai = no } type = supplies value = -250 }
+		command = { trigger = { ai = no } type = metalpool value = -2000 }
+		command = { trigger = { ai = no } type = energypool value = -2000 }
+		command = { type = event which = 166083 where = -1 when = 120 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 1
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166084] ITA | 1937 | Construction of the Coastal Via Balbia in Libya (Construcción de la Vía Balbia en Libia)
+# Trigger event 166085 in events/ITA/ITA_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166084
+	random = no
+	country = ITA
+	trigger = {
+		control = { province = 781 data = ITA }
+		control = { province = 780 data = ITA }
+		control = { province = 785 data = ITA }
+		control = { province = 784 data = ITA }
+		control = { province = 783 data = ITA }
+		control = { province = 789 data = ITA }
+		metal = 2000
+		energy = 2000
+		supplies = 400
+	}
+	name = "EVT_SHARED_00447_NAME"
+	desc = "EVT_ITA_166084_DESC"
+	style = 2
+	picture = "ITA/construction_of_the_coastal_via_balbia_2"
+	date = { day = 12 month = march year = 1937 }
+	offset = 45
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 99
+		command = { trigger = { ai = no } type = supplies value = -400 }
+		command = { trigger = { ai = no } type = metalpool value = -2000 }
+		command = { trigger = { ai = no } type = energypool value = -2000 }
+		command = { type = event which = 166085 where = -1 when = 120 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 1
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166087] ITA | 1937 | Incorporation of Libya into Metropolitan Italy (Incorporación de Libia a la Italia Metropolitana)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166087
+	random = no
+	country = ITA
+	trigger = {
+		control = { province = 764 data = ITA }
+		control = { province = 761 data = ITA }
+		control = { province = 750 data = ITA }
+		metal = 300
+		energy = 2000
+		supplies = 400
+		money = 250
+	}
+	name = "EVT_ITA_166087_NAME"
+	desc = "EVT_ITA_166087_DESC"
+	style = 2
+	picture = "ITA/incorporation_of_libya_into_metropolitan_italy"
+	date = { day = 12 month = march year = 1937 }
+	offset = 45
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = construct which = infrastructure where = 764 value = 50 }
+		command = { type = construct which = infrastructure where = 761 value = 50 }
+		command = { type = construct which = infrastructure where = 750 value = 50 }
+		command = { type = construct which = industry where = 750 value = 4 }
+		command = { trigger = { ai = no } type = supplies value = -400 }
+		command = { trigger = { ai = no } type = metalpool value = -300 }
+		command = { trigger = { ai = no } type = energypool value = -2000 }
+		command = { trigger = { ai = no } type = money value = -250 }
+		command = { type = dissent value = -1 }
+	}
+	action_b = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 1
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166027] ITA | 1937 | Italian State Visit to Libya (Visita de Estado Italiano a Libia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166027
+	random = no
+	country = ITA
+	trigger = {
+			exists = ITA
+			}
+	date = { day = 15 month = march year = 1937 }
+	name = "EVT_ITA_166027_NAME"
+	desc = "EVT_ITA_166027_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -2 }
+		command = { type = relation which = FRA value = -10 }
+		command = { type = relation which = ENG value = -10 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329154] ITA | 1937 | Benito Mussolini's visit to Tobruk (La visita de Benito Mussolini a Tobruk)
+# Trigger event 143054 in events/ENG/ENG_36-38.txt
+# Trigger event 147071 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329154
+	random = no
+	country = ITA
+	trigger = {
+			headofgovernment = 25002
+			government = fascist
+			exists = FRA
+			exists = ENG
+			NOT = {
+				war = { country = ITA country = ENG }
+				war = { country = ITA country = FRA }
+				}
+			}
+	date = { day = 16 month = march year = 1937 }
+	name = "EVT_SHARED_00652_NAME"
+	desc = "EVT_SHARED_00652_DESC"
+	style = 2
+	picture = "GLOBAL/mussolini"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = relation which = SAU value = 10 }
+		command = { type = relation which = EGY value = 10 }
+		command = { type = relation which = IRQ value = 10 }
+		command = { type = trigger which = 143054 }
+		command = { type = trigger which = 147071 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166028] ITA | 1937 | Austrian State Visit to Italy (Visita de Estado Austriaca a Italia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166028
+	random = no
+	country = ITA
+	trigger = {
+			exists = ITA
+			}
+	date = { day = 21 month = april year = 1937 }
+	name = "EVT_SHARED_00665_NAME"
+	desc = "EVT_SHARED_00665_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = 15 }
+		command = { type = relation which = AUS value = -10 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166030] ITA | 1937 | Renewal of Italo-Yemeni Treaty (Renovación del tratado italo-yemení)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166030
+	random = no
+	country = ITA
+	trigger = {
+			exists = YEM
+			}
+	date = { day = 14 month = october year = 1937 }
+	name = "EVT_ITA_166030_NAME"
+	desc = "EVT_ITA_166030_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_AGREE"
+		ai_chance = 100
+		command = { type = relation which = YEM value = 25 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166031] ITA | 1937 | Danubian Pact Renewed (Renovación del Pacto del Danubio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166031
+	random = no
+	country = ITA
+	trigger = {
+			exists = AUS
+			}
+	date = { day = 22 month = november year = 1937 }
+	name = "EVT_ITA_166031_NAME"
+	desc = "EVT_ITA_166031_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = AUS value = 10 }
+		command = { type = relation which = HUN value = 10 }
+		command = { type = relation which = GER value = -10 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166032] ITA | 1937 | Italian Withdrawal from the ILO (Retirada italiana de la OIT)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166032
+	random = no
+	country = ITA
+	trigger = {
+			exists = ITA
+			}
+	date = { day = 15 month = december year = 1937 }
+	name = "EVT_ITA_166032_NAME"
+	desc = "EVT_ITA_166032_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = belligerence value = 1 }
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166017] ITA | 1938 | The First Vienna Award (El Primer Arbitraje de Viena)
+# Triggered by event 150073 in events/GER/GER_37-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166017
+	random = no
+	country = ITA
+	name = "EVT_ITA_166017_NAME"
+	desc = "EVT_ITA_166017_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "EVT_ITA_166017_A"
+		ai_chance = 100
+		command = { type = relation which = GER value = 10 }
+		command = { type = relation which = HUN value = 10 }
+		command = { type = relation which = CZE value = -10 }
+	}
+	action = {
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		ai_chance = 0
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = HUN value = -10 }
+		command = { type = relation which = CZE value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166018] ITA | 1938 | Commence operations (Iniciar las operaciones)
+# Triggered by event 136013 in events/Minors/CZE_14-53.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166018
+	random = no
+	country = ITA
+	name = "ACTION_NAME_PRELUDE"
+	desc = "EVT_SHARED_00609_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = CZE value = -5 }
+		command = { type = relation which = HUN value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166054] ITA | 1938 | Mexican Oil Agreements with Germany and Italy (Acuerdos mexicanos del petróleo con Alemania e Italia)
+# Triggered by event 150102 in events/GER/GER_37-38.txt
+# Trigger event 167017 in events/JAP/JAP_37-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166054
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00691_NAME"
+	desc = "EVT_SHARED_00691_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = relation which = MEX value = 15 }
+		command = { type = oilpool value = 4000	}
+		command = { type = supplies value = -200 }
+		command = { type = money value = -50 }
+		command = { type = trigger which = 167017 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166040] ITA | 1938 | Italian Naval Construction Program (Programa de construcción naval italiana)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166040
+	random = no
+	country = ITA
+	trigger = {
+			headofgovernment = 25002
+			NOT = {
+				government = democratic
+				 }
+			}
+	date = { day = 7 month = january year = 1938 }
+	name = "EVT_ITA_166040_NAME"
+	desc = "EVT_ITA_166040_DESC"
+	style = 2
+	picture = "GLOBAL/agincourt"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = gain_tech which = 3070 }
+		command = { type = gain_tech which = 3660 }
+		command = { type = gain_tech which = 12010 }
+		command = { type = gain_tech which = 12020 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166088] ITA | 1938 | Italy Wins the 1938 FIFA World Cup (Italia gana su segunda Copa Mundial de la FIFA (1938))
+# ----------------------------------------------------------------------------
+event = {
+	id = 166088
+	random = no
+	country = ITA
+	trigger = { atwar = no }
+	name = "EVT_ITA_166088_NAME"
+	desc = "EVT_ITA_166088_DESC"
+	style = 2
+	picture = "ITA/italy_wins_the_1938_fifa_world"
+	date = { day = 12 month = may year = 1938 }
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329179] ITA | 1938 | Manifesto of Race (Manifiesto de la Raza)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329179
+	random = no
+	country = ITA
+	trigger = {
+			NOT = {
+				government = democratic
+				war = { country = ITA country = GER }
+				 }
+			}
+	date = { day = 1 month = july year = 1938 }
+	name = "EVT_ITA_329179_NAME"
+	desc = "EVT_ITA_329179_DESC"
+	style = 2
+	picture = "GLOBAL/pact_of_steel"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = FRA value = -10 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = relation which = GER value = 30 }
+		command = { type = domestic which = freedom value = -1 }
+	}
+	action = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 0
+		command = { type = dissent value = 5 }
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = FRA value = 10 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = domestic which = freedom value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166033] ITA | 1938 | Italian 'Racial' Program (Programa 'racial' italiano)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166033
+	random = no
+	country = ITA
+	trigger = {
+			exists = ITA
+			}
+	date = { day = 02 month = august year = 1938 }
+	name = "EVT_ITA_166033_NAME"
+	desc = "EVT_ITA_166033_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = belligerence value = 1 }
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166034] ITA | 1938 | Abolishment of Chamber of Deputies (Abolición de la Cámara de Diputados)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166034
+	random = no
+	country = ITA
+	trigger = {
+		exists = ITA
+			}
+	date = { day = 07 month = october year = 1938 }
+	name = "EVT_ITA_166034_NAME"
+	desc = "EVT_ITA_166034_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_NO_NEED"
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166035] ITA | 1938 | Libyan Incorporation into Italy (Incorporación de Libia en Italia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166035
+	random = no
+	country = ITA
+	trigger = {
+		exists = ITA
+		control = { province = 750 data = ITA }
+			}
+	date = { day = 24 month = october year = 1938 }
+	name = "EVT_ITA_166035_NAME"
+	desc = "EVT_ITA_166035_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		ai_chance = 100
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329168] ITA | 1938 | Ratification of Anglo-Italian Pact (Ratificación del pacto anglo-italiano)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329168
+	random = no
+	country = ITA
+	trigger = {
+		exists = ITA
+		NOT = { war = { country = ITA country = ENG } }
+			}
+	date = { day = 01 month = november year = 1938 }
+	name = "EVT_SHARED_00666_NAME"
+	desc = "EVT_SHARED_00666_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ENG value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166086] ITA | 1938 | Enrico Fermi Awarded the Nobel Prize in Physics (Enrico Fermi galardonado con el Premio Nobel de Física)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166086
+	random = no
+	country = ITA
+	trigger = { atwar = no }
+	name = "EVT_ITA_166086_NAME"
+	desc = "EVT_ITA_166086_DESC"
+	style = 2
+	picture = "ITA/enrico_fermi_awarded_the_nobel_prize"
+	date = { day = 9 month = november year = 1938 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329170] ITA | 1938 | Anglo-Italian Pact Activated (El Pacto anglo-italiano entra en función)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329170
+	random = no
+	country = ITA
+	trigger = {
+		NOT = { war = { country = ITA country = ENG } }
+			}
+	date = { day = 15 month = november year = 1938 }
+	name = "EVT_SHARED_00667_NAME"
+	desc = "EVT_SHARED_00667_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ENG value = 15 }
+		command = { type = belligerence  value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329147] ITA | 1938 | Franco-Italian Crisis (Crisis franco-italiana)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329147
+	random = no
+	country = ITA
+	trigger = {
+		NOT = { war = { country = ITA country = FRA } }
+			}
+	date = { day = 01 month = december year = 1938 }
+	name = "EVT_SHARED_00645_NAME"
+	desc = "EVT_SHARED_00645_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = FRA value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329148] ITA | 1938 | Italian Invalidation of Treaty of 1935 with France (Anulación italiana del Tratado de 1935 con Francia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329148
+	random = no
+	country = ITA
+	trigger = {
+		NOT = { war = { country = ITA country = FRA } }
+			}
+	date = { day = 16 month = december year = 1938 }
+	name = "EVT_SHARED_00646_NAME"
+	desc = "EVT_SHARED_00646_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = FRA value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166014] ITA | 1939 | The Tripartite Pact (El Pacto Tripartito)
+# Triggered by event 150056 in events/GER/GER_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166014
+	random = no
+	country = ITA
+	name = EVT_ITA_166014_NAME
+	desc = EVT_ITA_166014_DESC
+	style = 2
+	picture = "GLOBAL/tripartite_pact"
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_SIGN
+		command = { type = money value = 10 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = relation which = USA value = -10 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = relation which = AST value = -10 }
+		command = { type = relation which = NZL value = -10 }
+		command = { type = relation which = GER value = 10 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_REFUSE
+		command = { type = money value = -10 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166036] ITA | 1939 | British Official Visit to Italy (Visita oficial británica a Italia)
+# Triggered by event 329172 in events/ENG/ENG_38-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166036
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00668_NAME"
+	desc = "EVT_SHARED_00668_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ENG value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166152] ITA | 1939 | Fall of the Italian Social Republic (Caída de la República Social Italiana)
+# Triggered by event 329789 in events/GLOBAL/ALL_36-40.txt
+# Triggered by event 329790 in events/GLOBAL/ALL_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166152
+	country = ITA
+	name = EVT_ITA_166152_NAME
+	desc = EVT_ITA_166152_DESC
+	picture = "nwo/fall_of_mussolini"
+	style = 1
+	action = {
+		name = ACTION_NAME_MOURN
+		command = { type = inherit which = RSI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166213] ITA | 1939 | Fall of the Italian Social Republic (Caída de la República Social Italiana)
+# Triggered by event 329941 in events/GLOBAL/ALL_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166213
+	country = ITA
+	name = EVT_ITA_166213_NAME
+	desc = EVT_ITA_166213_DESC
+	picture = "nwo/fall_of_mussolini"
+	style = 1
+	action = {
+		name = ACTION_NAME_MOURN
+		command = { type = inherit which = RSI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166041] ITA | 1939 | Enrico Fermi leaves Italy (Enrico Fermi abandona Italia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166041
+	random = no
+	country = ITA
+	trigger = {
+			headofgovernment = 25002
+			government = fascist
+			}
+	date = { day = 2 month = january year = 1939 }
+	name = "EVT_ITA_166041_NAME"
+	desc = "EVT_ITA_166041_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = sleepteam which = 25008 }
+	}
+	action = {
+		name = "EVT_SHARED_00306_A"
+		ai_chance = 0
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329173] ITA | 1939 | Italian Official Visit to Poland (Visita oficial italiana a Polonia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329173
+	random = no
+	country = ITA
+	trigger = {
+		NOT = { war = { country = ITA country = POL } }
+			}
+	date = { day = 02 month = february year = 1939 }
+	name = "EVT_SHARED_00669_NAME"
+	desc = "EVT_SHARED_00669_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+		command = { type = relation which = POL value = 15 }
+		command = { type = relation which = GER value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166046] ITA | 1940 | Greek counter-offensive (Contraofensiva griega)
+# Triggered by event 329192 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166046
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00677_NAME"
+	desc = "EVT_SHARED_00677_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		command = { type = max_organization which = land value = -0.5 }
+		command = { type = supplies value = -300 }
+		command = { type = oilpool value = -300 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166047] ITA | 1940 | Battle of Taranto (Batalla de Tarento)
+# Triggered by event 329193 in events/ENG/ENG_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166047
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00678_NAME"
+	desc = "EVT_SHARED_00678_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		ai_chance = 100
+		command = { type = relation which = ENG value = -30 }
+		command = { type = surprise which = naval value = -2 }
+		command = { type = max_organization which = naval value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166048] ITA | 1940 | Greek Offensive in Albania (Ofensiva griega en Albania)
+# Triggered by event 329194 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166048
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00679_NAME"
+	desc = "EVT_SHARED_00679_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166049] ITA | 1940 | Badoglio Resignation (Badoglio renuncia)
+# Triggered by event 150091 in events/GER/GER_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166049
+	random = no
+	country = ITA
+	name = "EVT_ITA_166049_NAME"
+	desc = "EVT_ITA_166049_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_HORRIBLE"
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		command = { type = chiefofstaff which = 25097 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166147] ITA | 1940 | Metaxas refuses (Metaxas se niega)
+# Triggered by event 152085 in events/GRE/GRE_38-49.txt
+# Trigger event 329730 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166147
+	random = no
+	country = ITA
+	name = "EVT_ITA_166147_NAME"
+	desc = "EVT_ITA_166147_DESC"
+	style = 2
+	picture = "GLOBAL/greekaugast"
+	action_a = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 100
+		command = { type = war which = GRE }
+		command = { type = ai which = "switch/ITA_Greece_Attack.ai" }
+		command = { type = local_clrflag which = ITAInvadeGreece }
+	}
+	action_b = {
+		name = "ACTION_NAME_BACK_DOWN"
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+		command = { type = relation which = GRE value = 20 }
+		command = { type = local_clrflag which = ITAInvadeGreece }
+	}
+}

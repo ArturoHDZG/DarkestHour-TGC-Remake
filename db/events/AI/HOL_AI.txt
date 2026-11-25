@@ -1,0 +1,464 @@
+# ============================================================================
+# File: events/AI/HOL_AI.txt (21 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [157018] HOL | 1913 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 157018
+        random = no
+        country = HOL
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = august year = 1913 }
+	action_a = {
+		command = { type = headofgovernment which = 15169 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [157019] HOL | 1918 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 157019
+        random = no
+        country = HOL
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = september year = 1918 }
+	action_a = {
+		command = { type = headofgovernment which = 15166 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [157020] HOL | 1925 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 157020
+        random = no
+        country = HOL
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = august year = 1925 }
+	action_a = {
+		command = { type = headofgovernment which = 15002 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [157021] HOL | 1926 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 157021
+        random = no
+        country = HOL
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = march year = 1926 }
+	action_a = {
+		command = { type = headofgovernment which = 15021 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [157022] HOL | 1929 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 157022
+        random = no
+        country = HOL
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = august year = 1929 }
+	action_a = {
+		command = { type = headofgovernment which = 15166 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [157009] HOL | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 157009
+	random = no
+	country = HOL
+	persistent = yes
+	trigger = {
+		ai = yes
+		flag = DDay
+		NOT = { local_flag = HOLDDay }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_setflag which = HOLDDay }
+		command = { type = ai which = "switch/Minor_DDay_ENG.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [157010] HOL | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 157010
+	random = no
+	country = HOL
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = yes
+		NOT = { flag = DDay }
+		local_flag = HOLDDay
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = BELDDay }
+		command = { type = ai which = "switch/Minor_DDay_Retrack.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [157011] HOL | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 157011
+	random = no
+	country = HOL
+	trigger = {
+		ai = yes
+		government = democratic
+		NOT = { local_flag = HOLEmbargoGER }
+		NOT = { alliance = { country = GER } }
+		OR = {
+			war = { country = BEL country = GER }
+			war = { country = LUX country = GER }
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_setflag which = HOLEmbargoGER }
+		command = { type = ai which = "switch/USA_Embargo_GER.ai" }
+		command = { type = end_trades which = HOL where = GER }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [157012] HOL | 1933 | AI_EVENT
+# Triggered by event 316109 in events/USA/USA_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 157012
+	random = no
+	country = HOL
+	trigger = {
+		ai = yes
+		government = democratic
+		NOT = { local_flag = HOLEmbargoJAP }
+		NOT = { alliance = { country = JAP } }
+		OR = {
+			event = 316109
+			war = { country = FRA country = JAP }
+			war = { country = ENG country = JAP }
+			war = { country = HOL country = JAP }
+			war = { country = PHI country = JAP }
+			war = { country = AST country = JAP }
+			war = { country = NZL country = JAP }
+			war = { country = POR country = JAP }
+			war = { country = SIA country = JAP }
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_setflag which = HOLEmbargoJAP }
+		command = { type = ai which = "switch/USA_Embargo_JAP.ai" }
+		command = { type = end_trades which = HOL where = JAP }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [157013] HOL | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 157013
+	random = no
+	country = HOL
+	trigger = {
+		ai = yes
+		government = democratic
+		NOT = { local_flag = HOLEmbargoITA }
+		NOT = { alliance = { country = ITA } }
+		OR = {
+			war = { country = BEL country = ITA }
+			war = { country = LUX country = ITA }
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_setflag which = HOLEmbargoITA }
+		command = { type = ai which = "switch/USA_Embargo_ITA.ai" }
+		command = { type = end_trades which = HOL where = ITA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [157014] HOL | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 157014
+	random = no
+	country = HOL
+	trigger = {
+		ai = yes
+		government = democratic
+		NOT = { local_flag = HOLEmbargoGER_ITA }
+		local_flag = HOLEmbargoGER
+		local_flag = HOLEmbargoITA
+		NOT = { local_flag = HOLEmbargoJAP }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_setflag which = HOLEmbargoGER_ITA }
+		command = { type = local_clrflag which = HOLEmbargoGER_JAP }
+		command = { type = local_clrflag which = HOLEmbargoITA_JAP }
+		command = { type = local_clrflag which = HOLEmbargoGER_ITA_JAP }
+		command = { type = ai which = "switch/USA_Embargo_GER_ITA.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [157015] HOL | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 157015
+	random = no
+	country = HOL
+	trigger = {
+		ai = yes
+		government = democratic
+		NOT = { local_flag = HOLEmbargoGER_JAP }
+		local_flag = HOLEmbargoGER
+		NOT = { local_flag = HOLEmbargoITA }
+		local_flag = HOLEmbargoJAP
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = HOLEmbargoGER_ITA }
+		command = { type = local_setflag which = HOLEmbargoGER_JAP }
+		command = { type = local_clrflag which = HOLEmbargoITA_JAP }
+		command = { type = local_clrflag which = HOLEmbargoGER_ITA_JAP }
+		command = { type = ai which = "switch/USA_Embargo_GER_JAP.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [157016] HOL | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 157016
+	random = no
+	country = HOL
+	trigger = {
+		ai = yes
+		government = democratic
+		NOT = { local_flag = HOLEmbargoITA_JAP }
+		NOT = { local_flag = HOLEmbargoGER }
+		local_flag = HOLEmbargoITA
+		local_flag = HOLEmbargoJAP
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = HOLEmbargoGER_ITA }
+		command = { type = local_clrflag which = HOLEmbargoGER_JAP }
+		command = { type = local_setflag which = HOLEmbargoITA_JAP }
+		command = { type = local_clrflag which = HOLEmbargoGER_ITA_JAP }
+		command = { type = ai which = "switch/USA_Embargo_ITA_JAP.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [157017] HOL | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 157017
+	random = no
+	country = HOL
+	trigger = {
+		ai = yes
+		government = democratic
+		NOT = { local_flag = HOLEmbargoGER_ITA_JAP }
+		local_flag = HOLEmbargoGER
+		local_flag = HOLEmbargoITA
+		local_flag = HOLEmbargoJAP
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = HOLEmbargoGER_ITA }
+		command = { type = local_clrflag which = HOLEmbargoGER_JAP }
+		command = { type = local_clrflag which = HOLEmbargoITA_JAP }
+		command = { type = local_setflag which = HOLEmbargoGER_ITA_JAP }
+		command = { type = ai which = "switch/USA_Embargo_GER_ITA_JAP.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329633] HOL | 1933 | AI_EVENT
+# Trigger event 157007 in events/Minors/HOL_14-86.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329633
+	random = no
+	country = HOL
+	trigger = {
+		ai = yes
+		war = { country = GER }
+		control = { province = 1647 data = -1 }
+		NOT = {
+			area = { area = "Netherlands" country = HOL value = 60 }
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = capital which = 1647 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 15001 }
+		command = { type = headofgovernment which = 15022 }
+		command = { type = foreignminister which = 15038 }
+		command = { type = armamentminister which = 15056 }
+		command = { type = ministerofsecurity which = 15086 }
+		command = { type = ministerofintelligence which = 15101 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [157023] HOL | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 157023
+        random = no
+        country = HOL
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = may year = 1933 }
+	action_a = {
+		command = { type = headofgovernment which = 15002 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [157024] HOL | 1940 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 157024
+        random = no
+        country = HOL
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = september year = 1940 }
+	action_a = {
+		command = { type = headofgovernment which = 15018 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [157025] HOL | 1945 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 157025
+        random = no
+        country = HOL
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = june year = 1945 }
+	action_a = {
+		command = { type = headofgovernment which = 15019 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [157026] HOL | 1946 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 157026
+        random = no
+        country = HOL
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = july year = 1946 }
+	action_a = {
+		command = { type = headofgovernment which = 15017 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [157027] HOL | 1958 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 157027
+        random = no
+        country = HOL
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = december year = 1958 }
+	action_a = {
+		command = { type = headofgovernment which = 15017 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [157028] HOL | 1959 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 157028
+        random = no
+        country = HOL
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = may year = 1959 }
+	action_a = {
+		command = { type = headofgovernment which = 15022 }
+		command = { type = dissent value = -1 }
+		}
+}

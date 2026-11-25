@@ -1,0 +1,1679 @@
+# ============================================================================
+# File: events/ENG/ENG_36-38.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329499] ENG | 1936 | Gearing Up for War (Preparativos de guerra)
+# Triggered by event 150033 in events/GER/GER_Decisions.txt
+# Triggered by event 150034 in events/GER/GER_Decisions.txt
+# Triggered by event 150038 in events/GER/GER_Decisions.txt
+# Triggered by event 150047 in events/GER/GER_Decisions.txt
+# Triggered by event 329113 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329499
+	random = no
+	country = ENG
+	persistent = yes
+	name = EVT_SHARED_00392_NAME
+	desc = EVT_SHARED_00392_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = {
+			war = { country = GER country = ENG }
+		}
+	}
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = peacetime_ic_mod value = 10 }
+		command = { type = manpowerpool value = 15 }
+		command = { trigger = { event = 150034 ai = yes } type = ai which = "switch/low_construction_factor.ai" }
+		command = { trigger = { event = 150034 NOT = { event = 150038 } } type = songs which = ChamberlainMunichConference.txt }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329535] ENG | 1936 | Return of Egyptian Coastline (Devolución de la costa egipcia)
+# Triggered by event 329534 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329535
+	random = no
+	country = ENG
+	style = 2
+	trigger = {
+		alliance = { country = EGY country = ENG }
+		event = { id = 329534 days = 1000 }
+		OR = {
+			AND = {
+				control = { province = 789 data = ENG }
+				control = { province = 750 data = ENG }
+				control = { province = 765 data = ENG }
+				control = { province = 761 data = ENG }
+			}
+			NOT = {
+				war = { country = ENG country = GER }
+				war = { country = ENG country = ITA }
+			}
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 50
+	deathdate = { day = 0 month = january year = 2000 }
+	name = EVT_ENG_329535_NAME
+	desc = EVT_ENG_329535_DESC
+	picture = "GLOBAL/north_africa_war"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = EGY value = "Sidi Barrani" }
+		command = { type = secedearea which = EGY value = "El Alamein" }
+		command = { type = secedearea which = EGY value = "Western Desert" }
+		command = { type = secedearea which = EGY value = "Nile Valley" }
+		command = { type = secedearea which = EGY value = "Delta" }
+		command = { type = secedearea which = EGY value = "Qattara" }
+		command = { type = secedeprovince which = EGY value = 791 }
+		command = { type = secedeprovince which = EGY value = 1006 }
+		command = { type = secedeprovince which = EGY value = 1007 }
+		command = { type = secedeprovince which = EGY value = 1004 }
+		command = { type = secedeprovince which = EGY value = 1005 }
+		command = { type = removeclaim which = 778 }
+		command = { type = removeclaim which = 779 }
+		command = { type = removeclaim which = 780 }
+		command = { type = removeclaim which = 781 }
+		command = { type = removeclaim which = 782 }
+		command = { type = removeclaim which = 783 }
+		command = { type = removeclaim which = 784 }
+		command = { type = removeclaim which = 785 }
+		command = { type = removeclaim which = 786 }
+		command = { type = removeclaim which = 788 }
+		command = { type = removeclaim which = 789 }
+		command = { type = removeclaim which = 790 }
+		command = { type = removeclaim which = 791 }
+		command = { type = removeclaim which = 792 }
+		command = { type = removeclaim which = 793 }
+		command = { type = removeclaim which = 794 }
+		command = { type = removeclaim which = 795 }
+		command = { type = removeclaim which = 796 }
+		command = { type = removeclaim which = 797 }
+		command = { type = removeclaim which = 798 }
+		command = { type = removeclaim which = 799 }
+		command = { type = removeclaim which = 800 }
+		command = { type = removeclaim which = 801 }
+		command = { type = removeclaim which = 802 }
+		command = { type = removeclaim which = 1004 }
+		command = { type = removeclaim which = 1005 }
+		command = { type = removeclaim which = 1006 }
+		command = { type = removeclaim which = 1007 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [143047] ENG | 1936 | Iron Route Interdicted (Baltic Closed) (Ruta del hierro cortada (Báltico cerrado))
+# ----------------------------------------------------------------------------
+event = {
+	id = 143047
+	random = no
+	country = ENG
+	name = EVT_SHARED_00615_NAME
+	desc = EVT_SHARED_00615_DESC
+	style = 2
+	picture = "GLOBAL/narvik"
+	trigger = {
+		control = { province = 495 data = ENG }
+		war = { country = GER country = ENG }
+	}
+	date = { day = 2 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = supplies value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143018] ENG | 1936 | Death of King George V (Fallecimiento del rey Jorge V)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143018
+	random = no
+	country = ENG
+	style = 2
+	trigger = {
+		headofstate = 10001
+		}
+	date = { day = 20 month = january year = 1936 }
+	name = "EVT_ENG_143018_NAME"
+	desc = "EVT_ENG_143018_DESC"
+	picture = "GLOBAL/minister_died2"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 10011 }
+		command = { type = sleepminister which = 10001 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [143061] ENG | 1936 | Formation of the Arab High Committee in Palestine (Formación del Alto Comité Árabe en Palestina)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143061
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 29 month = march year = 1936 }
+	name = "EVT_ENG_143061_NAME"
+	desc = "EVT_ENG_143061_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329237] ENG | 1936 | British Letters of Reassurance (Cartas británicas de reaseguro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329237
+	random = no
+	country = ENG
+	trigger = {
+			NOT = { war = { country = BEL country = GER } }
+			}
+	date = { day = 01 month = april year = 1936 }
+	name = "EVT_SHARED_00634_NAME"
+	desc = "EVT_SHARED_00634_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = FRA value = 10 }
+		command = { type = relation which = BEL value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330121] ENG | 1936 | British Reassurance to France and Belgium (Garantías diplomáticas británicas a Francia y Bélgica)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330121
+	random = no
+	country = ENG
+	trigger = {
+			NOT = { war = { country = ENG } }
+			}
+	date = { day = 01 month = april year = 1936 }
+	offset = 1
+	deathdate = { day = 03 month = april year = 1936 }
+	name = "EVT_SHARED_01156_NAME"
+	desc = "EVT_SHARED_01156_DESC"
+	style = 2
+	picture = "GLOBAL/british_reassurance_to_france_and_belgium"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = FRA value = 10 }
+		command = { type = relation which = BEL value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143062] ENG | 1936 | Representation of Natives Act (Ley de representación de los nativos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143062
+	random = no
+	country = ENG
+	trigger = {
+			exists = SAF
+			}
+	date = { day = 21 month = april year = 1936 }
+	name = "EVT_ENG_143062_NAME"
+	desc = "EVT_ENG_143062_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = SAF value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329504] ENG | 1936 | Legacy of the International Brigades (Fin de las Brigadas Internacionales)
+# Triggered by event 225013 in events/Minors/SPR.txt
+# Triggered by event 225018 in events/Minors/SPR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329504
+	random = no
+	country = ENG
+	trigger = {
+		government = democratic
+		event = 225013
+		event = 225018
+		NOT = {
+			OR = {
+			war = { country = ENG country = SPA }
+			war = { country = ENG country = SPR }
+			war = { country = ENG country = SOV }
+			war = { country = ENG country = GER }
+			war = { country = ENG country = FRA }
+			war = { country = ENG country = ITA }
+			}
+		}
+	}
+	name = "EVT_SHARED_00394_NAME"
+	desc = "EVT_SHARED_00394_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 18 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = relation which = SPR value = 20 }
+		command = { type = manpowerpool value = 8 }
+		command = { type = dissent value = -1 }
+		command = { type = gain_tech which = -2 }
+		command = { type = gain_tech which = -1 }
+		command = { trigger = { local_flag = military_control_SPR } type = military_control which = ENG where = SPR }
+		command	= { trigger = { local_flag = military_control_SPR } type = local_clrflag which = military_control }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329505] ENG | 1936 | Legacy of the International Brigades (Fin de las Brigadas Internacionales)
+# Triggered by event 225013 in events/Minors/SPR.txt
+# Triggered by event 224018 in events/Minors/SPA.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329505
+	random = no
+	country = ENG
+	trigger = {
+		government = democratic
+		event = 225013
+		event = 224018
+		NOT = {
+			OR = {
+			war = { country = ENG country = SPA }
+			war = { country = ENG country = SPR }
+			war = { country = ENG country = SOV }
+			war = { country = ENG country = GER }
+			war = { country = ENG country = FRA }
+			war = { country = ENG country = ITA }
+			}
+		}
+	}
+	name = "EVT_SHARED_00394_NAME"
+	desc = "EVT_SHARED_00394_DESC"
+	style = 2
+	picture = "GLOBAL/scw"
+	date = { day = 18 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = manpowerpool value = 3 }
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { type = gain_tech which = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143063] ENG | 1936 | End of Arab General Strike in Palestine (Fin de la huelga general árabe en Palestina)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143063
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 11 month = october year = 1936 }
+	name = "EVT_ENG_143063_NAME"
+	desc = "EVT_ENG_143063_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143021] ENG | 1936 | Abdication of Edward VIII (Abdicación de Eduardo VIII)
+# Triggered by event 329514 in events/ENG/ENG_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143021
+	random = no
+	country = ENG
+	style = 2
+	trigger = {
+		OR = {
+			headofstate = 10011
+			headofstate = 10012
+			headofstate = 10013
+		}
+	}
+	date = { day = 10 month = december year = 1936 }
+	name = "EVT_ENG_143021_NAME"
+	desc = "EVT_ENG_143021_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = headofstate which = 10014 }
+		command = { trigger = { NOT = { event = 329514 } } type = headofgovernment which = 10017 }
+		command = { type = armamentminister which = 10037 }
+		command = { type = sleepminister which = 10011 }
+		command = { type = sleepminister which = 10002 }
+		command = { type = songs which = EdwardAbdicationAddress.txt }
+		}
+	action_b = {
+		name = "EVT_SHARED_00306_A"
+		ai_chance = 0
+		command = { type = dissent value = 2 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [143003] ENG | 1937 | Anglo-Canadian-US. Trade Agreement success (El éxito del acuerdo comercial anglo-canadiense-estadounidense)
+# Triggered by event 121002 in events/Minors/CAN_14-52.txt
+# Trigger event 316002 in events/USA/USA_36-38.txt
+# Trigger event 121003 in events/Minors/CAN_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 143003
+         random = no
+         country = eng
+         name = "EVT_SHARED_00483_NAME"
+         desc = "EVT_SHARED_00483_DESC"
+         style = 2
+	picture = "GLOBAL/anglo_canadian_us_trade_agreement_success"
+           action_a = {
+                  name = "ACTION_NAME_EXCELLENT"
+                  command = { type = dissent value = -1 }
+                  command = { type = relation which = usa value = 35 }
+                  command = { type = relation which = can value = 35 }
+                  command = { type = supplies value = 3000   }
+                  command = { type = oilpool value = 3000   }
+                  command = { type = metalpool value = 8000 }
+                  command = { type = energypool value = 10000 }
+                  command = { type = rarematerialspool value = 2500 }
+                  command = { type = money value = 120 }
+                  command = { type = trigger which = 316002 }
+                  command = { type = trigger which = 121003 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [143043] ENG | 1937 | Vienna Award: European War (Arbitraje de Viena: Guerra europea)
+# Triggered by event 136007 in events/Minors/CZE_14-53.txt
+# Triggered by event 136009 in events/Minors/CZE_14-53.txt
+# Triggered by event 150083 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143043
+	random = no
+	country = ENG
+	name = "EVT_ENG_143043_NAME"
+	desc = "EVT_ENG_143043_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 35
+		command = { type = alliance which = CZE }
+		command = { type = war which = GER }
+	}
+	action = {
+		name = "ACTION_NAME_NEUTRAL"
+		ai_chance = 65
+		command = {  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143048] ENG | 1937 | Belgium Withdrawal from the Locarno Pact (La retirada de Bélgica del Pacto de Locarno)
+# Triggered by event 110009 in events/Minors/BEL.txt
+# Trigger event 147049 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143048
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00636_NAME"
+	desc = "EVT_SHARED_00636_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = BEL value = -10 }
+		command = { type = trigger which = 147049 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143054] ENG | 1937 | Benito Mussolini's visit to Tobruk (La visita de Benito Mussolini a Tobruk)
+# Triggered by event 329154 in events/ITA/ITA_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143054
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00652_NAME"
+	desc = "EVT_SHARED_00652_DESC"
+	style = 2
+	picture = "GLOBAL/mussolini"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ITA value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143074] ENG | 1937 | Mexican Nationalization of Petroleum (Nacionalización mexicana del petróleo)
+# Triggered by event 316051 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143074
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00730_NAME"
+	desc = "EVT_SHARED_00730_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		ai_chance = 100
+		command = { type = relation which = MEX value = -20 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143091] ENG | 1937 | Japanese Blockade of Tianjin (Bloqueo japonés de Tianjín)
+# Triggered by event 124015 in events/CHI/CHI_33-37.txt
+# Trigger event 223028 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143091
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00737_NAME"
+	desc = "EVT_SHARED_00738_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = JAP value = -20 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = money value = -50 }
+		command = { type = supplies value = -100 }
+		command = { type = trigger which = 223028 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143116] ENG | 1937 | New Irish Constitution (Nueva constitución irlandesa)
+# Triggered by event 329304 in events/Minors/IRE_14-59.txt
+# Trigger event 163016 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 143116
+         random = no
+         country = ENG
+         name = "EVT_SHARED_00785_NAME"
+         desc = "EVT_SHARED_00785_DESC"
+         style = 2
+	picture = "GLOBAL/new_irish_constitution"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = relation which = IRE value = -25 }
+                  command = { type = end_mastery which = IRE }
+		  command = { type = trigger which = 163016 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [143159] ENG | 1937 | Great Britain Capitulates (Gran Bretaña capitula)
+# Trigger event 150347 in events/GER/GER_36-37.txt
+# Trigger event 223082 in events/SOV/SOV_36-38.txt
+# Trigger event 167050 in events/JAP/JAP_36-37.txt
+# Trigger event 166076 in events/ITA/ITA_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143159
+	random = no
+	name = "EVT_SHARED_00400_NAME"
+	desc = "EVT_ENG_143159_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	country = ENG
+	trigger = {
+		AND = {
+			NOT = { region = { region = "England" } }
+			NOT = { region = { region = "Scotland" } }
+		}
+		OR = {
+			war = { country = ENG country = GER }
+			war = { country = ENG country = SOV }
+			war = { country = ENG country = JAP }
+			war = { country = ENG country = ITA }
+		}
+		OR = {
+			AND ={
+				random = 20
+				OR = {
+					area = { area = "East England" country = -2 }
+					area = { area = "West England" country = -2 }
+					area = { area = "North England" country = -2 }
+					area = { area = "South Scotland" country = -2 }
+					AND = {
+						control = { province = 5 data = -2 }
+						control = { province = 6 data = -2 }
+						control = { province = 7 data = -2 }
+						control = { province = 8 data = -2 }
+					}
+				}
+			}
+			AND ={
+				random = 40
+				AND = {
+					area = { area = "South Scotland" country = -2 }
+					control = { province = 13 data = -2 }
+					control = { province = 14 data = -2 }
+					control = { province = 5 data = -2 }
+					control = { province = 6 data = -2 }
+					control = { province = 7 data = -2 }
+					control = { province = 8 data = -2 }
+				}
+			}
+			AND = {
+				random = 60
+				AND = {
+					area = { area = "East England" country = -2 }
+					area = { area = "West England" country = -2 }
+					control = { province = 15 data = -2 }
+					control = { province = 17 data = -2 }
+					control = { province = 18 data = -2 }
+				}
+			}
+			AND ={
+				area = { area = "East England" country = -2 }
+				area = { area = "West England" country = -2 }
+				area = { area = "North England" country = -2 }
+				area = { area = "South Scotland" country = -2 }
+				AND = {
+					control = { province = 5 data = -2 }
+					control = { province = 6 data = -2 }
+					control = { province = 7 data = -2 }
+					control = { province = 8 data = -2 }
+				}
+			}
+		}
+	}
+	date = { day = 0 month = january year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		trigger = {
+			war = { country = ENG country = GER }
+			OR = {
+				area = { area = "East England" country = GER }
+				area = { area = "West England" country = GER }
+				area = { area = "North England" country = GER }
+				area = { area = "South Scotland" country = GER }
+				AND = {
+					control = { province = 5 data = GER }
+					control = { province = 6 data = GER }
+					control = { province = 7 data = GER }
+					control = { province = 8 data = GER }
+				}
+			}
+		}
+		name = "EVT_SHARED_00401_A"
+		ai_chance = 90
+		command = { type = capital which = 2137 }
+		command = { type = trigger which = 150347 }
+	}
+	action = {
+		trigger = {
+			war = { country = ENG country = SOV }
+			OR = {
+				area = { area = "East England" country = SOV }
+				area = { area = "West England" country = SOV }
+				area = { area = "North England" country = SOV }
+				area = { area = "South Scotland" country = SOV }
+				AND = {
+					control = { province = 5 data = SOV }
+					control = { province = 6 data = SOV }
+					control = { province = 7 data = SOV }
+					control = { province = 8 data = SOV }
+				}
+			}
+		}
+		name = "EVT_SHARED_00401_B"
+		ai_chance = 90
+		command = { type = capital which = 2137 }
+		command = { type = trigger which = 223082 }
+	}
+	action = {
+		trigger = {
+			war = { country = ENG country = JAP }
+			OR = {
+				area = { area = "East England" country = JAP }
+				area = { area = "West England" country = JAP }
+				area = { area = "North England" country = JAP }
+				area = { area = "South Scotland" country = JAP }
+				AND = {
+					control = { province = 5 data = JAP }
+					control = { province = 6 data = JAP }
+					control = { province = 7 data = JAP }
+					control = { province = 8 data = JAP }
+				}
+			}
+		}
+		name = "EVT_SHARED_00401_C"
+		ai_chance = 85
+		command = { type = capital which = 1843 }
+		command = { type = trigger which = 167050 }
+	}
+	action = {
+		trigger = {
+			war = { country = ENG country = ITA }
+			OR = {
+				area = { area = "East England" country = ITA }
+				area = { area = "West England" country = ITA }
+				area = { area = "North England" country = ITA }
+				area = { area = "South Scotland" country = ITA }
+				AND = {
+					control = { province = 5 data = ITA }
+					control = { province = 6 data = ITA }
+					control = { province = 7 data = ITA }
+					control = { province = 8 data = ITA }
+				}
+			}
+		}
+		name = "EVT_ENG_143159_A"
+		ai_chance = 85
+		command = { type = capital which = 2137 }
+		command = {type = trigger which = 166076 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE_PEACE"
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143160] ENG | 1937 | Great Britain Capitulates (Gran Bretaña capitula)
+# Triggered by event 150347 in events/GER/GER_36-37.txt
+# Triggered by event 223082 in events/SOV/SOV_36-38.txt
+# Triggered by event 167050 in events/JAP/JAP_36-37.txt
+# Triggered by event 166076 in events/ITA/ITA_36-40.txt
+# Trigger event 143161 in events/ENG/ENG_36-38.txt
+# Trigger event 143163 in events/ENG/ENG_36-38.txt
+# Trigger event 143164 in events/ENG/ENG_36-38.txt
+# Trigger event 143162 in events/ENG/ENG_36-38.txt
+# Trigger event 143166 in events/AI/ENG_AI_33-45.txt
+# Trigger event 143167 in events/ENG/ENG_38-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143160
+	random = no
+	name = "EVT_SHARED_00400_NAME"
+	desc = "EVT_ENG_143160_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	country = ENG
+	save_date = yes
+	action = {
+		name = ACTION_NAME_OK
+		trigger = { flag = whitepeace}
+		command = { trigger = {event = 150347} type = trigger which = 143161 }
+		command = { trigger = {event = 223082} type = trigger which = 143163 }
+		command = { trigger = {event = 167050} type = trigger which = 143164 }
+		command = { trigger = {event = 166076} type = trigger which = 143162 }
+		command = { type = sleepteam which = 10006 }
+		command = { type = sleepteam which = 10007 }
+		command = { type = sleepteam which = 10016 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = { flag = lightdem}
+		command = { trigger = {event = 150347} type = trigger which = 143161 }
+		command = { trigger = {event = 223082} type = trigger which = 143163 }
+		command = { trigger = {event = 167050} type = trigger which = 143164 }
+		command = { trigger = {event = 166076} type = trigger which = 143162 }
+		command = { type = sleepteam which = 10006 }
+		command = { type = sleepteam which = 10007 }
+		command = { type = sleepteam which = 10016 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = { flag = meddem}
+		command = { trigger = {event = 150347} type = trigger which = 143161 }
+		command = { trigger = {event = 223082} type = trigger which = 143163 }
+		command = { trigger = {event = 167050} type = trigger which = 143164 }
+		command = { trigger = {event = 166076} type = trigger which = 143162 }
+		command = { type = sleepteam which = 10006 }
+		command = { type = sleepteam which = 10007 }
+		command = { type = sleepteam which = 10016 }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		trigger = { flag = highdem}
+		command = { trigger = {event = 150347} type = trigger which = 143161 }
+		command = { trigger = {event = 223082} type = trigger which = 143163 }
+		command = { trigger = {event = 167050} type = trigger which = 143164 }
+		command = { trigger = {event = 166076} type = trigger which = 143162 }
+		command = { type = sleepteam which = 10006 }
+		command = { type = sleepteam which = 10007 }
+		command = { type = sleepteam which = 10016 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143161] ENG | 1937 | Great Britain Capitulates (Gran Bretaña capitula)
+# Triggered by event 143160 in events/ENG/ENG_36-38.txt
+# Trigger event 150349 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143161
+	random = no
+	name = "EVT_SHARED_00400_NAME"
+	desc = "EVT_SHARED_00404_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	country = ENG
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		trigger = { flag = whitepeace }
+		command = { type = independence which = U73 value = 1}
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secederegion which = U73 value = Ireland}
+		command = { type = flag_ext where = U73 which = _GERpuppet }
+		command = { type = trigger which = 150349 }
+	}
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		trigger = { flag = lightdem }
+		command = { type = secedeprovince which = GER value = 20 }
+		command = { type = secedeprovince which = GER value = 23 }
+		command = { type = independence which = U73 value = 1}
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secederegion which = U73 value = Ireland}
+		command = { type = flag_ext where = U73 which = _GERpuppet }
+		command = { type = trigger which = 150349 }
+	}
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		trigger = { flag = meddem}
+		command = { type = secedeprovince which = GER value = 26 }
+		command = { type = secedeprovince which = GER value = 27 }
+		command = { type = secedeprovince which = GER value = 20 }
+		command = { type = secedeprovince which = GER value = 23 }
+		command = { type = independence which = U73 value = 1}
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secederegion which = U73 value = Ireland}
+		command = { type = flag_ext where = U73 which = _GERpuppet }
+		command = { type = trigger which = 150349 }
+	}
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		trigger = { flag = highdem}
+		command = { type = secedeprovince which = IRE value = 36 }
+		command = { type = secedeprovince which = IRE value = 35 }
+		command = { type = secedeprovince which = GER value = 26 }
+		command = { type = secedeprovince which = GER value = 27 }
+		command = { type = secedeprovince which = GER value = 20 }
+		command = { type = secedeprovince which = GER value = 23 }
+		command = { type = independence which = SCO value = 1 }
+		command = { type = independence which = U73 value = 1 }
+		command = { type = secederegion which = U73 value = England }
+		command = { type = secederegion which = SCO value = Scotland }
+		command = { type = secederegion which = IRE value = Ireland }
+		command = { type = flag_ext where = U73 which = _GERpuppet }
+		command = { type = trigger which = 150349 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143162] ENG | 1937 | Great Britain Capitulates (Gran Bretaña capitula)
+# Triggered by event 143160 in events/ENG/ENG_36-38.txt
+# Trigger event 166077 in events/ITA/ITA_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143162
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00400_NAME"
+	desc = "EVT_SHARED_00404_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		trigger = { flag = whitepeace}
+		command = { type = independence which = U73 value = 1}
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secederegion which = U73 value = Ireland}
+		command = { type = trigger which = 166077 }
+	}
+	action = {
+		trigger = { flag = lightdem}
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = secedeprovince which = ITA value = 20 }
+		command = { type = secedeprovince which = ITA value = 23 }
+		command = { type = independence which = U73 value = 1}
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secederegion which = U73 value = Ireland}
+		command = { type = trigger which = 166077 }
+	}
+	action = {
+		trigger = { flag = meddem}
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = secedeprovince which = ITA value = 26 }
+		command = { type = secedeprovince which = ITA value = 27 }
+		command = { type = secedeprovince which = ITA value = 20 }
+		command = { type = secedeprovince which = ITA value = 23 }
+		command = { type = independence which = U73 value = 1}
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secederegion which = U73 value = Ireland}
+		command = { type = trigger which = 166077 }
+	}
+	action = {
+		trigger = { flag = highdem}
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = secedeprovince which = IRE value = 36 }
+		command = { type = secedeprovince which = IRE value = 35 }
+		command = { type = secedeprovince which = ITA value = 26 }
+		command = { type = secedeprovince which = ITA value = 27 }
+		command = { type = secedeprovince which = ITA value = 20 }
+		command = { type = secedeprovince which = ITA value = 23 }
+		command = { type = independence which = SCO value = 1}
+		command = { type = independence which = U73 value = 1}
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = SCO value = Scotland}
+		command = { type = secederegion which = IRE value = Ireland}
+		command = { type = trigger which = 166077 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143163] ENG | 1937 | Great Britain Capitulates (Gran Bretaña capitula)
+# Triggered by event 143160 in events/ENG/ENG_36-38.txt
+# Trigger event 223083 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143163
+	random = no
+	name = "EVT_SHARED_00400_NAME"
+	desc = "EVT_SHARED_00404_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	country = ENG
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		trigger = { flag = whitepeace}
+		command = { type = independence which = U12 value = 1}
+		command = { type = secederegion which = U12 value = England}
+		command = { type = secederegion which = U12 value = Scotland}
+		command = { type = secederegion which = U12 value = Ireland}
+		command = { type = trigger which = 223083 }
+	}
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		trigger = { flag = lightdem}
+		command = { type = secedeprovince which = SOV value = 5 }
+		command = { type = secedeprovince which = SOV value = 9 }
+		command = { type = independence which = U12 value = 1}
+		command = { type = secederegion which = U12 value = England}
+		command = { type = secedeprovince which = U12 value = 4 }
+		command = { type = secedeprovince which = U12 value = 6 }
+		command = { type = secedeprovince which = U12 value = 7 }
+		command = { type = secedeprovince which = U12 value = 8 }
+		command = { type = secedeprovince which = U12 value = 10 }
+		command = { type = secedeprovince which = U12 value = 11 }
+		command = { type = secedeprovince which = U12 value = 12 }
+		command = { type = secederegion which = U12 value = Ireland}
+		command = { type = trigger which = 223083 }
+	}
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		trigger = { flag = meddem}
+		command = { type = secedeprovince which = SOV value = 4 }
+		command = { type = secedeprovince which = SOV value = 5 }
+		command = { type = secedeprovince which = SOV value = 6 }
+		command = { type = secedeprovince which = SOV value = 7 }
+		command = { type = secedeprovince which = SOV value = 8 }
+		command = { type = secedeprovince which = SOV value = 9 }
+		command = { type = independence which = U12 value = 1}
+		command = { type = secederegion which = U12 value = England}
+		command = { type = secedeprovince which = U12 value = 10 }
+		command = { type = secedeprovince which = U12 value = 11 }
+		command = { type = secedeprovince which = U12 value = 12 }
+		command = { type = secederegion which = U12 value = Scotland}
+		command = { type = secederegion which = U12 value = Ireland}
+		command = { type = trigger which = 223083 }
+	}
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		trigger = { flag = highdem}
+		command = { type = secedeprovince which = SOV value = 4 }
+		command = { type = secedeprovince which = SOV value = 5 }
+		command = { type = secedeprovince which = SOV value = 6 }
+		command = { type = secedeprovince which = SOV value = 7 }
+		command = { type = secedeprovince which = SOV value = 8 }
+		command = { type = secedeprovince which = SOV value = 9 }
+		command = { type = secedeprovince which = SOV value = 10 }
+		command = { type = secedeprovince which = SOV value = 11 }
+		command = { type = secedeprovince which = SOV value = 12 }
+		command = { type = secederegion which = SOV value = Scotland}
+		command = { type = independence which = U12 value = 1}
+		command = { type = secederegion which = U12 value = England}
+		command = { type = secederegion which = IRE value = Ireland}
+		command = { type = trigger which = 223083 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143164] ENG | 1937 | Great Britain Capitulates (Gran Bretaña capitula)
+# Triggered by event 143160 in events/ENG/ENG_36-38.txt
+# Trigger event 167051 in events/JAP/JAP_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143164
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00400_NAME"
+	desc = "EVT_SHARED_00404_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		trigger = { flag = whitepeace}
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = independence which = U73 value = 1}
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secederegion which = U73 value = Ireland}
+		command = { type = trigger which = 167051 }
+	}
+	action = {
+		trigger = { flag = lightdem}
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = independence which = U73 value = 1}
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secederegion which = U73 value = Ireland}
+		command = { type = trigger which = 167051 }
+	}
+	action = {
+		trigger = { flag = meddem}
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = secedeprovince which = JAP value = 36 }
+		command = { type = secedeprovince which = JAP value = 35 }
+		command = { type = secedeprovince which = JAP value = 17 }
+		command = { type = independence which = U73 value = 1}
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secederegion which = JAP value = Ireland}
+		command = { type = trigger which = 167051 }
+	}
+	action = {
+		trigger = { flag = highdem}
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = secedeprovince which = JAP value = 36 }
+		command = { type = secedeprovince which = JAP value = 35 }
+		command = { type = secedeprovince which = JAP value = 17 }
+		command = { type = secedeprovince which = JAP value = 24 }
+		command = { type = secedeprovince which = JAP value = 22 }
+		command = { type = secedeprovince which = JAP value = 21 }
+		command = { type = independence which = U73 value = 1}
+		command = { type = secederegion which = U73 value = England}
+		command = { type = secederegion which = U73 value = Scotland}
+		command = { type = secederegion which = JAP value = Ireland}
+		command = { type = trigger which = 167051 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143165] ENG | 1937 | British Retreat from the Pacific (Retirada británica del Pacífico)
+# Triggered by event 167051 in events/JAP/JAP_36-37.txt
+# Triggered by event 329516 in events/ENG/ENG_36-38.txt
+# Trigger event 167052 in events/JAP/JAP_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143165
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00405_NAME"
+	desc = "EVT_ENG_143165_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = secederegion which = JAP value = "Indochine"}
+		command = { type = secederegion which = JAP value = "Indonesia"}
+		command = { type = secederegion which = JAP value = "American Pacific"}
+		command = { type = secederegion which = JAP value = "Asian Pacific"}
+		command = { type = secederegion which = JAP value = "North Solomon Islands"}
+		command = { type = secedeprovince which = JAP value = 1371 }
+		command = { type = dissent value = 2}
+		command = { type = trigger which = 167052 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329238] ENG | 1937 | Anglo-Italian Mediterranean Treaty (Tratado mediterráneo anglo-italiano)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329238
+	random = no
+	country = ENG
+	trigger = {
+			NOT = { war = { country = ITA country = ENG } }
+			}
+	date = { day = 01 month = january year = 1937 }
+	name = "EVT_ENG_329238_NAME"
+	desc = "EVT_ENG_329238_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		command = { type = relation which = ITA value = 10 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143064] ENG | 1937 | End of Arab Boycott of Peel Commission (Fin del boicot árabe de la 'Comisión Peel')
+# ----------------------------------------------------------------------------
+event = {
+	id = 143064
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 03 month = january year = 1937 }
+	name = "EVT_ENG_143064_NAME"
+	desc = "EVT_ENG_143064_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329082] ENG | 1937 | British Military Mission to Egypt (Misión militar británica a Egipto)
+# Trigger event 142002 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329082
+         random = no
+         country = eng
+         trigger = {
+                   NOT = {
+                            war = { country = eng country = egy }
+                   }
+                   exists = egy
+         }
+         name = "EVT_SHARED_00508_NAME"
+         desc = "EVT_SHARED_00508_DESC"
+         style = 2
+	picture = "GLOBAL/british_military_mission_to_egypt"
+         date = { day = 13 month = january year = 1937 }
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = money value = -30 }
+                  command = { type = manpowerpool value = -20 }
+                  command = { type = relation which = egy value = 10 }
+                  command = { type = trigger which = 142002 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [329516] ENG | 1937 | British Retreat from the Pacific (Retirada británica del Pacífico)
+# Trigger event 143165 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329516
+	random = no
+	name = "EVT_SHARED_00405_NAME"
+	desc = "EVT_ENG_329516_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	country = ENG
+	trigger = {
+		OR = {
+			region = { region = "Indochine"  country = JAP }
+			puppet = { country = U03 country = JAP }
+		}
+		OR = {
+			region = { region = "Indonesia"  country = JAP }
+			puppet = { country = INO country = JAP }
+		}
+		region = { region = "American Pacific" country = JAP }
+		region = { region = "Asian Pacific"  country = JAP }
+		region = { region = "North Solomon Islands" country = JAP }
+		control = { province = 1371 data = JAP }
+	}
+	date = { day = 8 month = march year = 1937 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		command = { type = trigger which = 143165 }
+	}
+	action = {
+		name = "ACTION_NAME_NEVER"
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143020] ENG | 1937 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143020
+	random = no
+	country = ENG
+	style = 2
+	trigger = {
+		minister = 10059
+		}
+	date = { year = 1937 month = march day = 17 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 10059 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [143065] ENG | 1937 | All-India Congress Meeting in Delhi (Reunión del 'Congreso de toda la India' en Delhi)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143065
+	random = no
+	country = ENG
+	trigger = {
+			exists = U02
+			}
+	date = { day = 18 month = march year = 1937 }
+	name = "EVT_ENG_143065_NAME"
+	desc = "EVT_ENG_143065_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = U02 value = 15 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143067] ENG | 1937 | Imperial Conference in London (Conferencia Imperial en Londres)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143067
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 13 month = april year = 1937 }
+	name = "EVT_ENG_143067_NAME"
+	desc = "EVT_ENG_143067_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143068] ENG | 1937 | British Concessions to All-India Party (Concesiones británicas al 'Partido de Toda La India')
+# Trigger event 237009 in events/Minors/U02.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143068
+	random = no
+	country = ENG
+	trigger = {
+			exists = U02
+			}
+	date = { day = 25 month = april year = 1937 }
+	name = "EVT_SHARED_00729_NAME"
+	desc = "EVT_SHARED_00729_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { type = relation which = U02 value = 25 }
+		command = { type = trigger which = 237009 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [330117] ENG | 1937 | The Hughe Knatchbull-Hugessen Incident (Ataque aéreo contra el embajador británico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330117
+	random = no
+	country = ENG
+	trigger = {
+           	   exists = JAP
+		   war = { country = JAP country = CHC }
+}
+	name = "EVT_SHARED_01153_NAME"
+	desc = "EVT_SHARED_01153_DESC"
+	style = 2
+	picture = "GLOBAL/the_hughe_knatchbull_hugessen_incident"
+	date = { day = 17 month = june year = 1937 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		  name = ACTION_NAME_OK
+		  command = { type = relation which = JAP value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329240] ENG | 1937 | Germans and Italians Withdrawal from Spanish Neutrality Patrol (Los alemanes e italianos se retiran de la Patrulla de Neutralidad Española)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329240
+	random = no
+	country = ENG
+	trigger = {
+			 war = { country = SPA country = SPR }
+			}
+	date = { day = 23 month = june year = 1937 }
+	name = "EVT_ENG_329240_NAME"
+	desc = "EVT_ENG_329240_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = ITA value = -10 }
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143069] ENG | 1937 | Reorganization of the British Army (Reorganización del ejército británico)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143069
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 29 month = august year = 1937 }
+	name = "EVT_ENG_143069_NAME"
+	desc = "EVT_ENG_143069_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = gain_tech which = 6110 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143070] ENG | 1937 | Pan-Arab Congress at Bludan (Congreso Panárabe en Bludán)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143070
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 09 month = september year = 1937 }
+	name = "EVT_ENG_143070_NAME"
+	desc = "EVT_ENG_143070_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143071] ENG | 1937 | Assassination of British Commissioner for Galilee (Asesinato del comisionado británico de Galilea)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143071
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 25 month = september year = 1937 }
+	name = "EVT_ENG_143071_NAME"
+	desc = "EVT_ENG_143071_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143049] ENG | 1937 | Nyon Conference (Conferencia de Nyon)
+# Trigger event 147052 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143049
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 29 month = september year = 1937 }
+	name = "EVT_SHARED_00638_NAME"
+	desc = "EVT_SHARED_00638_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = gain_tech which = 8970 }
+		command = { type = trigger which = 147052 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143072] ENG | 1937 | British Arrest of Arab High Committee in Palestine (Arresto británico del Alto Comité Árabe en Palestina)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143072
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 01 month = october year = 1937 }
+	name = "EVT_ENG_143072_NAME"
+	desc = "EVT_ENG_143072_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143073] ENG | 1937 | Palestinian Arab Leader Escape to Syria (Escape de líder árabe palestino a Siria)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143073
+	random = no
+	country = ENG
+	trigger = {
+			exists = U04
+			}
+	date = { day = 15 month = october year = 1937 }
+	name = "EVT_ENG_143073_NAME"
+	desc = "EVT_ENG_143073_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_MOURN"
+		ai_chance = 100
+		command = { type = relation which = U04 value = -10 }
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143075] ENG | 1937 | Special Military Courts in Palestine (Tribunales militares especiales en Palestina)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143075
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 10 month = november year = 1937 }
+	name = "EVT_ENG_143075_NAME"
+	desc = "EVT_ENG_143075_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329016] ENG | 1937 | Anglo-Canadian-US. Trade Agreement (Acuerdo comercial anglo-canadiense-estadounidense)
+# Trigger event 316001 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329016
+         random = no
+         country = eng
+         trigger = {
+                   NOT = {
+                            war = { country = eng country = usa }
+                            war = { country = eng country = can }
+                            war = { country = usa country = can }
+                   }
+                   exists = usa
+                   exists = can
+         }
+         name = "EVT_SHARED_00482_NAME"
+         desc = "EVT_SHARED_00482_DESC"
+         style = 2
+	picture = "GLOBAL/anglo_canadian_us_trade_agreement"
+         date = { day = 17 month = november year = 1937 }
+           action_a = {
+                  name = "ACTION_NAME_SIGN"
+                  ai_chance = 90
+                  command = { type = relation which = usa value = 10 }
+                  command = { type = relation which = can value = 10 }
+                  command = { type = trigger which = 316001 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_REFUSE"
+                  ai_chance = 10
+                  command = { type = dissent value = 1 }
+                  command = { type = relation which = usa value = -10 }
+                  command = { type = relation which = can value = -10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [143076] ENG | 1937 | Arab-Jewish Fighting in Jerusalem (Lucha árabe-judía en Jerusalén)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143076
+	random = no
+	country = ENG
+	trigger = {
+			exists = ENG
+			}
+	date = { day = 25 month = november year = 1937 }
+	name = "EVT_ENG_143076_NAME"
+	desc = "EVT_ENG_143076_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143051] ENG | 1938 | Anglo-French Loan to Bulgaria (Préstamo anglo-francés a Bulgaria)
+# Triggered by event 118017 in events/Minors/BUL.txt
+# Trigger event 147061 in events/FRA/FRA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143051
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00642_NAME"
+	desc = "EVT_SHARED_00642_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = BUL value = 20 }
+		command = { type = money value = -50 }
+		command = { type = trigger which = 147061 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143078] ENG | 1938 | Mexican Expropriation of Foreign Oil Companies (Expropiación mexicana de petroleras extranjeras)
+# Triggered by event 316052 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143078
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00731_NAME"
+	desc = "EVT_SHARED_00731_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = MEX value = -15 }
+		command = { type = dissent value = 1 }
+		command = { type = oilpool value = -1000 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143079] ENG | 1938 | Anglo-Turkish Agreement (Acuerdo anglo-turco)
+# Triggered by event 329243 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143079
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00732_NAME"
+	desc = "EVT_SHARED_00732_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -1 }
+		command = { type = relation which = TUR value = 20 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143092] ENG | 1938 | Tientsin Incident (Incidente de Tientsin)
+# Triggered by event 167018 in events/JAP/JAP_37-38.txt
+# Trigger event 167019 in events/JAP/JAP_37-38.txt
+# Trigger event 167020 in events/JAP/JAP_37-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143092
+	random = no
+	country = ENG
+	name = "EVT_SHARED_00741_NAME"
+	desc = "EVT_SHARED_00744_DESC"
+	style = 2
+	picture = "GLOBAL/naval_blockade"
+	action = {
+		name = "ACTION_NAME_BACK_DOWN"
+		ai_chance = 100
+		command = { type = belligerence which = ENG value = -5 }
+		command = { type = dissent value = 3 }
+		command = { type = trigger which = 167019 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		ai_chance = 0
+		command = { type = relation which = USA value = -10 }
+		command = { type = belligerence which = ENG value = 2 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = 3 }
+		command = { type = trigger which = 167020 }
+                }
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 0
+		command = { type = relation which = USA value = -10 }
+		command = { type = belligerence which = ENG value = 10 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = 10 }
+		command = { type = war which = JAP }
+                }
+}
+
+# ----------------------------------------------------------------------------
+# [143106] ENG | 1938 | Install Puppet Administration (Instaurar gobierno títere)
+# Triggered by event 329275 in events/Minors/PER.txt
+# Trigger event 329276 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143106
+	random = no
+	country = ENG
+	name = "EVT_ENG_143106_NAME"
+	desc = "EVT_ENG_143106_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = make_puppet which = PER }
+		}
+}

@@ -1,0 +1,1802 @@
+# ============================================================================
+# File: events/USA/USA_14-16.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [124068] USA | 1914 | Chinese Concessions: USA Intervention (Concesiones chinas: Intervención de EE. UU.)
+# Triggered by event 124067 in events/GLOBAL/ALL_13-14.txt
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Triggered by event 243083 in events/Minors/U08_14-14.txt
+# Trigger event 167068 in events/JAP/JAP_00-33.txt
+# Trigger event 324249 in events/GLOBAL/MULTI_14-32.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124068
+	random = no
+	country = USA
+	name = EVT_SHARED_00030_NAME
+	desc = EVT_USA_124068_DESC
+	picture = "GLOBAL/congress"
+	style = 2
+	action = {
+		trigger = {
+			or = {
+				ai = no
+				not = {
+					or = {
+						and = {
+							event = 147311
+							participant = { country = USA value = 1 }
+						}
+						and = {
+							event = 243083
+							participant = { country = USA value = 2 }
+						}
+					}
+				}
+			}
+		}
+		name = ACTION_NAME_YES
+		ai_chance = 95
+		command = { trigger = { event = 147311 } type = event which = 167068 where = JAP when = 60 }
+		command = { trigger = { event = 243083 participant = { country = U08 value = 2 } } type = event which = 324249 where = U08 when = 60 }
+		command = { trigger = { event = 243083 participant = { country = U09 value = 2 } not = { participant = { country = U08 value = 2 } } } type = event which = 324249 where = U09 when = 60 }
+		command = { trigger = { event = 243083 participant = { country = ITA value = 2 } not = { participant = { country = U09 value = 2 } participant = { country = U08 value = 2 } } } type = event which = 324249 where = ITA when = 60 }
+		command = { trigger = { event = 243083 participant = { country = BUL value = 2 } not = { participant = { country = ITA value = 2 } participant = { country = U09 value = 2 } participant = { country = U08 value = 2 } } } type = event which = 324249 where = BUL when = 60 }
+		command = { trigger = { event = 243083 participant = { country = OTT value = 2 } not = { participant = { country = BUL value = 2 } participant = { country = ITA value = 2 } participant = { country = U09 value = 2 } participant = { country = U08 value = 2 } } } type = event which = 324249 where = OTT when = 60 }
+		command = { type = relation which = UCH value = 50 }
+		command = { type = relation which = CHI value = 50 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_NO
+		ai_chance = 5
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = setflag which = shangdong_noint }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231147] USA | 1914 | US Withdrawal from Mexico (Estados Unidos se retira de México)
+# Triggered by event 324218 in events/GLOBAL/MULTI_00-14.txt
+# Triggered by event 183010 in events/Minors/MEX.txt
+# Triggered by event 277003 in events/Minors/U57.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 231147
+	country = USA
+	trigger = {
+		not = { region = { region = "Mexico" country = MEX data = 1 value = 100 } }
+		or = {
+			and = {
+				or = {
+					event = 324218
+					event = 183010
+					event = 277003
+					event = 324218
+				}
+				exists = MEX
+				not = {
+					exists = U57
+					exists = U58
+					exists = U59
+				}
+			}
+			and = {
+				not = {
+					exists = MEX
+					exists = U57
+					exists = U58
+					exists = U59
+				}
+				region = { region = "Mexico" country = USA data = 1 value = 90 }
+			}
+		}
+	}
+	name = "EVT_USA_231147_NAME"
+	desc = "EVT_USA_231147_DESC"
+	style = 2
+	date = { day = 1 month = 1 year = 1914 }
+	deathdate = { day = 1 month = 1 year = 1934 }
+	offset = 15
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { not = { exists = MEX } } type = independence which = MEX }
+		command = { type = secederegion which = MEX value = "Mexico" when = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316048] USA | 1914 | Offensive Chit Expired (Reserva Logística Ofensiva agotada)
+# Triggered by event 316047 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316048
+	random = no
+	country = USA
+	name = "EVT_SHARED_00461_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = -10 }
+		command = { type = morale which = land value = -10 }
+		command = { type = morale which = naval value = -10 }
+		command = { type = morale which = air value = -10 }
+		command = { type = speed which = land value = -2 }
+		command = { type = counterattack value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = encirclement value = -2 }
+		command = { type = hq_supply_eff value = -2 }
+		command = { type = sce_frequency value = -0.3 }
+		command = { type = attrition_mod value = -2 }
+		command = { type = trickleback_mod value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316069] USA | 1914 | The Selective Training and Service Act (Ley del Servicio Militar Selectivo)
+# Triggered by event 316068 in events/USA/USA_Decisions.txt
+# Trigger event 329343 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316069
+	random = no
+	persistent = yes
+	one_action = yes
+	country = USA
+	name = "EVT_USA_316069_NAME"
+	desc = "EVT_SHARED_00273_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	action = {
+		trigger = {
+				atwar = yes
+				policy = { type = professional_army value = 2 }
+				NOT = { policy = { type = professional_army value = 3 }}
+		}
+		name = "EVT_USA_316069_A"
+		ai_chance = 65
+		command = { trigger = { ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.6 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.75 when = 1 }
+		command = { type = set_domestic which = professional_army value = 3 }
+		command = { trigger = { ai = no } type = dissent value = 3 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB2 }
+		command = { type = local_clrflag which = incon1 }
+	}
+	action = {
+		trigger = {
+				atwar = yes
+				policy = { type = professional_army value = 2 }
+				NOT = { policy = { type = professional_army value = 3 }}
+		}
+		name = "EVT_USA_316069_A"
+		ai_chance = 75
+		command = { trigger = { ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.6 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.75 when = 1 }
+		command = { type = set_domestic which = professional_army value = 3 }
+		command = { trigger = { ai = no } type = dissent value = 3 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB2 }
+		command = { type = trigger which = 329343 }
+		command = { type = local_clrflag which = incon1 }
+	}
+	action = {
+		trigger = {
+			OR = {
+					atwar = ENG
+					atwar = FRA
+					atwar = CAN
+					atwar = MEX
+					atwar = GER
+					atwar = U08
+			}
+		policy = { type = professional_army value = 2 }
+		NOT = { policy = { type = professional_army value = 3 }}
+		}
+		name = "EVT_USA_316069_A"
+		ai_chance = 35
+		command = { trigger = { ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.6 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.75 when = 1 }
+		command = { type = set_domestic which = professional_army value = 3 }
+		command = { trigger = { ai = no } type = dissent value = 3 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB2 }
+		command = { type = local_clrflag which = incon1 }
+	}
+	action = {
+		trigger = {
+			OR = {
+					atwar = ENG
+					atwar = FRA
+					atwar = CAN
+					atwar = MEX
+					atwar = GER
+					atwar = U08
+			}
+		policy = { type = professional_army value = 2 }
+		NOT = { policy = { type = professional_army value = 3 }}
+		}
+		name = "EVT_USA_316069_A"
+		ai_chance = 45
+		command = { trigger = { ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.6 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.75 when = 1 }
+		command = { type = set_domestic which = professional_army value = 3 }
+		command = { trigger = { ai = no } type = dissent value = 3 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB2 }
+		command = { type = trigger which = 329343 }
+		command = { type = local_clrflag which = incon1 }
+	}
+	action = {
+		name = "EVT_USA_316069_B"
+		ai_chance = 45
+		command = { trigger = { ai = no } type = dissent value = 2 }
+		command = { type = local_clrflag which = incon1 }
+	}
+	action = {
+		trigger = {
+		policy = { type = professional_army value = 2 }
+		NOT = { policy = { type = professional_army value = 3 }}
+		}
+		name = "EVT_USA_316069_A"
+		ai_chance = 15
+		command = { trigger = { ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.6 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.75 when = 1 }
+		command = { type = set_domestic which = professional_army value = 3 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB2 }
+		command = { type = trigger which = 329343 }
+		command = { type = local_clrflag which = incon1 }
+	}
+	action = {
+		trigger = {
+		policy = { type = professional_army value = 2 }
+		NOT = { policy = { type = professional_army value = 3 }}
+		}
+		name = "EVT_USA_316069_A"
+		ai_chance = 10
+		command = { trigger = { ai = no } type = resource which = supplies value = -100 }
+		command = { trigger = { NOT = { local_flag = MOB2 } } type = manpowerpool value = 0.6 when = 1 }
+		command = { trigger = { NOT = { local_flag = MOB3 } } type = manpowerpool value = 0.75 when = 1 }
+		command = { type = set_domestic which = professional_army value = 3 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		command = { type = local_setflag which = MOB3 }
+		command = { type = local_setflag which = MOB2 }
+		command = { type = local_clrflag which = incon1 }
+	}
+	action = {
+		name = "EVT_USA_316069_B"
+		ai_chance = 40
+		command = { type = dissent value = -1 }
+		command = { type = local_clrflag which = incon1 }
+	}
+	action = {
+		name = "EVT_USA_316069_B"
+		ai_chance = 50
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { type = local_clrflag which = incon1 }
+	}
+	action = {
+		name = "EVT_USA_316069_B"
+		ai_chance = 35
+		command = { type = dissent value = -2 }
+		command = { type = local_clrflag which = incon1 }
+	}
+	action = {
+		name = "EVT_USA_316069_B"
+		ai_chance = 40
+		command = { trigger = { ai = no } type = dissent value = 3 }
+		command = { type = local_clrflag which = incon1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316070] USA | 1914 | Extend the Draft (Ampliar el reclutamiento militar)
+# Triggered by event 316068 in events/USA/USA_Decisions.txt
+# Trigger event 329343 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316070
+	random = no
+	persistent = yes
+	one_action = yes
+	country = USA
+	name = "EVT_USA_316070_NAME"
+	desc = "EVT_SHARED_00273_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 3 }
+			NOT = { policy = { type = professional_army value = 4 }}
+			atwar = yes
+		}
+		name = "EVT_SHARED_00262_A"
+		ai_chance = 60
+		command = { trigger = { ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 1.2 when = 1 }
+		command = { type = set_domestic which = professional_army value = 4 }
+		command = { trigger = { ai = no } type = dissent value = 3 }
+		command = { type = local_setflag which = MOB4 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 3 }
+			NOT = { policy = { type = professional_army value = 4 }}
+			atwar = yes
+		}
+		name = "EVT_SHARED_00262_A"
+		ai_chance = 85
+		command = { trigger = { ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 1.2 when = 1 }
+		command = { type = set_domestic which = professional_army value = 4 }
+		command = { trigger = { ai = no } type = dissent value = 3 }
+		command = { type = local_setflag which = MOB4 }
+		command = { type = trigger which = 329343 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 3 }
+			NOT = { policy = { type = professional_army value = 4 }}
+			atwar = no
+		}
+		name = "EVT_SHARED_00262_A"
+		ai_chance = 35
+		command = { trigger = { ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB4 } } type = manpowerpool value = 1.2 when = 1 }
+		command = { type = set_domestic which = professional_army value = 4 }
+		command = { trigger = { ai = no } type = dissent value = 3 }
+		command = { type = local_setflag which = MOB4 }
+		command = { type = trigger which = 329343 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 3 }
+			NOT = { policy = { type = professional_army value = 4 }}
+			atwar = no
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 40
+		command = { trigger = { ai = no } type = dissent value = 2 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 3 }
+			NOT = { policy = { type = professional_army value = 4 }}
+			atwar = no
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 30
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 3 }
+			NOT = { policy = { type = professional_army value = 4 }}
+			atwar = no
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 40
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 3 }
+			NOT = { policy = { type = professional_army value = 4 }}
+			atwar = yes
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 15
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 4 }
+			NOT = { policy = { type = professional_army value = 5 }}
+			atwar = yes
+		}
+		name = "EVT_SHARED_00263_A"
+		ai_chance = 45
+		command = { trigger = { ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 1.35 when = 1 }
+		command = { type = set_domestic which = professional_army value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 4 }
+		command = { type = local_setflag which = MOB5 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 4 }
+			NOT = { policy = { type = professional_army value = 5 }}
+			atwar = yes
+		}
+		name = "EVT_SHARED_00263_A"
+		ai_chance = 75
+		command = { trigger = { ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 1.35 when = 1 }
+		command = { type = set_domestic which = professional_army value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 4 }
+		command = { type = local_setflag which = MOB5 }
+		command = { type = trigger which = 329343 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 4 }
+			NOT = { policy = { type = professional_army value = 5 }}
+			atwar = no
+		}
+		name = "EVT_SHARED_00263_A"
+		ai_chance = 45
+		command = { trigger = { ai = no } type = resource which = supplies value = -200 }
+		command = { trigger = { NOT = { local_flag = MOB5 } } type = manpowerpool value = 1.35 when = 1 }
+		command = { type = set_domestic which = professional_army value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 4 }
+		command = { type = local_setflag which = MOB5 }
+		command = { type = trigger which = 329343 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 4 }
+			NOT = { policy = { type = professional_army value = 5 }}
+			atwar = no
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 42
+		command = { trigger = { ai = no } type = dissent value = 2 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+		policy = { type = professional_army value = 4 }
+		NOT = { policy = { type = professional_army value = 5 }}
+			atwar = no
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 34
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 4 }
+			NOT = { policy = { type = professional_army value = 5 }}
+			atwar = no
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 44
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 4 }
+			NOT = { policy = { type = professional_army value = 5 }}
+			atwar = yes
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 19
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+			policy = { type = professional_army value = 5 }
+			NOT = { policy = { type = professional_army value = 6 }}
+			atwar = yes
+		}
+		name = "EVT_SHARED_00262_B"
+		ai_chance = 35
+		command = { trigger = { ai = no } type = resource which = supplies value = -250 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 1.5 when = 1 }
+		command = { type = set_domestic which = professional_army value = 6 }
+		command = { trigger = { ai = no } type = dissent value = 6 }
+		command = { type = local_setflag which = MOB6 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+		policy = { type = professional_army value = 5 }
+		NOT = { policy = { type = professional_army value = 6 }}
+			atwar = yes
+		}
+		name = "EVT_SHARED_00262_B"
+		ai_chance = 45
+		command = { trigger = { ai = no } type = resource which = supplies value = -250 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 1.5 when = 1 }
+		command = { type = set_domestic which = professional_army value = 6 }
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { type = local_setflag which = MOB6 }
+		command = { type = trigger which = 329343 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+		policy = { type = professional_army value = 5 }
+		NOT = { policy = { type = professional_army value = 6 }}
+			atwar = no
+		}
+		name = "EVT_SHARED_00262_B"
+		ai_chance = 12
+		command = { trigger = { ai = no } type = resource which = supplies value = -250 }
+		command = { trigger = { NOT = { local_flag = MOB6 } } type = manpowerpool value = 1.5 when = 1 }
+		command = { type = set_domestic which = professional_army value = 6 }
+		command = { trigger = { ai = no } type = dissent value = 7 }
+		command = { type = local_setflag which = MOB6 }
+		command = { type = trigger which = 329343 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+		policy = { type = professional_army value = 5 }
+		NOT = { policy = { type = professional_army value = 6 }}
+			atwar = no
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 52
+		command = { trigger = { ai = no } type = dissent value = 2 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+		policy = { type = professional_army value = 5 }
+		NOT = { policy = { type = professional_army value = 6 }}
+			atwar = no
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 44
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+		policy = { type = professional_army value = 5 }
+		NOT = { policy = { type = professional_army value = 6 }}
+			atwar = no
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 54
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { type = local_clrflag which = incon2 }
+	}
+	action = {
+		trigger = {
+		policy = { type = professional_army value = 5 }
+		NOT = { policy = { type = professional_army value = 6 }}
+			atwar = yes
+		}
+		name = "EVT_USA_316070_A"
+		ai_chance = 19
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { type = local_clrflag which = incon2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316346] USA | 1914 | American Isolationism (Aislacionismo estadounidense)
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Triggered by event 244019 in events/Minors/U09.txt
+# Triggered by event 243083 in events/Minors/U08_14-14.txt
+# Triggered by event 243091 in events/Minors/U08_14-14.txt
+# Triggered by event 223425 in events/SOV/SOV_14-33.txt
+# Triggered by event 223426 in events/SOV/SOV_14-33.txt
+# Trigger event 316347 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316346
+	country = USA
+	date = { day = 1 month = january year = 1914 }
+	offset = 30
+	deathdate = { day = 1 month = january year = 1936 }
+	trigger = {
+		atwar = no
+		or = {
+			and = {
+				or = {
+					event = 147311
+					event = 243101
+					event = 243107
+					event = 243116
+				}
+				event = 244019
+			}
+			and = {
+				event = 243083
+				or = {
+					event = 243091
+						event = 223425
+					event = 223426
+				}
+			}
+		}
+		or = {
+			participant = { country = USA value = 1 }
+			army = 20
+		}
+	}
+	name = "EVT_USA_316346_NAME"
+	Desc = "EVT_USA_316346_DESC"
+	Picture = "aar_usiso"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = local_setflag which = winner }
+		command = { type = demobilize which = land when = 0 where = 0 value = 10 }
+		command = { type = local_setflag which = disarm_army_10 }
+		command = { type = local_clrflag which = disarm_army_25 }
+		command = { type = local_clrflag which = disarm_army_50 }
+		command = { type = local_clrflag which = disarm_army_75 }
+		command = { type = demobilize which = naval when = 0 where = 0 value = 120 }
+		command = { type = local_clrflag which = disarm_naval_10 }
+		command = { type = local_clrflag which = disarm_naval_25 }
+		command = { type = local_clrflag which = disarm_naval_50 }
+		command = { type = local_clrflag which = disarm_naval_100 }
+		command = { type = local_setflag which = disarm_naval_150 }
+		command = { type = local_clrflag which = disarm_naval_200 }
+		command = { type = demobilize which = air when = 0 where = 0 value = 5 }
+		command = { type = local_clrflag which = disarm_air_0 }
+		command = { type = local_setflag which = disarm_air_1 }
+		command = { type = local_clrflag which = disarm_air_3 }
+		command = { type = local_clrflag which = disarm_air_5 }
+		command = { type = industrial_modifier which = supplies value = -10 }
+		command = { type = industrial_modifier which = total value = -5 }
+		command = { trigger = { not = { domestic = { type = free_market value = 6 } } } type = domestic which = free_market value = 1 }
+		command = { trigger = { domestic = { type = freedom value = 7 } } type = domestic which = freedom value = -1 }
+		command = { type = event which = 316347 where = USA when = 30 }
+		command = { trigger = { not = { flag = lon } } type = setflag which = lon }
+		command = { type = ai which = "AAR/unit-construction/aar-buildqueue-USA-interwar.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316347] USA | 1914 | The Roaring Twenties (Los felices años veinte)
+# Triggered by event 316346 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316347
+	random = no
+	country = USA
+	name = "EVT_USA_316347_NAME"
+	desc = "EVT_USA_316347_DESC"
+	picture = "USA/aar_roaring20s"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = supplies value = -10 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { trigger = { not = { domestic = { type = free_market value = 7 } } } type = domestic which = free_market value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316353] USA | 1914 | Wilson's Fourteen Points (Los Catorce Puntos de Wilson)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316353
+	country = USA
+	date = { day = 1 month = january year = 1914 }
+	offset = 90
+	deathdate = { day = 1 month = january year = 1936 }
+	trigger = {
+		flag = lon
+	}
+	name = "EVT_USA_316353_NAME"
+	Desc = "EVT_USA_316353_DESC"
+	picture = "GLOBAL/league_of_nations"
+	action = {
+		name = "EVT_USA_316353_A"
+		ai_chance = 99
+		command = { type = domestic which =	interventionism value = -9 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = "EVT_USA_316353_B"
+		ai_chance = 1
+		command = { type = domestic which =	interventionism value = -5 }
+		command = { type = domestic which =	defense_lobby value = 9 }
+		command = { type = local_setflag which = lon_member }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316355] USA | 1914 | Philippine Autonomy (Autonomía de Filipinas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316355
+	country = USA
+	date = { day = 1 month = 1 year = 1914 }
+	deathdate = { day = 1 month = 1 year = 1936 }
+	offset = 365
+	trigger = {
+		local_flag = depression
+		not = { exists = PHI }
+		owned = { province = 1565 data = USA }
+		owned = { province = 1566 data = USA }
+		owned = { province = 1567 data = USA }
+		owned = { province = 1568 data = USA }
+		owned = { province = 1569 data = USA }
+		owned = { province = 1570 data = USA }
+		owned = { province = 1571 data = USA }
+		owned = { province = 1572 data = USA }
+		owned = { province = 1573 data = USA }
+		owned = { province = 1574 data = USA }
+		owned = { province = 1575 data = USA }
+		owned = { province = 1576 data = USA }
+		owned = { province = 1577 data = USA }
+		owned = { province = 1578 data = USA }
+		owned = { province = 1579 data = USA }
+		owned = { province = 1580 data = USA }
+	}
+	name = "EVT_USA_316355_NAME"
+	Desc = "EVT_USA_316355_DESC"
+	Picture = "constitutional"
+	action = {
+		name = "ACTION_NAME_GRANT_INDEPENDENCE"
+		ai_chance = 100
+		command = { type = independence which = PHI value = 0 when = 0 }
+		command = { type = make_puppet which = PHI }
+	}
+	action = {
+		name = "ACTION_NAME_NEVER"
+		ai_chance = 0
+		command = { type = independence which = PHI value = 0 when = 1 }
+		command = { type = war which = PHI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316356] USA | 1914 | US Latin American Hegemony (Hegemonía en América Latina)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316356
+	country = USA
+	date = { day = 1 month = 1 year = 1914 }
+	deathdate = { day = 1 month = 1 year = 1934 }
+	offset = 365
+	trigger = {
+		or = {
+			local_flag = depression
+			flag = great_depression
+		}
+	}
+	name = "EVT_USA_316356_NAME"
+	Desc = "EVT_USA_316356_DESC"
+	Picture = "uprising"
+	action = {
+		name = "EVT_USA_316356_A"
+		ai_chance = 100
+		command = { type = end_mastery which = PAN }
+		command = { type = end_mastery which = NIC }
+		command = { type = end_mastery which = HON }
+		command = { type = end_mastery which = CUB }
+		command = { type = end_mastery which = HAI }
+		command = { type = end_mastery which = DOM }
+	}
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 0
+		command = { type = war which = PAN }
+		command = { type = war which = NIC }
+		command = { type = war which = HON }
+		command = { type = war which = CUB }
+		command = { type = war which = HAI }
+		command = { type = war which = DOM }
+		command = { type = war which = MEX }
+		command = { type = war which = U69 }
+		command = { type = war which = COL }
+		command = { type = war which = VEN }
+		command = { type = war which = SAL }
+		command = { type = war which = GUA }
+		command = { type = dissent value = 30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316412] USA | 1914 | Sinking of the Lusitania: Public Outrage (Hundimiento del Lusitania: Clamor popular)
+# Triggered by event 243126 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316412
+	country = USA
+	name = "EVT_USA_316412_NAME"
+	desc = "EVT_USA_316412_DESC"
+	style = 2
+	picture = "GLOBAL/lusitania"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = interventionism value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316413] USA | 1914 | Lusitania Munitions Smuggling Revealed (Armamento encubierto a bordo del Lusitania)
+# Triggered by event 243126 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316413
+	country = USA
+	name = "EVT_USA_316413_NAME"
+	desc = "EVT_USA_316413_DESC"
+	style = 2
+	picture = "GLOBAL/lusitania"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316414] USA | 1914 | German Unrestricted U-Boat Warfare (Guerra submarina irrestricta alemana)
+# Triggered by event 243125 in events/Minors/U08_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316414
+	country = USA
+	name = "EVT_USA_316414_NAME"
+	desc = "EVT_USA_316414_DESC"
+	style = 2
+	picture = "GLOBAL/lusitania"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316417] USA | 1914 | Congressional Reaction to War Address (Reacciones del Congreso al discurso de guerra)
+# Triggered by event 316416 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316417
+	country = USA
+	one_action = yes
+	persistent = yes
+	name = "EVT_SHARED_01009_NAME"
+	desc = "EVT_SHARED_01009_DESC"
+	style = 2
+	picture = "GLOBAL/congress"
+	action_a = {
+		ai_chance = 1
+		name = "EVT_SHARED_01009_A"
+		command = { type = set_domestic which = interventionism value = 8 }
+	}
+	action_b = {
+		name = "EVT_SHARED_01009_B"
+		ai_chance = 4
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = dissent value = 2 }
+	}
+	action_c = {
+		ai_chance = 45
+		name = "EVT_SHARED_01009_C"
+		command = { type = dissent value = 4 }
+	}
+	action_d = {
+		ai_chance = 50
+		name = "EVT_SHARED_01009_D"
+		command = { type = dissent value = 8 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316418] USA | 1914 | Congressional Reaction to War Address (Reacciones del Congreso al discurso de guerra)
+# Triggered by event 316416 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316418
+	country = USA
+	one_action = yes
+	persistent = yes
+	name = "EVT_SHARED_01009_NAME"
+	desc = "EVT_SHARED_01009_DESC"
+	style = 2
+	picture = "GLOBAL/congress"
+	action_a = {
+		ai_chance = 2
+		name = "EVT_SHARED_01009_A"
+		command = { type = set_domestic which = interventionism value = 8 }
+	}
+	action_b = {
+		name = "EVT_SHARED_01009_B"
+		ai_chance = 28
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = dissent value = 2 }
+	}
+	action_c = {
+		ai_chance = 50
+		name = "EVT_SHARED_01009_C"
+		command = { type = dissent value = 4 }
+	}
+	action_d = {
+		ai_chance = 20
+		name = "EVT_SHARED_01009_D"
+		command = { type = dissent value = 7 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316419] USA | 1914 | Congressional Reaction to War Address (Reacciones del Congreso al discurso de guerra)
+# Triggered by event 316416 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316419
+	country = USA
+	one_action = yes
+	persistent = yes
+	name = "EVT_SHARED_01009_NAME"
+	desc = "EVT_SHARED_01009_DESC"
+	style = 2
+	picture = "GLOBAL/congress"
+	action_a = {
+		ai_chance = 5
+		name = "EVT_SHARED_01009_A"
+		command = { type = set_domestic which = interventionism value = 8 }
+	}
+	action_b = {
+		name = "EVT_SHARED_01009_B"
+		ai_chance = 55
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = dissent value = 1 }
+	}
+	action_c = {
+		ai_chance = 35
+		name = "EVT_SHARED_01009_C"
+		command = { type = dissent value = 3 }
+	}
+	action_d = {
+		ai_chance = 5
+		name = "EVT_SHARED_01009_D"
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316420] USA | 1914 | Congressional Reaction to War Address (Reacciones del Congreso al discurso de guerra)
+# Triggered by event 316416 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316420
+	country = USA
+	one_action = yes
+	persistent = yes
+	name = "EVT_SHARED_01009_NAME"
+	desc = "EVT_SHARED_01009_DESC"
+	style = 2
+	picture = "GLOBAL/congress"
+	action_a = {
+		ai_chance = 30
+		name = "EVT_SHARED_01009_A"
+		command = { type = set_domestic which = interventionism value = 8 }
+	}
+	action_b = {
+		name = "EVT_SHARED_01009_B"
+		ai_chance = 55
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = dissent value = 1 }
+	}
+	action_c = {
+		ai_chance = 14
+		name = "EVT_SHARED_01009_C"
+		command = { type = dissent value = 2 }
+	}
+	action_d = {
+		ai_chance = 1
+		name = "EVT_SHARED_01009_D"
+		command = { type = dissent value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316424] USA | 1914 | Raid on Tucson Repulsed (Incursión en Tucson rechazada)
+# Triggered by event 277008 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316424
+	country = USA
+	persistent = yes
+	name = "EVT_USA_316424_NAME"
+	desc = "EVT_USA_316424_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+		command = { type = supplies value = -80 }
+		command = { type = rarematerialspool value = -10 }
+		command = { type = oilpool value = -10 }
+		command = { type = metalpool value = -20 }
+		command = { type = energypool value = -35 }
+		command = { trigger = {  NOT = { local_flag = USA_Mexican_Raids } } type = local_setflag which = USA_Mexican_Raids }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316425] USA | 1914 | Tucson Plundered by Rebels! (¡Tucson saqueada por los rebeldes!)
+# Triggered by event 277008 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316425
+	country = USA
+	persistent = yes
+	name = "EVT_USA_316425_NAME"
+	desc = "EVT_USA_316425_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = supplies value = -160 }
+		command = { type = rarematerialspool value = -20 }
+		command = { type = oilpool value = -20 }
+		command = { type = metalpool value = -40 }
+		command = { type = energypool value = -70 }
+		command = { trigger = {  NOT = { local_flag = USA_Mexican_Raids } } type = local_setflag which = USA_Mexican_Raids }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316426] USA | 1914 | Raid on El Paso Repulsed (Incursión en El Paso rechazada)
+# Triggered by event 277009 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316426
+	country = USA
+	persistent = yes
+	name = "EVT_USA_316426_NAME"
+	desc = "EVT_USA_316426_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+		command = { type = supplies value = -80 }
+		command = { type = rarematerialspool value = -10 }
+		command = { type = oilpool value = -10 }
+		command = { type = metalpool value = -20 }
+		command = { type = energypool value = -35 }
+		command = { trigger = {  NOT = { local_flag = USA_Mexican_Raids } } type = local_setflag which = USA_Mexican_Raids }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316427] USA | 1914 | El Paso Plundered by Rebels! (¡El Paso saqueado por los rebeldes!)
+# Triggered by event 277009 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316427
+	country = USA
+	persistent = yes
+	name = "EVT_USA_316427_NAME"
+	desc = "EVT_USA_316427_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = supplies value = -160 }
+		command = { type = rarematerialspool value = -20 }
+		command = { type = oilpool value = -20 }
+		command = { type = metalpool value = -40 }
+		command = { type = energypool value = -70 }
+		command = { trigger = {  NOT = { local_flag = USA_Mexican_Raids } } type = local_setflag which = USA_Mexican_Raids }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316428] USA | 1914 | Raid on San Antonio Repulsed (Incursión en San Antonio rechazada)
+# Triggered by event 277010 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316428
+	country = USA
+	persistent = yes
+	name = "EVT_USA_316428_NAME"
+	desc = "EVT_USA_316428_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+		command = { type = supplies value = -80 }
+		command = { type = rarematerialspool value = -10 }
+		command = { type = oilpool value = -10 }
+		command = { type = metalpool value = -20 }
+		command = { type = energypool value = -35 }
+		command = { trigger = {  NOT = { local_flag = USA_Mexican_Raids } } type = local_setflag which = USA_Mexican_Raids }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316429] USA | 1914 | San Antonio Plundered by Rebels! (¡San Antonio saqueada por los rebeldes!)
+# Triggered by event 277010 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316429
+	country = USA
+	persistent = yes
+	name = "EVT_USA_316429_NAME"
+	desc = "EVT_USA_316429_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = supplies value = -160 }
+		command = { type = rarematerialspool value = -20 }
+		command = { type = oilpool value = -20 }
+		command = { type = metalpool value = -40 }
+		command = { type = energypool value = -70 }
+		command = { trigger = {  NOT = { local_flag = USA_Mexican_Raids } } type = local_setflag which = USA_Mexican_Raids }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316430] USA | 1914 | Raid on Corpus Christi Repulsed (Incursión en Corpus Christi rechazada)
+# Triggered by event 277011 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316430
+	country = USA
+	persistent = yes
+	name = "EVT_USA_316430_NAME"
+	desc = "EVT_USA_316430_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+		command = { type = supplies value = -80 }
+		command = { type = rarematerialspool value = -10 }
+		command = { type = oilpool value = -10 }
+		command = { type = metalpool value = -20 }
+		command = { type = energypool value = -35 }
+		command = { trigger = {  NOT = { local_flag = USA_Mexican_Raids } } type = local_setflag which = USA_Mexican_Raids }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316431] USA | 1914 | Corpus Christi Plundered by Rebels! (¡Corpus Christi saqueado por los rebeldes!)
+# Triggered by event 277011 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316431
+	country = USA
+	persistent = yes
+	name = "EVT_USA_316431_NAME"
+	desc = "EVT_USA_316431_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = supplies value = -160 }
+		command = { type = rarematerialspool value = -20 }
+		command = { type = oilpool value = -20 }
+		command = { type = metalpool value = -40 }
+		command = { type = energypool value = -70 }
+		command = { trigger = {  NOT = { local_flag = USA_Mexican_Raids } } type = local_setflag which = USA_Mexican_Raids }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316432] USA | 1914 | Raid on San Diego Repulsed (Incursión en San Diego rechazada)
+# Triggered by event 277012 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316432
+	country = USA
+	persistent = yes
+	name = "EVT_USA_316432_NAME"
+	desc = "EVT_USA_316432_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+		command = { type = supplies value = -80 }
+		command = { type = rarematerialspool value = -10 }
+		command = { type = oilpool value = -10 }
+		command = { type = metalpool value = -20 }
+		command = { type = energypool value = -35 }
+		command = { trigger = {  NOT = { local_flag = USA_Mexican_Raids } } type = local_setflag which = USA_Mexican_Raids }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316433] USA | 1914 | San Diego Plundered by Rebels! (¡San Diego saqueado por los rebeldes!)
+# Triggered by event 277012 in events/Minors/U58_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 316433
+   country = USA
+   persistent = yes
+	name = "EVT_USA_316433_NAME"
+	desc = "EVT_USA_316433_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = supplies value = -160 }
+		command = { type = rarematerialspool value = -20 }
+		command = { type = oilpool value = -20 }
+		command = { type = metalpool value = -40 }
+		command = { type = energypool value = -70 }
+		command = { trigger = {  NOT = { local_flag = USA_Mexican_Raids } } type = local_setflag which = USA_Mexican_Raids }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316436] USA | 1914 | Mexico Rejects Transit Request (México rechaza la solicitud de tránsito)
+# Triggered by event 183009 in events/Minors/MEX.txt
+# Trigger event 316437 in events/USA/USA_Decisions.txt
+# Trigger event 316441 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316436
+	country = USA
+	name = "EVT_SHARED_01011_NAME"
+	desc = "EVT_SHARED_01011_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = relation which = MEX value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316439] USA | 1914 | Mexico Rejects Transit Request (México rechaza la solicitud de tránsito)
+# Triggered by event 277002 in events/Minors/U57.txt
+# Trigger event 316441 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316439
+	country = USA
+	name = "EVT_SHARED_01011_NAME"
+	desc = "EVT_SHARED_01011_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = relation which = MEX value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316444] USA | 1914 | Germany Ratifies White Peace (Alemania acepta la paz blanca)
+# Triggered by event 243144 in events/Minors/U08_14-18.txt
+# Trigger event 243094 in events/Minors/U08_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316444
+	country = USA
+	name = "EVT_SHARED_00054_NAME"
+	desc = "EVT_SHARED_00054_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = peace which = U08 value = 0 }
+		command = { type = peace which = U09 value = 0 }
+		command = { type = setflag which = German_EndWWI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316480] USA | 1914 | Armed Forces Officer Reorganization (Reorganización de oficiales de las fuerzas armadas)
+# Trigger event 316481 in events/USA/USA_14-16.txt
+# Trigger event 316482 in events/USA/USA_14-16.txt
+# Trigger event 316483 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316480
+	random = no
+	country = USA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	trigger = {
+		local_flag = USMC1
+	}
+	date = { day = 1 month = January year = 1914 }
+	deathdate = { day = 1 month = January year = 1933 }
+	offset = 30
+	name = "EVT_SHARED_01087_NAME"
+	desc = "EVT_USA_316480_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 240107 }
+		command = { type = trigger which = 316481 }
+		command = { type = trigger which = 316482 }
+		command = { type = trigger which = 316483 }
+		command = { type = local_clrflag which = USMC1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316481] USA | 1914 | Leading The Army? (¿Liderando el ejército?)
+# Triggered by event 316480 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316481
+	random = no
+	country = USA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01088_NAME"
+	desc = "EVT_USA_316481_DESC"
+	action_a = {
+		ai_chance = 30
+		name = "EVT_USA_316481_A"
+		command = { type = chiefofarmy which = 240113 }
+	}
+	action_b = {
+		ai_chance = 70
+		name = "EVT_USA_316481_B"
+		command = { type = chiefofarmy which = 240114 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316482] USA | 1914 | Leading the Navy? (¿Liderando la Armada?)
+# Triggered by event 316480 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316482
+	random = no
+	country = USA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01089_NAME"
+	desc = "EVT_USA_316482_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofnavy which = 240128 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316483] USA | 1914 | Leading the Airforce? (¿Liderando la Fuerza Aérea?)
+# Triggered by event 316480 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316483
+	random = no
+	country = USA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01090_NAME"
+	desc = "EVT_USA_316483_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofair which = 240134 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316484] USA | 1914 | Armed Forces Officer Reorganization (Reorganización de oficiales de las fuerzas armadas)
+# Trigger event 316485 in events/USA/USA_14-16.txt
+# Trigger event 316486 in events/USA/USA_14-16.txt
+# Trigger event 316487 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316484
+	random = no
+	country = USA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	trigger = {
+		local_flag = HUEY
+	}
+	date = { day = 1 month = January year = 1914 }
+	deathdate = { day = 1 month = January year = 1933 }
+	offset = 30
+	name = "EVT_SHARED_01087_NAME"
+	desc = "EVT_USA_316484_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 240410 }
+		command = { type = trigger which = 316485 }
+		command = { type = trigger which = 316486 }
+		command = { type = trigger which = 316487 }
+		command = { type = local_clrflag which = HUEY }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316485] USA | 1914 | Leading The Army? (¿Liderando el ejército?)
+# Triggered by event 316484 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316485
+	random = no
+	country = USA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01088_NAME"
+	desc = "EVT_USA_316485_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofarmy which = 240411 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316486] USA | 1914 | Leading the Navy? (¿Liderando la Armada?)
+# Triggered by event 316484 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316486
+	random = no
+	country = USA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01089_NAME"
+	desc = "EVT_USA_316486_DESC"
+	action_a = {
+		ai_chance = 70
+		name = "EVT_USA_316486_A"
+		command = { type = chiefofnavy which = 240412 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_USA_316486_B"
+		command = { type = chiefofnavy which = 240255 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316487] USA | 1914 | Leading the Airforce? (¿Liderando la Fuerza Aérea?)
+# Triggered by event 316484 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316487
+	random = no
+	country = USA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	name = "EVT_SHARED_01090_NAME"
+	desc = "EVT_USA_316487_DESC"
+	action_a = {
+		ai_chance = 70
+		name = "EVT_USA_316487_A"
+		command = { type = chiefofair which = 240131 }
+	}
+	action_a = {
+		ai_chance = 30
+		name = "EVT_USA_316487_B"
+		command = { type = chiefofair which = 240234 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316448] USA | 1914 | Let's Mobilize to Help the Triple Alliance! (¡Movilizados para ayudar a la Triple Alianza!)
+# Triggered by event 243139 in events/Minors/U08_14-18.txt
+# Triggered by event 243141 in events/Minors/U08_14-18.txt
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Trigger event 329342 in events/GLOBAL/ALL_14-26.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316448
+	persistent = no
+	random = no
+	country = USA
+	trigger = { atwar = yes
+		war = { country = USA country = U08 }
+		OR ={
+			war = { country = FRA country = U08 }
+			war = { country = ENG country = U08 }
+		}
+		NOT = {
+			war = { country = ENG country = USA }
+			war = { country = FRA country = USA }
+		}
+		not = {
+			event = 147311
+			event = 243101
+			event = 243107
+			event = 243116
+		}
+	}
+	name = "EVT_USA_316448_NAME"
+	desc = "EVT_USA_316448_DESC"
+	style = 1
+	picture = "USA/usa_vs_germanempire"
+	date = { day = 0 month = july year = 1914 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	action = { ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329342 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316408] USA | 1914 | Bryan–Chamorro Treaty (Tratado 'Bryan-Chamorro')
+# ----------------------------------------------------------------------------
+event = {
+	id = 316408
+	country = USA
+	random = no
+	trigger = {
+		exists = USA
+	}
+	name = "EVT_SHARED_01077_NAME"
+	desc = "EVT_SHARED_01077_DESC"
+	style = 2
+	picture = "GLOBAL/nicaragua"
+	date = { day = 4 month = august year = 1914 }
+	action_a = {
+		name = "ACTION_NAME_AGREE"
+		command = { type = relation which = NIC value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316357] USA | 1914 | Federal Trade Commission (Comisión Federal de Comercio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316357
+	country = USA
+	random = no
+	style = 2
+	trigger = { exists = USA }
+	name = "EVT_USA_316357_NAME"
+	desc = "EVT_USA_316357_DESC"
+	date = { day = 25 month = september year = 1914 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = free_money value = 0.2 }
+		command = { type = peacetime_ic_mod value = 0.5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316422] USA | 1914 | The Tampico Incident Resolved (Resolución del Incidente de Tampico)
+# Trigger event 316423 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316422
+	country = USA
+	trigger = {
+		atwar = no
+		control = { province = 1968 data = USA }
+		random = 3
+	}
+	name = "EVT_USA_316422_NAME"
+	desc = "EVT_USA_316422_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 10 month = october year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316358] USA | 1914 | Clayton Antitrust Act (Ley Clayton Antimonopolio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316358
+	country = USA
+	random = no
+	style = 2
+	trigger = { exists = USA }
+	name = EVT_USA_316358_NAME
+	desc = "EVT_USA_316358_DESC"
+	date = { day = 14 month = october year = 1914 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = free_money value = 0.1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316407] USA | 1915 | Founding of the United States Coast Guard (Fundación de la Guardia Costera de los Estados Unidos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316407
+	country = USA
+	random = no
+	trigger = {
+		exists = USA
+	}
+	name = "EVT_USA_316407_NAME"
+	desc = "EVT_USA_316407_DESC"
+	style = 2
+	picture = "USA/usgc"
+	date = { day = 27 month = january year = 1915 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316359] USA | 1915 | The Birth of a Nation (El nacimiento de una nación)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316359
+	country = USA
+	style = 1
+	trigger = { exists = USA }
+	name = "EVT_USA_316359_NAME"
+	desc = "EVT_USA_316359_DESC"
+	picture = "USA/birthofanation"
+	date = { day = 7 month = february year = 1915 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -0.5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316404] USA | 1915 | Founding of the Seccond Klu Klux Klan (Fundación del Segundo Ku Klux Klan)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316404
+	country = USA
+	random = no
+	trigger = {
+		exists = USA
+	}
+	name = "EVT_USA_316404_NAME"
+	desc = "EVT_USA_316404_DESC"
+	style = 2
+	picture = "USA/ku_klux_klan_parade"
+	date = { day = 24 month = november year = 1915 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316146] USA | 1916 | Economic Sanctions against Japan (Sanciones económicas contra Japón)
+# Triggered by event 167068 in events/JAP/JAP_00-33.txt
+# Trigger event 167069 in events/JAP/JAP_Decisions.txt
+# Trigger event 324251 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316146
+	country = USA
+	random = no
+	name = EVT_USA_316146_NAME
+	desc = EVT_USA_316146_DESC
+	picture = "GLOBAL/congress"
+	style = 2
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 90
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = JAP value = -15 }
+		command = { type = embargo which = USA where = JAP value = 3 }
+	}
+	action = {
+		name = ACTION_NAME_NO_NEED
+		ai_chance = 10
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = JAP value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316147] USA | 1916 | Economic Sanctions against Central Powers (Sanciones económicas contra Potencias Centrales)
+# Triggered by event 324249 in events/GLOBAL/MULTI_14-32.txt
+# Trigger event 324250 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 324252 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316147
+	country = USA
+	random = no
+	name = EVT_USA_316147_NAME
+	desc = EVT_USA_316147_DESC
+	picture = "GLOBAL/congress"
+	style = 2
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 90
+		command = { type = domestic which = interventionism value = 1 }
+		command = { trigger = { participant = { country = U08 value = 2 } } type = relation which = U08 value = -15 }
+		command = { trigger = { participant = { country = U08 value = 2 } } type = embargo which = USA where = U08 value = 3 }
+		command = { trigger = { participant = { country = U09 value = 2 } } type = relation which = U09 value = -15 }
+		command = { trigger = { participant = { country = U09 value = 2 } } type = embargo which = USA where = U09 value = 3 }
+		command = { trigger = { participant = { country = ITA value = 2 } } type = relation which = ITA value = -15 }
+		command = { trigger = { participant = { country = ITA value = 2 } } type = embargo which = USA where = ITA value = 3 }
+		command = { trigger = { participant = { country = BUL value = 2 } } type = relation which = BUL value = -15 }
+		command = { trigger = { participant = { country = BUL value = 2 } } type = embargo which = USA where = BUL value = 3 }
+		command = { trigger = { participant = { country = OTT value = 2 } } type = relation which = OTT value = -15 }
+		command = { trigger = { participant = { country = OTT value = 2 } } type = embargo which = USA where = OTT value = 3 }
+	}
+	action = {
+		name = ACTION_NAME_NO_NEED
+		ai_chance = 10
+		command = { type = domestic which = interventionism value = -1 }
+		command = { trigger = { participant = { country = U08 value = 2 } } type = relation which = U08 value = 15 }
+		command = { trigger = { participant = { country = U09 value = 2 } } type = relation which = U09 value = 15 }
+		command = { trigger = { participant = { country = ITA value = 2 } } type = relation which = ITA value = 15 }
+		command = { trigger = { participant = { country = BUL value = 2 } } type = relation which = BUL value = 15 }
+		command = { trigger = { participant = { country = OTT value = 2 } } type = relation which = OTT value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316411] USA | 1916 | Dada (Dadaísmo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316411
+	country = USA
+	random = no
+	trigger = {
+		exists = USA
+	}
+	name = "EVT_SHARED_01078_NAME"
+	desc = "EVT_SHARED_01078_DESC"
+	style = 2
+	picture = "GLOBAL/dada"
+	date = { day = 5 month = march year = 1916 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316361] USA | 1916 | Louis Brandeis appointed to Supreme Court (Louis Brandeis nombrado a la Corte Suprema)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316361
+	country = USA
+	style = 1
+	trigger = { exists = USA }
+	name = "EVT_USA_316361_NAME"
+	desc = "EVT_USA_316361_DESC"
+	picture = "USA/supreme_court"
+	date = { day = 0 month = june year = 1916 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -0.1 }
+	}
+}

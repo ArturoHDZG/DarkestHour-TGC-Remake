@@ -1,0 +1,41 @@
+# ============================================================================
+# File: events/Minors/U57_Decisions.txt (1 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [277001] U57 | 1914 | United States Declares War on Germany (Estados Unidos declara la guerra a Alemania)
+# Triggered by event 277000 in events/Minors/U57.txt
+# Triggered by event 316440 in events/USA/USA_Decisions.txt
+# Triggered by event 316415 in events/USA/USA_16-28.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 277001
+	country = U57
+	decision = {
+		event = 277000
+	}
+	decision_trigger = {
+		war = { country = USA country = U08 }
+	}
+	trigger = {
+		event = 277000
+		war = { country = USA country = U08 }
+		OR = {
+			event = 316440
+			NOT = { event = 316415 }
+		}
+		random = 4
+	}
+	name = "EVT_SHARED_00076_NAME"
+	desc = "EVT_SHARED_00076_DESC"
+	style = 2
+	picture = "GLOBAL/zimmermann_telegram"
+	date = { day = 4 month = august year = 1914 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = alliance which = U08 when = 1 }
+	}
+}

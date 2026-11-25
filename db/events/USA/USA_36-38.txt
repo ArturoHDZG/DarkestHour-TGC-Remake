@@ -1,0 +1,1777 @@
+# ============================================================================
+# File: events/USA/USA_36-38.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [316138] USA | 1936 | War of Revenge (Guerra de revancha)
+# Triggered by event 150352 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316138
+	random = no
+	country = USA
+	name = EVT_USA_316138_NAME
+	desc = EVT_USA_316138_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		event = 150352
+		NOT = {
+			ispuppet = USA
+			alliance = { country = USA country = GER }
+			war = { country = USA country = GER }
+			non_aggression = { country = USA country = GER }
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_WAR
+		command = { trigger = { ai = no } type = war which = GER }
+		command = { trigger = { ai = yes } type = ai_prepare_war which = GER }
+		command = { type = domestic which = interventionism value = 2 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_NO_NEED
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316140] USA | 1936 | Dutch Harbor Naval Base Completed (Base naval de Dutch Harbor completada)
+# Triggered by event 316139 in events/USA/USA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316140
+	random = no
+	country = USA
+	name = "EVT_USA_316140_NAME"
+	desc = "EVT_USA_316140_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		trigger = { local_flag = DutchHarborS }
+		name = ACTION_NAME_OK
+		command = { type = construct which = coastal_fort where = 2151 value = 1 }
+		command = { type = construct which = flak where = 2151 value = 2 }
+		command = { type = construct which = air_base where = 2151 value = 2 }
+		command = { type = construct which = naval_base where = 2151 value = 3 }
+		command = { trigger = { technology = 5410} type = construct which = radar_station where = 2151 value = 1 }
+		command = { type = free_ic value = 3 }
+	}
+	action = {
+		trigger = { local_flag = DutchHarborL }
+		name = ACTION_NAME_OK
+		command = { type = construct which = coastal_fort where = 2151 value = 2 }
+		command = { type = construct which = flak where = 2151 value = 4 }
+		command = { type = construct which = air_base where = 2151 value = 4 }
+		command = { type = construct which = naval_base where = 2151 value = 5 }
+		command = { trigger = { technology = 5410} type = construct which = radar_station where = 2151 value = 1 }
+		command = { type = free_ic value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316141] USA | 1936 | A Nation at Peace (Una nación en paz)
+# Triggered by event 316106 in events/USA/USA_33-36.txt
+# Triggered by event 316130 in events/USA/USA_33-36.txt
+# Triggered by event 316133 in events/USA/USA_33-36.txt
+# Triggered by event 316135 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316141
+	random = no
+	country = USA
+	name = EVT_USA_316141_NAME
+	desc = EVT_USA_316141_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		event = 316106
+		atwar = no
+		OR = {
+			event = 316130
+			event = 316133
+			event = 316135
+			AND = {
+				NOT = { war = { country = GER country = ENG } }
+				NOT = { war = { country = GER country = AST } }
+				NOT = { war = { country = GER country = CAN } }
+				NOT = { war = { country = GER country = U02 } }
+				NOT = { war = { country = GER country = SOV } }
+				NOT = { war = { country = JAP country = ENG } }
+				NOT = { war = { country = JAP country = AST } }
+				NOT = { war = { country = JAP country = CAN } }
+				NOT = { war = { country = JAP country = U02 } }
+				NOT = { war = { country = JAP country = SOV } }
+				NOT = { war = { country = SOV country = ENG } }
+				NOT = { war = { country = SOV country = AST } }
+				NOT = { war = { country = SOV country = CAN } }
+				NOT = { war = { country = SOV country = U02 } }
+			}
+		}
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = -5 }
+		command = { type = build_time which = carrier when = on_upgrade  where = relative value = 35 }
+		command = { type = build_cost which = carrier when = on_upgrade  where = relative value = -35 }
+		command = { type = build_time which = light_carrier when = on_upgrade  where = relative value = 35 }
+		command = { type = build_cost which = light_carrier when = on_upgrade  where = relative value = -35 }
+		command = { type = build_time which = escort_carrier when = on_upgrade  value = 30 }
+		command = { type = build_cost which = escort_carrier when = on_upgrade  where = relative value = -20 }
+		command = { type = build_time which = battleship when = on_upgrade  where = relative value = 20 }
+		command = { type = build_cost which = battleship when = on_upgrade  where = relative value = -20 }
+		command = { type = build_time which = battlecruiser when = on_upgrade  where = relative value = 15 }
+		command = { type = build_cost which = battlecruiser when = on_upgrade  where = relative value = -15 }
+		command = { type = build_time which = heavy_cruiser when = on_upgrade  where = relative value = 30 }
+		command = { type = build_cost which = heavy_cruiser when = on_upgrade  where = relative value = -30 }
+		command = { type = build_time which = light_cruiser when = on_upgrade  where = relative value = 30 }
+		command = { type = build_cost which = light_cruiser when = on_upgrade  where = relative value = -30 }
+		command = { type = build_time which = destroyer when = on_upgrade  where = relative value = 30 }
+		command = { type = build_cost which = destroyer when = on_upgrade  where = relative value = -30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316265] USA | 1936 | Independence in Southeast Asia (Descolonización en el sudeste asiático)
+# Triggered by event 167189 in events/JAP/JAP_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316265
+	country = USA
+	name = EVT_USA_316265_NAME
+	desc = EVT_USA_316265_DESC
+	picture = "nwo/liberation_of_asia"
+	style = 1
+	trigger = {
+		flag = the_jewel_voice
+		event = { id = 167189 days = 3 }
+	}
+	date = { day = 1 month = january year = 1936 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { region = { region = "China" value = 15 } NOT = { exists = CHI } } type = independence which = CHI value = 1 }
+		command = { trigger = { control = { province = 1423 data = -1 } NOT = { exists = SIA } } type = independence which = SIA value = 1 }
+		command = { trigger = { region = { region = "Indonesia" value = 15 } NOT = { exists = U05 } } type = independence which = U05 value = 1 }
+		command = { trigger = { region = { region = "Australia" value = 20 } NOT = { exists = AST } } type = independence which = AST value = 1 }
+		command = { trigger = { region = { region = "India" value = 40 } NOT = { exists = U02 } } type = independence which = U02 value = 1 }
+		command = { trigger = { region = { region = "Philippines" value = 50 } NOT = { exists = PHI } } type = independence which = PHI value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316266] USA | 1936 | The Fate of the Emperor (El destino del emperador de Japón)
+# Triggered by event 316264 in events/USA/USA_39-43.txt
+# Triggered by event 167191 in events/JAP/JAP_36-36.txt
+# Trigger event 167192 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316266
+	country = USA
+	name = EVT_USA_316266_NAME
+	desc = EVT_USA_316266_DESC
+	picture = "nwo/macarthur_with_hirohito"
+	style = 1
+	trigger = {
+		flag = the_jewel_voice
+		event = 316264
+		event = { id = 167191 days = 3 }
+	}
+	date = { day = 1 month = january year = 1936 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_USA_316266_A
+		ai_chance = 80
+		command = { type = relation which = JAP value = 100 }
+	}
+	action = {
+		name = EVT_USA_316266_B
+		ai_chance = 20
+		command = { type = relation which = JAP value = -200 }
+		command = { type = trigger which = 167192 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316269] USA | 1936 | Collapse of the American Homeland (Colapso de la patria estadounidense)
+# Triggered by event 167195 in events/JAP/JAP_36-36.txt
+# Triggered by event 150520 in events/GER/GER_36-36.txt
+# Trigger event 329987 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316269
+	country = USA
+	persistent = yes
+	name = EVT_USA_316269_NAME
+	desc = EVT_USA_316269_DESC
+	picture = "nwo/pearl_harbor_american_flag"
+	style = 1
+	trigger = {
+		NOT = {
+			control = { province = 1809 data = -1 }
+			control = { province = 1795 data = -1 }
+			control = { province = 1832 data = -1 }
+			control = { province = 1887 data = -1 }
+		}
+		OR = {
+			war = { country = USA country = GER }
+			war = { country = USA country = JAP }
+		}
+		OR = {
+			AND = {
+				lost_national = { country = USA value = 75 }
+				lost_IC = { country = USA value = 80 }
+				war = { country = ENG country = GER }
+				war = { country = SOV country = GER }
+			}
+			AND = {
+				lost_national = { country = USA value = 65 }
+				lost_IC = { country = USA value = 70 }
+				war = { country = ENG country = GER }
+				NOT = {	war = { country = SOV country = GER } }
+			}
+			AND = {
+				lost_national = { country = USA value = 55 }
+				lost_IC = { country = USA value = 60 }
+				NOT = {	war = { country = ENG country = GER } }
+				war = { country = SOV country = GER }
+			}
+			AND = {
+				lost_national = { country = USA value = 45 }
+				lost_IC = { country = USA value = 50 }
+				NOT = {	war = { country = ENG country = GER } }
+				NOT = {	war = { country = SOV country = GER } }
+			}
+		}
+		NOT = { flag = the_lost_hope }
+		NOT = {
+			event = 167195
+			event = 150520
+		}
+	}
+    date = { day = 0 month = january year = 1936 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		ai_chance = 50
+		name = EVT_USA_316269_A
+		command = { type = dissent value = -5 }
+		command = { type = setflag which = the_lost_hope }
+		command = { type = trigger which = 329987 }
+	}
+	action = {
+		ai_chance = 50
+		trigger = { NOT = { dissent = 30 } }
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316270] USA | 1936 | The Defeated Superpower (La superpotencia derrotada)
+# Triggered by event 329987 in events/USA/USA_36-38.txt
+# Trigger event 150521 in events/GER/GER_36-36.txt
+# Trigger event 150522 in events/GER/GER_36-36.txt
+# Trigger event 167196 in events/JAP/JAP_36-36.txt
+# Trigger event 167197 in events/JAP/JAP_36-36.txt
+# Trigger event 316271 in events/USA/USA_36-38.txt
+# Trigger event 316272 in events/USA/USA_36-38.txt
+# Trigger event 316273 in events/USA/USA_36-38.txt
+# Trigger event 316274 in events/USA/USA_36-38.txt
+# Trigger event 316275 in events/USA/USA_36-38.txt
+# Trigger event 316279 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316270
+	country = USA
+	save_date = yes
+	name = EVT_USA_316270_NAME
+	desc = EVT_USA_316270_DESC
+	picture = "nwo/capitol_in_fog"
+	style = 1
+	trigger = {
+		flag = the_lost_hope
+		event = { id = 329987 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 1832 }
+		command = { type = peace which = GER value = 1 }
+		command = { type = peace which = JAP value = 1 }
+		command = { type = setflag which = the_lost_hope }
+		command = { type = leave_alliance }
+		command = { type = strength which = all when = 0 where = 1 value = 0 }
+		command = { type = add_division value = motorized when = 3 }
+		command = { type = add_division value = motorized when = 3 }
+		command = { type = add_division value = motorized when = 3 }
+		command = { type = add_division value = motorized when = 3 }
+		command = { type = add_division value = motorized when = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316271] USA | 1936 | Restoration of Alta California to Mexico (Restitución de la Alta California a México)
+# Triggered by event 316270 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316271
+	country = USA
+	name = EVT_USA_316271_NAME
+	desc = EVT_USA_316271_DESC
+	picture = "nwo/alta_california"
+	style = 1
+	trigger = {
+		flag = the_lost_hope
+		event = { id = 316270 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = MEX value = "Arizona" when = 1 }
+		command = { type = secedearea which = MEX value = "New Mexico" when = 1 }
+		command = { type = secedeprovince which = MEX value = 1886 when = 1 }
+		command = { type = secedeprovince which = MEX value = 1922 when = 1 }
+		command = { type = secedeprovince which = MEX value = 1923 when = 1 }
+		command = { type = secedeprovince which = MEX value = 1925 when = 1 }
+		command = { type = secedeprovince which = MEX value = 1926 when = 1 }
+		command = { type = secedeprovince which = MEX value = 1927 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316272] USA | 1936 | Japanese Occupation of the Pacific Coast (Ocupación japonesa de la costa del Pacífico)
+# Triggered by event 316270 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316272
+	country = USA
+	name = EVT_USA_316272_NAME
+	desc = EVT_USA_316272_DESC
+	picture = "nwo/japanese_victory"
+	style = 1
+	trigger = {
+		flag = the_lost_hope
+		event = { id = 316270 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = JAP value = "Washington" when = 1 }
+		command = { type = secedearea which = JAP value = "Oregon" when = 1 }
+		command = { type = secedearea which = JAP value = "Idaho" when = 1 }
+		command = { type = secedearea which = JAP value = "Nevada" when = 1 }
+		command = { type = secedearea which = JAP value = "California" when = 1 }
+		command = { type = secederegion which = JAP value = "Alaska" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316273] USA | 1936 | Japanese Coastal Enclaves Established (Enclaves costeros japoneses en Norteamérica)
+# Triggered by event 316270 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316273
+	country = USA
+	name = EVT_USA_316273_NAME
+	desc = EVT_USA_316273_DESC
+	picture = "nwo/japanese_victory"
+	style = 1
+	trigger = {
+		flag = the_lost_hope
+		event = { id = 316270 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedeprovince which = JAP value = 1887 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1891 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1883 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1888 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1889 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1884 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1885 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1890 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1879 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1878 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1877 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316274] USA | 1936 | German Occupation of the Atlantic Seaboard (Ocupación alemana del litoral atlántico)
+# Triggered by event 316270 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316274
+	country = USA
+	name = EVT_USA_316274_NAME
+	desc = EVT_USA_316274_DESC
+	picture = "nwo/nazi_victory_parade"
+	style = 1
+	trigger = {
+		flag = the_lost_hope
+		event = { id = 316270 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = GER value = "Maine" when = 1 }
+		command = { type = secedearea which = GER value = "New Hampshire" when = 1 }
+		command = { type = secedearea which = GER value = "Massachussets" when = 1 }
+		command = { type = secedearea which = GER value = "Vermont" when = 1 }
+		command = { type = secedearea which = GER value = "Connecticut_Rhode Island" when = 1 }
+		command = { type = secedearea which = GER value = "New Jersey" when = 1 }
+		command = { type = secedearea which = GER value = "New York" when = 1 }
+		command = { type = secedearea which = GER value = "Pennsylvania" when = 1 }
+		command = { type = secedearea which = GER value = "Maryland_Delaware" when = 1 }
+		command = { type = secedearea which = GER value = "West Virginia" when = 1 }
+		command = { type = secedearea which = GER value = "Virginia" when = 1 }
+		command = { type = secedearea which = GER value = "North Carolina" when = 1 }
+		command = { type = secedearea which = GER value = "South Carolina" when = 1 }
+		command = { type = secedearea which = GER value = "Georgia" when = 1 }
+		command = { type = secedearea which = GER value = "Florida" when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316275] USA | 1936 | German Coastal Enclaves Established (Enclaves costeros alemanes en Norteamérica)
+# Triggered by event 316270 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316275
+	country = USA
+	name = EVT_USA_316275_NAME
+	desc = EVT_USA_316275_DESC
+	picture = "nwo/nazi_victory_parade"
+	style = 1
+	trigger = {
+		flag = the_lost_hope
+		event = { id = 316270 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = GER value = "Massachussets" when = 1 }
+		command = { type = secedearea which = GER value = "Connecticut_Rhode Island" when = 1 }
+		command = { type = secedearea which = GER value = "New Jersey" when = 1 }
+		command = { type = secedearea which = GER value = "Maryland_Delaware" when = 1 }
+		command = { type = secedeprovince which = GER value = 1799 when = 1 }
+		command = { type = secedeprovince which = GER value = 1795 when = 1 }
+		command = { type = secedeprovince which = GER value = 1804 when = 1 }
+		command = { type = secedeprovince which = GER value = 1801 when = 1 }
+		command = { type = secedeprovince which = GER value = 1805 when = 1 }
+		command = { type = secedeprovince which = GER value = 1812 when = 1 }
+		command = { type = secedeprovince which = GER value = 1813 when = 1 }
+		command = { type = secedeprovince which = GER value = 1814 when = 1 }
+		command = { type = secedeprovince which = GER value = 1961 when = 1 }
+		command = { type = secedeprovince which = GER value = 1963 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316276] USA | 1936 | The America First Administration (Administración «America First»)
+# Triggered by event 150521 in events/GER/GER_36-36.txt
+# Triggered by event 167196 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316276
+	country = USA
+	name = EVT_USA_316276_NAME
+	desc = EVT_USA_316276_DESC
+	picture = "nwo/america_first"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = set_domestic which = free_market value = 7 }
+		command = { type = set_domestic which = freedom value = 4 }
+		command = { type = set_domestic which = interventionism value = 0 }
+		command = { type = headofstate which = 240149 }
+		command = { type = headofgovernment which = 240150 }
+		command = { type = foreignminister which = 240045 }
+		command = { type = armamentminister which = 240070 }
+		command = { type = ministerofsecurity which = 240148 }
+		command = { type = ministerofintelligence which = 240197 }
+		command = { type = chiefofstaff which = 240152 }
+		command = { type = chiefofarmy which = 240141 }
+		command = { type = chiefofnavy which = 240126 }
+		command = { type = chiefofair which = 240231 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316277] USA | 1936 | German American Bund (El German American Bund)
+# Triggered by event 150521 in events/GER/GER_36-36.txt
+# Triggered by event 316279 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316277
+	country = USA
+	name = EVT_USA_316277_NAME
+	desc = EVT_USA_316277_DESC
+	picture = "nwo/german_american_bund"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = set_domestic which = free_market value = 7 }
+		command = { type = set_domestic which = freedom value = 3 }
+		command = { type = set_domestic which = interventionism value = 0 }
+		command = { type = headofstate which = 240018 }
+		command = { type = headofgovernment which = 240145 }
+		command = { type = foreignminister which = 240044 }
+		command = { type = armamentminister which = 240068 }
+		command = { type = ministerofsecurity which = 240377 }
+		command = { type = ministerofintelligence which = 240101 }
+		command = { type = chiefofstaff which = 240106 }
+		command = { type = chiefofarmy which = 240112 }
+		command = { type = chiefofnavy which = 240127 }
+		command = { type = chiefofair which = 240132 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316278] USA | 1936 | Dixiecrat Political Platform (Plataforma política de los Dixiecrats)
+# Triggered by event 150521 in events/GER/GER_36-36.txt
+# Triggered by event 167196 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316278
+	country = USA
+	name = EVT_USA_316278_NAME
+	desc = EVT_USA_316278_DESC
+	picture = "nwo/dixiecrats"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = set_domestic which = free_market value = 7 }
+		command = { type = set_domestic which = freedom value = 5 }
+		command = { type = set_domestic which = interventionism value = 0 }
+		command = { type = headofstate which = 240196 }
+		command = { type = headofgovernment which = 240029 }
+		command = { type = foreignminister which = 240206 }
+		command = { type = armamentminister which = 240070 }
+		command = { type = ministerofsecurity which = 240164 }
+		command = { type = ministerofintelligence which = 240197 }
+		command = { type = chiefofstaff which = 240190 }
+		command = { type = chiefofarmy which = 240141 }
+		command = { type = chiefofnavy which = 240126 }
+		command = { type = chiefofair which = 240129 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316279] USA | 1936 | Dissolution of the United States (Disolución de los Estados Unidos)
+# Triggered by event 316270 in events/USA/USA_36-38.txt
+# Trigger event 150523 in events/GER/GER_36-36.txt
+# Trigger event 167198 in events/JAP/JAP_36-36.txt
+# Trigger event 316277 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316279
+	country = USA
+	save_date = yes
+	name = EVT_USA_316279_NAME
+	desc = EVT_USA_316279_DESC
+	picture = "nwo/usa_divided"
+	style = 1
+	trigger = {
+		flag = the_lost_hope
+		flag = dissolution_of_usa
+		event = { id = 316270 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = TEX value = 0 }
+		command = { type = independence which = CSA value = 0 }
+		command = { type = independence which = CAL value = 0 }
+		command = { type = secedearea which = TEX value = "Texas" when = 1 }
+		command = { type = secedearea which = TEX value = "New Mexico" when = 1 }
+		command = { type = secedearea which = TEX value = "Oklahoma" when = 1 }
+		command = { type = secedearea which = TEX value = "Kansas" when = 1 }
+		command = { type = secedearea which = TEX value = "Colorado" when = 1 }
+		command = { type = secederegion which = CSA value = "Southeast US" when = 1 }
+		command = { type = secedearea which = CSA value = "Louisiana" when = 1 }
+		command = { type = secedearea which = CSA value = "Arkansas" when = 1 }
+		command = { type = secedearea which = CSA value = "Missouri" when = 1 }
+		command = { type = secedearea which = CSA value = "Kentucky" when = 1 }
+		command = { type = secedearea which = CSA value = "Virginia" when = 1 }
+		command = { type = secedearea which = CSA value = "West Virginia" when = 1 }
+		command = { type = secedearea which = CSA value = "Maryland_Delaware" when = 1 }
+		command = { type = secedearea which = CSA value = "Pennsylvania" when = 1 }
+		command = { type = secedearea which = CSA value = "New Jersey" when = 1 }
+		command = { type = secedearea which = CSA value = "Iowa" when = 1 }
+		command = { type = secedearea which = CSA value = "Nebraska" when = 1 }
+		command = { type = secedearea which = CSA value = "Wyoming" when = 1 }
+		command = { type = secederegion which = CAL value = "Southwest US" when = 1 }
+		command = { type = secederegion which = CAL value = "Northwest US" when = 1 }
+		command = { type = trigger which = 316277 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316280] USA | 1936 | Collapse of the United States (Colapso de los Estados Unidos)
+# Triggered by event 223367 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316280
+	country = USA
+	persistent = yes
+	name = EVT_USA_316280_NAME
+	desc = EVT_USA_316280_DESC
+	picture = "nwo/soviet_troops_mcdonalds"
+	style = 1
+	trigger = {
+		NOT = {
+			control = { province = 1809 data = -1 }
+			control = { province = 1795 data = -1 }
+			control = { province = 1832 data = -1 }
+			control = { province = 1887 data = -1 }
+		}
+		war = { country = USA country = SOV }
+		NOT = { atwar = GER }
+		lost_national = { country = USA value = 45 }
+		lost_IC = { country = USA value = 50 }
+		NOT = { flag = the_red_dusk }
+		NOT = {	event = 223367	}
+	}
+    date = { day = 0 month = january year = 1936 }
+    offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		ai_chance = 80
+		name = ACTION_NAME_ACCEPT
+		command = { type = dissent value = -5 }
+		command = { type = setflag which = the_red_dusk }
+	}
+	action = {
+		ai_chance = 20
+		trigger = { NOT = { dissent = 30 } }
+		name = ACTION_NAME_REFUSE_PEACE
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316281] USA | 1936 | Capitulation of the United States (Capitulación de los Estados Unidos)
+# Triggered by event 223367 in events/SOV/SOV_36-38.txt
+# Trigger event 223369 in events/SOV/SOV_36-38.txt
+# Trigger event 223370 in events/SOV/SOV_36-38.txt
+# Trigger event 223371 in events/SOV/SOV_36-38.txt
+# Trigger event 223239 in events/SOV/SOV_38-40.txt
+# Trigger event 316282 in events/USA/USA_36-38.txt
+# Trigger event 316283 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316281
+	country = USA
+	save_date = yes
+	name = EVT_USA_316281_NAME
+	desc = EVT_USA_316281_DESC
+	picture = "nwo/soviet_victory_over_usa"
+	style = 1
+	trigger = {
+		flag = the_red_dusk
+		event = { id = 223367 days = 7 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = capital which = 1832 }
+		command = { type = peace which = SOV value = 0 }
+		command = { type = leave_alliance }
+		command = { type = strength which = all when = 0 where = 1 value = 0 }
+		command = { type = add_division value = motorized when = 3 }
+		command = { type = add_division value = motorized when = 3 }
+		command = { type = add_division value = motorized when = 3 }
+		command = { type = add_division value = motorized when = 3 }
+		command = { type = add_division value = motorized when = 3 }
+		command = { type = secederegion which = JAP value = "Asian Pacific" when = 1 }
+		command = { type = secederegion which = JAP value = "American Pacific" when = 1 }
+		command = { type = secedearea which = JAP value = "Central Solomons" when = 1 }
+		command = { type = secedearea which = JAP value = "North New Hebrides" when = 1 }
+		command = { type = secedearea which = JAP value = "South New Hebrides" when = 1 }
+		command = { type = secederegion which = SOV value = "Central America" when = 1 }
+		command = { type = secederegion which = ENG value = "New Guinea" when = 1 }
+		command = { type = secederegion which = ENG value = "Caribbean" when = 1 }
+		command = { type = secederegion which = SOV value = "Greenland" when = 1 }
+		command = { type = secederegion which = SOV value = "Iceland" when = 1 }
+		command = { type = secederegion which = SOV value = "Alaska" when = 1 }
+		command = { type = end_mastery which = PHI }
+		command = { type = end_mastery which = CUB }
+		command = { type = end_mastery which = JAP }
+		command = { type = end_guarantee which = USA where = PHI }
+	    command = { type = end_guarantee which = USA where = CUB }
+	    command = { type = end_guarantee which = USA where = JAP }
+		command = { type = event which = 223239 where = SOV when = 1 }
+		command = { type = event which = 223239 where = SOV when = 2 }
+		command = { type = event which = 223239 where = SOV when = 3 }
+		command = { type = event which = 223239 where = SOV when = 4 }
+		command = { type = event which = 223239 where = SOV when = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316282] USA | 1936 | Alta California Restored to Mexico (Restitución de la Alta California a México)
+# Triggered by event 316281 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316282
+	country = USA
+	name = EVT_USA_316282_NAME
+	desc = EVT_USA_316282_DESC
+	picture = "nwo/alta_california"
+	style = 1
+	trigger = {
+		flag = the_red_dusk
+		event = { id = 316281 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = MEX value = "Arizona" when = 1 }
+		command = { type = secedearea which = MEX value = "New Mexico" when = 1 }
+		command = { type = secedeprovince which = MEX value = 1886 when = 1 }
+		command = { type = secedeprovince which = MEX value = 1922 when = 1 }
+		command = { type = secedeprovince which = MEX value = 1923 when = 1 }
+		command = { type = secedeprovince which = MEX value = 1925 when = 1 }
+		command = { type = secedeprovince which = MEX value = 1926 when = 1 }
+		command = { type = secedeprovince which = MEX value = 1927 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316283] USA | 1936 | Soviet Military Occupation of Coastal States (Ocupación soviética de los estados litorales)
+# Triggered by event 316281 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316283
+	country = USA
+	name = EVT_USA_316283_NAME
+	desc = EVT_USA_316283_DESC
+	picture = "nwo/invasion_of_usa"
+	style = 1
+	trigger = {
+		flag = the_red_dusk
+		event = { id = 316281 days = 3 }
+	}
+	date = { day = 0 month = january year = 1936 }
+    offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = secedearea which = SOV value = "Washington" when = 1 }
+		command = { type = secedearea which = SOV value = "Oregon" when = 1 }
+		command = { type = secedearea which = SOV value = "Idaho" when = 1 }
+		command = { type = secedearea which = SOV value = "Nevada" when = 1 }
+		command = { type = secedearea which = SOV value = "California" when = 1 }
+		command = { type = secedearea which = SOV value = "Maine" when = 1 }
+		command = { type = secedearea which = SOV value = "New Hampshire" when = 1 }
+		command = { type = secedearea which = SOV value = "Massachussets" when = 1 }
+		command = { type = secedearea which = SOV value = "Vermont" when = 1 }
+		command = { type = secedearea which = SOV value = "Connecticut_Rhode Island" when = 1 }
+		command = { type = secedearea which = SOV value = "New Jersey" when = 1 }
+		command = { type = secedearea which = SOV value = "New York" when = 1 }
+		command = { type = secedearea which = SOV value = "Pennsylvania" when = 1 }
+		command = { type = secedearea which = SOV value = "Maryland_Delaware" when = 1 }
+		command = { type = secedearea which = SOV value = "West Virginia" when = 1 }
+		command = { type = secedearea which = SOV value = "Virginia" when = 1 }
+		command = { type = secedearea which = SOV value = "North Carolina" when = 1 }
+		command = { type = secedearea which = SOV value = "South Carolina" when = 1 }
+		command = { type = secedearea which = SOV value = "Georgia" when = 1 }
+		command = { type = secedearea which = SOV value = "Florida" when = 1 }
+		command = { type = secedeprovince which = SOV value = 1896 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1899 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1897 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1866 when = 1 }
+		command = { type = secedeprovince which = SOV value = 1892 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316284] USA | 1936 | Communist Party USA Assumes Power (El Partido Comunista (CPUSA) asume el poder)
+# Triggered by event 223369 in events/SOV/SOV_36-38.txt
+# Triggered by event 316287 in events/USA/USA_36-38.txt
+# Trigger event 223372 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316284
+	save_date = yes
+	country = USA
+	name = EVT_USA_316284_NAME
+	desc = EVT_USA_316284_DESC
+	picture = "nwo/communist_party_of_usa"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { event = 223369 } type = name where = USA which = USSSA }
+		command = { trigger = { event = 223369 } type = flag_ext where = USA which = "_communist" }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = set_domestic which = free_market value = 2 }
+		command = { type = set_domestic which = freedom value = 2 }
+		command = { type = set_domestic which = interventionism value = 5 }
+		command = { type = headofstate which = 240020 }
+		command = { type = headofgovernment which = 240392 }
+		command = { type = foreignminister which = 240050 }
+		command = { type = armamentminister which = 240073 }
+		command = { type = ministerofsecurity which = 240089 }
+		command = { type = ministerofintelligence which = 240103 }
+		command = { type = chiefofstaff which = 240107 }
+		command = { type = chiefofarmy which = 240114 }
+		command = { type = chiefofnavy which = 240128 }
+		command = { type = chiefofair which = 240134 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316285] USA | 1936 | Socialist Party of America in Government (El Partido Socialista de América asume el gobierno)
+# Triggered by event 223369 in events/SOV/SOV_36-38.txt
+# Triggered by event 223370 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316285
+	country = USA
+	name = EVT_USA_316285_NAME
+	desc = EVT_USA_316285_DESC
+	picture = "nwo/socialist_usa"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { event = 223369 } type = name where = USA which = USSSA }
+		command = { trigger = { event = 223369 } type = flag_ext where = USA which = "_communist" }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = set_domestic which = free_market value = 3 }
+		command = { type = set_domestic which = freedom value = 4 }
+		command = { type = set_domestic which = interventionism value = 3 }
+		command = { type = headofstate which = 240021 }
+		command = { type = headofgovernment which = 240034 }
+		command = { type = foreignminister which = 240051 }
+		command = { type = armamentminister which = 240072 }
+		command = { type = ministerofsecurity which = 240090 }
+		command = { type = ministerofintelligence which = 240103 }
+		command = { type = chiefofstaff which = 240379 }
+		command = { type = chiefofarmy which = 240114 }
+		command = { type = chiefofnavy which = 240117 }
+		command = { type = chiefofair which = 240010 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316286] USA | 1936 | Progressive Democratic Administration Formed (Administración social-liberal del Partido Demócrata)
+# Triggered by event 223370 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316286
+	country = USA
+	name = EVT_USA_316286_NAME
+	desc = EVT_USA_316286_DESC
+	picture = "nwo/russian_american_friendship"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = set_domestic which = free_market value = 5 }
+		command = { type = set_domestic which = freedom value = 5 }
+		command = { type = set_domestic which = interventionism value = 0 }
+		command = { type = headofstate which = 240011 }
+		command = { type = headofgovernment which = 240023 }
+		command = { type = foreignminister which = 240039 }
+		command = { type = armamentminister which = 240055 }
+		command = { type = ministerofsecurity which = 240078 }
+		command = { type = ministerofintelligence which = 240096 }
+		command = { type = chiefofstaff which = 240153 }
+		command = { type = chiefofarmy which = 240110 }
+		command = { type = chiefofnavy which = 240119 }
+		command = { type = chiefofair which = 240010 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316287] USA | 1936 | Socialist Partition of the United States (Partición socialista de los Estados Unidos)
+# Triggered by event 223371 in events/SOV/SOV_36-38.txt
+# Trigger event 223372 in events/SOV/SOV_36-38.txt
+# Trigger event 316284 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316287
+	country = USA
+	save_date = yes
+	name = EVT_USA_316287_NAME
+	desc = EVT_USA_316287_DESC
+	picture = "nwo/usa_divided"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = TEX value = 0 }
+		command = { type = independence which = CSA value = 0 }
+		command = { type = independence which = CAL value = 0 }
+		command = { type = secedearea which = TEX value = "Texas" when = 1 }
+		command = { type = secedearea which = TEX value = "New Mexico" when = 1 }
+		command = { type = secedearea which = TEX value = "Oklahoma" when = 1 }
+		command = { type = secedearea which = TEX value = "Kansas" when = 1 }
+		command = { type = secedearea which = TEX value = "Colorado" when = 1 }
+		command = { type = secederegion which = CSA value = "Southeast US" when = 1 }
+		command = { type = secedearea which = CSA value = "Louisiana" when = 1 }
+		command = { type = secedearea which = CSA value = "Arkansas" when = 1 }
+		command = { type = secedearea which = CSA value = "Missouri" when = 1 }
+		command = { type = secedearea which = CSA value = "Kentucky" when = 1 }
+		command = { type = secedearea which = CSA value = "Virginia" when = 1 }
+		command = { type = secedearea which = CSA value = "West Virginia" when = 1 }
+		command = { type = secedearea which = CSA value = "Maryland_Delaware" when = 1 }
+		command = { type = secedearea which = CSA value = "Pennsylvania" when = 1 }
+		command = { type = secedearea which = CSA value = "New Jersey" when = 1 }
+		command = { type = secedearea which = CSA value = "Iowa" when = 1 }
+		command = { type = secedearea which = CSA value = "Nebraska" when = 1 }
+		command = { type = secedearea which = CSA value = "Wyoming" when = 1 }
+		command = { type = secederegion which = CAL value = "Southwest US" when = 1 }
+		command = { type = secederegion which = CAL value = "Northwest US" when = 1 }
+		command = { type = trigger which = 316284 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329271] USA | 1936 | Cold War Escalation: War Alert (Escalada de la Guerra Fría: Alerta bélica)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329271
+	random = no
+	country = USA
+	name = EVT_SHARED_00756_NAME
+	desc = EVT_USA_329271_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		NOT = {
+			war = { country = GER country = ENG }
+			war = { country = GER country = USA }
+			axis = 25
+			}
+		OR = {
+			control = { province = 1228 data = SOV }
+			control = { province = 1552 data = SOV }
+			control = { province = 2159 data = SOV }
+			control = { province = 483 data = SOV }
+			control = { province = 55 data = SOV }
+			control = { province = 122 data = SOV }
+			control = { province = 116 data = SOV }
+			control = { province = 294 data = SOV }
+			control = { province = 109 data = SOV }
+			control = { province = 419 data = SOV }
+			control = { province = 409 data = SOV }
+			control = { province = 1085 data = SOV }
+			control = { province = 1035 data = SOV }
+			control = { province = 1459 data = SOV }
+			control = { province = 1247 data = SOV }
+			control = { province = 1399 data = SOV }
+		}
+		atwar = no
+		NOT = { atwar = SOV }
+		random = 30
+	}
+	date = { day = 0 month = january year = 1936 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		ai_chance = 80
+		name = ACTION_NAME_WAR
+		command = { type = war which = SOV }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = defense_lobby value = 3 }
+	}
+	action_b = {
+		ai_chance = 20
+		name = ACTION_NAME_BACK_DOWN
+		command = { type = relation which = SOV value = -25 }
+		command = { type = domestic which = defense_lobby value = -1 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329987] USA | 1936 | Surrender of the United States (Rendición de los Estados Unidos)
+# Triggered by event 316269 in events/USA/USA_36-38.txt
+# Trigger event 316270 in events/USA/USA_36-38.txt
+# Trigger event 329988 in events/JAP/JAP_36-36.txt
+# Trigger event 329989 in events/GER/GER_36-37.txt
+# Trigger event 150520 in events/GER/GER_36-36.txt
+# Trigger event 167195 in events/JAP/JAP_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329987
+	country = USA
+	save_date = yes
+	name = EVT_USA_329987_NAME
+	desc = EVT_USA_329987_DESC
+	picture = "nwo/liberty_statue_in_fog"
+	style = 1
+	action = {
+		name = EVT_USA_329987_A
+		trigger = {
+			war = { country = GER country = USA }
+			NOT = {
+				OR = {
+					AND = {
+						region = { region = "Northwest US" country = JAP value = 50 }
+						region = { region = "Southwest US" country = JAP value = 50 }
+						NOT = { region = { region = "Northeast US" country = GER value = 50 } }
+						NOT = { region = { region = "Southeast US" country = GER value = 50 } }
+					}
+					control = { province = 1809 data = JAP }
+					AND = {
+						nuked = { country = JAP country = USA data = 1 }
+						NOT = { nuked = { country = GER country = USA data = 1 } }
+					}
+					AND = {
+						war = { country = JAP country = USA }
+						NOT = { war = { country = GER country = USA } }
+					}
+				}
+			}
+		}
+		command = { type = setflag which = german_victory_over_usa }
+		command = { type = secederegion which = JAP value = "Asian Pacific" when = 1 }
+		command = { type = secederegion which = JAP value = "American Pacific" when = 1 }
+		command = { type = secedearea which = JAP value = "Central Solomons" when = 1 }
+		command = { type = secedearea which = JAP value = "North New Hebrides" when = 1 }
+		command = { type = secedearea which = JAP value = "South New Hebrides" when = 1 }
+		command = { type = secederegion which = GER value = "Central America" when = 1 }
+		command = { type = secederegion which = GER value = "New Guinea" when = 1 }
+		command = { type = secederegion which = GER value = "Caribbean" when = 1 }
+		command = { type = secederegion which = GER value = "Greenland" when = 1 }
+		command = { type = secederegion which = GER value = "Iceland" when = 1 }
+		command = { type = end_mastery which = PHI }
+		command = { type = end_mastery which = CUB }
+		command = { type = end_mastery which = LIB }
+		command = { trigger = { NOT = { war = { country = MEX country = USA } } } type = sleepevent which = 316271 }
+		command = { trigger = { war = { country = JAP country = USA } } type = trigger which = 329988 }
+		command = { trigger = { war = { country = GER country = USA } } type = trigger which = 329989 }
+		command = { trigger = { NOT = { war = { country = JAP country = USA } } } type = sleepevent which = 316272 }
+		command = { trigger = { NOT = { war = { country = JAP country = USA } } } type = sleepevent which = 316273 }
+		command = { trigger = { NOT = { war = { country = GER country = USA } } } type = sleepevent which = 316274 }
+		command = { trigger = { NOT = { war = { country = GER country = USA } } } type = sleepevent which = 316275 }
+		command = { type = trigger which = 150520 }
+	}
+	action = {
+		name = EVT_USA_329987_B
+		trigger = {
+			OR = {
+				AND = {
+					region = { region = "Northwest US" country = JAP value = 50 }
+					region = { region = "Southwest US" country = JAP value = 50 }
+					NOT = { region = { region = "Northeast US" country = GER value = 50 } }
+					NOT = { region = { region = "Southeast US" country = GER value = 50 } }
+				}
+				control = { province = 1809 data = JAP }
+				AND = {
+					nuked = { country = JAP country = USA data = 1 }
+					NOT = { nuked = { country = GER country = USA data = 1 } }
+				}
+				AND = {
+					war = { country = JAP country = USA }
+					NOT = { war = { country = GER country = USA } }
+				}
+			}
+		}
+		command = { type = setflag which = japanese_victory_over_usa }
+		command = { type = secederegion which = JAP value = "Asian Pacific" when = 1 }
+		command = { type = secederegion which = JAP value = "American Pacific" when = 1 }
+		command = { type = secedearea which = JAP value = "Central Solomons" when = 1 }
+		command = { type = secedearea which = JAP value = "North New Hebrides" when = 1 }
+		command = { type = secedearea which = JAP value = "South New Hebrides" when = 1 }
+		command = { type = secederegion which = JAP value = "Central America" when = 1 }
+		command = { type = secederegion which = GER value = "New Guinea" when = 1 }
+		command = { type = secederegion which = GER value = "Caribbean" when = 1 }
+		command = { type = secederegion which = GER value = "Greenland" when = 1 }
+		command = { type = secederegion which = GER value = "Iceland" when = 1 }
+		command = { type = end_mastery which = PHI }
+		command = { type = end_mastery which = CUB }
+		command = { trigger = { NOT = { war = { country = MEX country = USA } } } type = sleepevent which = 316271 }
+		command = { trigger = { war = { country = JAP country = USA } } type = trigger which = 329988 }
+		command = { trigger = { war = { country = GER country = USA } } type = trigger which = 329989 }
+		command = { trigger = { NOT = { war = { country = JAP country = USA } } } type = sleepevent which = 316272 }
+		command = { trigger = { NOT = { war = { country = JAP country = USA } } } type = sleepevent which = 316273 }
+		command = { trigger = { NOT = { war = { country = GER country = USA } } } type = sleepevent which = 316274 }
+		command = { trigger = { NOT = { war = { country = GER country = USA } } } type = sleepevent which = 316275 }
+		command = { type = trigger which = 167195 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316023] USA | 1936 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316023
+	random = no
+	country = USA
+	style = 2
+	trigger = {
+		minister = 240052
+		}
+	date = { year = 1936 month = march day = 20 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 240052 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [316121] USA | 1936 | Landon Wins Presidential Race (Landon gana las elecciones presidenciales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316121
+	random = no
+	country = USA
+	one_action = yes
+	trigger = {
+		ideology = paternal_autocrat
+		NOT = { ispuppet = USA }
+		OR = {
+			headofstate = 240001
+			headofstate = 240011
+			headofstate = 240012
+			headofstate = 240013
+			headofstate = 240014
+			headofstate = 240015
+			headofstate = 240016
+			headofstate = 240017
+		}
+	}
+	name = "EVT_USA_316121_NAME"
+	desc = "EVT_USA_316121_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 2 month = november year = 1936 }
+	action = {
+		ai_chance = 50
+		name = "EVT_USA_316121_A"
+		command = { type = headofstate which = 240146 }
+		command = { type = headofgovernment which = 240147 }
+		command = { type = foreignminister which = 240045 }
+		command = { type = armamentminister which = 240068 }
+		command = { type = ministerofsecurity which = 240148 }
+		command = { type = chiefofstaff which = 240152 }
+		command = { type = chiefofarmy which = 240112 }
+		command = { type = chiefofnavy which = 240127 }
+		command = { type = chiefofair which = 240131 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 2 }
+	}
+	action = {
+		ai_chance = 50
+		name = "EVT_SHARED_00427_A"
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316118] USA | 1936 | US Presidential Election of 1936 (Elecciones de EE. UU. de 1936)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316118
+	random = no
+	country = USA
+	one_action = yes
+	name = "EVT_USA_316118_NAME"
+	desc = "EVT_USA_316118_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+			government = democratic
+		NOT = {	ispuppet = USA }
+	}
+	date = { day = 3 month = november year = 1936 }
+	action = {
+		ai_chance = 90
+		name = "EVT_SHARED_00425_A"
+		command = { type = dissent value = -2 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 240001 }
+		command = { type = headofgovernment which = 240232 }
+		command = { type = foreignminister which = 323030 }
+		command = { type = armamentminister which = 323029 }
+		command = { type = ministerofsecurity which = 166096 }
+		command = { type = ministerofintelligence which = 323028 }
+		command = { type = songs which = InauguralAddress-1937.txt }
+	}
+	action = { trigger = { dissent = 5 }
+		ai_chance = 10
+		name = "EVT_SHARED_00425_B"
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 240014 }
+		command = { type = headofgovernment which = 240026 }
+		command = { type = foreignminister which = 329554 }
+		command = { type = armamentminister which = 240060 }
+		command = { type = ministerofsecurity which = 240080 }
+		command = { type = ministerofintelligence which = 240143 }
+		command = { type = sleepevent which = 316119 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = construct which = ic where = -1 value = 5 }
+		command = { type = construct which = ic where = -1 value = 5 }
+		command = { type = oilpool value = 100 }
+		command = { type = energypool value = 100 }
+		command = { type = metalpool value = 100 }
+		command = { type = rarematerialspool value = 100 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316001] USA | 1937 | Anglo-Canadian-US. Trade Agreement (Acuerdo comercial anglo-canadiense-estadounidense)
+# Triggered by event 329016 in events/ENG/ENG_36-38.txt
+# Trigger event 121002 in events/Minors/CAN_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 316001
+         random = no
+         country = usa
+         name = "EVT_SHARED_00482_NAME"
+         desc = "EVT_SHARED_00482_DESC"
+         style = 2
+	picture = "GLOBAL/anglo_canadian_us_trade_agreement"
+           action_a = {
+                  name = "ACTION_NAME_SIGN"
+                  ai_chance = 90
+                  command = { type = relation which = can value = 10 }
+                  command = { type = relation which = eng value = 10 }
+                  command = { type = trigger which = 121002 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_REFUSE"
+                  ai_chance = 10
+                  command = { type = dissent value = 1 }
+                  command = { type = relation which = can value = -10 }
+                  command = { type = relation which = eng value = -10 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [316002] USA | 1937 | Anglo-Canadian-US. Trade Agreement success (El éxito del acuerdo comercial anglo-canadiense-estadounidense)
+# Triggered by event 143003 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 316002
+         random = no
+         country = usa
+         name = "EVT_SHARED_00483_NAME"
+         desc = "EVT_SHARED_00483_DESC"
+         style = 2
+	picture = "GLOBAL/anglo_canadian_us_trade_agreement_success"
+           action_a = {
+                  name = "ACTION_NAME_EXCELLENT"
+                  command = { type = dissent value = -1 }
+                  command = { type = relation which = eng value = 35 }
+                  command = { type = relation which = can value = 35 }
+                  command = { type = supplies value = 3000   }
+                  command = { type = oilpool value = 3000   }
+                  command = { type = metalpool value = 8000 }
+                  command = { type = energypool value = 10000 }
+                  command = { type = rarematerialspool value = 2500 }
+                  command = { type = money value = 120 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [316051] USA | 1937 | Mexican Nationalization of Petroleum (Nacionalización mexicana del petróleo)
+# Triggered by event 329241 in events/Minors/MEX.txt
+# Trigger event 143074 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316051
+	random = no
+	country = USA
+	name = "EVT_SHARED_00730_NAME"
+	desc = "EVT_SHARED_00730_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_DAMN
+		ai_chance = 100
+		command = { type = relation which = MEX value = -20 }
+		command = { type = dissent value = 1 }
+		command = { type = trigger which = 143074 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [316075] USA | 1937 | Supreme Court Upholds New Deal Legislation (El Tribunal Supremo avala las leyes del New Deal)
+# Triggered by event 316074 in events/USA/USA_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316075
+	random = no
+	country = USA
+	trigger = { event = 316074 random = 30 }
+	name = EVT_USA_316075_NAME
+	desc = EVT_USA_316075_DESC
+	style = 2
+	picture = "USA/supreme_court"
+	date = { day = 1 month = january year = 1937 }
+        offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = dissent value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316100] USA | 1937 | The Panay Incident: US Reaction (Incidente del Panay: Reacción de EE. UU.)
+# Triggered by event 167053 in events/JAP/JAP_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316100
+	random = no
+	country = USA
+	name = EVT_USA_316100_NAME
+	desc = EVT_USA_316100_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316101] USA | 1937 | The USS Panay Incident (El incidente del USS Panay)
+# Triggered by event 167053 in events/JAP/JAP_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316101
+	random = no
+	country = USA
+	name = EVT_USA_316101_NAME
+	desc = EVT_USA_316101_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = defense_lobby value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316049] USA | 1937 | Recall of U.S. Ambassador to Germany (Retirada del Embajador de los Estados Unidos en Alemania)
+# Trigger event 150106 in events/GER/GER_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316049
+	random = no
+	country = USA
+	trigger = {
+		   exists = GER
+		   NOT = { exists = CZE }
+		    }
+	date = { day = 19 month = march year = 1937 }
+	offset = 1
+	deathdate = { day = 21 month = march year = 1939 }
+	name = "EVT_SHARED_00695_NAME"
+	desc = "EVT_SHARED_00695_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = -20 }
+		command = { type = trigger which = 150106 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316099] USA | 1937 | The Panay Incident (El incidente del USS Panay)
+# Trigger event 167053 in events/JAP/JAP_36-37.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316099
+	random = no
+	country = USA
+	name = EVT_SHARED_00420_NAME
+	desc = EVT_SHARED_00420_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		random = 50
+		war = { country = JAP country = CHI }
+		NOT = {
+			war = { country = JAP country = USA }
+		}
+	}
+	date = { day = 5 month = may year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = august year = 1939 }
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_ULTIMATUM
+		command = { type = trigger which = 167053 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330070] USA | 1937 | US Arms Restrictions on Government Transports (Restricciones de armas de EE. UU. en buques oficiales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330070
+	random = no
+	country = USA
+	trigger = {
+			war = { country = JAP country = CHI }
+			}
+	date = { day = 13 month = september year = 1937 }
+	offset = 1
+	deathdate = { day = 15 month = september year = 1937 }
+	name = "EVT_SHARED_01114_NAME"
+	desc = "EVT_SHARED_01114_DESC"
+	style = 2
+	picture = "GLOBAL/us_arms_restrictions_on_government_transports"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = CHI value = -30 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [316324] USA | 1937 | Roosevelt's Quarantine Speech (El Discurso de la Cuarentena de Roosevelt)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316324
+	random = no
+	country = USA
+	trigger = {
+			exists = USA
+			}
+	date = { day = 01 month = october year = 1937 }
+	offset = 1
+	deathdate = { day = 03 month = october year = 1937 }
+	name = "EVT_SHARED_01115_NAME"
+	desc = "EVT_SHARED_01115_DESC"
+	style = 2
+	picture = "GLOBAL/roosevelt_s_quarantine_speech"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = JAP value = -20 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [316003] USA | 1938 | Alaska Highway
+# Triggered by event 329022 in events/USA/USA_36-38.txt
+# Trigger event 121016 in events/Minors/CAN_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 316003
+         random = no
+         country = usa
+         name = "EVT_SHARED_00487_NAME"
+         desc = "EVT_SHARED_00487_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1938 }
+         offset = 12
+         deathdate = { day = 29 month = december year = 1945 }
+	picture = "GLOBAL/alaska_highway"
+           action_a = {
+                  name = ACTION_NAME_OK
+                  command = { type = construct which = infrastructure where = 2142 value = 30 }
+                  command = { type = construct which = infrastructure where = 2147 value = 50 }
+                  command = { type = construct which = infrastructure where = 2141 value = 50 }
+                  command = { type = trigger which = 121016 }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [316052] USA | 1938 | Mexican Expropriation of Foreign Oil Companies (Expropiación mexicana de petroleras extranjeras)
+# Triggered by event 329242 in events/Minors/MEX.txt
+# Trigger event 143078 in events/ENG/ENG_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316052
+	random = no
+	country = USA
+	name = "EVT_SHARED_00731_NAME"
+	desc = "EVT_SHARED_00731_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = MEX value = -10 }
+		command = { type = dissent value = 1 }
+		command = { type = oilpool value = -800 }
+		command = { type = trigger which = 143078 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [316097] USA | 1938 | Collapse of the British Empire (Colapso del Imperio británico)
+# Triggered by event 143166 in events/AI/ENG_AI_33-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316097
+	random = no
+	name = "EVT_SHARED_00406_NAME"
+	desc = "EVT_USA_316097_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	country = USA
+	action = {
+		name = "ACTION_NAME_UNFORTUNATE"
+		command = { type = inherit which = ENG value = 1}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329022] USA | 1938 | Alaska Highway
+# Trigger event 316003 in events/USA/USA_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+         id = 329022
+         random = no
+         country = usa
+         trigger = {
+                   atwar = yes
+                   NOT = {
+                            war = { country = can country = usa }
+                   }
+                   random = 12
+                   control = { province = 2142 data = USA }
+                   control = { province = 2147 data = USA }
+                   control = { province = 2141 data = USA }
+         }
+         name = "EVT_SHARED_00487_NAME"
+         desc = "EVT_SHARED_00487_DESC"
+         style = 2
+         date = { day = 1 month = january year = 1938 }
+         offset = 12
+         deathdate = { day = 29 month = december year = 1945 }
+	picture = "GLOBAL/alaska_highway"
+           action_a = {
+                  name = "ACTION_NAME_AGREE"
+                  ai_chance = 95
+                  command = { type = money value = -150 }
+                  command = { type = supplies value = -400 }
+                  command = { type = manpowerpool value = -10 }
+                  command = { type = construct which = ic where = -4 value = -2 }
+                  command = { type = trigger which = 316003 }
+           }
+           action_b = {
+                  name = "ACTION_NAME_NO_NEED"
+                  ai_chance = 5
+                  command = { }
+           }
+}
+
+# ----------------------------------------------------------------------------
+# [316033] USA | 1938 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316033
+	random = no
+	country = USA
+	style = 2
+	trigger = {
+		minister = 240010
+		}
+	date = { year = 1938 month = september day = 21 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 240010 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [316086] USA | 1938 | The War of the Worlds Radio Broadcast (La emisión radiofónica de «La guerra de los mundos»)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316086
+	random = no
+	country = USA
+	trigger = { atwar = no }
+	name = EVT_USA_316086_NAME
+	desc = EVT_USA_316086_DESC
+	style = 2
+	picture = "USA/waroftheworlds"
+	date = { day = 29 month = october year = 1938 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { trigger = { ai = no } type = dissent value = 1 }
+		command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330084] USA | 1938 | United States Reaffirms the Nine-Power Treaty (EE. UU. reafirma el Tratado de las Nueve Potencias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330084
+	random = no
+	country = USA
+	trigger = {
+		exists = USA
+		war = { country = JAP country = CHI }
+			}
+	date = { day = 03 month = november year = 1938 }
+	offset = 1
+	deathdate = { day = 05 month = november year = 1938 }
+	name = "EVT_SHARED_01119_NAME"
+	desc = "EVT_SHARED_01119_DESC"
+	style = 2
+	picture = "GLOBAL/2_26_incident"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = CHI value = 10 }
+		command = { type = relation which = JAP value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330086] USA | 1938 | US Note on Open Door Violations (Protesta estadounidense por la política de Puertas Abiertas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330086
+	random = no
+	country = USA
+	trigger = {
+		exists = USA
+		war = { country = JAP country = CHI }
+			}
+	date = { day = 03 month = november year = 1938 }
+	offset = 1
+	deathdate = { day = 05 month = november year = 1938 }
+	name = "EVT_SHARED_01120_NAME"
+	desc = "EVT_SHARED_01120_DESC"
+	style = 2
+	picture = "GLOBAL/us_arms_restrictions_on_government_transports"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = CHI value = 5 }
+		command = { type = relation which = JAP value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316081] USA | 1938 | 1938 US Midterm Elections (Elecciones legislativas de EE. UU. de 1938)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316081
+	random = no
+	country = USA
+	trigger = { headofstate = 240001 }
+	name = EVT_USA_316081_NAME
+	desc = EVT_USA_316081_DESC
+	style = 2
+	picture = "GLOBAL/election_time"
+	date = { day = 5 month = november year = 1938 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { trigger = { ai = no } type = dissent value = 2 }
+		command = { trigger = { ai = yes } type = peacetime_ic_mod value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316325] USA | 1938 | Japan Repudiates the Open Door Policy (Japón rechaza la política de Puertas Abiertas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316325
+	random = no
+	country = USA
+	trigger = {
+		exists = USA
+			}
+	date = { day = 17 month = november year = 1938 }
+	offset = 1
+	deathdate = { day = 19 month = november year = 1938 }
+	name = "EVT_SHARED_01121_NAME"
+	desc = "EVT_SHARED_01121_DESC"
+	style = 2
+	picture = "GLOBAL/japan_repudiates_the_open_door_policy"
+	action = {
+		name = ACTION_NAME_DAMN
+		ai_chance = 100
+		command = { type = relation which = JAP value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316326] USA | 1938 | US Rejection of the New Order in East Asia (EE. UU. rechaza el Nuevo Orden en Asia Oriental)
+# Trigger event 167205 in events/JAP/JAP_37-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316326
+	random = no
+	country = USA
+	trigger = {
+		exists = USA
+			}
+	date = { day = 29 month = december year = 1938 }
+	name = "EVT_SHARED_01122_NAME"
+	desc = "EVT_SHARED_01122_DESC"
+	style = 2
+	picture = "GLOBAL/japan_repudiates_the_open_door_policy"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = JAP value = -10 }
+		command = { type = trigger which = 167205 }
+	}
+}

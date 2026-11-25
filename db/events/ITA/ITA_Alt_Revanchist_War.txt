@@ -1,0 +1,711 @@
+
+# 166725 - ITA: Pax Germanica: Italian Revanchism Awakens
+event = {
+    id = 166725
+    random = no
+    country = ITA
+    style = 2
+    picture = "ITA/blackshirts"
+
+    trigger = {
+        year = 1936
+        exists = ITA
+        event = 2000000 # Pax Germanica active
+        NOT = { has_country_flag = ita_revanchist_opened }
+    }
+
+    date = { day = 15 month = march year = 1936 }
+    offset = 20
+    deathdate = { day = 30 month = december year = 1938 }
+
+    name = "EVT_166725_NAME"
+    desc = "EVT_166725_DESC"
+
+    action = {
+        name = "EVT_166725_A"
+        ai_chance = 80
+        command = { type = set_country_flag which = ita_revanchist_opened }
+        command = { type = domestic which = interventionism value = 2 }
+        command = { type = domestic which = defense_lobby value = 1 }
+        command = { type = dissent value = -2 }
+        command = { type = trigger which = 166726 }
+    }
+    action = {
+        name = "EVT_166725_B"
+        ai_chance = 20
+        command = { type = set_country_flag which = ita_revanchist_opened }
+        command = { type = dissent value = 2 }
+    }
+}
+
+# 166726 - ITA: The Anti-German Revanchist Coalition
+event = {
+    id = 166726
+    random = no
+    country = ITA
+    style = 2
+    picture = "nwo/austrian_state_treaty"
+
+    is_triggered_only = yes
+
+    name = "EVT_166726_NAME"
+    desc = "EVT_166726_DESC"
+
+    action = {
+        name = "EVT_166726_A"
+        ai_chance = 85
+        command = { type = relation which = FRA value = 30 }
+        command = { type = relation which = ENG value = 25 }
+        command = { type = relation which = U08 value = -25 }
+        command = { type = relation which = U09 value = -25 }
+        command = { type = trigger which = 166727 }
+    }
+    action = {
+        name = "EVT_166726_B"
+        ai_chance = 15
+        command = { type = dissent value = 1 }
+        command = { type = trigger which = 166727 }
+    }
+}
+
+# 166727 - ITA: Alpine Re-Armament
+event = {
+    id = 166727
+    random = no
+    country = ITA
+    style = 2
+    picture = "GER/alpenkorps"
+
+    is_triggered_only = yes
+
+    name = "EVT_166727_NAME"
+    desc = "EVT_166727_DESC"
+
+    action = {
+        name = "EVT_166727_A"
+        ai_chance = 80
+        command = { type = construct which = land_fort where = 379 value = 1 }
+        command = { type = construct which = land_fort where = 394 value = 1 }
+        command = { type = supplies value = 80 }
+        command = { type = trigger which = 166728 }
+    }
+    action = {
+        name = "EVT_166727_B"
+        ai_chance = 20
+        command = { type = money value = 50 }
+        command = { type = trigger which = 166728 }
+    }
+}
+
+# 166728 - ITA: Declaration of War on the Central Powers
+event = {
+    id = 166728
+    random = no
+    country = ITA
+    style = 2
+    picture = "archive/trench_warfare"
+
+    is_triggered_only = yes
+
+    name = "EVT_166728_NAME"
+    desc = "EVT_166728_DESC"
+
+    action = {
+        name = "EVT_166728_A"
+        ai_chance = 85
+        command = { type = war which = U08 }
+        command = { type = war which = U09 }
+        command = { type = dissent value = -3 }
+        command = { type = trigger which = 166729 }
+    }
+    action = {
+        name = "EVT_166728_B"
+        ai_chance = 15
+        command = { type = dissent value = 5 }
+        command = { type = trigger which = 166739 } # Defeat through hesitation
+    }
+}
+
+# 166729 - ITA: The Dolomite Offensive
+event = {
+    id = 166729
+    random = no
+    country = ITA
+    style = 2
+    picture = "GER/alpenkorps"
+
+    is_triggered_only = yes
+
+    name = "EVT_166729_NAME"
+    desc = "EVT_166729_DESC"
+
+    action = {
+        name = "EVT_166729_A"
+        ai_chance = 75
+        command = { type = supplies value = -50 }
+        command = { type = trigger which = 166730 }
+    }
+    action = {
+        name = "EVT_166729_B"
+        ai_chance = 25
+        command = { type = manpowerpool value = -5 }
+        command = { type = trigger which = 166730 }
+    }
+}
+
+# 166730 - ITA: Naval Victory in the Adriatic
+event = {
+    id = 166730
+    random = no
+    country = ITA
+    style = 2
+    picture = "ITA/italian_naval_frogmen_and_assault_craft"
+
+    is_triggered_only = yes
+
+    name = "EVT_166730_NAME"
+    desc = "EVT_166730_DESC"
+
+    action = {
+        name = "EVT_166730_A"
+        ai_chance = 80
+        command = { type = construct which = coastal_fort where = 408 value = 1 }
+        command = { type = trigger which = 166731 }
+    }
+    action = {
+        name = "EVT_166730_B"
+        ai_chance = 20
+        command = { type = supplies value = 40 }
+        command = { type = trigger which = 166731 }
+    }
+}
+
+# 166731 - ITA: Ottoman Fleet Moves in the Ionian Sea
+event = {
+    id = 166731
+    random = no
+    country = ITA
+    style = 2
+    picture = "archive/ottoman_troops"
+
+    is_triggered_only = yes
+
+    name = "EVT_166731_NAME"
+    desc = "EVT_166731_DESC"
+
+    action = {
+        name = "EVT_166731_A"
+        ai_chance = 75
+        command = { type = supplies value = -30 }
+        command = { type = trigger which = 166732 }
+    }
+    action = {
+        name = "EVT_166731_B"
+        ai_chance = 25
+        command = { type = dissent value = 1 }
+        command = { type = trigger which = 166732 }
+    }
+}
+
+# 166732 - ITA: The Turning Point: American Lend-Lease Arrives
+event = {
+    id = 166732
+    random = no
+    country = ITA
+    style = 2
+    picture = "Minors/baghdad_railway"
+
+    is_triggered_only = yes
+
+    name = "EVT_166732_NAME"
+    desc = "EVT_166732_DESC"
+
+    action = {
+        name = "EVT_166732_A"
+        ai_chance = 70
+        command = { type = supplies value = 150 }
+        command = { type = oilpool value = 200 }
+        command = { type = trigger which = 166733 } # TRIGGERS VICTORY BRANCH!
+    }
+    action = {
+        name = "EVT_166732_B"
+        ai_chance = 30
+        command = { type = dissent value = 5 }
+        command = { type = trigger which = 166739 } # TRIGGERS DEFEAT BRANCH!
+    }
+}
+
+# 166733 - ITA: Liberation of Trieste and Friuli
+event = {
+    id = 166733
+    random = no
+    country = ITA
+    style = 2
+    picture = "ITA/proclamation_of_the_empire_proclamazione_dell"
+
+    is_triggered_only = yes
+
+    name = "EVT_166733_NAME"
+    desc = "EVT_166733_DESC"
+
+    action = {
+        name = "EVT_166733_A"
+        ai_chance = 85
+        command = { type = addcore which = 394 } # Udine/Friuli
+        command = { type = addcore which = 378 } # Trieste
+        command = { type = dissent value = -4 }
+        command = { type = trigger which = 166734 }
+    }
+    action = {
+        name = "EVT_166733_B"
+        ai_chance = 15
+        command = { type = supplies value = 50 }
+        command = { type = trigger which = 166734 }
+    }
+}
+
+# 166734 - ITA: Central Powers Collapse
+event = {
+    id = 166734
+    random = no
+    country = ITA
+    style = 2
+    picture = "nwo/austrian_state_treaty"
+
+    is_triggered_only = yes
+
+    name = "EVT_166734_NAME"
+    desc = "EVT_166734_DESC"
+
+    action = {
+        name = "EVT_166734_A"
+        ai_chance = 90
+        command = { type = peace which = U08 value = 0 }
+        command = { type = peace which = U09 value = 0 }
+        command = { type = peace which = OTT value = 0 }
+        command = { type = trigger which = 166735 }
+    }
+    action = {
+        name = "EVT_166734_B"
+        ai_chance = 10
+        command = { type = dissent value = 3 }
+        command = { type = trigger which = 166735 }
+    }
+}
+
+# 166735 - ITA: The Treaty of Rome: Hegemony Restored
+event = {
+    id = 166735
+    random = no
+    country = ITA
+    style = 2
+    picture = "nwo/austrian_state_treaty"
+
+    is_triggered_only = yes
+
+    name = "EVT_166735_NAME"
+    desc = "EVT_166735_DESC"
+
+    action = {
+        name = "EVT_166735_A"
+        ai_chance = 85
+        command = { type = addcore which = 379 }
+        command = { type = dissent value = -4 }
+        command = { type = money value = 80 }
+        command = { type = trigger which = 166736 }
+    }
+    action = {
+        name = "EVT_166735_B"
+        ai_chance = 15
+        command = { type = supplies value = 60 }
+        command = { type = trigger which = 166736 }
+    }
+}
+
+# 166736 - ITA: Recovery of Libya
+event = {
+    id = 166736
+    random = no
+    country = ITA
+    style = 2
+    picture = "archive/ottoman_troops"
+
+    is_triggered_only = yes
+
+    name = "EVT_166736_NAME"
+    desc = "EVT_166736_DESC"
+
+    action = {
+        name = "EVT_166736_A"
+        ai_chance = 85
+        command = { type = oilpool value = 150 }
+        command = { type = money value = 50 }
+        command = { type = trigger which = 166737 }
+    }
+    action = {
+        name = "EVT_166736_B"
+        ai_chance = 15
+        command = { type = supplies value = 50 }
+        command = { type = trigger which = 166737 }
+    }
+}
+
+# 166737 - ITA: Alliance with the United States
+event = {
+    id = 166737
+    random = no
+    country = ITA
+    style = 2
+    picture = "nwo/italian_christian_democracy"
+
+    is_triggered_only = yes
+
+    name = "EVT_166737_NAME"
+    desc = "EVT_166737_DESC"
+
+    action = {
+        name = "EVT_166737_A"
+        ai_chance = 85
+        command = { type = relation which = USA value = 35 }
+        command = { type = domestic which = democratic value = 2 }
+        command = { type = trigger which = 166738 }
+    }
+    action = {
+        name = "EVT_166737_B"
+        ai_chance = 15
+        command = { type = money value = 50 }
+        command = { type = trigger which = 166738 }
+    }
+}
+
+# 166738 - ITA: Il Miracolo Economico
+event = {
+    id = 166738
+    random = no
+    country = ITA
+    style = 2
+    picture = "Minors/baghdad_railway"
+
+    is_triggered_only = yes
+
+    name = "EVT_166738_NAME"
+    desc = "EVT_166738_DESC"
+
+    action = {
+        name = "EVT_166738_A"
+        ai_chance = 90
+        command = { type = construct which = ic where = 370 value = 1 }
+        command = { type = construct which = ic where = 379 value = 1 }
+        command = { type = dissent value = -4 }
+        command = { type = money value = 100 }
+    }
+    action = {
+        name = "EVT_166738_B"
+        ai_chance = 10
+        command = { type = supplies value = 60 }
+    }
+}
+
+# 166739 - ITA: The German Counter-Attack in the Po Valley
+event = {
+    id = 166739
+    random = no
+    country = ITA
+    style = 2
+    picture = "archive/trench_warfare"
+
+    is_triggered_only = yes
+
+    name = "EVT_166739_NAME"
+    desc = "EVT_166739_DESC"
+
+    action = {
+        name = "EVT_166739_A"
+        ai_chance = 85
+        command = { type = dissent value = 6 }
+        command = { type = trigger which = 166740 }
+    }
+    action = {
+        name = "EVT_166739_B"
+        ai_chance = 15
+        command = { type = dissent value = 12 }
+        command = { type = trigger which = 166740 }
+    }
+}
+
+# 166740 - ITA: Unconditional Surrender to the Kaiser
+event = {
+    id = 166740
+    random = no
+    country = ITA
+    style = 2
+    picture = "nwo/austrian_state_treaty"
+
+    is_triggered_only = yes
+
+    name = "EVT_166740_NAME"
+    desc = "EVT_166740_DESC"
+
+    action = {
+        name = "EVT_166740_A"
+        ai_chance = 90
+        command = { type = peace which = U08 value = 0 }
+        command = { type = peace which = U09 value = 0 }
+        command = { type = trigger which = 166741 }
+    }
+    action = {
+        name = "EVT_166740_B"
+        ai_chance = 10
+        command = { type = dissent value = 25 }
+        command = { type = trigger which = 166741 }
+    }
+}
+
+# 166741 - ITA: Dismemberment of the Unified Italian State
+event = {
+    id = 166741
+    random = no
+    country = ITA
+    style = 2
+    picture = "nwo/capital_city"
+
+    is_triggered_only = yes
+
+    name = "EVT_166741_NAME"
+    desc = "EVT_166741_DESC"
+
+    action = {
+        name = "EVT_166741_A"
+        ai_chance = 85
+        command = { type = dissent value = 8 }
+        command = { type = domestic which = authoritarian value = 2 }
+        command = { type = trigger which = 166742 }
+    }
+    action = {
+        name = "EVT_166741_B"
+        ai_chance = 15
+        command = { type = dissent value = 12 }
+        command = { type = trigger which = 166742 }
+    }
+}
+
+# 166742 - ITA: The Regional Buffer Kingdoms
+event = {
+    id = 166742
+    random = no
+    country = ITA
+    style = 2
+    picture = "nwo/capital_city"
+
+    is_triggered_only = yes
+
+    name = "EVT_166742_NAME"
+    desc = "EVT_166742_DESC"
+
+    action = {
+        name = "EVT_166742_A"
+        ai_chance = 80
+        command = { type = supplies value = -40 }
+        command = { type = trigger which = 166743 }
+    }
+    action = {
+        name = "EVT_166742_B"
+        ai_chance = 20
+        command = { type = money value = -50 }
+        command = { type = trigger which = 166743 }
+    }
+}
+
+# 166743 - ITA: Industrial Subordination to Mitteleuropa
+event = {
+    id = 166743
+    random = no
+    country = ITA
+    style = 2
+    picture = "Minors/baghdad_railway"
+
+    is_triggered_only = yes
+
+    name = "EVT_166743_NAME"
+    desc = "EVT_166743_DESC"
+
+    action = {
+        name = "EVT_166743_A"
+        ai_chance = 85
+        command = { type = money value = -60 }
+        command = { type = supplies value = -50 }
+        command = { type = trigger which = 166744 }
+    }
+    action = {
+        name = "EVT_166743_B"
+        ai_chance = 15
+        command = { type = dissent value = 3 }
+        command = { type = trigger which = 166744 }
+    }
+}
+
+# 166744 - ITA: The Peninsular Pax Germanica
+event = {
+    id = 166744
+    random = no
+    country = ITA
+    style = 2
+    picture = "nwo/austrian_state_treaty"
+
+    is_triggered_only = yes
+
+    name = "EVT_166744_NAME"
+    desc = "EVT_166744_DESC"
+
+    action = {
+        name = "EVT_166744_A"
+        ai_chance = 90
+        command = { type = dissent value = -3 }
+        command = { type = trigger which = 166745 } # Connects to Cold War!
+    }
+    action = {
+        name = "EVT_166744_B"
+        ai_chance = 10
+        command = { type = supplies value = 30 }
+        command = { type = trigger which = 166745 }
+    }
+}
+
+# 166745 - ITA: Cold War: American Support for the Italian Underground
+event = {
+    id = 166745
+    random = no
+    country = ITA
+    style = 2
+    picture = "GLOBAL/strike"
+
+    is_triggered_only = yes
+
+    name = "EVT_166745_NAME"
+    desc = "EVT_166745_DESC"
+
+    action = {
+        name = "EVT_166745_A"
+        ai_chance = 80
+        command = { type = relation which = USA value = 30 }
+        command = { type = dissent value = -2 }
+        command = { type = trigger which = 166746 }
+    }
+    action = {
+        name = "EVT_166745_B"
+        ai_chance = 20
+        command = { type = relation which = U08 value = 15 }
+        command = { type = trigger which = 166746 }
+    }
+}
+
+# 166746 - ITA: German Missile Bases in the Apennines
+event = {
+    id = 166746
+    random = no
+    country = ITA
+    style = 2
+    picture = "GER/super_heavy_railway_siege_guns_gustav"
+
+    is_triggered_only = yes
+
+    name = "EVT_166746_NAME"
+    desc = "EVT_166746_DESC"
+
+    action = {
+        name = "EVT_166746_A"
+        ai_chance = 75
+        command = { type = relation which = USA value = 20 }
+        command = { type = trigger which = 166747 }
+    }
+    action = {
+        name = "EVT_166746_B"
+        ai_chance = 25
+        command = { type = supplies value = 40 }
+        command = { type = trigger which = 166747 }
+    }
+}
+
+# 166747 - ITA: The Crisis of Mitteleuropa and Italian General Strike
+event = {
+    id = 166747
+    random = no
+    country = ITA
+    style = 2
+    picture = "GLOBAL/strike"
+
+    is_triggered_only = yes
+
+    name = "EVT_166747_NAME"
+    desc = "EVT_166747_DESC"
+
+    action = {
+        name = "EVT_166747_A"
+        ai_chance = 85
+        command = { type = dissent value = 5 }
+        command = { type = domestic which = democratic value = 2 }
+        command = { type = trigger which = 166748 }
+    }
+    action = {
+        name = "EVT_166747_B"
+        ai_chance = 15
+        command = { type = dissent value = -2 }
+        command = { type = trigger which = 166748 }
+    }
+}
+
+# 166748 - ITA: The Second Risorgimento
+event = {
+    id = 166748
+    random = no
+    country = ITA
+    style = 2
+    picture = "nwo/italian_constitutional_referendum"
+
+    is_triggered_only = yes
+
+    name = "EVT_166748_NAME"
+    desc = "EVT_166748_DESC"
+
+    action = {
+        name = "EVT_166748_A"
+        ai_chance = 90
+        command = { type = dissent value = -6 }
+        command = { type = domestic which = democratic value = 3 }
+        command = { type = domestic which = political_right value = -2 }
+        command = { type = trigger which = 166749 }
+    }
+    action = {
+        name = "EVT_166748_B"
+        ai_chance = 10
+        command = { type = money value = 60 }
+        command = { type = trigger which = 166749 }
+    }
+}
+
+# 166749 - ITA: The Millennium of 1999
+event = {
+    id = 166749
+    random = no
+    country = ITA
+    style = 2
+    picture = "nwo/capital_city"
+
+    is_triggered_only = yes
+
+    name = "EVT_166749_NAME"
+    desc = "EVT_166749_DESC"
+
+    action = {
+        name = "EVT_166749_A"
+        ai_chance = 90
+        command = { type = construct which = ic where = 401 value = 1 }
+        command = { type = dissent value = -3 }
+        command = { type = money value = 80 }
+    }
+    action = {
+        name = "EVT_166749_B"
+        ai_chance = 10
+        command = { type = supplies value = 50 }
+    }
+}

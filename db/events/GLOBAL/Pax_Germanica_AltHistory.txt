@@ -1,0 +1,987 @@
+# ============================================================================
+# File: events/GLOBAL/Pax_Germanica_AltHistory.txt
+# Master Alternative History Chain: Central Powers Victory (Pax Germanica)
+# Triggered when flag = cpvictory is set in WWI
+# ============================================================================
+
+# ============================================================================
+# STAGE 1: IMPERIAL PEACE TREATIES & POSTWAR ORDER (1918-1921)
+# ============================================================================
+
+# [231850] U08 | 1919 | The Treaty of Paris: Inverted Versailles
+event = {
+	id = 231850
+	country = U08
+	trigger = {
+		flag = cpvictory
+		exists = U08
+		exists = FRA
+		NOT = { war = { country = U08 country = FRA } }
+	}
+	name = "EVT_231850_NAME"
+	desc = "EVT_231850_DESC"
+	style = 2
+	picture = "GLOBAL/additionaltreaty"
+	date = { day = 28 month = june year = 1919 }
+	offset = 10
+	deathdate = { day = 31 month = december year = 1921 }
+	action = {
+		name = "EVT_231850_A"
+		command = { type = secedeprovince which = U08 value = 96 }
+		command = { type = secedeprovince which = U08 value = 106 }
+		command = { type = money value = 2000 }
+		command = { type = dissent value = -10 }
+		command = { type = setflag which = Treaty_Of_Paris_Done }
+	}
+}
+
+# [231851] U08 | 1919 | The Treaty of London: The Birth of Mittelafrika
+event = {
+	id = 231851
+	country = U08
+	trigger = {
+		flag = cpvictory
+		flag = Treaty_Of_Paris_Done
+		exists = U08
+		exists = ENG
+		NOT = { war = { country = U08 country = ENG } }
+	}
+	name = "EVT_231851_NAME"
+	desc = "EVT_231851_DESC"
+	style = 2
+	picture = "GLOBAL/additionaltreaty"
+	date = { day = 15 month = november year = 1919 }
+	offset = 10
+	deathdate = { day = 31 month = december year = 1921 }
+	action = {
+		name = "EVT_231851_A"
+		command = { type = relation which = ENG value = 20 }
+		command = { type = money value = 1500 }
+		command = { type = peacetime_ic_mod value = 5 }
+		command = { type = setflag which = Mittelafrika_Formed }
+	}
+}
+
+# [231852] U08 | 1920 | Consolidation of Mitteleuropa
+event = {
+	id = 231852
+	country = U08
+	trigger = {
+		flag = cpvictory
+		flag = Treaty_Of_Paris_Done
+		exists = U08
+	}
+	name = "EVT_231852_NAME"
+	desc = "EVT_231852_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 10 month = may year = 1920 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1922 }
+	action = {
+		name = "EVT_231852_A"
+		command = { trigger = { exists = POL } type = make_puppet which = POL }
+		command = { trigger = { exists = UKR } type = make_puppet which = UKR }
+		command = { trigger = { exists = FIN } type = relation which = FIN value = 50 }
+		command = { type = setflag which = Mitteleuropa_Hegemony }
+	}
+}
+
+# [231853] U09 | 1919 | Postwar Settlement in the Danubian Monarchy
+event = {
+	id = 231853
+	country = U09
+	trigger = {
+		flag = cpvictory
+		exists = U09
+	}
+	name = "EVT_231853_NAME"
+	desc = "EVT_231853_DESC"
+	style = 2
+	picture = "nwo/peace_in_our_time"
+	date = { day = 10 month = september year = 1919 }
+	offset = 10
+	deathdate = { day = 31 month = december year = 1921 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { trigger = { exists = SER } type = make_puppet which = SER }
+		command = { trigger = { exists = MNT } type = make_puppet which = MNT }
+	}
+}
+
+# [231854] OTT | 1919 | The Ottoman Renaissance
+event = {
+	id = 231854
+	country = OTT
+	trigger = {
+		flag = cpvictory
+		exists = OTT
+	}
+	name = "EVT_231854_NAME"
+	desc = "EVT_231854_DESC"
+	style = 2
+	picture = "nwo/peace_in_our_time"
+	date = { day = 15 month = october year = 1919 }
+	offset = 10
+	deathdate = { day = 31 month = december year = 1921 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -15 }
+		command = { type = addcore which = 1790 }
+		command = { type = addcore which = 1860 }
+		command = { type = set_domestic which = defense_lobby value = 1 }
+	}
+}
+
+# [231855] BUL | 1919 | The Realization of Greater Bulgaria
+event = {
+	id = 231855
+	country = BUL
+	trigger = {
+		flag = cpvictory
+		exists = BUL
+	}
+	name = "EVT_231855_NAME"
+	desc = "EVT_231855_DESC"
+	style = 2
+	picture = "nwo/peace_in_our_time"
+	date = { day = 27 month = november year = 1919 }
+	offset = 10
+	deathdate = { day = 31 month = december year = 1921 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = addcore which = 363 }
+		command = { type = addcore which = 370 }
+	}
+}
+
+
+# ============================================================================
+# STAGE 2: THE INTERWAR IMPERIAL CRISES (1922-1934)
+# ============================================================================
+
+# [231856] U08 | 1923 | The Imperial Financial Crash of Berlin
+event = {
+	id = 231856
+	country = U08
+	trigger = {
+		flag = cpvictory
+		exists = U08
+	}
+	name = "EVT_231856_NAME"
+	desc = "EVT_231856_DESC"
+	style = 2
+	picture = "GLOBAL/berlin700th"
+	date = { day = 15 month = october year = 1923 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1924 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 8 }
+		command = { type = peacetime_ic_mod value = -10 }
+		command = { type = money value = -1000 }
+	}
+}
+
+# [231857] U08 | 1925 | Mass Labor Strikes and Reichstag Reform
+event = {
+	id = 231857
+	country = U08
+	trigger = {
+		flag = cpvictory
+		exists = U08
+	}
+	name = "EVT_231857_NAME"
+	desc = "EVT_231857_DESC"
+	style = 2
+	picture = "GLOBAL/the_french_resistance_la_r_sistance"
+	date = { day = 1 month = may year = 1925 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1926 }
+	action = {
+		name = "EVT_231857_A"
+		command = { type = domestic which = democratic value = 2 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = dissent value = -5 }
+	}
+	action = {
+		name = "EVT_231857_B"
+		command = { type = domestic which = democratic value = -2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = 6 }
+	}
+}
+
+# [231858] U08 | 1932 | Imperial Succession: Ascension of Wilhelm III
+event = {
+	id = 231858
+	country = U08
+	trigger = {
+		flag = cpvictory
+		exists = U08
+	}
+	name = "EVT_231858_NAME"
+	desc = "EVT_231858_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 6 month = may year = 1932 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1934 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = headofstate which = 2002 }
+		command = { type = dissent value = -4 }
+	}
+}
+
+# [231859] U09 | 1926 | The United States of Greater Austria Proposal
+event = {
+	id = 231859
+	country = U09
+	trigger = {
+		flag = cpvictory
+		exists = U09
+	}
+	name = "EVT_231859_NAME"
+	desc = "EVT_231859_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 12 month = june year = 1926 }
+	offset = 20
+	deathdate = { day = 31 month = december year = 1928 }
+	action = {
+		name = "EVT_231859_A"
+		command = { type = domestic which = democratic value = 2 }
+		command = { type = dissent value = -8 }
+		command = { type = peacetime_ic_mod value = 5 }
+	}
+	action = {
+		name = "EVT_231859_B"
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+
+# ============================================================================
+# STAGE 3: THE RISE OF THE REVANCHIST BLOC (1930-1936)
+# ============================================================================
+
+# [231860] FRA | 1931 | Fall of the Third Republic: Rise of the Revanchist Regime
+event = {
+	id = 231860
+	country = FRA
+	trigger = {
+		flag = cpvictory
+		exists = FRA
+	}
+	name = "EVT_231860_NAME"
+	desc = "EVT_231860_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 14 month = july year = 1931 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1933 }
+	action = {
+		name = "EVT_231860_A"
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = set_domestic which = defense_lobby value = 9 }
+		command = { type = dissent value = -10 }
+		command = { type = setflag which = Revanchist_France }
+	}
+	action = {
+		name = "EVT_231860_B"
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = set_domestic which = defense_lobby value = 8 }
+		command = { type = dissent value = -10 }
+		command = { type = setflag which = Commune_France }
+	}
+}
+
+# [231861] ENG | 1932 | Imperial Breakdown and Nationalist Resurgence
+event = {
+	id = 231861
+	country = ENG
+	trigger = {
+		flag = cpvictory
+		exists = ENG
+	}
+	name = "EVT_231861_NAME"
+	desc = "EVT_231861_DESC"
+	style = 2
+	picture = "GLOBAL/the_french_resistance_la_r_sistance"
+	date = { day = 12 month = march year = 1932 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1934 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = defense_lobby value = 3 }
+		command = { type = domestic which = interventionism value = 2 }
+		command = { type = dissent value = -5 }
+		command = { type = setflag which = Revanchist_Britain }
+	}
+}
+
+# [231862] FRA | 1935 | The Geneva Revanchist Pact
+event = {
+	id = 231862
+	country = FRA
+	trigger = {
+		flag = cpvictory
+		exists = FRA
+		exists = ENG
+		OR = {
+			flag = Revanchist_France
+			flag = Commune_France
+		}
+		NOT = { war = { country = FRA country = ENG } }
+	}
+	name = "EVT_231862_NAME"
+	desc = "EVT_231862_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 20 month = june year = 1935 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1936 }
+	action = {
+		name = "ACTION_NAME_SIGN"
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = relation which = U08 value = -80 }
+		command = { type = setflag which = Revanchist_Alliance }
+	}
+}
+
+# [231863] SOV | 1936 | The Soviet Challenge to Mitteleuropa
+event = {
+	id = 231863
+	country = SOV
+	trigger = {
+		flag = cpvictory
+		exists = SOV
+		exists = U08
+		NOT = { war = { country = SOV country = U08 } }
+	}
+	name = "EVT_231863_NAME"
+	desc = "EVT_231863_DESC"
+	style = 2
+	picture = "GLOBAL/the_french_resistance_la_r_sistance"
+	date = { day = 1 month = may year = 1936 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1937 }
+	action = {
+		name = "EVT_231863_A"
+		command = { type = relation which = U08 value = -60 }
+		command = { type = addclaim which = 207 }
+		command = { type = addclaim which = 233 }
+		command = { type = setflag which = Soviet_Demands_Mitteleuropa }
+	}
+}
+
+
+# ============================================================================
+# STAGE 4: THE SECOND GREAT WAR OF ALTERNATIVE HISTORY (1938-1945)
+# ============================================================================
+
+# [231864] FRA | 1938 | The Strasbourg Ultimatum: Outbreak of the Second Great War
+event = {
+	id = 231864
+	country = FRA
+	trigger = {
+		flag = cpvictory
+		flag = Revanchist_Alliance
+		exists = FRA
+		exists = U08
+		NOT = { war = { country = FRA country = U08 } }
+	}
+	name = "EVT_231864_NAME"
+	desc = "EVT_231864_DESC"
+	style = 2
+	picture = "ENG/illustratedwarnews"
+	date = { day = 1 month = september year = 1938 }
+	offset = 10
+	deathdate = { day = 31 month = december year = 1939 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = war which = U08 }
+		command = { trigger = { exists = ENG NOT = { war = { country = ENG country = U08 } } } type = war which = U08 }
+		command = { type = setflag which = Second_Great_War_Started }
+	}
+}
+
+# [231865] SOV | 1939 | Soviet Offensive on the Eastern Front
+event = {
+	id = 231865
+	country = SOV
+	trigger = {
+		flag = Second_Great_War_Started
+		exists = SOV
+		exists = U08
+		NOT = { war = { country = SOV country = U08 } }
+	}
+	name = "EVT_231865_NAME"
+	desc = "EVT_231865_DESC"
+	style = 2
+	picture = "ENG/illustratedwarnews"
+	date = { day = 15 month = march year = 1939 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1941 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = war which = U08 }
+		command = { type = setflag which = Soviet_Attack_On_Reich }
+	}
+}
+
+# [231866] U08 | 1940 | Sortie of the High Seas Fleet (Kaiserliche Marine)
+event = {
+	id = 231866
+	country = U08
+	trigger = {
+		flag = Second_Great_War_Started
+		exists = U08
+		exists = ENG
+		war = { country = U08 country = ENG }
+	}
+	name = "EVT_231866_NAME"
+	desc = "EVT_231866_DESC"
+	style = 2
+	picture = "GER/pre_dreadnought_battleship_hannover"
+	date = { day = 1 month = may year = 1940 }
+	offset = 20
+	deathdate = { day = 31 month = december year = 1942 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = add_division which = "SMS Kaiser Wilhelm III" value = battleship when = 2 }
+		command = { type = add_division which = "SMS Grossdeutschland" value = battlecruiser when = 2 }
+		command = { type = supplies value = 3000 }
+	}
+}
+
+# [231867] U08 | 1944 | Total Triumph of the Pax Germanica
+event = {
+	id = 231867
+	country = U08
+	trigger = {
+		flag = Second_Great_War_Started
+		exists = U08
+		control = { province = 55 data = U08 }
+		control = { province = 29 data = U08 }
+	}
+	name = "EVT_231867_NAME"
+	desc = "EVT_231867_DESC"
+	style = 2
+	picture = "GLOBAL/aar_versailles"
+	date = { day = 1 month = january year = 1944 }
+	offset = 15
+	deathdate = { day = 31 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { trigger = { war = { country = U08 country = FRA } } type = peace which = FRA value = 1 }
+		command = { trigger = { war = { country = U08 country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = U08 country = SOV } } type = peace which = SOV value = 1 }
+		command = { type = dissent value = -20 }
+		command = { type = setflag which = Pax_Germanica_Eternal }
+	}
+}
+
+
+# ============================================================================
+# ETAPA 5: LA GUERRA FRIA DE LA PAX GERMANICA (1945-1999)
+# El Segundo Reich (U08) vs. Los Estados Unidos de America (USA)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231970] USA | 1945 | American Awakening: End of Isolationism
+# ----------------------------------------------------------------------------
+event = {
+	id = 231970
+	country = USA
+	trigger = {
+		flag = Pax_Germanica_Eternal
+		exists = USA
+		exists = U08
+	}
+	name = "EVT_231970_NAME"
+	desc = "EVT_231970_DESC"
+	style = 2
+	picture = "USA/decision_lend_lease_sov"
+	date = { day = 1 month = september year = 1945 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = industrial_modifier which = total value = 15 }
+		command = { type = relation which = U08 value = -40 }
+		command = { type = setflag which = USA_Awakened_Against_Reich }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231971] U08 | 1947 | The Imperial Iron Curtain: Armed Peace of Two Worlds
+# ----------------------------------------------------------------------------
+event = {
+	id = 231971
+	country = U08
+	trigger = {
+		flag = Pax_Germanica_Eternal
+		flag = USA_Awakened_Against_Reich
+		exists = U08
+		exists = USA
+	}
+	name = "EVT_231971_NAME"
+	desc = "EVT_231971_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 12 month = march year = 1947 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = USA value = -30 }
+		command = { type = dissent value = -5 }
+		command = { type = setflag which = Imperial_Cold_War_Began }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231972] U08 | 1949 | The Imperial Atomic Arsenal: Bipolar Nuclear Age
+# ----------------------------------------------------------------------------
+event = {
+	id = 231972
+	country = U08
+	trigger = {
+		flag = Imperial_Cold_War_Began
+		exists = U08
+		exists = USA
+	}
+	name = "EVT_231972_NAME"
+	desc = "EVT_231972_DESC"
+	style = 2
+	picture = "nwo/atomic_bomb"
+	date = { day = 29 month = august year = 1949 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = supplies value = 1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231973] U08 | 1951 | Imperial Succession: Kaiser Louis Ferdinand (Wilhelm IV)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231973
+	country = U08
+	trigger = {
+		flag = Pax_Germanica_Eternal
+		exists = U08
+	}
+	name = "EVT_231973_NAME"
+	desc = "EVT_231973_DESC"
+	style = 2
+	picture = "GER/wilhelm_ii"
+	date = { day = 20 month = july year = 1951 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 855384 }
+		command = { type = dissent value = -10 }
+		command = { type = set_domestic which = democratic value = 4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231974] U08 | 1957 | The Space Race of the Reich: Satellite Germania I
+# ----------------------------------------------------------------------------
+event = {
+	id = 231974
+	country = U08
+	trigger = {
+		flag = Imperial_Cold_War_Began
+		exists = U08
+	}
+	name = "EVT_231974_NAME"
+	desc = "EVT_231974_DESC"
+	style = 2
+	picture = "nwo/sputnik"
+	date = { day = 4 month = october year = 1957 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = -200 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231975] USA | 1969 | The Moon Landing: Apollo Conquest
+# ----------------------------------------------------------------------------
+event = {
+	id = 231975
+	country = USA
+	trigger = {
+		flag = Imperial_Cold_War_Began
+		exists = USA
+	}
+	name = "EVT_231975_NAME"
+	desc = "EVT_231975_DESC"
+	style = 2
+	picture = "nwo/apollo_11"
+	date = { day = 20 month = july year = 1969 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1969 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = industrial_modifier which = total value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231976] USA | 1962 | Mid-Atlantic Naval Brinkmanship
+# ----------------------------------------------------------------------------
+event = {
+	id = 231976
+	country = USA
+	trigger = {
+		flag = Imperial_Cold_War_Began
+		exists = USA
+		exists = U08
+	}
+	name = "EVT_231976_NAME"
+	desc = "EVT_231976_DESC"
+	style = 2
+	picture = "nwo/cuban_missile_crisis_discussion"
+	date = { day = 18 month = october year = 1962 }
+	offset = 1
+	deathdate = { day = 15 month = november year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { trigger = { exists = U08 } type = relation which = U08 value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231977] U08 | 1965 | The Dilemma of Mittelafrika: The Imperial Commonwealth
+# ----------------------------------------------------------------------------
+event = {
+	id = 231977
+	country = U08
+	trigger = {
+		flag = Pax_Germanica_Eternal
+		exists = U08
+	}
+	name = "EVT_231977_NAME"
+	desc = "EVT_231977_DESC"
+	style = 2
+	picture = "GLOBAL/north_africa_war"
+	date = { day = 1 month = june year = 1965 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1966 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = supplies value = 1500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231978] U08 | 1978 | Mitteleuropa Economic Community & The Reichsmark Standard
+# ----------------------------------------------------------------------------
+event = {
+	id = 231978
+	country = U08
+	trigger = {
+		flag = Pax_Germanica_Eternal
+		exists = U08
+	}
+	name = "EVT_231978_NAME"
+	desc = "EVT_231978_DESC"
+	style = 2
+	picture = "GLOBAL/issue_currency"
+	date = { day = 15 month = march year = 1978 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = 15 }
+		command = { type = money value = 1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231979] ALL (Human Player) | 1980 | Master Decision: Destiny of the Imperial Cold War
+# ----------------------------------------------------------------------------
+event = {
+	id = 231979
+	random = no
+	decision = {
+		year = 1980
+	}
+	decision_trigger = {
+		year = 1980
+	}
+	trigger = {
+		ai = no
+		flag = Pax_Germanica_Eternal
+		exists = U08
+		exists = USA
+	}
+	name = "EVT_231979_NAME"
+	desc = "EVT_231979_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	decision_picture = "GLOBAL/decision_wargames"
+	date = { day = 1 month = january year = 1980 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1985 }
+	action = {
+		name = "EVT_231979_A"
+		command = { type = setflag which = pax_germanica_usa_collapses }
+	}
+	action = {
+		name = "EVT_231979_B"
+		command = { type = setflag which = pax_germanica_reich_collapses }
+	}
+	action = {
+		name = "EVT_231979_C"
+		command = { type = setflag which = pax_germanica_detente_1999 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231980] USA | 1982 | Wall Street Bankruptcy and American Fractures
+# ----------------------------------------------------------------------------
+event = {
+	id = 231980
+	country = USA
+	trigger = {
+		flag = pax_germanica_usa_collapses
+		exists = USA
+	}
+	name = "EVT_231980_NAME"
+	desc = "EVT_231980_DESC"
+	style = 2
+	picture = "GLOBAL/strike"
+	date = { day = 19 month = october year = 1982 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1983 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 25 }
+		command = { type = industrial_modifier which = total value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231981] USA | 1985 | Dissolution of the Union: Grand Monarchist Confederation
+# ----------------------------------------------------------------------------
+event = {
+	id = 231981
+	country = USA
+	trigger = {
+		flag = pax_germanica_usa_collapses
+		exists = USA
+	}
+	name = "EVT_231981_NAME"
+	desc = "EVT_231981_DESC"
+	style = 2
+	picture = "nwo/usa_divided"
+	date = { day = 4 month = july year = 1985 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = independence which = CSA value = 1 }
+		command = { type = independence which = TEX value = 1 }
+		command = { type = independence which = CAL value = 1 }
+		command = { type = dissent value = -15 }
+		command = { trigger = { exists = U08 } type = peace which = U08 value = 1 }
+		command = { type = setflag which = USA_Collapsed_Imperial_Cold_War }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231982] U08 | 1991 | Worldwide Triumph of Pax Germanica: Peace of Potsdam
+# ----------------------------------------------------------------------------
+event = {
+	id = 231982
+	country = U08
+	trigger = {
+		flag = USA_Collapsed_Imperial_Cold_War
+		exists = U08
+	}
+	name = "EVT_231982_NAME"
+	desc = "EVT_231982_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 25 month = december year = 1991 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1992 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -25 }
+		command = { type = industrial_modifier which = total value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231983] U08 | 1985 | The Autocracy Crisis: Ruhr Strikes and Mitteleuropa Unrest
+# ----------------------------------------------------------------------------
+event = {
+	id = 231983
+	country = U08
+	trigger = {
+		flag = pax_germanica_reich_collapses
+		exists = U08
+	}
+	name = "EVT_231983_NAME"
+	desc = "EVT_231983_DESC"
+	style = 2
+	picture = "GLOBAL/aar_dworkerstrike"
+	date = { day = 15 month = may year = 1985 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 25 }
+		command = { type = industrial_modifier which = total value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231984] U08 | 1989 | The Peaceful Revolution of Berlin: Hohenzollern Abdication
+# ----------------------------------------------------------------------------
+event = {
+	id = 231984
+	country = U08
+	trigger = {
+		flag = pax_germanica_reich_collapses
+		exists = U08
+	}
+	name = "EVT_231984_NAME"
+	desc = "EVT_231984_DESC"
+	style = 2
+	picture = "nwo/fall_of_berlin_wall"
+	date = { day = 9 month = november year = 1989 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = dissent value = -25 }
+		command = { type = setflag which = Reich_Democratized }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231985] U08 | 1990 | Dissolution of Mitteleuropa: Birth of Free Europe
+# ----------------------------------------------------------------------------
+event = {
+	id = 231985
+	country = U08
+	trigger = {
+		flag = Reich_Democratized
+		exists = U08
+	}
+	name = "EVT_231985_NAME"
+	desc = "EVT_231985_DESC"
+	style = 2
+	picture = "nwo/reunification"
+	date = { day = 3 month = october year = 1990 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { exists = POL } type = end_mastery which = POL }
+		command = { trigger = { exists = UKR } type = end_mastery which = UKR }
+		command = { trigger = { exists = FIN } type = end_mastery which = FIN }
+		command = { type = dissent value = -15 }
+		command = { type = setflag which = Second_Reich_Defeated_Peacefully }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231986] USA | 1991 | Triumph of the Free World: Washington Prevails
+# ----------------------------------------------------------------------------
+event = {
+	id = 231986
+	country = USA
+	trigger = {
+		flag = Second_Reich_Defeated_Peacefully
+		exists = USA
+	}
+	name = "EVT_231986_NAME"
+	desc = "EVT_231986_DESC"
+	style = 2
+	picture = "Minors/if_day"
+	date = { day = 25 month = december year = 1991 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1992 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -25 }
+		command = { type = industrial_modifier which = total value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231987] U08 | 1988 | Imperial Reykjavik Summit: Strategic Disarmament
+# ----------------------------------------------------------------------------
+event = {
+	id = 231987
+	country = U08
+	trigger = {
+		flag = pax_germanica_detente_1999
+		exists = U08
+		exists = USA
+	}
+	name = "EVT_231987_NAME"
+	desc = "EVT_231987_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 15 month = may year = 1988 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = USA value = 50 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231988] U08 | 1999 | The Millennium of 1999: A Century of Grand History
+# ----------------------------------------------------------------------------
+event = {
+	id = 231988
+	country = U08
+	trigger = {
+		flag = Pax_Germanica_Eternal
+		exists = U08
+	}
+	name = "EVT_231988_NAME"
+	desc = "EVT_231988_DESC"
+	style = 2
+	picture = "nwo/peacetime"
+	date = { day = 31 month = december year = 1999 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -50 }
+		command = { type = money value = 5000 }
+	}
+}

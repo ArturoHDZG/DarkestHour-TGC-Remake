@@ -1,0 +1,1239 @@
+# ============================================================================
+# File: events/CHI/CHI_Decisions.txt (20 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [124133] CHI | 1931 | Fourth Encirclement Campaigns (Cuarta Campana de Cerco)
+# Triggered by event 124131 in events/CHI/CHI_13-33.txt
+# Trigger event 123015 in events/Minors/CHC_30-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124133
+	random = no
+	country = CHI
+	decision = {
+		not = { local_flag = CHI_CHC_FOURTH_ENCIRCLEMENT }
+		local_flag = CHI_CHC_THIRD_ENCIRCLEMENT
+		exists = CHC
+		not = { alliance = { country = CHC country = CHI } }
+		not = { war = { country = CHI country = JAP } }
+		atwar = no
+		or = {
+			and = {
+				year = 1933
+				event = { id = 124131 days = 30 }
+			}
+			and = {
+				year = 1932
+				event = { id = 124131 days = 90 }
+			}
+			and = {
+				year = 1931
+				event = { id = 124131 days = 150 }
+			}
+		}
+	}
+	decision_trigger = {
+		supplies = 500
+		not = { dissent = 30 }
+	}
+	trigger = {
+		not = { local_flag = CHI_CHC_FOURTH_ENCIRCLEMENT }
+		local_flag = CHI_CHC_THIRD_ENCIRCLEMENT
+		exists = CHC
+		not = { alliance = { country = CHC country = CHI } }
+		not = { war = { country = CHI country = JAP } }
+		atwar = no
+		supplies = 500
+		not = { dissent = 30 }
+		or = {
+			and = {
+				year = 1933
+				event = { id = 124131 days = 30 }
+			}
+			and = {
+				year = 1932
+				event = { id = 124131 days = 90 }
+			}
+			and = {
+				year = 1931
+				event = { id = 124131 days = 150 }
+			}
+		}
+	}
+	name = EVT_SHARED_00164_NAME
+	desc = EVT_SHARED_00164_DESC
+	style = 2
+	picture = "GLOBAL/ccip_cw"
+	decision_picture = "CHI/decision_ccip_cna"
+	date = { day = 0 month = january year = 1931 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_WAR
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { trigger = { ai = yes } type = ai which = "switch/ferocity_yes.ai" }
+		command = { type = supplies value = -50 }
+		command = { type = trigger which = 123015 }
+		command = { type = sleepevent which = 124134 }
+		command = { type = local_setflag which = CHI_CHC_FOURTH_ENCIRCLEMENT }
+		command = { type = war which = CHC }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124137] CHI | 1931 | Fifth Encirclement Campaigns (Quinta Campana de Cerco)
+# Triggered by event 123017 in events/Minors/CHC_30-45.txt
+# Triggered by event 124122 in events/CHI/CHI_33-37.txt
+# Trigger event 124138 in events/CHI/CHI_13-33.txt
+# Trigger event 207004 in events/AI/REB_AI_14-52.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124137
+	random = no
+	country = CHI
+	name = EVT_CHI_124137_NAME
+	desc = EVT_CHI_124137_DESC
+	decision = {
+		or = {
+			not = { exists = UPE }
+			ai = yes
+		}
+		not = { local_flag = CHI_CHC_FIFTH_ENCIRCLEMENT }
+		local_flag = CHI_CHC_FOURTH_ENCIRCLEMENT
+		exists = CHC
+		not = { alliance = { country = CHC country = CHI } }
+		not = { war = { country = CHI country = JAP } }
+		atwar = no
+		or = {
+			and = {
+				year = 1933
+				event = { id = 123017 days = 30 }
+			}
+			and = {
+				year = 1932
+				event = { id = 123017 days = 90 }
+			}
+			and = {
+				year = 1931
+				event = { id = 123017 days = 150 }
+			}
+		}
+	}
+	decision_trigger = {
+		supplies = 1000
+		not = { dissent = 30 }
+		or = {
+            and = {
+                technology = 5830
+                technology = 1090
+                technology = 2930
+                technology = 2880
+            }
+            event = 124122
+        }
+	}
+	trigger = {
+		not = { local_flag = CHI_CHC_FIFTH_ENCIRCLEMENT }
+		local_flag = CHI_CHC_FOURTH_ENCIRCLEMENT
+		exists = CHC
+		not = { alliance = { country = CHC country = CHI } }
+		not = { war = { country = CHI country = JAP } }
+		atwar = no
+		or = {
+			and = {
+				year = 1933
+				event = { id = 123017 days = 30 }
+			}
+			and = {
+				year = 1932
+				event = { id = 123017 days = 90 }
+			}
+			and = {
+				year = 1931
+				event = { id = 123017 days = 150 }
+			}
+		}
+		supplies = 500
+		not = { dissent = 45 }
+	}
+	style = 2
+	picture = "GLOBAL/ccip_cw"
+	decision_picture = "CHI/decision_ccip_cna"
+	date = { day = 0 month = january year = 1931 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = supplies value = -500 }
+		command = { trigger = { ai = no } type = supplies value = -500 }
+		command = { trigger = { ai = no } type = dissent value = 5 }
+		command = { trigger = { ai = yes dissent = 40 } type = dissent value = -2 }
+		command = { trigger = { ai = yes dissent = 30 } type = dissent value = -2 }
+		command = { trigger = { ai = yes dissent = 30 } type = dissent value = -2 }
+		command = { trigger = { ai = yes dissent = 20 } type = dissent value = -2 }
+		command = { trigger = { ai = yes dissent = 20 } type = dissent value = -2 }
+		command = { type = remove_units which = land where = REB when = 1 value = "Chahar" }
+		command = { type = remove_units which = land where = REB when = 1 value = "Shanxi" }
+		command = { type = remove_units which = land where = REB when = 1 value = "Suiyuan_Ningxia" }
+		command = { type = trigger which = 124138 }
+		command = { type = war which = CHC }
+		command = { type = local_setflag which = CHI_CHC_FIFTH_ENCIRCLEMENT }
+		command = { trigger = { ai = yes } type = ai which = "switch/ferocity_yes.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124009] CHI | 1933 | Anti-Japanese Agitation in Inner Mongolia (Agitación antijaponesa en Mongolia Interior)
+# Trigger event 167005 in events/JAP/JAP_00-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124009
+	random = no
+	country = CHI
+	decision = {
+		OR = {
+			control = { province = 1212 data = JAP }
+			control = { province = 1240 data = JAP }
+			AND = {
+				  control = { province = 1212 data = MAN }
+				  puppet = { country = MAN country = JAP }
+			}
+			AND = {
+				  control = { province = 1240 data = MAN }
+				  puppet = { country = MAN country = JAP }
+			}
+		}
+	}
+	decision_trigger = { money = 500 supplies = 1000 }
+	trigger = {
+		OR = {
+			control = { province = 1212 data = JAP }
+			control = { province = 1240 data = JAP }
+			AND = {
+				  control = { province = 1212 data = MAN }
+				  puppet = { country = MAN country = JAP }
+			}
+			AND = {
+				  control = { province = 1240 data = MAN }
+				  puppet = { country = MAN country = JAP }
+			}
+		}
+		random = 5
+	}
+	name = "EVT_SHARED_00190_NAME"
+	desc = "EVT_SHARED_00190_DESC"
+	style = 2
+	picture = "GLOBAL/ww1_offensive"
+	decision_picture = "GLOBAL/decision_grand_offensive5"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 167005 }
+		command = { trigger = { ai = no } type = money value = -500 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329025] CHI | 1933 | United Front Formed (Frente Unido proclamado)
+# Triggered by event 123019 in events/Minors/CHC_30-45.txt
+# Triggered by event 223192 in events/SOV/SOV_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329025
+	country = CHI
+	random = no
+	decision = {
+		OR = {
+			war = { country = CHI country = SOV }
+			war = { country = CHC country = SOV }
+			war = { country = CSX country = SOV }
+			war = { country = CGX country = SOV }
+			war = { country = CXB country = SOV }
+			war = { country = CYN country = SOV }
+		}
+		NOT = { ispuppet = CHI }
+		OR = {
+			AND = { exists = CSX NOT = { puppet = { country = CSX country = SOV } } }
+			AND = { exists = CHC NOT = { puppet = { country = CHC country = SOV } } }
+			AND = { exists = CGX NOT = { puppet = { country = CGX country = SOV } } }
+			AND = { exists = CYN NOT = { puppet = { country = CYN country = SOV } } }
+			AND = { exists = CXB NOT = { puppet = { country = CXB country = SOV } } }
+		}
+		OR = {
+			NOT = { ispuppet = CSX }
+			puppet = { country = CSX country = CHI }
+			puppet = { country = CSX country = CHC }
+			puppet = { country = CSX country = CGX }
+			puppet = { country = CSX country = CYN }
+			puppet = { country = CSX country = CXB }
+		}
+		OR = {
+			NOT = { ispuppet = CHC }
+			puppet = { country = CHC country = CHI }
+			puppet = { country = CHC country = CSX }
+			puppet = { country = CHC country = CGX }
+			puppet = { country = CHC country = CYN }
+			puppet = { country = CHC country = CXB }
+		}
+		OR = {
+			NOT = { ispuppet = CGX }
+			puppet = { country = CGX country = CHI }
+			puppet = { country = CGX country = CSX }
+			puppet = { country = CGX country = CHC }
+			puppet = { country = CGX country = CYN }
+			puppet = { country = CGX country = CXB }
+		}
+		OR = {
+			NOT = { ispuppet = CYN }
+			puppet = { country = CYN country = CHI }
+			puppet = { country = CYN country = CSX }
+			puppet = { country = CYN country = CHC }
+			puppet = { country = CYN country = CGX }
+			puppet = { country = CYN country = CXB }
+		}
+		OR = {
+			NOT = { ispuppet = CXB }
+			puppet = { country = CXB country = CHI }
+			puppet = { country = CXB country = CSX }
+			puppet = { country = CXB country = CHC }
+			puppet = { country = CXB country = CGX }
+			puppet = { country = CXB country = CYN }
+		}
+		or = {
+			year = 1936
+			not = { event = 123019 }
+			and = {
+				event = 123019
+				event = 223192
+			}
+		}
+		not = {
+			alliance = { country = CHI country = JAP }
+		}
+	}
+	decision_trigger = {
+		OR = {
+			war = { country = CHI country = SOV }
+			war = { country = CHC country = SOV }
+			war = { country = CSX country = SOV }
+			war = { country = CGX country = SOV }
+			war = { country = CXB country = SOV }
+			war = { country = CYN country = SOV }
+		}
+	}
+	trigger = {
+		OR = {
+			war = { country = CHI country = SOV }
+			war = { country = CHC country = SOV }
+			war = { country = CSX country = SOV }
+			war = { country = CGX country = SOV }
+			war = { country = CXB country = SOV }
+			war = { country = CYN country = SOV }
+		}
+		NOT = { ispuppet = CHI }
+		OR = {
+			AND = { exists = CSX NOT = { puppet = { country = CSX country = SOV } } }
+			AND = { exists = CHC NOT = { puppet = { country = CHC country = SOV } } }
+			AND = { exists = CGX NOT = { puppet = { country = CGX country = SOV } } }
+			AND = { exists = CYN NOT = { puppet = { country = CYN country = SOV } } }
+			AND = { exists = CXB NOT = { puppet = { country = CXB country = SOV } } }
+		}
+		not = {
+			and = {
+				or = {
+					participant = { country = CHC value = 3 }
+					alliance = { country = CHC country = SOV }
+				}
+				or = {
+					participant = { country = CSX value = 3 }
+					alliance = { country = CSX country = SOV }
+				}
+				or = {
+					participant = { country = CGX value = 3 }
+					alliance = { country = CGX country = SOV }
+				}
+				or = {
+					participant = { country = CYN value = 3 }
+					alliance = { country = CYN country = SOV }
+				}
+				or = {
+					participant = { country = CXB value = 3 }
+					alliance = { country = CXB country = SOV }
+				}
+			}
+		}
+		or = {
+			year = 1936
+			not = { event = 123019 }
+			and = {
+				event = 123019
+				event = 223192
+			}
+		}
+		not = {
+			alliance = { country = CHI country = JAP }
+		}
+	}
+	name = "EVT_SHARED_00173_NAME"
+	desc = "EVT_SHARED_00173_DESC"
+	style = 2
+	picture = "CHI/ccip_peace"
+	date = { day = 0 month = january year = 1933 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_YES"
+		ai_chance = 90
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = dissent value = -5 }
+		command = { trigger = { war = { country = CHC country = CHI } not = { participant = { country = CHC value = 3 } } not = { alliance = { country = CHC country = SOV } } } type = peace which = CHC value = 0 }
+		command = { trigger = { NOT = { puppet = { country = CHC country = SOV } } not = { participant = { country = CHC value = 3 } } not = { alliance = { country = CHC country = SOV } } } type = alliance which = CHC when = 1 }
+		command = { trigger = { NOT = { puppet = { country = CSX country = SOV } } not = { participant = { country = CSX value = 3 } } not = { alliance = { country = CSX country = SOV } } } type = alliance which = CSX when = 1 }
+		command = { trigger = { NOT = { puppet = { country = CGX country = SOV } } not = { participant = { country = CGX value = 3 } } not = { alliance = { country = CGX country = SOV } } } type = alliance which = CGX when = 1 }
+		command = { trigger = { NOT = { puppet = { country = CYN country = SOV } } not = { participant = { country = CYN value = 3 } } not = { alliance = { country = CYN country = SOV } } } type = alliance which = CYN when = 1 }
+		command = { trigger = { NOT = { puppet = { country = CXB country = SOV } } not = { participant = { country = CXB value = 3 } } not = { alliance = { country = CXB country = SOV } } } type = alliance which = CXB when = 1 }
+	}
+	action = {
+		name = "ACTION_NAME_NO"
+		ai_chance = 10
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = dissent value = 5 }
+		command = { trigger = { NOT = { puppet = { country = CHC country = SOV } } not = { participant = { country = CHC value = 3 } } not = { alliance = { country = CHC country = SOV } } } type = relation which = CHC value = -10 }
+		command = { trigger = { NOT = { puppet = { country = CSX country = SOV } } not = { participant = { country = CSX value = 3 } } not = { alliance = { country = CSX country = SOV } } } type = relation which = CSX value = -15 }
+		command = { trigger = { NOT = { puppet = { country = CGX country = SOV } } not = { participant = { country = CGX value = 3 } } not = { alliance = { country = CGX country = SOV } } } type = relation which = CGX value = -10 }
+		command = { trigger = { NOT = { puppet = { country = CYN country = SOV } } not = { participant = { country = CYN value = 3 } } not = { alliance = { country = CYN country = SOV } } } type = relation which = CYN value = -10 }
+		command = { trigger = { NOT = { puppet = { country = CXB country = SOV } } not = { participant = { country = CXB value = 3 } } not = { alliance = { country = CXB country = SOV } } } type = relation which = CXB value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329031] CHI | 1933 | Formation of the United Front (Creación del Frente Unido)
+# Triggered by event 167121 in events/JAP/JAP_33-36.txt
+# Triggered by event 167123 in events/JAP/JAP_33-36.txt
+# Triggered by event 167149 in events/JAP/JAP_Decisions.txt
+# Trigger event 123021 in events/Minors/CHC_30-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329031
+	country = CHI
+	random = no
+	decision = {
+		OR = {
+			war = { country = CHI country = JAP }
+			war = { country = CHC country = JAP }
+			war = { country = CSX country = JAP }
+			war = { country = CGX country = JAP }
+			war = { country = CYN country = JAP }
+			war = { country = CXB country = JAP }
+		}
+		NOT = { alliance = { country = CHI country = JAP } }
+		NOT = { alliance = { country = CSX country = JAP } }
+		NOT = { alliance = { country = CHC country = JAP } }
+		NOT = { alliance = { country = CGX country = JAP } }
+		NOT = { alliance = { country = CYN country = JAP } }
+		NOT = { alliance = { country = CXB country = JAP } }
+	}
+	decision_trigger = {
+		OR = {
+			war = { country = CHI country = JAP }
+			war = { country = CHC country = JAP }
+			war = { country = CSX country = JAP }
+			war = { country = CGX country = JAP }
+			war = { country = CYN country = JAP }
+			war = { country = CXB country = JAP }
+		}
+		NOT = { alliance = { country = CHI country = JAP } }
+		NOT = { alliance = { country = CSX country = JAP } }
+		NOT = { alliance = { country = CHC country = JAP } }
+		NOT = { alliance = { country = CGX country = JAP } }
+		NOT = { alliance = { country = CYN country = JAP } }
+		NOT = { alliance = { country = CXB country = JAP } }
+	}
+	trigger = {
+		OR = {
+			war = { country = CHI country = JAP }
+			war = { country = CHC country = JAP }
+			war = { country = CSX country = JAP }
+			war = { country = CGX country = JAP }
+			war = { country = CYN country = JAP }
+			war = { country = CXB country = JAP }
+		}
+		NOT = { alliance = { country = CHI country = JAP } }
+		NOT = { alliance = { country = CSX country = JAP } }
+		NOT = { alliance = { country = CHC country = JAP } }
+		NOT = { alliance = { country = CGX country = JAP } }
+		NOT = { alliance = { country = CYN country = JAP } }
+		NOT = { alliance = { country = CXB country = JAP } }
+	}
+	name = EVT_SHARED_00183_NAME
+	desc = EVT_SHARED_00183_DESC
+	style = 2
+	picture = "GLOBAL/marco_polo_bridge"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1942 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = domestic which = freedom value = 1 }
+		command = { trigger = { ai = yes } type = dissent value = -20 }
+		command = { type = peace which = CHC value = 0 }
+		command = { type = peace which = CYN value = 0 }
+		command = { type = peace which = CXB value = 0 }
+		command = { type = peace which = CGX value = 0 }
+		command = { type = peace which = CSX value = 0 }
+        command = { type = relation which = CHC value = 50 }
+        command = { type = relation which = CGX value = 50 }
+        command = { type = relation which = CYN value = 50 }
+        command = { type = relation which = CXB value = 50 }
+        command = { type = relation which = CSX value = 50 }
+		command = { trigger = { ai = yes } type = alliance which = CYN when = 1 }
+		command = { trigger = { ai = yes } type = alliance which = CXB when = 1 }
+		command = { trigger = { ai = yes } type = inherit which = CGX when = 1 }
+		command = { trigger = { ai = yes } type = inherit which = CSX when = 1 }
+		command = { trigger = { NOT = { ai = yes }} type = inherit which = CYN value = 1 }
+		command = { trigger = { NOT = { ai = yes }} type = inherit which = CGX value = 1 }
+		command = { trigger = { NOT = { ai = yes }} type = inherit which = CSX value = 1 }
+        command = { type = event which = 123021 where = CHC when = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124148] CHI | 1933 | Rebellion in Xinjiang (Insurrección en Sinkiang)
+# Triggered by event 324316 in events/GLOBAL/MULTI_32-39.txt
+# Trigger event 324323 in events/GLOBAL/MULTI_32-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124148
+	country = CHI
+	random = no
+	name = EVT_SHARED_00180_NAME
+	desc = EVT_SHARED_00180_DESC
+	decision = {
+		not = { event = 324316 }
+		exists = UPE
+		not = { ispuppet = UPE }
+	}
+	decision_trigger = {
+		or = {
+			not = { exists = SIK }
+			and = {
+				year = 1933
+				month = 7
+			}
+		}
+	}
+	trigger = {
+		ai = no
+	}
+	style = 2
+	date = { day = 0 month = 6 year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1937 }
+	action = {
+		name = ACTION_NAME_WAR
+		command = { type = war which = UPE }
+		command = { trigger = { exists = SIK } type = inherit which = SIK value = 1 }
+		command = { trigger = { exists = SIK } type = event which = 324323 where = SIK when = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124010] CHI | 1935 | Anti-Japanese Agitation in Inner Mongolia (Agitación antijaponesa en Mongolia Interior)
+# Trigger event 167006 in events/JAP/JAP_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124010
+	random = no
+	country = CHI
+	decision = {
+		OR = {
+			control = { province = 1212 data = JAP }
+			control = { province = 1211 data = JAP }
+			control = { province = 1207 data = JAP }
+			control = { province = 1214 data = JAP }
+			control = { province = 1205 data = JAP }
+			AND = {
+				control = { province = 1212 data = MAN }
+				puppet = { country = MAN country = JAP }
+			}
+			AND = {
+				control = { province = 1211 data = MAN }
+				puppet = { country = MAN country = JAP }
+			}
+			AND = {
+				control = { province = 1207 data = MAN }
+				puppet = { country = MAN country = JAP }
+			}
+			AND = {
+				control = { province = 1214 data = MAN }
+				puppet = { country = MAN country = JAP }
+			}
+			AND = {
+				control = { province = 1205 data = MAN }
+				puppet = { country = MAN country = JAP }
+			}
+		}
+	}
+	decision_trigger = { money = 1000 supplies = 2000 }
+	trigger = {
+		OR = {
+			control = { province = 1212 data = JAP }
+			control = { province = 1211 data = JAP }
+			control = { province = 1207 data = JAP }
+			control = { province = 1214 data = JAP }
+			control = { province = 1205 data = JAP }
+			AND = {
+				control = { province = 1212 data = MAN }
+				puppet = { country = MAN country = JAP }
+			}
+			AND = {
+				control = { province = 1211 data = MAN }
+				puppet = { country = MAN country = JAP }
+			}
+			AND = {
+				control = { province = 1207 data = MAN }
+				puppet = { country = MAN country = JAP }
+			}
+			AND = {
+				control = { province = 1214 data = MAN }
+				puppet = { country = MAN country = JAP }
+			}
+			AND = {
+				control = { province = 1205 data = MAN }
+				puppet = { country = MAN country = JAP }
+			}
+		}
+		random = 5
+	}
+	name = "EVT_SHARED_00190_NAME"
+	desc = "EVT_SHARED_00190_DESC"
+	style = 2
+	picture = "GLOBAL/ww1_offensive"
+	decision_picture = "GLOBAL/decision_grand_offensive5"
+	date = { day = 1 month = january year = 1935 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 167006 }
+		command = { trigger = { ai = no } type = money value = -1000 }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329027] CHI | 1936 | Relocation of Chinese Industry (Evacuación industrial de China)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329027
+	random = no
+	country = CHI
+	name = EVT_CHI_329027_NAME
+	desc = EVT_SHARED_00492_DESC
+  	style = 2
+	picture = "GLOBAL/news_paper"
+	decision = { war = { country = JAP country = CHI } }
+	decision_trigger = { war = { country = JAP country = CHI } }
+	trigger = { war = { country = JAP country = CHI } }
+	date = { day = 0 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_setflag which = CHIIndustry }
+       	command = { type = domestic which = defense_lobby value = 1 }
+		command = { trigger = { ai = yes } type = add_prov_resource which = 1299 value = 7  where = metal }
+		command = { trigger = { ai = yes } type = add_prov_resource which = 1299 value = 14 where = energy }
+		command = { trigger = { ai = yes } type = add_prov_resource which = 1299 value = 4  where = rare_materials }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124169] CHI | 1945 | Submission of Regional Warlords (Sumisión de los señores de la guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124169
+	random = no
+	country = CHI
+	persistent = yes
+	name = "EVT_CHI_124169_NAME"
+	desc = "EVT_CHI_124169_DESC"
+	picture = "nwo/united_china"
+	style = 1
+	decision = {
+		flag = CHI_won_civil_war
+		OR = {
+			exists = CSX
+			exists = CXB
+			exists = CGX
+			exists = CYN
+		}
+	}
+	trigger = {
+		flag = CHI_won_civil_war
+		OR = {
+			AND = {
+				exists = CSX
+				NOT = { war = { country = CSX } }
+				ai = CSX
+			}
+			AND = {
+				exists = CXB
+				NOT = { war = { country = CXB} }
+				ai = CXB
+			}
+			AND = {
+				exists = CGX
+				NOT = { war = { country = CGX} }
+				ai = CGX
+			}
+			AND = {
+				exists = CYN
+				NOT = { war = { country = CYN} }
+				ai = CYN
+			}
+		}
+		NOT = { ispuppet = CHI }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { exists = CSX NOT = { war = { country = CSX } } ai = CSX } type = inherit which = CSX }
+		command = { trigger = { exists = CXB NOT = { war = { country = CXB } } ai = CXB } type = inherit which = CXB }
+		command = { trigger = { exists = CGX NOT = { war = { country = CGX } } ai = CSX } type = inherit which = CGX }
+		command = { trigger = { exists = CYN NOT = { war = { country = CYN } } ai = CSX } type = inherit which = CYN }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124198] CHI | 1945 | Administrative Reform (Reforma administrativa)
+# Triggered by event 124203 in events/CHI/CHI_37-45.txt
+# Trigger event 207036 in events/Minors/REB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124198
+	country = CHI
+	persistent = yes
+	name = EVT_CHI_124198_NAME
+	desc = EVT_CHI_124198_DESC
+	picture = "nwo/new_chinese_dollar"
+	decision_picture = "nwo/d_new_chinese_dollar"
+	style = 1
+	trigger = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_adm_reform }
+		NOT = { event = 124203 }
+	}
+	decision = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_adm_reform }
+		NOT = { event = 124203 }
+		NOT = { dissent = 5 }
+	}
+	decision_trigger = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_adm_reform }
+		NOT = { event = 124203 }
+		NOT = { dissent = 5 }
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 80
+		command = { type = dissent value = 10 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = local_setflag which = CHI_adm_reform }
+	}
+	action = {
+		name = ACTION_NOT_NOW
+		ai_chance = 20
+		trigger = { ai = yes }
+		command = { type = money value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124199] CHI | 1945 | Political Democratization (Apertura política democrática)
+# Triggered by event 124203 in events/CHI/CHI_37-45.txt
+# Trigger event 207036 in events/Minors/REB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124199
+	country = CHI
+	persistent = yes
+	name = EVT_CHI_124199_NAME
+	desc = EVT_CHI_124199_DESC
+	picture = "nwo/kmt_political_reform"
+	decision_picture = "nwo/d_kmt_political_reform"
+	style = 1
+	trigger = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_pol_reform }
+		NOT = { event = 124203 }
+	}
+	decision = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_pol_reform }
+		NOT = { event = 124203 }
+		NOT = { dissent = 5 }
+	}
+	decision_trigger = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_pol_reform }
+		NOT = { event = 124203 }
+		NOT = { dissent = 5 }
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 80
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = democratic value = 2 }
+		command = { type = domestic which = freedom value = 2 }
+		command = { type = local_setflag which = CHI_pol_reform }
+	}
+	action = {
+		name = EVT_CHI_124199_A
+		ai_chance = 20
+		trigger = { ai = yes }
+		command = { type = money value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124200] CHI | 1945 | Lifting of Martial Law (Fin de la ley marcial)
+# Triggered by event 124203 in events/CHI/CHI_37-45.txt
+# Trigger event 207036 in events/Minors/REB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124200
+	country = CHI
+	persistent = yes
+	name = EVT_CHI_124200_NAME
+	desc = EVT_CHI_124200_DESC
+	picture = "nwo/kmt_end_of_martial_law"
+	decision_picture = "nwo/d_kmt_end_of_martial_law"
+	style = 1
+	trigger = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_martial_law_repealed }
+		NOT = { event = 124203 }
+	}
+	decision = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_martial_law_repealed }
+		NOT = { event = 124203 }
+		NOT = { dissent = 5 }
+	}
+	decision_trigger = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_martial_law_repealed }
+		NOT = { event = 124203 }
+		NOT = { dissent = 5 }
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_CHI_124200_A
+		ai_chance = 80
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = local_setflag which = CHI_martial_law_repealed }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 20
+		trigger = { ai = yes }
+		command = { type = money value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124201] CHI | 1945 | Reform of the Petitioning System (Reforma del sistema de quejas)
+# Triggered by event 124203 in events/CHI/CHI_37-45.txt
+# Trigger event 207036 in events/Minors/REB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124201
+	country = CHI
+	persistent = yes
+	name = EVT_CHI_124201_NAME
+	desc = EVT_CHI_124201_DESC
+	picture = "nwo/petitioning_law"
+	decision_picture = "nwo/d_petitioning_law"
+	style = 1
+	trigger = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_petitioning_law_reformed }
+		NOT = { event = 124203 }
+	}
+	decision = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_petitioning_law_reformed }
+		NOT = { event = 124203 }
+		NOT = { dissent = 5 }
+		money = 1000
+	}
+	decision_trigger = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_petitioning_law_reformed }
+		NOT = { event = 124203 }
+		NOT = { dissent = 5 }
+		money = 1000
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 80
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = money value = -1000 }
+		command = { type = local_setflag which = CHI_petitioning_law_reformed }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 20
+		trigger = { ai = yes }
+		command = { type = money value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124202] CHI | 1945 | Mainland Agrarian Reform (Reforma agraria nacional)
+# Triggered by event 124203 in events/CHI/CHI_37-45.txt
+# Trigger event 207036 in events/Minors/REB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124202
+	country = CHI
+	persistent = yes
+	name = EVT_CHI_124202_NAME
+	desc = EVT_CHI_124202_DESC
+	picture = "nwo/taiwan_land_reform"
+	decision_picture = "nwo/d_taiwan_land_reform"
+	style = 1
+	trigger = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_land_reform }
+		NOT = { event = 124203 }
+	}
+	decision = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_land_reform }
+		NOT = { event = 124203 }
+		NOT = { dissent = 3 }
+	}
+	decision_trigger = {
+		flag = CHI_won_civil_war
+		NOT = { local_flag = CHI_land_reform }
+		NOT = { event = 124203 }
+		NOT = { dissent = 3 }
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_CHI_124202_A
+		ai_chance = 80
+		command = { type = dissent value = 15 }
+		command = { type = industrial_modifier which = total value = 4 }
+		command = { type = local_setflag which = CHI_land_reform }
+	}
+	action = {
+		name = EVT_CHI_124202_B
+		ai_chance = 20
+		trigger = { ai = yes }
+		command = { type = money value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124205] CHI | 1945 | Economic Development Program (Programa de desarrollo económico)
+# Triggered by event 124203 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124205
+	country = CHI
+	name = EVT_CHI_124205_NAME
+	desc = EVT_CHI_124205_DESC
+	picture = "nwo/new_chinese_dollar"
+	decision_picture = "nwo/d_new_chinese_dollar"
+	style = 1
+	trigger = {
+		flag = CHI_won_civil_war
+		event = 124203
+	}
+	decision_trigger = {
+		flag = CHI_won_civil_war
+		money = 5000
+		NOT = { dissent = 5 }
+		event = 124203
+	}
+	decision = {
+		flag = CHI_won_civil_war
+		money = 5000
+		NOT = { dissent = 5 }
+		event = 124203
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 90
+		command = { type = dissent value = 10 }
+		command = { type = money value = -5000 }
+		command = { type = industrial_modifier which = total value = 5 }
+	}
+	action = {
+		name = EVT_CHI_124205_A
+		trigger = { ai = yes }
+		ai_chance = 10
+		command = { type = money value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124206] CHI | 1945 | Literacy Campaign (Campaña de alfabetización)
+# Triggered by event 124203 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124206
+	country = CHI
+	name = EVT_CHI_124206_NAME
+	desc = EVT_CHI_124206_DESC
+	picture = "nwo/kmt_end_of_instability"
+	decision_picture = "nwo/d_kmt_end_of_instability"
+	style = 1
+	trigger = {
+		flag = CHI_won_civil_war
+		event = 124203
+	}
+	decision_trigger = {
+		flag = CHI_won_civil_war
+		money = 5000
+		NOT = { dissent = 5 }
+		event = 124203
+	}
+	decision = {
+		flag = CHI_won_civil_war
+		money = 5000
+		NOT = { dissent = 5 }
+		event = 124203
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 90
+		command = { type = money value = -5000 }
+		command = { type = research_mod value = 8 }
+	}
+	action = {
+		name = ACTION_NOT_NOW
+		trigger = { ai = yes }
+		ai_chance = 10
+		command = { type = money value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329746] CHI | 1946 | Outbreak of Civil War (Estallido de la Guerra Civil China)
+# Trigger event 123031 in events/Minors/CHC_45-62.txt
+# Trigger event 124164 in events/CHI/CHI_37-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329746
+	random = no
+	country = CHI
+	persistent = yes
+	name = "EVT_CHI_329746_NAME"
+	desc = "EVT_CHI_329746_DESC"
+	picture = "nwo/chinese_civil_war"
+	decision_picture = "nwo/d_chinese_civil_war"
+	style = 1
+	decision = {
+		NOT = { war = { country = CHI country = CHC } }
+		exists = CHC
+		flag = cold_war_pacific
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	trigger = {
+		NOT = { war = { country = CHI country = CHC } }
+		exists = CHC
+		NOT = { non_aggression = { country = CHI country = CHC } }
+		NOT = { flag = chinese_unity_govt }
+		flag = cold_war_pacific
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 40
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 50
+		command = { type = war which = CHC }
+	}
+	action = {
+		name = "ACTION_NAME_MOBILIZE"
+		ai_chance = 50
+		trigger = { ai = yes }
+		command = { type = relation which = CHC value = 1 }
+		command = { type = end_access which = CHC }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124190] CHI | 1950 | Taiwanese Land Reform (Reforma agraria en Taiwán)
+# ----------------------------------------------------------------------------
+event = {
+	id = 124190
+	country = CHI
+	name = EVT_CHI_124190_NAME
+	desc = EVT_CHI_124190_DESC
+	picture = "nwo/taiwan_land_reform"
+	decision_picture = "nwo/d_taiwan_land_reform"
+	style = 1
+	decision = {
+		flag = CHC_won_civil_war
+	}
+	trigger = {
+		flag = CHC_won_civil_war
+	}
+	date = { day = 1 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 98
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = industrial_modifier which = total value = 6 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 2
+		trigger = { ai = yes }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [124210] CHI | 1960 | Chinese Border Claims in the Himalayas (Reclamaciones chinas en el Himalaya)
+# Trigger event 329953 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 124210
+	country = CHI
+	name = EVT_CHI_124210_NAME
+	desc = EVT_CHI_124210_DESC
+	picture = "nwo/himalayan_border"
+	decision_picture = "nwo/d_himalayan_border"
+	style = 1
+	decision = {
+		flag = cold_war
+		exists = IND
+		NOT = {
+			control = { province = 1278 data = -1 }
+			control = { province = 1455 data = -1 }
+			control = { province = 1458 data = -1 }
+		}
+		NOT = { war = { country = IND country = CHI } }
+	}
+	trigger = {
+		flag = cold_war
+		exists = IND
+		NOT = {
+			control = { province = 1278 data = -1 }
+			control = { province = 1455 data = -1 }
+			control = { province = 1458 data = -1 }
+		}
+		NOT = { war = { country = IND country = CHI } }
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = EVT_CHI_124210_A
+		ai_chance = 90
+		command = { type = belligerence value = 1 }
+		command = { type = addcore which = 1278 }
+		command = { type = addcore which = 1455 }
+		command = { type = addcore which = 1458 }
+	}
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		trigger = { ai = yes }
+		ai_chance = 10
+		command = { type = sleepevent which = 329953 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329956] CHI | 1962 | Chinese Ceasefire Proposal (Propuesta de alto el fuego china)
+# Triggered by event 329955 in events/CHI/CHI_45-75.txt
+# Trigger event 329957 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329956
+	country = CHI
+	name = EVT_CHI_329956_NAME
+	desc = EVT_CHI_329956_DESC
+	picture = "nwo/sino_indian_war"
+	decision_picture = "nwo/d_sino_indian_war"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 329955
+		exists = IND
+		war = { country = IND country = CHI }
+	}
+	decision = {
+		flag = cold_war
+		event = 329955
+		exists = IND
+		war = { country = IND country = CHI }
+	}
+	date = { day = 0 month = september year = 1962 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = EVT_CHI_329956_A
+		ai_chance = 95
+		command = { type = trigger which = 329957 }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 5
+		command = { type = sleepevent which = 329957 }
+	}
+}

@@ -1,0 +1,166 @@
+# ============================================================================
+# File: events/GRE/GRE_Decisions.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [152021] GRE | 1915 | The Gounaris Initiative (La iniciativa de Gounaris)
+# Triggered by event 152019 in events/GRE/GRE_14-33.txt
+# Triggered by event 152018 in events/GRE/GRE_14-33.txt
+# Triggered by event 143186 in events/ENG/ENG_14-14.txt
+# Triggered by event 143185 in events/ENG/ENG_Decisions.txt
+# Trigger event 147263 in events/FRA/FRA_14-31.txt
+# Trigger event 147264 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 152021
+	country = GRE
+	decision = {
+		NOT = {
+			headofgovernment = 90195
+			flag = venizelos_incabinet
+			event = 152019
+			alliance = { country = U08  country = GRE }
+			alliance = { country = FRA  country = GRE }
+			war = { country = FRA  country = GRE }
+		}
+	}
+	decision_trigger = {
+		event = 152018
+	}
+	trigger = {
+		event = 152018
+		NOT = {
+			headofgovernment = 90195
+			flag = venizelos_incabinet
+			event = 152019
+			alliance = { country = U08  country = GRE }
+			alliance = { country = FRA  country = GRE }
+			war = { country = FRA  country = GRE }
+		}
+		OR = {
+			random = 20
+			AND = {
+				random = 40
+				OR = {
+					event = 143186
+					event = 143185
+				}
+			}
+		}
+	}
+	name = "EVT_GRE_152021_NAME"
+	desc = "EVT_GRE_152021_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = january year = 1915 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { trigger = { NOT = { war = { country = FRA  country = BUL } } } type = trigger which = 147263  }
+		command = {
+			trigger = {
+				OR = {
+					war = { country = FRA  country = BUL }
+					alliance = { country = FRA  country = BUL }
+				}
+			}  type = trigger which = 147264  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [152076] GRE | 1936 | The Metaxas Line (La Línea Metaxas)
+# Triggered by event 152075 in events/GRE/GRE_33-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 152076
+	random = no
+	persistent = yes
+	country = GRE
+	decision = {
+		money = 100
+		event = 152075
+		NOT = { policy = { type = free_market value = 8 } }
+	}
+	decision_trigger = {
+		money = 700
+		metal = 200
+		supplies = 100
+	}
+	trigger = {
+		random = 100
+		money = 700
+		metal = 200
+		supplies = 100
+	}
+	name = "EVT_GRE_152076_NAME"
+	desc = "EVT_GRE_152076_DESC"
+	style = 2
+	picture = "GRE/metaxasline"
+	decision_picture = "GRE/decision_metaxasline"
+	date = { day = 1 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1940 }
+	action = {  trigger = { money = 500 }
+		ai_chance = 100
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -1 }
+		command = { type = money value = -700 }
+		command = { type = metalpool value = -200 }
+		command = { type = supplies value = -100 }
+		command = { type = construct which = land_fort where = 363 value = 1 }
+		command = { type = construct which = land_fort where = 364 value = 1 }
+		command = { type = construct which = land_fort where = 365 value = 1 }
+		command = { type = construct which = land_fort where = 370 value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329850] GRE | 1946 | Resumption of the Greek Civil War (Reanudación armada de la Guerra Civil Griega)
+# Triggered by event 268010 in events/Minors/U33.txt
+# Trigger event 152210 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329850
+	country = GRE
+	persistent = yes
+	name = EVT_GRE_329850_NAME
+	desc = EVT_GRE_329850_DESC
+	picture = "nwo/greek_civil_war"
+	decision_picture = "nwo/d_greek_civil_war"
+	style = 1
+	decision = {
+		NOT = { war = { country = GRE country = U33 } }
+		NOT = { alliance = { country = USA country = U33 } }
+		NOT = { alliance = { country = SOV country = U33 } }
+		NOT = { alliance = { country = GRE country = U33 } }
+		exists = U33
+		flag = cold_war
+		NOT = { event = 268010 }
+	}
+	trigger = {
+		NOT = { war = { country = GRE country = U33 } }
+		NOT = { alliance = { country = USA country = U33 } }
+		NOT = { alliance = { country = SOV country = U33 } }
+		NOT = { alliance = { country = GRE country = U33 } }
+		exists = U33
+		flag = cold_war
+		NOT = { event = 268010 }
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 50
+		command = { trigger = { alliance = { country = USA country = GRE } } type = trigger which = 152210 }
+		command = { trigger = { NOT = { alliance = { country = USA country = GRE } } } type = war which = U33 }
+	}
+	action = {
+		name = EVT_GRE_329850_A
+		ai_chance = 50
+		trigger = { ai = yes }
+		command = { type = relation which = U33 value = 1 }
+	}
+}

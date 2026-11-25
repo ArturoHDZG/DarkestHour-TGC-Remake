@@ -1,0 +1,49 @@
+# ============================================================================
+# File: events/Minors/U03_Decisions.txt (1 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [238003] U03 | 1963 | The Diem Crisis (La crisis del régimen de Di?m)
+# Trigger event 320016 in events/Minors/VIE.txt
+# Trigger event 238004 in events/Minors/U03.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 238003
+	country = U03
+	name = EVT_U03_238003_NAME
+	desc = EVT_U03_238003_DESC
+	picture = "nwo/ngo_dinh_diem"
+	decision_picture = "nwo/ngo_dinh_diem"
+	style = 1
+	decision = {
+		OR = {
+			flag = vietnam_war_total_usa_assistance
+			flag = vietnam_war_limited_usa_assistance
+		}
+		war = { country = U72 country = VIE }
+	}
+	trigger = {
+		OR = {
+			flag = vietnam_war_total_usa_assistance
+			flag = vietnam_war_limited_usa_assistance
+		}
+		war = { country = U72 country = VIE }
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_WITHDRAW
+		ai_chance = 98
+		command = { type = trigger which = 320016 }
+		command = { type = relation which = VIE value = 50 }
+	}
+	action = {
+		name = EVT_U03_238003_A
+		ai_chance = 2
+		trigger = { ai = yes }
+		command = { type = trigger which = 238004 }
+		command = { type = relation which = VIE value = -50 }
+	}
+}

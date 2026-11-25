@@ -1,0 +1,128 @@
+# ============================================================================
+# File: events/Minors/U34.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [269001] U34 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 269002 in events/Minors/U34.txt
+# Trigger event 235024 in events/Minors/TUR.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 269001
+   country = U34
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = TUR
+            NOT = { ai = TUR }
+            NOT = { ai = U34 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = TUR
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = TUR } }
+      command = { type = country which = TUR }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = TUR
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U34 }
+               control = { province = 1075 data = -1 }
+            }
+         }
+         type = trigger which = 269002
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = TUR }
+               NOT = { control = { province = 1075 data = -1 } }
+            }
+         }
+         type = trigger which = 235024
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = TUR
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [269002] U34 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 235023 in events/Minors/TUR.txt
+# Triggered by event 269001 in events/Minors/U34.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 269002
+   country = U34
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = TUR value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [269000] U34 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 269000
+	country = U34
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 985001 }
+		command = { type = headofgovernment which = 985002 }
+		command = { type = foreignminister which = 985003 }
+		command = { type = armamentminister which = 985004 }
+		command = { type = ministerofsecurity which = 985009 }
+		command = { type = ministerofintelligence which = 985011 }
+		command = { type = chiefofstaff which = 985005 }
+		command = { type = chiefofarmy which = 985006 }
+		command = { type = chiefofnavy which = 985007 }
+		command = { type = chiefofair which = 985008 }
+	}
+}

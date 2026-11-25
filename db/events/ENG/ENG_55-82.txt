@@ -1,0 +1,2004 @@
+# ============================================================================
+# File: events/ENG/ENG_55-82.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [143288] ENG | 1955 | Self-rule of Cyprus (Autogobierno de Chipre)
+# Trigger event 135008 in events/Minors/CYP.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143288
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143288_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = CYP }
+		control = { province = 388 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 70
+		command = { type = independence which = CYP value = 1 }
+		command = { type = make_puppet which = CYP }
+		command = { type = trigger which = 135008 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 30
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143349] ENG | 1955 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143349
+	country = ENG
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1955 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 10150 }
+		command = { type = headofgovernment which = 10159 }
+		command = { type = foreignminister which = 10164 }
+		command = { type = armamentminister which = 10173 }
+		command = { type = ministerofsecurity which = 10180 }
+		command = { type = ministerofintelligence which = 10185 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 10150 }
+		command = { type = headofgovernment which = 10019 }
+		command = { type = foreignminister which = 10167 }
+		command = { type = armamentminister which = 10153 }
+		command = { type = ministerofsecurity which = 10130 }
+		command = { type = ministerofintelligence which = 10190 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143370] ENG | 1955 | UN Resolution on the Taiwan Strait (Resolución de la ONU sobre el Estrecho de Taiwán)
+# Triggered by event 330001 in events/AI/REB_AI_55-00.txt
+# Trigger event 124231 in events/CHI/CHI_45-75.txt
+# Trigger event 124232 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143370
+	country = ENG
+	name = EVT_SHARED_00960_NAME
+	desc = EVT_SHARED_00960_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		trigger = {
+			NOT = { flag = un_taiwan_interventionveto }
+			NOT = { war = { country = CHI } }
+			NOT = { alliance = { country = CHC } }
+		}
+		ai_chance = 95
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 4
+		trigger = {
+			NOT = { war = { country = CHI } }
+			NOT = { alliance = { country = CHC } }
+		}
+		command = { type = setflag which = un_taiwan_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 1
+		trigger = {
+			NOT = { alliance = { country = CHI } }
+		}
+		command = { type = setflag which = un_taiwan_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143030] ENG | 1955 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143030
+	random = no
+	country = ENG
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ENG }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = april year = 1955 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00513_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 10150 }
+		command = { type = headofgovernment which = 10159 }
+		command = { type = foreignminister which = 10164 }
+		command = { type = armamentminister which = 10173 }
+		command = { type = ministerofsecurity which = 10180 }
+		command = { type = ministerofintelligence which = 10185 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00513_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 10158 }
+		command = { type = headofgovernment which = 10019 }
+		command = { type = foreignminister which = 10167 }
+		command = { type = armamentminister which = 10153 }
+		command = { type = ministerofsecurity which = 10130 }
+		command = { type = ministerofintelligence which = 10190 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [143300] ENG | 1956 | Independence of Sudan (Independencia de Sudán)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143300
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143300_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = SUD }
+		control = { province = 810 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = SUD value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 20
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143306] ENG | 1956 | Self-rule of Malta (Autogobierno de Malta)
+# Trigger event 300000 in events/Minors/U92.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143306
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143306_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U92 }
+		control = { province = 429 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = U92 value = 1 }
+		command = { type = make_puppet which = U92 }
+		command = { type = trigger which = 300000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 20
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143308] ENG | 1956 | Self-rule of Trinidad & Tobago (Autonomía Trinidad y Tobago)
+# Trigger event 306000 in events/Minors/U98.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143308
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143308_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U98 }
+		control = { province = 1758 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = U98 value = 1 }
+		command = { type = make_puppet which = U98 }
+		command = { type = trigger which = 306000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 20
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143373] ENG | 1956 | UN Resolution on the Hungarian Uprising (Resolución de la ONU sobre el Levantamiento Húngaro)
+# Triggered by event 207060 in events/AI/REB_AI_55-00.txt
+# Trigger event 207061 in events/AI/REB_AI_55-00.txt
+# Trigger event 248035 in events/Minors/U13.txt
+# Trigger event 329872 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143373
+	country = ENG
+	name = EVT_SHARED_00965_NAME
+	desc = EVT_SHARED_00965_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 95
+		trigger = {
+			NOT = { flag = un_hungary_interventionveto }
+			NOT = { war = { country = U13 } }
+			NOT = { alliance = { country = SOV } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 5
+		trigger = {
+			NOT = { war = { country = U13 } }
+			NOT = { alliance = { country = SOV } }
+		}
+		command = { type = setflag which = un_hungary_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 0
+		command = { type = setflag which = un_hungary_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329999] ENG | 1956 | UN Resolution on the Suez Crisis (Resolución de la ONU sobre la Guerra de Suez)
+# Triggered by event 329997 in events/AI/REB_AI_55-00.txt
+# Trigger event 142067 in events/Minors/EGY_33-58.txt
+# Trigger event 142068 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329999
+	country = ENG
+	name = EVT_SHARED_00959_NAME
+	desc = EVT_SHARED_00959_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 95
+		trigger = {
+			NOT = { alliance = { country = EGY } }
+		}
+		command = { type = setflag which = un_suez_totalveto }
+	}
+	action = {
+		name = ACTION_NAME_INTERVENE
+		trigger = {
+			NOT = { flag = un_suez_interventionveto }
+			NOT = { war = { country = EGY } }
+			NOT = { alliance = { country = ISR } }
+		}
+		ai_chance = 1
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 4
+		trigger = {
+			NOT = { war = { country = EGY } }
+			NOT = { alliance = { country = ISR } }
+		}
+		command = { type = setflag which = un_suez_interventionveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143338] ENG | 1956 | Nationalization of the Suez Canal (Nacionalización del Canal de Suez)
+# Triggered by event 142055 in events/Minors/EGY_33-58.txt
+# Trigger event 165045 in events/Minors/ISR.txt
+# Trigger event 165044 in events/Minors/ISR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143338
+	country = ENG
+	name = EVT_ENG_143338_NAME
+	desc = EVT_ENG_143338_DESC
+	picture = "nwo/nasser_speaking"
+	style = 1
+	trigger = {
+		event = 142055
+	}
+	date = { day = 1 month = september year = 1956 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = EVT_ENG_143338_A
+		ai_chance = 80
+		trigger = { exists = ISR }
+		command = { type = secedeprovince which = EGY value = 900 }
+		command = { type = money value = -1000 }
+		command = { type = relation which = USA value = -50 }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = relation which = EGY value = -200 }
+		command = { type = belligerence value = 10 }
+		command = { type = trigger which = 165045 }
+	}
+	action_b = {
+		name = EVT_ENG_143338_B
+		ai_chance = 10
+		trigger = { exists = ISR }
+		command = { type = secedeprovince which = EGY value = 900 }
+		command = { type = money value = -3000 }
+		command = { type = relation which = USA value = -150 }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = relation which = EGY value = -200 }
+		command = { type = belligerence value = 30 }
+		command = { type = trigger which = 165044 }
+	}
+	action_c = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 10
+		command = { type = secedeprovince which = EGY value = 900 }
+		command = { type = relation which = EGY value = 100 }
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143291] ENG | 1957 | Independence of Ghana (Independencia de Ghana)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143291
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143291_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = GLD }
+		control = { province = 956 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 90
+		command = { type = independence which = GLD value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 10
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143321] ENG | 1957 | 1957 Border Campaign Bombings (Atentados del IRA de 1957)
+# Trigger event 143329 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143321
+	country = ENG
+	one_action = yes
+	name = EVT_ENG_143321_NAME
+	desc = EVT_ENG_143321_DESC
+	picture = "nwo/irish_republican_army"
+	style = 1
+	trigger = {
+		NOT = {
+			owned = { province = 35 data = IRE }
+			owned = { province = 36 data = IRE }
+			war = { country = IRE country = ENG }
+		}
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = EVT_ENG_143321_A
+		ai_chance = 90
+		command = { type = dissent value = 7 }
+	}
+	action = {
+		name = EVT_ENG_143321_B
+		ai_chance = 10
+		command = { type = dissent value = -3 }
+		command = { type = sleepevent which = 143322 }
+		command = { type = sleepevent which = 163049 }
+		command = { type = sleepevent which = 143323 }
+		command = { type = sleepevent which = 143325 }
+		command = { type = sleepevent which = 143327 }
+		command = { type = trigger which = 143329 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143350] ENG | 1957 | Resignation of Anthony Eden (Dimisión de Anthony Eden)
+# Triggered by event 142057 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143350
+	country = ENG
+	name = "EVT_ENG_143350_NAME"
+	desc = "EVT_ENG_143350_DESC"
+	picture = "nwo/anthony_eden"
+	style = 1
+	trigger = {
+		government = democratic
+		headofgovernment = 10164
+		event = 142057
+	}
+	date = { day = 9 month = january year = 1957 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 10150 }
+		command = { type = headofgovernment which = 10160 }
+		command = { type = foreignminister which = 10023 }
+		command = { type = armamentminister which = 10175 }
+		command = { type = ministerofsecurity which = 10181 }
+		command = { type = ministerofintelligence which = 10186 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143315] ENG | 1958 | The First Cod War (Primera Guerra del Bacalao)
+# Triggered by event 160036 in events/Minors/ICL.txt
+# Trigger event 160037 in events/Minors/ICL.txt
+# Trigger event 160038 in events/Minors/ICL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143315
+	country = ENG
+	name = EVT_ENG_143315_NAME
+	desc = EVT_ENG_143315_DESC
+	picture = "nwo/cod_wars"
+	style = 1
+	action = {
+		name = EVT_ENG_143315_A
+		ai_chance = 85
+		command = { type = relation which = ICL value = -50 }
+		command = { type = trigger which = 160037 }
+	}
+	action = {
+		name = EVT_ENG_143315_B
+		ai_chance = 15
+		command = { type = dissent value = 3 }
+		command = { type = relation which = ICL value = 50 }
+		command = { type = trigger which = 160038 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143322] ENG | 1958 | 1958 IRA Border Operations (Atentados del IRA de 1958)
+# Trigger event 143329 in events/ENG/ENG_55-82.txt
+# Trigger event 163049 in events/Minors/IRE_14-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143322
+	country = ENG
+	one_action = yes
+	name = EVT_ENG_143322_NAME
+	desc = EVT_ENG_143322_DESC
+	picture = "nwo/irish_republican_army"
+	style = 1
+	trigger = {
+		NOT = {
+			owned = { province = 35 data = IRE }
+			owned = { province = 36 data = IRE }
+			war = { country = IRE country = ENG }
+		}
+	}
+	date = { day = 0 month = january year = 1958 }
+	offset = 320
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = EVT_ENG_143322_A
+		ai_chance = 85
+		command = { type = dissent value = 7 }
+	}
+	action = {
+		name = EVT_ENG_143322_B
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = sleepevent which = 163049 }
+		command = { type = sleepevent which = 143323 }
+		command = { type = sleepevent which = 143325 }
+		command = { type = sleepevent which = 143327 }
+		command = { type = trigger which = 143329 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143295] ENG | 1959 | Independence of Nigeria (Independencia de Nigeria)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143295
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143295_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = NIG }
+		control = { province = 929 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 90
+		command = { type = independence which = NIG value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 10
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143302] ENG | 1959 | Self-rule of Singapore (Autogobierno de Singapur)
+# Trigger event 287000 in events/Minors/U75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143302
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143302_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U75 }
+		control = { province = 1432 data = -1 }
+		flag = cold_war_pacific
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = U75 value = 1 }
+		command = { type = make_puppet which = U75 }
+		command = { type = trigger which = 287000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 20
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143323] ENG | 1959 | 1959 Border Raids (Atentados del IRA de 1959)
+# Triggered by event 163049 in events/Minors/IRE_14-59.txt
+# Trigger event 143324 in events/ENG/ENG_55-82.txt
+# Trigger event 143329 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143323
+	country = ENG
+	name = EVT_ENG_143323_NAME
+	desc = EVT_ENG_143323_DESC
+	picture = "nwo/irish_republican_army"
+	style = 1
+	trigger = {
+		NOT = {
+			owned = { province = 35 data = IRE }
+			owned = { province = 36 data = IRE }
+			war = { country = IRE country = ENG }
+		}
+		event = 163049
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1959 }
+	action = {
+		name = EVT_ENG_143323_A
+		trigger = { flag = ira_is_interned }
+		ai_chance = 40
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 143324 }
+	}
+	action = {
+		name = EVT_ENG_143323_B
+		trigger = { flag = ira_is_interned }
+		ai_chance = 60
+		command = { type = dissent value = -5 }
+		command = { type = sleepevent which = 143325 }
+		command = { type = sleepevent which = 143327 }
+		command = { type = trigger which = 143329 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+	action = {
+		name = EVT_ENG_143323_A
+		trigger = { flag = ira_is_ignored }
+		ai_chance = 70
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 143324 }
+	}
+	action = {
+		name = EVT_ENG_143323_B
+		trigger = { flag = ira_is_ignored }
+		ai_chance = 30
+		command = { type = dissent value = -5 }
+		command = { type = sleepevent which = 143325 }
+		command = { type = sleepevent which = 143327 }
+		command = { type = trigger which = 143329 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+	action = {
+		name = EVT_ENG_143323_A
+		trigger = { flag = ira_is_supported }
+		ai_chance = 90
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 143324 }
+	}
+	action = {
+		name = EVT_ENG_143323_B
+		trigger = { flag = ira_is_supported }
+		ai_chance = 10
+		command = { type = dissent value = -5 }
+		command = { type = sleepevent which = 143325 }
+		command = { type = sleepevent which = 143327 }
+		command = { type = trigger which = 143329 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143324] ENG | 1959 | Crisis Over the Border Campaign (Crisis por la Campaña Fronteriza)
+# Triggered by event 143323 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143324
+	country = ENG
+	name = EVT_ENG_143324_NAME
+	desc = EVT_ENG_143324_DESC
+	picture = "nwo/irish_republican_army"
+	style = 1
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 60
+		command = { type = dissent value = 15 }
+		command = { type = relation which = IRE value = -50 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 35
+		command = { type = dissent value = -5 }
+		command = { type = relation which = IRE value = 150 }
+		command = { type = removecore which = 35 }
+		command = { type = removecore which = 36 }
+		command = { type = independence which = U71 value = 1 }
+		command = { type = make_puppet which = U71 }
+		command = { type = alliance which = U71 }
+	}
+	action = {
+		name = EVT_ENG_143324_A
+		ai_chance = 5
+		command = { type = dissent value = 25 }
+		command = { type = relation which = IRE value = 200 }
+		command = { type = secedeprovince which = IRE value = 35 when = 1 }
+		command = { type = secedeprovince which = IRE value = 36 when = 1 }
+		command = { type = removecore which = 35 }
+		command = { type = removecore which = 36 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143351] ENG | 1959 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143351
+	country = ENG
+	name = "EVT_SHARED_00807_NAME"
+	desc = "EVT_SHARED_00807_DESC"
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = "ACTION_NAME_ELECT_RIGHT"
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 10150 }
+		command = { type = headofgovernment which = 10160 }
+		command = { type = foreignminister which = 10023 }
+		command = { type = armamentminister which = 10176 }
+		command = { type = ministerofsecurity which = 10181 }
+		command = { type = ministerofintelligence which = 10187 }
+	}
+	action = {
+		name = "ACTION_NAME_ELECT_LEFT"
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 10158 }
+		command = { type = headofgovernment which = 10162 }
+		command = { type = foreignminister which = 10169 }
+		command = { type = armamentminister which = 10178 }
+		command = { type = ministerofsecurity which = 10183 }
+		command = { type = ministerofintelligence which = 10190 }
+	}
+	action = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143032] ENG | 1959 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143032
+	random = no
+	country = ENG
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ENG }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = october year = 1959 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00513_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 10150 }
+		command = { type = headofgovernment which = 10160 }
+		command = { type = foreignminister which = 10023 }
+		command = { type = armamentminister which = 10176 }
+		command = { type = ministerofsecurity which = 10181 }
+		command = { type = ministerofintelligence which = 10187 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00513_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 10158 }
+		command = { type = headofgovernment which = 10162 }
+		command = { type = foreignminister which = 10169 }
+		command = { type = armamentminister which = 10178 }
+		command = { type = ministerofsecurity which = 10183 }
+		command = { type = ministerofintelligence which = 10190 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [143307] ENG | 1960 | Self-rule of Tanganyika (Autogobierno de Tanganica)
+# Trigger event 305000 in events/Minors/U97.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143307
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143307_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U97 }
+		control = { province = 850 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 85
+		command = { type = independence which = U97 value = 1 }
+		command = { type = make_puppet which = U97 }
+		command = { type = trigger which = 305000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143325] ENG | 1960 | 1960 Border Incidents (Sabotajes del IRA de 1960)
+# Trigger event 143326 in events/ENG/ENG_55-82.txt
+# Trigger event 143329 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143325
+	country = ENG
+	name = EVT_ENG_143325_NAME
+	desc = EVT_ENG_143325_DESC
+	picture = "nwo/irish_republican_army"
+	style = 1
+	trigger = {
+		NOT = {
+			owned = { province = 35 data = IRE }
+			owned = { province = 36 data = IRE }
+			war = { country = IRE country = ENG }
+		}
+		NOT = { exists = U71 }
+	}
+	date = { day = 0 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = EVT_ENG_143325_A
+		trigger = { flag = ira_is_interned }
+		ai_chance = 20
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 143326 }
+	}
+	action = {
+		name = EVT_ENG_143325_B
+		trigger = { flag = ira_is_interned }
+		ai_chance = 80
+		command = { type = dissent value = -5 }
+		command = { type = sleepevent which = 143327 }
+		command = { type = trigger which = 143329 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+	action = {
+		name = EVT_ENG_143325_A
+		trigger = { flag = ira_is_ignored }
+		ai_chance = 50
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 143326 }
+	}
+	action = {
+		name = EVT_ENG_143325_B
+		trigger = { flag = ira_is_ignored }
+		ai_chance = 50
+		command = { type = dissent value = -5 }
+		command = { type = sleepevent which = 143327 }
+		command = { type = trigger which = 143329 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+	action = {
+		name = EVT_ENG_143325_A
+		trigger = { flag = ira_is_supported }
+		ai_chance = 80
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 143326 }
+	}
+	action = {
+		name = EVT_ENG_143325_B
+		trigger = { flag = ira_is_supported }
+		ai_chance = 20
+		command = { type = dissent value = -5 }
+		command = { type = sleepevent which = 143327 }
+		command = { type = trigger which = 143329 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143326] ENG | 1960 | Crisis Over the Border Campaign (Crisis por la Campaña Fronteriza)
+# Triggered by event 143325 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143326
+	country = ENG
+	name = EVT_ENG_143326_NAME
+	desc = EVT_ENG_143326_DESC
+	picture = "nwo/irish_republican_army"
+	style = 1
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 55
+		command = { type = dissent value = 15 }
+		command = { type = relation which = IRE value = -150 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 40
+		command = { type = dissent value = -5 }
+		command = { type = relation which = IRE value = 150 }
+		command = { type = removecore which = 35 }
+		command = { type = removecore which = 36 }
+		command = { type = independence which = U71 value = 1 }
+		command = { type = make_puppet which = U71 }
+		command = { type = alliance which = U71 }
+	}
+	action = {
+		name = EVT_ENG_143326_A
+		ai_chance = 5
+		command = { type = dissent value = 25 }
+		command = { type = relation which = IRE value = 200 }
+		command = { type = secedeprovince which = IRE value = 35 when = 1 }
+		command = { type = secedeprovince which = IRE value = 36 when = 1 }
+		command = { type = removecore which = 35 }
+		command = { type = removecore which = 36 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143298] ENG | 1961 | Independence of Sierra Leone (Independencia de Sierra Leona)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143298
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143298_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = SIE }
+		control = { province = 964 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = SIE value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 20
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143301] ENG | 1961 | Self-rule of Uganda (Autogobierno de Uganda)
+# Trigger event 283000 in events/Minors/U70.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143301
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143301_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U70 }
+		control = { province = 844 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = U70 value = 1 }
+		command = { type = make_puppet which = U70 }
+		command = { type = trigger which = 283000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 20
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143305] ENG | 1961 | Independence of Kuwait (Independencia de Kuwait)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143305
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143305_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U91 }
+		control = { province = 1041 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = U91 value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 20
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143327] ENG | 1961 | 1961 Final Skirmishes (Últimos choques del IRA (1961))
+# Trigger event 143328 in events/ENG/ENG_55-82.txt
+# Trigger event 143329 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143327
+	country = ENG
+	name = EVT_ENG_143327_NAME
+	desc = EVT_ENG_143327_DESC
+	picture = "nwo/irish_republican_army"
+	style = 1
+	trigger = {
+		NOT = {
+			owned = { province = 35 data = IRE }
+			owned = { province = 36 data = IRE }
+			war = { country = IRE country = ENG }
+		}
+		NOT = { exists = U71 }
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = EVT_ENG_143327_A
+		trigger = { flag = ira_is_interned }
+		ai_chance = 20
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 143328 }
+	}
+	action = {
+		name = EVT_ENG_143327_B
+		trigger = { flag = ira_is_interned }
+		ai_chance = 80
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 143329 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+	action = {
+		name = EVT_ENG_143327_A
+		trigger = { flag = ira_is_ignored }
+		ai_chance = 50
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 143328 }
+	}
+	action = {
+		name = EVT_ENG_143327_B
+		trigger = { flag = ira_is_ignored }
+		ai_chance = 50
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 143329 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+	action = {
+		name = EVT_ENG_143327_A
+		trigger = { flag = ira_is_supported }
+		ai_chance = 80
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 143328 }
+	}
+	action = {
+		name = EVT_ENG_143327_B
+		trigger = { flag = ira_is_supported }
+		ai_chance = 20
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 143329 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143328] ENG | 1961 | Crisis Over the Border Campaign (Crisis por la Campaña Fronteriza)
+# Triggered by event 143327 in events/ENG/ENG_55-82.txt
+# Triggered by event 284004 in events/Minors/U71.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143328
+	country = ENG
+	name = EVT_ENG_143328_NAME
+	desc = EVT_ENG_143328_DESC
+	picture = "nwo/irish_republican_army"
+	style = 1
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 65
+		command = { type = dissent value = 15 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 30
+		command = { type = dissent value = -5 }
+		command = { type = removecore which = 35 }
+		command = { type = removecore which = 36 }
+		command = { type = independence which = U71 value = 1 }
+		command = { type = make_puppet which = U71 }
+		command = { type = alliance which = U71 }
+	}
+	action = {
+		name = EVT_ENG_143328_A
+		ai_chance = 5
+		command = { type = dissent value = 25 }
+		command = { type = secedeprovince which = IRE value = 35 when = 1 }
+		command = { type = secedeprovince which = IRE value = 36 when = 1 }
+		command = { type = removecore which = 35 }
+		command = { type = removecore which = 36 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143330] ENG | 1961 | 1961 Final Skirmishes (Últimos choques del IRA (1961))
+# Trigger event 284002 in events/Minors/U71.txt
+# Trigger event 284003 in events/Minors/U71.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143330
+	country = ENG
+	name = EVT_ENG_143330_NAME
+	desc = EVT_ENG_143330_DESC
+	picture = "nwo/irish_republican_army"
+	style = 1
+	trigger = {
+		NOT = {
+			owned = { province = 35 data = IRE }
+			owned = { province = 36 data = IRE }
+			war = { country = IRE country = ENG }
+		}
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1961 }
+	action = {
+		name = EVT_ENG_143330_A
+		trigger = { flag = ira_is_interned }
+		ai_chance = 60
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 284002 }
+	}
+	action = {
+		name = EVT_ENG_143330_B
+		trigger = { flag = ira_is_interned }
+		ai_chance = 40
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+	action = {
+		name = EVT_ENG_143330_A
+		trigger = { flag = ira_is_ignored }
+		ai_chance = 80
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 284002 }
+	}
+	action = {
+		name = EVT_ENG_143330_B
+		trigger = { flag = ira_is_ignored }
+		ai_chance = 20
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+	action = {
+		name = EVT_ENG_143330_A
+		trigger = { flag = ira_is_supported }
+		ai_chance = 90
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 284002 }
+	}
+	action = {
+		name = EVT_ENG_143330_B
+		trigger = { flag = ira_is_supported }
+		ai_chance = 10
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143303] ENG | 1962 | Independence of Jamaica (Independencia de Jamaica)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143303
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143303_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U89 }
+		control = { province = 1782 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1966 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = U89 value = 1 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 20
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143304] ENG | 1962 | Self-rule of Kenya (Autogobierno de Kenia)
+# Trigger event 298000 in events/Minors/U90.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143304
+	country = ENG
+	persistent = yes
+	name = EVT_ENG_143304_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = U90 }
+		control = { province = 841 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1966 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 80
+		command = { type = independence which = U90 value = 1 }
+		command = { type = make_puppet which = U90 }
+		command = { type = trigger which = 298000 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 20
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143329] ENG | 1962 | Conclusion of the Border Campaign (Fin de la Campaña Fronteriza)
+# Triggered by event 143321 in events/ENG/ENG_55-82.txt
+# Triggered by event 143322 in events/ENG/ENG_55-82.txt
+# Triggered by event 143323 in events/ENG/ENG_55-82.txt
+# Triggered by event 143325 in events/ENG/ENG_55-82.txt
+# Triggered by event 143327 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143329
+	country = ENG
+	name = EVT_ENG_143329_NAME
+	desc = EVT_ENG_143329_DESC
+	picture = "nwo/irish_republican_army"
+	style = 1
+	trigger = {
+		NOT = {
+			owned = { province = 35 data = IRE }
+			owned = { province = 36 data = IRE }
+			war = { country = IRE country = ENG }
+		}
+		NOT = { exists = U71 }
+	}
+	date = { day = 0 month = january year = 1962 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -25 }
+		command = { type = sleepevent which = 284000 }
+		command = { type = sleepevent which = 143330 }
+		command = { type = sleepevent which = 284003 }
+		command = { type = sleepevent which = 284004 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143339] ENG | 1963 | Union of Tanganyika and Zanzibar (Unión de Tanganica y Zanzíbar)
+# Trigger event 305011 in events/Minors/U97.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143339
+	country = ENG
+	name = EVT_ENG_143339_NAME
+	desc = EVT_ENG_143339_DESC
+	picture = "nwo/tanzania"
+	style = 1
+	trigger = {
+		exists = U97
+		owned = { province = 852 data = ENG }
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_ENG_143339_A
+		ai_chance = 95
+		command = { type = relation which = U97 value = 100 }
+		command = { type = secedeprovince which = U97 value = 852 when = 1 }
+		command = { type = trigger which = 305011 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 5
+		command = { type = relation which = U97 value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143352] ENG | 1963 | Harold Macmillan Resigns (Dimisión de Macmillan)
+# Triggered by event 143353 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143352
+	country = ENG
+	name = "EVT_ENG_143352_NAME"
+	desc = "EVT_ENG_143352_DESC"
+	picture = "nwo/harold_macmillan"
+	style = 1
+	trigger = {
+		government = democratic
+		headofgovernment = 10160
+		event = 143353
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 10150 }
+		command = { type = headofgovernment which = 10161 }
+		command = { type = foreignminister which = 10166 }
+		command = { type = armamentminister which = 10177 }
+		command = { type = ministerofsecurity which = 10182 }
+		command = { type = ministerofintelligence which = 10189 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143363] ENG | 1963 | Lost Name Event (Nombre de evento perdido)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143363
+	country = ENG
+	name = LOST_NAME
+	desc = LOST_DESC
+	picture = "nwo/profumo_affair"
+	style = 1
+	trigger = {
+		government = democratic
+		headofgovernment = 1192
+		}
+	date = { day = 1 month = may year = 1963 }
+	offset = 30
+	deathdate = { day = 29 month = may year = 1963 }
+	action_a = {
+		name = LOST_OPTION
+		command = { type = dissent value = 3 }
+		command = { type = ministerofintelligence which = 1221 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [143033] ENG | 1963 | Resignation of Harold Macmillan (Dimisión de Harold Macmillan)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143033
+	random = no
+	country = ENG
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		headofgovernment = 10160
+		random = 85
+		NOT = { ispuppet = ENG }
+		}
+	name = "EVT_ENG_143033_NAME"
+	desc = "EVT_ENG_143033_DESC"
+	date = { day = 9 month = october year = 1963 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 10150 }
+		command = { type = headofgovernment which = 10161 }
+		command = { type = foreignminister which = 10166 }
+		command = { type = armamentminister which = 10177 }
+		command = { type = ministerofsecurity which = 10182 }
+		command = { type = ministerofintelligence which = 10189 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [143353] ENG | 1964 | General Elections (Elecciones generales)
+# Trigger event 143352 in events/ENG/ENG_55-82.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143353
+	country = ENG
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1964 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1965 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 10400 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofgovernment which = 10161 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143354] ENG | 1966 | General Elections (Elecciones generales)
+# Trigger event 143365 in events/ENG/ENG_43-54.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143354
+	country = ENG
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1966 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1969 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 10400 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofgovernment which = 10401 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143355] ENG | 1970 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143355
+	country = ENG
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1970 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofgovernment which = 10401 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 10400 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143316] ENG | 1972 | Cod Wars of the 1970s (Guerras del Bacalao de los 70)
+# Triggered by event 160039 in events/Minors/ICL.txt
+# Trigger event 160040 in events/Minors/ICL.txt
+# Trigger event 160041 in events/Minors/ICL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143316
+	country = ENG
+	name = EVT_ENG_143316_NAME
+	desc = EVT_ENG_143316_DESC
+	picture = "nwo/cod_wars"
+	style = 1
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 85
+		command = { type = relation which = ICL value = -50 }
+		command = { type = trigger which = 160040 }
+	}
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 15
+		command = { type = dissent value = 3 }
+		command = { type = relation which = ICL value = 50 }
+		command = { type = trigger which = 160041 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143356] ENG | 1974 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143356
+	country = ENG
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 10400 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofgovernment which = 10401 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143357] ENG | 1976 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143357
+	country = ENG
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+		headofgovernment = 10400
+	}
+	date = { day = 0 month = january year = 1976 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1976 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 10402 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143358] ENG | 1977 | Statesman's Birthday (Cumpleaños de Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143358
+	country = ENG
+	name = EVT_SHARED_00806_NAME
+	desc = EVT_SHARED_00806_DESC
+	picture = "nwo/birthday"
+	style = 1
+	trigger = {
+		headofstate = 10150
+	}
+	date = { day = 0 month = january year = 1977 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1978 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 10406 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143359] ENG | 1979 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143359
+	country = ENG
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1979 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1982 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofgovernment which = 10407 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 10402 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 18 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143367] ENG | 1979 | The Winter of Discontent (El invierno del descontento)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143367
+	country = ENG
+	name = EVT_ENG_143367_NAME
+	desc = EVT_ENG_143367_DESC
+	picture = "nwo/winter_of_discontent"
+	style = 1
+	trigger = {
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1979 }
+	offset = 30
+	deathdate = { day = 29 month = march year = 1979 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143360] ENG | 1982 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 143360
+	country = ENG
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1982 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1983 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofgovernment which = 10407 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 10403 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143309] ENG | 1982 | British Response to the Invasion (Respuesta británica a la invasión de las Malvinas)
+# Triggered by event 105033 in events/Minors/ARG.txt
+# Trigger event 207062 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143309
+	country = ENG
+	name = EVT_ENG_143309_NAME
+	desc = EVT_ENG_143309_DESC
+	picture = "nwo/falklands_war"
+	style = 1
+	trigger = {
+		event = 105033
+	}
+	date = { day = 0 month = april year = 1982 }
+	offset = 7
+	deathdate = { day = 14 month = april year = 1982 }
+	action = {
+		name = EVT_ENG_143309_A
+		ai_chance = 97
+		command = { type = dissent value = -3 }
+		command = { type = money value = -5000 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = ARG value = -100 }
+		command = { type = sleepevent which = 316293 }
+	}
+	action = {
+		name = EVT_ENG_143309_B
+		ai_chance = 2
+		command = { type = dissent value = 1 }
+		command = { type = relation which = ARG value = 50 }
+	}
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 1
+		command = { type = dissent value = 8 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = ARG value = 100 }
+		command = { type = sleepevent which = 316293 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143310] ENG | 1982 | Air Battles over the Falklands (Combates aéreos en las Malvinas)
+# Trigger event 105034 in events/Minors/ARG.txt
+# Trigger event 105035 in events/Minors/ARG.txt
+# Trigger event 329836 in events/ENG/ENG_82-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143310
+	country = ENG
+	one_action = yes
+	name = EVT_ENG_143310_NAME
+	desc = EVT_ENG_143310_DESC
+	picture = "nwo/falklands_war_airforce"
+	style = 1
+	date = { day = 14 month = april year = 1982 }
+	offset = 7
+	deathdate = { day = 21 month = april year = 1982 }
+	action = {
+		name = EVT_ENG_143310_A
+		ai_chance = 90
+		command = { type = dissent value = -3 }
+		command = { type = trigger which = 105034 }
+	}
+	action = {
+		name = EVT_ENG_143310_B
+		ai_chance = 10
+		command = { type = dissent value = 2 }
+		command = { type = trigger which = 105035 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [143311] ENG | 1982 | Naval Battles of the Falklands (Batallas navales de las Malvinas)
+# Trigger event 105036 in events/Minors/ARG.txt
+# Trigger event 105037 in events/Minors/ARG.txt
+# Trigger event 105038 in events/Minors/ARG.txt
+# Trigger event 329836 in events/ENG/ENG_82-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 143311
+	country = ENG
+	one_action = yes
+	name = EVT_ENG_143311_NAME
+	desc = EVT_ENG_143311_DESC
+	picture = "nwo/falklands_war_belgrano"
+	style = 1
+	date = { day = 1 month = may year = 1982 }
+	offset = 7
+	deathdate = { day = 7 month = may year = 1982 }
+	action = {
+		name = EVT_ENG_143311_A
+		ai_chance = 80
+		command = { type = dissent value = -3 }
+		command = { type = trigger which = 105036 }
+	}
+	action = {
+		name = EVT_ENG_143311_B
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = trigger which = 105037 }
+	}
+	action = {
+		name = EVT_ENG_143311_C
+		ai_chance = 5
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 105038 }
+	}
+}

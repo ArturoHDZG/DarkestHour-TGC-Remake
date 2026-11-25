@@ -1,0 +1,1922 @@
+# ============================================================================
+# File: events/Minors/CHC_45-62.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [123040] CHC | 1945 | Partisans in Shangrao (Partisanos en Shangrao)
+# Triggered by event 329755 in events/CHI/CHI_45-75.txt
+# Triggered by event 329757 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123040
+	random = no
+	country = CHC
+	persistent = yes
+	name = "EVT_CHC_123040_NAME"
+	desc = "EVT_SHARED_00875_DESC"
+	picture = "nwo/maoist_partisans"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				year = 1946
+				NOT = { year = 1947 }
+				random = 2
+			}
+			AND = {
+				year = 1947
+				NOT = { year = 1948 }
+				random = 18
+			}
+			AND = {
+				year = 1948
+				NOT = { year = 1949 }
+				random = 25
+			}
+			AND = {
+				year = 1949
+				random = 15
+			}
+		}
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		NOT = { control = { province = 1351 data = -1 } }
+		NOT = { vp = 30 }
+		vp = 5
+		NOT = { event = 329755 event = 329757 }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = "EVT_SHARED_00875_A"
+		ai_chance = 100
+		command = { type = add_corps which = "Communist partisans" value = land where = 1351 }
+		command = { type = add_division which = "Partisan militia" value = militia when = 6 }
+		command = { type = supplies value = 10 where = 1351 }
+	}
+	action = {
+		name = "EVT_SHARED_00875_B"
+		ai_chance = 0
+		command = { type = manpowerpool value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123041] CHC | 1945 | Proclamation of the People's Republic (Proclamación de la República Popular)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123041
+	date = { day = 0 month = january year = 1945 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1999 }
+	random = no
+	country = CHC
+	name = "EVT_CHC_123041_NAME"
+	desc = "EVT_CHC_123041_DESC"
+	picture = "nwo/mao_announces_prc"
+	style = 1
+	trigger = {
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		NOT = { exists = CHI }
+	}
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = setflag which = CHC_won_civil_war }
+		command = { type = capital which = 1247 }
+		command = { type = dissent value = -10 }
+		command = { type = flag_ext where = CHC which = _PRC }
+		command = { type = name where = CHC which = "CHC49" }
+		command = { type = name where = CHI which = "CHI49" }
+		command = { type = setflag which = raise_soviet_bloc_coherence }
+		command = { type = waketeam which = 260126 }
+		command = { type = waketeam which = 260127 }
+		command = { type = waketeam which = 260128 }
+		command = { type = waketeam which = 260129 }
+		command = { type = sleepteam which = 260125 }
+		command = { type = waketeam which = 260131 }
+		command = { type = waketeam which = 260132 }
+		command = { type = waketeam which = 260023 }
+		command = { type = waketeam which = 260024 }
+		command = { type = waketeam which = 260025 }
+		command = { type = waketeam which = 260018 }
+		command = { type = waketeam which = 260014 }
+		command = { type = waketeam which = 260026 }
+		command = { type = waketeam which = 260120 }
+		command = { type = waketeam which = 260121 }
+		command = { type = waketeam which = 260122 }
+		command = { type = waketeam which = 260123 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123045] CHC | 1945 | Disband Revolutionary Militias (Desmovilización de las milicias)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123045
+	random = no
+	country = CHC
+	name = "EVT_CHC_123045_NAME"
+	desc = "EVT_CHC_123045_DESC"
+	picture = "nwo/soldiers_return_home"
+	style = 1
+	trigger = {
+		OR = {
+			flag = CHI_won_civil_war
+			flag = CHC_won_civil_war
+		}
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_DEMOBILIZE"
+		ai_chance = 100
+		command = { type = strength which = militia when = 0 where = 0 value = 0 }
+	}
+	action = {
+		name = "EVT_CHC_123045_A"
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123046] CHC | 1945 | Sino-Soviet Divergence (Distanciamiento sino-soviético)
+# Triggered by event 329753 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123046
+	country = CHC
+	name = "EVT_CHC_123046_NAME"
+	desc = "EVT_CHC_123046_DESC"
+	picture = "nwo/mao_with_stalin"
+	decision_picture = "nwo/d_mao_with_stalin"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = end_puppet }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123047] CHC | 1945 | Cessation of Hostilities (Fin de las operaciones militares)
+# Triggered by event 329756 in events/Minors/CHC_45-62.txt
+# Triggered by event 329758 in events/Minors/CHC_45-62.txt
+# Triggered by event 329760 in events/Minors/CHC_45-62.txt
+# Triggered by event 329762 in events/Minors/CHC_45-62.txt
+# Triggered by event 329764 in events/Minors/CHC_45-62.txt
+# Triggered by event 329766 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123047
+	country = CHC
+	name = EVT_CHC_123047_NAME
+	desc = EVT_CHC_123047_DESC
+	style = 1
+	trigger = {
+		OR = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			event = 329756
+			event = 329758
+			event = 329760
+			event = 329762
+			event = 329764
+			event = 329766
+		}
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { event = 329756 } type = max_organization which = infantry value = 20 }
+		command = { trigger = { event = 329756 } type = max_organization which = militia value = 20 }
+		command = { trigger = { event = 329756 } type = max_organization which = bergsjaeger value = 20 }
+		command = { trigger = { event = 329756 } type = morale which = infantry value = 20 }
+		command = { trigger = { event = 329756 } type = morale which = militia value = 20 }
+		command = { trigger = { event = 329756 } type = morale which = bergsjaeger value = 20 }
+		command = { trigger = { event = 329758 } type = max_organization which = infantry value = -20 }
+		command = { trigger = { event = 329758 } type = max_organization which = militia value = -20 }
+		command = { trigger = { event = 329758 } type = max_organization which = bergsjaeger value = -20 }
+		command = { trigger = { event = 329758 } type = morale which = infantry value = -20 }
+		command = { trigger = { event = 329758 } type = morale which = militia value = -20 }
+		command = { trigger = { event = 329758 } type = morale which = bergsjaeger value = -20 }
+		command = { trigger = { event = 329760 } type = max_organization which = infantry value = 20 }
+		command = { trigger = { event = 329760 } type = max_organization which = militia value = 20 }
+		command = { trigger = { event = 329760 } type = max_organization which = bergsjaeger value = 20 }
+		command = { trigger = { event = 329760 } type = morale which = infantry value = 20 }
+		command = { trigger = { event = 329760 } type = morale which = militia value = 20 }
+		command = { trigger = { event = 329760 } type = morale which = bergsjaeger value = 20 }
+		command = { trigger = { event = 329762 } type = max_organization which = infantry value = -20 }
+		command = { trigger = { event = 329762 } type = max_organization which = militia value = -20 }
+		command = { trigger = { event = 329762 } type = max_organization which = bergsjaeger value = -20 }
+		command = { trigger = { event = 329762 } type = morale which = infantry value = -20 }
+		command = { trigger = { event = 329762 } type = morale which = militia value = -20 }
+		command = { trigger = { event = 329762 } type = morale which = bergsjaeger value = -20 }
+		command = { trigger = { event = 329764 } type = max_organization which = infantry value = 20 }
+		command = { trigger = { event = 329764 } type = max_organization which = militia value = 20 }
+		command = { trigger = { event = 329764 } type = max_organization which = bergsjaeger value = 20 }
+		command = { trigger = { event = 329764 } type = morale which = infantry value = 20 }
+		command = { trigger = { event = 329764 } type = morale which = militia value = 20 }
+		command = { trigger = { event = 329764 } type = morale which = bergsjaeger value = 20 }
+		command = { trigger = { event = 329766 } type = max_organization which = infantry value = -20 }
+		command = { trigger = { event = 329766 } type = max_organization which = militia value = -20 }
+		command = { trigger = { event = 329766 } type = max_organization which = bergsjaeger value = -20 }
+		command = { trigger = { event = 329766 } type = morale which = infantry value = -20 }
+		command = { trigger = { event = 329766 } type = morale which = militia value = -20 }
+		command = { trigger = { event = 329766 } type = morale which = bergsjaeger value = -20 }
+		command = { type = local_clrflag which = block_army_limiting }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123050] CHC | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123050
+	country = CHC
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = foreignminister which = 51019 }
+		command = { type = armamentminister which = 51025 }
+		command = { type = ministerofsecurity which = 51033 }
+		command = { type = ministerofintelligence which = 51040 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123089] CHC | 1945 | The Red Chinese Struggle (La causa de la China Roja)
+# Triggered by event 123088 in events/Minors/CHC_30-45.txt
+# Trigger event 123090 in events/Minors/CHC_30-45.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123089
+	country = CHC
+	name = "EVT_SHARED_00892_NAME"
+	desc = "EVT_SHARED_00892_DESC"
+	picture = "nwo/communist_china_buildup"
+	style = 1
+	trigger = {
+		NOT = { flag = cold_war_pacific }
+		event = 123088
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		ai_chance = 100
+		name = "EVT_SHARED_00892_A"
+        command = { type = free_ic value = 4 }
+        command = { type = free_energy value = 8 }
+        command = { type = free_metal value = 4 }
+        command = { type = free_rare_materials value = 2 }
+        command = { type = free_manpower value = 0.05 }
+		command = { trigger = { war = { country = CHI country = JAP } } type = add_division which = "24. Lujun" value = infantry when = 11 }
+		command = { trigger = { war = { country = CHI country = JAP } } type = add_division which = "25. Lujun" value = infantry when = 11 }
+		command = { type = leave_alliance }
+		}
+	action = {
+		ai_chance = 0
+		name = "EVT_SHARED_00892_B"
+		command = { type = free_ic value = -28 }
+        command = { type = free_energy value = -56 }
+        command = { type = free_metal value = -28 }
+        command = { type = free_rare_materials value = -14 }
+        command = { type = free_manpower value = -0.35 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329756] CHC | 1945 | Momentum Shifts to Victory (La victoria está próxima)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 123047 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329756
+	country = CHC
+	name = EVT_SHARED_00876_NAME
+	desc = EVT_SHARED_00876_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 30 }
+				country = CHC
+			}
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 70 }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_VICTORY
+		command = { type = max_organization which = infantry value = 20 }
+		command = { type = max_organization which = militia value = 20 }
+		command = { type = max_organization which = bergsjaeger value = 20 }
+		command = { type = morale which = infantry value = 20 }
+		command = { type = morale which = militia value = 20 }
+		command = { type = morale which = bergsjaeger value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329758] CHC | 1945 | Strategic Exhaustion (Agotamiento en el frente)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 123047 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329758
+	country = CHC
+	name = EVT_SHARED_00877_NAME
+	desc = EVT_SHARED_00877_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 30 } }
+				country = CHC
+			}
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 70 } }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = infantry value = -20 }
+		command = { type = max_organization which = militia value = -20 }
+		command = { type = max_organization which = bergsjaeger value = -20 }
+		command = { type = morale which = infantry value = -20 }
+		command = { type = morale which = militia value = -20 }
+		command = { type = morale which = bergsjaeger value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329760] CHC | 1945 | Momentum Shifts to Victory (La victoria está próxima)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 123047 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329760
+	country = CHC
+	name = EVT_SHARED_00878_NAME
+	desc = EVT_SHARED_00878_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 30 }
+				country = CHC
+			}
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 70 }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_VICTORY
+		command = { type = max_organization which = infantry value = 20 }
+		command = { type = max_organization which = militia value = 20 }
+		command = { type = max_organization which = bergsjaeger value = 20 }
+		command = { type = morale which = infantry value = 20 }
+		command = { type = morale which = militia value = 20 }
+		command = { type = morale which = bergsjaeger value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329762] CHC | 1945 | Strategic Exhaustion (Agotamiento en el frente)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 123047 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329762
+	country = CHC
+	name = EVT_SHARED_00879_NAME
+	desc = EVT_SHARED_00879_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 30 } }
+				country = CHC
+			}
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 70 } }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = infantry value = -20 }
+		command = { type = max_organization which = militia value = -20 }
+		command = { type = max_organization which = bergsjaeger value = -20 }
+		command = { type = morale which = infantry value = -20 }
+		command = { type = morale which = militia value = -20 }
+		command = { type = morale which = bergsjaeger value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329764] CHC | 1945 | Momentum Shifts to Victory (La victoria está próxima)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 123047 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329764
+	country = CHC
+	name = EVT_SHARED_00880_NAME
+	desc = EVT_SHARED_00880_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 30 }
+				country = CHC
+			}
+			AND = {
+				region = { region = "China" country = -1 data = 1 value = 70 }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_VICTORY
+		command = { type = max_organization which = infantry value = 20 }
+		command = { type = max_organization which = militia value = 20 }
+		command = { type = max_organization which = bergsjaeger value = 20 }
+		command = { type = morale which = infantry value = 20 }
+		command = { type = morale which = militia value = 20 }
+		command = { type = morale which = bergsjaeger value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329766] CHC | 1945 | Strategic Exhaustion (Agotamiento en el frente)
+# Triggered by event 329754 in events/AI/REB_AI_14-52.txt
+# Trigger event 123047 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329766
+	country = CHC
+	name = EVT_SHARED_00881_NAME
+	desc = EVT_SHARED_00881_DESC
+	style = 1
+	trigger = {
+		war = { country = CHI country = CHC }
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+		OR = {
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 30 } }
+				country = CHC
+			}
+			AND = {
+				NOT = { region = { region = "China" country = -1 data = 1 value = 70 } }
+				country = CHI
+			}
+		}
+	}
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = infantry value = -20 }
+		command = { type = max_organization which = militia value = -20 }
+		command = { type = max_organization which = bergsjaeger value = -20 }
+		command = { type = morale which = infantry value = -20 }
+		command = { type = morale which = militia value = -20 }
+		command = { type = morale which = bergsjaeger value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123029] CHC | 1946 | Ceasefire Proposal in China (Propuesta de alto el fuego de 1946)
+# Triggered by event 316196 in events/USA/USA_43-48.txt
+# Trigger event 124157 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123029
+	country = CHC
+	name = "EVT_CHC_123029_NAME"
+	desc = "EVT_CHC_123029_DESC"
+	picture = "nwo/marshall_mission"
+	style = 1
+	trigger = {
+		event = 316196
+		exists = CHI
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = "ACTION_NAME_CEASEFIRE"
+		ai_chance = 99
+		command = { type = dissent value = -10 }
+		command = { type = local_setflag which = block_army_limiting }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 1
+		command = { type = dissent value = 5 }
+		command = { type = sleepevent which = 124156 }
+		command = { type = sleepevent which = 124157 }
+		command = { type = local_setflag which = block_army_limiting }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123104] CHC | 1946 | UN Resolution on the Chinese Civil War (Resolución de la ONU sobre la Guerra Civil China)
+# Triggered by event 329995 in events/AI/REB_AI_14-52.txt
+# Trigger event 124228 in events/CHI/CHI_45-75.txt
+# Trigger event 124229 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123104
+	country = CHC
+	name = EVT_SHARED_00958_NAME
+	desc = EVT_SHARED_00958_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = setflag which = un_ccw_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329741] CHC | 1946 | All-China Coalition Proposal (Propuesta de gobierno de coalición)
+# Triggered by event 329739 in events/USA/USA_43-48.txt
+# Triggered by event 124213 in events/CHI/CHI_37-45.txt
+# Triggered by event 124214 in events/CHI/CHI_37-45.txt
+# Triggered by event 124215 in events/CHI/CHI_37-45.txt
+# Triggered by event 124216 in events/CHI/CHI_33-37.txt
+# Triggered by event 134006 in events/Minors/CYN.txt
+# Triggered by event 133002 in events/Minors/CXB.txt
+# Triggered by event 131006 in events/Minors/CSX.txt
+# Triggered by event 220006 in events/Minors/SIK.txt
+# Trigger event 329742 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329741
+	random = no
+	country = CHC
+	name = "EVT_CHC_329741_NAME"
+	desc = "EVT_CHC_329741_DESC"
+	picture = "nwo/mao_with_chiang"
+	style = 1
+	trigger = {
+		event = 329739
+		NOT = {
+			war = { country = CHI country = CHC }
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = july year = 1946 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		ai_chance = 90
+		trigger = {
+			area = { area = "Heilongjiang" country = CHC value = 50 }
+			area = { area = "Jilin" country = CHC value = 50 }
+			NOT = {
+				event = 124213
+				event = 124214
+				event = 124215
+				event = 124216
+				event = 134006
+				event = 133002
+				event = 131006
+				event = 220006
+			}
+		}
+		command = { type = relation which = CHI value = -50 }
+		command = { type = sleepevent which = 329740 }
+		command = { type = sleepevent which = 329742 }
+		command = { type = sleepevent which = 329743 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		ai_chance = 85
+		trigger = {
+			area = { area = "Heilongjiang" country = CHC value = 50 }
+			area = { area = "Jilin" country = CHC value = 50 }
+			OR = {
+				event = 124213
+				event = 124214
+				event = 124215
+				event = 124216
+				event = 134006
+				event = 133002
+				event = 131006
+				event = 220006
+			}
+		}
+		command = { type = relation which = CHI value = -50 }
+		command = { type = sleepevent which = 329740 }
+		command = { type = sleepevent which = 329742 }
+		command = { type = sleepevent which = 329743 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		ai_chance = 70
+		trigger = {
+			NOT = {
+				area = { area = "Heilongjiang" country = CHC value = 50 }
+				area = { area = "Jilin" country = CHC value = 50 }
+			}
+			OR = {
+				event = 124213
+				event = 124214
+				event = 124215
+				event = 124216
+				event = 134006
+				event = 133002
+				event = 131006
+				event = 220006
+			}
+		}
+		command = { type = relation which = CHI value = -50 }
+		command = { type = sleepevent which = 329740 }
+		command = { type = sleepevent which = 329742 }
+		command = { type = sleepevent which = 329743 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		ai_chance = 65
+		trigger = {
+			NOT = {
+				area = { area = "Heilongjiang" country = CHC value = 50 }
+				area = { area = "Jilin" country = CHC value = 50 }
+			}
+			NOT = {
+				event = 124213
+				event = 124214
+				event = 124215
+				event = 124216
+				event = 134006
+				event = 133002
+				event = 131006
+				event = 220006
+			}
+		}
+		command = { type = relation which = CHI value = -50 }
+		command = { type = sleepevent which = 329740 }
+		command = { type = sleepevent which = 329742 }
+		command = { type = sleepevent which = 329743 }
+	}
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 10
+		command = { type = relation which = CHI value = 20 }
+		command = { type = dissent value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329744] CHC | 1946 | Chiang's Disarmament Ultimatum (El ultimátum de Chiang Kai-shek)
+# Triggered by event 329743 in events/CHI/CHI_45-75.txt
+# Trigger event 124159 in events/CHI/CHI_45-75.txt
+# Trigger event 124160 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329744
+	random = no
+	country = CHC
+	name = "EVT_CHC_329744_NAME"
+	desc = "EVT_CHC_329744_DESC"
+	picture = "nwo/chiang_address"
+	style = 1
+	trigger = {
+		flag = chinese_unity_govt
+		event = 329743
+		NOT = {
+			war = { country = CHI country = CHC }
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = september year = 1946 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 50
+		command = { type = clrflag which = chinese_unity_govt }
+		command = { type = relation which = CHI value = -150 }
+		command = { type = end_non_aggression which = CHI where = CHC }
+		command = { type = end_guarantee which = CHI where = CHC }
+		command = { type = war which = CHI  }
+		command = { type = sleepevent which = 124159 }
+		command = { type = trigger which = 124160 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		ai_chance = 20
+		command = { type = clrflag which = chinese_unity_govt }
+		command = { type = relation which = CHI value = -150 }
+		command = { type = end_non_aggression which = CHI where = CHC }
+		command = { type = end_guarantee which = CHI where = CHC }
+		command = { type = sleepevent which = 124159 }
+		command = { type = trigger which = 124160 }
+	}
+	action = {
+		name = "EVT_CHC_329744_A"
+		ai_chance = 30
+		command = { type = strength which = all when = 0 where = 1 value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329745] CHC | 1946 | Chiang's Military Proposal (La propuesta militar de Chiang)
+# Triggered by event 329743 in events/CHI/CHI_45-75.txt
+# Trigger event 124159 in events/CHI/CHI_45-75.txt
+# Trigger event 124160 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329745
+	random = no
+	country = CHC
+	name = "EVT_CHC_329745_NAME"
+	desc = "EVT_CHC_329745_DESC"
+	picture = "nwo/chiang_address"
+	style = 1
+	trigger = {
+		flag = chinese_unity_govt
+		event = 329743
+		NOT = {
+			war = { country = CHI country = CHC }
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = september year = 1946 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 80
+		command = { type = clrflag which = chinese_unity_govt }
+		command = { type = relation which = CHI value = -150 }
+		command = { type = end_non_aggression which = CHI where = CHC }
+		command = { type = end_guarantee which = CHI where = CHC }
+		command = { type = sleepevent which = 124159 }
+		command = { type = trigger which = 124160 }
+	}
+	action = {
+		name = "EVT_CHC_329745_A"
+		ai_chance = 20
+		command = { type = strength which = all when = 0 where = 1 value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123031] CHC | 1948 | Resumption of the Civil War (Reanudación de la Guerra Civil China)
+# Triggered by event 329746 in events/CHI/CHI_Decisions.txt
+# Triggered by event 329747 in events/Minors/CHC_Decisions.txt
+# Triggered by event 329748 in events/Minors/CHC_Decisions.txt
+# Trigger event 123032 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123031
+	random = no
+	country = CHC
+	name = "EVT_CHC_123031_NAME"
+	desc = "EVT_CHC_123031_DESC"
+	picture = "nwo/mao_leads"
+	style = 1
+	trigger = {
+		OR = {
+			event = 329746
+			event = 329747
+			event = 329748
+		}
+		war = { country = CHI country = CHC }
+		flag = cold_war_pacific
+		NOT = {
+			flag = CHC_won_civil_war
+			flag = CHI_won_civil_war
+		}
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = dissent value = -3 }
+		command = { type = max_organization which = infantry value = 10 }
+		command = { type = max_organization which = militia value = 10 }
+		command = { type = max_organization which = bergsjaeger value = 10 }
+		command = { type = morale which = infantry value = 10 }
+		command = { type = morale which = militia value = 10 }
+		command = { type = morale which = bergsjaeger value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123032] CHC | 1948 | Conclusion of the Civil War (Final de la Guerra Civil China)
+# Triggered by event 123031 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123032
+	random = no
+	country = CHC
+	name = "EVT_CHC_123032_NAME"
+	desc = "EVT_CHC_123032_DESC"
+	picture = "nwo/mao_leads"
+	style = 1
+	trigger = {
+		atwar = no
+		event = 123031
+	}
+	date = { day = 1 month = january year = 1948 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = max_organization which = infantry value = -10 }
+		command = { type = max_organization which = militia value = -10 }
+		command = { type = max_organization which = bergsjaeger value = -10 }
+		command = { type = morale which = infantry value = -10 }
+		command = { type = morale which = militia value = -10 }
+		command = { type = morale which = bergsjaeger value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330004] CHC | 1948 | UN Resolution on the Greek Civil War (Resolución de la ONU sobre la Guerra Civil Griega)
+# Triggered by event 330003 in events/AI/REB_AI_14-52.txt
+# Trigger event 152211 in events/GRE/GRE_38-49.txt
+# Trigger event 152212 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 330004
+	country = CHC
+	name = EVT_SHARED_00961_NAME
+	desc = EVT_SHARED_00961_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 85
+		trigger = {
+			NOT = { alliance = { country = U33 } }
+		}
+		command = { type = setflag which = un_gcw_totalveto }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 10
+		trigger = {
+			NOT = { flag = un_gcw_interventionveto }
+			NOT = { war = { country = GRE } }
+			NOT = { alliance = { country = U33 } }
+		}
+		command = { type = setflag which = un_gcw_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 5
+		trigger = {
+			NOT = { flag = un_gcw_interventionveto }
+			NOT = { war = { country = GRE } }
+			NOT = { alliance = { country = U33 } }
+		}
+		command = { type = money value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123051] CHC | 1949 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123051
+	country = CHC
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 51051 }
+		command = { type = foreignminister which = 51052 }
+		command = { type = armamentminister which = 51053 }
+		command = { type = ministerofsecurity which = 51054 }
+		command = { type = ministerofintelligence which = 51055 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123093] CHC | 1949 | Fate of the East Turkestan Republic (El fin del Turquestán Oriental)
+# Trigger event 220004 in events/Minors/SIK.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123093
+	country = CHC
+	name = EVT_CHC_123093_NAME
+	desc = EVT_CHC_123093_DESC
+	picture = "nwo/east_turkestan"
+	style = 1
+	trigger = {
+		exists = SIK
+		flag = CHC_won_civil_war
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_CHC_123093_A
+		ai_chance = 100
+		command = { type = trigger which = 220004 }
+	}
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123094] CHC | 1949 | Annexation of East Turkestan (Anexión del Turquestán Oriental)
+# Triggered by event 220004 in events/Minors/SIK.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123094
+	country = CHC
+	name = EVT_CHC_123094_NAME
+	desc = EVT_CHC_123094_DESC
+	picture = "nwo/east_turkestan"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = inherit which = SIK value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123107] CHC | 1949 | UN Resolution on the Indonesian Revolution (Resolución de la ONU sobre la Revolución Indonesia)
+# Triggered by event 330012 in events/AI/REB_AI_14-52.txt
+# Trigger event 162042 in events/Minors/INO.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123107
+	country = CHC
+	name = EVT_SHARED_00963_NAME
+	desc = EVT_SHARED_00963_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = EVT_SHARED_00963_B
+		ai_chance = 95
+		trigger = {
+			NOT = { flag = un_indonesia_interventionveto }
+			NOT = { war = { country = INO } }
+			NOT = { alliance = { country = U05 } }
+			NOT = { alliance = { country = HOL } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = EVT_SHARED_00963_A
+		ai_chance = 5
+		trigger = {
+			NOT = { war = { country = INO } }
+		}
+		command = { type = setflag which = un_indonesia_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 0
+		trigger = {
+			NOT = { alliance = { country = INO } }
+		}
+		command = { type = setflag which = un_indonesia_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123100] CHC | 1949 | Communist China and Tibet (China comunista y el Tíbet)
+# Trigger event 123103 in events/Minors/CHC_45-62.txt
+# Trigger event 232007 in events/Minors/TIB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123100
+	country = CHC
+	name = EVT_CHC_123100_NAME
+	desc = EVT_CHC_123100_DESC
+	picture = "nwo/dalai_lama_with_mao"
+	style = 1
+	trigger = {
+		exists = TIB
+		NOT = { ispuppet = TIB }
+		flag = CHC_won_civil_war
+	}
+	date = { day = 1 month = july year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_CHC_123100_A
+		ai_chance = 98
+		command = { type = belligerence value = 5 }
+		command = { type = addcore which = 1455 }
+		command = { type = addcore which = 1458 }
+		command = { type = removecore which = 1278 }
+		command = { type = removecore which = 1286 }
+		command = { type = removecore which = 1287 }
+		command = { type = removecore which = 1288 }
+		command = { type = removecore which = 1289 }
+		command = { type = removecore which = 1290 }
+		command = { type = removecore which = 1294 }
+		command = { type = removecore which = 1295 }
+	}
+	action = {
+		name = EVT_CHC_123100_B
+		ai_chance = 2
+		command = { type = sleepevent which = 232007 }
+		command = { type = belligerence value = -10 }
+		command = { type = dissent value = 5 }
+		command = { type = removecore which = 1278 }
+		command = { type = removecore which = 1286 }
+		command = { type = removecore which = 1287 }
+		command = { type = removecore which = 1288 }
+		command = { type = removecore which = 1289 }
+		command = { type = removecore which = 1290 }
+		command = { type = removecore which = 1294 }
+		command = { type = removecore which = 1295 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123061] CHC | 1950 | Agrarian Land Reform (Reforma agraria)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123061
+	country = CHC
+	name = EVT_CHC_123061_NAME
+	desc = EVT_CHC_123061_DESC
+	picture = "nwo/china_land_reform"
+	style = 1
+	trigger = {
+		government = communist
+		flag = CHC_won_civil_war
+	}
+	date = { day = 1 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = industrial_modifier which = total value = 4 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123062] CHC | 1950 | Three-Anti and Five-Anti Campaigns (Campañas «Tres y Cinco Anti»)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123062
+	country = CHC
+	name = EVT_CHC_123062_NAME
+	desc = EVT_CHC_123062_DESC
+	picture = "nwo/chinese_anti_campaigns"
+	style = 1
+	trigger = {
+		government = communist
+		flag = CHC_won_civil_war
+	}
+	date = { day = 1 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_CHC_123062_A
+		ai_chance = 95
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = industrial_modifier which = total value = 2 }
+	}
+	action = {
+		name = EVT_CHC_123062_B
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123063] CHC | 1950 | Anti-Rightist Campaign (Movimiento Antiderechista)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123063
+	country = CHC
+	name = EVT_CHC_123063_NAME
+	desc = EVT_CHC_123063_DESC
+	picture = "nwo/chinese_anti_campaigns"
+	style = 1
+	trigger = {
+		government = communist
+		flag = CHC_won_civil_war
+	}
+	date = { day = 1 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 95
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = industrial_modifier which = total value = 2 }
+	}
+	action = {
+		name = EVT_CHC_123063_A
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123103] CHC | 1950 | Reintegration of Tibet (Reintegración total del Tíbet)
+# Triggered by event 123100 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123103
+	country = CHC
+	name = EVT_CHC_123103_NAME
+	desc = EVT_CHC_123103_DESC
+	picture = "nwo/no_unhealthy_thoughts"
+	style = 1
+	trigger = {
+		NOT = { exists = TIB }
+		event = 123100
+	}
+	date = { day = 1 month = january year = 1950 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = addcore which = 1278 }
+		command = { type = addcore which = 1286 }
+		command = { type = addcore which = 1287 }
+		command = { type = addcore which = 1288 }
+		command = { type = addcore which = 1289 }
+		command = { type = addcore which = 1290 }
+		command = { type = addcore which = 1294 }
+		command = { type = addcore which = 1295 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123108] CHC | 1950 | UN Resolution on the Korean War (Resolución de la ONU sobre la Guerra de Corea)
+# Triggered by event 330017 in events/AI/REB_AI_14-52.txt
+# Trigger event 170039 in events/Minors/KOR.txt
+# Trigger event 170040 in events/Minors/KOR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123108
+	country = CHC
+	name = EVT_SHARED_00964_NAME
+	desc = EVT_SHARED_00964_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 95
+		command = { type = setflag which = un_korea_totalveto }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 5
+		trigger = {
+			NOT = { war = { country = KOR } }
+			NOT = { alliance = { country = PRK } }
+		}
+		command = { type = setflag which = un_korea_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 0
+		trigger = {
+			NOT = { flag = un_korea_interventionveto }
+			NOT = { war = { country = KOR } }
+			NOT = { alliance = { country = PRK } }
+		}
+		command = { type = money value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123101] CHC | 1951 | The Seventeen Point Agreement (El Acuerdo de los Diecisiete Puntos)
+# Triggered by event 232007 in events/Minors/TIB.txt
+# Trigger event 329990 in events/Minors/TIB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123101
+	country = CHC
+	name = EVT_CHC_123101_NAME
+	desc = EVT_CHC_123101_DESC
+	picture = "nwo/seventeen_points_for_tibet"
+	style = 1
+	trigger = {
+		event = 232007
+		exists = TIB
+	}
+	date = { day = 23 month = may year = 1951 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = make_puppet which = TIB }
+		command = { type = secedeprovince which = TIB value = 1278 }
+		command = { type = secedeprovince which = TIB value = 1286 }
+		command = { type = secedeprovince which = TIB value = 1287 }
+		command = { type = secedeprovince which = TIB value = 1288 }
+		command = { type = secedeprovince which = TIB value = 1289 }
+		command = { type = secedeprovince which = TIB value = 1290 }
+		command = { type = secedeprovince which = TIB value = 1294 }
+		command = { type = secedeprovince which = TIB value = 1295 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330010] CHC | 1952 | UN Resolution on Eritrea (Resolución de la ONU sobre Eritrea)
+# Triggered by event 207059 in events/AI/REB_AI_14-52.txt
+# Trigger event 145015 in events/Minors/ETH.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 330010
+	country = CHC
+	name = EVT_SHARED_00962_NAME
+	desc = EVT_SHARED_00962_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 99
+		trigger = { NOT = { war = { country = ETH } } }
+		command = { type = money value = -1 }
+		command = { type = relation which = ETH value = 50 }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 1
+		trigger = { NOT = { alliance = { country = ETH } } }
+		command = { type = setflag which = un_eritrea_veto }
+		command = { type = relation which = ETH value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123052] CHC | 1953 | Statesman's Birthday (Cumpleaños de Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123052
+	country = CHC
+	name = "EVT_SHARED_00806_NAME"
+	desc = "EVT_SHARED_00806_DESC"
+	picture = "nwo/birthday"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 51302 }
+		command = { type = headofgovernment which = 51303 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123053] CHC | 1954 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123053
+	country = CHC
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1954 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1958 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = foreignminister which = 51052 }
+		command = { type = armamentminister which = 51053 }
+		command = { type = ministerofsecurity which = 51128 }
+		command = { type = ministerofintelligence which = 51061 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123098] CHC | 1954 | First Taiwan Strait Crisis (Primera Crisis del Estrecho de Taiwán)
+# Trigger event 316263 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123098
+	country = CHC
+	name = EVT_CHC_123098_NAME
+	desc = EVT_CHC_123098_DESC
+	picture = "nwo/taiwan_strait"
+	style = 1
+	trigger = {
+		flag = CHC_won_civil_war
+		exists = CHI
+	}
+	date = { day = 3 month = september year = 1954 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_CHC_123098_A
+		ai_chance = 98
+		command = { type = relation which = CHI value = -100 }
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action = {
+		name = EVT_CHC_123098_B
+		ai_chance = 2
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = CHI value = 50 }
+		command = { type = dissent value = 3 }
+		command = { type = sleepevent which = 316263 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123106] CHC | 1955 | UN Resolution on the Taiwan Strait (Resolución de la ONU sobre el Estrecho de Taiwán)
+# Triggered by event 330001 in events/AI/REB_AI_55-00.txt
+# Trigger event 124231 in events/CHI/CHI_45-75.txt
+# Trigger event 124232 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123106
+	country = CHC
+	name = EVT_SHARED_00960_NAME
+	desc = EVT_SHARED_00960_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = setflag which = un_taiwan_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329970] CHC | 1955 | Escalation in the Taiwan Strait (Escalada en el Estrecho de Taiwán)
+# Triggered by event 316263 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329970
+	country = CHC
+	name = EVT_CHC_329970_NAME
+	desc = EVT_CHC_329970_DESC
+	picture = "nwo/taiwan_strait"
+	style = 1
+	trigger = {
+		event = 316263
+		exists = CHI
+		NOT = { guarantee = { country = USA country = CHI } }
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 95
+		command = { type = war which = CHI }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329971] CHC | 1955 | The American Deterrent in the Strait (La disuasión estadounidense en el estrecho)
+# Triggered by event 124219 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329971
+	country = CHC
+	name = EVT_CHC_329971_NAME
+	desc = EVT_CHC_329971_DESC
+	picture = "nwo/taiwan_strait"
+	style = 1
+	trigger = {
+		event = 124219
+		exists = CHI
+		guarantee = { country = USA country = CHI }
+	}
+	date = { day = 1 month = january year = 1955 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 95
+		command = { type = domestic which = interventionism value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 5
+		command = { type = war which = CHI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123105] CHC | 1956 | UN Resolution on the Suez Crisis (Resolución de la ONU sobre la Guerra de Suez)
+# Triggered by event 329997 in events/AI/REB_AI_55-00.txt
+# Trigger event 142067 in events/Minors/EGY_33-58.txt
+# Trigger event 142068 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123105
+	country = CHC
+	name = EVT_SHARED_00959_NAME
+	desc = EVT_SHARED_00959_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 99
+		trigger = {
+			NOT = { flag = un_suez_interventionveto }
+			NOT = { war = { country = EGY } }
+			NOT = { alliance = { country = ISR } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 1
+		trigger = {
+			NOT = { war = { country = EGY } }
+			NOT = { alliance = { country = ISR } }
+		}
+		command = { type = setflag which = un_suez_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 0
+		trigger = {
+			NOT = { alliance = { country = EGY } }
+		}
+		command = { type = setflag which = un_suez_totalveto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123109] CHC | 1956 | UN Resolution on the Hungarian Uprising (Resolución de la ONU sobre el Levantamiento Húngaro)
+# Triggered by event 207060 in events/AI/REB_AI_55-00.txt
+# Trigger event 207061 in events/AI/REB_AI_55-00.txt
+# Trigger event 248035 in events/Minors/U13.txt
+# Trigger event 329872 in events/USA/USA_48-61.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123109
+	country = CHC
+	name = EVT_SHARED_00965_NAME
+	desc = EVT_SHARED_00965_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 60
+		command = { type = setflag which = un_hungary_totalveto }
+	}
+	action = {
+		name = ACTION_NAME_SEND_AID
+		ai_chance = 30
+		trigger = {
+			NOT = { war = { country = U13 } }
+			NOT = { alliance = { country = SOV } }
+		}
+		command = { type = setflag which = un_hungary_interventionveto }
+	}
+	action = {
+		name = ACTION_NAME_INTERVENE
+		ai_chance = 10
+		trigger = {
+			NOT = { flag = un_hungary_interventionveto }
+			NOT = { war = { country = U13 } }
+			NOT = { alliance = { country = SOV } }
+		}
+		command = { type = money value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123064] CHC | 1958 | The Great Leap Forward (El Gran Salto Adelante)
+# Trigger event 123065 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123064
+	country = CHC
+	name = EVT_CHC_123064_NAME
+	desc = EVT_CHC_123064_DESC
+	picture = "nwo/great_leap_forward"
+	style = 1
+	trigger = {
+		government = communist
+		flag = CHC_won_civil_war
+	}
+	date = { day = 1 month = january year = 1958 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_CHC_123064_A
+		ai_chance = 95
+		command = { type = industrial_modifier which = total value = 3 }
+	}
+	action = {
+		name = EVT_CHC_123064_B
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+		command = { type = sleepevent which = 123065 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123099] CHC | 1958 | Second Taiwan Strait Crisis (Segunda Crisis del Estrecho de Taiwán)
+# Trigger event 124220 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123099
+	country = CHC
+	name = EVT_CHC_123099_NAME
+	desc = EVT_CHC_123099_DESC
+	picture = "nwo/taiwan_strait"
+	style = 1
+	trigger = {
+		exists = CHI
+		atwar = no
+	}
+	date = { day = 23 month = august year = 1958 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_CHC_123099_A
+		ai_chance = 70
+		command = { type = relation which = CHI value = -100 }
+		command = { type = relation which = USA value = -50 }
+		command = { type = trigger which = 124220 }
+	}
+	action = {
+		name = EVT_CHC_123099_B
+		ai_chance = 15
+		command = { type = dissent value = 3 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 15
+		command = { type = war which = CHI }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123054] CHC | 1959 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 123054
+	country = CHC
+	name = "EVT_SHARED_00805_NAME"
+	desc = "EVT_SHARED_00805_DESC"
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1959 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1962 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = foreignminister which = 51056 }
+		command = { type = armamentminister which = 51057 }
+		command = { type = ministerofsecurity which = 51060 }
+		command = { type = ministerofintelligence which = 51062 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123102] CHC | 1959 | Suppression of Tibet (Sometimiento del Tíbet)
+# Triggered by event 329990 in events/Minors/TIB.txt
+# Trigger event 232008 in events/Minors/TIB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123102
+	country = CHC
+	name = EVT_CHC_123102_NAME
+	desc = EVT_CHC_123102_DESC
+	picture = "nwo/no_unhealthy_thoughts"
+	style = 1
+	action = {
+		name = EVT_CHC_123102_A
+		ai_chance = 99
+		command = { type = inherit which = TIB value = 0 }
+	}
+	action = {
+		name = EVT_CHC_123102_B
+		ai_chance = 1
+		command = { type = removecore which = 1286 }
+		command = { type = removecore which = 1287 }
+		command = { type = removecore which = 1288 }
+		command = { type = removecore which = 1294 }
+		command = { type = removecore which = 1285 }
+		command = { type = removecore which = 1283 }
+		command = { type = removecore which = 1284 }
+		command = { type = removecore which = 1262 }
+		command = { type = removecore which = 1289 }
+		command = { type = removecore which = 1290 }
+		command = { type = removecore which = 1295 }
+		command = { type = make_puppet which = TIB }
+		command = { type = secedeprovince which = TIB value = 1289 when = 1 }
+		command = { type = secedeprovince which = TIB value = 1290 when = 1 }
+		command = { type = secedeprovince which = TIB value = 1295 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123065] CHC | 1960 | Aftermath of the Great Leap (Catástrofe del Gran Salto)
+# Triggered by event 123064 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123065
+	country = CHC
+	name = EVT_CHC_123065_NAME
+	desc = EVT_CHC_123065_DESC
+	picture = "nwo/iron_furnaces"
+	style = 1
+	trigger = {
+		government = communist
+		event = 123064
+	}
+	date = { day = 1 month = january year = 1960 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = industrial_modifier which = total value = -12 }
+		command = { type = dissent value = 10 }
+		command = { type = relative_manpower value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123096] CHC | 1962 | Chinese Tactical Defeat in the Himalayas (Derrota táctica china en el Himalaya)
+# Triggered by event 329950 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123096
+	country = CHC
+	name = EVT_CHC_123096_NAME
+	desc = EVT_CHC_123096_DESC
+	picture = "nwo/sino_indian_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 90
+		command = { type = dissent value = 5 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = secedeprovince which = IND value = 1455 when = 1 }
+		command = { type = secedeprovince which = IND value = 1458 when = 1 }
+		command = { type = removecore which = 1278 }
+		command = { type = removecore which = 1455 }
+		command = { type = removecore which = 1458 }
+	}
+	action = {
+		name = EVT_CHC_123096_A
+		ai_chance = 10
+		command = { type = dissent value = 8 }
+		command = { type = belligerence value = 15 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = secedeprovince which = IND value = 1455 when = 1 }
+		command = { type = secedeprovince which = IND value = 1458 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [123097] CHC | 1962 | Chinese Expulsion from Western Tibet (Retirada china del Tíbet occidental)
+# Triggered by event 329952 in events/Minors/IND_36-65.txt
+# Trigger event 161059 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 123097
+	country = CHC
+	name = EVT_CHC_123097_NAME
+	desc = EVT_CHC_123097_DESC
+	picture = "nwo/sino_indian_war"
+	style = 1
+	action = {
+		name = EVT_CHC_123097_A
+		ai_chance = 90
+		command = { type = dissent value = 5 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = secedeprovince which = IND value = 1455 when = 1 }
+		command = { type = secedeprovince which = IND value = 1458 when = 1 }
+		command = { type = secedeprovince which = IND value = 1286 when = 1 }
+		command = { type = secedeprovince which = IND value = 1287 when = 1 }
+		command = { type = secedeprovince which = IND value = 1288 when = 1 }
+		command = { type = secedeprovince which = IND value = 1289 when = 1 }
+		command = { type = secedeprovince which = IND value = 1290 when = 1 }
+		command = { type = secedeprovince which = IND value = 1295 when = 1 }
+		command = { type = secedeprovince which = IND value = 1294 when = 1 }
+		command = { type = secedeprovince which = IND value = 1285 when = 1 }
+		command = { type = removecore which = 1278 }
+		command = { type = removecore which = 1455 }
+		command = { type = removecore which = 1458 }
+		command = { type = removecore which = 1286 }
+		command = { type = removecore which = 1287 }
+		command = { type = removecore which = 1288 }
+		command = { type = removecore which = 1289 }
+		command = { type = removecore which = 1290 }
+		command = { type = removecore which = 1295 }
+		command = { type = removecore which = 1294 }
+		command = { type = removecore which = 1285 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 10
+		command = { type = dissent value = 8 }
+		command = { type = belligerence value = 15 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = secedeprovince which = IND value = 1455 when = 1 }
+		command = { type = secedeprovince which = IND value = 1458 when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329946] CHC | 1962 | Standoff at Thag La Ridge (Enfrentamiento en la cordillera de Thag La)
+# Triggered by event 329945 in events/Minors/IND_36-65.txt
+# Trigger event 329947 in events/Minors/CHC_Decisions.txt
+# Trigger event 329949 in events/Minors/CHC_45-62.txt
+# Trigger event 329950 in events/Minors/IND_36-65.txt
+# Trigger event 329951 in events/Minors/CHC_62-91.txt
+# Trigger event 329952 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329946
+	country = CHC
+	name = EVT_CHC_329946_NAME
+	desc = EVT_CHC_329946_DESC
+	picture = "nwo/thag_la"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 329945
+		exists = IND
+		NOT = { war = { country = IND country = CHC } }
+	}
+	date = { day = 0 month = august year = 1962 }
+	offset = 30
+	deathdate = { day = 29 month = august year = 1962 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 95
+		command = { type = war which = IND }
+	}
+	action = {
+		name = ACTION_NAME_WITHDRAW
+		ai_chance = 5
+		command = { type = dissent value = 8 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = secedeprovince which = IND value = 1455 when = 1 }
+		command = { type = secedeprovince which = IND value = 1458 when = 1 }
+		command = { type = removecore which = 1278 }
+		command = { type = removecore which = 1455 }
+		command = { type = removecore which = 1458 }
+		command = { type = sleepevent which = 329947 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329949] CHC | 1962 | Chinese Tactical Victory in the Himalayas (Victoria táctica china en el Himalaya)
+# Triggered by event 329946 in events/Minors/CHC_45-62.txt
+# Trigger event 123066 in events/Minors/CHC_62-91.txt
+# Trigger event 161057 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329949
+	country = CHC
+	name = EVT_CHC_329949_NAME
+	desc = EVT_CHC_329949_DESC
+	picture = "nwo/sino_indian_war"
+	style = 1
+	trigger = {
+		flag = cold_war
+		event = 329946
+		war = { country = IND country = CHC }
+		OR = {
+			control = { province = 1540 data = -1 }
+			control = { province = 1453 data = -1 }
+			control = { province = 1454 data = -1 }
+			control = { province = 1451 data = -1 }
+			control = { province = 1452 data = -1 }
+		}
+	}
+	date = { day = 0 month = november year = 1962 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_CHC_329949_A
+		ai_chance = 98
+		command = { type = peace which = IND }
+		command = { type = trigger which = 161057 }
+		command = { type = sleepevent which = 329947 }
+		command = { type = sleepevent which = 329949 }
+		command = { type = sleepevent which = 329950 }
+		command = { type = sleepevent which = 329951 }
+		command = { type = sleepevent which = 329952 }
+	}
+	action = {
+		name = EVT_CHC_329949_B
+		ai_chance = 2
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 25 }
+	}
+}

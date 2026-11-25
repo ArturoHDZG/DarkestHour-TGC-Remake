@@ -1,0 +1,1832 @@
+# ============================================================================
+# File: events/ITA/ITA_40-50.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [166148] ITA | 1940 | Establishment of The Hellenic State. (Establecimiento del Estado Helénico)
+# Triggered by event 152085 in events/GRE/GRE_38-49.txt
+# Trigger event 152086 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166148
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00625_NAME"
+	desc = "EVT_SHARED_00625_DESC"
+	style = 2
+	picture = "GLOBAL/mussolini"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = removeclaim which = 367 where = -1 }
+		command = { type = removeclaim which = 368 where = -1 }
+		command = { type = removeclaim which = 369 where = -1 }
+		command = { type = removeclaim which = 376 where = -1 }
+		command = { type = removeclaim which = 375 where = -1 }
+		command = { type = removeclaim which = 372 where = -1 }
+		command = { type = removeclaim which = 373 where = -1 }
+		command = { type = removeclaim which = 374 where = -1 }
+		command = { type = addclaim which = 382 }
+		command = { type = addclaim which = 383 }
+		command = { type = addclaim which = 371 }
+		command = { type = make_puppet which = GRE }
+		command = { type = trigger which = 152086 }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329227] ITA | 1940 | Florence Conference (Conferencia de Florencia)
+# Trigger event 150123 in events/GER/GER_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329227
+	random = no
+	country = ITA
+	trigger = {
+			war = { country = ITA country = GRE }
+			}
+	date = { day = 27 month = january year = 1940 }
+	offset = 15
+	deathdate = { day = 29 month = october year = 1942 }
+	name = "EVT_SHARED_00715_NAME"
+	desc = "EVT_SHARED_00715_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = 5 }
+		command = { type = trigger which = 150123 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329190] ITA | 1940 | Franco-Italian Armistice (Armisticio franco-italiano)
+# Trigger event 147086 in events/FRA/FRA_39-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329190
+	random = no
+	country = ITA
+	trigger = {
+			exists = FRA
+			NOT = { war = { country = ITA country = FRA } }
+			}
+	date = { day = 23 month = june year = 1940 }
+	offset = 20
+	deathdate = { day = 25 month = august year = 1942 }
+	name = "EVT_SHARED_00675_NAME"
+	desc = "EVT_SHARED_00675_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GOOD"
+		ai_chance = 100
+	 	command = { type = relation which = FRA value = 15 }
+	 	command = { type = trigger which = 147086 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166009] ITA | 1940 | Death of Italo Balbo (Muerte de Italo Balbo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166009
+	random = no
+	country = ITA
+	style = 2
+	trigger = {
+		OR = {
+			leader = 25195
+			leader = 25016
+		}
+		atwar = yes
+	}
+	date = { year = 1940 month = june day = 28 }
+	name = "EVT_ITA_166009_NAME"
+	desc = "EVT_ITA_166009_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepteam which = 25016 }
+		command = { type = sleepleader which = 25016 }
+		command = { type = sleepleader which = 25195 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329191] ITA | 1940 | Italian Invasion of Egypt (Invasión italiana de Egipto)
+# Trigger event 143057 in events/ENG/ENG_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329191
+	random = no
+	country = ITA
+	trigger = {
+			exists = ENG
+			war = { country = ITA country = ENG }
+			control = { province = 780 data = ITA }
+			}
+	date = { day = 11 month = july year = 1940 }
+	offset = 20
+	deathdate = { day = 13 month = september year = 1943 }
+	name = "EVT_SHARED_00676_NAME"
+	desc = "EVT_SHARED_00676_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = belligerence value = 1 }
+		command = { type = supplies value = 400 }
+		command = { type = oilpool value = 300 }
+		command = { type = trigger which = 143057 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329727] ITA | 1940 | The Italian ultimatum. (El ultimátum italiano)
+# Triggered by event 166146 in events/ITA/ITA_34-36.txt
+# Trigger event 152085 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329727
+	random = no
+	country = ITA
+	trigger = {
+		event = 166146
+		NOT = { alliance = { country = GER country = GRE } }
+		NOT = { alliance = { country = SOV country = GRE } }
+		NOT = { alliance = { country = GRE } }
+		}
+	name = "EVT_ITA_329727_NAME"
+	desc = "EVT_ITA_329727_DESC"
+	style = 2
+	picture = "GLOBAL/mussolini"
+	date = { day = 27 month = October year = 1940 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = sleepevent which = 166146 }
+		command = { type = trigger which = 152085 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330127] ITA | 1940 | Tripartite Pact Joint Commissions (Comisiones Conjuntas del Pacto Tripartito)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330127
+	random = no
+	country = ITA
+	trigger = {
+		war = { country = JAP }
+		war = { country = GER }
+		government = fascist
+	}
+	date = { day = 19 month = december year = 1940 }
+	offset = 1
+	deathdate = { day = 21 month = december year = 1940 }
+	name = "EVT_ITA_330127_NAME"
+	desc = "EVT_ITA_330127_DESC"
+	style = 2
+	picture = "GLOBAL/tripartite_pact_joint_commissions"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = 10 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = gain_tech which = 3550 }
+		command = { type = gain_tech which = 12010 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166050] ITA | 1941 | First Imperial Libyan Offensive (Primera ofensiva imperial libia)
+# Triggered by event 143058 in events/ENG/ENG_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166050
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00680_NAME"
+	desc = "EVT_SHARED_00680_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = supplies value = -1000 }
+		command = { type = metalpool value = -1000 }
+		command = { type = oilpool value = -750 }
+		command = { type = manpowerpool value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166051] ITA | 1941 | British East African Offensive (Ofensiva británica del este africano)
+# Triggered by event 143059 in events/ENG/ENG_39-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166051
+	random = no
+	country = ITA
+	name = "EVT_SHARED_00681_NAME"
+	desc = "EVT_SHARED_00681_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = supplies value = -500 }
+		command = { type = dissent value = 1 }
+		command = { type = metalpool value = -500 }
+		command = { type = oilpool value = -500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166091] ITA | 1941 | Elite Bersaglieri Light Infantry (Infantería ligera Bersaglieri)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166091
+	random = no
+	country = ITA
+	trigger = {
+		   control = { province = 419 data = ITA }
+		   atwar = yes
+		   ai = no
+}
+	name = "EVT_SHARED_00451_NAME"
+	desc = "EVT_SHARED_00451_DESC"
+	style = 2
+	picture = "ITA/elite_bersaglieri_light_infantry"
+	date = { day = 3 month = january year = 1941 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_corps which = "Bersaglieri specialita" value = land where = 419 }
+		command = { type = add_division which = "7. Bersaglieri Btl" value = motorized when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166092] ITA | 1941 | Elite Bersaglieri Light Infantry (Infantería ligera Bersaglieri)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166092
+	random = no
+	country = ITA
+	trigger = {
+		   control = { province = 419 data = ITA }
+		   atwar = yes
+		   ai = no
+}
+	name = "EVT_SHARED_00451_NAME"
+	desc = "EVT_SHARED_00451_DESC"
+	style = 2
+	picture = "ITA/elite_bersaglieri_light_infantry"
+	date = { day = 3 month = february year = 1941 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_corps which = "Bersaglieri specialita" value = land where = 419 }
+		command = { type = add_division which = "8. Bersaglieri Btl" value = motorized when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166093] ITA | 1941 | Elite Bersaglieri Light Infantry (Infantería ligera Bersaglieri)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166093
+	random = no
+	country = ITA
+	trigger = {
+		   control = { province = 419 data = ITA }
+		   atwar = yes
+		   ai = no
+}
+	name = "EVT_SHARED_00451_NAME"
+	desc = "EVT_SHARED_00451_DESC"
+	style = 2
+	picture = "ITA/elite_bersaglieri_light_infantry"
+	date = { day = 12 month = august year = 1941 }
+	offset = 2
+	deathdate = { day = 29 month = august year = 1999 }
+	action_a = {
+		 name = "ACTION_NAME_GREAT"
+		command = { type = add_corps which = "Bersaglieri specialita" value = land where = 419 }
+		command = { type = add_division which = "12. Bersaglieri Btl" value = motorized when = 0 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330130] ITA | 1941 | Tripartite Pact Joint Commissions (Comisiones Conjuntas del Pacto Tripartito)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330130
+	random = no
+	country = ITA
+	trigger = {
+		war = { country = JAP }
+		war = { country = GER }
+		government = fascist
+	}
+	date = { day = 19 month = december year = 1941 }
+	offset = 1
+	deathdate = { day = 21 month = december year = 1941 }
+	name = "EVT_ITA_330130_NAME"
+	desc = "EVT_ITA_330130_DESC"
+	style = 2
+	picture = "GLOBAL/tripartite_pact_joint_commissions"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ITA value = 10 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = gain_tech which = 12020 }
+		command = { type = gain_tech which = 3350 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329317] ITA | 1942 | The war takes a turn for the worse (La guerra empeora)
+# Trigger event 329040 in events/ITA/ITA_40-50.txt
+# Trigger event 329318 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329317
+	random = no
+	country = ITA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		alliance = { country = GER country = ITA }
+		war = { country = ITA country = ENG }
+		OR = {
+			war = { country = ITA country = GRE }
+			war = { country = ITA country = SOV }
+			war = { country = ITA country = USA }
+		}
+		NOT = {
+			control = { province = 900 data = -3 }
+			control = { province = 789 data = -3 }
+			control = { province = 765 data = -3 }
+		}
+		OR = {
+			NOT = { control = { province = 430 data = ITA } }
+			NOT = { control = { province = 433 data = ITA } }
+			NOT = { control = { province = 427 data = ITA } }
+			NOT = { control = { province = 422 data = ITA } }
+			NOT = { control = { province = 416 data = ITA } }
+			NOT = { control = { province = 419 data = ITA } }
+			NOT = { control = { province = 412 data = ITA } }
+			NOT = { control = { province = 400 data = ITA } }
+			lost_national = { country = ITA value = 3 }
+		}
+	}
+	name = EVT_SHARED_00794_NAME
+ 	desc = EVT_ITA_329317_DESC
+	date = { day = 1 month = july year = 1942 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1950 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 20 }
+		command = { type = industrial_modifier which = supplies value = -15 }
+		command = { type = surprise which = land value = -10 }
+		command = { type = counterattack value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = max_organization which = land value = -40 }
+		command = { type = morale which = land value = -40 }
+		command = { type = ground_def_eff value = 0.55 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329318] ITA | 1942 | The war takes a turn for the worse (La guerra empeora)
+# Triggered by event 329317 in events/ITA/ITA_40-50.txt
+# Triggered by event 150355 in events/GER/GER_36-36.txt
+# Triggered by event 143157 in events/ENG/ENG_38-39.txt
+# ----------------------------------------------------------------------------
+event = {
+  	id = 329318
+  	random = no
+  	country = ITA
+	style = 2
+	picture = "GLOBAL/news_paper"
+  trigger = {
+		event = 329317
+		OR = {
+			AND = {
+				alliance = { country = GER country = ITA }
+				event = 150355
+				event = 143157
+			}
+			AND = {
+				NOT = { alliance = { country = ENG country = ITA } }
+				control = { province = 900 data = -3 }
+				control = { province = 789 data = -3 }
+				control = { province = 377 data = -3 }
+				control = { province = 350 data = -3 }
+			}
+		}
+  }
+  	name = EVT_SHARED_00794_NAME
+  	desc = EVT_ITA_329318_DESC
+	date = { day = 1 month = july year = 1942 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1950 }
+  action_a = {
+  	name = "ACTION_NAME_GOOD"
+  		command = { type = industrial_modifier which = supplies value = 15 }
+		command = { type = surprise which = land value = 10 }
+		command = { type = counterattack value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = max_organization which = land value = 40 }
+		command = { type = morale which = land value = 40 }
+		command = { type = ground_def_eff value = 0.75 }
+  }
+}
+
+# ----------------------------------------------------------------------------
+# [166052] ITA | 1942 | Second Imperial Offensive into Libya failed (Segunda ofensiva imperial en Libia fracasó)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166052
+	random = no
+	country = ITA
+	trigger = {
+            control = { province = 765 data = ITA }
+			war = { country = ENG country = ITA }
+			control = { province = 780 data = ENG }
+            }
+	date = { day = 16 month = november year = 1942 }
+	offset = 1
+	deathdate = { day = 18 month = november year = 1943 }
+	name = "EVT_ITA_166052_NAME"
+	desc = "EVT_ITA_166052_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_VICTORY"
+		ai_chance = 100
+		 command = { type = supplies value = 2400 }
+		 command = { type = oilpool value = 1400 }
+		 command = { type = dissent value = -1 }
+		 command = { type = add_leader_skill which = 25085 value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [330133] ITA | 1942 | Tripartite Pact Joint Commissions (Comisiones Conjuntas del Pacto Tripartito)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330133
+	random = no
+	country = ITA
+	trigger = {
+		war = { country = JAP }
+		war = { country = GER }
+		government = fascist
+	}
+	date = { day = 19 month = december year = 1942 }
+	offset = 1
+	deathdate = { day = 21 month = december year = 1942 }
+	name = "EVT_ITA_330133_NAME"
+	desc = "EVT_ITA_330133_DESC"
+	style = 2
+	picture = "GLOBAL/tripartite_pact_joint_commissions"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = JAP value = 10 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = gain_tech which = 3920 }
+		command = { type = gain_tech which = 8230 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329040] ITA | 1943 | Cabinet Reshuffle (Cambio de gobierno)
+# Triggered by event 329317 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329040
+	random = no
+	country = ITA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		atwar = yes
+		lost_national = { country = ITA value = 5 }
+		alliance = { country = GER country = ITA }
+		event = 329317
+		headofgovernment = 25002
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = january year = 1943 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1943 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 25011 }
+		command = { type = headofgovernment which = 25021 }
+		command = { type = foreignminister which = 25033 }
+		command = { type = armamentminister which = 25052 }
+		command = { type = ministerofsecurity which = 25084 }
+		command = { type = ministerofintelligence which = 25113 }
+		command = { type = chiefofstaff which = 25132 }
+		command = { type = chiefofarmy which = 25154 }
+		command = { type = chiefofnavy which = 25174 }
+		command = { type = chiefofair which = 25184 }
+		command = { type = sleepminister which = 25002 }
+		command = { type = sleepminister which = 25003 }
+		command = { type = sleepminister which = 25018 }
+		command = { type = sleepminister which = 25004 }
+		command = { type = sleepminister which = 25005 }
+		command = { type = sleepminister which = 25031 }
+		command = { type = sleepminister which = 25003 }
+		command = { type = sleepminister which = 25027 }
+		command = { type = sleepminister which = 25032 }
+		command = { type = sleepminister which = 25101 }
+		command = { type = sleepminister which = 25093 }
+		command = { type = sleepminister which = 25096 }
+		command = { type = sleepminister which = 25095 }
+		command = { type = sleepminister which = 25136 }
+		command = { type = sleepminister which = 25122 }
+		command = { type = sleepleader which = 25094 }
+		command = { type = sleepleader which = 25112 }
+		command = { type = sleepleader which = 25229 }
+		command = { type = sleepleader which = 25231 }
+		command = { type = dissent value = -3 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329287] ITA | 1943 | Atomic Strike: Capital Devastated (Ataque nuclear sobre la capital)
+# Trigger event 329288 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+       id = 329287
+       random = no
+       name = "EVT_SHARED_00772_NAME"
+       desc = "EVT_SHARED_00772_DESC"
+       style = 2
+	picture = "GLOBAL/nuke"
+       country = ITA
+       trigger = {
+          nuked = { country = ITA data = -1 where = 419 }
+          }
+       date = { day = 4 month = march year = 1943 }
+       offset = 9
+       deathdate = { day = 29 month = december year = 1963 }
+       action
+       = {
+       name = ACTION_NAME_OK
+       command = { type =   capital which = 407 }
+       command = { type =    dissent value = -1}
+          }
+    }
+
+# ----------------------------------------------------------------------------
+# [329288] ITA | 1943 | Atomic Strike: Capital Devastated (Ataque nuclear sobre la capital)
+# Triggered by event 329287 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+       id = 329288
+       random = no
+       name = "EVT_SHARED_00772_NAME"
+       desc = "EVT_SHARED_00772_DESC"
+       style = 2
+	picture = "GLOBAL/nuke"
+       country = ITA
+       trigger = {
+          event = 329287
+          nuked = { country = ITA data = -1 where = 407 }
+          }
+       date = { day = 4 month = march year = 1943 }
+       offset = 9
+       deathdate = { day = 29 month = december year = 1963 }
+       action
+       = {
+       name = ACTION_NAME_OK
+       command = { type =   capital which = 410 }
+       command = { type =    dissent value = -1}
+          }
+    }
+
+# ----------------------------------------------------------------------------
+# [330136] ITA | 1943 | Tripartite Pact Joint Commissions (Comisiones Conjuntas del Pacto Tripartito)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330136
+	random = no
+	country = ITA
+	trigger = {
+		war = { country = JAP }
+		war = { country = GER }
+		government = fascist
+	}
+	date = { day = 19 month = december year = 1943 }
+	offset = 1
+	deathdate = { day = 21 month = december year = 1943 }
+	name = "EVT_ITA_330136_NAME"
+	desc = "EVT_ITA_330136_DESC"
+	style = 2
+	picture = "GLOBAL/tripartite_pact_joint_commissions"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = 10 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = gain_tech which = 12060 }
+		command = { type = gain_tech which = 81750 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166165] ITA | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166165
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 25019 }
+		command = { type = headofgovernment which = 25029 }
+		command = { type = foreignminister which = 25041 }
+		command = { type = armamentminister which = 25059 }
+		command = { type = ministerofsecurity which = 25079 }
+		command = { type = ministerofintelligence which = 25092 }
+		command = { type = chiefofstaff which = 25105 }
+		command = { type = chiefofarmy which = 25115 }
+		command = { type = chiefofnavy which = 25121 }
+		command = { type = chiefofair which = 25129 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166198] ITA | 1944 | The Salerno Turn (El Giro de Salerno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166198
+	country = ITA
+	name = EVT_ITA_166198_NAME
+	desc = EVT_ITA_166198_DESC
+	picture = "nwo/italian_communist_party"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = EVT_ITA_166198_A
+		ai_chance = 70
+		command = { type = dissent value = -3 }
+		command = { type = local_setflag which = moderate_ICP }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_DEMANDS
+		ai_chance = 30
+		command = { type = dissent value = 10 }
+		command = { type = local_setflag which = radical_ICP }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166207] ITA | 1944 | The PCI Seizes Power (El PCI toma el poder)
+# Triggered by event 166205 in events/ITA/ITA_40-50.txt
+# Trigger event 316229 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166207
+	country = ITA
+	name = EVT_ITA_166207_NAME
+	desc = EVT_ITA_166207_DESC
+	picture = "nwo/italian_communist_party"
+	style = 1
+	trigger = {
+		government = communist
+		event = 166205
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 316229 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166208] ITA | 1944 | Proclamation of the Italian Union (Proclamación de la Unión Italiana)
+# Triggered by event 223277 in events/SOV/SOV_43-46.txt
+# Triggered by event 316229 in events/USA/USA_43-48.txt
+# Trigger event 223239 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166208
+	country = ITA
+	name = EVT_ITA_166208_NAME
+	desc = EVT_ITA_166208_DESC
+	picture = "nwo/italian_union"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = leave_alliance }
+		command = { type = country which = U14 }
+		command = { type = alliance which = SOV }
+		command = { type = access which = SOV }
+		command = { type = domestic which = political_left value = 2 }
+		command = { type = local_clrflag which = block_ideology_switch }
+		command = { type = event which = 223239 where = SOV when = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166209] ITA | 1944 | US-Backed Coup in Italy (Golpe militar en Italia)
+# Triggered by event 223277 in events/SOV/SOV_43-46.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166209
+	country = ITA
+	name = EVT_ITA_166209_NAME
+	desc = EVT_ITA_166209_DESC
+	picture = "nwo/italian_christian_democracy"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 25 }
+		command = { type = leave_alliance }
+		command = { type = alliance which = USA }
+		command = { type = access which = USA }
+		command = { type = domestic which = political_left value = -6 }
+		command = { type = local_clrflag which = block_ideology_switch }
+		command = { type = setflag which = lower_soviet_bloc_coherence }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166211] ITA | 1944 | Time of Peace (Tiempos de paz)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166211
+	persistent = yes
+	country = ITA
+	name = "EVT_SHARED_00949_NAME"
+	desc = "EVT_SHARED_00949_DESC"
+	picture = "nwo/peacetime"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { local_flag = time_of_peace }
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = -35 }
+		command = { type = local_setflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = -100 }
+		command = { type = building_prod_mod which = infrastructure value = -100 }
+		command = { type = building_prod_mod which = anti_air value = -100 }
+		command = { type = building_prod_mod which = coastal_fort value = -100 }
+		command = { type = building_prod_mod which = land_fort value = -100 }
+		command = { type = building_prod_mod which = air_base value = -100 }
+		command = { type = building_prod_mod which = naval_base value = -100 }
+		command = { type = building_prod_mod which = radar_station value = -100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = -100 }
+		command = { type = building_prod_mod which = rocket_test value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166212] ITA | 1944 | Time of War (Estado de guerra)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166212
+	persistent = yes
+	country = ITA
+	name = "EVT_SHARED_00950_NAME"
+	desc = "EVT_SHARED_00950_DESC"
+	picture = "nwo/wartime"
+	style = 1
+	trigger = {
+		OR = {
+			flag = ww3
+			atwar = yes
+		}
+		local_flag = time_of_peace
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 9999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = peacetime_ic_mod value = 35 }
+		command = { type = local_clrflag which = time_of_peace }
+		command = { type = building_prod_mod which = ic value = 100 }
+		command = { type = building_prod_mod which = infrastructure value = 100 }
+		command = { type = building_prod_mod which = anti_air value = 100 }
+		command = { type = building_prod_mod which = coastal_fort value = 100 }
+		command = { type = building_prod_mod which = land_fort value = 100 }
+		command = { type = building_prod_mod which = air_base value = 100 }
+		command = { type = building_prod_mod which = naval_base value = 100 }
+		command = { type = building_prod_mod which = radar_station value = 100 }
+		command = { type = building_prod_mod which = nuclear_reactor value = 100 }
+		command = { type = building_prod_mod which = rocket_test value = 100 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [329314] ITA | 1944 | Democratic Italy (Italia democrática)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329314
+	random = no
+	country = ITA
+	name = "EVT_ITA_329314_NAME"
+	desc = "EVT_ITA_329314_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		alliance = { country = ITA country = ENG }
+		OR = {
+			NOT = { government = democratic }
+		}
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1947 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 25014 }
+		command = { type = headofgovernment which = 25024 }
+		command = { type = foreignminister which = 25036 }
+		command = { type = armamentminister which = 25056 }
+		command = { type = ministerofsecurity which = 25090 }
+		command = { type = ministerofintelligence which = 25115 }
+		command = { type = chiefofstaff which = 25133 }
+		command = { type = chiefofarmy which = 25156 }
+		command = { type = chiefofnavy which = 25175 }
+		command = { type = chiefofair which = 25185 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [330139] ITA | 1944 | Tripartite Pact Joint Commissions (Comisiones Conjuntas del Pacto Tripartito)
+# ----------------------------------------------------------------------------
+event = {
+	id = 330139
+	random = no
+	country = ITA
+	trigger = {
+		war = { country = JAP }
+		war = { country = GER }
+		government = fascist
+	}
+	date = { day = 19 month = december year = 1944 }
+	offset = 1
+	deathdate = { day = 21 month = december year = 1944 }
+	name = "EVT_ITA_330139_NAME"
+	desc = "EVT_ITA_330139_DESC"
+	style = 2
+	picture = "GLOBAL/tripartite_pact_joint_commissions"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = ITA value = 10 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = gain_tech which = 12150 }
+		command = { type = gain_tech which = 12050 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166151] ITA | 1945 | Colonial Claims Debate (Reclamaciones coloniales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166151
+	country = ITA
+	name = EVT_SHARED_00888_NAME
+	desc = EVT_SHARED_00888_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		flag = cold_war
+		flag = cold_war_pacific
+		NOT = { flag = ww3 }
+		atwar = no
+	}
+	date = { day = 0 month = january year = 1945 }
+  	offset = 90
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 100
+		command = { type = removeclaim which = 717 }
+		command = { type = removeclaim which = 740 }
+		command = { type = removeclaim which = 741 }
+		command = { type = removeclaim which = 742 }
+		command = { type = removeclaim which = 744 }
+		command = { type = removeclaim which = 745 }
+		command = { type = removeclaim which = 746 }
+		command = { type = removeclaim which = 747 }
+		command = { type = removeclaim which = 748 }
+		command = { type = removeclaim which = 749 }
+		command = { type = removeclaim which = 750 }
+		command = { type = removeclaim which = 751 }
+		command = { type = removeclaim which = 752 }
+		command = { type = removeclaim which = 753 }
+		command = { type = removeclaim which = 754 }
+		command = { type = removeclaim which = 755 }
+		command = { type = removeclaim which = 756 }
+		command = { type = removeclaim which = 757 }
+		command = { type = removeclaim which = 758 }
+		command = { type = removeclaim which = 759 }
+		command = { type = removeclaim which = 760 }
+		command = { type = removeclaim which = 761 }
+		command = { type = removeclaim which = 762 }
+		command = { type = removeclaim which = 763 }
+		command = { type = removeclaim which = 764 }
+		command = { type = removeclaim which = 765 }
+		command = { type = removeclaim which = 766 }
+		command = { type = removeclaim which = 767 }
+		command = { type = removeclaim which = 768 }
+		command = { type = removeclaim which = 769 }
+		command = { type = removeclaim which = 770 }
+		command = { type = removeclaim which = 771 }
+		command = { type = removeclaim which = 772 }
+		command = { type = removeclaim which = 773 }
+		command = { type = removeclaim which = 774 }
+		command = { type = removeclaim which = 775 }
+		command = { type = removeclaim which = 776 }
+		command = { type = removeclaim which = 777 }
+		command = { type = removeclaim which = 359 }
+		command = { type = removeclaim which = 362 }
+		command = { type = removeclaim which = 361 }
+		command = { type = removeclaim which = 360 }
+		command = { type = removeclaim which = 349 }
+		command = { type = removeclaim which = 815 }
+		command = { type = removeclaim which = 816 }
+		command = { type = removeclaim which = 817 }
+		command = { type = removeclaim which = 834 }
+		command = { type = removeclaim which = 835 }
+		command = { type = removeclaim which = 836 }
+		command = { type = removeclaim which = 837 }
+		command = { type = removeclaim which = 838 }
+		command = { type = removeclaim which = 822 }
+		command = { type = removeclaim which = 823 }
+		command = { type = removeclaim which = 820 }
+		command = { type = removeclaim which = 825 }
+		command = { type = removeclaim which = 829 }
+		command = { type = removeclaim which = 830 }
+		command = { type = removeclaim which = 819 }
+		command = { type = removeclaim which = 821 }
+		command = { type = removeclaim which = 818 }
+		command = { type = removeclaim which = 828 }
+		command = { type = removeclaim which = 831 }
+		command = { type = removeclaim which = 826 }
+		command = { type = removeclaim which = 827 }
+		command = { type = removeclaim which = 824 }
+		command = { type = removeclaim which = 832 }
+		command = { type = removeclaim which = 833 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = belligerence value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166153] ITA | 1945 | Independence of Ethiopia (Independencia de Etiopía)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166153
+	country = ITA
+	persistent = yes
+	name = EVT_SHARED_00909_NAME
+	desc = EVT_SHARED_00873_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = ETH }
+		control = { province = 825 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = independence which = ETH value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166166] ITA | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166166
+	country = ITA
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 25019 }
+		command = { type = headofgovernment which = 25030 }
+		command = { type = foreignminister which = 25039 }
+		command = { type = armamentminister which = 25058 }
+		command = { type = ministerofsecurity which = 25077 }
+		command = { type = ministerofintelligence which = 25090 }
+		command = { type = chiefofstaff which = 25309 }
+		command = { type = chiefofarmy which = 25313 }
+		command = { type = chiefofnavy which = 25121 }
+		command = { type = chiefofair which = 25130 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166167] ITA | 1946 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166167
+	country = ITA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1947 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 25028 }
+		command = { type = foreignminister which = 25039 }
+		command = { type = armamentminister which = 25060 }
+		command = { type = ministerofsecurity which = 25077 }
+		command = { type = ministerofintelligence which = 25091 }
+		command = { type = chiefofarmy which = 25314 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofgovernment which = 25308 }
+		command = { type = foreignminister which = 25042 }
+		command = { type = armamentminister which = 25063 }
+		command = { type = ministerofsecurity which = 25080 }
+		command = { type = ministerofintelligence which = 25093 }
+		command = { type = chiefofarmy which = 25314 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166160] ITA | 1946 | The Free Territory of Trieste (El Territorio Libre de Trieste)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166160
+	country = ITA
+	name = EVT_ITA_166160_NAME
+	desc = EVT_ITA_166160_DESC
+	picture = "nwo/free_city_of_trieste"
+	style = 1
+	trigger = {
+		flag = cold_war
+		control = { province = 403 data = U27 }
+		control = { province = 404 data = ITA }
+		NOT = { war = { country = U27 country = ITA } }
+		NOT = { government = fascist }
+	}
+	date = { day = 10 month = february year = 1946 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 80
+		command = { type = independence which = U38 value = 1 }
+		command = { type = belligerence value = -5 }
+		command = { type = relation which = U27 value = 100 }
+		command = { type = relation which = SOV value = 25 }
+		command = { type = guarantee which = ITA where = U38 }
+		command = { type = guarantee which = U27 where = U38 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_DEMANDS
+		ai_chance = 20
+		command = { type = dissent value = 3 }
+		command = { type = belligerence value = 5 }
+		command = { type = relation which = U27 value = -150 }
+		command = { type = relation which = SOV value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166168] ITA | 1946 | 1946 Italian Institutional Referendum (Referéndum institucional de Italia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166168
+	country = ITA
+	name = EVT_ITA_166168_NAME
+	desc = EVT_ITA_166168_DESC
+	picture = "nwo/italian_constitutional_referendum"
+	style = 1
+	trigger = {
+		government = democratic
+		atwar = no
+		flag = cold_war
+	}
+	date = { day = 2 month = june year = 1946 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1946 }
+	action_a = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 85
+		command = { type = flag_ext where = ITA which = _democratic }
+		command = { type = headofstate which = 25021 }
+		command = { type = dissent value = 5 }
+		command = { type = sleepminister which = 25018 }
+		command = { type = sleepminister which = 25019 }
+	}
+	action_b = {
+		name = EVT_ITA_166168_A
+		ai_chance = 15
+		command = { type = domestic which = political_left value = -2 }
+		command = { type = headofstate which = 25018 }
+		command = { type = dissent value = 5 }
+		command = { type = sleepevent which = 166170 }
+		command = { type = sleepevent which = 166173 }
+		command = { type = sleepevent which = 166179 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166154] ITA | 1947 | Self-rule of Libya (Autogobierno de Libia)
+# Trigger event 175018 in events/Minors/LBY.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166154
+	country = ITA
+	persistent = yes
+	name = EVT_SHARED_00911_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = LBY }
+		control = { province = 750 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1951 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 100
+		command = { type = independence which = LBY value = 1 }
+		command = { type = make_puppet which = LBY }
+		command = { type = trigger which = 175018 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 0
+		command = { type = dissent value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166199] ITA | 1947 | The Popular Democratic Front (El Frente Democrático Popular)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166199
+	country = ITA
+	name = EVT_ITA_166199_NAME
+	desc = EVT_ITA_166199_DESC
+	picture = "nwo/italian_popular_front"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = EVT_ITA_166199_A
+		ai_chance = 70
+		command = { type = dissent value = -3 }
+		command = { trigger = { local_flag = moderate_ICP } type = local_setflag which = very_moderate_ICP }
+		command = { trigger = { local_flag = radical_ICP } type = local_setflag which = moderate_ICP }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 30
+		command = { type = dissent value = 5 }
+		command = { trigger = { local_flag = moderate_ICP } type = local_setflag which = radical_ICP }
+		command = { trigger = { local_flag = radical_ICP } type = local_setflag which = very_radical_ICP }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166011] ITA | 1948 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166011
+	random = no
+	country = ITA
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = ITA }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = january year = 1948 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 25016 }
+		command = { type = headofgovernment which = 25024 }
+		command = { type = foreignminister which = 25037 }
+		command = { type = armamentminister which = 25060 }
+		command = { type = ministerofsecurity which = 25090 }
+		command = { type = ministerofintelligence which = 25116 }
+		command = { type = chiefofstaff which = 25134 }
+		command = { type = chiefofarmy which = 25157 }
+		command = { type = chiefofnavy which = 25176 }
+		command = { type = chiefofair which = 25186 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 25017 }
+		command = { type = headofgovernment which = 25023 }
+		command = { type = foreignminister which = 25209 }
+		command = { type = armamentminister which = 25057 }
+		command = { type = ministerofsecurity which = 25088 }
+		command = { type = ministerofintelligence which = 25121 }
+		command = { type = chiefofstaff which = 25134 }
+		command = { type = chiefofarmy which = 25157 }
+		command = { type = chiefofnavy which = 25176 }
+		command = { type = chiefofair which = 25186 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [166169] ITA | 1948 | General Elections (Elecciones generales)
+# Triggered by event 166194 in events/ITA/ITA_52-89.txt
+# Triggered by event 166195 in events/ITA/ITA_52-89.txt
+# Triggered by event 166184 in events/ITA/ITA_52-89.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166169
+	country = ITA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 75
+		command = { type = dissent value = -6 }
+		command = { type = local_clrflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 25028 }
+		command = { type = foreignminister which = 25040 }
+		command = { type = armamentminister which = 25061 }
+		command = { type = ministerofsecurity which = 25078 }
+		command = { type = ministerofintelligence which = 25091 }
+		command = { type = chiefofstaff which = 25310 }
+		command = { type = chiefofarmy which = 25315 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 25
+		trigger = { NOT = { event = 166194 event = 166195 } }
+		command = { type = dissent value = -2 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofgovernment which = 25030 }
+		command = { type = foreignminister which = 25042 }
+		command = { type = armamentminister which = 25064 }
+		command = { type = ministerofsecurity which = 25081 }
+		command = { type = ministerofintelligence which = 25093 }
+		command = { type = chiefofstaff which = 25310 }
+		command = { type = chiefofarmy which = 25315 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		trigger = { event = 166194 }
+		command = { type = dissent value = -2 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { trigger = { NOT = { event = 166184 } } type = headofgovernment which = 25300 }
+		command = { trigger = { event = 166184 } type = headofgovernment which = 25031 }
+		command = { type = foreignminister which = 25042 }
+		command = { type = armamentminister which = 25064 }
+		command = { type = ministerofsecurity which = 25081 }
+		command = { type = ministerofintelligence which = 25093 }
+		command = { type = chiefofstaff which = 25310 }
+		command = { type = chiefofarmy which = 25315 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 10
+		trigger = { event = 166195 }
+		command = { type = dissent value = -2 }
+		command = { type = local_setflag which = block_ideology_switch }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofgovernment which = 25030 }
+		command = { type = foreignminister which = 25042 }
+		command = { type = armamentminister which = 25064 }
+		command = { type = ministerofsecurity which = 25081 }
+		command = { type = ministerofintelligence which = 25093 }
+		command = { type = chiefofstaff which = 25310 }
+		command = { type = chiefofarmy which = 25315 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166170] ITA | 1948 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166170
+	country = ITA
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1954 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 25021 }
+		command = { type = headofstate which = 25132 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166200] ITA | 1948 | Assassination Attempt on Togliatti (Atentado contra Palmiro Togliatti)
+# Trigger event 166206 in events/ITA/ITA_40-50.txt
+# Trigger event 166201 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166200
+	country = ITA
+	one_action = yes
+	name = EVT_ITA_166200_NAME
+	desc = EVT_ITA_166200_DESC
+	picture = "nwo/palmiro_togliatti"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1948 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = EVT_ITA_166200_A
+		ai_chance = 80
+		command = { type = dissent value = -1 }
+	}
+	action = {
+		name = EVT_ITA_166200_B
+		ai_chance = 10
+		command = { type = dissent value = -3 }
+		command = { type = trigger which = 166206 }
+		command = { type = trigger which = 166201 }
+	}
+	action = {
+		name = EVT_ITA_166200_C
+		ai_chance = 10
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 166201}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166201] ITA | 1948 | National Mourning (Duelo nacional)
+# Triggered by event 166200 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166201
+	country = ITA
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	action = {
+		name = ACTION_NAME_MOURN
+		command = { type = sleepminister which = 25023 }
+		command = { type = sleepminister which = 25043 }
+		command = { type = sleepminister which = 25083 }
+		command = { type = sleepminister which = 25095 }
+		command = { type = sleepminister which = 25300 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166206] ITA | 1948 | Decline of the PCI (Disolución del PCI)
+# Triggered by event 166200 in events/ITA/ITA_40-50.txt
+# Triggered by event 166202 in events/ITA/ITA_40-50.txt
+# Triggered by event 166203 in events/ITA/ITA_52-89.txt
+# Triggered by event 166204 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166206
+	country = ITA
+	name = EVT_ITA_166206_NAME
+	desc = EVT_ITA_166206_DESC
+	picture = "nwo/italian_communist_party"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = political_left value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166010] ITA | 1948 | Death of the Head of State (Muerte del Jefe del Estado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166010
+	random = no
+	country = ITA
+	style = 2
+	trigger = {
+		OR = {
+			headofstate = 25021
+			headofstate = 25022
+		}
+	}
+	date = { day = 20 month = may year = 1948 }
+	name = "EVT_SHARED_00501_NAME"
+	desc = "EVT_SHARED_00501_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { trigger = { headofstate = 25021 } type = headofstate which = 25132 }
+		command = { trigger = { headofstate = 25022 } type = headofstate which = 25133 }
+		command = { type = sleepminister which = 25021 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [166155] ITA | 1949 | Self-rule of Somalia (Autogobierno de Somalia)
+# Trigger event 222001 in events/Minors/SOM.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166155
+	country = ITA
+	persistent = yes
+	name = EVT_SHARED_00912_NAME
+	desc = EVT_SHARED_00907_DESC
+	picture = "nwo/colonialism"
+	style = 1
+	trigger = {
+		NOT = { exists = SOM }
+		control = { province = 836 data = -1 }
+		flag = cold_war
+		NOT = { government = fascist }
+	}
+	date = { day = 1 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1953 }
+	action = {
+		name = ACTION_NAME_GRANT_INDEPENDENCE
+		ai_chance = 100
+		command = { type = independence which = SOM value = 1 }
+		command = { type = make_puppet which = SOM }
+		command = { type = trigger which = 222001 }
+	}
+	action = {
+		name = ACTION_NAME_SUPPRESS_REVOLT
+		ai_chance = 0
+		command = { type = dissent value = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166202] ITA | 1950 | The PCI in the 1950s (El Partido Comunista Italiano en los 50)
+# Trigger event 166205 in events/ITA/ITA_40-50.txt
+# Trigger event 166206 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166202
+	country = ITA
+	one_action = yes
+	name = EVT_ITA_166202_NAME
+	desc = EVT_ITA_166202_DESC
+	picture = "nwo/italian_communist_party"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = communist
+		}
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = EVT_ITA_166202_A
+		ai_chance = 94
+		trigger = { local_flag = very_moderate_ICP }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = EVT_ITA_166202_B
+		ai_chance = 1
+		trigger = { local_flag = very_moderate_ICP }
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 166205 }
+	}
+	action = {
+		name = EVT_ITA_166202_C
+		ai_chance = 5
+		trigger = { local_flag = very_moderate_ICP }
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 166206 }
+	}
+	action = {
+		name = EVT_ITA_166202_A
+		ai_chance = 85
+		trigger = { local_flag = moderate_ICP }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = EVT_ITA_166202_B
+		ai_chance = 5
+		trigger = { local_flag = moderate_ICP }
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 166205 }
+	}
+	action = {
+		name = EVT_ITA_166202_C
+		ai_chance = 10
+		trigger = { local_flag = moderate_ICP }
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 166206 }
+	}
+	action = {
+		name = EVT_ITA_166202_A
+		ai_chance = 70
+		trigger = { local_flag = radical_ICP }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = EVT_ITA_166202_B
+		ai_chance = 10
+		trigger = { local_flag = radical_ICP }
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 166205 }
+	}
+	action = {
+		name = EVT_ITA_166202_C
+		ai_chance = 20
+		trigger = { local_flag = radical_ICP }
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 166206 }
+	}
+	action = {
+		name = EVT_ITA_166202_A
+		ai_chance = 30
+		trigger = { local_flag = very_radical_ICP }
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = EVT_ITA_166202_B
+		ai_chance = 50
+		trigger = { local_flag = very_radical_ICP }
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 166205 }
+	}
+	action = {
+		name = EVT_ITA_166202_C
+		ai_chance = 20
+		trigger = { local_flag = very_radical_ICP }
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 166206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166204] ITA | 1950 | Outlawing of the PCI (Ilegalización del PCI)
+# Triggered by event 166194 in events/ITA/ITA_52-89.txt
+# Trigger event 166206 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166204
+	country = ITA
+	name = EVT_ITA_166204_NAME
+	desc = EVT_ITA_166204_DESC
+	picture = "nwo/italian_communist_party"
+	style = 1
+	trigger = {
+		NOT = { government = communist }
+		event = 166194
+		random = 10
+	}
+	date = { day = 0 month = january year = 1950 }
+	offset = 720
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 20 }
+		command = { type = relation which = USA value = 100 }
+		command = { type = trigger which = 166206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166205] ITA | 1950 | Radicalization of the PCI (Radicalización del PCI)
+# Triggered by event 166202 in events/ITA/ITA_40-50.txt
+# Triggered by event 166203 in events/ITA/ITA_52-89.txt
+# Trigger event 166207 in events/ITA/ITA_40-50.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166205
+	country = ITA
+	name = EVT_ITA_166205_NAME
+	desc = EVT_ITA_166205_DESC
+	picture = "nwo/italian_communist_party"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = domestic which = political_left value = -1 }
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166156] ITA | 1950 | European Federation Proposal (Propuesta de Federación Europea)
+# Triggered by event 147172 in events/FRA/FRA_48-59.txt
+# Trigger event 147173 in events/FRA/FRA_48-59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166156
+	country = ITA
+	name = EVT_ITA_166156_NAME
+	desc = EVT_ITA_166156_DESC
+	picture = "nwo/schuman_declaration"
+	style = 1
+	trigger = {
+		flag = cold_war
+		government = democratic
+		event = 147172
+		atwar = no
+	}
+	date = { day = 1 month = july year = 1950 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = EVT_ITA_166156_A
+		ai_chance = 50
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+		command = { type = sleepevent which = 147173 }
+		command = { type = sleepevent which = 147174 }
+	}
+	action = {
+		name = EVT_ITA_166156_B
+		ai_chance = 45
+		command = { type = relation which = FRA value = 50 }
+		command = { type = relation which = DFR value = 50 }
+		command = { type = relation which = BEL value = 50 }
+		command = { type = relation which = HOL value = 50 }
+		command = { type = relation which = LUX value = 50 }
+		command = { type = domestic which = interventionism value = 2 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 5
+		command = { type = sleepevent which = 147173 }
+		command = { type = sleepevent which = 147174 }
+		command = { type = sleepevent which = 166158 }
+		command = { type = domestic which = interventionism value = -2 }
+		command = { type = dissent value = 5 }
+	}
+}

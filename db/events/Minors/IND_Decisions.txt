@@ -1,0 +1,186 @@
+# ============================================================================
+# File: events/Minors/IND_Decisions.txt (5 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [161008] IND | 1945 | Axis Evacuation Routes (Acogida de exiliados del Eje)
+# Trigger event 161009 in events/Minors/IND_36-65.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 161008
+	country = IND
+	name = EVT_IND_161008_NAME
+	desc = EVT_IND_161008_DESC
+	picture = "nwo/german_refugees"
+	decision_picture = "nwo/d_german_refugees"
+	style = 1
+	trigger = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	decision = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	decision_trigger = {
+		flag = cold_war
+		NOT = { domestic = { type = political_left value = 5 } }
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 98
+		command = { type = belligerence value = 5 }
+		command = { type = domestic which = political_left value = -1 }
+	}
+	action = {
+		name = EVT_IND_161008_A
+		ai_chance = 2
+		trigger = { ai = yes }
+		command = { type = sleepevent which = 161009 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [161048] IND | 1961 | Operation Vijay Against Goa (Operación Vijay en Goa)
+# Trigger event 204023 in events/Minors/POR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 161048
+	country = IND
+	name = EVT_IND_161048_NAME
+	desc = EVT_IND_161048_DESC
+	picture = "nwo/invasion_of_goa"
+	decision_picture = "nwo/d_invasion_of_goa"
+	style = 1
+	decision = {
+		control = { province = 1513 data = POR }
+		NOT = { alliance = { country = IND country = POR } }
+	}
+	decision_trigger = {
+		control = { province = 1513 data = POR }
+		NOT = { alliance = { country = IND country = POR } }
+	}
+	trigger = {
+		control = { province = 1513 data = POR }
+		NOT = { alliance = { country = IND country = POR } }
+	}
+	date = { day = 18 month = december year = 1961 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 98
+		command = { type = money value = -200 }
+		command = { type = belligerence value = 5 }
+	}
+	action = {
+		name = ACTION_NAME_OFFER_PEACE
+		trigger = { ai = yes }
+		ai_chance = 2
+		command = { type = relation which = POR value = 100 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = sleepevent which = 204023 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [161053] IND | 1970 | Indira Gandhi's Economic Course (El giro socialista de Indira Gandhi)
+# ----------------------------------------------------------------------------
+event = {
+	id = 161053
+	country = IND
+	name = EVT_IND_161053_NAME
+	desc = EVT_IND_161053_DESC
+	picture = "nwo/indira_gandhi"
+	decision_picture = "nwo/d_indira_gandhi"
+	style = 1
+	decision = {
+		headofgovernment = 250109
+		atwar = no
+	}
+	trigger = {
+		headofgovernment = 250109
+		atwar = no
+	}
+	date = { day = 0 month = january year = 1970 }
+	offset = 1000
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = political_left value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [161004] IND | 1971 | The Bangladesh Liberation War (La Guerra de Liberación de Bangladés)
+# Triggered by event 197007 in events/Minors/PAK.txt
+# Trigger event 329734 in events/Minors/PAK.txt
+# Trigger event 329735 in events/Minors/PAK.txt
+# Trigger event 329736 in events/Minors/IND_65-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 161004
+	country = IND
+	name = EVT_IND_161004_NAME
+	desc = EVT_IND_161004_DESC
+	picture = "nwo/indo_pakistani_war_1971"
+	decision_picture = "nwo/d_indo_pakistani_war_1971"
+	style = 1
+	decision = {
+		atwar = no
+		event = 197007
+		NOT = { exists = UIR }
+	}
+	trigger = {
+		atwar = no
+		event = 197007
+		NOT = { exists = UIR }
+	}
+	date = { day = 1 month = december year = 1971 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 95
+		command = { type = war which = PAK }
+		command = { type = dissent value = -10 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		trigger = { ai = yes }
+		ai_chance = 5
+		command = { type = money value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [161056] IND | 1985 | Rajiv Gandhi's Liberalization (Apertura económica de Rajiv Gandhi)
+# ----------------------------------------------------------------------------
+event = {
+	id = 161056
+	country = IND
+	name = EVT_IND_161056_NAME
+	desc = EVT_IND_161056_DESC
+	picture = "nwo/development_of_india"
+	decision_picture = "nwo/d_development_of_india"
+	style = 1
+	decision = {
+		atwar = no
+	}
+	trigger = {
+		atwar = no
+	}
+	date = { day = 0 month = january year = 1985 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -15 }
+		command = { type = domestic which = freedom value = 2 }
+	}
+}

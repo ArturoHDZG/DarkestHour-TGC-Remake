@@ -1,0 +1,1482 @@
+# ============================================================================
+# File: events/AI/ITA_AI.txt (46 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [166115] ITA | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166115
+	random = no
+	country = ITA
+	persistent = no
+	trigger = {
+		ai = yes
+		NOT = { flag = ITA1914_WarSetup }
+		flag = ITAEntente
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a =
+		{
+			ai_chance = 100
+			command = { type = ai which = "switch/ITA_1914_WarSetup.ai" }
+			command = { type = setflag which = ITA1914_WarSetup }
+			command = { type = construct which = land_fort where = 395 value = 4 }
+			command = { type = construct which = land_fort where = 393 value = 6 }
+			command = { type = construct which = land_fort where = 394 value = 6 }
+			command = { type = construct which = land_fort where = 400 value = 6 }
+			command = { type = construct which = land_fort where = 405 value = 3 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166134] ITA | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 166134
+        random = no
+        country = ITA
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = march year = 1914 }
+	action_a = {
+		command = { type = headofgovernment which = 25511 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166291] ITA | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166291
+	random = no
+	persistent = no
+	country = ITA
+	trigger = {
+		atwar = no
+		exists = GER
+		NOT = { local_flag = AAR_Interwar_AI_1936_done }
+		NOT = { local_flag = AAR_Interwar_AI_1936 }
+		ai = yes
+	}
+	date = { day = 1 month = 10 year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = 09 year = 1935 }
+	name = "AI_EVENT"
+	Picture = "economic"
+	action = {
+		command = { type = ai which = "Majors/ITA/ITA_1936.ai" }
+		command = { type = local_clrflag which = AAR_behavior_pacifist }
+		command = { type = local_clrflag which = AAR_behavior_regular }
+		command = { type = local_clrflag which = AAR_behavior_gearing }
+		command = { type = local_setflag which = AAR_Interwar_AI_1936_done }
+		command = { type = ai_prepare_war	which = ETH }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166135] ITA | 1916 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 166135
+        random = no
+        country = ITA
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = june year = 1916 }
+	action_a = {
+		command = { type = headofgovernment which = 25512 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166136] ITA | 1917 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 166136
+        random = no
+        country = ITA
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = october year = 1917 }
+	action_a = {
+		command = { type = headofgovernment which = 25513 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166216] ITA | 1918 | Italian Tactical Bomber Construction (Construcción de Bombarderos Tácticos Italianos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166216
+	random = no
+	country = ITA
+	persistent = yes
+	date = { day = 1 month = january year = 1918 }
+	offset = 30
+	deathdate = { day = 1 month = january year = 1934 }
+	trigger = {
+		ai = yes
+		tactical_bomber = { value = 5 }
+		not = { local_flag = tac_disabled_for_ita }
+		not = { year = 1934 }
+	}
+	name = "EVT_SHARED_01041_NAME"
+	Desc = "EVT_SHARED_01039_DESC"
+	Picture = "american_carrier"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = deactivate_unit_type which = tactical_bomber }
+		command = { type = local_setflag which = tac_disabled_for_ita }
+		command = { type = local_clrflag which = tac_enabled_for_ita }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166217] ITA | 1918 | Italian Tactical Bomber Construction (Construcción de Bombarderos Tácticos Italianos)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166217
+	random = no
+	country = ITA
+	persistent = yes
+	date = { day = 1 month = january year = 1918 }
+	offset = 30
+	deathdate = { day = 1 month = january year = 1934 }
+	trigger = {
+		ai = yes
+		not = { tactical_bomber = { value = 5 } }
+		not = { local_flag = tac_enabled_for_ita }
+	}
+	name = "EVT_SHARED_01041_NAME"
+	Desc = "EVT_SHARED_01040_DESC"
+	Picture = "american_carrier"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = activate_unit_type which = tactical_bomber }
+		command = { type = local_setflag which = tac_enabled_for_ita }
+		command = { type = local_clrflag which = tac_disabled_for_ita }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166137] ITA | 1919 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 166137
+        random = no
+        country = ITA
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = june year = 1919 }
+	action_a = {
+		command = { type = headofgovernment which = 25514 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166138] ITA | 1920 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 166138
+        random = no
+        country = ITA
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = june year = 1920 }
+	action_a = {
+		command = { type = headofgovernment which = 25515 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166220] ITA | 1920 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166220
+	name = "AI_EVENT"
+	country = ITA
+	trigger = {
+		ai = yes
+		flag = no_war_1933
+	}
+	date = { day = 2 month = june year = 1920 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = ai which = "AAR/wars/no_war.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166139] ITA | 1921 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+        id = 166139
+        random = no
+        country = ITA
+        trigger = { ai = yes }
+        name = "AI_EVENT"
+        date = { day = 1 month = july year = 1921 }
+	action_a = {
+		command = { type = headofgovernment which = 25516 }
+		command = { type = dissent value = -1 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [166116] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166116
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		control = { province = 163 data = GER }
+		OR = {
+			AND = {
+				area = { area = "Wallonia" country = GER }
+				area = { area = "Flanders" country = GER }
+			}
+			lost_national = { country = FRA value = 10 }
+			control = { province = 55 data = GER }
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_Neutrality.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166118] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166118
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		local_flag = ITAInvadeGreece
+		NOT = { local_flag = ITADefendItaly }
+		NOT = { alliance = { country = GER country = GRE } }
+		NOT = { alliance = { country = SOV country = GRE } }
+		NOT = { alliance = { country = GRE } }
+		NOT = { war = { country = GRE } }
+		control = { province = 359 data = ITA }
+		control = { province = 360 data = ITA }
+		control = { province = 361 data = ITA }
+		control = { province = 362 data = ITA }
+		NOT = { war = { country = USA } }
+		NOT = { control = { province = 55 data = -2 } }
+		NOT = { control = { province = 163 data = -2 } }
+		OR = {
+			NOT = { exists = GRE }
+			AND = {
+				exists = GRE
+				OR = {
+					garrison = { country = ITA province = 359 type = land size = 3 area = no }
+					garrison = { country = ITA province = 362 type = land size = 3 area = no }
+					garrison = { country = ITA province = 360 type = land size = 3 area = no }
+					garrison = { country = ITA province = 361 type = land size = 3 area = no }
+				}
+				OR = {
+					month = 9
+					AND = {
+						month = 0
+						NOT = { month = 1 }
+					}
+				}
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { trigger = { exists = GRE } type = war which = GRE }
+		command = { trigger = { exists = GRE } type = ai which = "switch/ITA_Greece_Attack.ai" }
+		command = { type = sleepevent which = 166117 }
+		command = { type = local_clrflag which = ITAInvadeGreece }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166119] ITA | 1933 | AI_EVENT
+# Triggered by event 329379 in events/GER/GER_Decisions.txt
+# Trigger event 329379 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166119
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		NOT = { local_flag = ITADefendItaly }
+		OR = {
+			AND = {
+				lost_national = { country = ITA value = 2 }
+				control = { province = 435 data = ITA }
+				control = { province = 434 data = ITA }
+			}
+			AND = {
+				lost_national = { country = ITA value = 10 }
+			}
+			AND = {
+				NOT = { control = { province = 750 data = ITA } }
+				NOT = { control = { province = 761 data = ITA } }
+				NOT = { control = { province = 765 data = ITA } }
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_setflag which = ITADefendItaly }
+		command = { type = local_clrflag which = ITAInvadeRussia }
+		command = { type = ai which = "switch/ITA_Homeland.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166120] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166120
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = yes
+		NOT = { local_flag = ITAAirAINaval }
+		NOT = { lost_national = { country = ITA value = 5 } }
+		OR = {
+					garrison = { country = -2 province = 2734   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2735   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2736   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2737   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2738   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2739   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2175   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2177   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2179   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2180   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2181   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2182   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2183   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2184   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2185   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2189   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2192   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2193   type = naval size = 2 area = no }
+				}
+			}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_setflag which = ITAAirAINaval }
+		command = { type = local_clrflag which = ITAAirAIGround }
+		command = { type = ai which = "switch/ITA_Air_Naval.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166121] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166121
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = yes
+		NOT = { local_flag = ITAAirAIGround }
+		lost_national = { country = ITA value = 5 }
+		NOT = {
+			OR = {
+					garrison = { country = -2 province = 2734   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2735   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2736   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2737   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2738   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2739   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2175   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2177   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2179   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2180   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2181   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2182   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2183   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2184   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2185   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2189   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2192   type = naval size = 2 area = no }
+					garrison = { country = -2 province = 2193   type = naval size = 2 area = no }
+				}
+			}
+		}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = ITAAirAINaval }
+		command = { type = local_setflag which = ITAAirAIGround }
+		command = { type = ai which = "switch/ITA_Air_Ground.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166122] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166122
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		NOT = { local_flag = ITANavalStandard }
+		NOT = { war = { country = GRE } }
+		NOT = { war = { country = TUR } }
+		NOT = {
+			OR = {
+				control = { province = 789 data = ITA }
+				AND = {
+					alliance = { country = GER country = ITA }
+					control = { province = 789 data = GER }
+				}
+			}
+			OR = {
+				war = { country = SPR }
+				war = { country = SPA }
+				control = { province = 464 data = ITA }
+				AND = {
+					alliance = { country = GER }
+					control = { province = 464 data = GER }
+				}
+			}
+			AND = {
+				NOT = { war = { country = ENG } }
+				NOT = { war = { country = FRA } }
+				NOT = { war = { country = USA } }
+				NOT = { war = { country = SPR } }
+				NOT = { war = { country = SPA } }
+				OR = {
+					war = { country = ETH }
+					AND = {
+						year = 1936
+						NOT = { year = 1937 }
+						OR = {
+							NOT = { exists = ETH }
+							puppet = { country = ETH }
+						}
+					}
+				}
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_setflag which = ITANavalStandard }
+		command = { type = local_clrflag which = ITANavalEthiopia }
+		command = { type = local_clrflag which = ITANavalGreece }
+		command = { type = local_clrflag which = ITANavalWestMed }
+		command = { type = local_clrflag which = ITANavalEastMed }
+		command = { type = local_clrflag which = ITANavalAllMed }
+		command = { type = ai which = "switch/ITA_Naval_Standard.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166123] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166123
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = yes
+		NOT = { local_flag = ITANavalEthiopia }
+		NOT = { war = { country = ENG } }
+		NOT = { war = { country = FRA } }
+		NOT = { war = { country = USA } }
+		NOT = { war = { country = SPR } }
+		NOT = { war = { country = SPA } }
+		OR = {
+			war = { country = ETH }
+			AND = {
+				year = 1936
+				NOT = { year = 1937 }
+				OR = {
+					NOT = { exists = ETH }
+					puppet = { country = ETH }
+				}
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = ITANavalStandard }
+		command = { type = local_setflag which = ITANavalEthiopia }
+		command = { type = local_clrflag which = ITANavalGreece }
+		command = { type = local_clrflag which = ITANavalWestMed }
+		command = { type = local_clrflag which = ITANavalEastMed }
+		command = { type = local_clrflag which = ITANavalAllMed }
+		command = { type = ai which = "switch/ITA_Naval_Ethiopia.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166124] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166124
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = yes
+		NOT = { local_flag = ITANavalGreece }
+		war = { country = GRE }
+		NOT = {
+			OR = {
+				control = { province = 789 data = ITA }
+				AND = {
+					alliance = { country = GER }
+					control = { province = 789 data = GER }
+				}
+			}
+			OR = {
+				war = { country = SPR }
+				war = { country = SPA }
+				control = { province = 464 data = ITA }
+				AND = {
+					alliance = { country = GER country = ITA }
+					control = { province = 464 data = GER }
+				}
+			}
+			AND = {
+				NOT = { war = { country = ENG } }
+				NOT = { war = { country = FRA } }
+				NOT = { war = { country = USA } }
+				NOT = { war = { country = SPR } }
+				NOT = { war = { country = SPA } }
+				year = 1936
+				NOT = { year = 1937 }
+				OR = {
+					NOT = { exists = ETH }
+					puppet = { country = ETH }
+				}
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = ITANavalStandard }
+		command = { type = local_clrflag which = ITANavalEthiopia }
+		command = { type = local_setflag which = ITANavalGreece }
+		command = { type = local_clrflag which = ITANavalWestMed }
+		command = { type = local_clrflag which = ITANavalEastMed }
+		command = { type = local_clrflag which = ITANavalAllMed }
+		command = { type = ai which = "switch/ITA_Naval_Greece.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166125] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166125
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = yes
+		NOT = { local_flag = ITANavalWestMed }
+		NOT = { war = { country = GRE } }
+		OR = {
+			war = { country = SPR }
+			war = { country = SPA }
+			control = { province = 464 data = ITA }
+			AND = {
+				alliance = { country = GER country = ITA }
+				control = { province = 464 data = GER }
+			}
+		}
+		NOT = {
+			OR = {
+				control = { province = 789 data = ITA }
+				AND = {
+					alliance = { country = GER country = ITA }
+					control = { province = 789 data = GER }
+				}
+			}
+			AND = {
+				NOT = { war = { country = ENG } }
+				NOT = { war = { country = FRA } }
+				NOT = { war = { country = USA } }
+				NOT = { war = { country = SPR } }
+				NOT = { war = { country = SPA } }
+				year = 1936
+				NOT = { year = 1937 }
+				OR = {
+					NOT = { exists = ETH }
+					puppet = { country = ETH }
+				}
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = ITANavalStandard }
+		command = { type = local_clrflag which = ITANavalEthiopia }
+		command = { type = local_clrflag which = ITANavalGreece }
+		command = { type = local_setflag which = ITANavalWestMed }
+		command = { type = local_clrflag which = ITANavalEastMed }
+		command = { type = local_clrflag which = ITANavalAllMed }
+		command = { type = ai which = "switch/ITA_Naval_WestMed.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166126] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166126
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = yes
+		NOT = { local_flag = ITANavalEastMed }
+		NOT = { war = { country = GRE } }
+		OR = {
+			control = { province = 789 data = ITA }
+			AND = {
+				alliance = { country = GER }
+				control = { province = 789 data = GER }
+			}
+		}
+		NOT = {
+			AND = {
+				NOT = { war = { country = ENG } }
+				NOT = { war = { country = FRA } }
+				NOT = { war = { country = USA } }
+				NOT = { war = { country = SPR } }
+				NOT = { war = { country = SPA } }
+				year = 1936
+				NOT = { year = 1937 }
+				OR = {
+					NOT = { exists = ETH }
+					puppet = { country = ETH }
+				}
+			}
+			OR = {
+				war = { country = SPR }
+				war = { country = SPA }
+				control = { province = 464 data = ITA }
+				AND = {
+					alliance = { country = GER }
+					control = { province = 464 data = GER }
+				}
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = ITANavalStandard }
+		command = { type = local_clrflag which = ITANavalEthiopia }
+		command = { type = local_clrflag which = ITANavalGreece }
+		command = { type = local_clrflag which = ITANavalWestMed }
+		command = { type = local_setflag which = ITANavalEastMed }
+		command = { type = local_clrflag which = ITANavalAllMed }
+		command = { type = ai which = "switch/ITA_Naval_EastMed.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166127] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166127
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		atwar = yes
+		NOT = { local_flag = ITANavalAllMed }
+		NOT = { war = { country = GRE } }
+		OR = {
+			control = { province = 789 data = ITA }
+			AND = {
+				alliance = { country = GER }
+				control = { province = 789 data = GER }
+			}
+		}
+		OR = {
+			war = { country = SPR }
+			war = { country = SPA }
+			control = { province = 464 data = ITA }
+			AND = {
+				alliance = { country = GER country = ITA }
+				control = { province = 464 data = GER }
+			}
+		}
+		NOT = {
+			AND = {
+				NOT = { war = { country = ENG } }
+				NOT = { war = { country = FRA } }
+				NOT = { war = { country = USA } }
+				NOT = { war = { country = SPR } }
+				NOT = { war = { country = SPA } }
+				year = 1936
+				NOT = { year = 1937 }
+				OR = {
+					NOT = { exists = ETH }
+					puppet = { country = ETH }
+				}
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = ITANavalStandard }
+		command = { type = local_clrflag which = ITANavalEthiopia }
+		command = { type = local_clrflag which = ITANavalGreece }
+		command = { type = local_clrflag which = ITANavalWestMed }
+		command = { type = local_clrflag which = ITANavalEastMed }
+		command = { type = local_setflag which = ITANavalAllMed }
+		command = { type = ai which = "switch/ITA_Naval_AllMed.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166128] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166128
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		NOT = { local_flag = ITAatwarENG_FRA }
+		ai = yes
+		OR = {
+			war = { country = ENG }
+			war = { country = FRA }
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_atwar_ENG_FRA.ai" }
+		command = { type = local_setflag which = ITAatwarENG_FRA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166129] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166129
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		NOT = { local_flag = ITABuildLand }
+		OR = {
+			lost_national = { country = ITA value = 1 }
+			war = { country = GER }
+			AND = {
+				ai = ENG
+				war = { country = ENG }
+				land_percentage = { country = ENG value = 0.5 }
+			}
+			AND = {
+				NOT = { ai = ENG }
+				war = { country = ENG }
+				land_percentage = { country = ENG value = 0.8 }
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_Build_Land.ai" }
+		command = { type = local_setflag which = ITABuildLand }
+		command = { type = local_clrflag which = ITABuildStandard }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166130] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166130
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		NOT = { local_flag = ITABuildStandard }
+		NOT = {
+			lost_national = { country = ITA value = 1 }
+			war = { country = GER }
+			AND = {
+				ai = ENG
+				war = { country = ENG }
+				land_percentage = { country = ENG value = 0.55 }
+			}
+			AND = {
+				NOT = { ai = ENG }
+				war = { country = ENG }
+				land_percentage = { country = ENG value = 0.85 }
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_Build_Standard.ai" }
+		command = { type = local_clrflag which = ITABuildLand }
+		command = { type = local_setflag which = ITABuildStandard }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166131] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166131
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		ai = ENG
+		}
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = june year = 1963 }
+	name = "AI_EVENT"
+	action = {
+		command = { type = ground_def_eff value = 1.0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166140] ITA | 1933 | AI_EVENT
+# Trigger event 236015 in events/GLOBAL/ALL_26-36.txt
+# Trigger event 166142 in events/AI/ITA_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166140
+	random = no
+	country = ITA
+	persistent = no
+	trigger = {
+		ai = yes
+		NOT = { local_flag = MOB7 }
+		NOT = { local_flag = demob }
+		policy = { type = professional_army value = 5 }
+		NOT = { policy = { type = professional_army value = 7 } }
+		OR = {
+			atwar = yes
+			AND = {
+				atwar = GER
+				control = { province = 55 data = GER }
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = local_setflag which = do_not_demob }
+		command = { type = trigger which = 236015 }
+		command = { type = event which = 166142 where = ITA when = 360 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166141] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166141
+	random = no
+	country = ITA
+	persistent = no
+	trigger = {
+		ai = yes
+		atwar = yes
+		local_flag = do_not_demob
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = local_clrflag which = do_not_demob }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166142] ITA | 1933 | AI_EVENT
+# Triggered by event 166140 in events/AI/ITA_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166142
+	random = no
+	country = ITA
+	persistent = no
+	trigger = {
+		ai = yes
+		local_flag = do_not_demob
+	}
+	name = "AI_EVENT"
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { local_flag = do_not_demob } type = local_clrflag which = do_not_demob }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166143] ITA | 1933 | AI_EVENT
+# Triggered by event 329669 in events/AI/BUL_AI.txt
+# Triggered by event 329670 in events/AI/BUL_AI.txt
+# Triggered by event 329671 in events/AI/GER_AI_33-36.txt
+# Triggered by event 329672 in events/AI/GER_AI_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166143
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		OR = {
+			event = 329669
+			event = 329670
+			event = 329671
+			event = 329672
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = province_revoltrisk  which = 392 value = 15 }
+		command = { type = province_revoltrisk  which = 393 value = 15 }
+		command = { type = province_revoltrisk  which = 394 value = 15 }
+		command = { type = province_revoltrisk  which = 395 value = 15 }
+		command = { type = province_revoltrisk  which = 396 value = 15 }
+		command = { type = province_revoltrisk  which = 400 value = 15 }
+		command = { type = province_revoltrisk  which = 401 value = 15 }
+		command = { type = province_revoltrisk  which = 402 value = 15 }
+		command = { type = province_revoltrisk  which = 403 value = 15 }
+		command = { type = province_revoltrisk  which = 405 value = 15 }
+		command = { type = province_revoltrisk  which = 410 value = 15 }
+		command = { type = province_revoltrisk  which = 411 value = 15 }
+		command = { type = province_revoltrisk  which = 412 value = 15 }
+		command = { type = province_revoltrisk  which = 563 value = 15 }
+		command = { type = province_revoltrisk  which = 653 value = 15 }
+		command = { type = province_revoltrisk  which = 2321 value = 15 }
+		command = { type = province_revoltrisk  which = 2319 value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166144] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166144
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		NOT = { government = communist }
+		NOT = { war = { country = ENG }}
+		NOT = { alliance = { country = SOV }}
+		NOT = { alliance = { country = GER }}
+		OR = {
+			attack = SOV
+			flag = SOV_Aggresion_Europe
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = setflag which = SOV_Aggresion_Europe }
+		command = { type = ai which = "switch/SOV_Aggression_EasternEurope.ai" }
+		command = { type = ai which = "Generic/air_ground.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329418] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329418
+	random = no
+	country = ITA
+	trigger = {
+			alliance = { country = GER country = ITA }
+			control = { province = 377 data = GER }
+			ai = yes ai = GER
+		}
+	name = AI_EVENT
+	date = { day = 1 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		command = { type = addclaim which = 377 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329640] ITA | 1933 | AI_EVENT
+# Triggered by event 329379 in events/GER/GER_Decisions.txt
+# Trigger event 329379 in events/GER/GER_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329640
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		alliance = { country = GER }
+		NOT = { local_flag = ITAInvadeRussia }
+		NOT = { local_flag = ITADefendItaly }
+		NOT = { local_flag = ITAInvadeGreece }
+		OR = {
+			war = { country = SOV }
+			war = { country = USA }
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 4
+	deathdate = { day = 29 month = february year = 1948 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_Russia.ai" }
+		command = { type = local_setflag which = ITAInvadeRussia }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329641] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329641
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		NOT = { war = { country = ETH } }
+		NOT = { local_flag = ItaEthPeace }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_Reset_Garrison.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329642] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329642
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		local_flag = ITADefendItaly
+		NOT = {
+			AND = {
+				lost_national = { country = ITA value = 2 }
+				control = { province = 435 data = ITA }
+				control = { province = 434 data = ITA }
+			}
+			AND = {
+				lost_national = { country = ITA value = 10 }
+			}
+			AND = {
+				NOT = { control = { province = 750 data = ITA } }
+				NOT = { control = { province = 761 data = ITA } }
+				NOT = { control = { province = 765 data = ITA } }
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = ITADefendItaly }
+		command = { type = ai which = "switch/ITA_Homeland_Normal.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329667] ITA | 1933 | AI_EVENT
+# Triggered by event 150459 in events/AI/GER_AI_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329667
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		ai = GER
+		event = 150459
+		alliance = { country = GER }
+		NOT = { exists = YUG }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = secedearea which = GER value = "Central Serbia" }
+		command = { type = secedeprovince which = GER value = 349 }
+		command = { type = secedeprovince which = GER value = 346 }
+		command = { type = secedeprovince which = GER value = 345 }
+		command = { type = secedeprovince which = GER value = 344 }
+		command = { type = secedeprovince which = GER value = 352 }
+		command = { type = secedeprovince which = GER value = 353 }
+		command = { type = secedeprovince which = GER value = 355 }
+		command = { type = secedeprovince which = GER value = 354 }
+		command = { type = secedeprovince which = GER value = 330 }
+		command = { type = secedeprovince which = GER value = 387 }
+		command = { type = secedeprovince which = GER value = 329 }
+		command = { type = secedeprovince which = GER value = 333 }
+		command = { type = secedeprovince which = GER value = 328 }
+		command = { type = secedeprovince which = GER value = 331 }
+		command = { type = secedeprovince which = GER value = 334 }
+		command = { type = secedeprovince which = GER value = 335 }
+		command = { type = secedeprovince which = GER value = 327 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166221] ITA | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166221
+	name = "AI_EVENT"
+	country = ITA
+	trigger = {
+		ai = yes
+		flag = no_war_1936
+	}
+	date = { day = 2 month = january year = 1933 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = ai which = "AAR/wars/no_war.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329643] ITA | 1934 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329643
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		exists = ETH
+		war =  { country = ETH }
+		NOT = { war = { country = GER } }
+		NOT = { war = { country = ENG } }
+		NOT = { war = { country = FRA } }
+		NOT = { war = { country = SOV } }
+		NOT = { war = { country = EGY } }
+		NOT = { lost_national = { country = ITA value = 10 } }
+		NOT = { local_flag = ITADefendItaly }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1934 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1943 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_Ethiopia.ai" }
+		command = { type = local_setflag which = ITAEthiopia }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166222] ITA | 1936 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166222
+	name = "AI_EVENT"
+	country = ITA
+	trigger = {
+		ai = yes
+		flag = no_war_1939
+	}
+	date = { day = 2 month = january year = 1936 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = ai which = "AAR/wars/no_war.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166132] ITA | 1938 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166132
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		NOT = { exists = ALB }
+		local_flag = ITAalbania
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1938 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_invasion_off.ai" }
+		command = { type = local_clrflag which = ITAalbania }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166133] ITA | 1938 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166133
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		NOT = { exists = GRE }
+		local_flag = ITAWarGreece
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1938 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_invasion_off.ai" }
+		command = { type = local_setflag which = ITANoGreece }
+		command = { type = local_clrflag which = ITAWarGreece }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166150] ITA | 1938 | AI_EVENT
+# Triggered by event 152087 in events/GRE/GRE_38-49.txt
+# Triggered by event 152086 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166150
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		local_flag = ITAWarGreece
+		OR = {
+			event = 152087
+			event = 152086
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1938 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_invasion_off.ai" }
+		command = { type = local_setflag which = ITANoGreece }
+		command = { type = local_clrflag which = ITAWarGreece }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329644] ITA | 1938 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329644
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		exists = ALB
+		war =  { country = ALB }
+		NOT = { alliance = { country = GER } }
+		NOT = { war = { country = GER } }
+		NOT = { war = { country = ENG } }
+		NOT = { war = { country = FRA } }
+		NOT = { war = { country = SOV } }
+		NOT = { war = { country = EGY } }
+		NOT = { lost_national = { country = ITA value = 10 } }
+		NOT = { local_flag = ITADefendItaly }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1938 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_Albania.ai" }
+		command = { type = local_setflag which = ITAalbania }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329645] ITA | 1938 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329645
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		exists = GRE
+		war =  { country = GRE }
+		NOT = { alliance = { country = GER } }
+		NOT = { war = { country = GER } }
+		NOT = { lost_national = { country = ITA value = 10 } }
+		NOT = { local_flag = ITADefendItaly }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1938 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_invasion_on.ai" }
+		command = { type = local_setflag which = ITAWarGreece }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329729] ITA | 1938 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329729
+	random = no
+	country = ITA
+	trigger = {
+		ai = yes
+		exists = GRE
+		war =  { country = GRE }
+		NOT = { war = { country = GER } }
+		NOT = { lost_national = { country = ITA value = 10 } }
+		NOT = { local_flag = ITADefendItaly }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1938 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/ITA_invasion_on.ai" }
+		command = { type = local_setflag which = ITAWarGreece }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166117] ITA | 1939 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 166117
+	random = no
+	country = ITA
+	persistent = yes
+	trigger = {
+		ai = yes
+		exists = GRE
+		control = { province = 359 data = ITA }
+		control = { province = 360 data = ITA }
+		control = { province = 361 data = ITA }
+		control = { province = 362 data = ITA }
+		NOT = { alliance = { country = GER country = GRE } }
+		NOT = { alliance = { country = SOV country = GRE } }
+		NOT = { alliance = { country = GRE } }
+		NOT = { local_flag = ITADefendItaly }
+		NOT = { local_flag = ITAInvadeGreece }
+		NOT = { war = { country = GRE } }
+		NOT = { war = { country = USA } }
+		NOT = { control = { province = 55 data = -2 } }
+		NOT = { control = { province = 163 data = -2 } }
+		OR = {
+			participant = { country = ITA value = 2 }
+			year = 1941
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_setflag which = ITAInvadeGreece }
+		command = { type = local_clrflag which = ITAInvadeRussia }
+		command = { type = ai which = "switch/ITA_Greece_Buildup.ai" }
+	}
+}

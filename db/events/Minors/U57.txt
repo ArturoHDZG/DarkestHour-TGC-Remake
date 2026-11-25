@@ -1,0 +1,197 @@
+# ============================================================================
+# File: events/Minors/U57.txt (8 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [277002] U57 | 1914 | US Demands Rail Transit in Mexico (EE. UU. exige tránsito ferroviario en México)
+# Triggered by event 316438 in events/USA/USA_Decisions.txt
+# Trigger event 316439 in events/USA/USA_14-16.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 277002
+	country = U57
+	name = "EVT_SHARED_00077_NAME"
+	desc = "EVT_SHARED_00077_DESC"
+	style = 2
+	picture = "GLOBAL/veracruz_occupation"
+	action = {
+		ai_chance = 90
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		command = { type = trigger which = 316439 }
+	}
+	action = {
+		ai_chance = 10
+		name = "ACTION_NAME_ACCEPT"
+		command = { type = dissent value = 8 }
+		command = { type = access which = USA }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [277003] U57 | 1914 | The Convention of Aguascalientes (La Convención de Aguascalientes)
+# Triggered by event 324218 in events/GLOBAL/MULTI_00-14.txt
+# Trigger event 183010 in events/Minors/MEX.txt
+# Trigger event 231147 in events/USA/USA_14-16.txt
+# Trigger event 183011 in events/Minors/U58.txt
+# Trigger event 183012 in events/Minors/U59.txt
+# Trigger event 324218 in events/GLOBAL/MULTI_00-14.txt
+# Trigger event 324219 in events/GLOBAL/MULTI_00-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 277003
+	country = U57
+	name = "EVT_SHARED_00079_NAME"
+	desc = "EVT_SHARED_00079_DESC"
+	picture = "Minors/convention_of_aguascalientes"
+	style = 2
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+		command = { type = event which = 183011 where = U58 when = 1 }
+		command = { type = event which = 183012 where = U59 when = 2 }
+		command = { type = clrflag which = MEX_Convention }
+		command = { type = local_clrflag which = MEX_Conv }
+		command = { type = sleepevent which = 324218 }
+		command = { trigger = { ai = yes } type = ai which = "switch/U57_Convention.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [277004] U57 | 1914 | Villistas Submit to the Government (Los villistas se someten al gobierno)
+# Triggered by event 183011 in events/Minors/U58.txt
+# Triggered by event 278002 in events/Minors/U58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 277004
+	country = U57
+	name = "EVT_U57_277004_NAME"
+	desc = "EVT_U57_277004_DESC"
+	picture = "GLOBAL/peace_conference"
+	style = 2
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U58 }
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [277005] U57 | 1914 | Zapatistas Submit to the Government (Los zapatistas se someten al gobierno)
+# Triggered by event 183012 in events/Minors/U59.txt
+# Triggered by event 279003 in events/Minors/U59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 277005
+	country = U57
+	name = "EVT_U57_277005_NAME"
+	desc = "EVT_U57_277005_DESC"
+	picture = "GLOBAL/peace_conference"
+	style = 2
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U59 }
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [277006] U57 | 1914 | Constitutionalists Win the Revolution (Los constitucionalistas vencen en la Revolución)
+# Trigger event 183013 in events/Minors/MEX.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 277006
+	country = U57
+	trigger = {
+		atwar = no
+		NOT = {
+			exists = MEX
+			exists = U58
+			exists = U59
+		}
+		control = { province = 1974 data = U57 }
+	}
+	name = "EVT_U57_277006_NAME"
+	desc = "EVT_U57_277006_DESC"
+	picture = "Minors/rheinland"
+	style = 2
+	date = { day = 1 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = dissent value = -5 }
+		command = { type = country which = MEX }
+		command = { type = trigger which = 183013 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [277007] U57 | 1918 | Zapatistas Cease Armed Resistance (Los zapatistas deponen las armas)
+# Triggered by event 279002 in events/Minors/U59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 277007
+	country = U57
+	name = "EVT_U57_277007_NAME"
+	desc = "EVT_U57_277007_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = dissent value = -5 }
+		command = { type = inherit which = U59 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [183016] U57 | 1918 | Plan to Assassinate Emiliano Zapata (Conspiración para asesinar a Emiliano Zapata)
+# Trigger event 279002 in events/Minors/U59.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 183016
+	country = U57
+	trigger = {
+		exists = U59
+		war = { country = U59 country = U57 }
+	}
+	name = "EVT_U57_183016_NAME"
+	desc = "EVT_U57_183016_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	date = { day = 1 month = november year = 1918 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1919 }
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { trigger = { ai = no } type = supplies value = -50 }
+		command = { trigger = { ai = no } type = money value = -10 }
+		command = { type = event which = 279002 where = U59 when = 30 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = dissent value = 1 }
+		command = { type = sleepevent which = 279002 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [277000] U57 | 1936 | The Zimmermann Telegram to Mexico (El telegrama Zimmermann a México)
+# Trigger event 277001 in events/Minors/U57_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 277000
+	country = U57
+	name = "EVT_SHARED_00075_NAME"
+	desc = "EVT_SHARED_00075_DESC"
+	style = 2
+	picture = "GLOBAL/zimmermann_telegram"
+	action = {
+		name = ACTION_NAME_OK
+		command = { }
+	}
+}

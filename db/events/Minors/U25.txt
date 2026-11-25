@@ -1,0 +1,243 @@
+# ============================================================================
+# File: events/Minors/U25.txt (9 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [260000] U25 | 1939 | Fate of Defeated Germany (El destino de la Alemania vencida)
+# Trigger event 223036 in events/SOV/SOV_Decisions.txt
+# Trigger event 223038 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 260000
+	random = no
+	country = U25
+	name = EVT_SHARED_00773_NAME
+	desc = EVT_SHARED_00773_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	save_date = yes
+	trigger = {
+		exists = U25
+	}
+	date = { day = 0 month = january year = 1939 }
+  	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = {}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [260001] U25 | 1939 | Proclamation of the GDR (Proclamación de la RDA)
+# Triggered by event 223036 in events/SOV/SOV_Decisions.txt
+# Trigger event 223037 in events/SOV/SOV_38-40.txt
+# Trigger event 324106 in events/AI/MULTI_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 260001
+	random = no
+	country = U25
+	name = EVT_SHARED_00775_NAME
+	desc = EVT_SHARED_00775_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = independence which = DDR value = 1 when = 0 }
+		command = { type = secederegion which = DDR value = Germany }
+		command = { type = trigger which = 223037 }
+		command = { type = event which = 324106 where = DDR when = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [260002] U25 | 1939 | Austrian Independence Restored (Restauración de la independencia austríaca)
+# Triggered by event 223038 in events/SOV/SOV_Decisions.txt
+# Trigger event 324106 in events/AI/MULTI_AI.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 260002
+	random = no
+	country = U25
+	name = EVT_SHARED_00777_NAME
+	desc = EVT_SHARED_00777_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = independence which = AUS value = 1 when = 1 }
+		command = { type = secederegion which = AUS value = Austria }
+		command = { type = event which = 324106 where = AUS when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [260003] U25 | 1939 | Austrian Independence Restored (Restauración de la independencia austríaca)
+# Triggered by event 223038 in events/SOV/SOV_Decisions.txt
+# Trigger event 324106 in events/AI/MULTI_AI.txt
+# Trigger event 223039 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 260003
+	random = no
+	country = U25
+	name = EVT_SHARED_00777_NAME
+	desc = EVT_SHARED_00777_DESC
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = independence which = U16 value = 1 when = 1 }
+		command = { type = secederegion which = U16 value = Austria }
+		command = { type = event which = 324106 where = U16 when = 1 }
+		command = { type = trigger which = 223039 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [260007] U25 | 1944 | Reparations Policy in Germany (Directrices de ocupación en Alemania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 260007
+	country = U25
+	name = EVT_U25_260007_NAME
+	desc = EVT_U25_260007_DESC
+	picture = "nwo/soviet_occupation_of_germany"
+	style = 1
+	trigger = {
+		flag = cold_war
+		OR = {
+			flag = soviet_occupation_of_germany_light
+			flag = soviet_occupation_of_germany_medium
+			flag = soviet_occupation_of_germany_hard
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = EVT_U25_260007_A
+		trigger = { flag = soviet_occupation_of_germany_hard }
+		command = { type = industrial_modifier which = total value = -6 }
+		command = { type = dissent value = 10 }
+	}
+	action = {
+		name = EVT_U25_260007_B
+		trigger = { flag = soviet_occupation_of_germany_medium }
+		command = { type = industrial_modifier which = total value = -3 }
+		command = { type = dissent value = 4 }
+	}
+	action = {
+		name = EVT_U25_260007_C
+		trigger = { flag = soviet_occupation_of_germany_light }
+		command = { type = money value = 400 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [260008] U25 | 1944 | The Oder-Neisse Demarcation (La frontera del Óder-Neisse)
+# ----------------------------------------------------------------------------
+event = {
+	id = 260008
+	country = U25
+	name = "EVT_U25_260008_NAME"
+	desc = "EVT_U25_260008_DESC"
+	picture = "nwo/occupation_zones_in_germany"
+	style = 1
+	date = { day = 1 month = january year = 1944 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = addclaim which = 185 }
+		command = { type = addclaim which = 183 }
+		command = { type = addclaim which = 181 }
+		command = { type = addclaim which = 155 }
+		command = { type = addclaim which = 161 }
+		command = { type = addclaim which = 158 }
+		command = { type = addclaim which = 159 }
+		command = { type = addclaim which = 165 }
+		command = { type = addclaim which = 164 }
+		command = { type = addclaim which = 167 }
+		command = { type = addclaim which = 166 }
+		command = { type = addclaim which = 168 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [260005] U25 | 1947 | Independence of Germany (Independencia de Alemania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 260005
+	country = U25
+	name = "EVT_U25_260005_NAME"
+	desc = "EVT_U25_260005_DESC"
+	picture = "nwo/occupation_zones_in_germany"
+	style = 1
+	trigger = {
+		NOT = { exists = U25 }
+		area = { area = "Westphalen" country = -1 data = 1 value = 100 }
+		area = { area = "Hannover_Magdeburg" country = -1 data = 1 value = 100 }
+		area = { area = "Holstein_Mecklemburg" country = -1 data = 1 value = 100 }
+		area = { area = "Hessen" country = -1 data = 1 value = 100 }
+		area = { area = "Baden_Wurttemberg" country = -1 data = 1 value = 100 }
+		area = { area = "Bavaria" country = -1 data = 1 value = 100 }
+		area = { area = "Sachsen" country = -1 data = 1 value = 100 }
+		area = { area = "Rhineland" country = -1 data = 1 value = 100 }
+		control = { province = 156 data = -1 }
+		control = { province = 157 data = -1 }
+		control = { province = 160 data = -1 }
+		control = { province = 162 data = -1 }
+		control = { province = 163 data = -1 }
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1947 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = country which = DDR }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [260009] U25 | 1948 | West German Currency Reform (Reforma monetaria en Alemania Occidental)
+# Triggered by event 223291 in events/SOV/SOV_47-56.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 260009
+	country = U25
+	name = EVT_U25_260009_NAME
+	desc = EVT_U25_260009_DESC
+	picture = "nwo/deutsche_mark"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = 2500 }
+		command = { type = industrial_modifier which = total value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [260010] U25 | 1949 | Partition of Germany (Partición de Alemania)
+# ----------------------------------------------------------------------------
+event = {
+	id = 260010
+	country = U25
+	name = EVT_U25_260010_NAME
+	desc = EVT_U25_260010_DESC
+	picture = "nwo/berlin_palace_of_the_republic"
+	style = 1
+	trigger = {
+		flag = cold_war
+		NOT = { exists = DDR }
+	}
+	date = { day = 15 month = september year = 1949 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = country which = DDR }
+	}
+}

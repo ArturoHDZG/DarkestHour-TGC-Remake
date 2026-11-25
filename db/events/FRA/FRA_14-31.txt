@@ -1,0 +1,1827 @@
+# ============================================================================
+# File: events/FRA/FRA_14-31.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [147250] FRA | 1914 | French improved reserve system (Sistema de reserva francés mejorado)
+# Trigger event 147251 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147250
+	country = FRA
+	persistent = no
+	name = "EVT_FRA_147250_NAME"
+	desc = "EVT_FRA_147250_DESC"
+	style = 2
+	picture = "GLOBAL/wehrmacht"
+	date = { day = 0 month = august year = 1914 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1919 }
+	trigger = { war = { country = U08  country = RUS }
+				war = { country = U08  country = FRA }
+				technology = 1920
+				not = { manpower = 5 }
+				money = 150
+				supplies = 150
+				}
+	action = {
+		name = ACTION_NAME_OK
+        command = { type = event which = 147251 where = -1 when = 30 }
+		command = {	type = money value = -150 }
+		command = {	type = supplies value = -150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147252] FRA | 1914 | French General Mobilization (Movilización general en Francia)
+# Triggered by event 147280 in events/FRA/FRA_14-14.txt
+# Triggered by event 147281 in events/FRA/FRA_14-31.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 211037 in events/Minors/RUS_Decisions.txt
+# Triggered by event 243094 in events/Minors/U08_Decisions.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 243095 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147252
+	country = FRA
+	trigger = {
+		NOT ={
+			war = { country = FRA country = U08 }
+			event = 147280
+			event = 147281
+			event = 243116
+			event = 243101
+			event = 147252
+			event = 211037
+		}
+		war = { country = RUS  country = U08 }
+		OR ={
+			event = 243094
+			alliance = { country = U08 country = U09 }
+		}
+	}
+	name = "EVT_FRA_147252_NAME"
+	desc = "EVT_FRA_147252_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = june year = 1916 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = belligerence value = 5 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 7 } } } type = trigger which = 329341 }
+		command = { trigger = { alliance = { country = U08 country = U09 } } type = alliance_leader which = U09 where = 1 }
+		command = { type = trigger which = 243095 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231131] FRA | 1914 | Spirit of 1914 (Espíritu de 1914)
+# ----------------------------------------------------------------------------
+event = {
+	id = 231131
+	country = FRA
+	random = no
+	trigger = {
+	war = {country = U08}
+	}
+	name = "EVT_SHARED_01070_NAME"
+	desc = "EVT_SHARED_01070_DESC"
+	style = 2
+	picture = "FRA/spirt14fra"
+	date = { day = 1 month = august year = 1914 }
+	offset = 1
+	deathdate = { day = 6 month = september year = 1914 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { type = manpowerpool value = 5000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147277] FRA | 1914 | Offensive in Alsace-Lorraine Stalled (Ofensiva frenada en Alsacia y Lorena)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147277
+	country = FRA
+	trigger = {
+		war = {country = U08 country = FRA }
+		random = 20
+		NOT = {
+			OR = {
+				control = { province = 104 data = FRA }
+				control = { province = 105 data = FRA }
+				control = { province = 107 data = FRA }
+				}
+			}
+	}
+	name = "EVT_FRA_147277_NAME"
+	desc = "EVT_FRA_147277_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = november year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1914 }
+	action = {
+	name = "ACTION_NAME_UNFORTUNATE"
+	command = { type = dissent value = 3 }
+	command = { type = sleepevent which = 147278 }
+	command = { type = sleepevent which = 147279 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147278] FRA | 1914 | Partial Success in Alsace-Lorraine (Éxito parcial en Alsacia y Lorena)
+# Trigger event 243110 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147278
+	country = FRA
+	trigger = {
+		war = {country = U08 country = FRA }
+		random = 20
+		OR = {
+			control = { province = 104 data = FRA }
+			control = { province = 105 data = FRA }
+			control = { province = 107 data = FRA }
+		}
+		NOT = {
+			control = { province = 104 data = FRA }
+			control = { province = 105 data = FRA }
+			control = { province = 107 data = FRA }
+		}
+	}
+	name = "EVT_FRA_147278_NAME"
+	desc = "EVT_FRA_147278_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = november year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1914 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+		command = { type = trigger which = 243110 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147279] FRA | 1914 | Liberation of Alsace-Lorraine (Liberación completa de Alsacia y Lorena)
+# Trigger event 243111 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147279
+	country = FRA
+	trigger = {
+		war = {country = U08 country = FRA }
+		random = 20
+		control = { province = 104 data = FRA }
+		control = { province = 105 data = FRA }
+		control = { province = 107 data = FRA }
+	}
+	name = "EVT_FRA_147279_NAME"
+	desc = "EVT_FRA_147279_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = november year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1914 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -4 }
+		command = { type = sleepevent which = 147277 }
+		command = { type = sleepevent which = 147278 }
+		command = { type = trigger which = 243111 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147281] FRA | 1914 | The Treaty of Versailles: French Defeat (El Tratado de Versalles: Derrota francesa)
+# Trigger event 147252 in events/FRA/FRA_14-31.txt
+# Trigger event 147254 in events/FRA/FRA_Decisions.txt
+# Trigger event 147256 in events/FRA/FRA_Decisions.txt
+# Trigger event 147258 in events/FRA/FRA_Decisions.txt
+# Trigger event 147259 in events/FRA/FRA_Decisions.txt
+# Trigger event 147260 in events/FRA/FRA_Decisions.txt
+# Trigger event 147265 in events/FRA/FRA_Decisions.txt
+# Trigger event 147272 in events/FRA/FRA_Decisions.txt
+# Trigger event 147273 in events/FRA/FRA_Decisions.txt
+# Trigger event 147276 in events/FRA/FRA_Decisions.txt
+# Trigger event 243130 in events/Minors/U08_14-18.txt
+# Trigger event 244039 in events/Minors/U09.txt
+# Trigger event 243083 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 147281
+   country = FRA
+	trigger = {
+		NOT = { flag = force_fall_kai }
+		NOT = { flag = force_historical_ww1 }
+		war = { country = U08 country = FRA }
+		random = 25
+		OR = {
+			and = {
+				dissent = 35
+				not = { region = { region = "France" country = -3 data = 1 value = 50 } }
+			}
+			and = {
+				dissent = 25
+				not = { region = { region = "France" country = -3 data = 1 value = 40 } }
+			}
+			and = {
+				dissent = 15
+				not = { region = { region = "France" country = -3 data = 1 value = 30 } }
+			}
+			and = {
+				control = { province = 55 data = -2 }
+				or = {
+					lost_VP = { value = 50 }
+					lost_IC = { value = 50 }
+				}
+			}
+			and = {
+				not = { region = { region = "France" country = -3 data = 1 value = 20 } }
+				random = 25
+			}
+			dissent = 60
+			not = { ic = 25 }
+		}
+	}
+	name = "EVT_FRA_147281_NAME"
+	desc = "EVT_FRA_147281_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = december year = 1914 }
+	offset = 5
+	deathdate = { day = 15 month = november year = 1925 }
+	action = {
+	name = "ACTION_NAME_SIGN"
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = ENG } }
+				type = alliance_leader which = ENG where = 0 }
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = RUS }
+					NOT = { alliance = { country = FRA country = ENG } } }
+				type = alliance_leader which = RUS where = 0 }
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = USA }
+					NOT = {
+						alliance = { country = FRA country = ENG }
+						alliance = { country = FRA country = RUS } } }
+				type = alliance_leader which = USA where = 0 }
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = ITA }
+					NOT = {
+						alliance = { country = FRA country = ENG }
+						alliance = { country = FRA country = RUS }
+						alliance = { country = FRA country = USA } } }
+				type = alliance_leader which = ITA where = 0 }
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = ROM }
+					NOT = {
+						alliance = { country = FRA country = ENG }
+						alliance = { country = FRA country = RUS }
+						alliance = { country = FRA country = USA }
+						alliance = { country = FRA country = ITA } } }
+				type = alliance_leader which = ROM where = 0 }
+	command = { trigger = {
+					participant = { country = FRA value = 1 }
+					alliance = { country = FRA country = GRE }
+					NOT = {
+						alliance = { country = FRA country = ENG }
+						alliance = { country = FRA country = RUS }
+						alliance = { country = FRA country = USA }
+						alliance = { country = FRA country = ITA }
+						alliance = { country = FRA country = ROM } } }
+				type = alliance_leader which = GRE where = 0 }
+	command = { type = dissent value = 5 }
+	command = { type = sleepevent which = 147277 }
+	command = { type = sleepevent which = 147278 }
+	command = { type = sleepevent which = 147279 }
+	command = { type = trigger which = 243130 }
+	command = { type = trigger which = 244039 }
+	command = { type = leave_alliance }
+	command = { type = peace which = U08 value = 1 }
+	command = { type = peace which = U09 value = 1 }
+	command = { trigger = { war = { country = OTT country = FRA } } type = peace which = OTT value = 1 }
+	command = { trigger = { war = { country = BUL country = FRA } } type = peace which = BUL value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147255] FRA | 1915 | Italy Signs the Treaty of London (Italia firma el Tratado de Londres)
+# Triggered by event 166099 in events/ITA/ITA_14-20.txt
+# Trigger event 166100 in events/ITA/ITA_14-20.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147255
+	country = FRA
+	name = "EVT_FRA_147255_NAME"
+	desc = "EVT_FRA_147255_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = relation which = ITA value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147257] FRA | 1915 | Romania Joins the Entente (Rumania entra en la guerra con la Entente)
+# Triggered by event 209062 in events/Minors/ROM_14-36.txt
+# Triggered by event 209063 in events/Minors/ROM_14-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147257
+	country = FRA
+	name = "EVT_FRA_147257_NAME"
+	desc = "EVT_FRA_147257_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = relation which = ROM value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147263] FRA | 1915 | The Gounaris Proposal (La propuesta de Gounaris)
+# Triggered by event 152021 in events/GRE/GRE_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147263
+	country = FRA
+	name = "EVT_SHARED_00990_NAME"
+	desc = "EVT_SHARED_00990_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_JOIN_ALLIANCE"
+		ai_chance = 5
+		command = { type = alliance which = GRE }
+	}
+	action_b = {
+		ai_chance = 95
+		name = "ACTION_NAME_NEUTRAL"
+		command = { type = relation which = GRE value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147264] FRA | 1915 | The Gounaris Proposal (La propuesta de Gounaris)
+# Triggered by event 152021 in events/GRE/GRE_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147264
+	country = FRA
+	name = "EVT_SHARED_00990_NAME"
+	desc = "EVT_SHARED_00990_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_SIGN"
+		ai_chance = 95
+		command = { type = alliance which = GRE }
+	}
+	action_b = {
+		ai_chance = 5
+		name = "ACTION_NAME_REFUSE"
+		command = { type = relation which = GRE value = -10 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [147268] FRA | 1915 | Return of Eleftherios Venizelos (Retorno de Eleftherios Venizelos)
+# Triggered by event 152022 in events/GRE/GRE_14-33.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147268
+	random = no
+	country = FRA
+	name = "EVT_FRA_147268_NAME"
+	desc = "EVT_FRA_147268_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = relation which = GRE value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147304] FRA | 1915 | Armistice with Italy (Armisticio con Italia)
+# Triggered by event 166110 in events/ITA/ITA_14-20.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147304
+	country = FRA
+	name = "EVT_SHARED_00991_NAME"
+	desc = "EVT_SHARED_00991_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147313] FRA | 1915 | Anti-Government Unrest in France (Ola de agitación civil en Francia)
+# ----------------------------------------------------------------------------
+event = {
+		id = 147313
+		country = FRA
+	trigger = { flag = cpvictory }
+	name = "EVT_FRA_147313_NAME"
+	desc = "EVT_FRA_147313_DESC"
+	style = 2
+	picture = "GLOBAL/aar_ruhr"
+	date = { day = 1 month = january year = 1915 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1920 }
+	action = {
+	name = ACTION_NAME_OK
+	command = { type = revolt which = -1 }
+	command = { type = revolt which = -1 }
+	command = { type = revolt which = -1 }
+	command = { type = revolt which = -1 }
+	command = { type = revolt which = -1 }
+	command = { type = revolt which = -1 }
+	command = { type = revolt which = -1 }
+	command = { type = revolt which = -1 }
+	command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147249] FRA | 1916 | Dada (Dadaísmo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147249
+	country = FRA
+	random = no
+	trigger = {
+		exists = FRA
+	}
+	name = "EVT_SHARED_01078_NAME"
+	desc = "EVT_SHARED_01078_DESC"
+	style = 2
+	picture = "GLOBAL/dada"
+	date = { day = 5 month = march year = 1916 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147305] FRA | 1916 | From the factory to the front (De la fábrica al frente)
+# Trigger event 147306 in events/FRA/FRA_14-31.txt
+# Trigger event 147307 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147305
+	country = FRA
+	name = "EVT_SHARED_00992_NAME"
+	desc = "EVT_SHARED_00992_DESC"
+	style = 2
+	picture = "GLOBAL/hitachi_works"
+	date = { day = 1 month = july year = 1916 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1919 }
+	trigger = { NOT = { manpower = 4 }
+	            atwar = yes
+				}
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+		command = { type = manpowerpool value = 90 }
+        command = {	type = industrial_modifier which = total value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147234] FRA | 1916 | Troubles in Madagascar (Problemas en Madagascar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147234
+	random = no
+	persistent = no
+	country = FRA
+	date = { day = 1 month = december year = 1916 }
+	offset = 7
+	deathdate = { day = 1 month = december year = 1926 }
+	trigger = {
+		or = {
+			and = {
+				province_revoltrisk = { province = 1001 value = 5 }
+				province_revoltrisk = { province = 1002 value = 5 }
+				province_revoltrisk = { province = 1003 value = 5 }
+			}
+			and = {
+				exists = MAD
+				war = { country = FRA country = MAD }
+				lost_national = { country = MAD value = 60 }
+				lost_VP = { country = MAD value = 90 }
+			}
+		}
+	}
+	name = "EVT_FRA_147234_NAME"
+	desc = "EVT_FRA_147234_DESC"
+	picture = "GLOBAL/news_paper"
+	style = 1
+	action = { ai_chance = 100
+		trigger = {
+			exists = MAD
+			war = { country = FRA country = MAD }
+			lost_national = { country = MAD value = 60 }
+			lost_VP = { country = MAD value = 90 }
+		}
+		name = "EVT_FRA_147234_A"
+		command = { type = peace which = MAD value = 0 }
+		command = { trigger = { not={money = 800} } type = supplies value = -1500 }
+		command = { trigger = { not={money = 800} } type = oilpool value = -250 }
+		command = { trigger = { not={money = 800} } type = metalpool value = -1120 }
+		command = { trigger = { not={money = 800} } type = energypool value = -2000 }
+		command = { trigger = { not={money = 800} } type = rarematerialspool value = -450 }
+		command = { trigger = {money = 800} type = money value = -800 }
+		command = { type =	inherit which = MAD value = 0 }
+		command = { type = add_corps which = "Madagascar City Garrison" value = land where = 1001 }
+		command = { type = add_division which = "French Madagascar Garrison Tana." value = garrison when = 2 where = police }
+		command = { type = belligerence which = FRA value = 2 }
+	}
+	action = { ai_chance = 100
+		trigger = { not = { exists = MAD } }
+		name = "ACTION_NAME_ACCEPT"
+		command = { trigger = { not={money = 800} } type = supplies value = -1500 }
+		command = { trigger = { not={money = 800} } type = oilpool value = -250 }
+		command = { trigger = { not={money = 800} } type = metalpool value = -1120 }
+		command = { trigger = { not={money = 800} } type = energypool value = -2000 }
+		command = { trigger = { not={money = 800} } type = rarematerialspool value = -450 }
+		command = { trigger = {money = 800} type = money value = -800 }
+		command = { type = add_corps which = "Madagascar Group Tana." value = land where = 1001 }
+		command = { type = add_division which = "French Madagascar Garrison 1001" value = garrison when = 2 where = police }
+		command = { type = add_corps which = "Madagascar Group Tama." value = land where = 1002 }
+		command = { type = add_division which = "French Madagascar Garrison 1002" value = garrison when = 2 where = police }
+		command = { type = add_corps which = "Madagascar Group Ft.D." value = land where = 1003 }
+		command = { type = add_division which = "French Madagascar Garrison 1003" value = garrison when = 2 where = police }
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147314] FRA | 1917 | French Post-war Election (Elecciones francesas de posguerra)
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Trigger event 147315 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147314
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = { government = democratic
+		event = 147311
+	}
+	name = "EVT_SHARED_01092_NAME"
+	desc = "EVT_SHARED_01092_DESC"
+	offset = 180
+	date = { day = 1 month = January year = 1917 }
+	deathdate = { day = 22 month = January year = 1920 }
+	action_a = {
+		ai_chance = 98
+		name = "ACTION_NAME_ELECT_RIGHT"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5313 }
+		command = { type = headofgovernment which = 5295}
+		command = { type = foreignminister which = 5278 }
+		command = { type = armamentminister which = 5332 }
+		command = { type = ministerofsecurity which = 5347 }
+		command = { type = ministerofintelligence which = 5299 }
+		command = { type = local_setflag which = FRA1-1}
+	}
+	action_b = {
+		ai_chance = 1
+		name = "EVT_SHARED_01092_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 5313 }
+		command = { type = headofgovernment which = 5294 }
+		command = { type = foreignminister which = 5274 }
+		command = { type = armamentminister which = 5331 }
+		command = { type = ministerofsecurity which = 5338 }
+		command = { type = ministerofintelligence which = 5354 }
+		command = { type = local_setflag which = FRA1-2}
+	}
+	action_c = {
+		ai_chance = 1
+		name = "EVT_SHARED_01092_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 5311 }
+		command = { type = headofgovernment which = 5286 }
+		command = { type = foreignminister which = 5272 }
+		command = { type = armamentminister which = 5323 }
+		command = { type = ministerofsecurity which = 5342 }
+		command = { type = ministerofintelligence which = 5354 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147306] FRA | 1917 | From the factory to the front (De la fábrica al frente)
+# Triggered by event 147305 in events/FRA/FRA_14-31.txt
+# Trigger event 147307 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147306
+	country = FRA
+	name = "EVT_SHARED_00992_NAME"
+	desc = "EVT_SHARED_00992_DESC"
+	style = 2
+	picture = "GLOBAL/hitachi_works"
+	date = { day = 1 month = december year = 1917 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1919 }
+	trigger = { NOT = { manpower = 4 }
+				event = 147305
+				atwar = yes
+				}
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+		command = { type = manpowerpool value = 90 }
+        command = {	type = industrial_modifier which = total value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147307] FRA | 1917 | Industry come back to normal (La industria vuelve a la normalidad)
+# Triggered by event 147305 in events/FRA/FRA_14-31.txt
+# Triggered by event 147306 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147307
+	country = FRA
+	name = "EVT_SHARED_00993_NAME"
+	desc = "EVT_SHARED_00993_DESC"
+	style = 2
+	picture = "GLOBAL/hitachi_works"
+	date = { day = 1 month = december year = 1917 }
+	offset = 90
+	deathdate = { day = 29 month = december year = 1919 }
+	trigger = { event = 147305
+				atwar = no
+				}
+	action = {
+		name = ACTION_NAME_OK
+        command = {	type = industrial_modifier which = total value = 9 }
+		command = {	trigger = { event = 147306 }  type = industrial_modifier which = total value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147228] FRA | 1918 | Naval Treaty Violated! (¡Tratado naval quebrantado!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147228
+	persistent = yes
+	country = FRA
+	date = { day = 1 month = march year = 1918 }
+	offset = 7
+	deathdate = { day = 29 month = march year = 1964 }
+	trigger = {
+		atwar = no
+		NOT = { local_flag = naval_treaty_void }
+		OR = {
+			AND = {
+				or = {
+					local_flag = washington_naval_treaty
+					local_flag = london_naval_treaty
+				}
+				OR = {
+					AND = { carrier = { value = 2 when = now } NOT = { local_flag = carrier_disabled } }
+					AND = { escort_carrier = { value = 2 when = now } NOT = { local_flag = escort_carrier_disabled } }
+					AND = { battlecruiser = { value = 3 when = now } NOT = { local_flag = battlecruiser_disabled } }
+					AND = { battleship = { value = 5 when = now } NOT = { local_flag = battleship_disabled } }
+				}
+			}
+			AND = {
+				local_flag = london_naval_treaty
+				OR = {
+					AND = { heavy_cruiser = { value = 6 when = now } NOT = { local_flag = heavy_cruiser_disabled } }
+					AND = { light_cruiser = { value = 10 when = now } NOT = { local_flag = light_cruiser_disabled } }
+				}
+			}
+		}
+	}
+	name = "EVT_FRA_147228_NAME"
+	Desc = "EVT_FRA_147228_DESC"
+	Picture = "american_carrier"
+	action = {
+		name = "EVT_SHARED_01034_A"
+		ai_chance = 100
+		trigger = {
+			carrier = { value = 2 when = now }
+			not = { local_flag = carrier_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = carrier when = 0 where = 0 value = 1 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = carrier }
+		command = { trigger = { ai = no } type = local_setflag which = carrier_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_B"
+		ai_chance = 100
+		trigger = {
+			escort_carrier = { value = 2 when = now }
+			not = { local_flag = escort_carrier_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = escort_carrier when = 0 where = 0 value = 1 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = escort_carrier }
+		command = { trigger = { ai = no } type = local_setflag which = escort_carrier_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_C"
+		ai_chance = 100
+		trigger = {
+			battlecruiser = { value = 3 when = now }
+			not = { local_flag = battlecruiser_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = battlecruiser when = 0 where = 0 value = 2 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = battlecruiser }
+		command = { trigger = { ai = no } type = local_setflag which = battlecruiser_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_D"
+		ai_chance = 100
+		trigger = {
+			battleship = { value = 5 when = now }
+			not = { local_flag = battleship_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = battleship when = 0 where = 0 value = 4 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = battleship }
+		command = { trigger = { ai = no } type = local_setflag which = battleship_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_E"
+		ai_chance = 100
+		trigger = {
+			local_flag = london_naval_treaty
+			heavy_cruiser = { value = 6 when = now }
+			not = { local_flag = heavy_cruiser_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = heavy_cruiser when = 0 where = 0 value = 5 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = heavy_cruiser }
+		command = { trigger = { ai = no } type = local_setflag which = heavy_cruiser_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_F"
+		ai_chance = 100
+		trigger = {
+			local_flag = london_naval_treaty
+			light_cruiser = { value = 10 when = now }
+			not = { local_flag = light_cruiser_disabled }
+		}
+		command = { trigger = { ai = yes } type = demobilize which = light_cruiser when = 0 where = 0 value = 9 }
+		command = { trigger = { ai = no } type = deactivate_unit_type which = light_cruiser }
+		command = { trigger = { ai = no } type = local_setflag which = light_cruiser_disabled }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147229] FRA | 1918 | Naval Limits Restored (Desarme naval completado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147229
+	persistent = yes
+	country = FRA
+	date = { day = 1 month = march year = 1918 }
+	offset = 7
+	deathdate = { day = 29 month = march year = 1964 }
+	trigger = {
+		atwar = no
+		NOT = { local_flag = naval_treaty_void }
+		OR = {
+			AND = {
+				or = {
+					local_flag = washington_naval_treaty
+					local_flag = london_naval_treaty
+				}
+				OR = {
+					NOT = { AND = { carrier = { value = 2 } local_flag = carrier_disabled } }
+					NOT = { AND = { escort_carrier = { value = 2 } local_flag = escort_carrier_disabled } }
+					NOT = { AND = { battlecruiser = { value = 3 } local_flag = battlecruiser_disabled } }
+					NOT = { AND = { battleship = { value = 5 } local_flag = battleship_disabled } }
+				}
+			}
+			AND = {
+				local_flag = london_naval_treaty
+				OR = {
+					NOT = { AND = { heavy_cruiser = { value = 6 } local_flag = heavy_cruiser_disabled } }
+					NOT = { AND = { light_cruiser = { value = 10 } local_flag = light_cruiser_disabled } }
+				}
+			}
+		}
+	}
+	name = "EVT_FRA_147229_NAME"
+	Desc = "EVT_FRA_147229_DESC"
+	Picture = "american_carrier"
+	action = {
+		name = "EVT_SHARED_01034_A"
+		ai_chance = 100
+		trigger = {
+			NOT = { carrier = { value = 2 } }
+			local_flag = carrier_disabled
+		}
+		command = { type = activate_unit_type which = carrier }
+		command = { type = local_clrflag which = carrier_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_B"
+		ai_chance = 100
+		trigger = {
+			NOT = { escort_carrier = { value = 2 } }
+			local_flag = escort_carrier_disabled
+		}
+		command = { type = activate_unit_type which = escort_carrier }
+		command = { type = local_clrflag which = escort_carrier_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_C"
+		ai_chance = 100
+		trigger = {
+			NOT = { battlecruiser = { value = 3 } }
+			local_flag = battlecruiser_disabled
+		}
+		command = { type = activate_unit_type which = battlecruiser }
+		command = { type = local_clrflag which = battlecruiser_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_D"
+		ai_chance = 100
+		trigger = {
+			NOT = { battleship = { value = 5 } }
+			local_flag = battleship_disabled
+		}
+		command = { type = activate_unit_type which = battleship }
+		command = { type = local_clrflag which = battleship_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_E"
+		ai_chance = 100
+		trigger = {
+			local_flag = london_naval_treaty
+			NOT = { heavy_cruiser = { value = 6 } }
+			local_flag = heavy_cruiser_disabled
+		}
+		command = { type = activate_unit_type which = heavy_cruiser }
+		command = { type = local_clrflag which = heavy_cruiser_disabled }
+	}
+	action = {
+		name = "EVT_SHARED_01034_F"
+		ai_chance = 100
+		trigger = {
+			local_flag = london_naval_treaty
+			NOT = { light_cruiser = { value = 10 } }
+			local_flag = light_cruiser_disabled
+		}
+		command = { type = activate_unit_type which = light_cruiser }
+		command = { type = local_clrflag which = light_cruiser_disabled }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147245] FRA | 1919 | Capture of Henri Désiré Landru (Captura de Henri Désiré Landru)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147245
+	country = FRA
+	random = no
+	trigger = {
+		exists = FRA
+	}
+	name = "EVT_FRA_147245_NAME"
+	desc = "EVT_FRA_147245_DESC"
+	style = 2
+	picture = "FRA/landru"
+	date = { day = 11 month = april year = 1919 }
+	action_a = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147332] FRA | 1919 | Louis Pivet Retires (Louis Pivet se retira)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147332
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		minister = 5373
+	}
+	name = "EVT_FRA_147332_NAME"
+	desc = "EVT_FRA_147332_DESC"
+	offset = 2
+	date = { day = 17 month = May year = 1919 }
+	deathdate = { day = 17 month = May year = 1920 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofnavy which = 5505 }
+		command = { type = sleepminister which = 5373 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147330] FRA | 1919 | New Chief of Staff (Nuevo Jefe del Estado Mayor)
+# Triggered by event 147299 in events/FRA/FRA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147330
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		NOT = {event = 147299}
+	}
+	name = "EVT_SHARED_01091_NAME"
+	desc = "EVT_FRA_147330_DESC"
+	offset = 2
+	date = { day = 1 month = November year = 1919 }
+	deathdate = { day = 1 month = November year = 1920 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 5256 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147328] FRA | 1919 | Joffre Retires (Joffre se retira)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147328
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_FRA_147328_NAME"
+	desc = "EVT_FRA_147328_DESC"
+	offset = 2
+	date = { day = 5 month = December year = 1919 }
+	deathdate = { day = 5 month = December year = 1920 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofarmy which = 5506 }
+		command = { type = sleepminister which = 5235 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147240] FRA | 1920 | Sinking of the SS Afrique (Hundimiento del SS Afrique)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147240
+	country = FRA
+	random = no
+	trigger = {
+		exists = FRA
+	}
+	name = "EVT_FRA_147240_NAME"
+	desc = "EVT_FRA_147240_DESC"
+	style = 2
+	picture = "FRA/afrique"
+	date = { day = 11 month = january year = 1920 }
+	offset = 1
+	deathdate = { day = 12 month = july year = 1920 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+		command = { type = manpowerpool value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147333] FRA | 1920 | Pierre Ronarc'h Retires (Pierre Ronarc'h se retira)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147333
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		minister = 24030013
+	}
+	name = "EVT_FRA_147333_NAME"
+	desc = "EVT_FRA_147333_DESC"
+	offset = 2
+	date = { day = 1 month = February year = 1920 }
+	deathdate = { day = 1 month = February year = 1921 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofnavy which = 5507 }
+		command = { type = sleepminister which = 5505 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147315] FRA | 1920 | French Post-war Election (Elecciones francesas de posguerra)
+# Triggered by event 147311 in events/FRA/FRA_14-14.txt
+# Triggered by event 147314 in events/FRA/FRA_14-31.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147315
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		AND = { event = 147311
+			NOT = { event = 147314 }
+		}
+	}
+	name = "EVT_SHARED_01092_NAME"
+	desc = "EVT_SHARED_01092_DESC"
+	offset = 90
+	date = { day = 22 month = July year = 1920 }
+	deathdate = { day = 29 month = November year = 1924 }
+	action_a = {
+		ai_chance = 98
+		name = "ACTION_NAME_ELECT_RIGHT"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5309 }
+		command = { type = headofgovernment which = 5296}
+		command = { type = foreignminister which = 5279 }
+		command = { type = armamentminister which = 5332 }
+		command = { type = ministerofsecurity which = 5347 }
+		command = { type = ministerofintelligence which = 5299 }
+	}
+	action_b = {
+		ai_chance = 1
+		name = "EVT_SHARED_01092_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 5309 }
+		command = { type = headofgovernment which = 5294 }
+		command = { type = foreignminister which = 5274 }
+		command = { type = armamentminister which = 5331 }
+		command = { type = ministerofsecurity which = 5338 }
+		command = { type = ministerofintelligence which = 5354 }
+	}
+	action_c = {
+		ai_chance = 1
+		name = "EVT_SHARED_01092_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 5311 }
+		command = { type = headofgovernment which = 5286 }
+		command = { type = foreignminister which = 5272 }
+		command = { type = armamentminister which = 5323 }
+		command = { type = ministerofsecurity which = 5342 }
+		command = { type = ministerofintelligence which = 5354 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147316] FRA | 1920 | Emergency Elections (Elecciones de emergencia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147316
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		local_flag = FRA1-1
+		headofstate = 5313
+	}
+	offset = 2
+	name = "EVT_SHARED_01093_NAME"
+	desc = "EVT_SHARED_01093_DESC"
+	date = { day = 23 month = July year = 1920 }
+	deathdate = { day = 23 month = July year = 1921 }
+	action_a = {
+		ai_chance = 99
+		name = "EVT_SHARED_01093_A"
+		command = { type = dissent value = -3 }
+		command = { type = headofstate which = 5309 }
+		command = { type = headofgovernment which = 5296 }
+		command = { type = foreignminister which = 5279 }
+		command = { type = sleepminister which = 5313 }
+	}
+	action_b = {
+		ai_chance = 1
+		name = "EVT_SHARED_01093_B"
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = headofstate which = 5312 }
+		command = { type = headofgovernment which = 5296}
+		command = { type = sleepminister which = 5313 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147317] FRA | 1920 | Emergency Elections (Elecciones de emergencia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147317
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	offset = 2
+	trigger = {
+		government = democratic
+		local_flag = FRA1-2
+		headofstate = 5313
+	}
+	name = "EVT_SHARED_01093_NAME"
+	desc = "EVT_SHARED_01093_DESC"
+	date = { day = 23 month = July year = 1920 }
+	deathdate = { day = 23 month = July year = 1921 }
+	action_a = {
+		ai_chance = 99
+		name = "EVT_SHARED_01093_A"
+		command = { type = dissent value = -3 }
+		command = { type = headofstate which = 5309 }
+		command = { type = headofgovernment which = 5294}
+		command = { type = sleepminister which = 5313 }
+	}
+	action_b = {
+		ai_chance = 1
+		name = "EVT_SHARED_01093_B"
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = headofstate which = 5312 }
+		command = { type = headofgovernment which = 5294}
+		command = { type = sleepminister which = 5313 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147334] FRA | 1921 | Henri Salaun Fell Out Of Favor (Henri Salaun cayó en desgracia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147334
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		minister = 24030014
+	}
+	name = "EVT_FRA_147334_NAME"
+	desc = "EVT_FRA_147334_DESC"
+	offset = 2
+	date = { day = 1 month = February year = 1921 }
+	deathdate = { day = 1 month = February year = 1922 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofnavy which = 5508 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147329] FRA | 1923 | Edmond Buat Dies (Edmond Buat muere)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147329
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	name = "EVT_FRA_147329_NAME"
+	desc = "EVT_FRA_147329_DESC"
+	offset = 2
+	date = { day = 29 month = December year = 1923 }
+	deathdate = { day = 29 month = December year = 1924 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofarmy which = 5240 }
+		command = { type = sleepminister which = 5506 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147335] FRA | 1924 | Henri Salaun Returns (Henri Salaun regresa)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147335
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		minister = 24030015
+	}
+	name = "EVT_FRA_147335_NAME"
+	desc = "EVT_FRA_147335_DESC"
+	offset = 2
+	date = { day = 22 month = July year = 1924 }
+	deathdate = { day = 22 month = July year = 1925 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofnavy which = 5507 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147318] FRA | 1924 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147318
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_FRA_147318_DESC"
+	date = { day = 29 month = November year = 1924 }
+	deathdate = { day = 23 month = July year = 1925 }
+	action_a = {
+		ai_chance = 97
+		name = "EVT_FRA_147318_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 5314 }
+		command = { type = headofgovernment which = 5297}
+		command = { type = foreignminister which = 5281 }
+		command = { type = armamentminister which = 5320 }
+		command = { type = ministerofsecurity which = 5346 }
+		command = { type = ministerofintelligence which = 5354 }
+	}
+	action_b = {
+		ai_chance = 1
+		name = "EVT_FRA_147318_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5314 }
+		command = { type = headofgovernment which = 5298 }
+		command = { type = foreignminister which = 5270 }
+		command = { type = armamentminister which = 5055 }
+		command = { type = ministerofsecurity which = 5347 }
+		command = { type = ministerofintelligence which = 5354 }
+	}
+	action_c = {
+		ai_chance = 1
+		name = "EVT_FRA_147318_C"
+		command = { type = dissent value = 25 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 5316 }
+		command = { type = headofgovernment which = 5290 }
+		command = { type = foreignminister which = 5266 }
+		command = { type = armamentminister which = 5324 }
+		command = { type = ministerofsecurity which = 5335 }
+		command = { type = ministerofintelligence which = 5300 }
+		command = { type = local_setflag which = FRAC3}
+	}
+	action_d = {
+		ai_chance = 1
+		name = "EVT_FRA_147318_D"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5306 }
+		command = { type = headofgovernment which = 5503 }
+		command = { type = foreignminister which = 5190 }
+		command = { type = armamentminister which = 5331 }
+		command = { type = ministerofsecurity which = 5192 }
+		command = { type = ministerofintelligence which = 5193 }
+		command = { type = local_setflag which = FRAM3}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147237] FRA | 1925 | The Locarno Treaties (Tratados de Locarno)
+# Triggered by event 143397 in events/ENG/ENG_14-25.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147237
+	country = FRA
+	persistent = yes
+	name = "EVT_FRA_147237_NAME"
+	Desc = "EVT_FRA_147237_DESC"
+	picture = "GLOBAL/league_of_nations"
+	action = {
+		name = "EVT_FRA_147237_A"
+		ai_chance = 100
+		command = { type = setflag which = germany_invited_to_lon }
+		command = { trigger = { exists = GER } type =	relation which = GER value = 100 }
+		command = { trigger = { exists = U08 } type =	relation which = U08 value = 100 }
+	}
+	action = {
+		name = "EVT_FRA_147237_B"
+		ai_chance = 0
+		command = { trigger = { exists = GER } type =	relation which =	GER value = -50 }
+		command = { trigger = { exists = U08 } type =	relation which =	U08 value = -50 }
+		command = { type =	relation which =	ENG value = -20 }
+		command = { type =	relation which =	USA value = -20 }
+		command = { type =	relation which =	ITA value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147238] FRA | 1925 | Lausanne Conference (Conferencia de Lausana)
+# Triggered by event 159086 in events/Minors/HUN_14-38.txt
+# Triggered by event 243041 in events/Minors/U08_18-36.txt
+# Trigger event 143401 in events/ENG/ENG_25-34.txt
+# Trigger event 243042 in events/Minors/U08_18-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147238
+	country = FRA
+	name = "EVT_SHARED_01048_NAME"
+	desc = "EVT_FRA_147238_DESC"
+	style = 2
+	picture = "GLOBAL/aar_lausanne"
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 99
+		command = { type = trigger which = 143401 }
+		command = { type = relation which = U08 value = 20 }
+		command = { type = relation which = GER value = 20 }
+	}
+	action = {
+		name = "ACTION_NAME_REFUSE"
+		ai_chance = 1
+		command = { type = relation which = U08 value = -50 }
+		command = { type = relation which = GER value = -50 }
+		command = { type = trigger which = 243042 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147246] FRA | 1925 | Stresa Conference (Conferencia de Stresa)
+# Triggered by event 159086 in events/Minors/HUN_14-38.txt
+# Triggered by event 166269 in events/ITA/ITA_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147246
+	random = no
+	country = FRA
+	name = "EVT_SHARED_01061_NAME"
+	desc = "EVT_SHARED_01061_DESC"
+	action = {
+		name = "EVT_SHARED_01061_A"
+		ai_chance = 99
+		command = { type = guarantee which = FRA where = ITA }
+		command = { type = guarantee which = FRA where = ENG }
+		command = { type = guarantee which = FRA where = AUS }
+	}
+	action = {
+		name = "EVT_FRA_147246_A"
+		ai_chance = 1
+			command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147325] FRA | 1926 | Our King has Fallen (Nuestro rey ha caido)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147325
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		headofstate = 5306
+	}
+	name = "EVT_FRA_147325_NAME"
+	desc = "EVT_FRA_147325_DESC"
+	offset = 2
+	date = { day = 28 month = March year = 1926 }
+	deathdate = { day = 28 month = March year = 1927 }
+	action_a = {
+		ai_chance = 100
+		name = "ACTION_NAME_MOURN"
+		command = { type = headofstate which = 5502 }
+		command = { type = sleepminister which = 5306 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147336] FRA | 1928 | Henri Salaun Retires (Henri Salaun se retira)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147336
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		minister = 24030014
+	}
+	name = "EVT_FRA_147336_NAME"
+	desc = "EVT_FRA_147336_DESC"
+	offset = 2
+	date = { day = 1 month = January year = 1928 }
+	deathdate = { day = 1 month = January year = 1929 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofnavy which = 5509 }
+		command = { type = sleepminister which = 5507 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147319] FRA | 1928 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147319
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+	}
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_FRA_147319_DESC"
+	date = { day = 29 month = April year = 1928 }
+	deathdate = { day = 23 month = July year = 1928 }
+	action_a = {
+		ai_chance = 97
+		name = "EVT_FRA_147319_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 2 }
+		command = { type = headofstate which = 5314 }
+		command = { type = headofgovernment which = 5291}
+		command = { type = foreignminister which = 5274 }
+		command = { type = armamentminister which = 5056 }
+		command = { type = ministerofsecurity which = 5342 }
+		command = { type = ministerofintelligence which = 5354 }
+	}
+	action_b = {
+		ai_chance = 1
+		name = "EVT_FRA_147319_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 5314 }
+		command = { type = headofgovernment which = 5283 }
+		command = { type = foreignminister which = 5274 }
+		command = { type = armamentminister which = 5321 }
+		command = { type = ministerofsecurity which = 5338 }
+		command = { type = ministerofintelligence which = 5354 }
+	}
+	action_c = {
+		ai_chance = 1
+		name = "EVT_FRA_147319_C"
+		command = { type = dissent value = 20 }
+		command = { type = set_domestic which = democratic value = 5 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 5314 }
+		command = { type = headofgovernment which = 5290 }
+		command = { type = foreignminister which = 5265 }
+		command = { type = armamentminister which = 5324 }
+		command = { type = ministerofsecurity which = 5335 }
+		command = { type = ministerofintelligence which = 5300 }
+		command = { type = local_setflag which = FRAC1}
+		command = { type = local_setflag which = FRAC3}
+	}
+	action_d = {
+		ai_chance = 1
+		name = "EVT_FRA_147319_D"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5502 }
+		command = { type = headofgovernment which = 5503 }
+		command = { type = foreignminister which = 5190 }
+		command = { type = armamentminister which = 5331 }
+		command = { type = ministerofsecurity which = 5192 }
+		command = { type = ministerofintelligence which = 5193 }
+		command = { type = local_setflag which = FRAM1}
+		command = { type = local_setflag which = FRAM3}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147323] FRA | 1928 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147323
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = communist
+		NOT = {local_flag = FRAC1}
+	}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_FRA_147323_DESC"
+	offset = 2
+	date = { day = 29 month = April year = 1928 }
+	deathdate = { day = 29 month = April year = 1929 }
+	action_a = {
+		ai_chance = 5
+		name = "EVT_FRA_147323_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 5316 }
+		command = { type = headofgovernment which = 5291}
+		command = { type = foreignminister which = 5278 }
+		command = { type = armamentminister which = 5332 }
+		command = { type = ministerofsecurity which = 5347 }
+		command = { type = ministerofintelligence which = 5354 }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "EVT_FRA_147323_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 5316 }
+		command = { type = headofgovernment which = 5283 }
+		command = { type = foreignminister which = 5281 }
+		command = { type = armamentminister which = 5321 }
+		command = { type = ministerofsecurity which = 5348 }
+		command = { type = ministerofintelligence which = 5354 }
+	}
+	action_c = {
+		ai_chance = 75
+		name = "EVT_FRA_147323_C"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 5316 }
+		command = { type = headofgovernment which = 5290 }
+		command = { type = foreignminister which = 5265 }
+		command = { type = armamentminister which = 5324 }
+		command = { type = ministerofsecurity which = 5335 }
+		command = { type = ministerofintelligence which = 5300 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147326] FRA | 1928 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147326
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = fascist
+		NOT = {local_flag = FRAM1}
+	}
+	offset = 2
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_FRA_147326_DESC"
+	date = { day = 29 month = April year = 1928 }
+	deathdate = { day = 29 month = April year = 1929 }
+	action_a = {
+		ai_chance = 10
+		name = "EVT_SHARED_01095_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5158 }
+		command = { type = headofgovernment which = 5291}
+		command = { type = foreignminister which = 5278 }
+		command = { type = armamentminister which = 5332 }
+		command = { type = ministerofsecurity which = 5347 }
+		command = { type = ministerofintelligence which = 5299 }
+	}
+	action_b = {
+		ai_chance = 5
+		name = "EVT_FRA_147326_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 6 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 5315 }
+		command = { type = headofgovernment which = 5297 }
+		command = { type = foreignminister which = 5272 }
+		command = { type = armamentminister which = 5331 }
+		command = { type = ministerofsecurity which = 5342 }
+		command = { type = ministerofintelligence which = 5354 }
+	}
+	action_d = {
+		ai_chance = 85
+		name = "EVT_FRA_147326_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 5502 }
+		command = { type = headofgovernment which = 5197 }
+		command = { type = foreignminister which = 5190 }
+		command = { type = armamentminister which = 5331 }
+		command = { type = ministerofsecurity which = 5192 }
+		command = { type = ministerofintelligence which = 5193 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147338] FRA | 1928 | New Chief of Air (Nuevo Jefe del Aire)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147338
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		minister = 24030017
+	}
+	name = "EVT_SHARED_01096_NAME"
+	desc = "EVT_FRA_147338_DESC"
+	offset = 2
+	date = { day = 14 month = September year = 1928 }
+	deathdate = { day = 14 month = September year = 1929 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofair which = 5510 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147331] FRA | 1929 | Ferdinand Foch Dies (Ferdinand Foch muere)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147331
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		minister = 5240
+	}
+	name = "EVT_FRA_147331_NAME"
+	desc = "EVT_FRA_147331_DESC"
+	offset = 2
+	date = { day = 20 month = March year = 1929 }
+	deathdate = { day = 20 month = March year = 1930 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 5124 }
+		command = { type = chiefofarmy which = 5136 }
+		command = { type = sleepminister which = 5256 }
+		command = { type = sleepminister which = 5240 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147354] FRA | 1929 | Maurice Sarrail Died (Maurice Sarrail muere)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147354
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = communist
+		minister = 5251
+	}
+	name = "EVT_FRA_147354_NAME"
+	desc = "EVT_FRA_147354_DESC"
+	offset = 2
+	date = { day = 23 month = March year = 1929 }
+	deathdate = { day = 23 month = March year = 1930 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofarmy which = 5129 }
+		command = { type = sleepminister which = 5251 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147350] FRA | 1929 | Armed Forces Officer Reorganization (Reorganización de oficiales de las fuerzas armadas)
+# Trigger event 147347 in events/FRA/FRA_14-14.txt
+# Trigger event 147348 in events/FRA/FRA_14-14.txt
+# Trigger event 147349 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 147350
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	persistent = yes
+	trigger = {
+		local_flag = FRAC3
+	}
+	date = { day = 24 month = March year = 1929 }
+	deathdate = { day = 1 month = January year = 1933 }
+	offset = 30
+	name = "EVT_SHARED_01087_NAME"
+	desc = "EVT_SHARED_01098_DESC"
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 5129 }
+		command = { type = trigger which = 147347 }
+		command = { type = trigger which = 147348 }
+		command = { type = trigger which = 147349 }
+		command = { type = local_clrflag which = FRAC3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147339] FRA | 1930 | Laurent Eynac Fell Out Of Favor (Laurent Eynac cayó en desgracia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147339
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		minister = 24030018
+	}
+	name = "EVT_FRA_147339_NAME"
+	desc = "EVT_SHARED_01097_DESC"
+	offset = 2
+	date = { day = 13 month = December year = 1930 }
+	deathdate = { day = 13 month = December year = 1931 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofair which = 5500 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147340] FRA | 1931 | Paul Painlevé Replaced (Paul Painlevé reemplazado)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147340
+	random = no
+	country = FRA
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		government = democratic
+		minister = 24030019
+	}
+	name = "EVT_FRA_147340_NAME"
+	desc = "EVT_FRA_147340_DESC"
+	offset = 2
+	date = { day = 27 month = January year = 1931 }
+	deathdate = { day = 27 month = January year = 1932 }
+	action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = chiefofair which = 5511 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [147241] FRA | 1931 | International Colonial Exhibition (Exposición colonial internacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 147241
+	random = no
+	country = FRA
+	trigger = {
+		exists = FRA
+	}
+	name = "EVT_FRA_147241_NAME"
+	desc = "EVT_FRA_147241_DESC"
+	picture = "FRA/colonyexhibition"
+	style = 2
+	date = { day = 5 month = May year = 1931 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+	}
+}

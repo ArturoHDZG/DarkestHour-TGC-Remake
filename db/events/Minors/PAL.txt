@@ -1,0 +1,123 @@
+# ============================================================================
+# File: events/Minors/PAL.txt (4 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [329847] PAL | 1944 | Bulwark Against Enemies (Baluarte defensivo)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329847
+	country = PAL
+	name = EVT_SHARED_00915_NAME
+	desc = EVT_SHARED_00915_DESC
+	picture = "nwo/fortifications"
+	style = 1
+	trigger = {
+		flag = cold_war
+		war = { country = ISR country = PAL }
+		control = { province = 1172 data = -1 }
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = construct which = land_fort where = 1172 value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [198002] PAL | 1948 | Independent State of Palestine (Estado independiente de Palestina)
+# Triggered by event 143332 in events/ENG/ENG_43-54.txt
+# Trigger event 165030 in events/Minors/ISR_Decisions.txt
+# Trigger event 198004 in events/Minors/PAL_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 198002
+	country = PAL
+	save_date = yes
+	name = EVT_PAL_198002_NAME
+	desc = EVT_PAL_198002_DESC
+	picture = "nwo/independence_of_palestine"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = dissent value = -3 }
+		command = { type = add_division value = infantry when = 13 }
+		command = { type = add_division value = militia when = 5 }
+		command = { type = add_division value = militia when = 5 }
+		command = { type = add_division value = militia when = 5 }
+		command = { type = addcore which = 1008 }
+		command = { type = addcore which = 1010 }
+		command = { type = addcore which = 1011 }
+		command = { type = addcore which = 1009 }
+		command = { type = addcore which = 1013 }
+		command = { type = addcore which = 1172 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [198003] PAL | 1948 | Arab Armed Revolt (Sublevación armada árabe)
+# Triggered by event 143332 in events/ENG/ENG_43-54.txt
+# Trigger event 165030 in events/Minors/ISR_Decisions.txt
+# Trigger event 198004 in events/Minors/PAL_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 198003
+	country = PAL
+	save_date = yes
+	name = EVT_PAL_198003_NAME
+	desc = EVT_PAL_198003_DESC
+	picture = "nwo/independence_of_palestine"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = leave_alliance }
+		command = { type = dissent value = 20 }
+		command = { type = add_division value = militia when = 5 }
+		command = { type = add_division value = militia when = 5 }
+		command = { type = addcore which = 1008 }
+		command = { type = addcore which = 1010 }
+		command = { type = addcore which = 1011 }
+		command = { type = addcore which = 1009 }
+		command = { type = addcore which = 1013 }
+		command = { type = addcore which = 1172 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [198005] PAL | 1958 | Accession of Palestine to the UAR (Adhesión de Palestina a la RAU)
+# Triggered by event 104002 in events/Minors/ARA_Decisions.txt
+# Trigger event 142064 in events/Minors/EGY_33-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 198005
+	country = PAL
+	name = EVT_PAL_198005_NAME
+	desc = EVT_PAL_198005_DESC
+	picture = "nwo/united_arab_republic"
+	style = 1
+	trigger = {
+		event = 104002
+		exists = ARA
+		flag = cold_war
+		atwar = no
+		}
+	date = { day = 1 month = february year = 1958 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_SURRENDER_GAMEOVER
+		ai_chance = 98
+		command = { type = relation which = ARA value = 200 }
+		command = { type = trigger which = 142064 }
+	}
+	action = {
+		name = EVT_PAL_198005_A
+		ai_chance = 2
+		command = { type = relation which = ARA value = -100 }
+		command = { type = dissent value = -5 }
+	}
+}

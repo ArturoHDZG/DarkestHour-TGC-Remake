@@ -1,0 +1,128 @@
+# ============================================================================
+# File: events/Minors/U14.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [249001] U14 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 249002 in events/Minors/U14.txt
+# Trigger event 166164 in events/ITA/ITA_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 249001
+   country = U14
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = ITA
+            NOT = { ai = ITA }
+            NOT = { ai = U14 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = ITA
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = ITA } }
+      command = { type = country which = ITA }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = ITA
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U14 }
+               control = { province = 419 data = -1 }
+            }
+         }
+         type = trigger which = 249002
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = ITA }
+               NOT = { control = { province = 419 data = -1 } }
+            }
+         }
+         type = trigger which = 166164
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = ITA
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [249002] U14 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 166163 in events/ITA/ITA_34-36.txt
+# Triggered by event 249001 in events/Minors/U14.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 249002
+   country = U14
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = ITA value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [249000] U14 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 249000
+	country = U14
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		flag = cold_war
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 885001 }
+		command = { type = headofgovernment which = 885004 }
+		command = { type = foreignminister which = 885009 }
+		command = { type = armamentminister which = 885014 }
+		command = { type = ministerofsecurity which = 885018 }
+		command = { type = ministerofintelligence which = 885021 }
+		command = { type = chiefofstaff which = 885023 }
+		command = { type = chiefofarmy which = 885026 }
+		command = { type = chiefofnavy which = 885030 }
+		command = { type = chiefofair which = 885033 }
+	}
+}

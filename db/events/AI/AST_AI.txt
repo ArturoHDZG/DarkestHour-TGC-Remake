@@ -1,0 +1,201 @@
+# ============================================================================
+# File: events/AI/AST_AI.txt (9 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [107492] AST | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 107492
+	random = no
+	country = AST
+	trigger = {
+		ai = yes
+		}
+	date = { day = 1 month = april year = 1914 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = headofstate which = 225175 }
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329558] AST | 1914 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329558
+	random = no
+	country = AST
+	persistent = yes
+	trigger = {
+					ai = yes
+					war = { country = AST country = U08 }
+					NOT = { flag = AST_1914 }
+				}
+	name = "AI_EVENT"
+	date = { day = 29 month = 5 year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		command = { type = setflag which = AST_1914 }
+		command = { type = ai which = "switch/AST_1914_WarSetup.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [107494] AST | 1931 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 107494
+	random = no
+	country = AST
+	trigger = {
+		ai = yes
+		}
+	date = { day = 1 month = january year = 1931 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = headofstate which = 225001 }
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [107495] AST | 1932 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 107495
+	random = no
+	country = AST
+	trigger = {
+		ai = yes
+		}
+	date = { day = 1 month = january year = 1932 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = headofgovernment which = 225002 }
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [107489] AST | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 107489
+	random = no
+	country = AST
+	trigger = {
+		ai = yes
+		OR = {
+			atwar = yes
+			year = 1939
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/AST_Change_Production.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [107490] AST | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 107490
+	random = no
+	country = AST
+	persistent = yes
+	trigger = {
+		ai = yes
+		NOT = { local_flag = ASTGroundAir }
+		lost_national = { country = AST value = 1 }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_setflag which = ASTGroundAir }
+		command = { type = local_clrflag which = ASTNavalAir }
+		command = { type = ai which = "Generic/air_ground.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [107491] AST | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 107491
+	random = no
+	country = AST
+	persistent = yes
+	trigger = {
+		ai = yes
+		NOT = { local_flag = ASTNavalAir }
+		NOT = { lost_national = { country = AST value = 1 } }
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = local_clrflag which = ASTGroundAir }
+		command = { type = local_setflag which = ASTNavalAir }
+		command = { type = ai which = "Generic/air_naval.ai" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329568] AST | 1933 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 329568
+	random = no
+	country = AST
+	trigger = {
+		ai = yes
+		OR = {
+			year = 1938
+			atwar = HOL
+			atwar = PHI
+			atwar = USA
+			war = { country = JAP }
+			AND = {
+				atwar = yes
+				lost_national = { country = AST value = 1 }
+			}
+		}
+	}
+	name = "AI_EVENT"
+	date = { day = 1 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		command = { type = ai which = "switch/Minor_Gear_Up.ai" }
+        	command = { trigger = { control = { province = 1710 data = AST } } type = activate_division which = 30001 value = 1001 where = 1710 when = 0 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [107493] AST | 1936 | AI_EVENT
+# ----------------------------------------------------------------------------
+event = {
+	id = 107493
+	random = no
+	country = AST
+	trigger = {
+		ai = yes
+		}
+	date = { day = 1 month = january year = 1936 }
+	name = "AI_EVENT"
+	action_a = {
+		command = { type = headofstate which = 225011 }
+		command = { type = dissent value = -1 }
+		}
+	}

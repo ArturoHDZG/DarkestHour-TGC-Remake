@@ -1,0 +1,496 @@
+# ============================================================================
+# File: events/Minors/LIT.txt (19 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [178002] LIT | 1935 | Memel Treason Conviction (Condena por traición en Memel)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178002
+	random = no
+	country = LIT
+	trigger = {
+			exists = GER
+			}
+	date = { day = 24 month = march year = 1935 }
+	name = "EVT_SHARED_00704_NAME"
+	desc = "EVT_SHARED_00704_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 1 }
+		command = { type = relation which = GER value = -25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178001] LIT | 1936 | German Ultimatum on Memel (Ultimátum alemán sobre Memel)
+# Triggered by event 150044 in events/GER/GER_Decisions.txt
+# Trigger event 150045 in events/GER/GER_33-36.txt
+# Trigger event 150046 in events/GER/GER_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 178001
+	random = no
+	country = LIT
+	name = "EVT_LIT_178001_NAME"
+	desc = "EVT_LIT_178001_DESC"
+	style = 2
+	picture = "GLOBAL/memel"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		ai_chance = 95
+		command = { type = relation which = SOV value = -5 }
+		command = { type = relation which = POL value = -10 }
+		command = { type = secedeprovince which = GER value = 261 }
+		command = { type = trigger which = 150045 }
+		command = { type = non_aggression which = GER where = LIT }
+	}
+	action_b = {
+		name = "ACTION_NAME_NEVER"
+		ai_chance = 5
+		command = { type = relation which = GER value = -15 }
+		command = { type = relation which = SOV value = 5 }
+		command = { type = relation which = POL value = 10 }
+		command = { type = trigger which = 150046 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178003] LIT | 1939 | Soviet Union is demanding base agreement. (La Unión Soviética está exigiendo un acuerdo sobre bases)
+# Triggered by event 329338 in events/SOV/SOV_Decisions.txt
+# Trigger event 178004 in events/Minors/LIT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 178003
+	random = no
+	country = LIT
+	name = "EVT_SHARED_00229_NAME"
+	desc = "EVT_LIT_178003_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		ai_chance = 100
+		command = { type = trigger which = 178004}
+	}
+	action_b = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 0
+		command = { type = war which = SOV }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178004] LIT | 1939 | Base treaties (Tratados de bases)
+# Triggered by event 178003 in events/Minors/LIT.txt
+# Trigger event 223051 in events/SOV/SOV_38-40.txt
+# Trigger event 329339 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 178004
+	random = no
+	country = LIT
+	name = "EVT_SHARED_00230_NAME"
+	desc = "EVT_LIT_178004_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+		command = { type = access which = SOV }
+		command = { type = guarantee which = SOV where = LIT}
+		command = { type = relation which = SOV value = -20 }
+		command = { type = trigger which = 223051 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178007] LIT | 1939 | Wilno to Lithuania (Vilna a Lituania)
+# Triggered by event 223051 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 178007
+	random = no
+	country = LIT
+	name = "EVT_SHARED_00259_NAME"
+	desc = "EVT_LIT_178007_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	date = { day = 28 month = October year = 1939 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1939 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178005] LIT | 1940 | Soviet Union demanding friendly government. (La Unión Soviética exige un gobierno amigo)
+# Triggered by event 329339 in events/SOV/SOV_Decisions.txt
+# Trigger event 223050 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 178005
+	random = no
+	country = LIT
+	name = "EVT_SHARED_00232_NAME"
+	desc = "EVT_LIT_178005_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = "ACTION_NAME_ACCEPT_DEMANDS"
+		ai_chance = 80
+		command = { type = trigger which = 223050}
+	}
+	action_b = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 20
+		command = { type = war which = SOV }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178006] LIT | 1940 | Soviet Union ocupation of Lithuania (Ocupación Soviética de Lituania)
+# Triggered by event 223050 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 178006
+	random = no
+	country = LIT
+	name = "EVT_SHARED_00258_NAME"
+	desc = "EVT_SHARED_00258_DESC"
+	style = 2
+	picture = "GLOBAL/minister_resign"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = 10 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = relation which = SOV value = 200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178019] LIT | 1943 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 178019
+	country = LIT
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		OR = {
+			government = democratic
+			government = fascist
+		}
+	}
+	date = { day = 0 month = january year = 1943 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 140018 }
+		command = { type = headofgovernment which = 140030 }
+		command = { type = foreignminister which = 140043 }
+		command = { type = armamentminister which = 140057 }
+		command = { type = ministerofsecurity which = 140072 }
+		command = { type = ministerofintelligence which = 140087 }
+		command = { type = chiefofstaff which = 140097 }
+		command = { type = chiefofarmy which = 140106 }
+		command = { type = chiefofnavy which = 140111 }
+		command = { type = chiefofair which = 140116 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178020] LIT | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178020
+	country = LIT
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 140020 }
+		command = { type = headofgovernment which = 140200 }
+		command = { type = foreignminister which = 140047 }
+		command = { type = armamentminister which = 140061 }
+		command = { type = ministerofsecurity which = 140076 }
+		command = { type = ministerofintelligence which = 140091 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178000] LIT | 1945 | Left-Wing Coup d'État (Golpe de Estado de izquierdas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178000
+	random = no
+	country = LIT
+	style = 2
+	picture = "GLOBAL/news_paper"
+	trigger = {
+		atwar = GER
+		control = { province = 599 data = SOV }
+		control = { province = 243 data = SOV }
+		random = 5
+		}
+	name = "EVT_SHARED_00499_NAME"
+	desc = "EVT_SHARED_00499_DESC"
+	date = { day = 1 month = january year = 1945 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1947 }
+	action_a = {
+		ai_chance = 75
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 140020 }
+		command = { type = headofgovernment which = 140033 }
+		command = { type = foreignminister which = 140047 }
+		command = { type = armamentminister which = 140061 }
+		command = { type = ministerofsecurity which = 140076 }
+		command = { type = ministerofintelligence which = 140091 }
+		command = { type = chiefofstaff which = 140099 }
+		command = { type = chiefofarmy which = 140108 }
+		command = { type = chiefofnavy which = 140113 }
+		command = { type = chiefofair which = 140118 }
+		command = { type = dissent value = -1 }
+		}
+	action_b = {
+		ai_chance = 25
+		name = "ACTION_NAME_WAR"
+		command = { }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [178021] LIT | 1956 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178021
+	country = LIT
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1966 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 140020 }
+		command = { type = headofgovernment which = 140201 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178022] LIT | 1967 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178022
+	country = LIT
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1967 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 140202 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178023] LIT | 1974 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178023
+	country = LIT
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1974 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 140203 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178024] LIT | 1981 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178024
+	country = LIT
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1984 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 140204 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178025] LIT | 1985 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178025
+	country = LIT
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1985 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1986 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 140205 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178026] LIT | 1987 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178026
+	country = LIT
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1987 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1987 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 140206 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178027] LIT | 1988 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178027
+	country = LIT
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1988 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 140207 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178028] LIT | 1990 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178028
+	country = LIT
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 140209 }
+		command = { type = headofgovernment which = 140210 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [178029] LIT | 1991 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 178029
+	country = LIT
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofgovernment which = 140208 }
+	}
+}

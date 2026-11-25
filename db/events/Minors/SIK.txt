@@ -1,0 +1,253 @@
+# ============================================================================
+# File: events/Minors/SIK.txt (8 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [220001] SIK | 1933 | Soviet Assistance Offered (Oferta de intervención soviética)
+# Triggered by event 223190 in events/SOV/SOV_Decisions.txt
+# Trigger event 324316 in events/GLOBAL/MULTI_32-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 220001
+	random = no
+	country = SIK
+	name = EVT_SIK_220001_NAME
+	desc = EVT_SIK_220001_DESC
+	picture = "GLOBAL/spread_revolution"
+	style = 2
+	action = {
+		ai_chance = 100
+		name = ACTION_NAME_ACCEPT
+		command = { type = relation which = SOV value = 20 }
+		command = { type = relation which = CHI value = -20 }
+		command = { type = relation which = CXB value = -20 }
+		command = { type = relation which = CSX value = -20 }
+		command = { type = relation which = CGX value = -20 }
+		command = { type = relation which = CHC value = 20 }
+		command = { type = event which = 324316 where = SOV when = 0 }
+		command = { type = event which = 324316 where = CXB when = 0 }
+		command = { type = event which = 324316 where = CGX when = 0 }
+		command = { type = event which = 324316 where = CSX when = 0 }
+		command = { type = event which = 324316 where = CYN when = 0 }
+		command = { type = event which = 324316 where = CHI when = 0 }
+		command = { type = dissent value = 1 }
+		command = { type = sleepevent which = 124148 }
+		command = { type = sleepevent which = 324323 }
+	}
+	action = {
+		ai_chance = 0
+		name = ACTION_NAME_DECLINE
+		command = { type = sleepevent which = 324316 }
+		command = { type = sleepevent which = 124141 }
+		command = { type = sleepevent which = 223191 }
+		command = { type = sleepevent which = 324317 }
+		command = { type = sleepevent which = 220002 }
+		command = { type = sleepevent which = 124142 }
+		command = { type = sleepevent which = 324318 }
+		command = { type = sleepevent which = 123019 }
+		command = { type = sleepevent which = 223192 }
+		command = { type = sleepevent which = 324319 }
+		command = { type = sleepevent which = 124143 }
+		command = { type = sleepevent which = 124144 }
+		command = { type = sleepevent which = 167124 }
+		command = { type = sleepevent which = 324321 }
+		command = { type = sleepevent which = 123020 }
+		command = { type = sleepevent which = 324322 }
+		command = { type = sleepevent which = 124145 }
+		command = { type = sleepevent which = 124146 }
+		command = { type = sleepevent which = 324320 }
+		command = { type = sleepevent which = 124147 }
+		command = { type = dissent value = 1 }
+		command = { type = relation which = SOV value = -20 }
+		command = { type = relation which = CHI value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [220002] SIK | 1933 | Chinese Territorial Demands (Exigencias soberanas chinas)
+# Triggered by event 324317 in events/GLOBAL/MULTI_32-39.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 220002
+	country = SIK
+	random = no
+	picture = "GLOBAL/ccip_gmd"
+	style = 2
+	name = EVT_SHARED_00171_NAME
+	desc = EVT_SIK_220002_DESC
+	action = {
+		trigger = {
+			flag = 2181005_CHI
+		}
+		name = EVT_SIK_220002_A
+		command = { type = secedearea which = CHI value = "Xinjiang" when = 1 }
+		command = { type = clrflag which = 2181005_CHI }
+	}
+	action = {
+		trigger = {
+			flag =  2181005_CHC
+		}
+		name = EVT_SIK_220002_B
+		command = { type = secedearea which = CHC value = "Xinjiang" when = 1 }
+		command = { type = clrflag which = 2181005_CHC }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [220000] SIK | 1933 | Cabinet Reshuffle (Cambio de gobierno)
+# Trigger event 223190 in events/SOV/SOV_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 220000
+	random = no
+	country = SIK
+	style = 2
+	trigger = {
+		headofstate = 420031
+	}
+	date = { day = 11 month = april year = 1933 }
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	picture = "GLOBAL/minister_resign"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 420001 }
+		command = { type = sleepminister which = 420031 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [220006] SIK | 1936 | The Xinjiang Difangjun (El Difangjun de Sinkiang)
+# Trigger event 329741 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 220006
+	country = SIK
+	name = EVT_SIK_220006_NAME
+	desc = EVT_SIK_220006_DESC
+	picture = "nwo/difangjun"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = add_corps value = land where = 1281 }
+		command = { type = add_division which = militia when = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [220003] SIK | 1944 | Second East Turkestan Republic (Segunda República del Turquestán Oriental)
+# Triggered by event 124207 in events/CHI/CHI_37-45.txt
+# Trigger event 220007 in events/Minors/SIK.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 220003
+	country = SIK
+	name = EVT_SIK_220003_NAME
+	desc = EVT_SIK_220003_DESC
+	picture = "nwo/east_turkestan"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = name where = SIK which = "SIK44" }
+		command = { type = flag_ext where = SIK which = "_eastturkestan" }
+		command = { type = set_domestic which = democratic value = 4 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 420100 }
+		command = { type = headofgovernment which = 420101 }
+		command = { type = addcore which = 1281 }
+		command = { type = addcore which = 1275 }
+		command = { type = addcore which = 1279 }
+		command = { type = addcore which = 1282 }
+		command = { type = addcore which = 1274 }
+		command = { type = addcore which = 1277 }
+		command = { type = add_division value = cavalry when = 2 }
+		command = { type = add_division value = militia when = 1 }
+		command = { type = add_division value = militia when = 1 }
+		command = { type = add_division value = militia when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [220007] SIK | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 220003 in events/Minors/SIK.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 220007
+	country = SIK
+	persistent = yes
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		event = 220003
+		OR = {
+			NOT = { headofstate = 420100 }
+			NOT = { headofgovernment = 420101 }
+		}
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 420100 }
+		command = { type = headofgovernment which = 420101 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [220004] SIK | 1949 | Negotiations with Beijing (Invitación a Pekín)
+# Triggered by event 123093 in events/Minors/CHC_45-62.txt
+# Trigger event 123094 in events/Minors/CHC_45-62.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 220004
+	country = SIK
+	name = EVT_SIK_220004_NAME
+	desc = EVT_SIK_220004_DESC
+	picture = "nwo/east_turkestan"
+	style = 1
+	action = {
+		name = EVT_SIK_220004_A
+		ai_chance = 90
+		command = { type = trigger which = 123094 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 10
+		command = { type = dissent value = 10 }
+		command = { type = leave_alliance }
+		command = { type = end_puppet }
+		command = { type = war which = CHC }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [220005] SIK | 1949 | Chinese Ultimatum to Turkestan (Ultimátum chino al Turquestán)
+# Triggered by event 124208 in events/CHI/CHI_45-75.txt
+# Trigger event 124209 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 220005
+	country = SIK
+	name = EVT_SIK_220005_NAME
+	desc = EVT_SIK_220005_DESC
+	picture = "nwo/east_turkestan"
+	style = 1
+	action = {
+		name = ACTION_NAME_SURRENDER_GAMEOVER
+		ai_chance = 80
+		command = { type = trigger which = 124209 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 20
+		command = { type = dissent value = 10 }
+		command = { type = leave_alliance }
+		command = { type = end_puppet }
+		command = { type = war which = CHI }
+	}
+}

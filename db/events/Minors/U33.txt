@@ -1,0 +1,464 @@
+# ============================================================================
+# File: events/Minors/U33.txt (13 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [268011] U33 | 1936 | Fall of People's Republic (Fin de la República Popular)
+# Trigger event 268012 in events/Minors/U33.txt
+# Trigger event 152209 in events/GRE/GRE_33-38.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 268011
+   country = U33
+   persistent = yes
+   trigger = {
+      NOT = { government = communist }
+      NOT = {
+         AND = {
+            exists = GRE
+            NOT = { ai = GRE }
+            NOT = { ai = U33 }
+         }
+      }
+	  NOT = {
+         AND = {
+            exists = GRE
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00919_NAME
+   desc = EVT_SHARED_00919_DESC
+	picture = "nwo/demo_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00919_A
+      ai_chance = 100
+      trigger = { NOT = { exists = GRE } }
+      command = { type = country which = GRE }
+   }
+   action = {
+      name = EVT_SHARED_00919_B
+      ai_chance = 100
+      trigger = {
+         exists = GRE
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U33 }
+               control = { province = 377 data = -1 }
+            }
+         }
+         type = trigger which = 268012
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = GRE }
+               NOT = { control = { province = 377 data = -1 } }
+            }
+         }
+         type = trigger which = 152209
+      }
+   }
+   action = {
+      name = EVT_SHARED_00919_C
+      ai_chance = 0
+      trigger = {
+         exists = GRE
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [268012] U33 | 1936 | Socialist Reunification (Reunificación socialista)
+# Triggered by event 152208 in events/GRE/GRE_33-38.txt
+# Triggered by event 268011 in events/Minors/U33.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 268012
+   country = U33
+   name = EVT_SHARED_00921_NAME
+   desc = EVT_SHARED_00921_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = GRE value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [268000] U33 | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 268000
+	country = U33
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 980001 }
+		command = { type = headofgovernment which = 980005 }
+		command = { type = foreignminister which = 980008 }
+		command = { type = armamentminister which = 980010 }
+		command = { type = ministerofsecurity which = 980013 }
+		command = { type = ministerofintelligence which = 980015 }
+		command = { type = chiefofstaff which = 980016 }
+		command = { type = chiefofarmy which = 980017 }
+		command = { type = chiefofnavy which = 980018 }
+		command = { type = chiefofair which = 980019 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [268010] U33 | 1944 | Communist Victory in Greece (Victoria comunista en la Guerra Civil Griega)
+# Trigger event 152207 in events/GRE/GRE_38-49.txt
+# Trigger event 329850 in events/GRE/GRE_Decisions.txt
+# Trigger event 329851 in events/Minors/U33_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 268010
+	country = U33
+	name = EVT_U33_268010_NAME
+	desc = EVT_U33_268010_DESC
+	picture = "nwo/kke_victory"
+	style = 1
+	trigger = {
+		control = { province = 377 data = -1 }
+		area = { area = "Thrace" country = -1 data = 1 value = 80 }
+		area = { area = "Attica" country = -1 data = 1 value = 50 }
+		war = { country = GRE country = U33 }
+		OR = {
+			control = { province = 382 data = GRE }
+			AND = {
+				owned = { province = 382 data = GRE }
+				control = { province = 382 data = REB }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1944 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -25 }
+		command = { type = peace which = GRE value = 1 }
+		command = { type = trigger which = 152207 }
+		command = { type = setflag which = raise_soviet_bloc_coherence }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [268001] U33 | 1945 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 268001
+	country = U33
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 980002 }
+		command = { type = headofgovernment which = 980006 }
+		command = { type = ministerofsecurity which = 980013 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [268009] U33 | 1945 | Partisan Mobilization in Agrinion (Movilización partisana en Agrinio)
+# ----------------------------------------------------------------------------
+event = {
+	id = 268009
+	country = U33
+	persistent = yes
+	name = "EVT_U33_268009_NAME"
+	desc = "EVT_U33_268009_DESC"
+	picture = "nwo/kke_partisans"
+	style = 1
+	trigger = {
+		OR = {
+			AND = {
+				year = 1945
+				NOT = { year = 1947 }
+				random = 25
+			}
+			AND = {
+				year = 1947
+				NOT = { year = 1948 }
+				random = 40
+			}
+			AND = {
+				year = 1948
+				NOT = { year = 1950 }
+				random = 25
+			}
+		}
+		war = { country = GRE country = U33 }
+	}
+	date = { day = 1 month = january year = 1945 }
+	offset = 120
+	deathdate = { day = 29 month = december year = 1949 }
+	action = {
+		name = "EVT_U33_268009_A"
+		ai_chance = 100
+		command = { type = add_division which = "Partisan militia" value = militia when = 6 }
+	}
+	action = {
+		name = "EVT_U33_268009_B"
+		ai_chance = 0
+		command = { type = manpowerpool value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [268008] U33 | 1946 | Soviet Military Pact with Greek Communists (Pacto militar soviético con los comunistas griegos)
+# Triggered by event 152205 in events/GRE/GRE_38-49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 268008
+	country = U33
+	name = EVT_U33_268008_NAME
+	desc = EVT_U33_268008_DESC
+	picture = "nwo/greek_civil_war"
+	style = 1
+	trigger = {
+		event = 152205
+	}
+	date = { day = 1 month = january year = 1946 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_JOIN_ALLIANCE
+		ai_chance = 100
+		command = { type = alliance which = SOV }
+		command = { type = dissent value = -6 }
+		command = { type = relation which = SOV value = 100 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+		command = { type = relation which = SOV value = -150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [268006] U33 | 1947 | Limited Material Aid to the Partisans (Llegada de suministros limitados a los partisanos)
+# Triggered by event 223246 in events/SOV/SOV_47-56.txt
+# Triggered by event 262031 in events/Minors/U27.txt
+# Trigger event 329852 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 268006
+	country = U33
+	name = EVT_U33_268006_NAME
+	desc = EVT_U33_268006_DESC
+	picture = "nwo/greek_civil_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = money value = 100 }
+		command = { type = supplies value = 500 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = militia when = 6 }
+		command = { type = add_division value = militia when = 6 }
+		command = { type = add_division value = militia when = 6 }
+		command = { type = add_division value = militia when = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [268007] U33 | 1947 | Major Military Aid to the Partisans (Cuantioso suministro de pertrechos a los partisanos)
+# Triggered by event 223246 in events/SOV/SOV_47-56.txt
+# Trigger event 329852 in events/USA/USA_43-48.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 268007
+	country = U33
+	name = EVT_U33_268007_NAME
+	desc = EVT_U33_268007_DESC
+	picture = "nwo/greek_civil_war"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -6 }
+		command = { type = money value = 250 }
+		command = { type = supplies value = 2000 }
+		command = { type = add_division value = bergsjaeger when = 11 }
+		command = { type = add_division value = bergsjaeger when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = infantry when = 11 }
+		command = { type = add_division value = militia when = 6 }
+		command = { type = add_division value = militia when = 6 }
+		command = { type = add_division value = militia when = 6 }
+		command = { type = add_division value = militia when = 6 }
+		command = { type = add_division value = militia when = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329849] U33 | 1947 | Foreign Alignment in the Greek Civil War (Orientación exterior en la Guerra Civil Griega)
+# Trigger event 223246 in events/SOV/SOV_47-56.txt
+# Trigger event 262031 in events/Minors/U27.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329849
+	country = U33
+	name = EVT_U33_329849_NAME
+	desc = EVT_U33_329849_DESC
+	picture = "nwo/greek_civil_war"
+	style = 1
+	trigger = {
+		war = { country = GRE country = U33 }
+		exists = GRE
+		flag = cold_war
+	}
+	date = { day = 1 month = january year = 1947 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1950 }
+	action = {
+		name = EVT_U33_329849_A
+		trigger = { exists = U27 }
+		ai_chance = 60
+		command = { type = trigger which = 223246 }
+	}
+	action = {
+		name = EVT_U33_329849_A
+		trigger = { NOT = { exists = U27 } }
+		ai_chance = 15
+		command = { type = trigger which = 223246 }
+	}
+	action = {
+		name = EVT_U33_329849_B
+		trigger = { exists = U27 }
+		ai_chance = 30
+		command = { type = trigger which = 262031 }
+	}
+	action = {
+		name = EVT_U33_329849_C
+		ai_chance = 10
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = interventionism value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [268002] U33 | 1949 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 268002
+	country = U33
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 980100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329853] U33 | 1949 | The Crumbling of the Insurgency (Desarticulación de la insurgencia partisana)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329853
+	country = U33
+	persistent = yes
+	name = EVT_U33_329853_NAME
+	desc = EVT_U33_329853_DESC
+	picture = "nwo/kke_partisans"
+	style = 1
+	trigger = {
+		war = { country = GRE country = U33 }
+		flag = cold_war
+		NOT = {
+			OR = {
+				area = { area = "Thrace" country = U33 data = 1 value = 60 }
+				area = { area = "Attica" country = U33 data = 1 value = 20 }
+			}
+		}
+	}
+	date = { day = 1 month = january year = 1949 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1955 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 3 }
+		command = { type = remove_division which = -1 }
+		command = { type = remove_division which = -1 }
+		command = { type = construct which = land_fort where = 367 value = -1 }
+		command = { type = construct which = land_fort where = 369 value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [268003] U33 | 1956 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 268003
+	country = U33
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = communist
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 980101 }
+		command = { type = headofgovernment which = 980102 }
+	}
+}

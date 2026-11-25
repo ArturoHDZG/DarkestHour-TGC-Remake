@@ -1,0 +1,1438 @@
+# ============================================================================
+# File: events/Minors/RUS_14-14.txt (50 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [211001] RUS | 1914 | Offensive Chit Expired (Reserva Logística Ofensiva agotada)
+# Triggered by event 211000 in events/Minors/RUS_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211001
+	random = no
+	country = RUS
+	name = "EVT_SHARED_00461_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GLOBAL/ww1_offensive"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = -10 }
+		command = { type = morale which = land value = -10 }
+		command = { type = morale which = naval value = -10 }
+		command = { type = morale which = air value = -10 }
+		command = { type = speed which = land value = -2 }
+		command = { type = counterattack value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = encirclement value = -2 }
+		command = { type = hq_supply_eff value = -2 }
+		command = { type = sce_frequency value = -0.3 }
+		command = { type = attrition_mod value = -2 }
+		command = { type = trickleback_mod value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211003] RUS | 1914 | Ottoman Conciliation for Black Sea Raids (Desagravio otomano por el ataque en el mar Negro)
+# Triggered by event 196029 in events/Minors/OTT.txt
+# Trigger event 196043 in events/Minors/OTT.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211003
+	country = RUS
+	name = "EVT_SHARED_00094_NAME"
+	desc = "EVT_SHARED_00093_DESC"
+	style = 2
+	picture = "GLOBAL/negotiaton"
+	action = {
+		name = "ACTION_NAME_WAR"
+		ai_chance = 90
+		command = { type = sleepevent which = 196030 }
+		command = { type = war which = OTT }
+		command = { trigger = { NOT = { alliance = { country = OTT country = U08} } } type = event which = 196043 where = OTT when = 1}
+	}
+	action = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 15
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211005] RUS | 1914 | Serbia Appeals for Russian Support (Serbia solicita el apoyo de Rusia)
+# Triggered by event 217001 in events/Minors/SER.txt
+# Trigger event 217002 in events/Minors/SER.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211005
+	country = RUS
+	name = "EVT_RUS_211005_NAME"
+	desc = "EVT_RUS_211005_DESC"
+	style = 2
+	picture = "GLOBAL/german_mobilization2"
+	action = {
+		name = "ACTION_NAME_SEND_AID"
+		ai_chance = 100
+		command = { type = trigger which = 217002 }
+		command = { type = belligerence value = 3 }
+		command = { type = guarantee which = RUS where = SER }
+	}
+	action = {
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = relation which = SER value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211006] RUS | 1914 | Austria-Hungary Declares War on Serbia! (¡Austria-Hungría declara la guerra a Serbia!)
+# Triggered by event 244015 in events/Minors/U09_Decisions.txt
+# Trigger event 147260 in events/FRA/FRA_Decisions.txt
+# Trigger event 243092 in events/Minors/U08_14-14.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 231003 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231005 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231029 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 231031 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 324253 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 324254 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211006
+	country = RUS
+	name = "EVT_RUS_211006_NAME"
+	desc = "EVT_RUS_211006_DESC"
+	style = 2
+	picture = "GLOBAL/german_mobilization2"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = belligerence value = 10 }
+		command = { type = alliance which = SER when = 1 }
+		command = { type = alliance which = MTN when = 1 }
+		command = { type = trigger which = 243092 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 8 } } } type = trigger which = 329341 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211008] RUS | 1914 | Warsaw is Lost! (¡Pérdida de Varsovia!)
+# Trigger event 211048 in events/Minors/RUS_14-91.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211008
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 232 data = -3 } } }
+	name = "EVT_RUS_211008_NAME"
+	desc = "EVT_RUS_211008_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 8 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211009] RUS | 1914 | Riga is Lost! (¡Pérdida de Riga!)
+# Trigger event 211050 in events/Minors/RUS_14-91.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211009
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 264 data = -1 } } }
+	name = "EVT_RUS_211009_NAME"
+	desc = "EVT_RUS_211009_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211010] RUS | 1914 | Minsk is Lost! (¡Pérdida de Minsk!)
+# Trigger event 211049 in events/Minors/RUS_14-91.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211010
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 599 data = -1 } } }
+	name = "EVT_RUS_211010_NAME"
+	desc = "EVT_RUS_211010_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211011] RUS | 1914 | Kiev is Lost! (¡Pérdida de Kiev!)
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211011
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 617 data = -1 } } }
+	name = "EVT_RUS_211011_NAME"
+	desc = "EVT_RUS_211011_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 8 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211012] RUS | 1914 | Odessa is Lost! (¡Pérdida de Odesa!)
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211012
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 626 data = -1 } } }
+	name = "EVT_RUS_211012_NAME"
+	desc = "EVT_RUS_211012_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211013] RUS | 1914 | Tallinn is Lost! (¡Pérdida de Tallin!)
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211013
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 270 data = -1 } } }
+	name = "EVT_RUS_211013_NAME"
+	desc = "EVT_RUS_211013_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211014] RUS | 1914 | Petrograd is Lost! (¡Pérdida de Petrogrado!)
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211014
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 553 data = -1 } } }
+	name = "EVT_RUS_211014_NAME"
+	desc = "EVT_RUS_211014_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211015] RUS | 1914 | Moscow is Lost! (¡Pérdida de Moscú!)
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211015
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 572 data = -1 } } }
+	name = "EVT_RUS_211015_NAME"
+	desc = "EVT_RUS_211015_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211016] RUS | 1914 | Yerevan is Lost! (¡Pérdida de Ereván!)
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211016
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 711 data = -1 } } }
+	name = "EVT_RUS_211016_NAME"
+	desc = "EVT_RUS_211016_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211017] RUS | 1914 | Baku is Lost! (¡Pérdida de Bakú!)
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211017
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 713 data = -1 } } }
+	name = "EVT_RUS_211017_NAME"
+	desc = "EVT_RUS_211017_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211018] RUS | 1914 | Tbilisi is Lost! (¡Pérdida de Tiflis!)
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211018
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 709 data = -1 } } }
+	name = "EVT_RUS_211018_NAME"
+	desc = "EVT_RUS_211018_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211019] RUS | 1914 | General Strike in Petrograd (Huelga general en Petrogrado)
+# Trigger event 211004 in events/Minors/RUS_Decisions.txt
+# Trigger event 211020 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211019
+	country = RUS
+	trigger = {
+		not = { flag = force_rus_rev }
+		atwar = yes
+		OR= {
+			dissent = 35
+			AND = {
+				dissent = 30
+				random = 80
+			}
+			AND = {
+				year = 1916
+				dissent = 25
+				random = 60
+			}
+			AND = {
+				year = 1917
+				dissent = 16
+				random = 60
+			}
+		}
+	}
+	name = "EVT_SHARED_00102_NAME"
+	desc = "EVT_SHARED_00102_DESC"
+	style = 2
+	picture = "GLOBAL/strikesruspetro"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211020] RUS | 1914 | Civil Paralysis in Petrograd (Parálisis civil en Petrogrado)
+# Triggered by event 211019 in events/Minors/RUS_14-14.txt
+# Triggered by event 211064 in events/Minors/RUS_14-91.txt
+# Triggered by event 211065 in events/Minors/RUS_14-14.txt
+# Trigger event 211021 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211020
+	country = RUS
+	trigger = { or = {
+		event = 211019
+		event = 211064
+		event = 211065
+		}
+	}
+	name = "EVT_RUS_211020_NAME"
+	desc = "EVT_RUS_211020_DESC"
+	style = 2
+	picture = "GLOBAL/strikesruspetro"
+	date = { day = 0 month = january year = 1914 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211021] RUS | 1914 | Mass Riots in Petrograd (Disturbios masivos en Petrogrado)
+# Triggered by event 211020 in events/Minors/RUS_14-14.txt
+# Trigger event 211022 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211021
+	country = RUS
+	trigger = {
+		random = 10
+		event = 211020
+	}
+	name = "EVT_RUS_211021_NAME"
+	desc = "EVT_RUS_211021_DESC"
+	style = 2
+	picture = "Minors/strikesruspetro1"
+	date = { day = 0 month = january year = 1914 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211022] RUS | 1914 | Fall of the Tsarist Administration (Caída del régimen zarista)
+# Triggered by event 211021 in events/Minors/RUS_14-14.txt
+# Trigger event 211023 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211022
+	country = RUS
+	trigger = {
+		random = 50
+		event = 211021
+	}
+	name = "EVT_RUS_211022_NAME"
+	desc = "EVT_RUS_211022_DESC"
+	style = 2
+	picture = "GLOBAL/nicolausiifled"
+	date = { day = 0 month = january year = 1914 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = dissent value = 2 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = setflag which = ZarFled }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211023] RUS | 1914 | Provisional Government Proclaimed (Proclamación del Gobierno Provisional)
+# Triggered by event 211022 in events/Minors/RUS_14-14.txt
+# Trigger event 211024 in events/Minors/RUS_14-14.txt
+# Trigger event 211025 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211023
+	country = RUS
+	trigger = {
+		random = 40
+		event = 211022
+	}
+	name = "EVT_RUS_211023_NAME"
+	desc = "EVT_RUS_211023_DESC"
+	style = 2
+	picture = "GLOBAL/provisionalgovernment"
+	date = { day = 0 month = january year = 1914 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 515095 }
+		command = { type = headofgovernment which = 515112 }
+		command = { type = foreignminister which = 515119 }
+		command = { type = armamentminister which = 515124 }
+		command = { type = ministerofsecurity which = 515151 }
+		command = { type = flag_ext where = RUS which = "_prov_gov" }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211024] RUS | 1914 | The Petrograd Soviet Formed (Constitución del Sóviet de Petrogrado)
+# Triggered by event 211023 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211024
+	country = RUS
+	trigger = {
+		random = 90
+		event = 211023
+	}
+	name = "EVT_RUS_211024_NAME"
+	desc = "EVT_RUS_211024_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = {   }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211025] RUS | 1914 | Abdication of Tsar Nicholas II (Abdicación del zar Nicolás II)
+# Triggered by event 211023 in events/Minors/RUS_14-14.txt
+# Trigger event 143428 in events/ENG/ENG_14-25.txt
+# Trigger event 211026 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211025
+	country = RUS
+	trigger = {
+		random = 50
+		event = 211023
+	}
+	name = "EVT_RUS_211025_NAME"
+	desc = "EVT_RUS_211025_DESC"
+	style = 2
+	picture = "GLOBAL/nicolausiifled"
+	date = { day = 0 month = january year = 1914 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent  value = -50 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 515097 }
+		command = { type = headofgovernment which = 515112 }
+		command = { type = foreignminister which = 515120 }
+		command = { type = armamentminister which = 515125 }
+		command = { type = ministerofsecurity which = 515151 }
+		command = { type = chiefofarmy which = 515184 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211026] RUS | 1914 | Kerensky Assumes Power (Kérenski asume el poder)
+# Triggered by event 211025 in events/Minors/RUS_14-14.txt
+# Trigger event 243100 in events/Minors/U08_Decisions.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211026
+	country = RUS
+	trigger = {
+		random = 20
+		event = 211025
+	}
+	name = "EVT_RUS_211026_NAME"
+	desc = "EVT_RUS_211026_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent  value = -5 }
+		command = { type = set_domestic which = democratic value = 7 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 515098 }
+		command = { type = headofgovernment which = 515113 }
+		command = { type = foreignminister which = 515120 }
+		command = { type = armamentminister which = 515126 }
+		command = { type = ministerofsecurity which = 515153 }
+		command = { type = chiefofarmy which = 515185 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211027] RUS | 1914 | Return of Lenin from Exile (Retorno de Lenin del exilio)
+# Triggered by event 243100 in events/Minors/U08_Decisions.txt
+# Trigger event 211028 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211027
+	country = RUS
+	name = "EVT_RUS_211027_NAME"
+	desc = "EVT_RUS_211027_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent  value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211028] RUS | 1914 | Bolshevik Surge in the Soviets (Auge bolchevique en los sóviets)
+# Triggered by event 211027 in events/Minors/RUS_14-14.txt
+# Trigger event 211029 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211028
+	country = RUS
+	trigger = {
+		random = 40
+		event = 211027
+	}
+	name = "EVT_RUS_211028_NAME"
+	desc = "EVT_RUS_211028_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 8
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent  value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211029] RUS | 1914 | The July Days Insurrection (Las Jornadas de Julio en Petrogrado)
+# Triggered by event 211028 in events/Minors/RUS_14-14.txt
+# Trigger event 211030 in events/Minors/RUS_14-14.txt
+# Trigger event 211033 in events/Minors/RUS_14-14.txt
+# Trigger event 211035 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211029
+	country = RUS
+	trigger = {
+		atwar = yes
+		random = 25
+		event = 211028
+	}
+	name = "EVT_RUS_211029_NAME"
+	desc = "EVT_RUS_211029_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_DEFEAT"
+		command = { type = dissent  value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211030] RUS | 1914 | Kornilov Appointed Supreme Commander (Kornílov nombrado Comandante Supremo)
+# Triggered by event 211029 in events/Minors/RUS_14-14.txt
+# Trigger event 211031 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211030
+	country = RUS
+	trigger = {
+		atwar = yes
+		random = 25
+		event = 211029
+		headofstate = 515098
+	}
+	name = "EVT_RUS_211030_NAME"
+	desc = "EVT_RUS_211030_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -1 }
+		command = { type = chiefofarmy which = 515183 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211031] RUS | 1914 | The Kerensky-Kornilov Conflict (El conflicto Kérenski-Kornílov)
+# Triggered by event 211030 in events/Minors/RUS_14-14.txt
+# Trigger event 211032 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211031
+	country = RUS
+	trigger = {
+		atwar = yes
+		random = 30
+		event = 211030
+		headofstate = 515098
+		incabinet = 515183
+	}
+	name = "EVT_RUS_211031_NAME"
+	desc = "EVT_RUS_211031_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211032] RUS | 1914 | The Kornilov Affair Thwarted (Fracaso del golpe de Kornílov)
+# Triggered by event 211031 in events/Minors/RUS_14-14.txt
+# Trigger event 211033 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211032
+	country = RUS
+	trigger = {
+		atwar = yes
+		random = 25
+		event = 211031
+		headofstate = 515098
+		incabinet = 515183
+	}
+	name = "EVT_RUS_211032_NAME"
+	desc = "EVT_RUS_211032_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent  value = 3 }
+		command = { type = chiefofarmy which = 515181 }
+		command = { type = trigger which = 211033}
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+		command = { type = disorg_division which = -1 where = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211033] RUS | 1914 | Amnesty for Bolshevik Detainees (Amnistía para los presos bolcheviques)
+# Triggered by event 211032 in events/Minors/RUS_14-14.txt
+# Triggered by event 211029 in events/Minors/RUS_14-14.txt
+# Trigger event 211034 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211033
+	country = RUS
+	trigger = {
+		atwar = yes
+		random = 30
+		event = 211029
+		event = 211032
+	}
+	name = "EVT_RUS_211033_NAME"
+	desc = "EVT_RUS_211033_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1925 }
+	action_a = {
+		name = "ACTION_NAME_ACCEPT"
+		ai_chance = 100
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = october_revolution }
+	}
+	action_b = {
+		name = "ACTION_NAME_KEEP_CURRENT"
+		ai_chance = 0
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211034] RUS | 1914 | Agrarian Uprisings in the Countryside (Insurrecciones agrarias en el campo)
+# Triggered by event 211033 in events/Minors/RUS_14-14.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211034
+	country = RUS
+	trigger = {
+		event = 211033
+	}
+	name = "EVT_RUS_211034_NAME"
+	desc = "EVT_RUS_211034_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = demobilize which = land when = 0 where = 0 value = -30 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211035] RUS | 1914 | The October Revolution (La Revolución de Octubre)
+# Triggered by event 211029 in events/Minors/RUS_14-14.txt
+# Trigger event 209064 in events/Minors/ROM_14-36.txt
+# Trigger event 223138 in events/SOV/SOV_14-33.txt
+# Trigger event 223139 in events/SOV/SOV_14-33.txt
+# Trigger event 223140 in events/SOV/SOV_14-33.txt
+# Trigger event 223141 in events/SOV/SOV_14-33.txt
+# Trigger event 243117 in events/Minors/U08_14-18.txt
+# Trigger event 223169 in events/AI/SOV_AI_14-41.txt
+# Trigger event 223164 in events/SOV/SOV_14-33.txt
+# Trigger event 223432 in events/SOV/SOV_14-33.txt
+# Trigger event 223433 in events/AI/SOV_AI_14-41.txt
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211035
+	country = RUS
+	trigger = {
+		random = 25
+		event = 211029
+		OR = {
+			flag = october_revolution
+			dissent = 35
+		}
+	}
+	name = "EVT_RUS_211035_NAME"
+	desc = "EVT_RUS_211035_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = {
+					participant = { country = RUS value = 1 }
+					alliance = { country = RUS country = USA }
+					NOT = {
+						alliance = { country = RUS country = FRA }
+						alliance = { country = RUS country = ENG } } }
+				type = alliance_leader which = USA where = 0 }
+		command = { trigger = {
+					participant = { country = RUS value = 1 }
+					alliance = { country = RUS country = ITA }
+					NOT = {
+						alliance = { country = RUS country = FRA }
+						alliance = { country = RUS country = ENG }
+						alliance = { country = RUS country = USA } } }
+				type = alliance_leader which = ITA where = 0 }
+		command = { trigger = {
+					participant = { country = RUS value = 1 }
+					alliance = { country = RUS country = ROM }
+					NOT = {
+						alliance = { country = RUS country = FRA }
+						alliance = { country = RUS country = ENG }
+						alliance = { country = RUS country = USA }
+						alliance = { country = RUS country = ITA } } }
+				type = alliance_leader which = ROM where = 0 }
+		command = { trigger = {
+					participant = { country = RUS value = 1 }
+					alliance = { country = RUS country = GRE }
+					NOT = {
+						alliance = { country = RUS country = FRA }
+						alliance = { country = RUS country = ENG }
+						alliance = { country = RUS country = USA }
+						alliance = { country = RUS country = ITA }
+						alliance = { country = RUS country = ROM } } }
+				type = alliance_leader which = GRE where = 0 }
+		command = { type = leave_alliance when = 0 }
+		command = { type = country which = SOV }
+		command = { type = trigger which = 223138 }
+		command = { type = trigger which = 223139 }
+		command = { type = trigger which = 223140 }
+		command = { type = trigger which = 223141 }
+		command = { type = trigger which = 243117 }
+		command = { type = trigger which = 223169 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211036] RUS | 1914 | Serbia Submits to Austrian Ultimatum (Serbia acata el ultimátum austríaco)
+# Triggered by event 217003 in events/Minors/SER.txt
+# Trigger event 147276 in events/FRA/FRA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211036
+	country = RUS
+	name = "EVT_RUS_211036_NAME"
+	desc = "EVT_RUS_211036_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = "ACTION_NAME_PROTEST"
+		ai_chance = 99
+		command = { type = setflag which = FTL_serbia_accepted }
+	}
+	action_b = {
+		name = ACTION_NAME_OK
+		ai_chance = 1
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211039] RUS | 1914 | France Guarantees Alliance Support (Francia garantiza el respaldo militar)
+# Triggered by event 147295 in events/FRA/FRA_14-14.txt
+# Trigger event 211037 in events/Minors/RUS_Decisions.txt
+# Trigger event 211046 in events/Minors/RUS_Decisions.txt
+# Trigger event 243094 in events/Minors/U08_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211039
+	country = RUS
+	name = "EVT_RUS_211039_NAME"
+	desc = "EVT_RUS_211039_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = FRA value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211040] RUS | 1914 | France Declines Military Backing (Francia deniega su apoyo militar)
+# Triggered by event 147295 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211040
+	country = RUS
+	name = "EVT_RUS_211040_NAME"
+	desc = "EVT_RUS_211040_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = { type = relation which = FRA value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211042] RUS | 1914 | Great Britain Pledges Intervention (Gran Bretaña compromete su intervención)
+# Triggered by event 143212 in events/ENG/ENG_14-14.txt
+# Trigger event 211037 in events/Minors/RUS_Decisions.txt
+# Trigger event 211046 in events/Minors/RUS_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211042
+	country = RUS
+	name = "EVT_RUS_211042_NAME"
+	desc = "EVT_RUS_211042_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ENG value = 25 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211043] RUS | 1914 | Great Britain Denies Support (Gran Bretaña deniega su respaldo)
+# Triggered by event 143212 in events/ENG/ENG_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211043
+	country = RUS
+	name = "EVT_RUS_211043_NAME"
+	desc = "EVT_RUS_211043_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = { type = relation which = ENG value = -15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211044] RUS | 1914 | Central Powers Warn Against Mobilization (Advertencia de las Potencias Centrales)
+# Triggered by event 243118 in events/Minors/U08_14-18.txt
+# Triggered by event 244029 in events/Minors/U09.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211044
+	country = RUS
+	persistent = yes
+	name = "EVT_SHARED_00103_NAME"
+	desc = "EVT_SHARED_00103_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = U08 value = -10 }
+		command = { type = relation which = U09 value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211045] RUS | 1914 | Central Powers Warn Against Mobilization (Advertencia de las Potencias Centrales)
+# Triggered by event 243119 in events/Minors/U08_14-18.txt
+# Triggered by event 244030 in events/Minors/U09.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211045
+	country = RUS
+	persistent = yes
+	name = "EVT_SHARED_00103_NAME"
+	desc = "EVT_SHARED_00103_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = U08 value = -20 }
+		command = { type = relation which = U09 value = -20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211051] RUS | 1914 | The Franco-Russian Alliance Activated (Activación de la Alianza Franco-Rusa)
+# Triggered by event 147301 in events/FRA/FRA_14-14.txt
+# Trigger event 147302 in events/FRA/FRA_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211051
+	country = RUS
+	style = 2
+	name = "EVT_SHARED_00104_NAME"
+	desc = "EVT_SHARED_00104_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = event which = 147302 where = FRA when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211052] RUS | 1914 | Armistice with Germany (Armisticio con Alemania)
+# Triggered by event 243101 in events/Minors/U08_14-18.txt
+# Triggered by event 243107 in events/Minors/U08_14-14.txt
+# Triggered by event 243116 in events/Minors/U08_14-18.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211052
+	country = RUS
+	name = "EVT_SHARED_00056_NAME"
+	desc = "EVT_SHARED_00056_DESC"
+	picture = "GLOBAL/diplomatic_campaign"
+	style = 2
+	action = {
+		name = "ACTION_NAME_GREAT"
+		command = { type = dissent value = -3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211053] RUS | 1914 | Tsaritsyn is Lost! (¡Pérdida de Tsaritsyn!)
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211053
+	country = RUS
+	trigger = { atwar = yes NOT = { control = { province = 663 data = -1 } } }
+	name = "EVT_RUS_211053_NAME"
+	desc = "EVT_RUS_211053_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 8 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211055] RUS | 1914 | Wave of Patriotism (Ola de patriotismo)
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	country = RUS
+	id = 211055
+	random = no
+	style = 2
+	trigger = {
+		war = { country = U08  country = RUS }
+		alliance = { country = FRA  country = RUS }
+	}
+	name = "EVT_RUS_211055_NAME"
+	desc = "EVT_RUS_211055_DESC"
+	picture = "GLOBAL/nicolausiifled"
+	date = { day = 0 month = january year = 1914 }
+	offset = 15
+	deathdate = { day = 0 month = july year = 1916 }
+	action_a = {
+		name = "ACTION_NAME_HURRAH"
+		command = { type = dissent value = -4 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211056] RUS | 1914 | Rally Around the Tsar! (¡Apoyo al Zar!)
+# Trigger event 324234 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	country = RUS
+	id = 211056
+	random = no
+	style = 2
+	trigger = {
+		war = { country = U08  country = RUS }
+		alliance = { country = FRA  country = RUS }
+	}
+	name = "EVT_RUS_211056_NAME"
+	desc = "EVT_RUS_211056_DESC"
+	picture = "GLOBAL/nicolausiifled"
+	date = { day = 0 month = january year = 1914 }
+	offset = 15
+	deathdate = { day = 0 month = july year = 1916 }
+	action_a = {
+		name = "ACTION_NAME_HURRAH"
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = domestic which = defense_lobby value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211065] RUS | 1914 | General Strike in Petrograd (Huelga general en Petrogrado)
+# Trigger event 211020 in events/Minors/RUS_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211065
+	country = RUS
+	trigger = {
+		flag = force_rus_rev
+		atwar = yes
+		OR= {
+			dissent = 35
+			AND = {
+				dissent = 30
+				random = 80
+			}
+			AND = {
+				year = 1916
+				dissent = 25
+				random = 60
+			}
+			AND = {
+				year = 1917
+				dissent = 16
+				random = 60
+			}
+		}
+	}
+	name = "EVT_SHARED_00102_NAME"
+	desc = "EVT_SHARED_00102_DESC"
+	style = 2
+	picture = "GLOBAL/strikesruspetro"
+	date = { day = 0 month = january year = 1914 }
+	offset = 5
+	deathdate = { day = 6 month = march year = 1917 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211067] RUS | 1914 | Sweden Offers Peace Terms (Suecia presenta condiciones de paz)
+# Triggered by event 227066 in events/Minors/SWE_Decisions.txt
+# Trigger event 227067 in events/Minors/SWE_14-58.txt
+# Trigger event 227068 in events/Minors/SWE_14-58.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211067
+	random = no
+	country = RUS
+	name = "EVT_RUS_211067_NAME"
+	desc = "EVT_RUS_211067_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		ai_chance = 1
+		name = "ACTION_NAME_ACCEPT_PEACE"
+		command = { type = secederegion which = SWE value = "Finland" when = 2 }
+		command = { type = trigger which = 227067 }
+	}
+	action = {
+		ai_chance = 99
+		name = "ACTION_NAME_REFUSE_DEMANDS"
+		command = { type = trigger which = 227068 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211068] RUS | 1914 | Treaty of Alexander Palace: Harsh Terms (Tratado del Palacio de Alejandro: Condiciones severas)
+# Triggered by event 324519 in events/GLOBAL/MULTI_14-32.txt
+# Triggered by event 196004 in events/Minors/OTT.txt
+# Triggered by event 196003 in events/Minors/OTT.txt
+# Triggered by event 243091 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211068
+	country = RUS
+	name = "EVT_RUS_211068_NAME"
+	desc = "EVT_RUS_211068_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = secederegion which = U08 value = "Poland" when = 1 }
+		command = { type = secederegion which = U08 value = "Baltic States" when = 2 }
+		command = { type = secedearea which = U08 value = "Mozyr" when = 1 }
+		command = { type = secedeprovince which = U08 value = 596 when = 1 }
+		command = { type = secedeprovince which = U08 value = 599 when = 1 }
+		command = { type = secederegion which = U08 value = "Ukraine" when = 2 }
+		command = { trigger = { NOT = { exists = FIN } } type = independence which = FIN value = 1 when = 1 }
+		command = { type = secederegion which = FIN value = "Finland" when = 2 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } } type = secederegion which = U09 value = "Romania" when = 1 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } } type = secedearea which = U09 value = "Odessa" when = 2 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } } type = secedeprovince which = U09 value = 618 when = 2 }
+		command = { trigger = { OR = { event = 324519 NOT = { alliance = { country = U08 country = U09 } } } } type = secederegion which = U08 value = "Romania" when = 1}
+		command = { trigger = { OR = { event = 324519 NOT = { alliance = { country = U08 country = U09 } } } } type = secedearea which = U08 value = "Odessa" when = 2}
+		command = { trigger = { OR = { event = 324519 NOT = { alliance = { country = U08 country = U09 } } } } type = secedeprovince which = U08 value = 614 when = 2 }
+		command = { trigger = { OR = { event = 324519 NOT = { alliance = { country = U08 country = U09 } } } } type = secedeprovince which = U08 value = 618 when = 2 }
+		command = { trigger = { alliance = { country = U08 country = OTT } NOT = { OR = { event = 196004 event = 196003 } } } type = secedeprovince which = OTT value = 386 }
+		command = { trigger = { alliance = { country = U08 country = OTT } NOT = { OR = { event = 196004 event = 196003 } } } type = secedeprovince which = OTT value = 711 when = 1 }
+		command = { trigger = { alliance = { country = U08 country = OTT } NOT = { OR = { event = 196004 event = 196003 } } } type = secedeprovince which = OTT value = 714 when = 1 }
+		command = { trigger = { NOT = { exists = GEO } alliance = { country = U08 country = OTT } NOT = { OR = { event = 196004 event = 196003 } } } type = independence which = GEO value = 1 when = 1  }
+		command = { type = secedeprovince which = GEO value = 707 when = 1  }
+		command = { type = secedeprovince which = GEO value = 710 when = 1  }
+		command = { trigger = { NOT = { exists = AZB } alliance = { country = U08 country = OTT } NOT = { OR = { event = 196004 event = 196003 } } } type = independence which = AZB value = 1 when = 1  }
+		command = { type = secedeprovince which = AZB value = 712 when = 1  }
+		command = { type = demobilize which = land when = 0 where = 0 value = 36 }
+		command = { type = strength which = land when = 0 where = 0 value = 0.33 }
+		command = { type = removeclaim which = 227 }
+		command = { type = removeclaim which = 233 }
+		command = { type = removeclaim which = 223 }
+		command = { type = removeclaim which = 231 }
+		command = { type = removeclaim which = 230 }
+		command = { type = removeclaim which = 232 }
+		command = { type = removeclaim which = 234 }
+		command = { type = removeclaim which = 243 }
+		command = { type = removeclaim which = 228 }
+		command = { type = removeclaim which = 229 }
+		command = { type = removeclaim which = 246 }
+		command = { type = removeclaim which = 250 }
+		command = { type = removeclaim which = 254 }
+		command = { type = removeclaim which = 252 }
+		command = { type = removeclaim which = 263 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } } type = removeclaim which = 306 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } } type = removeclaim which = 305 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } } type = removeclaim which = 304 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } } type = removeclaim which = 303 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } } type = removeclaim which = 302 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [211069] RUS | 1914 | Treaty of Alexander Palace: Soft Terms (Tratado del Palacio de Alejandro: Condiciones suaves)
+# Triggered by event 324519 in events/GLOBAL/MULTI_14-32.txt
+# Triggered by event 196004 in events/Minors/OTT.txt
+# Triggered by event 196003 in events/Minors/OTT.txt
+# Triggered by event 243091 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211069
+	country = RUS
+	name = "EVT_RUS_211069_NAME"
+	desc = "EVT_RUS_211069_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+		command = { type = secederegion which = U08 value = "Poland" when = 2 }
+		command = { type = secederegion which = U08 value = "Baltic States" when = 1 }
+		command = { trigger = { NOT = { exists = FIN } } type = independence which = FIN value = 1 when = 1 }
+		command = { type = secederegion which = FIN value = "Finland" when = 2 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } } type = secederegion which = U09 value = "Romania" when = 1 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } } type = secedearea which = U09 value = "Odessa" when = 2 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } } type = secedeprovince which = U09 value = 618 when = 2 }
+		command = { trigger = { OR = { event = 324519 NOT = { alliance = { country = U08 country = U09 } } } } type = secederegion which = U08 value = "Romania" when = 1}
+		command = { trigger = { OR = { event = 324519 NOT = { alliance = { country = U08 country = U09 } } } } type = secedearea which = U08 value = "Odessa" when = 2}
+		command = { trigger = { OR = { event = 324519 NOT = { alliance = { country = U08 country = U09 } } } } type = secedeprovince which = U08 value = 614 when = 2 }
+		command = { trigger = { OR = { event = 324519 NOT = { alliance = { country = U08 country = U09 } } } } type = secedeprovince which = U08 value = 618 when = 2 }
+		command = { trigger = { alliance = { country = U08 country = OTT } NOT = { OR = { event = 196004 event = 196003 } } } type = secedeprovince which = OTT value = 386 }
+		command = { trigger = { alliance = { country = U08 country = OTT } NOT = { OR = { event = 196004 event = 196003 } } } type = secedeprovince which = OTT value = 711 when = 1 }
+		command = { trigger = { alliance = { country = U08 country = OTT } NOT = { OR = { event = 196004 event = 196003 } } } type = secedeprovince which = OTT value = 714 when = 1 }
+		command = { type = demobilize which = land when = 0 where = 0 value = 48 }
+		command = { type = strength which = land when = 0 where = 0 value = 0.33 }
+		command = { type = removeclaim which = 227 }
+		command = { type = removeclaim which = 233 }
+		command = { type = removeclaim which = 223 }
+		command = { type = removeclaim which = 231 }
+		command = { type = removeclaim which = 230 }
+		command = { type = removeclaim which = 232 }
+		command = { type = removeclaim which = 234 }
+		command = { type = removeclaim which = 243 }
+		command = { type = removeclaim which = 228 }
+		command = { type = removeclaim which = 229 }
+		command = { type = removeclaim which = 246 }
+		command = { type = removeclaim which = 250 }
+		command = { type = removeclaim which = 254 }
+		command = { type = removeclaim which = 252 }
+		command = { type = removeclaim which = 263 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } }type = removeclaim which = 306 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } }type = removeclaim which = 305 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } }type = removeclaim which = 304 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } }type = removeclaim which = 303 }
+		command = { trigger = { alliance = { country = U08 country = U09 } NOT = { event = 324519 } }type = removeclaim which = 302 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211007] RUS | 1914 | German Ultimatum to Halt Mobilization (Ultimátum alemán contra la movilización)
+# Triggered by event 243092 in events/Minors/U08_14-14.txt
+# Trigger event 243093 in events/Minors/U08_14-14.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 211007
+	country = RUS
+	trigger = { event = 243092 }
+	name = "EVT_RUS_211007_NAME"
+	desc = "EVT_RUS_211007_DESC"
+	style = 2
+	picture = "GLOBAL/german_mobilization2"
+	date = { day = 28 month = june year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1914 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = alliance_leader which = RUS where = 0 }
+		command = { type = trigger which = 243093 }
+		command = { type = add_division value = infantry when = 3 }
+		command = { type = add_division value = infantry when = 3 }
+		command = { type = add_division value = infantry when = 3 }
+		command = { type = add_division value = infantry when = 3 }
+		command = { type = add_division value = infantry when = 3 }
+		command = { type = add_division value = infantry when = 3 }
+		command = { type = add_division value = infantry when = 3 }
+		command = { type = add_division value = infantry when = 3 }
+		command = { type = add_division value = infantry when = 3 }
+		command = { type = add_division value = infantry when = 3 }
+		command = { type = add_division value = Cavalry when = 2 }
+		command = { type = add_division value = Cavalry when = 2 }
+		command = { type = add_division value = Cavalry when = 2 }
+		command = { type = add_division value = Cavalry when = 2 }
+		command = { type = add_division value = Cavalry when = 2 }
+		command = { type = add_division value = Cavalry when = 2 }
+		command = { type = add_division value = Cavalry when = 2 }
+		command = { type = add_division value = Cavalry when = 2 }
+		command = { type = add_division value = Cavalry when = 2 }
+		command = { type = add_division value = Cavalry when = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [211002] RUS | 1914 | Rusian Manpower (Mano de obra rusa)
+# ----------------------------------------------------------------------------
+event = {
+	id = 211002
+	random = no
+	persistent = no
+    country = RUS
+	date = { year = 1914 month = july day = 1 }
+	name = "EVT_RUS_211002_NAME"
+	desc = "EVT_RUS_211002_DESC"
+	style = 1
+	picture = "GLOBAL/russian_soldiers"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = -50 }
+	}
+}

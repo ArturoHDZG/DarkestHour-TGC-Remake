@@ -1,0 +1,127 @@
+# ============================================================================
+# File: events/Minors/LBY_Decisions.txt (3 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [175014] LBY | 1917 | Recognize Ottomans sovereignty over us (Reconocer la soberania otomana)
+# Triggered by event 166112 in events/ITA/ITA_14-20.txt
+# Triggered by event 196003 in events/Minors/OTT.txt
+# Triggered by event 196004 in events/Minors/OTT.txt
+# Triggered by event 196005 in events/Minors/OTT.txt
+# Trigger event 175015 in events/Minors/LBY.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 175014
+	country = LBY
+	decision = {
+		event = 166112
+		exists = OTT
+		NOT = { event = 196003 }
+		NOT = { event = 196004 }
+		NOT = { event = 196005 }
+	}
+	decision_trigger = {
+		NOT = { ispuppet = LBY }
+		NOT = { ispuppet = OTT }
+		NOT = { atwar = LBY }
+		NOT = { atwar = OTT }
+		region = { region = "Libya" country = LBY data = 1 value = 100 }
+	}
+	trigger = {
+		event = 166112
+		exists = OTT
+		region = { region = "Libya" country = LBY data = 1 value = 100 }
+		NOT = { event = 196003 }
+		NOT = { event = 196004 }
+		NOT = { event = 196005 }
+		NOT = { ispuppet = LBY }
+		NOT = { ispuppet = OTT }
+		NOT = { atwar = LBY }
+		NOT = { atwar = OTT }
+	}
+	name = "EVT_LBY_175014_NAME"
+	desc = "EVT_LBY_175014_DESC"
+	style = 2
+	picture = "GLOBAL/ww1_offensive"
+	date = { day = 0 month = january year = 1917 }
+	offset = 181
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 95
+		command = { type = relation which = OTT value = 50 }
+		command = { type = trigger which = 175015 }
+	}
+	action = {
+		name = "ACTION_NAME_NEVER"
+		ai_chance = 5
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [175044] LBY | 1977 | Establishment of the Jamahiriya (Proclamación de la Yamahiriya)
+# ----------------------------------------------------------------------------
+event = {
+	id = 175044
+	country = LBY
+	name = EVT_LBY_175044_NAME
+	desc = EVT_LBY_175044_DESC
+	picture = "nwo/muammar_gaddafi"
+	decision_picture = "nwo/d_muammar_gaddafi"
+	style = 1
+	trigger = {
+		headofstate = 495126
+	}
+	decision = {
+		headofstate = 495126
+	}
+	date = { day = 0 month = january year = 1977 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1977 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = dissent value = -10 }
+		command = { type = domestic which = political_left value = 1 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = flag_ext where = LBY which = _1977 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [175045] LBY | 1990 | The Great Man-Made River (El Gran Río Artificial)
+# ----------------------------------------------------------------------------
+event = {
+	id = 175045
+	country = LBY
+	name = EVT_LBY_175045_NAME
+	desc = EVT_LBY_175045_DESC
+	picture = "nwo/great_manmade_river"
+	decision_picture = "nwo/d_great_manmade_river"
+	style = 1
+	trigger = {
+		headofstate = 495126
+	}
+	decision = {
+		headofstate = 495126
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1990 }
+	action = {
+		name = ACTION_NAME_VICTORY
+		ai_chance = 100
+		command = { type = construct which = ic where = 750 value = 4 }
+		command = { type = construct which = ic where = 761 value = 1 }
+		command = { type = construct which = infrastructure where = 750 value = 30 }
+		command = { type = construct which = infrastructure where = 757 value = 30 }
+		command = { type = construct which = infrastructure where = 756 value = 30 }
+		command = { type = construct which = infrastructure where = 759 value = 30 }
+		command = { type = construct which = infrastructure where = 762 value = 30 }
+		command = { type = construct which = infrastructure where = 763 value = 30 }
+		command = { type = construct which = infrastructure where = 761 value = 30 }
+		command = { type = money value = -2500 }
+	}
+}

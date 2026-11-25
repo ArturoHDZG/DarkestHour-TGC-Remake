@@ -1,0 +1,1046 @@
+# ============================================================================
+# File: events/Minors/NOR.txt (31 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [193004] NOR | 1936 | Norway Joins the Commonwealth (Noruega se une a la Mancomunidad)
+# Triggered by event 143045 in events/ENG/ENG_34-36.txt
+# Trigger event 143046 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 193004
+	random = no
+	country = NOR
+	name = EVT_SHARED_00614_NAME
+	desc = EVT_SHARED_00613_DESC
+	style = 2
+	picture = "GLOBAL/british_navy"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = alliance which = ENG }
+		command = { type = war which = GER }
+		command = { type = trigger which = 143046 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193005] NOR | 1936 | Fall of the People's Republic of Norway (Caída de la República Popular de Noruega)
+# Triggered by event 223096 in events/SOV/SOV_36-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 193005
+	random = no
+	country = NOR
+	name = "EVT_NOR_193005_NAME"
+	desc = "EVT_NOR_193005_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_EXCELLENT"
+		command = { type = inherit which = U19 value = 1 }
+		command = { type = dissent value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193014] NOR | 1936 | People's Republic Founded (República Popular)
+# Trigger event 193015 in events/Minors/NOR.txt
+# Trigger event 254003 in events/Minors/U19.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 193014
+   country = NOR
+   persistent = yes
+   trigger = {
+      government = communist
+      NOT = {
+         AND = {
+            exists = U19
+            NOT = { ai = NOR }
+            NOT = { ai = U19 }
+         }
+      }
+      NOT = {
+         AND = {
+            exists = U19
+            local_flag = reject_unification
+         }
+      }
+	  NOT = { local_flag = block_ideology_switch }
+   }
+   name = EVT_SHARED_00918_NAME
+   desc = EVT_SHARED_00918_DESC
+	picture = "nwo/commie_switch"
+   style = 1
+   date = { day = 1 month = january year = 1936 }
+   offset = 30
+   deathdate = { day = 29 month = december year = 1963 }
+   action = {
+      name = EVT_SHARED_00918_A
+      ai_chance = 100
+      trigger = { NOT = { exists = U19 } }
+      command = { type = country which = U19 }
+   }
+   action = {
+      name = EVT_SHARED_00918_B
+      ai_chance = 100
+      trigger = {
+         exists = U19
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = NOR }
+               control = { province = 483 data = -1 }
+            }
+         }
+         type = trigger which = 193015
+      }
+      command = {
+         trigger = {
+            OR = {
+               NOT = { ai = U19 }
+               NOT = { control = { province = 483 data = -1 } }
+            }
+         }
+         type = trigger which = 254003
+      }
+   }
+   action = {
+      name = ACTION_NAME_KEEP_CURRENT
+      ai_chance = 0
+      trigger = {
+         exists = U19
+      }
+      command = { type = local_setflag which = reject_unification }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [193015] NOR | 1936 | Democratic Reunification (Reunificación democrática)
+# Triggered by event 193014 in events/Minors/NOR.txt
+# Triggered by event 254002 in events/Minors/U19.txt
+# ----------------------------------------------------------------------------
+event = {
+   id = 193015
+   country = NOR
+   name = EVT_SHARED_00920_NAME
+   desc = EVT_SHARED_00920_DESC
+	picture = "nwo/reunification"
+   style = 1
+   action = {
+      name = ACTION_NAME_OK
+      command = { type = inherit which = U19 value = 1 }
+   }
+}
+
+# ----------------------------------------------------------------------------
+# [329131] NOR | 1936 | British Intervention Succeeds (Éxito de la intervención británica)
+# Trigger event 143045 in events/ENG/ENG_34-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329131
+	random = no
+	country = NOR
+	name = EVT_SHARED_00613_NAME
+	desc = EVT_SHARED_00613_DESC
+	style = 2
+	picture = "GLOBAL/british_navy"
+	trigger = {
+		war = { country = ENG country = NOR }
+		OR = {
+			control = { province = 488 data = ENG }
+			control = { province = 493 data = ENG }
+		}
+		control = { province = 495 data = ENG }
+		control = { province = 483 data = ENG }
+	}
+	date = { day = 1 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = january year = 1960 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = end_access which = GER }
+		command = { type = access which = ENG }
+		command = { type = peace which = ENG value = 1 }
+		command = { type = trigger which = 143045 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193000] NOR | 1937 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193000
+	random = no
+	country = NOR
+	style = 2
+	trigger = {
+		minister = 65009
+		}
+	date = { year = 1937 month = september day = 2 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 65048 }
+		command = { type = sleepminister which = 65009 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [193002] NOR | 1937 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193002
+	random = no
+	country = NOR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = NOR }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 10 month = september year = 1937 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 65001 }
+		command = { type = headofgovernment which = 65002 }
+		command = { type = foreignminister which = 65003 }
+		command = { type = armamentminister which = 65027 }
+		command = { type = ministerofsecurity which = 65005 }
+		command = { type = ministerofintelligence which = 65006 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 65011 }
+		command = { type = headofgovernment which = 65013 }
+		command = { type = foreignminister which = 65021 }
+		command = { type = armamentminister which = 65032 }
+		command = { type = ministerofsecurity which = 65045 }
+		command = { type = ministerofintelligence which = 65048 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329212] NOR | 1939 | Norwegian Resistance to German Invasion (Resistencia noruega a la invasión alemana)
+# Trigger event 150121 in events/GER/GER_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329212
+	random = no
+	country = NOR
+	trigger = {
+			war = { country = GER country = NOR }
+			control = { province = 485 data = GER }
+			}
+	date = { day = 01 month = january year = 1939 }
+	offset = 10
+	deathdate = { day = 21 month = december year = 1942 }
+	name = "EVT_SHARED_00708_NAME"
+	desc = "EVT_SHARED_00708_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+			command = { type = dissent value = -2 }
+			command = { type = max_organization which = land value = 2 }
+			command = { type = trigger which = 150121 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193016] NOR | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 193016
+	country = NOR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofgovernment which = 65002 }
+		command = { type = foreignminister which = 65024 }
+		command = { type = armamentminister which = 65037 }
+		command = { type = ministerofsecurity which = 65044 }
+		command = { type = ministerofintelligence which = 65050 }
+		command = { type = chiefofstaff which = 65055 }
+		command = { type = chiefofarmy which = 65058 }
+		command = { type = chiefofnavy which = 65061 }
+		command = { type = chiefofair which = 65067 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193017] NOR | 1945 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193017
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1945 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65014 }
+		command = { type = foreignminister which = 65019 }
+		command = { type = armamentminister which = 65031 }
+		command = { type = ministerofsecurity which = 65044 }
+		command = { type = ministerofintelligence which = 65049 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65016 }
+		command = { type = foreignminister which = 65019 }
+		command = { type = armamentminister which = 65031 }
+		command = { type = ministerofsecurity which = 65044 }
+		command = { type = ministerofintelligence which = 65049 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193001] NOR | 1945 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193001
+	random = no
+	country = NOR
+	style = 2
+	trigger = {
+		minister = 65073
+		}
+	date = { year = 1945 month = may day = 1 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 65073 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329075] NOR | 1945 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329075
+	random = no
+	country = NOR
+	style = 2
+	trigger = {
+		minister = 65074
+		war = { country = GER country = USA }
+		war = { country = GER country = ENG }
+		war = { country = GER country = SOV }
+		}
+	date = { year = 1945 month = october day = 24 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 65074 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329076] NOR | 1945 | Death of a Minister (Fallecimiento de un ministro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329076
+	random = no
+	country = NOR
+	style = 2
+	trigger = {
+		minister = 65076
+		war = { country = GER country = USA }
+		war = { country = GER country = ENG }
+		war = { country = GER country = SOV }
+		}
+	date = { year = 1945 month = october day = 24 }
+	name = "EVT_SHARED_00106_NAME"
+	desc = "EVT_SHARED_00106_DESC"
+	picture = "GLOBAL/minister_died"
+	action_a = {
+		name = "ACTION_NAME_MOURN"
+		command = { type = sleepminister which = 65076 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [193018] NOR | 1949 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193018
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1952 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65014 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65016 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193003] NOR | 1951 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193003
+	random = no
+	country = NOR
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = democratic
+		NOT = { ispuppet = NOR }
+		}
+	name = "EVT_SHARED_00510_NAME"
+	desc = "EVT_SHARED_00511_DESC"
+	date = { day = 1 month = november year = 1951 }
+	action_a = {
+		ai_chance = 60
+		name = "EVT_SHARED_00512_B"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 65001 }
+		command = { type = headofgovernment which = 65092 }
+		command = { type = foreignminister which = 65019 }
+		command = { type = armamentminister which = 65093 }
+		command = { type = ministerofsecurity which = 65094 }
+		command = { type = ministerofintelligence which = 65050 }
+		}
+	action_b = {
+		ai_chance = 30
+		name = "EVT_SHARED_00512_A"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofstate which = 65011 }
+		command = { type = headofgovernment which = 65016 }
+		command = { type = foreignminister which = 65023 }
+		command = { type = armamentminister which = 65037 }
+		command = { type = ministerofsecurity which = 65046 }
+		command = { type = ministerofintelligence which = 65050 }
+		}
+	action_c = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [193019] NOR | 1953 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193019
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1953 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1956 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65092 }
+		command = { type = foreignminister which = 65019 }
+		command = { type = armamentminister which = 65093 }
+		command = { type = ministerofsecurity which = 65094 }
+		command = { type = ministerofintelligence which = 65050 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65016 }
+		command = { type = foreignminister which = 65023 }
+		command = { type = armamentminister which = 65037 }
+		command = { type = ministerofsecurity which = 65046 }
+		command = { type = ministerofintelligence which = 65050 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193020] NOR | 1956 | Death of King Haakon VII (Muerte de Haakon VII)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193020
+	country = NOR
+	name = EVT_NOR_193020_NAME
+	desc = EVT_NOR_193020_DESC
+	picture = "nwo/olav_v"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1956 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1957 }
+	action = {
+		name = ACTION_NAME_GREAT
+		ai_chance = 100
+		command = { type = headofstate which = 65200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193021] NOR | 1957 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193021
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1957 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65014 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65201 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+			command = { }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193022] NOR | 1961 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193022
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1961 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65014 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65201 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193023] NOR | 1965 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193023
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1965 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1968 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65202 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65014 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193024] NOR | 1969 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193024
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1969 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1970 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65202 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65203 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193025] NOR | 1971 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193025
+	country = NOR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1971 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1971 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65203 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193026] NOR | 1972 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193026
+	country = NOR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65204 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193027] NOR | 1973 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193027
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1973 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1975 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65203 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65210 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 3 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193028] NOR | 1976 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193028
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1976 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1980 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65205 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65206 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193029] NOR | 1981 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193029
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1981 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1985 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65206 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65207 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193030] NOR | 1986 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193030
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1986 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1988 }
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65207 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65208 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 15 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193031] NOR | 1989 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193031
+	country = NOR
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -9 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 5 }
+		command = { type = headofgovernment which = 65209 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65207 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 9 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193032] NOR | 1990 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193032
+	country = NOR
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofgovernment which = 65207 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193033] NOR | 1991 | National Mourning (Duelo nacional)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193033
+	country = NOR
+	name = EVT_SHARED_00871_NAME
+	desc = EVT_SHARED_00871_DESC
+	picture = "nwo/death"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 65200 }
+		command = { type = headofstate which = 65224 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [193034] NOR | 1991 | The Norwegian Oil Age (Descubrimiento del campo Ekofisk)
+# ----------------------------------------------------------------------------
+event = {
+	id = 193034
+	country = NOR
+	name = EVT_NOR_193034_NAME
+	desc = EVT_NOR_193034_DESC
+	picture = "nwo/norwegian_oil"
+	style = 1
+	date = { day = 0 month = january year = 1991 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = sleepminister which = 65200 }
+		command = { type = headofstate which = 65224 }
+	}
+}

@@ -1,0 +1,268 @@
+# ============================================================================
+# THE GRAND CAMPAIGN REMAKE: DESTINY OF LATIN AMERICA (EMPIRES, SOCIALISM, AXIS)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# [231920] ALL (Human Player) | 1910-1945 | Master Decision: The Destiny of Latin America
+# ----------------------------------------------------------------------------
+event = {
+	id = 231920
+	random = no
+	decision = {
+		year = 1910
+	}
+	decision_trigger = {
+		year = 1910
+	}
+	trigger = {
+		ai = no
+	}
+	name = "EVT_231920_NAME"
+	desc = "EVT_231920_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	decision_picture = "GLOBAL/decision_wargames"
+	date = { day = 1 month = january year = 1910 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = "EVT_231920_A"
+		command = { }
+	}
+	action = {
+		name = "EVT_231920_B"
+		command = { type = setflag which = latam_path_empires }
+	}
+	action = {
+		name = "EVT_231920_C"
+		command = { type = setflag which = latam_path_socialism }
+	}
+	action = {
+		name = "EVT_231920_D"
+		command = { type = setflag which = latam_path_axis }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231921] COL | 1910-1945 | Restoration of Gran Colombia
+# ----------------------------------------------------------------------------
+event = {
+	id = 231921
+	country = COL
+	trigger = {
+		flag = latam_path_empires
+		exists = COL
+	}
+	name = "EVT_231921_NAME"
+	desc = "EVT_231921_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 17 month = december year = 1919 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { exists = VEN } type = inherit which = VEN value = 1 }
+		command = { trigger = { exists = ECU } type = inherit which = ECU value = 1 }
+		command = { trigger = { exists = PAN } type = inherit which = PAN value = 1 }
+		command = { type = dissent value = -15 }
+		command = { type = industrial_modifier which = total value = 15 }
+		command = { type = setflag which = Gran_Colombia_Restored }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231922] MEX | 1913-1945 | Restoration of the Mexican Empire
+# ----------------------------------------------------------------------------
+event = {
+	id = 231922
+	country = MEX
+	trigger = {
+		flag = latam_path_empires
+		exists = MEX
+	}
+	name = "EVT_231922_NAME"
+	desc = "EVT_231922_DESC"
+	style = 2
+	picture = "archive/spanish_foreign_legion"
+	date = { day = 19 month = febrero year = 1913 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 170107 }
+		command = { trigger = { exists = GUA } type = inherit which = GUA value = 1 }
+		command = { trigger = { exists = HON } type = inherit which = HON value = 1 }
+		command = { trigger = { exists = NIC } type = inherit which = NIC value = 1 }
+		command = { trigger = { exists = COS } type = inherit which = COS value = 1 }
+		command = { type = dissent value = -15 }
+		command = { type = setflag which = Mexican_Empire_Restored }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231923] BRA | 1914-1945 | Restoration of the Empire of Brazil
+# ----------------------------------------------------------------------------
+event = {
+	id = 231923
+	country = BRA
+	trigger = {
+		flag = latam_path_empires
+		exists = BRA
+	}
+	name = "EVT_231923_NAME"
+	desc = "EVT_231923_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 7 month = september year = 1922 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = dissent value = -15 }
+		command = { type = industrial_modifier which = total value = 15 }
+		command = { type = setflag which = Empire_of_Brazil_Restored }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231924] PRU | 1915-1945 | Confederation of Peru-Bolivia & The Andean Union
+# ----------------------------------------------------------------------------
+event = {
+	id = 231924
+	country = PRU
+	trigger = {
+		flag = latam_path_empires
+		exists = PRU
+		exists = BOL
+	}
+	name = "EVT_231924_NAME"
+	desc = "EVT_231924_DESC"
+	style = 2
+	picture = "GLOBAL/peace_conference"
+	date = { day = 28 month = july year = 1921 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = BOL value = 1 }
+		command = { type = dissent value = -10 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { type = setflag which = Peru_Bolivia_Confederation }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231925] BRA | 1935-1950 | Proletarian Revolution: Socialist Republic of Brazil
+# ----------------------------------------------------------------------------
+event = {
+	id = 231925
+	country = BRA
+	trigger = {
+		flag = latam_path_socialism
+		exists = BRA
+	}
+	name = "EVT_231925_NAME"
+	desc = "EVT_231925_DESC"
+	style = 2
+	picture = "Minors/strikesruspetro1"
+	date = { day = 27 month = november year = 1935 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 160011 }
+		command = { type = headofgovernment which = 160017 }
+		command = { trigger = { exists = SOV } type = alliance which = SOV }
+		command = { type = dissent value = -15 }
+		command = { type = setflag which = Socialist_Brazil_Formed }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231926] MEX | 1938-1950 | Mexican Revolutionary Socialism: Lombardo Toledano
+# ----------------------------------------------------------------------------
+event = {
+	id = 231926
+	country = MEX
+	trigger = {
+		flag = latam_path_socialism
+		exists = MEX
+	}
+	name = "EVT_231926_NAME"
+	desc = "EVT_231926_DESC"
+	style = 2
+	picture = "Minors/strikesruspetro1"
+	date = { day = 18 month = march year = 1938 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1950 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 170017 }
+		command = { trigger = { exists = SOV } type = relation which = SOV value = 50 }
+		command = { type = dissent value = -15 }
+		command = { type = setflag which = Socialist_Mexico_Formed }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231927] BRA | 1937-1945 | The Green Shirts: Plinio Salgado's Integralist Brazil
+# ----------------------------------------------------------------------------
+event = {
+	id = 231927
+	country = BRA
+	trigger = {
+		flag = latam_path_axis
+		exists = BRA
+	}
+	name = "EVT_231927_NAME"
+	desc = "EVT_231927_DESC"
+	style = 2
+	picture = "archive/spanish_foreign_legion"
+	date = { day = 10 month = november year = 1937 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 160016 }
+		command = { type = headofgovernment which = 160022 }
+		command = { trigger = { exists = GER } type = alliance which = GER }
+		command = { type = dissent value = -15 }
+		command = { type = setflag which = Integralist_Brazil_Formed }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [231928] ARG | 1943-1945 | The Southern Axis: Argentina and the GOU
+# ----------------------------------------------------------------------------
+event = {
+	id = 231928
+	country = ARG
+	trigger = {
+		flag = latam_path_axis
+		exists = ARG
+	}
+	name = "EVT_231928_NAME"
+	desc = "EVT_231928_DESC"
+	style = 2
+	picture = "archive/spaintervention"
+	date = { day = 4 month = june year = 1943 }
+	offset = 1
+	deathdate = { day = 31 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = headofstate which = 165024 }
+		command = { type = headofgovernment which = 165038 }
+		command = { trigger = { exists = GER } type = relation which = GER value = 50 }
+		command = { type = dissent value = -10 }
+		command = { type = setflag which = Argentine_GOU_Axis }
+	}
+}

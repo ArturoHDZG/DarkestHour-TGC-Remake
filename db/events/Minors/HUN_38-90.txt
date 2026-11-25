@@ -1,0 +1,562 @@
+# ============================================================================
+# File: events/Minors/HUN_38-90.txt (18 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [159011] HUN | 1938 | Hungarian State Visit to Germany (Visita de Estado Húngaro a Alemania)
+# Trigger event 150101 in events/GER/GER_37-38.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159011
+	random = no
+	country = HUN
+	trigger = {
+			exists = GER
+			}
+	date = { day = 01 month = august year = 1938 }
+	name = "EVT_SHARED_00690_NAME"
+	desc = "EVT_SHARED_00690_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = "ACTION_NAME_GREAT"
+		ai_chance = 100
+		command = { type = relation which = GER value = 20 }
+		command = { type = dissent value = -1 }
+		command = { type = trigger which = 150101 }
+		}
+}
+
+# ----------------------------------------------------------------------------
+# [159003] HUN | 1938 | Hungarian Territorial Demands (Exigencias territoriales húngaras)
+# Trigger event 136010 in events/Minors/CZE_14-53.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159003
+	random = no
+	country = HUN
+	trigger = {
+		exists = CZE
+		control = { province = 201 data = GER }
+		NOT = {
+			war = { country = GER country = CZE }
+			war = { country = GER country = HUN }
+			war = { country = CZE country = HUN }
+		}
+	}
+	date = { day = 13 month = october year = 1938 }
+	offset = 1
+	deathdate = { day = 29 month = september year = 1941 }
+	name = "EVT_HUN_159003_NAME"
+	desc = "EVT_HUN_159003_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 136010 }
+		command = { type = relation which = CZE value = -15 }
+		command = { type = addcore which = 210 }
+		command = { type = addcore which = 209 }
+		command = { type = addcore which = 215 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159012] HUN | 1939 | Resignation of Hungarian Premier (Renuncia del primer ministro húngaro)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159012
+	random = no
+	country = HUN
+	trigger = {
+		   exists = HUN
+		    }
+	date = { day = 14 month = february year = 1939 }
+	name = "EVT_SHARED_00694_NAME"
+	desc = "EVT_SHARED_00694_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = relation which = GER value = 10 }
+		command = { type = headofgovernment which = 105023 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159006] HUN | 1939 | Dissolution of Czechoslovakia (Desintegración de Checoslovaquia)
+# Trigger event 136014 in events/Minors/CZE_14-53.txt
+# Trigger event 150077 in events/GER/GER_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159006
+	random = no
+	country = HUN
+	trigger = {
+		exists = CZE
+		control = { province = 201 data = GER }
+		NOT = {
+			war = { country = GER country = CZE }
+			war = { country = GER country = HUN }
+			war = { country = CZE country = HUN }
+		}
+	}
+	date = { day = 17 month = march year = 1939 }
+	offset = 1
+	deathdate = { day = 29 month = september year = 1941 }
+	name = "EVT_SHARED_00610_NAME"
+	desc = "EVT_SHARED_00610_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = CZE value = -5 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = trigger which = 136014 }
+		command = { type = trigger which = 150077 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159020] HUN | 1940 | Vienna Award: Axis Favors Romania (Arbitraje de Viena: Fallo en favor de Rumanía)
+# Triggered by event 150055 in events/GER/GER_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159020
+	random = no
+	country = HUN
+	name = "EVT_HUN_159020_NAME"
+	desc = "EVT_HUN_159020_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159021] HUN | 1940 | Vienna Award: Romania Yields (Arbitraje de Viena: Rumanía claudica)
+# Triggered by event 209012 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159021
+	random = no
+	country = HUN
+	name = "EVT_HUN_159021_NAME"
+	desc = "EVT_HUN_159021_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -10 }
+		command = { type = relation which = GER value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159022] HUN | 1940 | Vienna Award: Romania Defies Axis! (Arbitraje de Viena: ¡Rumanía se rebela!)
+# Triggered by event 209012 in events/Minors/ROM_36-44.txt
+# Trigger event 209014 in events/Minors/ROM_36-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159022
+	random = no
+	country = HUN
+	name = "EVT_HUN_159022_NAME"
+	desc = "EVT_HUN_159022_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = relation which = ROM value = -10 }
+		command = { type = trigger which = 209014 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159019] HUN | 1940 | Vienna Award: Hungarian Claims on Transylvania (Arbitraje de Viena: Reclamación de Transilvania)
+# Trigger event 150055 in events/GER/GER_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159019
+	random = no
+	country = HUN
+	trigger = {
+		exists = GER
+		exists = ROM
+		control = { province = 296 data = ROM }
+		control = { province = 288 data = ROM }
+		control = { province = 293 data = ROM }
+		control = { province = 292 data = ROM }
+                government = fascist
+		NOT = {
+			war = { country = HUN country = ROM  }
+			puppet = { country = HUN country = SOV  }
+			puppet = { country = ROM country = SOV  }
+			OR = {
+				control = { province = 285 data = -1 }
+				control = { province = 286 data = -1 }
+				control = { province = 296 data = -1 }
+			}
+		}
+	}
+	name = "EVT_HUN_159019_NAME"
+	desc = "EVT_HUN_159019_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 4 month = september year = 1940 }
+	action_a = {
+		name = "EVT_SHARED_00742_A"
+		ai_chance = 98
+		command = { type = relation which = ROM value = -10 }
+		command = { type = trigger which = 150055 }
+	}
+	action_b = {
+		name = "ACTION_NAME_DO_NOT_INTERVENE"
+		ai_chance = 2
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = ROM value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159057] HUN | 1944 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 324430 in events/GLOBAL/MULTI_39-44.txt
+# Triggered by event 324490 in events/GLOBAL/MULTI_39-44.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159057
+	country = HUN
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1944 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1945 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 105300 }
+		command = { type = headofgovernment which = 105031 }
+		command = { type = foreignminister which = 105046 }
+		command = { type = armamentminister which = 105059 }
+		command = { type = ministerofsecurity which = 105073 }
+		command = { type = ministerofintelligence which = 105090 }
+		command = { type = chiefofstaff which = 105099 }
+		command = { type = chiefofarmy which = 105110 }
+		command = { type = chiefofnavy which = 105116 }
+		command = { type = chiefofair which = 105125 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329038] HUN | 1944 | Military Junta Seizes Power (Pronunciamiento militar)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329038
+	random = no
+	country = HUN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		alliance = { country = GER country = HUN }
+		war = { country = GER country = SOV }
+		war = { country = HUN country = SOV }
+		control = { province = 232 data = SOV }
+		}
+	name = "EVT_SHARED_00498_NAME"
+	desc = "EVT_SHARED_00498_DESC"
+	date = { day = 1 month = august year = 1944 }
+	offset = 10
+	deathdate = { day = 29 month = october year = 1944 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 105001 }
+		command = { type = headofgovernment which = 105027 }
+		command = { type = foreignminister which = 105040 }
+		command = { type = armamentminister which = 105053 }
+		command = { type = ministerofsecurity which = 105069 }
+		command = { type = ministerofintelligence which = 105085 }
+		command = { type = chiefofstaff which = 105097 }
+		command = { type = chiefofarmy which = 105105 }
+		command = { type = chiefofnavy which = 105009 }
+		command = { type = chiefofair which = 105121 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [329039] HUN | 1944 | Right-Wing Coup d'État (Golpe de Estado de derechas)
+# ----------------------------------------------------------------------------
+event = {
+	id = 329039
+	random = no
+	country = HUN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		alliance = { country = GER country = HUN }
+		war = { country = GER country = SOV }
+		war = { country = HUN country = SOV }
+		control = { province = 281 data = SOV }
+		headofstate = 105001
+		}
+	name = "EVT_SHARED_00494_NAME"
+	desc = "EVT_SHARED_00494_DESC"
+	date = { day = 1 month = november year = 1944 }
+	offset = 39
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 99
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 1 }
+		command = { type = headofstate which = 105011 }
+		command = { type = headofgovernment which = 105021 }
+		command = { type = foreignminister which = 105036 }
+		command = { type = armamentminister which = 105050 }
+		command = { type = ministerofsecurity which = 105063 }
+		command = { type = ministerofintelligence which = 105081 }
+		command = { type = chiefofstaff which = 105094 }
+		command = { type = chiefofarmy which = 105102 }
+		command = { type = chiefofnavy which = 105112 }
+		command = { type = chiefofair which = 105119 }
+		command = { type = dissent value = -1 }
+		}
+	action = {
+		name = ACTION_NAME_THE_COUP_HAS_FAILED
+		ai_chance = 1
+		command = { type = domestic which = freedom value = -1 }
+		command = { trigger = { ai = yes } type = dissent value = 5 }
+		command = { trigger = { ai = no } type = dissent value = 10 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [159058] HUN | 1946 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159058
+	country = HUN
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1946 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1946 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 105015 }
+		command = { type = headofgovernment which = 105032 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159059] HUN | 1947 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159059
+	country = HUN
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1947 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1948 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 105015 }
+		command = { type = headofgovernment which = 105301 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159000] HUN | 1948 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159000
+	random = no
+	country = HUN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = communist
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = august year = 1948 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 105138 }
+		command = { type = headofgovernment which = 105142 }
+		command = { type = foreignminister which = 105144 }
+		command = { type = armamentminister which = 105062 }
+		command = { type = ministerofsecurity which = 105077 }
+		command = { type = ministerofintelligence which = 105092 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [159060] HUN | 1949 | Cabinet Reshuffle (Reorganización del gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159060
+	country = HUN
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1949 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1960 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = headofstate which = 105015 }
+		command = { type = headofgovernment which = 105302 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159001] HUN | 1952 | Cabinet Reshuffle (Cambio de gobierno)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159001
+	random = no
+	country = HUN
+	style = 2
+	picture = "GLOBAL/news_paper"
+	one_action = yes
+	trigger = {
+		government = communist
+		}
+	name = "EVT_SHARED_00495_NAME"
+	desc = "EVT_SHARED_00495_DESC"
+	date = { day = 1 month = august year = 1952 }
+	action_a = {
+		ai_chance = 90
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 10 }
+		command = { type = headofstate which = 105140 }
+		command = { type = headofgovernment which = 105034 }
+		command = { type = foreignminister which = 105145 }
+		command = { type = armamentminister which = 105146 }
+		command = { type = ministerofsecurity which = 105147 }
+		command = { type = ministerofintelligence which = 105092 }
+		}
+	action_b = {
+		ai_chance = 10
+		name = "ACTION_NAME_KEEP_CURRENT"
+		command = { type = dissent value = -1 }
+		}
+	}
+
+# ----------------------------------------------------------------------------
+# [159061] HUN | 1989 | Cabinet Reshuffle (Reorganización del gobierno)
+# Triggered by event 248028 in events/Minors/U13.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 159061
+	country = HUN
+	name = EVT_SHARED_00805_NAME
+	desc = EVT_SHARED_00805_DESC
+	picture = "nwo/govt_change"
+	style = 1
+	date = { day = 0 month = january year = 1989 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1989 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = set_domestic which = democratic value = 8 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 105316 }
+		command = { type = headofgovernment which = 105317 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [159062] HUN | 1990 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 159062
+	country = HUN
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/elections"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 0 month = january year = 1990 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 15
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 4 }
+		command = { type = headofstate which = 105304 }
+		command = { type = headofgovernment which = 105305 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 9 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 105316 }
+		command = { type = headofgovernment which = 105303 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 6 }
+	}
+}

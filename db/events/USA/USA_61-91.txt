@@ -1,0 +1,1319 @@
+# ============================================================================
+# File: events/USA/USA_61-91.txt (40 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [316206] USA | 1961 | Pro-US Regime in Cuba (Restauración en Cuba)
+# Triggered by event 207016 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316206
+	country = USA
+	name = EVT_USA_316206_NAME
+	desc = EVT_USA_316206_DESC
+	picture = "nwo/bay_of_pigs_invasion"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = make_puppet which = CUB }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316217] USA | 1961 | F-84 Incursion Diplomatic Crisis (Crisis diplomática de los F-84)
+# Triggered by event 223243 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316217
+	country = USA
+	name = EVT_USA_316217_NAME
+	desc = EVT_USA_316217_DESC
+	picture = "nwo/f_84_thunderstreak"
+	style = 1
+	action = {
+		name = ACTION_NAME_PROTEST
+		ai_chance = 60
+		command = { type = dissent value = 3 }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = relation which = DDR value = -50 }
+	}
+	action = {
+		name = EVT_USA_316217_A
+		ai_chance = 39
+		command = { type = dissent value = 5 }
+		command = { type = relation which = SOV value = 25 }
+		command = { type = relation which = DDR value = 25 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 1
+		command = { type = dissent value = 15 }
+		command = { type = war which = SOV }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316204] USA | 1961 | Cuba at the Crossroads (Cuba en la encrucijada)
+# Trigger event 207016 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316204
+	country = USA
+	name = EVT_USA_316204_NAME
+	desc = EVT_USA_316204_DESC
+	picture = "nwo/bay_of_pigs_invasion"
+	style = 1
+	trigger = {
+		flag = castro_rules
+		flag = cold_war
+	}
+	date = { day = 1 month = march year = 1961 }
+	offset = 30
+	deathdate = { day = 29 month = june year = 1961 }
+	action = {
+		name = 	EVT_USA_316204_A
+		ai_chance = 95
+		command = { type = dissent value = -1 }
+		command = { type = belligerence value = 10 }
+	}
+	action = {
+		name = EVT_USA_316204_B
+		ai_chance = 5
+		command = { type = relation which = CUB value = 50 }
+		command = { type = sleepevent which = 207016 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316189] USA | 1961 | Western Response to the Berlin Ultimatum (Respuesta occidental al ultimátum sobre Berlín)
+# Triggered by event 223199 in events/SOV/SOV_Decisions.txt
+# Trigger event 223200 in events/SOV/SOV_56-81.txt
+# Trigger event 223239 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316189
+	country = USA
+	name = EVT_USA_316189_NAME
+	desc = EVT_USA_316189_DESC
+	picture = "nwo/khrushchev_ulbricht"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = DDR
+		exists = DFR
+		event = 223199
+		flag = divided_berlin
+	}
+	date = { day = 25 month = july year = 1961 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_USA_316189_A
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = relation which = DDR value = -25 }
+		command = { type = relation which = DFR value = 75 }
+	}
+	action = {
+		name = ACTION_NAME_BACK_DOWN
+		ai_chance = 14
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = DFR value = -150 }
+		command = { type = relation which = DDR value = 150 }
+		command = { type = dissent value = 10 }
+		command = { type = clrflag which = divided_berlin }
+		command = { type = sleepevent which = 223200 }
+		command = { type = event which = 223239 where = SOV when = 1 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 1
+		command = { type = war which = SOV }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = dissent value = 25 }
+		command = { type = sleepevent which = 223200 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316190] USA | 1961 | Access Dispute at Checkpoint Charlie (Incidente de tránsito en el Checkpoint Charlie)
+# Triggered by event 137015 in events/Minors/DDR.txt
+# Trigger event 223201 in events/SOV/SOV_56-81.txt
+# Trigger event 223239 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316190
+	country = USA
+	name = EVT_USA_316190_NAME
+	desc = EVT_USA_316190_DESC
+	picture = "nwo/berlin_crisis_1961"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = DDR
+		exists = DFR
+		event = 137015
+	}
+	date = { day = 22 month = october year = 1961 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_USA_316190_A
+		ai_chance = 80
+		command = { type = dissent value = -1 }
+		command = { type = relation which = DDR value = 25 }
+		command = { type = relation which = DFR value = -25 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 20
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = DFR value = -50 }
+		command = { type = relation which = DDR value = 25 }
+		command = { type = dissent value = 5 }
+		command = { type = sleepevent which = 223201 }
+		command = { type = event which = 223239 where = SOV when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316191] USA | 1961 | The Tank Standoff at Checkpoint Charlie (Duelo blindado en el Checkpoint Charlie)
+# Triggered by event 223201 in events/SOV/SOV_56-81.txt
+# Trigger event 223202 in events/SOV/SOV_56-81.txt
+# Trigger event 223239 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316191
+	country = USA
+	name = EVT_USA_316191_NAME
+	desc = EVT_USA_316191_DESC
+	picture = "nwo/berlin_crisis_1961"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = DDR
+		exists = DFR
+		event = 223201
+	}
+	date = { day = 27 month = october year = 1961 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = EVT_USA_316191_A
+		ai_chance = 73
+		command = { type = dissent value = -3 }
+	}
+	action = {
+		name = EVT_USA_316191_B
+		ai_chance = 25
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = DFR value = -50 }
+		command = { type = relation which = DDR value = 25 }
+		command = { type = dissent value = 10 }
+		command = { type = sleepevent which = 223202 }
+		command = { type = event which = 223239 where = SOV when = 1 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 2
+		command = { type = dissent value = 15 }
+		command = { type = war which = SOV }
+		command = { type = belligerence value = 20 }
+		command = { type = sleepevent which = 223202 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316192] USA | 1961 | Resolution of the 1961 Berlin Crisis (Resolución de la Crisis de Berlín de 1961)
+# Triggered by event 223202 in events/SOV/SOV_56-81.txt
+# Trigger event 223240 in events/SOV/SOV_40-43.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316192
+	country = USA
+	name = EVT_USA_316192_NAME
+	desc = EVT_USA_316192_DESC
+	picture = "nwo/berlin_crisis_1961"
+	style = 1
+	trigger = {
+		flag = cold_war
+		exists = DDR
+		exists = DFR
+		event = 223202
+	}
+	date = { day = 1 month = november year = 1961 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = event which = 223240 where = SOV when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316209] USA | 1962 | The Cuban Missile Crisis (La Crisis de los Misiles en Cuba)
+# Triggered by event 316208 in events/USA/USA_61-91.txt
+# Trigger event 223230 in events/SOV/SOV_56-81.txt
+# Trigger event 223239 in events/SOV/SOV_38-40.txt
+# Trigger event 223228 in events/SOV/SOV_56-81.txt
+# Trigger event 223229 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316209
+	country = USA
+	name = EVT_USA_316209_NAME
+	desc = EVT_USA_316209_DESC
+	picture = "nwo/cuban_missile_crisis_discussion"
+	style = 1
+	action = {
+		name = EVT_USA_316209_A
+		ai_chance = 78
+		command = { type = dissent value = 5 }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = trigger which = 223230 }
+	}
+	action = {
+		name = EVT_USA_316209_B
+		ai_chance = 5
+		command = { type = dissent value = 20 }
+		command = { type = relation which = SOV value = 100 }
+		command = { type = domestic which = interventionism value = -3 }
+		command = { type = event which = 223239 where = SOV when = 1 }
+	}
+	action = {
+		name = ACTION_NAME_PROTEST
+		ai_chance = 12
+		command = { type = dissent value = 15 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = trigger which = 223228 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 5
+		command = { type = war which = CUB }
+		command = { type = relation which = SOV value = -200 }
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 223229 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316211] USA | 1962 | Khrushchev's Moderate Proposal (Propuesta moderada de Jrushchov)
+# Triggered by event 223231 in events/SOV/SOV_56-81.txt
+# Trigger event 132049 in events/Minors/CUB.txt
+# Trigger event 223232 in events/SOV/SOV_56-81.txt
+# Trigger event 223233 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316211
+	country = USA
+	name = EVT_USA_316211_NAME
+	desc = EVT_USA_316211_DESC
+	picture = "nwo/kennedy_khrushchev"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT_DEMANDS
+		ai_chance = 100
+		command = { type = money value = -5000 }
+		command = { type = relation which = SOV value = 50 }
+		command = { trigger = { NOT = { flag = soviet_nuclear_advantage } } type = setflag which = american_nuclear_advantage }
+		command = { trigger = { flag = soviet_nuclear_advantage } type = clrflag which = soviet_nuclear_advantage }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 0
+		command = { type = dissent value = 10 }
+		command = { type = sleepevent which = 223232 }
+		command = { type = sleepevent which = 223233 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316212] USA | 1962 | Soviet Ultimatum on Berlin (Exigencia soviética sobre Berlín)
+# Triggered by event 223231 in events/SOV/SOV_56-81.txt
+# Trigger event 132049 in events/Minors/CUB.txt
+# Trigger event 223232 in events/SOV/SOV_56-81.txt
+# Trigger event 223233 in events/SOV/SOV_56-81.txt
+# Trigger event 223239 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316212
+	country = USA
+	name = EVT_USA_316212_NAME
+	desc = EVT_USA_316212_DESC
+	picture = "nwo/kennedy_khrushchev"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT_DEMANDS
+		ai_chance = 60
+		command = { type = relation which = SOV value = 100 }
+		command = { type = clrflag which = divided_berlin }
+		command = { trigger = { NOT = { flag = soviet_nuclear_advantage } } type = setflag which = american_nuclear_advantage }
+		command = { trigger = { flag = soviet_nuclear_advantage } type = clrflag which = soviet_nuclear_advantage }
+		command = { type = clrflag which = missiles_in_cuba }
+		command = { type = sleepevent which = 223232 }
+		command = { type = sleepevent which = 223233 }
+		command = { type = event which = 223239 where = SOV when = 1 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE
+		ai_chance = 20
+		command = { type = relation which = SOV value = 100 }
+		command = { type = dissent value = 10 }
+		command = { type = sleepevent which = 223232 }
+		command = { type = sleepevent which = 223233 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 20
+		command = { type = war which = SOV }
+		command = { type = dissent value = 4 }
+		command = { type = sleepevent which = 223232 }
+		command = { type = sleepevent which = 223233 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316213] USA | 1962 | The Secret Missile Trade (El canje secreto de misiles)
+# Triggered by event 223231 in events/SOV/SOV_56-81.txt
+# Trigger event 132049 in events/Minors/CUB.txt
+# Trigger event 223232 in events/SOV/SOV_56-81.txt
+# Trigger event 223233 in events/SOV/SOV_56-81.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316213
+	country = USA
+	name = EVT_USA_316213_NAME
+	desc = EVT_USA_316213_DESC
+	picture = "nwo/kennedy_khrushchev"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		command = { type = relation which = SOV value = 100 }
+		command = { type = clrflag which = american_nuclear_advantage }
+		command = { type = clrflag which = missiles_in_cuba }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 5
+		command = { type = war which = SOV }
+		command = { type = dissent value = 12 }
+		command = { type = sleepevent which = 223232 }
+		command = { type = sleepevent which = 223233 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316208] USA | 1962 | Discovery of Cuban Missile Sites (Detección de los misiles en Cuba)
+# Triggered by event 132048 in events/Minors/CUB.txt
+# Trigger event 316209 in events/USA/USA_61-91.txt
+# Trigger event 223239 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316208
+	country = USA
+	one_action = yes
+	name = EVT_USA_316208_NAME
+	desc = EVT_USA_316208_DESC
+	picture = "nwo/cuban_missile_site"
+	style = 1
+	trigger = {
+		event = 132048
+		flag = missiles_in_cuba
+	}
+	date = { day = 1 month = october year = 1962 }
+	offset = 7
+	deathdate = { day = 29 month = november year = 1962 }
+	action = {
+		name = EVT_USA_316208_A
+		ai_chance = 84
+		command = { type = trigger which = 316209 }
+	}
+	action = {
+		name = EVT_USA_316208_B
+		ai_chance = 16
+		command = { type = dissent value = 10 }
+		command = { type = event which = 223239 where = SOV when = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316210] USA | 1962 | The Crisis Continues (La crisis continúa)
+# Triggered by event 223230 in events/SOV/SOV_56-81.txt
+# Triggered by event 223231 in events/SOV/SOV_56-81.txt
+# Trigger event 223231 in events/SOV/SOV_56-81.txt
+# Trigger event 223239 in events/SOV/SOV_38-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316210
+	country = USA
+	name = EVT_USA_316210_NAME
+	desc = EVT_USA_316210_DESC
+	picture = "nwo/cuban_missile_crisis_danger"
+	style = 1
+	trigger = {
+		event = 223230
+		flag = missiles_in_cuba
+		flag = cold_war
+	}
+	date = { day = 20 month = october year = 1962 }
+	offset = 7
+	deathdate = { day = 29 month = november year = 1962 }
+	action = {
+		name = EVT_USA_316210_A
+		trigger = { NOT = { event = 223231 } }
+		ai_chance = 90
+		command = { type = relation which = SOV value = 10 }
+		command = { type = trigger which = 223231 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 3
+		command = { type = belligerence value = -20 }
+		command = { type = relation which = SOV value = 100 }
+		command = { type = event which = 223239 where = SOV when = 1 }
+	}
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 2
+		command = { type = war which = SOV }
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316299] USA | 1963 | Assassination of John F. Kennedy (Asesinato de John F. Kennedy)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316299
+	country = USA
+	name = EVT_USA_316299_NAME
+	desc = EVT_USA_316299_DESC
+	picture = "nwo/assassination_of_jfk"
+	style = 1
+	trigger = {
+		government = democratic
+		headofstate = 240202
+	}
+	date = { day = 0 month = january year = 1963 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = ACTION_NAME_MOURN
+		ai_chance = 100
+		command = { type = sleepminister which = 240202 }
+		command = { type = headofstate which = 240214 }
+		command = { type = headofgovernment which = 240215 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316314] USA | 1963 | Martin Luther King's Address (Discurso «I Have a Dream»)
+# Triggered by event 316304 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316314
+	country = USA
+	name = EVT_USA_316314_NAME
+	desc = EVT_USA_316314_DESC
+	picture = "nwo/dr_martin_luther_king"
+	style = 1
+	trigger = {
+		government = democratic
+		event = 316304
+	}
+	date = { day = 28 month = august year = 1963 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action_a = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = freedom value = 2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316300] USA | 1964 | US Presidential Election of 1964 (Elecciones presidenciales de EE. UU. (1964))
+# ----------------------------------------------------------------------------
+event = {
+	id = 316300
+	country = USA
+	name = EVT_USA_316300_NAME
+	desc = EVT_USA_316300_DESC
+	picture = "nwo/usa_elections_1964"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 2 month = november year = 1964 }
+	offset = 1
+	deathdate = { day = 3 month = november year = 1968 }
+	action = {
+		name = EVT_USA_316300_A
+		ai_chance = 85
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 240214 }
+		command = { type = headofgovernment which = 240215 }
+	}
+	action = {
+		name = EVT_USA_316300_B
+		ai_chance = 15
+		command = { type = dissent value = -1 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 240424 }
+		command = { type = headofgovernment which = 240425 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316261] USA | 1968 | Soviet Manned Lunar Landing (Expedición lunar soviética L3)
+# Triggered by event 207049 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207050 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207051 in events/AI/REB_AI_55-00.txt
+# Trigger event 207049 in events/AI/REB_AI_55-00.txt
+# Trigger event 207050 in events/AI/REB_AI_55-00.txt
+# Trigger event 207051 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+      id = 316261
+      country = USA
+      name = EVT_USA_316261_NAME
+      desc = EVT_USA_316261_DESC
+	picture = "nwo/in_the_ocean_of_storms"
+      style = 1
+      action = {
+            name = ACTION_NAME_OK
+            command = { type = dissent value = 10 }
+      }
+}
+
+# ----------------------------------------------------------------------------
+# [316262] USA | 1968 | Apollo 11 Moon Landing (Alunizaje del Apolo 11)
+# Triggered by event 207049 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207050 in events/AI/REB_AI_55-00.txt
+# Triggered by event 207051 in events/AI/REB_AI_55-00.txt
+# Trigger event 207049 in events/AI/REB_AI_55-00.txt
+# Trigger event 207050 in events/AI/REB_AI_55-00.txt
+# Trigger event 207051 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+      id = 316262
+      country = USA
+      name = EVT_USA_316262_NAME
+      desc = EVT_USA_316262_DESC
+	picture = "nwo/apollo_11"
+      style = 1
+      action = {
+            name = ACTION_NAME_OK
+            command = { type = dissent value = -10 }
+      }
+}
+
+# ----------------------------------------------------------------------------
+# [316301] USA | 1968 | US Presidential Election of 1968 (Elecciones presidenciales de EE. UU. (1968))
+# ----------------------------------------------------------------------------
+event = {
+	id = 316301
+	country = USA
+	name = EVT_USA_316301_NAME
+	desc = EVT_USA_316301_DESC
+	picture = "nwo/usa_elections_1968"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 4 month = november year = 1968 }
+	offset = 1
+	deathdate = { day = 5 month = november year = 1972 }
+	action = {
+		name = EVT_USA_316301_A
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 240428 }
+		command = { type = headofgovernment which = 240429 }
+	}
+	action = {
+		name = EVT_USA_316301_B
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 240426 }
+		command = { type = headofgovernment which = 240427 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316399] USA | 1969 | Weather Undergorund (Organización 'Weather Undergorund')
+# ----------------------------------------------------------------------------
+event = {
+	id = 316399
+	country = USA
+	random = no
+	trigger = {
+		exists = SOV
+	}
+	name = "EVT_USA_316399_NAME"
+	desc = "EVT_USA_316399_DESC"
+	style = 2
+	picture = "USA/wu"
+	date = { day = 1 month = june year = 1969 }
+	action_a = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329779] USA | 1971 | Ping-Pong Diplomacy (Diplomacia del ping-pong)
+# Triggered by event 123080 in events/Minors/CHC_Decisions.txt
+# Trigger event 123081 in events/Minors/CHC_62-91.txt
+# Trigger event 124174 in events/CHI/CHI_45-75.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329779
+	country = USA
+	name = EVT_USA_329779_NAME
+	desc = EVT_USA_329779_DESC
+	picture = "nwo/nixon_visit_to_china"
+	trigger = {
+		NOT = { war = { country = USA country = CHC } }
+		flag = cold_war
+		exists = CHC
+		event = 123080
+	}
+	date = { day = 1 month = april year = 1971 }
+	offset = 7
+	deathdate = { day = 29 month = april year = 1971 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 90
+		command = { type = trigger which = 123081 }
+		command = { type = trigger which = 124174 }
+		command = { type = relation which = CHC value = 150 }
+	}
+	action = {
+		name = ACTION_NAME_DO_NOT_INTERVENE
+		ai_chance = 10
+		command = { type = relation which = CHC value = -150 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329908] USA | 1972 | The Reversion of Okinawa (La devolución de Okinawa)
+# Trigger event 167179 in events/JAP/JAP_42-88.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329908
+	country = USA
+	name = EVT_USA_329908_NAME
+	desc = EVT_USA_329908_DESC
+	picture = "nwo/okinawa"
+	decision_picture = "nwo/d_okinawa"
+	style = 1
+	trigger = {
+		guarantee = { country = USA country = JAP }
+		OR = {
+			owned = { province = 1563 data = USA }
+			owned = { province = 1564 data = USA }
+		}
+	}
+	date = { day = 1 month = january year = 1972 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = EVT_USA_329908_A
+		ai_chance = 98
+		command = { type = secedeprovince which = JAP value = 1563 when = 1 }
+		command = { type = secedeprovince which = JAP value = 1564 when = 1 }
+		command = { type = belligerence value = -5 }
+		command = { type = relation which = JAP value = 70 }
+		command = { type = trigger which = 167179 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		trigger = { ai = yes }
+		ai_chance = 2
+		command = { type = relation which = JAP value = -50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316317] USA | 1972 | The Watergate Break-In (El allanamiento de Watergate)
+# Trigger event 316318 in events/USA/USA_61-91.txt
+# Trigger event 316319 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316317
+	country = USA
+	name = EVT_USA_316317_NAME
+	desc = EVT_USA_316317_DESC
+	picture = "nwo/watergate"
+	style = 1
+	trigger = {
+		government = democratic
+		headofstate = 240201
+		atwar = no
+		random = 95
+	}
+	date = { day = 1 month = june year = 1972 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1972 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316302] USA | 1972 | US Presidential Election of 1972 (Elecciones presidenciales de EE. UU. (1972))
+# ----------------------------------------------------------------------------
+event = {
+	id = 316302
+	country = USA
+	name = EVT_USA_316302_NAME
+	desc = EVT_USA_316302_DESC
+	picture = "nwo/usa_elections_1972"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 6 month = november year = 1972 }
+	offset = 1
+	deathdate = { day = 4 month = december year = 1973 }
+	action = {
+		name = EVT_USA_316302_A
+		ai_chance = 95
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 240428 }
+		command = { type = headofgovernment which = 240429 }
+	}
+	action = {
+		name = EVT_USA_316302_B
+		ai_chance = 5
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 240430 }
+		command = { type = headofgovernment which = 240431 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316318] USA | 1973 | The Watergate Tapes Revealed (Las cintas de la Casa Blanca)
+# Triggered by event 316317 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316318
+	country = USA
+	name = EVT_USA_316318_NAME
+	desc = EVT_USA_316318_DESC
+	picture = "nwo/watergate"
+	style = 1
+	trigger = {
+		government = democratic
+		headofstate = 240201
+		atwar = no
+		random = 95
+		event = 316317
+	}
+	date = { day = 1 month = june year = 1973 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1973 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316303] USA | 1973 | Resignation of Spiro Agnew (Dimisión de Spiro Agnew)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316303
+	country = USA
+	name = EVT_USA_316303_NAME
+	desc = EVT_USA_316303_DESC
+	picture = "nwo/spiro_agnew"
+	style = 1
+	trigger = {
+		government = democratic
+		headofgovernment = 240429
+	}
+	date = { day = 5 month = december year = 1973 }
+	offset = 1
+	deathdate = { day = 7 month = august year = 1974 }
+	action = {
+		name = EVT_USA_316303_A
+		ai_chance = 98
+		command = { type = headofgovernment which = 240432 }
+	}
+	action = {
+		name = ACTION_NAME_REFUSE_PEACE
+		ai_chance = 2
+		command = { type = dissent value = 5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316304] USA | 1974 | Resignation of Richard Nixon (Dimisión de Richard Nixon)
+# Triggered by event 316319 in events/USA/USA_61-91.txt
+# Trigger event 316314 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316304
+	country = USA
+	name = EVT_USA_316304_NAME
+	desc = EVT_USA_316304_DESC
+	picture = "nwo/nixon_resigns"
+	style = 1
+	trigger = {
+		government = democratic
+		headofstate = 240428
+	}
+	action = {
+		name = ACTION_NAME_SIGN
+		ai_chance = 100
+		command = { trigger = { headofgovernment = 240429 } type = headofstate which = 240445 }
+		command = { trigger = { NOT = { headofgovernment = 240429 } } type = headofstate which = 240433 }
+		command = { type = headofgovernment which = 240434 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316320] USA | 1974 | Impeachment Trial of Richard Nixon (Juicio político de Richard Nixon)
+# Triggered by event 316319 in events/USA/USA_61-91.txt
+# Trigger event 316322 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316320
+	country = USA
+	one_action = yes
+	name = EVT_USA_316320_NAME
+	desc = EVT_USA_316320_DESC
+	picture = "nwo/impeachment"
+	style = 1
+	action = {
+		name = EVT_USA_316320_A
+		ai_chance = 97
+		command = { type = trigger which = 316322 }
+	}
+	action = {
+		name = EVT_USA_316320_B
+		ai_chance = 3
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = dissent value = 10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316321] USA | 1974 | Impeachment Trial of Richard Nixon (Juicio político de Richard Nixon)
+# Triggered by event 316319 in events/USA/USA_61-91.txt
+# Trigger event 316322 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316321
+	country = USA
+	one_action = yes
+	name = EVT_USA_316321_NAME
+	desc = EVT_USA_316321_DESC
+	picture = "nwo/impeachment"
+	style = 1
+	action = {
+		name = EVT_USA_316321_A
+		command = { type = trigger which = 316322 }
+	}
+	action = {
+		name = EVT_USA_316321_B
+		command = { type = domestic which = democratic value = -3 }
+		command = { type = dissent value = 20 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316322] USA | 1974 | Conviction of Richard Nixon (Destitución de Richard Nixon)
+# Triggered by event 316320 in events/USA/USA_61-91.txt
+# Triggered by event 316321 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316322
+	country = USA
+	one_action = yes
+	name = EVT_USA_316322_NAME
+	desc = EVT_USA_316322_DESC
+	picture = "nwo/nixon_leaves"
+	style = 1
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { trigger = { headofgovernment = 240429 } type = headofstate which = 240445 }
+		command = { trigger = { NOT = { headofgovernment = 240429 } } type = headofstate which = 240433 }
+		command = { type = headofgovernment which = 240434 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316319] USA | 1974 | The Smoking Gun Tape (La cinta de la pistola humeante)
+# Triggered by event 316317 in events/USA/USA_61-91.txt
+# Trigger event 316304 in events/USA/USA_61-91.txt
+# Trigger event 316320 in events/USA/USA_61-91.txt
+# Trigger event 316321 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316319
+	country = USA
+	name = EVT_USA_316319_NAME
+	desc = EVT_USA_316319_DESC
+	picture = "nwo/watergate"
+	style = 1
+	trigger = {
+		government = democratic
+		headofstate = 240201
+		atwar = no
+		random = 95
+		event = 316317
+	}
+	date = { day = 8 month = august year = 1974 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1974 }
+	action = {
+		name = EVT_USA_316319_A
+		ai_chance = 90
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 316304 }
+	}
+	action = {
+		name = EVT_USA_316319_B
+		ai_chance = 5
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 316320 }
+	}
+	action = {
+		name = EVT_USA_316319_C
+		ai_chance = 5
+		command = { type = dissent value = 25 }
+		command = { type = trigger which = 316321 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316305] USA | 1976 | US Presidential Election of 1976 (Elecciones presidenciales de EE. UU. (1976))
+# ----------------------------------------------------------------------------
+event = {
+	id = 316305
+	country = USA
+	name = EVT_USA_316305_NAME
+	desc = EVT_USA_316305_DESC
+	picture = "nwo/usa_elections_1976"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 1 month = november year = 1976 }
+	offset = 1
+	deathdate = { day = 2 month = november year = 1980 }
+	action = {
+		name = EVT_USA_316305_A
+		ai_chance = 80
+		command = { type = dissent value = -6 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 240435 }
+		command = { type = headofgovernment which = 240436 }
+	}
+	action = {
+		name = EVT_USA_316305_B
+		ai_chance = 20
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 240433 }
+		command = { type = headofgovernment which = 240437 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316306] USA | 1980 | US Presidential Election of 1980 (Elecciones presidenciales de EE. UU. (1980))
+# ----------------------------------------------------------------------------
+event = {
+	id = 316306
+	country = USA
+	name = EVT_USA_316306_NAME
+	desc = EVT_USA_316306_DESC
+	picture = "nwo/usa_elections_1980"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 3 month = november year = 1980 }
+	offset = 1
+	deathdate = { day = 4 month = november year = 1984 }
+	action = {
+		name = EVT_USA_316306_A
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 240414 }
+		command = { type = headofgovernment which = 240438 }
+	}
+	action = {
+		name = EVT_USA_316306_B
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 240435 }
+		command = { type = headofgovernment which = 240436 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316293] USA | 1982 | UN Resolution on the Falkland Islands (Resolución de la ONU sobre las Islas Malvinas)
+# Triggered by event 207062 in events/AI/REB_AI_55-00.txt
+# Trigger event 207063 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316293
+	country = USA
+	name = EVT_SHARED_00966_NAME
+	desc = EVT_SHARED_00966_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 95
+		trigger = {
+			NOT = { flag = un_falklands_veto }
+			NOT = { alliance = { country = ARG } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 5
+		command = { type = setflag which = un_falklands_veto }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316307] USA | 1984 | US Presidential Election of 1984 (Elecciones presidenciales de EE. UU. (1984))
+# ----------------------------------------------------------------------------
+event = {
+	id = 316307
+	country = USA
+	name = EVT_USA_316307_NAME
+	desc = EVT_USA_316307_DESC
+	picture = "nwo/usa_elections_1984"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 5 month = november year = 1984 }
+	offset = 1
+	deathdate = { day = 6 month = november year = 1988 }
+	action = {
+		name = EVT_USA_316307_A
+		ai_chance = 95
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 240414 }
+		command = { type = headofgovernment which = 240438 }
+	}
+	action = {
+		name = EVT_USA_316307_B
+		ai_chance = 5
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 240439 }
+		command = { type = headofgovernment which = 240440 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316308] USA | 1988 | General Elections (Elecciones generales)
+# ----------------------------------------------------------------------------
+event = {
+	id = 316308
+	country = USA
+	name = EVT_SHARED_00807_NAME
+	desc = EVT_SHARED_00807_DESC
+	picture = "nwo/usa_elections_1988"
+	style = 1
+	trigger = {
+		government = democratic
+	}
+	date = { day = 7 month = november year = 1988 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_ELECT_RIGHT
+		ai_chance = 85
+		command = { type = dissent value = -12 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 3 }
+		command = { type = headofstate which = 240443 }
+		command = { type = headofgovernment which = 240444 }
+	}
+	action = {
+		name = ACTION_NAME_ELECT_LEFT
+		ai_chance = 15
+		command = { type = dissent value = -4 }
+		command = { type = set_domestic which = democratic value = 10 }
+		command = { type = set_domestic which = political_left value = 6 }
+		command = { type = headofstate which = 240441 }
+		command = { type = headofgovernment which = 240442 }
+	}
+	action = {
+		name = ACTION_NAME_KEEP_CURRENT
+		ai_chance = 0
+		command = { type = dissent value = 12 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329780] USA | 1990 | German Reunification (Reunificación alemana)
+# Triggered by event 137019 in events/Minors/DDR.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329780
+	country = USA
+	name = EVT_USA_329780_NAME
+	desc = EVT_USA_329780_DESC
+	picture = "nwo/united_germany"
+	style = 1
+	trigger = {
+		event = 137019
+		flag = autumn_of_nations
+		exists = DFR
+		exists = DDR
+		flag = cold_war
+		NOT = { war = { country = DDR country = DFR } }
+	}
+	date = { day = 1 month = august year = 1990 }
+	offset = 7
+	deathdate = { day = 29 month = august year = 1990 }
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 100
+		command = { type = dissent value = -3 }
+		command = { type = relation which = DFR value = 50 }
+	}
+	action = {
+		name = ACTION_NOT_NOW
+		ai_chance = 0
+		command = { type = dissent value = 1 }
+		command = { type = relation which = DFR value = -100 }
+		command = { type = sleepevent which = 329780 }
+		command = { type = sleepevent which = 329781 }
+		command = { type = sleepevent which = 329782 }
+		command = { type = sleepevent which = 329783 }
+		command = { type = sleepevent which = 329784 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316228] USA | 1990 | Victory in the Gulf War (Victoria en la Guerra del Golfo)
+# Triggered by event 316227 in events/USA/USA_61-91.txt
+# Trigger event 164061 in events/Minors/IRQ.txt
+# Trigger event 215003 in events/Minors/SAU.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316228
+	country = USA
+	name = EVT_USA_316228_NAME
+	desc = EVT_USA_316228_DESC
+	picture = "nwo/desert_storm"
+	style = 1
+	trigger = {
+		event = 316227
+		OR = {
+			control = { province = 1033 data = USA }
+			control = { province = 1035 data = USA }
+			control = { province = 1037 data = USA }
+			control = { province = 1033 data = SAU }
+			control = { province = 1035 data = SAU }
+			control = { province = 1037 data = SAU }
+		}
+	}
+	date = { day = 0 month = september year = 1990 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1991 }
+	action = {
+		name = ACTION_NAME_GOOD
+		ai_chance = 100
+		command = { type = peace which = IRQ value = 0 }
+		command = { type = dissent value = -15 }
+		command = { type = trigger which = 164061 }
+		command = { type = trigger which = 215003 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316227] USA | 1991 | Operation Desert Storm (Operación Tormenta del Desierto)
+# Triggered by event 207065 in events/AI/REB_AI_55-00.txt
+# Trigger event 215002 in events/Minors/SAU.txt
+# Trigger event 316228 in events/USA/USA_61-91.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316227
+	country = USA
+	name = EVT_USA_316227_NAME
+	desc = EVT_USA_316227_DESC
+	picture = "nwo/desert_storm"
+	style = 1
+	action = {
+		name = ACTION_NAME_WAR
+		ai_chance = 100
+		command = { type = war which = IRQ }
+		command = { type = dissent value = -5 }
+		command = { type = trigger which = 215002 }
+	}
+	action = {
+		name = EVT_USA_316227_A
+		ai_chance = 0
+		command = { type = domestic which = interventionism value = -2 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [316294] USA | 1991 | UN Resolution on the Invasion of Kuwait (Resolución de la ONU sobre la Invasión de Kuwait)
+# Triggered by event 207064 in events/AI/REB_AI_55-00.txt
+# Trigger event 207065 in events/AI/REB_AI_55-00.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 316294
+	country = USA
+	name = EVT_SHARED_00967_NAME
+	desc = EVT_SHARED_00967_DESC
+	picture = "nwo/un_security_council"
+	style = 1
+	action = {
+		name = ACTION_NAME_ACCEPT
+		ai_chance = 100
+		trigger = {
+			NOT = { flag = un_desertstorm_veto }
+			NOT = { alliance = { country = IRQ } }
+		}
+		command = { type = money value = -1 }
+	}
+	action = {
+		name = ACTION_NAME_VETO
+		ai_chance = 0
+		command = { type = setflag which = un_desertstorm_veto }
+	}
+}

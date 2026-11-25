@@ -1,0 +1,927 @@
+# ============================================================================
+# File: events/GLOBAL/World_1900_1914.txt
+# Comprehensive Worldwide Historical Events (1900-1914)
+# Geopolitics, Science & Technology, Society, Culture and Disasters
+# ============================================================================
+
+# ============================================================================
+# MODULE 1: GEOPOLITICS & REGIONAL CRISES (1900-1914)
+# ============================================================================
+
+# [231701] UCH | 1900 | The Boxer Rebellion
+event = {
+	id = 231701
+	country = UCH
+	trigger = {
+		exists = UCH
+	}
+	name = "EVT_231701_NAME"
+	desc = "EVT_231701_DESC"
+	style = 2
+	picture = "ENG/illustratedwarnews"
+	date = { day = 20 month = june year = 1900 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1900 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 10 }
+		command = { type = add_division which = "Yihetuan Militia" value = militia when = 0 where = 1247 }
+		command = { type = add_division which = "Yihetuan Militia" value = militia when = 0 where = 1247 }
+		command = { type = relation which = ENG value = -40 }
+		command = { type = relation which = RUS value = -40 }
+		command = { type = relation which = GER value = -40 }
+		command = { type = relation which = U08 value = -40 }
+		command = { type = setflag which = Boxer_Rebellion_Active }
+	}
+}
+
+# [231702] ENG | 1900 | The Eight-Nation Alliance
+event = {
+	id = 231702
+	country = ENG
+	trigger = {
+		flag = Boxer_Rebellion_Active
+		exists = ENG
+	}
+	name = "EVT_231702_NAME"
+	desc = "EVT_231702_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 14 month = july year = 1900 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1900 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = supplies value = -500 }
+		command = { type = relation which = RUS value = 20 }
+		command = { type = relation which = JAP value = 20 }
+		command = { type = relation which = FRA value = 20 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = relation which = U08 value = 20 }
+	}
+}
+
+# [231703] UCH | 1901 | The Boxer Protocol
+event = {
+	id = 231703
+	country = UCH
+	trigger = {
+		flag = Boxer_Rebellion_Active
+		exists = UCH
+	}
+	name = "EVT_231703_NAME"
+	desc = "EVT_231703_DESC"
+	style = 2
+	picture = "GLOBAL/additionaltreaty"
+	date = { day = 7 month = september year = 1901 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1901 }
+	action = {
+		name = "ACTION_NAME_SIGN"
+		command = { type = money value = -1000 }
+		command = { type = dissent value = 5 }
+		command = { type = relation which = ENG value = 30 }
+		command = { type = relation which = RUS value = 30 }
+		command = { type = relation which = USA value = 30 }
+		command = { type = clrflag which = Boxer_Rebellion_Active }
+	}
+}
+
+# [231704] ENG | 1902 | The Anglo-Japanese Alliance
+event = {
+	id = 231704
+	country = ENG
+	trigger = {
+		exists = ENG
+		exists = JAP
+		NOT = { war = { country = ENG country = JAP } }
+	}
+	name = "EVT_231704_NAME"
+	desc = "EVT_231704_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 30 month = january year = 1902 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1902 }
+	action = {
+		name = ACTION_NAME_SIGN
+		command = { type = relation which = JAP value = 50 }
+		command = { type = non_aggression which = JAP where = ENG }
+		command = { type = setflag which = Anglo_Japanese_Alliance }
+	}
+}
+
+# [231705] ENG | 1902 | The Treaty of Vereeniging
+event = {
+	id = 231705
+	country = ENG
+	trigger = {
+		exists = ENG
+		exists = SAF
+		war = { country = ENG country = SAF }
+	}
+	name = "EVT_231705_NAME"
+	desc = "EVT_231705_DESC"
+	style = 2
+	picture = "nwo/peace_in_our_time"
+	date = { day = 31 month = may year = 1902 }
+	offset = 10
+	deathdate = { day = 31 month = december year = 1903 }
+	action = {
+		name = "ACTION_NAME_SIGN"
+		command = { type = peace which = SAF value = 1 }
+		command = { type = inherit which = SAF }
+		command = { type = dissent value = -5 }
+	}
+}
+
+# [231706] VEN | 1902 | Venezuelan Naval Blockade & Drago Doctrine
+event = {
+	id = 231706
+	country = VEN
+	trigger = {
+		exists = VEN
+		exists = USA
+	}
+	name = "EVT_231706_NAME"
+	desc = "EVT_231706_DESC"
+	style = 2
+	picture = "ENG/illustratedwarnews"
+	date = { day = 9 month = december year = 1902 }
+	offset = 5
+	deathdate = { day = 31 month = march year = 1903 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = money value = -200 }
+		command = { type = relation which = USA value = 30 }
+		command = { type = relation which = ARG value = 40 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = U08 value = -20 }
+	}
+}
+
+# [231707] COL | 1903 | The Separation of Panama
+event = {
+	id = 231707
+	country = COL
+	trigger = {
+		exists = COL
+		control = { province = 889 data = COL }
+	}
+	name = "EVT_231707_NAME"
+	desc = "EVT_231707_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 3 month = november year = 1903 }
+	offset = 3
+	deathdate = { day = 31 month = december year = 1903 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = independence which = PAN value = 1 when = 1 }
+		command = { type = dissent value = 10 }
+		command = { type = relation which = USA value = -50 }
+	}
+}
+
+# [231708] USA | 1903 | Hay-Bunau-Varilla Treaty (Panama Canal Zone)
+event = {
+	id = 231708
+	country = USA
+	trigger = {
+		exists = USA
+		exists = PAN
+	}
+	name = "EVT_231708_NAME"
+	desc = "EVT_231708_DESC"
+	style = 2
+	picture = "GLOBAL/additionaltreaty"
+	date = { day = 18 month = november year = 1903 }
+	offset = 3
+	deathdate = { day = 31 month = december year = 1904 }
+	action = {
+		name = ACTION_NAME_SIGN
+		command = { type = secedeprovince which = USA value = 889 }
+		command = { type = money value = -250 }
+		command = { type = relation which = PAN value = 50 }
+	}
+}
+
+# [231709] FRA | 1904 | The Entente Cordiale
+event = {
+	id = 231709
+	country = FRA
+	trigger = {
+		exists = FRA
+		exists = ENG
+		NOT = { war = { country = FRA country = ENG } }
+	}
+	name = "EVT_231709_NAME"
+	desc = "EVT_231709_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 8 month = april year = 1904 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1904 }
+	action = {
+		name = ACTION_NAME_SIGN
+		command = { type = relation which = ENG value = 60 }
+		command = { type = non_aggression which = ENG where = FRA }
+		command = { type = setflag which = Entente_Cordiale }
+	}
+}
+
+# [231710] RUS | 1904 | Outbreak of the Russo-Japanese War
+event = {
+	id = 231710
+	country = RUS
+	trigger = {
+		exists = RUS
+		exists = JAP
+		NOT = { war = { country = RUS country = JAP } }
+	}
+	name = "EVT_231710_NAME"
+	desc = "EVT_231710_DESC"
+	style = 2
+	picture = "ENG/illustratedwarnews"
+	date = { day = 8 month = february year = 1904 }
+	offset = 3
+	deathdate = { day = 31 month = december year = 1904 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = war which = JAP }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [231711] RUS | 1905 | Bloody Sunday and the 1905 Revolution
+event = {
+	id = 231711
+	country = RUS
+	trigger = {
+		exists = RUS
+	}
+	name = "EVT_231711_NAME"
+	desc = "EVT_231711_DESC"
+	style = 2
+	picture = "GLOBAL/the_french_resistance_la_r_sistance"
+	date = { day = 22 month = january year = 1905 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1905 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 15 }
+		command = { type = domestic which = political_left value = 1 }
+	}
+}
+
+# [231712] RUS | 1905 | The October Manifesto
+event = {
+	id = 231712
+	country = RUS
+	trigger = {
+		exists = RUS
+	}
+	name = "EVT_231712_NAME"
+	desc = "EVT_231712_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 30 month = october year = 1905 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1905 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -8 }
+		command = { type = domestic which = democratic value = 1 }
+	}
+}
+
+# [231713] RUS | 1905 | Treaty of Portsmouth
+event = {
+	id = 231713
+	country = RUS
+	trigger = {
+		exists = RUS
+		exists = JAP
+		war = { country = RUS country = JAP }
+	}
+	name = "EVT_231713_NAME"
+	desc = "EVT_231713_DESC"
+	style = 2
+	picture = "GLOBAL/aar_versailles"
+	date = { day = 5 month = september year = 1905 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1906 }
+	action = {
+		name = "ACTION_NAME_SIGN"
+		command = { type = peace which = JAP value = 1 }
+		command = { type = secedeprovince which = JAP value = 1219 }
+		command = { type = secedeprovince which = JAP value = 1542 }
+		command = { type = dissent value = 5 }
+	}
+}
+
+# [231714] U08 | 1905 | First Moroccan Crisis (Tangier Crisis)
+event = {
+	id = 231714
+	country = U08
+	trigger = {
+		exists = U08
+		exists = FRA
+	}
+	name = "EVT_231714_NAME"
+	desc = "EVT_231714_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 31 month = march year = 1905 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1905 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = FRA value = -30 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = belligerence value = 2 }
+	}
+}
+
+# [231715] FRA | 1906 | The Algeciras Conference
+event = {
+	id = 231715
+	country = FRA
+	trigger = {
+		exists = FRA
+		exists = U08
+	}
+	name = "EVT_231715_NAME"
+	desc = "EVT_231715_DESC"
+	style = 2
+	picture = "GLOBAL/additionaltreaty"
+	date = { day = 7 month = april year = 1906 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1906 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = SPA value = 20 }
+		command = { type = relation which = U08 value = -20 }
+	}
+}
+
+# [231716] ENG | 1907 | The Anglo-Russian Entente
+event = {
+	id = 231716
+	country = ENG
+	trigger = {
+		exists = ENG
+		exists = RUS
+		NOT = { war = { country = ENG country = RUS } }
+	}
+	name = "EVT_231716_NAME"
+	desc = "EVT_231716_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 31 month = august year = 1907 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1907 }
+	action = {
+		name = ACTION_NAME_SIGN
+		command = { type = relation which = RUS value = 50 }
+		command = { type = non_aggression which = RUS where = ENG }
+		command = { type = setflag which = Triple_Entente_Formed }
+	}
+}
+
+# [231717] U09 | 1908 | The Bosnian Crisis
+event = {
+	id = 231717
+	country = U09
+	trigger = {
+		exists = U09
+		exists = SER
+	}
+	name = "EVT_231717_NAME"
+	desc = "EVT_231717_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 6 month = october year = 1908 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1908 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = addcore which = 345 }
+		command = { type = addcore which = 346 }
+		command = { type = relation which = SER value = -60 }
+		command = { type = relation which = RUS value = -40 }
+	}
+}
+
+# [231718] OTT | 1908 | The Young Turk Revolution
+event = {
+	id = 231718
+	country = OTT
+	trigger = {
+		exists = OTT
+	}
+	name = "EVT_231718_NAME"
+	desc = "EVT_231718_DESC"
+	style = 2
+	picture = "GLOBAL/the_french_resistance_la_r_sistance"
+	date = { day = 24 month = july year = 1908 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1908 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = democratic value = 2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+	}
+}
+
+# [231719] JAP | 1910 | Japan-Korea Annexation Treaty
+event = {
+	id = 231719
+	country = JAP
+	trigger = {
+		exists = JAP
+		exists = KOR
+		NOT = { war = { country = JAP country = KOR } }
+	}
+	name = "EVT_231719_NAME"
+	desc = "EVT_231719_DESC"
+	style = 2
+	picture = "GLOBAL/additionaltreaty"
+	date = { day = 22 month = august year = 1910 }
+	offset = 3
+	deathdate = { day = 31 month = december year = 1910 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = inherit which = KOR }
+		command = { type = belligerence value = 3 }
+	}
+}
+
+# [231720] MEX | 1910 | Outbreak of the Mexican Revolution
+event = {
+	id = 231720
+	country = MEX
+	trigger = {
+		exists = MEX
+	}
+	name = "EVT_231720_NAME"
+	desc = "EVT_231720_DESC"
+	style = 2
+	picture = "GLOBAL/the_french_resistance_la_r_sistance"
+	date = { day = 20 month = november year = 1910 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1911 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 15 }
+		command = { type = domestic which = political_left value = 2 }
+		command = { type = domestic which = democratic value = 2 }
+	}
+}
+
+# [231721] U08 | 1911 | Second Moroccan Crisis (Agadir Crisis)
+event = {
+	id = 231721
+	country = U08
+	trigger = {
+		exists = U08
+		exists = FRA
+	}
+	name = "EVT_231721_NAME"
+	desc = "EVT_231721_DESC"
+	style = 2
+	picture = "ENG/illustratedwarnews"
+	date = { day = 1 month = july year = 1911 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1911 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relation which = FRA value = -40 }
+		command = { type = relation which = ENG value = -30 }
+		command = { type = belligerence value = 2 }
+	}
+}
+
+# [231722] UCH | 1911 | The Xinhai Revolution
+event = {
+	id = 231722
+	country = UCH
+	trigger = {
+		exists = UCH
+	}
+	name = "EVT_231722_NAME"
+	desc = "EVT_231722_DESC"
+	style = 2
+	picture = "GLOBAL/the_french_resistance_la_r_sistance"
+	date = { day = 10 month = october year = 1911 }
+	offset = 5
+	deathdate = { day = 12 month = february year = 1912 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = country which = CHI }
+		command = { type = dissent value = 10 }
+		command = { type = domestic which = democratic value = 4 }
+	}
+}
+
+# [231723] ITA | 1911 | The Italo-Turkish War
+event = {
+	id = 231723
+	country = ITA
+	trigger = {
+		exists = ITA
+		exists = OTT
+		NOT = { war = { country = ITA country = OTT } }
+	}
+	name = "EVT_231723_NAME"
+	desc = "EVT_231723_DESC"
+	style = 2
+	picture = "ENG/illustratedwarnews"
+	date = { day = 29 month = september year = 1911 }
+	offset = 3
+	deathdate = { day = 31 month = december year = 1911 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = war which = OTT }
+		command = { type = belligerence value = 2 }
+	}
+}
+
+# [231724] SER | 1912 | Outbreak of the First Balkan War
+event = {
+	id = 231724
+	country = SER
+	trigger = {
+		exists = SER
+		exists = OTT
+		NOT = { war = { country = SER country = OTT } }
+	}
+	name = "EVT_231724_NAME"
+	desc = "EVT_231724_DESC"
+	style = 2
+	picture = "ENG/illustratedwarnews"
+	date = { day = 8 month = october year = 1912 }
+	offset = 3
+	deathdate = { day = 31 month = december year = 1912 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = war which = OTT }
+		command = { trigger = { exists = GRE NOT = { war = { country = GRE country = OTT } } } type = war which = OTT }
+		command = { trigger = { exists = BUL NOT = { war = { country = BUL country = OTT } } } type = war which = OTT }
+	}
+}
+
+# [231725] BUL | 1913 | Outbreak of the Second Balkan War
+event = {
+	id = 231725
+	country = BUL
+	trigger = {
+		exists = BUL
+		exists = SER
+		NOT = { war = { country = BUL country = SER } }
+	}
+	name = "EVT_231725_NAME"
+	desc = "EVT_231725_DESC"
+	style = 2
+	picture = "ENG/illustratedwarnews"
+	date = { day = 29 month = june year = 1913 }
+	offset = 3
+	deathdate = { day = 31 month = july year = 1913 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = war which = SER }
+		command = { trigger = { exists = GRE } type = war which = GRE }
+	}
+}
+
+# [231726] U09 | 1914 | Assassination of Archduke Franz Ferdinand
+event = {
+	id = 231726
+	country = U09
+	trigger = {
+		exists = U09
+		exists = SER
+	}
+	name = "EVT_231726_NAME"
+	desc = "EVT_231726_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = june year = 1914 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+		command = { type = relation which = SER value = -80 }
+	}
+}
+
+
+# ============================================================================
+# MODULE 2: SCIENCE & TECHNOLOGY (1900-1914)
+# ============================================================================
+
+# [231731] U08 | 1900 | Max Planck and Quantum Physics
+event = {
+	id = 231731
+	country = U08
+	name = "EVT_231731_NAME"
+	desc = "EVT_231731_DESC"
+	style = 2
+	picture = "GLOBAL/haus_des_rundfunks"
+	date = { day = 14 month = december year = 1900 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1900 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = research_mod value = 2 }
+	}
+}
+
+# [231732] ENG | 1901 | Marconi's Transatlantic Radio Transmission
+event = {
+	id = 231732
+	country = ENG
+	name = "EVT_231732_NAME"
+	desc = "EVT_231732_DESC"
+	style = 2
+	picture = "GLOBAL/haus_des_rundfunks"
+	date = { day = 12 month = december year = 1901 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1901 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = research_mod value = 2 }
+	}
+}
+
+# [231733] SWE | 1901 | Inauguration of the Nobel Prizes
+event = {
+	id = 231733
+	country = SWE
+	name = "EVT_231733_NAME"
+	desc = "EVT_231733_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 10 month = december year = 1901 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1901 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -2 }
+	}
+}
+
+# [231734] USA | 1903 | Wright Brothers: First Controlled Powered Flight
+event = {
+	id = 231734
+	country = USA
+	name = "EVT_231734_NAME"
+	desc = "EVT_231734_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 17 month = december year = 1903 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1903 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = research_mod value = 2 }
+		command = { type = build_time which = interceptor value = -5 where = relative when = on_upgrade }
+	}
+}
+
+# [231735] U08 | 1905 | Einstein's Annus Mirabilis
+event = {
+	id = 231735
+	country = U08
+	name = "EVT_231735_NAME"
+	desc = "EVT_231735_DESC"
+	style = 2
+	picture = "GLOBAL/haus_des_rundfunks"
+	date = { day = 26 month = september year = 1905 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1905 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = research_mod value = 3 }
+	}
+}
+
+# [231736] ENG | 1906 | Launch of HMS Dreadnought
+event = {
+	id = 231736
+	country = ENG
+	name = "EVT_231736_NAME"
+	desc = "EVT_231736_DESC"
+	style = 2
+	picture = "GER/pre_dreadnought_battleship_hannover"
+	date = { day = 10 month = february year = 1906 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1906 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = add_division which = "HMS Dreadnought" value = battleship when = 1 }
+		command = { type = research_mod value = 1 }
+	}
+}
+
+# [231737] USA | 1908 | Ford Model T and the Moving Assembly Line
+event = {
+	id = 231737
+	country = USA
+	name = "EVT_231737_NAME"
+	desc = "EVT_231737_DESC"
+	style = 2
+	picture = "GLOBAL/berlin700th"
+	date = { day = 1 month = october year = 1908 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1908 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = peacetime_ic_mod value = 5 }
+		command = { type = tc_mod value = 5 }
+	}
+}
+
+# [231738] U08 | 1909 | The Haber-Bosch Process
+event = {
+	id = 231738
+	country = U08
+	name = "EVT_231738_NAME"
+	desc = "EVT_231738_DESC"
+	style = 2
+	picture = "GLOBAL/berlin700th"
+	date = { day = 13 month = october year = 1909 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1909 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = supplies value = 5000 }
+		command = { type = peacetime_ic_mod value = 3 }
+	}
+}
+
+# [231739] NOR | 1911 | Amundsen Reaches the South Pole
+event = {
+	id = 231739
+	country = NOR
+	name = "EVT_231739_NAME"
+	desc = "EVT_231739_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 14 month = december year = 1911 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1911 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -3 }
+	}
+}
+
+# [231740] FRA | 1911 | Marie Curie: Second Nobel Prize
+event = {
+	id = 231740
+	country = FRA
+	name = "EVT_231740_NAME"
+	desc = "EVT_231740_DESC"
+	style = 2
+	picture = "GLOBAL/haus_des_rundfunks"
+	date = { day = 10 month = december year = 1911 }
+	offset = 5
+	deathdate = { day = 31 month = december year = 1911 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = research_mod value = 2 }
+	}
+}
+
+# [231741] USA | 1914 | Grand Opening of the Panama Canal
+event = {
+	id = 231741
+	country = USA
+	name = "EVT_231741_NAME"
+	desc = "EVT_231741_DESC"
+	style = 2
+	picture = "GLOBAL/additionaltreaty"
+	date = { day = 15 month = august year = 1914 }
+	offset = 3
+	deathdate = { day = 31 month = august year = 1914 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = tc_mod value = 5 }
+		command = { type = money value = 500 }
+	}
+}
+
+
+# ============================================================================
+# MODULE 3: SOCIETY, CULTURE & DISASTERS (1900-1914)
+# ============================================================================
+
+# [231751] FRA | 1900 | The Paris Exposition Universelle
+event = {
+	id = 231751
+	country = FRA
+	name = "EVT_231751_NAME"
+	desc = "EVT_231751_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	date = { day = 14 month = april year = 1900 }
+	offset = 5
+	deathdate = { day = 12 month = november year = 1900 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -5 }
+		command = { type = money value = 300 }
+	}
+}
+
+# [231752] ENG | 1903 | Emmeline Pankhurst and the Suffragette Movement
+event = {
+	id = 231752
+	country = ENG
+	name = "EVT_231752_NAME"
+	desc = "EVT_231752_DESC"
+	style = 2
+	picture = "GLOBAL/quit_india_movement"
+	date = { day = 10 month = october year = 1903 }
+	offset = 10
+	deathdate = { day = 31 month = december year = 1903 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+# [231753] USA | 1906 | The San Francisco Earthquake and Fire
+event = {
+	id = 231753
+	country = USA
+	name = "EVT_231753_NAME"
+	desc = "EVT_231753_DESC"
+	style = 2
+	picture = "JAP/earthquake"
+	date = { day = 18 month = april year = 1906 }
+	offset = 2
+	deathdate = { day = 30 month = april year = 1906 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 4 }
+		command = { type = construct which = ic where = 1756 value = -2 }
+		command = { type = construct which = infrastructure where = 1756 value = -20 }
+	}
+}
+
+# [231754] FRA | 1907 | The Birth of Cubism: Les Demoiselles d'Avignon
+event = {
+	id = 231754
+	country = FRA
+	name = "EVT_231754_NAME"
+	desc = "EVT_231754_DESC"
+	style = 2
+	picture = "GLOBAL/haus_des_rundfunks"
+	date = { day = 1 month = july year = 1907 }
+	offset = 10
+	deathdate = { day = 31 month = december year = 1907 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+	}
+}
+
+# [231755] ENG | 1912 | The Sinking of the RMS Titanic
+event = {
+	id = 231755
+	country = ENG
+	name = "EVT_231755_NAME"
+	desc = "EVT_231755_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 15 month = april year = 1912 }
+	offset = 2
+	deathdate = { day = 30 month = april year = 1912 }
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 3 }
+	}
+}
+
+# [231756] FRA | 1913 | Premiere of The Rite of Spring
+event = {
+	id = 231756
+	country = FRA
+	name = "EVT_231756_NAME"
+	desc = "EVT_231756_DESC"
+	style = 2
+	picture = "GLOBAL/the_french_resistance_la_r_sistance"
+	date = { day = 29 month = may year = 1913 }
+	offset = 5
+	deathdate = { day = 30 month = june year = 1913 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 1 }
+	}
+}

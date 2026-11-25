@@ -1,0 +1,436 @@
+# ============================================================================
+# File: events/Minors/U09_Decisions.txt (8 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [244000] U09 | 1914 | Offensive Chit Prepared (Reserva Logística Ofensiva lista)
+# Trigger event 244001 in events/Minors/U09.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244000
+	random = no
+	country = U09
+	decision = { atwar = yes }
+	decision_trigger = { supplies = 2000 }
+	trigger = {
+		atwar = yes
+		OR = {
+			ai = yes
+			supplies = 2000
+		}
+	}
+	name = "EVT_SHARED_00460_NAME"
+	desc = "EVT_SHARED_00460_DESC"
+	style = 2
+	picture = "GLOBAL/ww1_offensive"
+	decision_picture = "GLOBAL/decision_german_mobilization"
+	date = { day = 1 month = january year = 1914 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = "ACTION_NAME_VICTORY"
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { trigger = { ai = yes } type = morale which = land value = 30 }
+		command = { type = morale which = naval value = 10 }
+		command = { type = morale which = air value = 10 }
+		command = { type = speed which = land value = 2 }
+		command = { type = counterattack value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = encirclement value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = sce_frequency value = 0.3 }
+		command = { type = attrition_mod value = 2 }
+		command = { type = trickleback_mod value = 5 }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+		command = { trigger = { ai = no } type = event which = 244001 where = -1 when = 30 }
+		command = { trigger = { ai = yes } type = event which = 244001 where = -1 when = 120 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244010] U09 | 1914 | Territorial Concessions to Italy? (¿Concesiones territoriales a Italia?)
+# Triggered by event 166110 in events/ITA/ITA_14-20.txt
+# Triggered by event 166097 in events/ITA/ITA_14-20.txt
+# Trigger event 166275 in events/ITA/ITA_14-20.txt
+# Trigger event 166273 in events/ITA/ITA_14-20.txt
+# Trigger event 166274 in events/ITA/ITA_14-20.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244010
+	country = U09
+	decision = {
+		exists = ITA
+		participant = { country = U09 value = 2 }
+		NOT = {
+			alliance = { country = U09 country = ITA }
+			alliance = { country = FRA country = ITA }
+			participant = { country = ITA value = 1 }
+			war = { country = U09 country = ITA }
+			event = 166110
+		}
+	}
+	decision_trigger = {
+		event = 166097
+		control = { province = 401 data = -1 }
+	}
+	trigger = {
+		exists = ITA
+		participant = { country = U09 value = 2 }
+		NOT = {
+			alliance = { country = U09 country = ITA }
+			alliance = { country = FRA country = ITA }
+			participant = { country = ITA value = 1 }
+			war = { country = U09 country = ITA }
+			event = 166110
+			dissent = 10
+		}
+		event = 166097
+		control = { province = 401 data = -1 }
+		random = 5
+	}
+	name = "EVT_SHARED_01006_NAME"
+	desc = "EVT_SHARED_01006_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = EVT_U09_244010_A
+		ai_chance = 90
+		command = { type = dissent value = 3 }
+		command = { type = trigger which = 166275 }
+	}
+	action = {
+		name = ACTION_NAME_NEUTRAL
+		ai_chance = 5
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 166273 }
+	}
+	action = {
+		name = "EVT_U09_244010_B"
+		ai_chance = 0
+		command = { type = dissent value = 7 }
+		command = { type = trigger which = 166274 }
+	}
+	action = {
+		name = "ACTION_NAME_DECLINE"
+		ai_chance = 5
+		command = { type = relation which = ITA value = -10 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244015] U09 | 1914 | Austria-Hungary Declares War on Serbia (Austria-Hungría declara la guerra a Serbia)
+# Triggered by event 244014 in events/Minors/U09.txt
+# Triggered by event 244028 in events/Minors/U09.txt
+# Trigger event 231003 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231005 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231029 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 231031 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 329341 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 211006 in events/Minors/RUS_14-14.txt
+# Trigger event 152013 in events/GRE/GRE_14-33.txt
+# Trigger event 324253 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 324254 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244015
+	country = U09
+	decision = {
+		event = 244014
+		NOT = { event = 244028 }
+	}
+	decision_trigger = { }
+	trigger = {
+		event = 244014
+		NOT = { event = 244028 }
+		random = 25
+	}
+	name = "EVT_U09_244015_NAME"
+	desc = "EVT_U09_244015_DESC"
+	style = 2
+	picture = "Minors/austrohunarmy_march"
+	decision_picture = "Minors/decision_warwithserbia"
+	date = { day = 28 month = june year = 1914 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1914 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = belligerence value = 5 }
+		command = { type = war which = SER }
+		command = { type = dissent value = -3 }
+		command = { type = addclaim which = 340 }
+		command = { type = addclaim which = 342 }
+		command = { type = addclaim which = 338 }
+		command = { type = addclaim which = 339 }
+		command = { type = addclaim which = 330 }
+		command = { type = addclaim which = 327 }
+		command = { type = addclaim which = 329 }
+		command = { trigger = { NOT = { policy = { type = professional_army value = 7 } } } type = trigger which = 329341 }
+		command = { type = trigger which = 211006 }
+		command = { type = trigger which = 152013 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244016] U09 | 1914 | Territorial Concessions to Italy? (¿Concesiones territoriales a Italia?)
+# Triggered by event 166110 in events/ITA/ITA_14-20.txt
+# Triggered by event 166097 in events/ITA/ITA_14-20.txt
+# Trigger event 166275 in events/ITA/ITA_14-20.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244016
+	country = U09
+	decision = {
+		exists = ITA
+		NOT = {
+			alliance = { country = U09 country = ITA }
+			alliance = { country = FRA country = ITA }
+			war = { country = U09 country = ITA }
+			event = 166110
+		}
+	}
+	decision_trigger = {
+		event = 166097
+		control = { province = 401 data = -1 }
+	}
+	trigger = {
+		exists = ITA
+		NOT = {
+			alliance = { country = U09 country = ITA }
+			alliance = { country = FRA country = ITA }
+			war = { country = U09 country = ITA }
+			event = 166110
+			dissent = 10
+		}
+		event = 166097
+		control = { province = 401 data = -1 }
+		random = 2
+	}
+	name = "EVT_SHARED_01006_NAME"
+	desc = "EVT_SHARED_01006_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = 5 }
+		command = { type = trigger which = 166275 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244033] U09 | 1914 | Operation Friedrich (Operación Friedrich)
+# Triggered by event 244031 in events/Minors/U09.txt
+# Triggered by event 243120 in events/Minors/U08_14-18.txt
+# Trigger event 231003 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231005 in events/GLOBAL/ALL_13-14.txt
+# Trigger event 231029 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 231031 in events/GLOBAL/ALL_14-26.txt
+# Trigger event 324253 in events/GLOBAL/MULTI_Decisions.txt
+# Trigger event 324254 in events/GLOBAL/MULTI_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244033
+	country = U09
+	decision = {
+		flag = 1915_WWI
+		OR = {
+			event = 244031
+			event = 243120
+		}
+		NOT = { war = { country = U09 country = RUS } }
+	}
+	decision_trigger = {
+		AND = {
+			month = 2
+			year = 1915
+		}
+	}
+	trigger = {
+		flag = 1915_WWI
+		OR = {
+			event = 244031
+			event = 243120
+		}
+		NOT = { war = { country = U08 country = RUS } }
+		AND = {
+			month = 3
+			year = 1915
+		}
+		random = 8
+	}
+	name = "EVT_SHARED_01001_NAME"
+	desc = "EVT_SHARED_01001_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 28 month = june year = 1914 }
+	offset = 7
+	deathdate = { day = 29 month = june year = 1916 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { trigger = { NOT = { war = { country = U08 country = U09 } } } type = alliance which = U08 }
+		command = { type = belligerence value = 20 }
+		command = { type = war which = RUS }
+		command = { type = dissent value = -2 }
+		command = { trigger = { NOT = { ai = U08 } } type = clrflag which = 1915_WWI }
+		command = { type = clrflag which = FTL_serbia_accepted }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244013] U09 | 1914 | Ultimatum to Serbia (Ultimátum a Serbia)
+# Triggered by event 244012 in events/Minors/U09.txt
+# Trigger event 217001 in events/Minors/SER.txt
+# Trigger event 166097 in events/ITA/ITA_14-20.txt
+# ----------------------------------------------------------------------------
+event = {
+    id = 244013
+    random = no
+    country = U09
+    decision = {
+        NOT = { alliance = { country = U09 country = SER } }
+        }
+    decision_trigger = {
+       event = 244012
+    }
+    trigger = {
+        NOT = { alliance = { country = U09 country = SER } }
+        event = 244012
+	}
+    name = "EVT_U09_244013_NAME"
+    desc = "EVT_U09_244013_DESC"
+    style = 2
+	picture = "GLOBAL/peace_conference"
+	decision_picture = "Minors/decision_peace_conference"
+    date = { day = 17 month = july year = 1914 }
+    offset = 4
+    deathdate = { day = 29 month = december year = 1914 }
+    action_a = {
+		ai_chance = 100
+		name = ACTION_NAME_OK
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = belligerence value = 5 }
+		command = { type = trigger which = 217001 }
+		command = { type = trigger which = 166097 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [243099] U09 | 1914 | Territorial Pledges to Bulgaria (Promesas territoriales a Bulgaria)
+# Triggered by event 196003 in events/Minors/OTT.txt
+# Triggered by event 196004 in events/Minors/OTT.txt
+# Trigger event 118023 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 243099
+	country = U09
+	decision = {
+		exists = SER
+		exists = BUL
+		NOT = {
+			event = 196003
+			alliance = { country = U09 country = BUL }
+			alliance = { country = SER country = BUL }
+			war = { country = U09 country = BUL }
+		}
+	}
+	decision_trigger = {
+		OR = {
+			event = 196004
+			alliance = { country = U09 country = OTT }
+		}
+	}
+	trigger = {
+		random = 8
+		exists = SER
+		exists = BUL
+		NOT = {
+			event = 196003
+			alliance = { country = U09 country = BUL }
+			alliance = { country = SER country = BUL }
+			war = { country = U09 country = BUL }
+		}
+		OR = {
+			event = 196004
+			alliance = { country = U09 country = OTT }
+		}
+	}
+	name = "EVT_U09_243099_NAME"
+	desc = "EVT_U09_243099_DESC"
+	style = 2
+	picture = "GLOBAL/diplomatic_campaign"
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	date = { day = 12 month = november year = 1914 }
+	offset = 14
+	deathdate = { day = 29 month = december year = 1914 }
+	action_a = {
+		ai_chance = 100
+		name = "EVT_U09_243099_A"
+		command = { type = trigger which = 118023 }
+	}
+	action_b = { trigger = { ai = yes }
+		ai_chance = 0
+		name = "EVT_U09_243099_B"
+		command = {  }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [244034] U09 | 1915 | Alliance Proposal to Bulgaria (Propuesta de alianza a Bulgaria)
+# Triggered by event 244018 in events/Minors/U09.txt
+# Triggered by event 324519 in events/GLOBAL/MULTI_14-32.txt
+# Triggered by event 118024 in events/Minors/BUL.txt
+# Trigger event 118023 in events/Minors/BUL.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 244034
+	country =  U09
+	decision = {
+		exists = BUL
+		atwar = yes
+		NOT = {
+			alliance = { country = BUL country = U09 }
+			alliance = { country = BUL country = FRA }
+			event = 244018
+			event = 324519
+			event = 118024
+		}
+	}
+	decision_trigger = {
+		relation = { which = BUL value = 50 }
+	}
+	trigger = {
+		random = 20
+		exists = BUL
+		exists = SER
+		war = { country = FRA  country = U09 }
+		NOT = {
+			alliance = { country = BUL country = U09 }
+			alliance = { country = BUL country = FRA }
+			event = 244018
+			event = 324519
+			event = 118024
+		}
+	}
+	name = "EVT_U09_244034_NAME"
+	desc = "EVT_U09_244034_DESC"
+	style = 2
+	picture = "GLOBAL/news_paper"
+	date = { day = 1 month = february year = 1915 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1915 }
+	action = {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = trigger which = 118023 }
+	}
+}

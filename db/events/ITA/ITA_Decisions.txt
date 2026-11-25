@@ -1,0 +1,979 @@
+# ============================================================================
+# File: events/ITA/ITA_Decisions.txt (17 events)
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# [166111] ITA | 1914 | Armando Diaz Appointed Chief of Staff (Armando Diaz nombrado Jefe del Estado Mayor)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166111
+	country = ITA
+	decision = {
+		war = { country = ITA country = U09 }
+	}
+	decision_trigger = {
+		incabinet = 25611
+		NOT = { incabinet = 25612 }
+		OR = {
+			NOT = { control = { province = 405 data = -1 } }
+			NOT = { control = { province = 400 data = -1 } }
+			NOT = { control = { province = 394 data = -1 } }
+		}
+	}
+	trigger = {
+		random = 35
+		war = { country = ITA country = U09 }
+		incabinet = 25611
+		NOT = { incabinet = 25612 }
+		OR = {
+			NOT = { control = { province = 405 data = -1 } }
+			NOT = { control = { province = 400 data = -1 } }
+			NOT = { control = { province = 394 data = -1 } }
+		}
+	}
+	date = { day = 1 month = january year = 1914 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1925 }
+	name = "EVT_ITA_166111_NAME"
+	desc = "EVT_ITA_166111_DESC"
+	style = 2
+	decision_picture = "GLOBAL/decision_diplomatic_campaign"
+	picture = "GLOBAL/ww1_offensive"
+	action = {
+	name = ACTION_NAME_OK
+		command = { type = chiefofstaff which = 25612 }
+		command = { trigger = { incabinet = 25621 } type = chiefofarmy which = 25622 }
+		command = { type = sleepminister which = 25611 }
+		command = { type = sleepminister which = 25621 }
+		command = { type = sleepleader which = 25532 }
+		command = { type = sleepteam which = 25029 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [175011] ITA | 1919 | Revoke the authonomy of Senussia! (¡Revocar la autonomia sanusi!)
+# ----------------------------------------------------------------------------
+event = {
+	id = 175011
+	country = ITA
+	decision = {
+		puppet = { country = LBY country = ITA }
+	}
+	decision_trigger = {
+		government = fascist
+		garrison = { country = ITA province = 761 type = land size = 10 area = 2 }
+	}
+	trigger = {
+		puppet = { country = LBY country = ITA }
+		government = fascist
+		garrison = { country = ITA province = 761 type = land size = 10 area = 2 }
+	}
+	name = "EVT_ITA_175011_NAME"
+	desc = "EVT_ITA_175011_DESC"
+	style = 2
+	picture = "GLOBAL/ww1_offensive"
+	decision_picture = "GLOBAL/decision_grand_offensive5"
+	date = { day = 0 month = january year = 1919 }
+	offset = 151
+	deathdate = { day = 29 month = december year = 1925 }
+	action = {
+		name = "ACTION_NAME_WAR"
+		command = { type = belligerence value = 5 }
+		command = { trigger = { non_aggression = { country = LBY country = ITA } } type = end_non_aggression which = LBY where = ITA }
+		command = { type = war which = LBY }
+		command = { type = sleepevent which = 175006 }
+		command = { type = unlock_division which = 23500 value = 74 }
+		command = { type = unlock_division which = 23500 value = 75 }
+		command = { type = unlock_division which = 23500 value = 76 }
+		command = { type = unlock_division which = 23500 value = 78 }
+		command = { type = unlock_division which = 23500 value = 79 }
+		command = { type = unlock_division which = 23500 value = 80 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166006] ITA | 1933 | National Economic Recovery Policy (Plan de reactivación económica nacional)
+# Trigger event 166007 in events/ITA/ITA_20-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166006
+	random = no
+	country = ITA
+	decision = {
+	}
+	decision_trigger = {
+		money = 500
+	}
+	trigger = {
+		OR = {
+			random = 10
+			AND = {
+				year = 1935
+				random = 50
+			}
+			AND = {
+				year = 1935
+				month = december
+			}
+		}
+	}
+	name = "EVT_SHARED_00189_NAME"
+	desc = "EVT_SHARED_00189_DESC"
+	style = 2
+	picture = "GLOBAL/new_deal"
+	decision_picture = "GLOBAL/decision_new_deal"
+	date = { day = 1 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1935 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -2 }
+		command = { type = industrial_modifier which = total value = 10 }
+		command = { trigger = { ai = no } type = money value = -500 }
+		command = { type = domestic which = free_market value = -1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166063] ITA | 1933 | Creation of Italian East Africa (Africa Orientale Italiana) (Creación del África Oriental Italiana (AOI))
+# Triggered by event 329072 in events/ITA/ITA_Decisions.txt
+# Trigger event 143144 in events/ENG/ENG_25-34.txt
+# Trigger event 166064 in events/ITA/ITA_20-34.txt
+# Trigger event 273005 in events/Minors/U49.txt
+# Trigger event 166065 in events/ITA/ITA_36-40.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166063
+	random = no
+	country = ITA
+	decision = {
+		event = 329072
+	}
+	decision_trigger = {
+		NOT = { exists = ETH }
+		control = { province = 825 data = ITA }
+	}
+	trigger = {
+		event = 329072
+		NOT = { exists = ETH }
+		control = { province = 825 data = ITA }
+		random = 30
+	}
+   	name = EVT_ITA_166063_NAME
+	desc = EVT_SHARED_00334_DESC
+	style = 2
+	picture = "GLOBAL/africane_orientale_italiana"
+	decision_picture = "ITA/decision_aoi"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = independence which = U49 value = 1 }
+		command = { type = make_puppet which = U49 }
+		command = { type = trigger which = 166064 }
+		command = { type = trigger which = 273005 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166066] ITA | 1933 | The Duke of Aosta Appointed Viceroy of Italian East Africa (El Duque de Aosta nombrado virrey del África Oriental Italiana)
+# Triggered by event 166065 in events/ITA/ITA_36-40.txt
+# Trigger event 273006 in events/Minors/U49.txt
+# Trigger event 166067 in events/ITA/ITA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166066
+	random = no
+	country = ITA
+	decision = {
+		event = 166065
+	}
+	decision_trigger = {
+	}
+	trigger = {
+		event = 166065
+		random = 60
+	}
+   	name = EVT_ITA_166066_NAME
+	desc = EVT_SHARED_00335_DESC
+	style = 2
+	picture = "GLOBAL/duke_of_aosta"
+	decision_picture = "ITA/decision_aoi"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { trigger = { control = { province = 815 data = -3 } } type = province_revoltrisk which = 815 value = -5 }
+		command = { trigger = { control = { province = 816 data = -3 } } type = province_revoltrisk which = 816 value = -5 }
+		command = { trigger = { control = { province = 817 data = -3 } } type = province_revoltrisk which = 817 value = -5 }
+		command = { trigger = { control = { province = 836 data = -3 } } type = province_revoltrisk which = 836 value = -5 }
+		command = { trigger = { control = { province = 837 data = -3 } } type = province_revoltrisk which = 837 value = -5 }
+		command = { trigger = { control = { province = 838 data = -3 } } type = province_revoltrisk which = 838 value = -5 }
+		command = { trigger = { control = { province = 822 data = -3 } } type = province_revoltrisk which = 822 value = -5 }
+		command = { trigger = { control = { province = 823 data = -3 } } type = province_revoltrisk which = 823 value = -5 }
+		command = { trigger = { control = { province = 820 data = -3 } } type = province_revoltrisk which = 820 value = -5 }
+		command = { trigger = { control = { province = 825 data = -3 } } type = province_revoltrisk which = 825 value = -5 }
+		command = { trigger = { control = { province = 829 data = -3 } } type = province_revoltrisk which = 829 value = -5 }
+		command = { trigger = { control = { province = 830 data = -3 } } type = province_revoltrisk which = 830 value = -5 }
+		command = { trigger = { control = { province = 819 data = -3 } } type = province_revoltrisk which = 819 value = -5 }
+		command = { trigger = { control = { province = 821 data = -3 } } type = province_revoltrisk which = 821 value = -5 }
+		command = { trigger = { control = { province = 818 data = -3 } } type = province_revoltrisk which = 818 value = -5 }
+		command = { trigger = { control = { province = 828 data = -3 } } type = province_revoltrisk which = 828 value = -5 }
+		command = { trigger = { control = { province = 831 data = -3 } } type = province_revoltrisk which = 831 value = -5 }
+		command = { trigger = { control = { province = 826 data = -3 } } type = province_revoltrisk which = 826 value = -5 }
+		command = { trigger = { control = { province = 827 data = -3 } } type = province_revoltrisk which = 827 value = -5 }
+		command = { trigger = { control = { province = 824 data = -3 } } type = province_revoltrisk which = 824 value = -5 }
+		command = { trigger = { control = { province = 834 data = -3 } } type = province_revoltrisk which = 834 value = -5 }
+		command = { type = trigger which = 273006 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166067] ITA | 1933 | Subsidize Development in Italian East Africa (Subvencionar el desarrollo del África Oriental Italiana)
+# Triggered by event 166066 in events/ITA/ITA_Decisions.txt
+# Trigger event 166068 in events/ITA/ITA_Decisions.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166067
+	random = no
+	country = ITA
+	decision = {
+		event = 166066
+	}
+	decision_trigger = {
+		money = 100
+	}
+	trigger = {
+		event = 166066
+		random = 60
+	}
+   	name = EVT_ITA_166067_NAME
+	desc = EVT_ITA_166067_DESC
+	style = 2
+	picture = "ITA/aoi_development"
+	decision_picture = "ITA/decision_aoi"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		ai_chance = 15
+		name = EVT_ITA_166067_A
+		command = { type = dissent value = -1 }
+		command = { type = construct which = infrastructure where = 815 value = 10 }
+		command = { type = construct which = infrastructure where = 816 value = 10 }
+		command = { type = construct which = infrastructure where = 817 value = 10 }
+		command = { type = construct which = naval_base where = 816 value = 2 }
+		command = { type = province_manpower which = 816 value = 1 }
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { trigger = { control = { province = 815 data = -3 } } type = province_revoltrisk which = 815 value = -10 }
+		command = { trigger = { control = { province = 816 data = -3 } } type = province_revoltrisk which = 816 value = -10 }
+		command = { trigger = { control = { province = 817 data = -3 } } type = province_revoltrisk which = 817 value = -10 }
+		command = { trigger = { control = { province = 822 data = -3 } } type = province_revoltrisk which = 822 value = 5 }
+		command = { trigger = { control = { province = 823 data = -3 } } type = province_revoltrisk which = 823 value = 5 }
+		command = { trigger = { control = { province = 820 data = -3 } } type = province_revoltrisk which = 820 value = 5 }
+		command = { trigger = { control = { province = 825 data = -3 } } type = province_revoltrisk which = 825 value = 5 }
+		command = { trigger = { control = { province = 829 data = -3 } } type = province_revoltrisk which = 829 value = 5 }
+		command = { trigger = { control = { province = 830 data = -3 } } type = province_revoltrisk which = 830 value = 5 }
+		command = { trigger = { control = { province = 819 data = -3 } } type = province_revoltrisk which = 819 value = 5 }
+		command = { trigger = { control = { province = 821 data = -3 } } type = province_revoltrisk which = 821 value = 5 }
+		command = { trigger = { control = { province = 818 data = -3 } } type = province_revoltrisk which = 818 value = 5 }
+		command = { trigger = { control = { province = 828 data = -3 } } type = province_revoltrisk which = 828 value = 5 }
+		command = { trigger = { control = { province = 831 data = -3 } } type = province_revoltrisk which = 831 value = 5 }
+		command = { trigger = { control = { province = 826 data = -3 } } type = province_revoltrisk which = 826 value = 5 }
+		command = { trigger = { control = { province = 827 data = -3 } } type = province_revoltrisk which = 827 value = 5 }
+		command = { trigger = { control = { province = 824 data = -3 } } type = province_revoltrisk which = 824 value = 5 }
+		command = { trigger = { control = { province = 834 data = -3 } } type = province_revoltrisk which = 834 value = 5 }
+	}
+	action = {
+		ai_chance = 50
+		name = EVT_ITA_166067_B
+		command = { type = dissent value = -1 }
+		command = { type = construct which = infrastructure where = 825 value = 20 }
+		command = { type = construct which = air_base where = 825 value = 1 }
+		command = { type = construct which = anti_air where = 825 value = 1 }
+		command = { type = construct which = ic where = 825 value = 1 }
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { trigger = { control = { province = 815 data = -3 } } type = province_revoltrisk which = 825 value = -10 }
+		command = { trigger = { control = { province = 822 data = -3 } } type = province_revoltrisk which = 822 value = 5 }
+		command = { trigger = { control = { province = 823 data = -3 } } type = province_revoltrisk which = 823 value = 5 }
+		command = { trigger = { control = { province = 820 data = -3 } } type = province_revoltrisk which = 820 value = 5 }
+		command = { trigger = { control = { province = 825 data = -3 } } type = province_revoltrisk which = 825 value = 5 }
+		command = { trigger = { control = { province = 829 data = -3 } } type = province_revoltrisk which = 829 value = 5 }
+		command = { trigger = { control = { province = 830 data = -3 } } type = province_revoltrisk which = 830 value = 5 }
+		command = { trigger = { control = { province = 819 data = -3 } } type = province_revoltrisk which = 819 value = 5 }
+		command = { trigger = { control = { province = 821 data = -3 } } type = province_revoltrisk which = 821 value = 5 }
+		command = { trigger = { control = { province = 818 data = -3 } } type = province_revoltrisk which = 818 value = 5 }
+		command = { trigger = { control = { province = 828 data = -3 } } type = province_revoltrisk which = 828 value = 5 }
+		command = { trigger = { control = { province = 831 data = -3 } } type = province_revoltrisk which = 831 value = 5 }
+		command = { trigger = { control = { province = 826 data = -3 } } type = province_revoltrisk which = 826 value = 5 }
+		command = { trigger = { control = { province = 827 data = -3 } } type = province_revoltrisk which = 827 value = 5 }
+		command = { trigger = { control = { province = 824 data = -3 } } type = province_revoltrisk which = 824 value = 5 }
+		command = { trigger = { control = { province = 834 data = -3 } } type = province_revoltrisk which = 834 value = 5 }
+	}
+	action = {
+		ai_chance = 15
+		name = EVT_ITA_166067_C
+		command = { type = dissent value = -1 }
+		command = { type = construct which = infrastructure where = 838 value = 10 }
+		command = { type = construct which = infrastructure where = 836 value = 10 }
+		command = { type = construct which = air_base where = 836 value = 1 }
+		command = { type = construct which = anti_air where = 836 value = 1 }
+		command = { type = province_manpower which = 836 value = 1 }
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { trigger = { control = { province = 822 data = -3 } } type = province_revoltrisk which = 822 value = 5 }
+		command = { trigger = { control = { province = 823 data = -3 } } type = province_revoltrisk which = 823 value = 5 }
+		command = { trigger = { control = { province = 820 data = -3 } } type = province_revoltrisk which = 820 value = 5 }
+		command = { trigger = { control = { province = 825 data = -3 } } type = province_revoltrisk which = 825 value = 5 }
+		command = { trigger = { control = { province = 829 data = -3 } } type = province_revoltrisk which = 829 value = 5 }
+		command = { trigger = { control = { province = 830 data = -3 } } type = province_revoltrisk which = 830 value = 5 }
+		command = { trigger = { control = { province = 819 data = -3 } } type = province_revoltrisk which = 819 value = 5 }
+		command = { trigger = { control = { province = 821 data = -3 } } type = province_revoltrisk which = 821 value = 5 }
+		command = { trigger = { control = { province = 818 data = -3 } } type = province_revoltrisk which = 818 value = 5 }
+		command = { trigger = { control = { province = 828 data = -3 } } type = province_revoltrisk which = 828 value = 5 }
+		command = { trigger = { control = { province = 831 data = -3 } } type = province_revoltrisk which = 831 value = 5 }
+		command = { trigger = { control = { province = 826 data = -3 } } type = province_revoltrisk which = 826 value = 5 }
+		command = { trigger = { control = { province = 827 data = -3 } } type = province_revoltrisk which = 827 value = 5 }
+		command = { trigger = { control = { province = 824 data = -3 } } type = province_revoltrisk which = 824 value = 5 }
+		command = { trigger = { control = { province = 834 data = -3 } } type = province_revoltrisk which = 834 value = 5 }
+	}
+	action = {
+		ai_chance = 20
+		name = ACTION_NAME_ACCEPT
+		command = { type = dissent value = -1 }
+		command = { type = construct which = infrastructure where = 821 value = 10 }
+		command = { type = construct which = infrastructure where = 820 value = 10 }
+		command = { type = construct which = infrastructure where = 831 value = 10 }
+		command = { type = construct which = infrastructure where = 826 value = 10 }
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { trigger = { control = { province = 822 data = -3 } } type = province_revoltrisk which = 822 value = -5 }
+		command = { trigger = { control = { province = 823 data = -3 } } type = province_revoltrisk which = 823 value = -5 }
+		command = { trigger = { control = { province = 820 data = -3 } } type = province_revoltrisk which = 820 value = -5 }
+		command = { trigger = { control = { province = 825 data = -3 } } type = province_revoltrisk which = 825 value = -5 }
+		command = { trigger = { control = { province = 829 data = -3 } } type = province_revoltrisk which = 829 value = -5 }
+		command = { trigger = { control = { province = 830 data = -3 } } type = province_revoltrisk which = 830 value = -5 }
+		command = { trigger = { control = { province = 819 data = -3 } } type = province_revoltrisk which = 819 value = -5 }
+		command = { trigger = { control = { province = 821 data = -3 } } type = province_revoltrisk which = 821 value = -5 }
+		command = { trigger = { control = { province = 818 data = -3 } } type = province_revoltrisk which = 818 value = -5 }
+		command = { trigger = { control = { province = 828 data = -3 } } type = province_revoltrisk which = 828 value = -5 }
+		command = { trigger = { control = { province = 831 data = -3 } } type = province_revoltrisk which = 831 value = -5 }
+		command = { trigger = { control = { province = 826 data = -3 } } type = province_revoltrisk which = 826 value = -5 }
+		command = { trigger = { control = { province = 827 data = -3 } } type = province_revoltrisk which = 827 value = -5 }
+		command = { trigger = { control = { province = 824 data = -3 } } type = province_revoltrisk which = 824 value = -5 }
+		command = { trigger = { control = { province = 834 data = -3 } } type = province_revoltrisk which = 834 value = -5 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166068] ITA | 1933 | Enlist Dubat Irregulars in Colonial Formations (Reclutar fuerzas irregulares Dubat en el ejército colonial)
+# Triggered by event 166067 in events/ITA/ITA_Decisions.txt
+# Trigger event 273007 in events/Minors/U49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166068
+	random = no
+	country = ITA
+	decision = {
+		event = 166067
+	}
+	decision_trigger = {
+		money = 50
+	}
+	trigger = {
+		event = 166067
+		random = 60
+	}
+   	name = EVT_SHARED_00336_NAME
+	desc = EVT_SHARED_00336_DESC
+	style = 2
+	picture = "GLOBAL/dubats"
+	decision_picture = "ITA/decision_aoi"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { trigger = { control = { province = 815 data = -3 } } type = province_revoltrisk which = 815 value = -5 }
+		command = { trigger = { control = { province = 816 data = -3 } } type = province_revoltrisk which = 816 value = -5 }
+		command = { trigger = { control = { province = 817 data = -3 } } type = province_revoltrisk which = 817 value = -5 }
+		command = { trigger = { control = { province = 822 data = -3 } } type = province_revoltrisk which = 822 value = -5 }
+		command = { trigger = { control = { province = 823 data = -3 } } type = province_revoltrisk which = 823 value = -5 }
+		command = { trigger = { control = { province = 820 data = -3 } } type = province_revoltrisk which = 820 value = -5 }
+		command = { trigger = { control = { province = 825 data = -3 } } type = province_revoltrisk which = 825 value = -5 }
+		command = { trigger = { control = { province = 829 data = -3 } } type = province_revoltrisk which = 829 value = -5 }
+		command = { trigger = { control = { province = 830 data = -3 } } type = province_revoltrisk which = 830 value = -5 }
+		command = { trigger = { control = { province = 819 data = -3 } } type = province_revoltrisk which = 819 value = -5 }
+		command = { trigger = { control = { province = 821 data = -3 } } type = province_revoltrisk which = 821 value = -5 }
+		command = { trigger = { control = { province = 818 data = -3 } } type = province_revoltrisk which = 818 value = -5 }
+		command = { trigger = { control = { province = 828 data = -3 } } type = province_revoltrisk which = 828 value = -5 }
+		command = { trigger = { control = { province = 831 data = -3 } } type = province_revoltrisk which = 831 value = -5 }
+		command = { trigger = { control = { province = 826 data = -3 } } type = province_revoltrisk which = 826 value = -5 }
+		command = { trigger = { control = { province = 827 data = -3 } } type = province_revoltrisk which = 827 value = -5 }
+		command = { trigger = { control = { province = 824 data = -3 } } type = province_revoltrisk which = 824 value = -5 }
+		command = { trigger = { control = { province = 834 data = -3 } } type = province_revoltrisk which = 834 value = -5 }
+		command = { type = trigger which = 273007 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166072] ITA | 1933 | Form the Decima Flottiglia MAS (Creación de la Decima Flottiglia MAS)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166072
+	random = no
+	country = ITA
+	decision = {
+		technology = 1560
+	}
+	decision_trigger = {
+		technology = 1570
+		money = 50
+		supplies = 100
+	}
+	trigger = {
+		technology = 1570
+		random = 20
+	}
+   	name = EVT_ITA_166072_NAME
+	desc = EVT_ITA_166072_DESC
+	style = 2
+	picture = "GLOBAL/frogmen"
+	decision_picture = "GLOBAL/decision_frogmen"
+	date = { day = 1 month = january year = 1933 }
+	offset = 60
+	deathdate = { day = 29 month = december year = 1999 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = river_attack which = infantry value = 2 }
+		command = { type = shore_attack which = infantry value = 2 }
+		command = { type = build_time which = infantry when = on_upgrade where = relative value = 6 }
+		command = { type = river_attack which = marine value = 2 }
+		command = { type = shore_attack which = marine value = 2 }
+		command = { type = build_time which = marine when = on_upgrade where = relative value = 6 }
+		command = { trigger = { ai = no } type = money value = -50 }
+		command = { trigger = { ai = no } type = supplies value = -100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329553] ITA | 1933 | Offer Shkoder to Yugoslavia (Ofrecer Shkoder a Yugoslavia)
+# Trigger event 323028 in events/Minors/YUG.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329553
+	random = no
+	country = ITA
+       decision = {
+		NOT = { war = { country = YUG country = ITA } }
+		NOT = { exists = ALB }
+}
+	decision_trigger = {
+		relation = { which = YUG value = 50 }
+		NOT = { war = { country = YUG country = ITA } }
+		NOT = { exists = ALB }
+	}
+	trigger = {
+		relation = { which = YUG value = 50 }
+		NOT = { war = { country = YUG country = ITA } }
+		NOT = { exists = ALB }
+    }
+	name = "EVT_ITA_329553_NAME"
+	desc = "EVT_SHARED_01185_DESC"
+	style = 2
+	picture = "GLOBAL/cianobelgrade"
+	decision_picture = "GLOBAL/decision_shkoder"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 323028 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329072] ITA | 1935 | The Second Italo-Abyssinian War (La Segunda Guerra Ítalo-Etíope)
+# Trigger event 166063 in events/ITA/ITA_Decisions.txt
+# Trigger event 166070 in events/ITA/ITA_20-34.txt
+# Trigger event 166071 in events/ITA/ITA_20-34.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329072
+	random = no
+	country = ITA
+	decision = { not = { war = { country = ITA country = ETH } }
+			exists = ETH
+	}
+	decision_trigger = {
+			headofgovernment = 25002
+	}
+	trigger = {
+			exists = ETH
+			headofgovernment = 25002
+			random = 5
+			not = { war = { country = ITA country = ETH } }
+	}
+	name = "EVT_ITA_329072_NAME"
+	desc = "EVT_ITA_329072_DESC"
+	style = 2
+	picture = "GLOBAL/mussolini"
+	decision_picture = "GLOBAL/decision_rapallo_conference"
+	date = { day = 1 month = january year = 1935 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+	action = {
+		name = "ACTION_NAME_FIGHT"
+		command = { type = war which = ETH }
+		command = { type = local_clrflag which = ItaEthPeace }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166060] ITA | 1936 | The Collapse of France (El colapso inminente de Francia)
+# Triggered by event 150031 in events/GER/GER_33-36.txt
+# Trigger event 150145 in events/GER/GER_36-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166060
+	random = no
+	country = ITA
+	decision = {
+		control = { province = 55 data = GER }
+		control = { province = 163 data = GER }
+		headofgovernment = 25002
+		war = { country = GER country = ENG }
+		NOT = { war = { country = GER country = SOV } }
+		NOT = { war = { country = GER country = USA } }
+		NOT = { war = { country = ITA country = ENG } }
+		NOT = { war = { country = ITA country = GER } }
+		NOT = { alliance = { country = ITA country = SOV } }
+		NOT = { alliance = { country = ITA country = ENG } }
+		NOT = { alliance = { country = ITA country = GER } }
+	}
+	decision_trigger = {
+		control = { province = 55 data = GER }
+		event = 150031
+	}
+	trigger = {
+		control = { province = 55 data = GER }
+		event = 150031
+		control = { province = 163 data = GER }
+		headofgovernment = 25002
+		war = { country = GER country = ENG }
+		NOT = { war = { country = GER country = SOV } }
+		NOT = { war = { country = GER country = USA } }
+		NOT = { war = { country = ITA country = ENG } }
+		NOT = { war = { country = ITA country = GER } }
+		NOT = { alliance = { country = ITA country = SOV } }
+		NOT = { alliance = { country = ITA country = ENG } }
+		NOT = { alliance = { country = ITA country = GER } }
+		OR = {
+			ai = no
+			garrison = { country = ITA province = 396 type = land size = 1 area = 1 }
+		}
+	}
+	date = { day = 1 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = september year = 1999 }
+	name = EVT_ITA_166060_NAME
+	desc = EVT_ITA_166060_DESC
+  	style = 2
+	picture = "GLOBAL/pact_of_steel"
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = trigger which = 150145 }
+		command = { type = relation which = ENG value = -100 }
+		command = { type = relation which = FRA value = -100 }
+		command = { type = relation which = GER value = 50 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329000] ITA | 1936 | Invasion of Albania (Invasión de Albania)
+# Triggered by event 150038 in events/GER/GER_Decisions.txt
+# Triggered by event 150036 in events/GER/GER_33-36.txt
+# Trigger event 101009 in events/Minors/ALB.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329000
+	random = no
+	country = ITA
+	decision = {
+		event = 150038
+		exists = ALB
+		NOT = {
+			alliance = { country = ALB country = ITA }
+			war = { country = ALB country = ITA }
+		}
+	}
+	decision_trigger = {
+		OR = {
+			event = 150038
+			event = 150036
+		}
+		exists = ALB
+		NOT = {    alliance = { country = ALB country = ITA }
+			war = { country = ALB country = ITA }
+		}
+	}
+	trigger = {
+        OR = {
+			random = 6
+			AND = {
+				month = june
+				year = 1939
+				random = 50
+			}
+		}
+		OR = {
+			event = 150038
+			event = 150036
+		}
+		exists = ALB
+		NOT = {
+			OR = {
+				alliance = { country = ALB country = ITA }
+				war = { country = ALB country = ITA }
+			}
+		}
+	}
+	name = "EVT_ITA_329000_NAME"
+	desc = "EVT_ITA_329000_DESC"
+	style = 2
+	picture = "ITA/invasion_of_albania"
+	date = { day = 1 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action= {
+		name = ACTION_NAME_OK
+		ai_chance = 100
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = trigger which = 101009 }
+		command = { type = relation which = ALB value = -20 }
+		command = { type = relation which = YUG value = -5 }
+		command = { type = relation which = GRE value = -5 }
+		command = { type = addclaim which = 329 }
+		command = { type = addclaim which = 334 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329115] ITA | 1936 | The Anti-Comintern Pact (El Pacto Antikomintern)
+# Triggered by event 329114 in events/GER/GER_Decisions.txt
+# Triggered by event 167033 in events/JAP/JAP_36-37.txt
+# Trigger event 150531 in events/GER/GER_33-33_2.txt
+# Trigger event 150031 in events/GER/GER_33-36.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329115
+	random = no
+	country = ITA
+	decision = {
+		event = 329114
+		exists = GER
+		exists = SOV
+		NOT = {
+			war = { country = GER country = ITA }
+			war = { country = GER country = JAP }
+			war = { country = JAP country = ITA }
+			alliance = { country = GER country = SOV }
+			alliance = { country = JAP country = SOV }
+			alliance = { country = ITA country = SOV }
+		}
+	}
+	decision_trigger = {
+		OR = {
+			alliance = { country = GER country = ITA }
+			year = 1938
+			event = 167033
+		}
+	}
+	trigger = {
+		OR = {
+			alliance = { country = GER country = ITA }
+			AND = {
+				flag = JAP_Anti_comintern_pact
+				random = 10
+			}
+			AND = {
+				flag = NO_JAP_Anti_comintern_pact
+				random = 5
+			}
+			AND = {
+				month = 2
+				year = 1938
+				random = 90
+			}
+		}
+		exists = GER
+		exists = SOV
+		NOT = {
+			war = { country = GER country = ITA }
+			war = { country = GER country = JAP }
+			war = { country = JAP country = ITA }
+			alliance = { country = GER country = SOV }
+			alliance = { country = JAP country = SOV }
+			alliance = { country = ITA country = SOV }
+		}
+	}
+	name = EVT_ITA_329115_NAME
+	desc = EVT_ITA_329115_DESC
+	style = 2
+	picture = "GLOBAL/pact_of_steel"
+	decision_picture = "GLOBAL/decision_anticominternpact"
+	date = { day = 0 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = domestic which = freedom value = -1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = FRA value = -10 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = relation which = GER value = 20 }
+		command = { type = end_guarantee which = ITA where = AUS }
+		command = { type = setflag which = ITA_Anti_comintern_pact }
+		command = { type = trigger which = 150031 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329310] ITA | 1936 | Spanish Civil War: Foreign Policy (Guerra civil española: Intervención)
+# Triggered by event 225010 in events/Minors/SPR.txt
+# Trigger event 329182 in events/ITA/ITA_34-36.txt
+# Trigger event 224017 in events/Minors/SPA.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329310
+	random = no
+	country = ITA
+	decision = {
+		government = fascist
+		war = { country = SPA country = SPR }
+		event = 225010
+		NOT = {
+			OR = {
+			war = { country = ITA country = SPA }
+			war = { country = ITA country = SOV }
+			war = { country = ITA country = ENG }
+			war = { country = ITA country = USA }
+			}
+		}
+	}
+	decision_trigger = {
+		manpower = 10
+		supplies = 1000
+		money = 200
+	}
+	trigger = {
+		government = fascist
+		war = { country = SPA country = SPR }
+		event = 225010
+		NOT = {
+			OR = {
+			war = { country = ITA country = SPA }
+			war = { country = ITA country = SOV }
+			war = { country = ITA country = ENG }
+			war = { country = ITA country = USA }
+			}
+		}
+	}
+	name = "EVT_ITA_329310_NAME"
+	desc = "EVT_ITA_329310_DESC"
+	style = 2
+	picture = "GLOBAL/corpo_truppe_volontarie"
+	date = { day = 19 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "EVT_ITA_329310_A"
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SPA value = 20 }
+		command = { type = relation which = SPR value = -20 }
+		command = { type = relation which = FRA value = -5 }
+		command = { type = relation which = ENG value = -5 }
+		command = { type = relation which = SOV value = -5 }
+		command = { type = relation which = GER value = 5 }
+		command = { type = manpowerpool value = -30 }
+		command = { trigger = { ai = no } type = trade which = SPA where = ITA supplies = 20 when = 1080 value = 1 }
+		command = { type = money value = -200 }
+		command = { type = trigger which = 224017 }
+		command = { type = belligerence which = ITA value = 1 }
+		command = { type = ministerofintelligence which = 25112 }
+	}
+	action = {
+		trigger = {
+			ai = no
+			supplies = 2000
+			money = 400
+		}
+		name = EVT_SHARED_00204_A
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SPA value = 20 }
+		command = { type = relation which = SPR value = -20 }
+		command = { type = relation which = FRA value = -5 }
+		command = { type = relation which = ENG value = -5 }
+		command = { type = relation which = SOV value = -5 }
+		command = { type = relation which = GER value = 5 }
+		command = { type = manpowerpool value = -30 }
+		command = { type = trade which = SPA where = ITA supplies = 20 when = 1080 value = 1 }
+		command = { type = money value = -400 }
+		command = { type = trigger which = 224017 }
+		command = { type = belligerence which = ITA value = 3 }
+		command = { type = military_control which = ITA where = SPA value = 1 }
+		command	= { type = local_setflag which = military_control }
+		command = { type = ministerofintelligence which = 25112 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166062] ITA | 1937 | Construction of the Via Balbia in Libya (Construcción de la Vía Balbia en Libia)
+# ----------------------------------------------------------------------------
+event = {
+	id = 166062
+	random = no
+	country = ITA
+	decision = {
+		year = 1937
+		atwar = no
+	}
+	decision_trigger = {
+		supplies = 1000
+		energy = 5000
+		metal = 2500
+	}
+	trigger = {
+		year = 1937
+		atwar = no
+		random = 10
+	}
+	name = EVT_ITA_166062_NAME
+	desc = EVT_ITA_166062_DESC
+	style = 2
+	picture = "ITA/via_balbia"
+	decision_picture = "ITA/decision_via_balbia"
+	date = { day = 1 month = january year = 1937 }
+	offset = 30
+	deathdate = { day = 29 month = august year = 1939 }
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = construct which = infrastructure where = 752 value = 20 }
+		command = { type = construct which = infrastructure where = 750 value = 20 }
+		command = { type = construct which = infrastructure where = 757 value = 20 }
+		command = { type = construct which = infrastructure where = 756 value = 20 }
+		command = { type = construct which = infrastructure where = 759 value = 20 }
+		command = { type = construct which = infrastructure where = 762 value = 20 }
+		command = { type = construct which = infrastructure where = 763 value = 20 }
+		command = { type = construct which = infrastructure where = 761 value = 20 }
+		command = { type = construct which = infrastructure where = 764 value = 20 }
+		command = { type = construct which = infrastructure where = 768 value = 20 }
+		command = { type = construct which = infrastructure where = 767 value = 20 }
+		command = { type = construct which = infrastructure where = 765 value = 20 }
+		command = { type = construct which = infrastructure where = 771 value = 20 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { trigger = { ai = no } type = metalpool value = -2500 }
+		command = { trigger = { ai = no } type = energypool value = -5000 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [166095] ITA | 1937 | Italo-Yugoslav treaty of friendship and trade agreement (Tratado italo-yugoslavo de amistad y acuerdo comercial)
+# Triggered by event 323008 in events/Minors/YUG_Decisions.txt
+# Trigger event 323014 in events/Minors/YUG.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 166095
+	random = no
+	country = ITA
+	decision = {
+		exists = YUG
+		year = 1937
+	}
+	decision_trigger = {
+                        event = 323008
+		}
+	trigger = {
+                exists = YUG
+		NOT = {
+			OR = {
+				ispuppet = ITA
+				ispuppet = YUG
+				war = { country = ITA country = YUG }
+			}
+		}
+                        AND = {
+				year = 1937
+				month = march
+				random = 75
+			}
+   }
+	name = "EVT_SHARED_01183_NAME"
+	desc = "EVT_SHARED_01183_DESC"
+	style = 2
+	picture = "GLOBAL/italoyugoslav"
+	decision_picture = "GLOBAL/decision_italoyugoslav"
+	date = { day = 1 month = february year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = ACTION_NAME_AGREE
+                command = { type = dissent value = -1 }
+		command = { type = trigger which = 323014 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# [329319] ITA | 1939 | Reinforcements to East Africa (Refuerzos al África Oriental)
+# Trigger event 273004 in events/Minors/U49.txt
+# ----------------------------------------------------------------------------
+event = {
+	id = 329319
+	random = no
+	country = ITA
+	style = 2
+	picture = "GLOBAL/convoys"
+	decision_picture = "GLOBAL/decision_desert_equipment_start"
+	decision = {
+		exists = U49
+		war = { country = ITA country = ENG }
+	}
+	decision_trigger = {
+		control = { province = 900 data = -3 }
+		OR = {
+			control = { province = 815 data = U49 }
+			control = { province = 816 data = U49 }
+		}
+		manpower = 30
+		supplies = 800
+		convoypool = 30
+	}
+	trigger = {
+		control = { province = 900 data = -3 }
+		OR = {
+			control = { province = 815 data = U49 }
+			control = { province = 816 data = U49 }
+		}
+		manpower = 25
+		supplies = 800
+		convoypool = 30
+	}
+	name = "EVT_ITA_329319_NAME"
+	desc = "EVT_ITA_329319_DESC"
+	date = { day = 1 month = january year = 1939 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1963 }
+	action = {
+		name = "ACTION_NAME_YES"
+		command = { type = manpowerpool value = -90 }
+		command = { type = supplies value = -800 }
+		command = { type = transport_pool which = -1 value = -30 }
+		command = { type = trigger which = 273004 }
+	}
+}
