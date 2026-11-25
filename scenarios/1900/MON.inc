@@ -47,7 +47,7 @@ country = {
     interventionism   = 4
   }
   headofstate            = { type = 9 id = 300110 } # Bogd Kahn
-  headofgovernment       = { type = 9 id = 300096 } # Balingiin Tserendorj
+  headofgovernment       = { type = 9 id = 300104 } # Balingiin Tserendorj
 
   landunit = {
     id       = { type = 30500 id = 1 }

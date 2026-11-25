@@ -43,7 +43,7 @@ country = {
   }
 
   headofstate            = { type = 9 id = 325012 } # Emilio Aguinaldo
-  headofgovernment       = { type = 9 id = 325026 } # Emilio Aguinaldo
+  headofgovernment       = { type = 9 id = 325002 } # Sergio Osmeña
 
   landunit = {
     id       = { type = 32500 id = 1 }

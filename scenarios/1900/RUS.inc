@@ -1572,7 +1572,7 @@ country = {
   }
 
     
-  {
+  division = {
     id             = { type = 10848 id = 543 }
     name           = "Sevastopol"
     type           = battleship
@@ -1580,7 +1580,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = november day = 29 }
   }
-  {
+  division = {
     id             = { type = 10848 id = 544 }
     name           = "Petropavlovsk"
     type           = battleship
@@ -1588,7 +1588,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = january day = 5 }
   }
-  {
+  division = {
     id             = { type = 10848 id = 545 }
     name           = "Poltava"
     type           = battleship
@@ -1596,7 +1596,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = december day = 29 }
   }
-  {
+  division = {
     id             = { type = 10848 id = 546 }
     name           = "Gangut"
     type           = battleship
@@ -1604,7 +1604,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = january day = 11 }
   }
-  {
+  division = {
     id             = { type = 10848 id = 547 }
     name           = "Imperatritsa Mariya"
     type           = battleship
@@ -1612,7 +1612,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = june day = 10 }
   }
-  {
+  division = {
     id             = { type = 10848 id = 548 }
     name           = "Imp. Ekaterina Velikaya"
     type           = battleship
@@ -1620,7 +1620,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = october day = 18 }
   }
-  {
+  division = {
     id             = { type = 10848 id = 549 }
     name           = "Imperator Alexander III"
     type           = battleship

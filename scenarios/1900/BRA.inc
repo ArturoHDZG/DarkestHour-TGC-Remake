@@ -142,13 +142,13 @@ country = {
       type           = battleship
       model          = 0
     }
-    {
+    division = {
       id             = { type = 18000 id = 501 }
       name           = "Minas Gerais"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 18000 id = 502 }
       name           = "Sao Paulo"
       type           = battleship

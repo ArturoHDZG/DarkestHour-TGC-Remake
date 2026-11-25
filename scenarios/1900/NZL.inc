@@ -57,7 +57,7 @@ country = {
     interventionism   = 6
   }
   headofstate            = { type = 9 id = 215107 } # Arthur Foljambe
-  headofgovernment       = { type = 9 id = 215111 } # Charles Bathurst Viscount Bledisloe
+  headofgovernment       = { type = 9 id = 215002 } # Michael Joseph Savage
   ministerofsecurity     = { type = 9 id = 215110 } # Francis Bell
   chiefofnavy            = { type = 9 id = 215102 } # Percival Hall-Thompson
 

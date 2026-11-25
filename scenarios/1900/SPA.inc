@@ -295,7 +295,7 @@ country = {
     name     = "Armada Española"
     location = 473
     base     = 473
-    {
+    division = {
       id             = { type = 28111 id = 501 }
       name           = "España"
       type           = battleship
@@ -376,7 +376,7 @@ country = {
   }
 
   
-  {
+  division = {
     id             = { type = 28111 id = 512 }
     name           = "Alfonso XIII"
     type           = battleship
@@ -384,7 +384,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = august day = 16 }
   }
-  {
+  division = {
     id             = { type = 28111 id = 513 }
     name           = "Jaime I"
     type           = battleship

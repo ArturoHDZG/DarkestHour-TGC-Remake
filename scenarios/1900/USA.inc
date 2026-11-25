@@ -176,7 +176,7 @@ country = {
     defense_lobby     = 1
     interventionism   = 1
   }
-  headofstate            = { type = 9 id = 240307 } # William McKinley
+  headofstate            = { type = 9 id = 240337 } # William McKinley
   headofgovernment       = { type = 9 id = 240309 } # William Jennings Bryan
   foreignminister        = { type = 9 id = 240285 } # William Jennings Bryan
   armamentminister       = { type = 9 id = 240345 } # W.G. McAdoo
@@ -802,7 +802,7 @@ country = {
     }
   }
 
-  {
+  division = {
     id             = { type = 10054 id = 549 }
     name           = "USS Nevada"
     type           = battleship
@@ -810,7 +810,7 @@ country = {
     cost           = 0.4
     date           = { year = 1916 month = march day = 11 }
   }
-  {
+  division = {
     id             = { type = 10054 id = 550 }
     name           = "USS Oklahoma"
     type           = battleship
@@ -818,7 +818,7 @@ country = {
     cost           = 0.4
     date           = { year = 1916 month = may day = 2 }
   }
-  {
+  division = {
     id             = { type = 10054 id = 551 }
     name           = "USS Pennsylvania"
     type           = battleship
@@ -826,7 +826,7 @@ country = {
     cost           = 0.4
     date           = { year = 1916 month = june day = 12 }
   }
-  {
+  division = {
     id             = { type = 10054 id = 552 }
     name           = "USS Arizona"
     type           = battleship
@@ -834,7 +834,7 @@ country = {
     cost           = 0.4
     date           = { year = 1916 month = october day = 17 }
   }
-  {
+  division = {
     id             = { type = 10054 id = 553 }
     name           = "USS New Mexico"
     type           = battleship
@@ -842,7 +842,7 @@ country = {
     cost           = 0.4
     date           = { year = 1918 month = may day = 20 }
   }
-  {
+  division = {
     id             = { type = 10054 id = 554 }
     name           = "USS Mississippi"
     type           = battleship
@@ -850,7 +850,7 @@ country = {
     cost           = 0.4
     date           = { year = 1917 month = december day = 18 }
   }
-  {
+  division = {
     id             = { type = 10054 id = 555 }
     name           = "USS Idaho"
     type           = battleship

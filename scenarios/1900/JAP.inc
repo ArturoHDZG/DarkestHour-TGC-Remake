@@ -61,7 +61,7 @@ country = {
   armamentminister       = { type = 9 id = 50302 } # Wakatsuki Reijiro
   ministerofsecurity     = { type = 9 id = 50319 } # Okuma Shigenobu
   chiefofstaff           = { type = 9 id = 50320 } # Yamagata Aritomo
-  chiefofarmy            = { type = 9 id = 50321 } # Yamagata Aritomo
+  chiefofarmy            = { type = 9 id = 50008 } # Kanin Kotohito
   chiefofnavy            = { type = 9 id = 50223 } # Ijuin Goro
   chiefofair             = { type = 9 id = 50322 } # Yamagata Aritomo
 
@@ -322,7 +322,7 @@ country = {
     name     = "1 Sentai"
     location = 1552
     base     = 1552
-    {
+    division = {
       id             = { type = 30111 id = 501 }
       name           = "Kawachi"
       type           = battleship
@@ -406,7 +406,7 @@ country = {
       type           = battlecruiser
       model          = 1
     }
-    {
+    division = {
       id             = { type = 30111 id = 512 }
       name           = "Settsu"
       type           = battleship
@@ -751,7 +751,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = april day = 19 }
   }
-  {
+  division = {
     id             = { type = 30111 id = 558 }
     name           = "Fuso"
     type           = battleship
@@ -759,7 +759,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = november day = 18 }
   }
-  {
+  division = {
     id             = { type = 30111 id = 559 }
     name           = "Yamashiro"
     type           = battleship

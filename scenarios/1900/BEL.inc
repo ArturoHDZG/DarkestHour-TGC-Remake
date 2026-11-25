@@ -59,7 +59,7 @@ country = {
     interventionism   = 3
   }
   headofstate            = { type = 9 id = 70187 } # Albert I
-  headofgovernment       = { type = 9 id = 70183 } # Charles de Broqueville
+  headofgovernment       = { type = 9 id = 70172 } # Charles de Broqueville
   foreignminister        = { type = 9 id = 70164 } # Jules Davignon
   armamentminister       = { type = 9 id = 70190 } # Aloys Van de Vyvere
   ministerofsecurity     = { type = 9 id = 70196 } # P. Berryer

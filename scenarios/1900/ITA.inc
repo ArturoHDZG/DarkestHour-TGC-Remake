@@ -495,19 +495,19 @@ country = {
     name     = "1a Squadra Navale"
     location = 422
     base     = 422
-    {
+    division = {
       id             = { type = 23500 id = 501 }
       name           = "RN Giulio Cesare"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 23500 id = 502 }
       name           = "RN Leonardo da Vinci"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 23500 id = 503 }
       name           = "RN Dante Alighieri"
       type           = battleship
@@ -932,7 +932,7 @@ country = {
   }
 
   
-  {
+  division = {
     id             = { type = 23500 id = 580 }
     name           = "RN Conte di Cavour"
     type           = battleship
@@ -940,7 +940,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = april day = 6 }
   }
-  {
+  division = {
     id             = { type = 23500 id = 581 }
     name           = "RN Caio Duilio"
     type           = battleship
@@ -948,7 +948,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = may day = 10 }
   }
-  {
+  division = {
     id             = { type = 23500 id = 582 }
     name           = "RN Andrea Doria"
     type           = battleship

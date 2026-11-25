@@ -666,13 +666,13 @@ country = {
     name     = "1. Schwere Division"
     location = 406
     base     = 406
-    {
+    division = {
       id             = { type = 10100 id = 9092 }
       name           = "SMS Veribus Unitis"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 10100 id = 9093 }
       name           = "SMS Tegetthoff"
       type           = battleship
@@ -975,7 +975,7 @@ country = {
   }
 
   
-  {
+  division = {
     id             = { type = 10100 id = 9139 }
     name           = "SMS Szent Istvan"
     type           = battleship
@@ -999,7 +999,7 @@ country = {
     cost           = 0.2
     date           = { year = 1914 month = august day = 29 }
   }
-  {
+  division = {
     id             = { type = 10100 id = 9094 }
     name           = "SMS Prinz Eugen"
     type           = battleship

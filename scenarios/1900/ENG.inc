@@ -497,115 +497,115 @@ country = {
     name     = "Grand Fleet"
     location = 5
     base     = 5
-    {
+    division = {
       id             = { type = 27111 id = 761 }
       name           = "HMS Iron Duke"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 501 }
       name           = "HMS King George V"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 502 }
       name           = "HMS Conqueror"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 503 }
       name           = "HMS Monarch"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 504 }
       name           = "HMS Orion"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 505 }
       name           = "HMS Thunderer"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 506 }
       name           = "HMS Centurion"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 507 }
       name           = "HMS Audacious"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 508 }
       name           = "HMS Ajax"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 509 }
       name           = "HMS Dreadnought"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 510 }
       name           = "HMS Superb"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 511 }
       name           = "HMS Collingwood"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 512 }
       name           = "HMS St Vincent"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 513 }
       name           = "HMS Vanguard"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 514 }
       name           = "HMS Neptune"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 515 }
       name           = "HMS Colossus"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 516 }
       name           = "HMS Hercules"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 517 }
       name           = "HMS Bellerophon"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 27111 id = 518 }
       name           = "HMS Temeraire"
       type           = battleship
@@ -2084,7 +2084,7 @@ country = {
   }
 
     
-  {
+  division = {
     id             = { type = 27111 id = 762 }
     name           = "HMS Marlborough"
     type           = battleship
@@ -2092,7 +2092,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = june day = 15 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 763 }
     name           = "HMS Benbow"
     type           = battleship
@@ -2108,7 +2108,7 @@ country = {
     cost           = 0.3
     date           = { year = 1914 month = october day = 3 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 765 }
     name           = "HMS Emperor of India"
     type           = battleship
@@ -2116,7 +2116,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = november day = 10 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 766 }
     name           = "HMS Queen Elizabeth"
     type           = battleship
@@ -2124,7 +2124,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = january day = 15 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 767 }
     name           = "HMS Warspite"
     type           = battleship
@@ -2132,7 +2132,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = march day = 8 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 768 }
     name           = "HMS Barham"
     type           = battleship
@@ -2140,7 +2140,7 @@ country = {
     cost           = 0.4
     date           = { year = 1915 month = october day = 19 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 769 }
     name           = "HMS Malaya"
     type           = battleship
@@ -2148,7 +2148,7 @@ country = {
     cost           = 0.4
     date           = { year = 1916 month = february day = 15 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 770 }
     name           = "HMS Valiant"
     type           = battleship
@@ -2156,7 +2156,7 @@ country = {
     cost           = 0.4
     date           = { year = 1916 month = february day = 19 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 771 }
     name           = "HMS Revenge"
     type           = battleship
@@ -2164,7 +2164,7 @@ country = {
     cost           = 0.4
     date           = { year = 1916 month = march day = 15 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 772 }
     name           = "HMS Resolution"
     type           = battleship
@@ -2172,7 +2172,7 @@ country = {
     cost           = 0.4
     date           = { year = 1916 month = december day = 29 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 773 }
     name           = "HMS Ramillies"
     type           = battleship
@@ -2180,7 +2180,7 @@ country = {
     cost           = 0.4
     date           = { year = 1917 month = september day = 15 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 796 }
     name           = "HMS Royal Oak"
     type           = battleship
@@ -2188,7 +2188,7 @@ country = {
     cost           = 0.4
     date           = { year = 1916 month = may day = 1 }
   }
-  {
+  division = {
     id             = { type = 27111 id = 812 }
     name           = "HMS Royal Sovereign"
     type           = battleship

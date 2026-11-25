@@ -56,9 +56,9 @@ country = {
     defense_lobby     = 5
     interventionism   = 4
   }
-  headofstate            = { type = 9 id = 210140 } # Guillermo Soublette Garin
-  headofgovernment       = { type = 9 id = 210145 } # Francisco Neff
-  foreignminister        = { type = 9 id = 210158 } # Juan Luis Sanfuentes
+  headofstate            = { type = 9 id = 210158 } # Juan Luis Sanfuentes
+  headofgovernment       = { type = 9 id = 210002 } # Gustavo Ross Santa Maria
+  foreignminister        = { type = 9 id = 210003 } # Miguel Cruchaga Tacomal
   armamentminister       = { type = 9 id = 210194 } # Alfredo Barros Errázuriz
   ministerofsecurity     = { type = 9 id = 210243 } # Pedro Nicolás Montenegro Onel
   ministerofintelligence = { type = 9 id = 210270 } # Jorge Boonen Rivera

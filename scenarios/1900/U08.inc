@@ -1338,7 +1338,7 @@ country = {
     name     = "Flottenflaggschiff"
     location = 147
     base     = 147
-    {
+    division = {
       id             = { type = 10100 id = 565 }
       name           = "SMS Friedrich der Große"
       type           = battleship
@@ -1350,49 +1350,49 @@ country = {
     name     = "I. Geschwader"
     location = 147
     base     = 147
-    {
+    division = {
       id             = { type = 10100 id = 572 }
       name           = "SMS Ostfriesland"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 10100 id = 571 }
       name           = "SMS Helgoland"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 10100 id = 573 }
       name           = "SMS Thüringen"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 10100 id = 574 }
       name           = "SMS Oldenburg"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 10100 id = 567 }
       name           = "SMS Nassau"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 10100 id = 568 }
       name           = "SMS Westfalen"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 10100 id = 569 }
       name           = "SMS Rheinland"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 10100 id = 570 }
       name           = "SMS Posen"
       type           = battleship
@@ -1458,25 +1458,25 @@ country = {
     name     = "III. Geschwader"
     location = 147
     base     = 147
-    {
+    division = {
       id             = { type = 10100 id = 588 }
       name           = "SMS Prinzregent Luitpold"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 10100 id = 585 }
       name           = "SMS Kaiser"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 10100 id = 586 }
       name           = "SMS Kaiserin"
       type           = battleship
       model          = 1
     }
-    {
+    division = {
       id             = { type = 10100 id = 587 }
       name           = "SMS König Albert"
       type           = battleship
@@ -1815,7 +1815,7 @@ country = {
   }
 
         
-  {
+  division = {
     id             = { type = 10100 id = 644 }
     name           = "SMS Großer Kurfürst"
     type           = battleship
@@ -1823,7 +1823,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = july day = 29 }
   }
-  {
+  division = {
     id             = { type = 10100 id = 645 }
     name           = "SMS König"
     type           = battleship
@@ -1831,7 +1831,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = august day = 10 }
   }
-  {
+  division = {
     id             = { type = 10100 id = 646 }
     name           = "SMS Markgraf"
     type           = battleship
@@ -1839,7 +1839,7 @@ country = {
     cost           = 0.4
     date           = { year = 1914 month = october day = 1 }
   }
-  {
+  division = {
     id             = { type = 10100 id = 647 }
     name           = "SMS Kronprinz"
     type           = battleship
@@ -1871,7 +1871,7 @@ country = {
     cost           = 0.4
     date           = { year = 1917 month = may day = 10 }
   }
-  {
+  division = {
     id             = { type = 10100 id = 6147 }
     name           = "SMS Bayern"
     type           = battleship
@@ -1879,7 +1879,7 @@ country = {
     cost           = 0.4
     date           = { year = 1916 month = july day = 15 }
   }
-  {
+  division = {
     id             = { type = 10100 id = 6148 }
     name           = "SMS Baden"
     type           = battleship
@@ -1887,7 +1887,7 @@ country = {
     cost           = 0.4
     date           = { year = 1917 month = march day = 14 }
   }
-  {
+  division = {
     id             = { type = 10100 id = 6149 }
     name           = "SMS Sachsen"
     type           = battleship
