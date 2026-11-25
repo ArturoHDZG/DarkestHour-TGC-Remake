@@ -38,9 +38,9 @@ country = {
   }
   SpyInfo                = { country = "COL" NumberOfSpies = 3 }
 
-  nationalprovinces      = { 1756 1985 1986 1987 1990 1991 1994 2009 2077 2078 }
-  ownedprovinces         = { 1756 1985 1986 1987 1990 1991 1994 2009 2077 2078 }
-  controlledprovinces    = { 1756 1985 1986 1987 1990 1991 1994 2009 2077 2078 }
+  nationalprovinces      = { 1756 1985 1986 1987 1990 1991 1994 2009 2077 2078 889 }
+  ownedprovinces         = { 1756 1985 1986 1987 1990 1991 1994 2009 2077 2078 889 }
+  controlledprovinces    = { 1756 1985 1986 1987 1990 1991 1994 2009 2077 2078 889 }
   claimedprovinces       = { 2077 2078 889 }
 
   techapps               = { 1010 1020 3010 3810 6500 6510 8010 8050 13060 }
