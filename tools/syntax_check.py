@@ -10,6 +10,7 @@ Checks:
 """
 
 import csv
+import glob
 import os
 import re
 import sys
@@ -82,6 +83,21 @@ def check_localization():
                 missing_es.append((path, idx, cols[0]))
     return missing_es, bad_cols
 
+def check_csv_encoding():
+    bad_enc = []
+    for path in sorted(glob.glob("config/*.csv")):
+        if path.endswith("_ledger.csv"):
+            continue
+        with open(path, "rb") as f:
+            raw = f.read()
+        if raw.startswith(b"\xef\xbb\xbf"):
+            bad_enc.append((path, "UTF-8 BOM"))
+        if b"\xc2\xa7" in raw:
+            bad_enc.append((path, "UTF-8 corrupted section marker (0xC2 0xA7)"))
+        if re.search(rb"\xc3[\x80-\xbf]", raw):
+            bad_enc.append((path, "UTF-8 multi-byte Latin-1 mojibake (0xC3 xx)"))
+    return bad_enc
+
 def check_revolt():
     with open("db/revolt.txt", "r", encoding="latin-1") as f:
         lines = f.readlines()
@@ -120,6 +136,7 @@ def check_revolt():
 if __name__ == "__main__":
     br, syn, d31 = check_events()
     miss_es, bad_c = check_localization()
+    bad_enc = check_csv_encoding()
     rev_depth, rev_ov, rev_tok = check_revolt()
 
     print("=" * 72)
@@ -130,17 +147,19 @@ if __name__ == "__main__":
     print(f"  Block day=31 dates    : {len(d31)}")
     print(f"  Shifted CSV rows      : {len(bad_c)}")
     print(f"  Rows missing Spanish  : {len(miss_es)}")
+    print(f"  UTF-8/BOM CSV defects : {len(bad_enc)}")
     print(f"  revolt.txt brace depth: {rev_depth}")
     print(f"  revolt.txt overlaps   : {len(rev_ov)}")
     print(f"  revolt.txt bad tokens : {len(rev_tok)}")
 
-    ok = not (br or syn or d31 or bad_c or miss_es or rev_depth != 0 or rev_ov or rev_tok)
+    ok = not (br or syn or d31 or bad_c or miss_es or bad_enc or rev_depth != 0 or rev_ov or rev_tok)
     print("  Status:", "PASSED [OK]" if ok else "ISSUES DETECTED [WARN]")
     print("=" * 72)
 
     for grp_name, grp in [
         ("Brace", br), ("Syntax", syn), ("Day31", d31), ("CSVCols", bad_c),
-        ("MissingES", miss_es), ("RevoltOverlap", rev_ov), ("RevoltToken", rev_tok)
+        ("MissingES", miss_es), ("CSVEncoding", bad_enc),
+        ("RevoltOverlap", rev_ov), ("RevoltToken", rev_tok)
     ]:
         for item in grp[:10]:
             print(f"  [{grp_name}] {item}")
