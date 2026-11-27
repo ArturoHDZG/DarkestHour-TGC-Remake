@@ -11,6 +11,7 @@ Este documento resume los cambios aplicados en la rama temporal `fix/tech-ui-nam
 - `db/tech/armor_tech.txt`
 - `db/tech/naval_tech.txt`
 - `db/tech/aircraft_tech.txt`
+- `db/tech/industry_tech.txt`
 
 ---
 
@@ -136,3 +137,24 @@ Este documento resume los cambios aplicados en la rama temporal `fix/tech-ui-nam
   - `Bombardero Experimental de 1911`, `Bombardero Táctico ... de {año}`, `Bombardero Estratégico ... de {año}`, `Bombardero Naval ... de {año}`
   - `Avión de Transporte Aéreo de {año}`, `Cañoneros de Apoyo Terrestre de {año}`, `Hidroavión de {año}`, `Avión de Alerta Temprana (AWACS) de {año}`
   - `Helicóptero de Exploración Naval de {año}`, `Helicóptero Naval Antisubmarino de {año}`, `Helicóptero de Apoyo Armado de {año}`, `Grupo Aeronaval Embarcado de {año}`
+
+### E. Industria y Producción (`db/tech/industry_tech.txt` + `config/tech_names.csv`)
+- **Labels y posiciones:**
+  - `TECH_CAT_MANUFACTURING`: `(4, 1)`
+  - `TECH_CAT_ASSEMBLYLINES`: `(12, 287)`
+  - `TECH_CAT_AGRICULTURE`: `(124, 1)`
+  - `TECH_CAT_HOSPITALS`: `(124, 321)`
+  - `TECH_CAT_CONSTRUCTION`: `(240, 1)`
+  - `TECH_CAT_SYNTHETICOIL`: `(364, 1)`
+  - `TECH_CAT_RRWARNING`: `Radares de Alerta` en `(594, 1)`
+  - `TECH_CAT_NUCLEAR`: `(474, 321)`
+  - `TECH_CAT_EQUIPMENT`: `Equip. Especializado` en `(586, 321)`
+- **Short names:**
+  - Fabricación Industrial: `Gestión 1910`, `Producción 1915`, `Fabricación 1925`, `Procesos 1930`, `Montaje 1940`, `Pro. Flexible 1955`, `Planificación 1960`, `Fab. Digital 1964`
+  - Líneas de Montaje: `Mont. Aéreo {1940/1982}`, `Mont. Naval {1940/1982}`, `Mont. Vehíc. {1940/1982}`, `Mont. Armas {1940/1981}`, `Mont. Cohe. 1942`, `Mont. Misiles 1982`
+  - Producción Agrícola: `Prod. Agrícola {año}` (todos)
+  - Hospitales Militares / Medicina: `Hospital Mil. {año}` (todos), `Medicina {año}` (todos)
+  - Computación: `Tiro Análogo 1916`, `Máq. Cont. 1928`, `T. Inform. {1948/1960/1976}`
+  - Nuclear: `Inv. Atómica {año}` (todos)
+  - Radares: `Radares {año}` (todos)
+  - Equip. Especializado: `Eq. Agreste 1939`, `Eq. Invernal 1939`, `Eq. Tropical 1939`, `Eq. Desierto 1939`, `Veh. Agreste 1940`, `Veh. Invierno 1940`, `Veh. Selva 1940`, `Veh. Desierto 1940`
