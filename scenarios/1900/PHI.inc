@@ -5,7 +5,7 @@
 
 country = {
   tag                = PHI
-  ai                 = "Minors/PHI_1914.ai"
+  ai                 = "Minors/PHI_1936.ai"
   ai_settings        = { flags = { MOB1 = yes MOB2 = yes } }
   capital            = 1566 # Cabanatuan
   manpower           = 30

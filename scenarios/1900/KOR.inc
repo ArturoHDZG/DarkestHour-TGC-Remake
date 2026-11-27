@@ -5,7 +5,7 @@
 
 country = {
   tag                = KOR
-  ai                 = "Minors/KOR_1914.ai"
+  ai                 = "Minors/KOR.ai"
   ai_settings        = { }
   capital            = 1228 # Seoul
   manpower           = 25
